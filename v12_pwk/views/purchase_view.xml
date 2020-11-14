@@ -1,0 +1,339 @@
+<odoo>
+    <data>              
+
+        <record id="purchase_order_tree_pwk" model="ir.ui.view">
+            <field name="name">Purchase Order</field>
+            <field name="model">purchase.order</field>            
+            <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+            <field name="arch" type="xml">
+                <field name="date_order" position="before">
+                    <field name="purchase_type" readonly="1"/>
+                    <field name="export_local"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="purchase_order_form_pwk" model="ir.ui.view">
+            <field name="name">Purchase Order</field>
+            <field name="model">purchase.order</field>            
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[1]" position="after">
+                    <page string="Detail Afkir">
+                        <field name="afkir_ids" nolabel="1" readonly="1">
+                            <tree editable="top">
+                                <field name="product_id"/>
+                                <field name="diameter"/>
+                                <field name="qty"/>
+                            </tree>
+                        </field>
+                        <field name="product_ids" nolabel="1" readonly="1">
+                            <tree editable="top">
+                                <field name="diameter"/>
+                                <field name="qty"/>
+                                <field name="price"/>
+                                <field name="volume"/>
+                                <field name="subtotal"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+                <header position="replace">
+                    <header>
+                        <button name="action_rfq_send" states="draft" string="Send by Email" type="object" context="{'send_rfq':True}" class="oe_highlight" invisible="1"/>
+                        <button name="print_quotation" string="Print RFQ" type="object" states="draft" class="oe_highlight" groups="base.group_user" invisible="1"/>
+                        <button name="button_confirm" type="object" states="sent" string="Confirm Order" class="oe_highlight" id="bid_confirm"/>
+                        <button name="button_approve" type="object" states='to approve' string="Approve Order" class="oe_highlight" groups="purchase.group_purchase_manager"/>
+                        <button name="action_view_invoice" string="Create Bill" type="object" class="oe_highlight" context="{'create_bill':True}" attrs="{'invisible': ['|', ('state', 'not in', ('purchase', 'done')), ('invoice_status', 'in', ('no', 'invoiced'))]}"/>
+                        <button name="action_rfq_send" states="sent" string="Re-Send by Email" type="object" context="{'send_rfq':True}" invisible="1"/>
+                        <button name="print_quotation" string="Print RFQ" type="object" states="sent" groups="base.group_user"/>
+                        <button name="button_confirm" type="object" states="draft" string="Confirm Order" id="draft_confirm"/>
+                        <button name="action_rfq_send" states="purchase" string="Send PO by Email" type="object" context="{'send_rfq':False}" invisible="1"/>
+                        <button name="action_view_invoice" string="Create Bill" type="object" context="{'create_bill':True}" attrs="{'invisible': ['|', '|', ('state', 'not in', ('purchase', 'done')), ('invoice_status', 'not in', ('no', 'invoiced')), ('order_line', '=', [])]}"/>
+                        <button name="button_draft" states="cancel" string="Set to Draft" type="object" />
+                        <button name="button_cancel" states="draft,to approve,sent,purchase" string="Cancel" type="object" />
+                        <button name="button_done" type="object" string="Lock" states="purchase" invisible="1"/>
+                        <button name="button_unlock" type="object" string="Unlock" states="done" groups="purchase.group_purchase_manager"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,sent,purchase" readonly="1"/>
+                    </header>
+                </header>
+                <button name="print_quotation" position="replace">
+                    <button name="print_purchase_order_jasa" type="object" 
+                        string="Print Purchase Order Jasa" class="oe_highlight"
+                        attrs="{'invisible': [('purchase_type', '!=', 'Jasa')]}"/>
+                    <button name="print_purchase_order_bahan_baku" type="object" 
+                        string="Print Purchase Order BB" class="oe_highlight"
+                        attrs="{'invisible': [('purchase_type', '!=', 'Bahan Baku')]}"/>
+                    <button name="print_purchase_order_bahan_penolong" type="object" 
+                        string="Print Purchase Order BP" class="oe_highlight"
+                        attrs="{'invisible': [('purchase_type', '!=', 'Bahan Penolong')]}"/>
+                    <button name="print_purchase_order_rotary" type="object" 
+                        string="Print Purchase Order Rotary" class="oe_highlight"
+                        attrs="{'invisible': [('purchase_type', '!=', 'Rotary')]}"/>
+                    <button name="print_nota_pembelian_jenis_kayu" type="object" 
+                        string="Print Nota Pembelian Supplier" class="oe_highlight"
+                        attrs="{'invisible': ['|', ('purchase_type', '!=', 'Rotary'),('state', '=', 'draft')]}"/>
+                </button>
+                <field name="partner_id" position="after">
+                    <field name="attn"/>
+                    <field name="is_paid"
+                        attrs="{'invisible': [('purchase_type', '!=', 'Rotary')]}"/>
+                    <field name="move_id"
+                        options="{'no_create': True}"
+                        attrs="{'invisible': [('purchase_type', '!=', 'Rotary')]}"/>
+                </field>                
+                <field name="notes" position="replace">
+                    <field name="notes" class="oe_inline" placeholder="Keterangan ..."/>
+                    <field name="teknis_pembayaran" class="oe_inline" placeholder="Teknis Pembayaran ..."/>
+                    <field name="payment_to" class="oe_inline" placeholder="Pembayaran Ke ..."/>
+                </field>
+                <field name="partner_id" position="before">
+                    <field name="purchase_type" readonly="1"/>
+                    <field name="export_local"/>
+                </field>
+                <field name="date_order" position="before">
+                    <!-- <field name="is_hidden" groups="base.group_erp_manager"/> -->
+                    <field name="is_logo"/>
+                    <field name="certificate_id"                                
+                        options="{'no_create': True}"/>
+                    <field name="office_selection"/>
+                    <field name="formula_type"/>
+                    <field name="jenis_kayu_id"
+                        options="{'no_create': True}"
+                        attrs="{'invisible': [('purchase_type', '!=', 'Rotary')]}"/>
+                    <field name="panjang"
+                        attrs="{'invisible': [('purchase_type', '!=', 'Rotary')]}"/>
+                    <field name="no_kendaraan"
+                        attrs="{'invisible': [('purchase_type', '!=', 'Rotary')]}"/>
+                    <field name="kode"
+                        attrs="{'invisible': [('purchase_type', '!=', 'Rotary')]}"/>
+                </field>
+                <field name="order_line" position="replace">
+                    <field name="order_line" attrs="{'readonly': [('state', 'in', ('done', 'cancel'))]}">
+                         <tree string="Purchase Order Lines">
+                            <field name="currency_id" invisible="1"/>
+                            <field name="state" invisible="1"/>
+                            <field name="product_type" invisible="1"/>
+                            <field name="invoice_lines" invisible="1"/>
+                            <field name="sequence" widget="handle"/>
+                            <field name="product_id" attrs="{'readonly': [('state', 'in', ('purchase', 'to approve','done', 'cancel'))]}" context="{'partner_id':parent.partner_id, 'quantity':product_qty,'uom':product_uom, 'company_id': parent.company_id}" force_save="1"/>
+                            <field name="name"/>
+                            <field name="spp"/>
+                            <field name="date_planned" invisible="1"/>
+                            <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                            <field name="account_analytic_id" context="{'default_partner_id':parent.partner_id}" groups="analytic.group_analytic_accounting" invisible="1"/>
+                            <field name="analytic_tag_ids" groups="analytic.group_analytic_tags" widget="many2many_tags" options="{'color_field': 'color'}" invisible="1"/>
+                            <field name="diameter"/>                            
+                            <field name="actual_size"/>
+                            <field name="actual_thick"/>
+                            <field name="actual_width"/>
+                            <field name="actual_length"/>
+                            <field name="invoice_thick"/>
+                            <field name="invoice_width"/>
+                            <field name="invoice_length"/>
+                            <field name="product_qty" string="Qty"/>
+                            <field name="qty_received" attrs="{'column_invisible': [('parent.state', 'not in', ('purchase', 'done'))]}"/>
+                            <field name="qty_invoiced" attrs="{'column_invisible': [('parent.state', 'not in', ('purchase', 'done'))]}"/>
+                            <field name="product_uom" groups="uom.group_uom" attrs="{'readonly': [('state', 'in', ('purchase', 'done', 'cancel'))]}" force_save="1" string="UoM"/>
+                            <field name="price_unit" attrs="{'readonly': [('invoice_lines', '!=', [])]}" string="Price"/>
+                            <field name="taxes_id" widget="many2many_tags" domain="[('type_tax_use','=','purchase')]" context="{'default_type_tax_use': 'purchase', 'search_view_ref': 'account.account_tax_view_search'}" options="{'no_create': True}"/>
+                            <field name="price_subtotal" widget="monetary"/>
+                            <field name="note"/>
+                        </tree>
+                        <form string="Purchase Order Line">
+                            <sheet>
+                                <field name="state" invisible="1"/>
+                                <group>
+                                    <group>
+                                        <field name="product_id" context="{'partner_id': parent.partner_id}"/>
+                                        <field name="name"/>
+                                        <field name="diameter"/>                
+                                        <field name="product_uom" string="UoM"/>
+                                    </group>
+                                    <group>   
+                                        <field name="spp"/>                     
+                                        <field name="actual_size"
+                                            attrs="{'invisible': [('parent.purchase_type', '!=', 'Jasa')]}"/>
+                                        <field name="taxes_id" widget="many2many_tags" domain="[('type_tax_use', '=', 'purchase')]" options="{'no_create': True}"/>
+                                        <field name="date_planned" widget="date"/>
+                                        <field name="account_analytic_id" colspan="2" groups="analytic.group_analytic_accounting" invisible="1"/>
+                                        <field name="analytic_tag_ids" groups="analytic.group_analytic_accounting" widget="many2many_tags" options="{'color_field': 'color'}" invisible="1"/>
+                                        <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="qty_surat_jalan"
+                                            attrs="{'invisible': [('parent.purchase_type', '!=', 'Rotary')]}"/>                                        
+                                        <field name="qty_afkir"
+                                            attrs="{'invisible': [('parent.purchase_type', '!=', 'Rotary')]}"/>
+                                        <field name="product_qty" string="Qty Ukur"/>
+                                    </group>
+                                    <group>
+                                        <field name="volume_surat_jalan"
+                                            attrs="{'invisible': [('parent.purchase_type', '!=', 'Rotary')]}"/>
+                                        <field name="volume_afkir"
+                                            attrs="{'invisible': [('parent.purchase_type', '!=', 'Rotary')]}"/>
+                                        <field name="volume_real" string="Volume Ukur"
+                                            attrs="{'invisible': [('parent.purchase_type', '!=', 'Rotary')]}"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <field name="price_unit"/>
+                                    <field name="price_subtotal"/>                    
+                                    <field name="price_total"/>
+                                </group>
+                                <group attrs="{'invisible': [('parent.purchase_type', '!=', 'Bahan Baku')]}">
+                                    <group>                                        
+                                        <field name="actual_thick"
+                                            attrs="{'invisible': [('parent.purchase_type', '!=', 'Bahan Baku')]}"/>
+                                        <field name="actual_width"
+                                            attrs="{'invisible': [('parent.purchase_type', '!=', 'Bahan Baku')]}"/>
+                                        <field name="actual_length"
+                                            attrs="{'invisible': [('parent.purchase_type', '!=', 'Bahan Baku')]}"/>
+                                    </group>
+                                    <group>
+                                        <field name="invoice_thick"
+                                            attrs="{'invisible': [('parent.purchase_type', '!=', 'Bahan Baku')]}"/>
+                                        <field name="invoice_width"
+                                            attrs="{'invisible': [('parent.purchase_type', '!=', 'Bahan Baku')]}"/>
+                                        <field name="invoice_length"
+                                            attrs="{'invisible': [('parent.purchase_type', '!=', 'Bahan Baku')]}"/>
+                                    </group>
+                                </group>
+                                <notebook>
+                                <page string="Notes">
+                                    <field name="name"/>
+                                </page>
+                                <page string="Invoices and Incoming Shipments">
+                                    <field name="invoice_lines"/>
+                                </page>
+                                </notebook>
+                            </sheet>
+                        </form>
+                    </field>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_purchase_order_filter_pwk" model="ir.ui.view">
+            <field name="name">request.quotation.select</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="purchase_type"/>
+                    <field name="export_local"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- All Purchase Order -->
+        <record id="purchase.purchase_form_action" model="ir.actions.act_window">
+            <field name="name">All Purchase Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
+            <!-- <field name="domain">[('is_hidden','=',False)]</field> -->
+            <field name="context">{}</field>
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>            
+        </record>
+
+        <menuitem action="purchase.purchase_form_action" 
+            id="menu_purchase_form_action" 
+            parent="purchase.menu_procurement_management" 
+            groups="v12_pwk.group_purchase_order_all"
+            sequence="6"/>
+
+        <!-- PO Jasa -->
+        <record id="purchase_form_action_jasa" model="ir.actions.act_window">
+            <field name="name">Purchase Orders (Jasa)</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
+            <field name="context">{"default_purchase_type":'Jasa', "purchase_type":'Jasa'}</field>
+            <field name="domain">[('purchase_type','=','Jasa')]</field>
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>            
+        </record>
+        
+        <menuitem id="menu_purchase_form_action_jasa" 
+            action="purchase_form_action_jasa"             
+            parent="purchase.menu_procurement_management"             
+            groups="v12_pwk.group_purchase_order_jasa"
+            sequence="8"/>
+
+        <!-- PO Bahan Baku -->
+        <record id="purchase_form_action_bahan_baku" model="ir.actions.act_window">
+            <field name="name">Purchase Orders (BB)</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
+            <field name="context">{"default_purchase_type":'Bahan Baku', "purchase_type":'Bahan Baku'}</field>
+            <field name="domain">[('purchase_type','=','Bahan Baku')]</field>
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>            
+        </record>
+        
+        <menuitem id="menu_purchase_form_action_bahan_baku" 
+            action="purchase_form_action_bahan_baku"
+            parent="purchase.menu_procurement_management"
+            groups="v12_pwk.group_purchase_order_bahan_baku"
+            sequence="9"/>
+
+        <!-- PO Bahan Penolong -->
+        <record id="purchase_form_action_bahan_penolong" model="ir.actions.act_window">
+            <field name="name">Purchase Orders (BP)</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
+            <field name="context">{"default_purchase_type":'Bahan Penolong', "purchase_type":'Bahan Penolong'}</field>
+            <field name="domain">[('purchase_type','=','Bahan Penolong')]</field>
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>            
+        </record>
+        
+        <menuitem id="menu_purchase_form_action_bahan_penolong" 
+            action="purchase_form_action_bahan_penolong"
+            parent="purchase.menu_procurement_management"
+            groups="v12_pwk.group_purchase_order_bahan_penolong"
+            sequence="10"/>
+
+        <!-- PO Rotary -->
+        <record id="purchase_form_action_rotary" model="ir.actions.act_window">
+            <field name="name">Nota Pembelian Log</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
+            <field name="context">{"default_purchase_type":'Rotary', "purchase_type":'Rotary'}</field>
+            <field name="domain">[('purchase_type','=','Rotary')]</field>
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>            
+        </record>
+        
+        <!-- <menuitem id="menu_purchase_form_action_rotary" 
+            action="purchase_form_action_rotary"
+            parent="purchase.menu_procurement_management"
+            groups="v12_pwk.group_purchase_order_rotary"
+            sequence="11"/> -->
+
+        <!-- <record id="purchase_form_action_pwk" model="ir.actions.act_window">
+            <field name="name">All Purchase Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
+            <field name="context">{}</field>
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a quotation
+              </p><p>
+                It will be converted into a purchase order.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_purchase_form_action_pwk" 
+            action="purchase_form_action_pwk"             
+            parent="purchase.menu_procurement_management"             
+            groups="base.group_erp_manager"
+            sequence="7"/> -->
+
+    </data>
+</odoo>

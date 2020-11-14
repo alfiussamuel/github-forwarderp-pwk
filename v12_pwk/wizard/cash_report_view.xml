@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+		<record id="cash_report_wizard_view_forms" model="ir.ui.view">
+			<field name="name">cash.report.wizard.view.form</field>
+			<field name="model">cash.report.wizard</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>												
+            			<field name="office"/>
+            			<field name="dibuat_oleh"/>
+            			<field name="date_from" required="1"/>
+            			<field name="date_to" required="1"/>
+            			<field name="account_id" required="1"/>
+            			<!-- <field name="partner_ids" widget="many2many_tags"
+            				options="{'no_create': True}" string="Vendor"/> -->
+            			<!-- <field name="journal_ids" widget="many2many_tags"
+            				options="{'no_create': True}"/> -->
+					</group>
+                    <newline/>
+					<footer>
+						<button name="print_report" string="Print Report" type="object" class="btn-primary"/>
+						<button string="Cancel" class="btn-default" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_wizard_cash_report" model="ir.actions.act_window">
+			<field name="name">Cash Bank Report</field>
+			<field name="res_model">cash.report.wizard</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="cash_report_wizard_view_forms"/>
+			<field name="target">new</field>
+		</record>		
+
+		<menuitem id="cash_report_menu" name="Cash Bank Report" 
+			action="action_wizard_cash_report" 
+			parent="v12_pwk.accounting_report_pwk_menu" sequence="2"/>
+
+	</data>
+</odoo>

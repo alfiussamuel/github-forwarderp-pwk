@@ -1,0 +1,1145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="external_layout_standard_packing_list_local">
+	        <div class="header">		           
+	          	<table class="table table-condensed">
+					<tr>
+						<td width="10%" rowspan="4" 
+							style="text-align:left;vertical-align:middle;border:0px;padding:0px;font-size:8px;">
+							<img src='v12_pwk/static/logo_pwk.jpg' 
+								style="text-align:left;max-width:90%;"/>
+						</td>							
+						<td width="52%" 
+							style="font-size:8px; border:0px;padding:1px;vertical-align:bottom;">
+						</td>
+						<td width="12%%" rowspan="4" 
+							style="text-align:right;vertical-align:top;border:0px;padding:0px;font-size:8px;">
+							<img src='v12_pwk/static/legal_wood_pwk.png' 
+								style="text-align:left;max-width:100%;vertical-align:bottom;"/>
+						</td>
+						<td width="26%" class="text-justify"
+							style="font-size:8px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">	
+							<span t-field="o.certificate_id.detail"/>
+						</td>
+					</tr>					
+					<tr>
+						<td width="52%" style="font-size:8px; border:0px;padding:1px;vertical-align:bottom;">
+							<strong>PT. PRIMA WANA KREASI WOOD INDUSTRY</strong>
+						</td>
+						<td width="26%"
+							style="font-size:8px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
+							<span t-field="o.certificate_id.detail2"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="52%" style="font-size:8px; border:0px;padding:1px;vertical-align:bottom;">
+							<strong>JL. RAYA TEMBUS PRINGSURAT, KRANGGAN KUPEN PRINGSURAT, TEMANGGUNG JAWA TENGAH</strong>
+						</td>
+						<td width="26%"
+							style="font-size:8px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
+							<span t-field="o.certificate_id.detail3"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="52%" style="font-size:8px; border:0px;padding:1px;vertical-align:bottom;">
+							<strong>Phone. +62 293 319 4934  Fax. +62 293 4901 339</strong>
+						</td>
+						<td width="26%"
+							style="font-size:8px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
+							<span t-field="o.certificate_id.detail4"/>
+						</td>
+					</tr>
+				</table>
+				<table class="table table-condensed" style="margin-top:15px;">
+					<tr>													
+						<td width="100%" style="font-size:18px; text-align:center;padding:1px;border:0px;">
+							<t t-if="o.state == 'draft'">
+							<strong>DRAFT PACKING LIST</strong>
+							</t>
+							<t t-if="o.state == 'proforma'">
+								<strong>PROFORMA PACKING LIST</strong>
+							</t>
+							<t t-if="o.state == 'open'">
+								<strong>ORIGINAL PACKING LIST</strong>
+							</t>
+							<t t-if="o.state == 'paid'">
+								<strong>ORIGINAL PACKING LIST</strong>
+							</t>
+							<t t-if="o.state == 'cancel'">
+								<strong>ORIGINAL PACKING LIST</strong>
+							</t>
+						</td>									
+					</tr>											
+					<tr>													
+						<td width="100%" style="font-size:18px; text-align:center;padding:1px;border:0px;">
+							<strong><span t-field="o.number"/></strong>
+						</td>									
+					</tr>											
+				</table>
+
+				<table class="table table-condensed" style="margin-top:20px;">
+					<!-- Bill To -->
+					<tr>													
+						<td width="10%" colspan="2"
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">		
+							<strong>Bill To</strong>
+						</td>
+						<td width="35%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:1px solid black;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:1px solid black;">
+							<span t-field="o.partner_id.name"/>
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:1px solid black;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:1px solid black;">
+							<strong>Invoice Date</strong>
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:1px solid black;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:1px solid black;">
+							<strong>Invoice Number</strong>
+						</td>
+					</tr>	
+					<tr>													
+						<td width="10%" colspan="2"
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">										
+						</td>
+						<td width="35%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:1px solid black;">
+							<span t-field="o.partner_id.street"/>
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:1px solid black;
+							border-right:1px solid black;">
+							<span t-field="o.date_invoice"/>
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:1px solid black;
+							border-right:1px solid black;">
+							<span t-field="o.number"/>
+						</td>
+					</tr>
+					<tr>													
+						<td width="10%" colspan="2"
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">										
+						</td>
+						<td width="35%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:1px solid black;">
+							<span t-field="o.partner_id.street2"/>
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">								
+						</td>
+					</tr>
+					<tr>													
+						<td width="10%" colspan="2"
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">										
+						</td>
+						<td width="35%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:1px solid black;">
+							Telp : <span t-field="o.partner_id.phone"/>
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:1px solid black;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:1px solid black;">
+							<strong>Term of Payment</strong>
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:1px solid black;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:1px solid black;">
+							<strong>FOB</strong>
+						</td>
+					</tr>
+					<tr>													
+						<td width="10%" colspan="2"
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">										
+						</td>
+						<td width="35%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:1px solid black;
+							border-right:1px solid black;">
+							Fax : <span t-field="o.partner_id.fax"/>
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:1px solid black;
+							border-right:1px solid black;">
+							<span t-field="o.payment_term_id.name"/>
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:1px solid black;
+							border-right:1px solid black;">
+							<span t-field="o.incoterm_id.name"/>
+						</td>
+					</tr>
+
+					<!-- Blank Row -->
+					<tr>													
+						<td width="10%" colspan="2"
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="35%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+					</tr>
+
+					<!-- Ship Via Ship Date -->
+					<tr>													
+						<td width="10%" colspan="2"
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">										
+						</td>
+						<td width="35%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">								
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:1px solid black;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:1px solid black;">
+							<strong>Ship Via</strong>
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:1px solid black;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:1px solid black;">
+							<strong>Ship Date</strong>
+						</td>
+					</tr>
+					<tr>													
+						<td width="10%" colspan="2"
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">										
+						</td>
+						<td width="35%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px">								
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:1px solid black;
+							border-right:1px solid black;">
+							<span t-field="o.ship_via.name"/>
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:1px solid black;
+							border-right:1px solid black;">
+							<span t-field="o.do_date" t-options='{"format": "dd-MMMM-yyyy"}'/>
+						</td>
+					</tr>
+
+					<!-- Blank Row -->
+					<tr>													
+						<td width="10%" colspan="2"
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="35%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+					</tr>
+
+					<!-- Ship To -->
+					<tr>													
+						<td width="10%" colspan="2"
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">		
+							<strong>Ship To</strong>
+						</td>
+						<td width="35%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:1px solid black;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:1px solid black;">
+							<span t-field="o.partner_shipping_id.name"/>
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:1px solid black;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:1px solid black;">
+							<strong>PO Number</strong>
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:1px solid black;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:1px solid black;">
+							<strong>Currency</strong>
+						</td>
+					</tr>	
+					<tr>													
+						<td width="10%" colspan="2"
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">										
+						</td>
+						<td width="35%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:1px solid black;">
+							<span t-field="o.partner_shipping_id.street"/>
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:1px solid black;
+							border-right:1px solid black;">
+							<span t-field="o.po_number"/>
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:1px solid black;
+							border-right:1px solid black;">
+							<span t-field="o.currency_id.name"/>
+						</td>
+					</tr>
+					<tr>													
+						<td width="10%" colspan="2"
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">										
+						</td>
+						<td width="35%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:1px solid black;">
+							<span t-field="o.partner_shipping_id.street2"/>
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">								
+						</td>
+					</tr>
+					<tr>													
+						<td width="10%" colspan="2"
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">										
+						</td>
+						<td width="35%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:1px solid black;">
+							Telp : <span t-field="o.partner_shipping_id.phone"/>
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:1px solid black;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:1px solid black;">
+							<strong>Inclusive Tax</strong>
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:1px solid black;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:1px solid black;">
+							<strong>Tax Number</strong>
+						</td>
+					</tr>
+					<tr>													
+						<td width="10%" colspan="2"
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">										
+						</td>
+						<td width="35%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:1px solid black;
+							border-right:1px solid black;">
+							Fax : <span t-field="o.partner_shipping_id.fax"/>
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:1px solid black;
+							border-right:1px solid black;">
+							YES
+						</td>
+						<td width="5%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;">
+						</td>
+						<td width="20%" 
+							style="font-size:11px;
+							padding:2px;
+							text-align:center;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:1px solid black;
+							border-right:1px solid black;">
+							<span t-field="o.efaktur_id.name"/>
+						</td>
+					</tr>
+				</table>
+	        </div>
+
+	        <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">	
+	            <t t-raw="0"/>
+	        </div>
+
+	        <div class="footer o_standard_footer">
+	            <div class="text-center">		            
+	                <div t-if="report_type == 'pdf'" class="text-muted">
+	                    Page: <span class="page"/> / <span class="topage"/>
+	                </div>
+	            </div>
+	        </div>
+
+	    </template>
+
+		<!-- Header for Invoice Lokal -->
+    	<template id="external_layout_packing_list_local">
+	        <t t-if="not o" t-set="o" t-value="doc"/>
+	        <t t-if="not company">
+	            <!-- Multicompany -->
+	            <t t-if="company_id">
+	                <t t-set="company" t-value="company_id"/>
+	            </t>
+	            <t t-elif="o and 'company_id' in o">
+	                <t t-set="company" t-value="o.company_id.sudo()"/>
+	            </t>
+	            <t t-else="else">
+	                <t t-set="company" t-value="res_company"/>
+	            </t>
+	        </t>
+	        <!-- <t t-if="company.external_report_layout_id" t-call="{{company.external_report_layout_id.key}}"><t t-raw="0"/></t> -->
+	        <t t-call="v12_pwk.external_layout_standard_packing_list_local"><t t-raw="0"/></t>
+	    </template>	  
+
+        <template id="report_packing_list_local_document">
+            <t t-call="v12_pwk.external_layout_packing_list_local">
+                <t t-set="o" t-value="o.with_context(lang=lang)" />
+                <t t-set="address">
+                    <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
+                    <div t-if="o.partner_id.vat" class="mt16"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.partner_id.vat"/></div>
+                </t>
+                <div class="page">                    					
+					<table class="table table-condensed" style="margin-top:10px;">
+		                <thead>
+		                    <tr>
+		                        <th style="font-size:11px;border:1px solid black;background-color:#578cba;color:white;">
+		                        	NO
+		                        </th>		
+		                        <th style="text-align:center;font-size:11px;border:1px solid black;background-color:#578cba;color:white;vertical-align:middle;">
+		                        	DESCRIPTION
+		                        </th>
+		                        <th colspan="3" style="text-align:center;font-size:11px;border:1px solid black;background-color:#578cba;color:white;vertical-align:middle;">
+		                        	T X W X L (mm)
+		                        </th>
+		                        <th style="text-align:center;font-size:11px;border:1px solid black;background-color:#578cba;color:white;padding:1px;vertical-align:middle;">
+		                        	SHEETS
+		                        </th>
+		                        <th style="text-align:center;font-size:11px;border:1px solid black;background-color:#578cba;color:white;padding:1px;vertical-align:middle;">
+		                        	VOL (M3)
+		                        </th>		                        
+		                    </tr>
+		                </thead>
+		                <tbody class="invoice_tbody">
+		                	<t t-set="i" t-value="1" />
+		                    <tr t-foreach="o.invoice_line_ids" t-as="l">
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<span t-esc="i"/> 
+        							<t t-set="i" t-value="i+1"/> 
+		                        </td>
+		                        <td style="text-align:left;border:1px solid black;font-size:11px;padding:4px;">	
+        							<span t-field="l.name"/>
+		                        </td>		                  
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">		
+		                            <span t-esc="'%.1f'%(l.thick)"/>
+		                        </td>		                       
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-esc="'%.0f'%(l.width)"/>
+		                        </td>		                       
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-esc="'%.0f'%(l.length)"/>
+		                        </td>
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-esc="'%.0f'%(l.sheets)"/>
+		                        </td>
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-field="l.quantity"/>
+		                        </td>		                        
+		                    </tr>		                    
+		                    <tr>
+		                        <td colspan="4" style="text-align:center;font-size:11px;padding:4px;border:0px;">
+		                        </td>
+		                        <td style="text-align:left;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong>TOTAL</strong>
+		                        </td>
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong><span t-esc="'%.0f'%(o.total_sheets)"/></strong>
+		                        </td>
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+	                        		<strong>
+	                        			<span t-esc="'%.4f'%(o.total_volume)"/>
+		                        	</strong>
+		                        </td>
+		                    </tr>
+		                </tbody>
+		            </table>	
+		            <table class="table table-condensed">
+		            	<tr>
+		            		<td width="70%" style="border:0px;font-size:11px;padding:2px;">
+		            			
+		            		</td>
+		            		<td width="30%" style="border:0px;font-size:11px;padding:2px;text-align:center;">
+		            			<span t-field="o.office_selection"/>, <span t-field="o.date_invoice" t-options='{"format": "dd-MMMM-yyyy"}'/>
+		            		</td>
+		            	</tr>
+		            	<tr>
+		            		<td width="70%" style="border:0px;font-size:11px;padding:2px;">
+		            			<strong>NB : <span t-field="o.comment"/></strong>
+		            		</td>
+		            		<td width="30%" style="border:0px;font-size:11px;padding:2px;text-align:center;">
+		            			<span t-field="o.company_id.name"/>
+		            		</td>
+		            	</tr>
+		            </table>	            
+		            <table class="table table-condensed" style="margin-top:30px;">
+		            	<tr>
+		            		<td width="15%" style="padding:2px;font-size:10px;border:0px;padding:2px;">		            			
+		            		</td>
+		            		<td width="2%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			
+		            		</td>
+		            		<td width="50%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            		
+		            		</td>
+		            		<td width="30%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            		</td>
+		            	</tr>
+		            	<tr>
+		            		<td width="15%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			
+		            		</td>
+		            		<td width="2%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			
+		            		</td>
+		            		<td width="50%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			
+		            		</td>
+		            		<td width="30%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            		</td>
+		            	</tr>
+		            	<tr>
+		            		<td width="15%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			
+		            		</td>
+		            		<td width="2%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			
+		            		</td>
+		            		<td width="50%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			
+		            		</td>
+		            		<td width="30%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            		</td>
+		            	</tr>
+		            	<tr>
+		            		<td width="15%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			
+		            		</td>
+		            		<td width="2%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			
+		            		</td>
+		            		<td width="50%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			
+		            		</td>
+		            		<td width="30%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            		</td>
+		            	</tr>
+		            	<tr>
+		            		<td width="15%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			
+		            		</td>
+		            		<td width="2%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			
+		            		</td>
+		            		<td width="50%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			
+		            		</td>
+		            		<td width="30%" style="padding:2px;font-size:10px;border:0px;padding:2px;text-align:center;">
+		            			<span t-field="o.sign"/>
+		            		</td>
+		            	</tr>
+		            </table>
+                </div>
+            </t>
+        </template>        
+
+        <template id="report_packing_list_local">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-set="lang" t-value="o.user_id.sudo().lang if o.type in ('in_invoice', 'in_refund') else o.partner_id.lang"/>
+                    <t t-call="v12_pwk.report_packing_list_local_document" t-lang="lang"/>
+                </t>
+            </t>
+        </template>
+
+        <!-- New Report Packing List -->
+    	<record id="paperformat_packing_list_local" model="report.paperformat">
+	        <field name="name">Packing List Local</field>
+	        <field name="default" eval="True"/>
+	        <field name="format">A4</field>
+	        <field name="page_height">0</field>
+	        <field name="page_width">0</field>
+	        <field name="orientation">Portrait</field>
+	        <field name="margin_top">112</field>
+	        <field name="margin_bottom">10</field>
+	        <field name="margin_left">5</field>
+	        <field name="margin_right">5</field>
+	        <field name="header_line" eval="False"/>
+	        <field name="header_spacing">108</field>
+	        <field name="dpi">80</field>
+	        <field name="sequence">2</field>
+	    </record>
+
+    	<report
+            id="packing_list_local"
+            model="account.invoice"
+            string="Packing List Local"
+            report_type="qweb-pdf"
+            name="v12_pwk.report_packing_list_local"
+            file="v12_pwk.report_packing_list_local"            
+            print_report_name="'Packing List - %s' % (object.number or '')"
+            groups="account.group_account_invoice"
+            paperformat="v12_pwk.paperformat_packing_list_local"
+        />
+
+
+    </data>
+</openerp>

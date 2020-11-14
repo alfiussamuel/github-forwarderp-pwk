@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+	    <template id="external_layout_standard_payment_report">           
+            <div class="header">                   
+            	<table class="table table-condensed">
+                    <tr>
+                        <td width="8%" rowspan="4" 
+                            style="text-align:left;vertical-align:middle;border:0px;padding:0px;">
+                            <img src='v12_pwk/static/logo_pwk.jpg' 
+                                style="text-align:left;max-width:88%;"/>
+                        </td>                           
+                        <td width="50%" 
+                            style="font-size:13px; border:0px;padding:1px;vertical-align:bottom;">
+                        </td>
+                        <td width="15%%" rowspan="4" 
+                            style="text-align:right;vertical-align:top;border:0px;padding:0px;">
+                        </td>
+                        <td width="23%" class="text-justify"
+                            style="font-size:11px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
+                        </td>
+                    </tr>                   
+                    <tr>
+                        <td width="100%" style="font-size:11px; border:0px;padding:1px;vertical-align:bottom;">
+                            <strong>PT. PRIMA WANA KREASI WOOD INDUSTRY</strong>
+                        </td>                       
+                    </tr>
+                    <tr>
+                        <td width="100%" style="font-size:11px; border:0px;padding:1px;vertical-align:bottom;">
+                            <strong>JL. RAYA TEMBUS PRINGSURAT, KRANGGAN KUPEN PRINGSURAT, TEMANGGUNG JAWA TENGAH</strong>
+                        </td>                       
+                    </tr>
+                    <tr>
+                        <td width="100%" style="font-size:11px; border:0px;padding:1px;vertical-align:bottom;">
+                            <strong>Phone. +62 293 319 4934  Fax. +62 293 4901 339</strong>
+                        </td>                       
+                    </tr>                    
+                </table>
+                <h4 style="text-align: center;padding:3px;">
+                    <strong>SUMMARY PAYMENT</strong>
+                </h4>
+            </div>
+
+            <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">   
+                <t t-raw="0"/>
+            </div>
+
+            <div class="footer o_standard_footer">                
+                <div class="text-center">                   
+                    <div t-if="report_type == 'pdf'" class="text-muted">
+                        Page: <span class="page"/> / <span class="topage"/>
+                    </div>
+                </div>
+            </div>
+
+        </template>
+
+        <!-- Header for Packing List -->
+        <template id="external_layout_payment_report">
+            <t t-if="not o" t-set="o" t-value="doc"/>
+            <t t-if="not company">
+                <!-- Multicompany -->
+                <t t-if="company_id">
+                    <t t-set="company" t-value="company_id"/>
+                </t>
+                <t t-elif="o and 'company_id' in o">
+                    <t t-set="company" t-value="o.company_id.sudo()"/>
+                </t>
+                <t t-else="else">
+                    <t t-set="company" t-value="res_company"/>
+                </t>
+            </t>            
+            <t t-call="v12_pwk.external_layout_standard_payment_report"><t t-raw="0"/></t>
+        </template>
+
+        <!-- New Report Account Move -->
+        <record id="paperformat_payment_report_pwk" model="report.paperformat">
+            <field name="name">Summary Payment</field>
+            <field name="default" eval="True"/>
+            <field name="format">A5</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">34</field>
+            <field name="margin_bottom">20</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">30</field>
+            <field name="dpi">80</field>
+        </record>
+
+        <report
+	        id="action_report_payment_report"
+	        string="Summary Payment"
+	        model="payment.report.wizard"
+	        report_type="qweb-pdf"
+	        name="v12_pwk.report_payment_report"
+	        file="v12_pwk.report_payment_report"
+	        print_report_name="'Summary Payment (%s - %s)' % object.date_from,object.date_to"
+            groups="account.group_account_invoice"
+            paperformat="v12_pwk.paperformat_payment_report_pwk"
+	        menu="False"/>
+	
+		<template id="report_payment_report">						
+     		<t t-call="web.html_container">
+	    		<t t-call="v12_pwk.external_layout_payment_report">
+	    			<div class="page">						
+						<table class="table table-condensed" style="margin-top:40px;">
+                            <thead>
+    							<tr>
+    								<th width="10%" style="padding:3px;border:1px solid black;text-align:center;font-size:14px;
+    									background-color:#4ead2f;color:white;">
+    									<strong>Date</strong>
+    								</th>											
+    								<th width="12%" style="padding:3px;border:1px solid black;text-align:center;font-size:14px;
+    									background-color:#4ead2f;color:white;">
+    									<strong>Voucher No.</strong>
+    								</th>											
+    								<th width="20%" style="padding:3px;border:1px solid black;text-align:center;font-size:14px;
+    									background-color:#4ead2f;color:white;">
+    									<strong>Invoice No.</strong>
+    								</th>						
+    								<th width="20%" style="padding:3px;border:1px solid black;text-align:center;font-size:14px;
+    									background-color:#4ead2f;color:white;">
+    									<strong>Partner</strong>
+    								</th>
+                                    <th width="20%" style="padding:3px;border:1px solid black;text-align:center;font-size:14px;
+                                        background-color:#4ead2f;color:white;">
+                                        <strong>Description</strong>
+                                    </th>                       
+    								<th width="12%" style="padding:3px;border:1px solid black;text-align:center;font-size:14px;
+    									background-color:#4ead2f;color:white;">
+    									<strong>Bank</strong>
+    								</th>						
+    								<th width="12%" style="padding:3px;border:1px solid black;text-align:center;font-size:14px;
+    									background-color:#4ead2f;color:white;">
+    									<strong>Credit</strong>
+    								</th>						
+    								<th width="12%" style="padding:3px;border:1px solid black;text-align:center;font-size:14px;
+    									background-color:#4ead2f;color:white;">
+    									<strong>Debit</strong>
+    								</th>
+    							</tr>
+                            </thead>
+                            <tbody class="invoice_tbody">
+    							<t t-foreach="orders" t-as="a">
+    								<tr>
+    									<td style="padding:3px;border:1px solid black;text-align:center;font-size:13px;">
+    										<span t-esc="a['date']"/>
+    									</td>											
+    									<td style="padding:3px;border:1px solid black;text-align:center;font-size:13px;">
+    										<span t-esc="a['voucher_no']"/>
+    									</td>											
+    									<td style="padding:3px;border:1px solid black;text-align:left;font-size:13px;">
+    										<span t-esc="a['invoice_no']"/>
+    									</td>						
+    									<td style="padding:3px;border:1px solid black;text-align:left;font-size:13px;">
+    										<span t-esc="a['supplier']"/>
+    									</td>						
+                                        <td style="padding:3px;border:1px solid black;text-align:left;font-size:13px;">
+                                            <span t-esc="a['description']"/>
+                                        </td>                       
+    									<td style="padding:3px;border:1px solid black;text-align:center;font-size:13px;">
+    										<span t-esc="a['bank']"/>
+    									</td>						
+    									<td style="padding:3px;border:1px solid black;text-align:right;font-size:13px;">
+    										<span t-esc="'{0:,.0f}'.format(a['credit'])"/>
+    									</td>						
+    									<td style="padding:3px;border:1px solid black;text-align:right;font-size:13px;">
+    										<span t-esc="'{0:,.0f}'.format(a['debit'])"/>
+    									</td>
+    								</tr>
+    							</t>
+                                <t t-foreach="total" t-as="t">
+                                    <tr>
+                                        <td colspan="6" style="padding:3px;border:1px solid black;text-align:right;font-size:13px;">
+                                            <strong>Total</strong>
+                                        </td>                                           
+                                        <td style="padding:3px;border:1px solid black;text-align:right;font-size:13px;">
+                                            <strong>
+                                                <span t-esc="'{0:,.0f}'.format(t['total_credit'])"></span>
+                                            </strong>
+                                        </td>
+                                        <td style="padding:3px;border:1px solid black;text-align:right;font-size:13px;">
+                                            <strong>
+                                                <span t-esc="'{0:,.0f}'.format(t['total_debit'])"></span>
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>							
+						</table>	
+                        <table class="table table-condensed" 
+                            style="margin-top:0px;margin-bottom:0px">
+                            <tr>
+                                <t t-foreach="total" t-as="t">
+                                    <td width="100%"
+                                        style="text-align:right;border:0px;padding:5px;font-size:12px;">
+                                        <span t-esc="t['office']"/>, <span t-esc="t['print_date']"/>
+                                    </td>
+                                </t>
+                            </tr>
+                        </table>	
+                        <table class="table table-condensed" style="margin-top:0px;">
+                            <tr height="160px">                  
+                                <td width="25%"
+                                    style="text-align:center;padding:5px;font-size:13px;border:1px solid black;">
+                                    PREPARED
+                                </td>
+                                <td width="25%"
+                                    style="text-align:center;padding:5px;font-size:13px;border:1px solid black;">
+                                    APPROVED
+                                </td>
+                                <td width="25%"
+                                    style="text-align:center;padding:5px;font-size:13px;border:1px solid black;">
+                                    CONTROL
+                                </td>
+                                <td width="25%"
+                                    style="text-align:center;padding:5px;font-size:13px;border:1px solid black;">
+                                    RECEIVED
+                                </td>
+                            </tr>                                       
+                        </table>   			                        					
+					</div>			
+	    		</t>        	
+	    	</t>
+		</template>
+	</data>
+
+</odoo>

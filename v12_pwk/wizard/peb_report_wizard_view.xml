@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record model='ir.ui.view' id='peb_wizard_form'>
+            <field name="name">wizard.peb.report.form</field>
+            <field name="model">wizard.peb.report</field>
+            <field name="arch" type="xml">
+                <form string="Wizard">
+                    <group>                        
+                        <field name="start_date" class="oe_inline"/>
+                        <field name="end_date" class="oe_inline"/>
+                        <field name="currency_id" class="oe_inline"
+                            options="{'no_create': True}"/>
+                        <field name="rate_bi" class="oe_inline"/>
+                    </group>                        
+                    <footer>
+                        <button name="export_xls" type="object" default_focus="1"
+                                string="Print Laporan PEB" class="oe_highlight"
+                                context="{'xls_export':1}" icon="fa-download"/>
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model='ir.actions.act_window' id='peb_wizard_action'>
+            <field name="name">Laporan PEB</field>
+            <field name="res_model">wizard.peb.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="peb_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+
+        <report
+            id="peb_xlsx"
+            model="wizard.peb.report"
+            string="Laporan PEB"
+            report_type="xlsx"
+            name="v12_pwk.peb_report_xls.xlsx"
+            file="v12_pwk.peb_report_xls.xlsx"
+            menu="False"
+            attachment_use="False"/>
+
+        <menuitem name="Laporan PEB"
+                  parent="v12_pwk.menu_exim_report"
+                  id="menu_exim_report_peb"
+                  action="peb_wizard_action"
+                  sequence="0"/>
+    </data>
+</odoo>

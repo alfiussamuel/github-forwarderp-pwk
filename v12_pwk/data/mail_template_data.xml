@@ -1,0 +1,52 @@
+<odoo>
+	<data>
+		<!--Prospect Created template -->
+        <record id="mail_template_data_prospect_created" model="mail.template">
+            <field name="name">Leads: Prospect Created</field>
+            <field name="model_id" ref="mnc_sale_lead.model_mnc_sale_lead"/>
+            <field name="subject">New Prospect</field>
+            <field name="body_html" type="xml">
+<div style="margin: 0px; padding: 0px;">
+    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+        Prospect <strong>${object.name}</strong> has been Created<br/><br/>
+        <table>
+            <tr>
+                <td><strong>Leads Name</strong></td>
+                <td>:</td>
+                <td>${object.lead_name}</td>
+            </tr>
+            <tr>
+                <td><strong>Leads Date</strong></td>
+                <td>:</td>
+                <td>${object.date}</td>
+            </tr>
+
+            <tr>
+                <td><strong>Phone</strong></td>
+                <td>:</td>
+                <td>+${object.phone_code}${object.phone_number}</td>
+            </tr>
+            <tr>
+                <td><strong>Unit</strong></td>
+                <td>:</td>
+                <td>${object.unit_id.development_type_id.name}/${object.unit_id.block}-${object.unit_id.lot_number}</td>
+            </tr>
+            <tr>
+                <td><strong>Terms of Payment</strong></td>
+                <td>:</td>
+                <td>${object.payment_method_id.name}</td>
+            </tr>
+            <tr>
+                <td><strong>Agent</strong></td>
+                <td>:</td>
+                <td>${object.agent_id.name}</td>
+            </tr>
+        </table>
+    </p>
+</div>
+</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="user_signature" eval="False"/>
+        </record>
+	</data>
+</odoo>

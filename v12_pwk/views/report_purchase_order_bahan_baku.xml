@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="external_layout_standard_purchase_order_bahan_baku">
+	        <div class="header">		           
+	          	<table class="table table-condensed">
+					<tr>
+						<td width="10%" rowspan="4" 
+							style="text-align:left;vertical-align:middle;border:0px;padding:0px;font-size:8px;">
+							<img src='v12_pwk/static/logo_pwk.jpg' 
+								style="text-align:left;max-width:90%;"/>
+						</td>							
+						<td width="52%" rowspan="4"
+							style="font-size:8px; border:0px;padding:1px;vertical-align:middle;">
+							<strong>PT. PRIMA WANA KREASI WOOD INDUSTRY</strong>
+							<hr style="margin-bottom:3px;margin-top:3px;visibility:hidden;"/>
+							<strong>JL. RAYA TEMBUS PRINGSURAT, KRANGGAN KUPEN PRINGSURAT, TEMANGGUNG JAWA TENGAH</strong>
+							<hr style="height:1px;margin-bottom:3px;margin-top:3px;visibility:hidden;"/>
+							<strong>Phone. +62 293 319 4934  Fax. +62 293 4901 339</strong>
+						</td>
+						<td width="12%%" rowspan="4" 
+							style="text-align:right;vertical-align:top;border:0px;padding:0px;font-size:8px;">
+							<t t-if="o.is_logo">
+								<img src='v12_pwk/static/legal_wood_pwk.png' 
+									style="text-align:left;max-width:100%;vertical-align:bottom;"/>
+							</t>
+						</td>
+						<td width="26%" class="text-justify"
+							style="font-size:8px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">	
+							<span t-field="o.certificate_id.detail"/>
+						</td>
+					</tr>					
+					<tr>
+						<!-- <td width="52%" style="font-size:8px; border:0px;padding:1px;vertical-align:bottom;">
+							<strong>PT. PRIMA WANA KREASI WOOD INDUSTRY</strong>
+						</td> -->
+						<td width="26%"
+							style="font-size:8px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
+							<span t-field="o.certificate_id.detail2"/>
+						</td>
+					</tr>
+					<tr>
+						<!-- <td width="52%" style="font-size:8px; border:0px;padding:1px;vertical-align:bottom;">
+							<strong>JL. RAYA TEMBUS PRINGSURAT, KRANGGAN KUPEN PRINGSURAT, TEMANGGUNG JAWA TENGAH</strong>
+						</td> -->
+						<td width="26%"
+							style="font-size:8px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
+							<span t-field="o.certificate_id.detail3"/>
+						</td>
+					</tr>
+					<tr>
+						<!-- <td width="52%" style="font-size:8px; border:0px;padding:1px;vertical-align:bottom;">
+							<strong>Phone. +62 293 319 4934  Fax. +62 293 4901 339</strong>
+						</td> -->
+						<td width="26%"
+							style="font-size:8px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
+							<span t-field="o.certificate_id.detail4"/>
+						</td>
+					</tr>
+				</table>
+				
+				<table class="table table-condensed" style="margin-top:15px;">
+					<tr>													
+						<td width="100%" style="font-size:18px; text-align:center;padding:1px;
+							border-left:0px;
+							border-right:0px;
+							border-top:0px;
+							border-bottom:0px;">
+							<strong>PURCHASE ORDER</strong>							
+						</td>									
+					</tr>
+				</table>
+			
+				<table class="table table-condensed" style="margin-top:0px;">					
+					<tr>
+						<td width="15%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<t t-if="o.export_local == 'English'">
+								<strong>Purchase Order No.</strong>
+							</t>
+							<t t-if="o.export_local == 'Indonesia'">
+								<strong>No. Pesan</strong>
+							</t>
+						</td>
+						<td width="5%" style="font-size:12px; text-align:center;padding:0px;border:0px;vertical-align:middle;">
+							<strong>:</strong>
+						</td>
+						<td width="20%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<span t-field="o.name"/>
+						</td>
+						<td width="20%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						</td>
+						<td width="40%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<t t-if="o.export_local == 'English'">
+								<strong>To :</strong>
+							</t>
+							<t t-if="o.export_local == 'Indonesia'">
+								<strong>Kepada :</strong>
+							</t>
+						</td>						
+					</tr>
+					<tr>
+						<td width="15%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<t t-if="o.export_local == 'English'">
+								<strong>Order Date</strong>
+							</t>
+							<t t-if="o.export_local == 'Indonesia'">
+								<strong>Tanggal Pesan</strong>
+							</t>
+						</td>
+						<td width="5%" style="font-size:12px; text-align:center;padding:0px;border:0px;vertical-align:middle;">
+							<strong>:</strong>
+						</td>
+						<td width="20%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<span t-field="o.date_order" t-options='{"format": "dd-MMMM-yyyy"}'/>
+						</td>
+						<td width="20%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						</td>
+						<td width="40%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<span t-field="o.partner_id.name"/>
+						</td>						
+					</tr>
+					<tr>
+						<td width="15%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<t t-if="o.export_local == 'English'">
+								<strong>Reference</strong>
+							</t>
+							<t t-if="o.export_local == 'Indonesia'">
+								<strong>Referensi</strong>
+							</t>
+						</td>
+						<td width="5%" style="font-size:12px; text-align:center;padding:0px;border:0px;vertical-align:middle;">
+							<strong>:</strong>
+						</td>
+						<td width="20%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<span t-field="o.partner_ref"/>
+						</td>
+						<td width="20%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						</td>
+						<td width="40%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<span t-field="o.partner_id.street"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="15%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<t t-if="o.export_local == 'English'">
+								<strong>Revision</strong>
+							</t>
+							<t t-if="o.export_local == 'Indonesia'">
+								<strong>Revisi Ke</strong>
+							</t>
+						</td>
+						<td width="5%" style="font-size:12px; text-align:center;padding:0px;border:0px;vertical-align:middle;">
+							<strong>:</strong>
+						</td>
+						<td width="20%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<!-- <span t-field="o.name"/> -->
+						</td>
+						<td width="20%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						</td>
+						<td width="40%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<span t-field="o.partner_id.city"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="15%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							
+						</td>
+						<td width="5%" style="font-size:12px; text-align:center;padding:0px;border:0px;vertical-align:middle;">
+							
+						</td>
+						<td width="20%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							
+						</td>
+						<td width="20%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						</td>
+						<td width="40%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<span t-field="o.partner_id.phone"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="15%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							
+						</td>
+						<td width="5%" style="font-size:12px; text-align:center;padding:0px;border:0px;vertical-align:middle;">
+							
+						</td>
+						<td width="20%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							
+						</td>
+						<td width="20%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						</td>
+						<td width="40%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<span t-field="o.attn"/>
+						</td>
+					</tr>
+				</table>
+
+	        </div>
+
+	        <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">	
+	            <t t-raw="0"/>
+	        </div>
+
+	        <div class="footer o_standard_footer">
+	        	<table class="table table-condensed" style="margin-top:0px;">
+	        		<tr>
+	        			<td colspan="4" 
+	        				style="font-size:11px;border:0px;text-align:right;padding:1px;">
+	        				<span t-field="o.office_selection"/>, <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%B-%Y')"/>
+	        			</td>
+	        		</tr>
+                    <tr height="120px">
+                        <td width="25%"
+                            style="text-align:center;padding:5px;font-size:12px;border:0px;">
+                            Supplier,
+                        </td>
+                        <td width="25%"
+                            style="text-align:center;padding:5px;font-size:12px;border:0px;">
+                            Disetujui,
+                        </td>
+                        <td width="25%"
+                            style="text-align:center;padding:5px;font-size:12px;border:0px;">
+                            Diminta,
+                        </td>
+                        <td width="25%"
+                            style="text-align:center;padding:5px;font-size:12px;border:0px;">
+                            Dibuat,
+                        </td>                        
+                    </tr>                    
+                    <tr height="100px">
+                        <td width="25%"
+                            style="text-align:center;padding:5px;font-size:12px;border:0px;">
+                            ( ______________ )
+                        </td>
+                        <td width="25%"
+                            style="text-align:center;padding:5px;font-size:12px;border:0px;">
+                            ( ______________ )
+                        </td>
+                        <td width="25%"
+                            style="text-align:center;padding:5px;font-size:12px;border:0px;">
+                            ( ______________ )
+                        </td>
+                        <td width="25%"
+                            style="text-align:center;padding:5px;font-size:12px;border:0px;">
+                            ( ______________ )
+                        </td>                        
+                    </tr>                              
+                </table>
+	            <div class="text-center">		            
+	                <div t-if="report_type == 'pdf'" class="text-muted">
+	                    Page: <span class="page"/> / <span class="topage"/>
+	                </div>
+	            </div>
+	        </div>
+
+	    </template>
+
+		<!-- Header for Sales Order -->
+    	<template id="external_layout_purchase_order_bahan_baku">
+	        <t t-if="not o" t-set="o" t-value="doc"/>
+	        <t t-if="not company">
+	            <!-- Multicompany -->
+	            <t t-if="company_id">
+	                <t t-set="company" t-value="company_id"/>
+	            </t>
+	            <t t-elif="o and 'company_id' in o">
+	                <t t-set="company" t-value="o.company_id.sudo()"/>
+	            </t>
+	            <t t-else="else">
+	                <t t-set="company" t-value="res_company"/>
+	            </t>
+	        </t>
+	        <!-- <t t-if="company.external_report_layout_id" t-call="{{company.external_report_layout_id.key}}"><t t-raw="0"/></t> -->
+	        <t t-call="v12_pwk.external_layout_standard_purchase_order_bahan_baku"><t t-raw="0"/></t>
+	    </template>	  
+
+        <template id="report_purchase_order_bahan_baku_document">
+            <t t-call="v12_pwk.external_layout_purchase_order_bahan_baku">
+                <t t-set="o" t-value="o.with_context(lang=lang)" />
+                <t t-set="address">
+                    <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
+                    <div t-if="o.partner_id.vat" class="mt16"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.partner_id.vat"/></div>
+                </t>
+                <div class="page">                    					
+					<table class="table table-condensed" style="margin-top:30px;">
+		                <thead>
+		                    <tr>
+		                        <th width="5%" rowspan="2"
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:4px;vertical-align:middle;">
+		                        	<t t-if="o.export_local == 'English'">
+										<strong>NO.</strong>
+									</t>
+									<t t-if="o.export_local == 'Indonesia'">
+										<strong>NO.</strong>
+									</t>
+		                        </th>		
+		                        <th width="8%" rowspan="2"
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:4px;vertical-align:middle;">
+		                        	<t t-if="o.export_local == 'English'">
+										<strong>SPECIES</strong>
+									</t>
+									<t t-if="o.export_local == 'Indonesia'">
+										<strong>SPESIES</strong>
+									</t>
+		                        </th>
+		                        <th width="6%" rowspan="2"
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:4px;vertical-align:middle;">
+		                        	<t t-if="o.export_local == 'English'">
+										<strong>GRADE</strong>
+									</t>
+									<t t-if="o.export_local == 'Indonesia'">
+										<strong>GRADE</strong>
+									</t>
+		                        </th>
+		                        <th width="8%" rowspan="2"
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:4px;vertical-align:middle;">
+		                        	<t t-if="o.export_local == 'English'">
+										<strong>PR / SPP NO.</strong>
+									</t>
+									<t t-if="o.export_local == 'Indonesia'">
+										<strong>NO. PR / SPP</strong>
+									</t>
+		                        </th>
+		                        <th width="12%" colspan="3"
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:4px;vertical-align:middle;">
+		                        	<t t-if="o.export_local == 'English'">
+										<strong>ACTUAL SIZE ( mm )</strong>
+									</t>
+									<t t-if="o.export_local == 'Indonesia'">
+										<strong>ACTUAL SIZE ( mm )</strong>
+									</t>
+		                        </th>
+		                        <th width="12%" colspan="3"
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:4px;vertical-align:middle;">
+		                        	<t t-if="o.export_local == 'English'">
+										<strong>INVOICE SIZE ( mm )</strong>
+									</t>
+									<t t-if="o.export_local == 'Indonesia'">
+										<strong>INVOICE SIZE ( mm )</strong>
+									</t>
+		                        </th>
+		                        <th width="5%" rowspan="2"
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:4px;vertical-align:middle;">
+		                        	<t t-if="o.formula_type == 'PCS'">
+										<strong>PCS</strong>
+									</t>
+									<t t-if="o.formula_type == 'Volume'">
+										<strong>Volume</strong>
+									</t>
+		                        </th>		                        
+		                        <th width="10%" rowspan="2"
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:4px;vertical-align:middle;">
+		                        	<t t-if="o.export_local == 'English'">
+		                        		<t t-if="o.formula_type == 'Volume'">
+											<strong>PRICE / VOL</strong>
+										</t>
+										<t t-if="o.formula_type == 'PCS'">
+											<strong>PRICE / PCS</strong>
+										</t>
+									</t>
+									<t t-if="o.export_local == 'Indonesia'">
+										<t t-if="o.formula_type == 'Volume'">
+											<strong>HARGA / VOL</strong>
+										</t>
+										<t t-if="o.formula_type == 'PCS'">
+											<strong>HARGA / PCS</strong>
+										</t>
+									</t>
+		                        </th>
+		                        <th width="15%" rowspan="2"
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:4px;vertical-align:middle;">
+		                        	<t t-if="o.export_local == 'English'">
+										<strong>AMOUNT</strong>
+									</t>
+									<t t-if="o.export_local == 'Indonesia'">
+										<strong>AMOUNT</strong>
+									</t>
+		                        </th>
+		                        <th width="19%" rowspan="2"
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:4px;vertical-align:middle;">
+		                        	<t t-if="o.export_local == 'English'">
+										<strong>NOTES</strong>
+									</t>
+									<t t-if="o.export_local == 'Indonesia'">
+										<strong>KETERANGAN</strong>
+									</t>
+		                        </th>
+		                    </tr>
+		                    <tr>
+		                        <th width="12%" colspan="3"
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:4px;vertical-align:middle;">
+		                        	<t t-if="o.export_local == 'English'">
+										<strong>T x W x L</strong>
+									</t>
+									<t t-if="o.export_local == 'Indonesia'">
+										<strong>T x W x L</strong>
+									</t>
+		                        </th>
+		                        <th width="12%" colspan="3"
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:4px;vertical-align:middle;">
+		                        	<t t-if="o.export_local == 'English'">
+										<strong>T x W x L</strong>
+									</t>
+									<t t-if="o.export_local == 'Indonesia'">
+										<strong>T x W x L</strong>
+									</t>
+		                        </th>
+		                    </tr>
+		                </thead>
+		                <tbody class="invoice_tbody">
+		                	<t t-set="i" t-value="1" />
+		                    <tr t-foreach="o.order_line" t-as="l">
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<span t-esc="i"/> 
+        							<t t-set="i" t-value="i+1"/> 
+		                        </td>
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+	    							<span t-field="l.product_id.jenis_kayu_id.name"/>
+		                        </td>		                  
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">		
+		                            <span t-field="l.product_id.grade_id.name"/>
+		                        </td>		                       
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-field="l.spp"/>
+		                        </td>		                       
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-esc="'{0:,.0f}'.format(l.actual_thick)"/>
+		                        </td>
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-esc="'{0:,.0f}'.format(l.actual_width)"/>
+		                        </td>
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-esc="'{0:,.0f}'.format(l.actual_length)"/>
+		                        </td>
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-esc="'{0:,.0f}'.format(l.invoice_thick)"/>
+		                        </td>
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-esc="'{0:,.0f}'.format(l.invoice_width)"/>
+		                        </td>
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-esc="'{0:,.0f}'.format(l.invoice_length)"/>
+		                        </td>
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+									<span t-esc="'{0:,.0f}'.format(l.product_qty)"/>
+		                        </td>		                        
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-esc="'{0:,.0f}'.format(l.price_unit)"/>
+		                        </td>
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-esc="'{0:,.0f}'.format(l.price_subtotal)"/>
+		                        </td>
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-field="l.note"/>
+		                        </td>
+		                    </tr>
+		                    <tr>
+		                    	<td colspan="10" style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                    		<strong>TOTAL</strong>
+		                        </td>		                        		
+		                        <td style="text-align:left;border:1px solid black;font-size:11px;padding:4px;">
+		                        		
+		                        </td>		                        
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">		                        	
+		                        </td>
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<span t-esc="'{0:,.0f}'.format(o.amount_total)"/>
+		                        </td>
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">		                        	
+		                        </td>
+		                    </tr>		                    
+		                </tbody>
+		            </table>
+		            <table class="table table-condensed">
+		            	<tr>
+		            		<td style="border:0px;padding:5px;font-size:11px;">
+		            			Alamat Kirim :
+		            		</td>		            		
+		            	</tr>
+		            	<tr>		            		
+		            		<td style="border:0px;padding:5px;font-size:11px;">
+		            			<strong><span t-field="o.company_id.name"/></strong>
+		            		</td>
+		            	</tr>
+		            	<tr>		            		
+		            		<td style="border:0px;padding:5px;font-size:11px;">
+		            			Jl. Raya Tembus Pringsurat - Kranggan Km. 3,5
+		            		</td>
+		            	</tr>
+		            	<tr>		            		
+		            		<td style="border:0px;padding:5px;font-size:11px;">
+		            			Desa Kupen Kec. Pringsurat, Temanggung - Jawa Tengah
+		            		</td>
+		            	</tr>
+		            </table>
+		            <table class="table table-condensed">
+		            	<tr>
+		            		<td style="border:0px;padding:5px;font-size:11px;">
+		            			<strong>*Catatan :</strong>
+		            		</td>		            		
+		            	</tr>
+		            	<tr>		            		
+		            		<td style="border:0px;padding:5px;font-size:11px;">
+		            			<span t-field="o.notes"/>
+		            		</td>
+		            	</tr>
+		            </table>
+                </div>
+            </t>
+        </template>        
+
+        <template id="report_purchase_order_bahan_baku">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-set="lang" t-value="o.partner_id.lang"/>
+                    <t t-call="v12_pwk.report_purchase_order_bahan_baku_document" t-lang="lang"/>
+                </t>
+            </t>
+        </template>
+
+        <!-- New Report Sales Order -->
+    	<record id="paperformat_purchase_order_bahan_baku" model="report.paperformat">
+	        <field name="name">Purchase Order Bahan Baku</field>
+	        <field name="default" eval="True"/>
+	        <field name="format">A4</field>
+	        <field name="page_height">0</field>
+	        <field name="page_width">0</field>
+	        <field name="orientation">Landscape</field>
+	        <field name="margin_top">64</field>
+	        <field name="margin_bottom">50</field>
+	        <field name="margin_left">5</field>
+	        <field name="margin_right">5</field>
+	        <field name="header_line" eval="False"/>
+	        <field name="header_spacing">60</field>
+	        <field name="dpi">80</field>
+	        <field name="sequence">3</field>
+	    </record>
+
+    	<report
+            id="purchase_order_bahan_baku"
+            model="purchase.order"
+            string="Purchase Order"
+            report_type="qweb-pdf"
+            name="v12_pwk.report_purchase_order_bahan_baku"
+            file="v12_pwk.report_purchase_order_bahan_baku"            
+            print_report_name="'Purchase Order - %s' % object.name"
+            groups="base.group_user"
+            paperformat="v12_pwk.paperformat_purchase_order_bahan_baku"
+            menu="False"
+        />
+
+
+    </data>
+</openerp>

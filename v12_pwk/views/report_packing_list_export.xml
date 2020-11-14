@@ -1,0 +1,1166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	
+    	<template id="external_layout_standard_packing_list_export">
+	        <div class="header">		           
+	          	<table class="table table-condensed">
+					<tr>
+						<td width="9%" rowspan="4" 
+							style="text-align:left;vertical-align:middle;border:0px;padding:0px;">
+							<img src='v12_pwk/static/logo_pwk.jpg' 
+								style="text-align:left;max-width:89%;"/>
+						</td>							
+						<td width="50%" rowspan="4"
+							style="font-size:10px; border:0px;padding:1px;vertical-align:middle;">
+							<strong>PT. PRIMA WANA KREASI WOOD INDUSTRY</strong>
+							<hr style="margin-bottom:3px;margin-top:3px;visibility:hidden;"/>
+							<strong>JL. RAYA TEMBUS PRINGSURAT, KRANGGAN KUPEN PRINGSURAT, TEMANGGUNG JAWA TENGAH</strong>
+							<hr style="height:1px;margin-bottom:3px;margin-top:3px;visibility:hidden;"/>
+							<strong>Phone. +62 293 319 4934  Fax. +62 293 4901 339</strong>
+						</td>
+						<td width="15%%" rowspan="4" 
+							style="text-align:right;vertical-align:top;border:0px;padding:0px;">
+							<t t-if="o.is_logo">
+								<img src='v12_pwk/static/legal_wood_pwk.png' 
+									style="text-align:left;max-width:72%;vertical-align:bottom;"/>
+							</t>
+						</td>
+						<td width="23%" class="text-justify"
+							style="font-size:11px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">	
+							<span t-field="o.certificate_id.detail"/>
+						</td>
+					</tr>					
+					<tr>
+						<!-- <td width="50%" style="font-size:11px; border:0px;padding:1px;vertical-align:bottom;">
+							<strong>PT. PRIMA WANA KREASI WOOD INDUSTRY</strong>
+						</td> -->
+						<td width="23%"
+							style="font-size:11px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
+							<span t-field="o.certificate_id.detail2"/>
+						</td>
+					</tr>
+					<tr>
+						<!-- <td width="50%" style="font-size:11px; border:0px;padding:1px;vertical-align:bottom;">
+							<strong>JL. RAYA TEMBUS PRINGSURAT, KRANGGAN KUPEN PRINGSURAT, TEMANGGUNG JAWA TENGAH</strong>
+						</td> -->
+						<td width="23%"
+							style="font-size:11px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
+							<span t-field="o.certificate_id.detail3"/>
+						</td>
+					</tr>
+					<tr>
+						<!-- <td width="50%" style="font-size:11px; border:0px;padding:1px;vertical-align:bottom;">
+							<strong>Phone. +62 293 319 4934  Fax. +62 293 4901 339</strong>
+						</td> -->
+						<td width="23%"
+							style="font-size:11px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
+							<span t-field="o.certificate_id.detail4"/>
+						</td>
+					</tr>
+				</table>
+
+				<table class="table table-condensed" style="margin-bottom:0px;">
+					<tr>													
+						<td width="100%" 
+							style="font-size:18px; text-align:center; border:1px solid black;padding:1px;background-color:#4ead2f;color:white;">
+							<t t-if="o.state == 'draft'">
+								<strong>DRAFT PACKING LIST</strong>
+							</t>
+							<t t-if="o.state == 'proforma'">
+								<strong>PROFORMA PACKING LIST</strong>
+							</t>
+							<t t-if="o.state == 'open'">
+								<strong>ORIGINAL PACKING LIST</strong>
+							</t>
+							<t t-if="o.state == 'paid'">
+								<strong>ORIGINAL PACKING LIST</strong>
+							</t>
+							<t t-if="o.state == 'cancel'">
+								<strong>ORIGINAL PACKING LIST</strong>
+							</t>
+						</td>									
+					</tr>											
+				</table>
+
+				<table class="table table-condensed" style="margin-top:0px;margin-bottom:0px;">
+					<tr>													
+						<td width="50%" colspan="2"
+							style="font-size:10px;
+							border-top:1px solid black;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:3px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Notify Party:</strong>
+						</td>
+						<td width="20%" style="font-size:10px;
+							border-top:1px solid black;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:3px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Packing List No.</strong>											
+						</td>
+						<td width="30%" style="font-size:10px;
+							border-top:1px solid black;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:1px solid black;
+							padding-top:3px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							: <span t-field="o.number_packing_list"/>
+						</td>
+					</tr>											
+					<tr>													
+						<td width="50%" colspan="2"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<span t-field="o.notify_party_id.name"/>
+						</td>
+						<td width="20%" style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">		
+							<strong>Packing List Date</strong>					
+						</td>
+						<td width="30%" style="font-size:10px;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:1px solid black;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							: <span t-field="o.date_invoice" t-options='{"format": "dd-MMMM-yyyy"}'/>
+						</td>
+					</tr>											
+					<tr>													
+						<td width="50%" colspan="2"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<span t-field="o.notify_party_id.address1"/>
+						</td>
+						<td width="20%" style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">							
+							<strong>Due Date</strong>
+						</td>
+						<td width="30%" style="font-size:10px;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:1px solid black;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">	
+							: <span t-field="o.date_due" t-options='{"format": "dd-MMMM-yyyy"}'/>
+						</td>
+					</tr>											
+					<tr>													
+						<td width="50%" colspan="2"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<span t-field="o.notify_party_id.address2"/>
+						</td>
+						<td width="20%" style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">							
+							<strong>Invoice No.</strong>
+						</td>
+						<td width="30%" style="font-size:10px;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:1px solid black;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">		
+							: <span t-field="o.number"/>					
+						</td>
+					</tr>											
+					<tr>													
+						<td width="50%" colspan="2"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Phone :</strong> <span t-field="o.notify_party_id.phone"/>
+						</td>
+						<td width="20%" style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">		
+							<strong>Sales Contract No.</strong>					
+						</td>
+						<td width="30%" style="font-size:10px;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:1px solid black;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">											
+							: <span t-field="o.contract_no"/>
+						</td>
+					</tr>	
+					<tr>													
+						<td width="50%" colspan="2"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">	
+							<strong>Fax :</strong> <span t-field="o.notify_party_id.fax"/>
+						</td>
+						<td width="20%" style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Sales Order No.</strong>
+						</td>
+						<td width="30%" style="font-size:10px;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:1px solid black;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							: <span t-field="o.sale_order_no"/>							
+						</td>
+					</tr>	
+					<tr>													
+						<td width="50%" colspan="2"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">	
+						</td>
+						<td width="20%" style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:1px solid black;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Purchase Order No.</strong>
+						</td>
+						<td width="30%" style="font-size:10px;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:1px solid black;
+							border-right:1px solid black;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							: <span t-field="o.po_number"/>							
+						</td>
+					</tr>
+
+					<!-- Second Row -->
+					<tr>													
+						<td width="30%"
+							style="font-size:10px;
+							border-top:1px solid black;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:3px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Buyer:</strong>
+						</td>
+						<td width="20%" rowspan="8"
+							style="font-size:10px;
+							text-align:right;
+							vertical-align:middle;
+							border-top:1px solid black;
+							border-left:0px;
+							border-bottom:1px solid black;
+							border-right:0px;
+							padding-top:3px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:15px;">
+							<t t-if="o.sign_type == 'Buyer' and o.is_sign == True">
+								<img src='v12_pwk/static/sign.jpg' 
+									style="text-align:left;max-width:75%;"/>
+							</t>
+						</td>
+						<td width="50%" colspan="2" style="font-size:10px;
+							border-top:1px solid black;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:1px solid black;
+							padding-top:3px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>TERMS OF PAYMENT &amp; DELIVERY</strong>
+						</td>							
+					</tr>											
+					<tr>													
+						<td width="30%"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<span t-field="o.partner_id.name"/>
+						</td>
+						<td width="20%"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Term of Payment</strong>
+						</td>
+						<td width="30%"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:1px solid black;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							: <span t-field="o.payment_term_id.name"/>
+						</td>
+					</tr>											
+					<tr>													
+						<td width="30%"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<span t-field="o.partner_id.street"/>
+						</td>	
+						<td width="20%"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Method of Payment</strong>
+						</td>
+						<td width="30%"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:1px solid black;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							: <span t-field="o.method_payment_id.name"/>
+						</td>						
+					</tr>											
+					<tr>													
+						<td width="30%"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<span t-field="o.partner_id.street2"/>
+						</td>	
+						<td width="20%"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">		
+							<strong>Method of Delivery</strong>
+						</td>
+						<td width="30%"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:1px solid black;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							: <span t-field="o.incoterm_id.name"/>
+						</td>						
+					</tr>											
+					<tr>													
+						<td width="30%"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Phone :</strong> <span t-field="o.partner_id.phone"/>
+						</td>				
+						<td width="20%"
+							style="font-size:10px;
+							text-align:left;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Total &amp; Size Container</strong>
+						</td>		
+						<td width="30%"
+							style="font-size:10px;
+							text-align:left;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:1px solid black;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							: <span t-field="o.container_number"/>
+						</td>	
+					</tr>						
+					<tr>
+						<td width="30%"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">	
+							<strong>Fax :</strong> <span t-field="o.partner_id.fax"/>
+						</td>
+						<td width="50%" colspan="2"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:1px solid black;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Notes</strong>
+						</td>								
+					</tr>
+					<tr>
+						<td width="30%"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">	
+						</td>		
+						<td width="50%" colspan="2" rowspan="2"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:1px solid black;
+							border-right:1px solid black;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<span t-field="o.note_delivery"/>
+						</td>						
+					</tr>
+					<tr>
+						<td width="30%"
+							style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:1px solid black;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">	
+						</td>						
+					</tr>
+
+					<!-- Third Row -->
+					<tr>													
+						<td width="30%" style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:3px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Pre Carriage By</strong>
+						</td>
+						<td width="20%" style="font-size:10px;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:3px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							: <span t-field="o.pre_carriage"/>
+						</td>
+						<td width="15%" style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:3px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Port of Loading</strong>
+						</td>
+						<td width="35%" style="font-size:10px;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:1px solid black;
+							padding-top:3px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							: <span t-field="o.port_loading.name"/>
+						</td>
+					</tr>
+					<tr>													
+						<td width="30%" style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Vessel Name</strong>
+						</td>
+						<td width="20%" style="font-size:10px;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							: <span t-field="o.vessel_name"/>
+						</td>
+						<td width="15%" style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Port of Discharge</strong>
+						</td>
+						<td width="35%" style="font-size:10px;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:1px solid black;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							: <span t-field="o.port_discharge.name"/>
+						</td>
+					</tr>
+					<tr>													
+						<td width="30%" style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Container No.</strong>
+						</td>
+						<td width="20%" style="font-size:10px;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							: <span t-field="o.container_no"/>
+						</td>
+						<td width="15%" style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Country of Origin</strong>
+						</td>
+						<td width="35%" style="font-size:10px;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:1px solid black;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							: <span t-field="o.country_origin.name"/>
+						</td>
+					</tr>
+					<tr>													
+						<td width="30%" style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Seal No.</strong>
+						</td>
+						<td width="20%" style="font-size:10px;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							: <span t-field="o.seal_no"/>
+						</td>
+						<td width="15%" style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:0px;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Destination</strong>
+						</td>
+						<td width="35%" style="font-size:10px;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:0px;
+							border-right:1px solid black;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							: <span t-field="o.destination.name"/>
+						</td>
+					</tr>
+					<tr>													
+						<td width="30%" style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:1px solid black;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Departure Date</strong>
+						</td>
+						<td width="20%" style="font-size:10px;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:1px solid black;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							: <span t-field="o.departure_date" t-options='{"format": "dd-MMMM-yyyy"}'/>
+						</td>
+						<td width="15%" style="font-size:10px;
+							border-top:0px;
+							border-left:1px solid black;
+							border-bottom:1px solid black;
+							border-right:0px;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							<strong>Country of Final Destination</strong>
+						</td>
+						<td width="35%" style="font-size:10px;
+							border-top:0px;
+							border-left:0px;
+							border-bottom:1px solid black;
+							border-right:1px solid black;
+							padding-top:0px;
+							padding-bottom:1px;
+							padding-left:3px;
+							padding-right:1px;">
+							: <span t-field="o.country_final_destination.name"/>
+						</td>
+					</tr>						
+				</table>		
+	        </div>
+
+	        <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">	
+	            <t t-raw="0"/>
+	        </div>
+
+	        <div class="footer o_standard_footer">
+	            <div class="text-center">		            
+	                <div t-if="report_type == 'pdf'" class="text-muted">
+	                    Page: <span class="page"/> / <span class="topage"/>
+	                </div>
+	            </div>
+	        </div>
+
+	    </template>
+
+		<!-- Header for Packing List -->
+    	<template id="external_layout_packing_list_export">
+	        <t t-if="not o" t-set="o" t-value="doc"/>
+	        <t t-if="not company">
+	            <!-- Multicompany -->
+	            <t t-if="company_id">
+	                <t t-set="company" t-value="company_id"/>
+	            </t>
+	            <t t-elif="o and 'company_id' in o">
+	                <t t-set="company" t-value="o.company_id.sudo()"/>
+	            </t>
+	            <t t-else="else">
+	                <t t-set="company" t-value="res_company"/>
+	            </t>
+	        </t>
+	        <!-- <t t-if="company.external_report_layout_id" t-call="{{company.external_report_layout_id.key}}"><t t-raw="0"/></t> -->
+	        <t t-call="v12_pwk.external_layout_standard_packing_list_export"><t t-raw="0"/></t>
+	    </template>	  
+
+        <template id="report_packing_list_export_document">
+            <t t-call="v12_pwk.external_layout_packing_list_export">
+	            <t t-set="o" t-value="o.with_context(lang=lang)" />
+	            <t t-set="address">
+	                <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
+	                <div t-if="o.partner_id.vat" class="mt16"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.partner_id.vat"/></div>
+	            </t>
+	            <div class="page">                					
+					<table class="table table-condensed" style="margin-top:10px;margin-bottom:0px;">
+		                <thead>
+		                	<tr>
+								<th width="100%" colspan="12" style="font-size:10px;
+									padding-top:5px;
+									padding-bottom:1px;
+									padding-left:3px;
+									padding-right:1px;
+									border-top:0px;
+									border-left:1px solid black;
+									border-bottom:0px;
+									border-right:1px solid black;">
+									<strong>
+										<span style="font-size:10px;">MORE DESCRIPTION / INSTRUCTION :</span>
+									</strong>
+								</th>
+							</tr>
+							<tr>
+								<th width="20%" colspan="3" style="font-size:8px;
+									vertical-align:top;
+									padding-top:0px;
+									padding-bottom:1px;
+									padding-left:3px;
+									padding-right:1px;
+									border-top:0px;
+									border-left:1px solid black;
+									border-bottom:0px;
+									border-right:0px;">
+									<span t-raw="o.description1"/>
+								</th>
+								<th width="40%" colspan="5" style="font-size:8px;
+									vertical-align:top;
+									padding-top:0px;
+									padding-bottom:1px;
+									padding-left:3px;
+									padding-right:1px;
+									border-top:0px;
+									border-left:0px;
+									border-bottom:0px;
+									border-right:0px;">
+									<span t-raw="o.description2"/>
+								</th>
+								<th width="40%" colspan="4" style="font-size:8px;
+									vertical-align:top;
+									padding-top:0px;
+									padding-bottom:1px;
+									padding-left:3px;
+									padding-right:1px;
+									border-top:0px;
+									border-left:0px;
+									border-bottom:0px;
+									border-right:1px solid black;">
+									<span t-raw="o.description3"/>
+								</th>
+							</tr>
+							<tr>
+								<th width="100%" colspan="12" style="padding:1px;font-size:10px;
+									border-top:1px solid black;
+									border-left:1px solid black;
+									border-bottom:0px;
+									border-right:1px solid black;">
+									<strong><span style="font-size:10px;padding:1px;">SHIPPING MARKS :</span></strong> <span t-field="o.shipping_marks"/>
+								</th>
+							</tr>
+		                    <tr>
+		                        <th width="3%" style="font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:1px;text-align:center;vertical-align:middle;">
+		                        	NO
+		                        </th>		
+		                        <th width="30%" 
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:1px;vertical-align:middle;">
+		                        	COMMERCIAL NAME
+		                        </th>
+		                        <t t-if="o.is_marking">
+			                        <th width="6%" 
+			                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:1px;vertical-align:middle;">
+			                        	MARKING
+			                        </th>
+			                    </t>
+		                        <t t-if="o.is_seal_container">
+			                        <th width="6%" 
+			                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:1px;vertical-align:middle;">
+			                        	SEAL NO.
+			                        </th>
+			                        <th width="10%" 
+			                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:1px;vertical-align:middle;">
+			                        	CONTAINER NO.
+			                        </th>
+			                    </t>
+		                        <th width="12%" colspan="3" 
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:1px;vertical-align:middle;">
+		                        	T x W x L ( mm )
+		                        </th>
+		                        <th width="6%" 
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:1px;vertical-align:middle;">
+		                        	CRATES
+		                        </th>
+		                        <th width="6%" 
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:1px;vertical-align:middle;">
+		                        	SHEETS
+		                        </th>
+		                        <th width="6%" 
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:1px;vertical-align:middle;">
+		                        	VOL ( M<sup>3</sup> )
+		                        </th>		                        
+		                        <th width="19%" 
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:1px;vertical-align:middle;">
+		                        	REMARKS
+		                        </th>
+		                    </tr>
+		                </thead>
+		                <tbody class="invoice_tbody">
+		                	<t t-set="i" t-value="1" />
+		                    <tr t-foreach="o.invoice_line_ids" t-as="l">
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<span t-esc="i"/> 
+	    							<t t-set="i" t-value="i+1"/> 
+		                        </td>
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">	
+	    							<t t-if="l.commercial_name3">
+	    								<span t-field="l.commercial_name3"/>
+	    							</t>
+	    							<t t-if="not l.commercial_name3">
+	    								<span t-field="l.name"/>
+	    							</t>
+		                        </td>
+		                        <t t-if="o.is_marking">
+			                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">	
+		    							<span t-field="l.marking"/>
+			                        </td>
+			                    </t>
+		                        <t t-if="o.is_seal_container">
+			                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">	
+		    							<span t-field="l.seal_no"/>
+			                        </td>
+			                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">	
+		    							<span t-field="l.container_no"/>
+			                        </td>
+			                    </t>
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">		
+		                            <span t-esc="'%.1f'%(l.thick)"/>
+		                        </td>		                       
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-esc="'%.0f'%(l.width)"/>
+		                        </td>		                       
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-esc="'%.0f'%(l.length)"/>
+		                        </td>		                       
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-esc="'%.0f'%(l.crates)"/>
+		                        </td>
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-esc="'%.0f'%(l.sheets)"/>
+		                        </td>
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-field="l.quantity"/>
+		                        </td>		                        
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-raw="l.remarks"/>
+		                        </td>
+		                    </tr>
+		                    <tr>
+		                    	<t t-if="o.is_seal_container and o.is_marking">
+			                        <td colspan="8" style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+			                        	<strong>TOTAL</strong>
+			                        </td>
+			                    </t>
+			                    <t t-if="o.is_seal_container == False and o.is_marking">
+			                    	<td colspan="6" style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+			                        	<strong>TOTAL</strong>
+			                        </td>
+			                    </t>
+			                    <t t-if="o.is_seal_container and o.is_marking == False">
+			                    	<td colspan="7" style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+			                        	<strong>TOTAL</strong>
+			                        </td>
+			                    </t>
+			                    <t t-if="o.is_seal_container == False and o.is_marking == False">
+			                    	<td colspan="5" style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+			                        	<strong>TOTAL</strong>
+			                        </td>
+			                    </t>
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong><span t-esc="'%.0f'%(o.total_crates)"/></strong>
+		                        </td>
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong><span t-esc="'%.0f'%(o.total_sheets)"/></strong>
+		                        </td>
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong><span t-esc="'%.4f'%(o.total_volume)"/></strong>
+		                        </td>		                        
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                        </td>
+		                    </tr>
+		                    <tr>
+		                    	<t t-if="o.is_seal_container and o.is_marking">
+			                        <td colspan="8" style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+			                        	<strong>TOTAL THIS ORDER</strong>
+			                        </td>
+			                    </t>
+			                    <t t-if="o.is_seal_container == False and o.is_marking">
+			                    	<td colspan="6" style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+			                        	<strong>TOTAL THIS ORDER</strong>
+			                        </td>
+			                    </t>
+			                    <t t-if="o.is_seal_container and o.is_marking == False">
+			                    	<td colspan="7" style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+			                        	<strong>TOTAL THIS ORDER</strong>
+			                        </td>
+			                    </t>
+			                    <t t-if="o.is_seal_container == False and o.is_marking == False">
+			                    	<td colspan="5" style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+			                        	<strong>TOTAL THIS ORDER</strong>
+			                        </td>
+			                    </t>
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong><span t-esc="'%.0f'%(o.total_crates)"/></strong>
+		                        </td>
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong><span t-esc="'%.0f'%(o.total_sheets)"/></strong>
+		                        </td>
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong><span t-esc="'%.4f'%(o.total_volume)"/></strong>
+		                        </td>		                        
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                        </td>
+		                    </tr>
+		                </tbody>
+		            </table>
+		            <table class="table table-condensed" style="margin-top:0px;">
+		            	<tr>
+		            		<td width="10%" style="padding:1px;font-size:10px;border:0px;">
+		            			Gross Weight
+		            		</td>
+		            		<td width="40%" style="padding:1px;font-size:10px;border:0px;">
+		            			: <span t-field="o.gross_weight"/> Kgs
+		            		</td>		            	
+		            		<td width="10%" style="padding:1px;font-size:10px;border:0px;">
+		            			Net Weight
+		            		</td>
+		            		<td width="40%" style="padding:1px;font-size:10px;border:0px;">
+		            			: <span t-field="o.net_weight"/> Kgs
+		            		</td>
+		            	</tr>		            	
+		            </table>
+		        </div>		
+		    </t>
+    	</template>        
+
+	    <template id="report_packing_list_export">
+	        <t t-call="web.html_container">
+	            <t t-foreach="docs" t-as="o">
+	                <t t-set="lang" t-value="o.user_id.sudo().lang if o.type in ('in_invoice', 'in_refund') else o.partner_id.lang"/>
+	                <t t-call="v12_pwk.report_packing_list_export_document" t-lang="lang"/>
+	            </t>
+	        </t>
+	    </template>
+
+	    <!-- New Report Packing List -->
+    	<record id="paperformat_packing_list_export_pwk" model="report.paperformat">
+	        <field name="name">Packing List Export</field>
+	        <field name="default" eval="True"/>
+	        <field name="format">A4</field>
+	        <field name="page_height">0</field>
+	        <field name="page_width">0</field>
+	        <field name="orientation">Landscape</field>
+	        <field name="margin_top">115</field>
+	        <field name="margin_bottom">10</field>
+	        <field name="margin_left">5</field>
+	        <field name="margin_right">5</field>
+	        <field name="header_line" eval="False"/>
+	        <field name="header_spacing">111</field>
+	        <field name="dpi">80</field>
+	        <field name="sequence">0</field>
+	    </record>
+
+    	<report
+            id="packing_list_export"
+            model="account.invoice"
+            string="Packing List Export"
+            report_type="qweb-pdf"
+            name="v12_pwk.report_packing_list_export"
+            file="v12_pwk.report_packing_list_export"
+            attachment="(object.state in ('open','in_payment','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"
+            print_report_name="'Packing List - %s' % object.number"
+            groups="account.group_account_invoice"
+            paperformat="v12_pwk.paperformat_packing_list_export_pwk"
+            menu="False"
+        />
+
+    </data>
+</openerp>

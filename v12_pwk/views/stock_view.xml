@@ -1,0 +1,39 @@
+<odoo>
+    <data>              
+
+        <record id="view_order_form_pwk" model="ir.ui.view">
+            <field name="name">Sales Order</field>
+            <field name="model">sale.order</field>            
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <button name="preview_sale_order" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
+                <!-- <button name="action_quotation_send" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
+                <button name="action_quotation_send" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button> -->
+                <xpath expr="//form/header/button[@name='action_quotation_send'][1]" position="replace">
+                </xpath>
+                <xpath expr="//form/header/button[@name='action_quotation_send'][2]" position="replace">
+                </xpath>
+                <!-- <xpath expr="//form/header/button[@name='action_quotation_send'][0]" position="replace">
+                </xpath> -->
+                <!-- <xpath expr="//form/header/button[@name='action_quotation_send'][4]" position="replace">
+                </xpath> -->
+                <!-- <button name="action_quotation_send" position="replace"/> -->
+                <button name="print_quotation" position="replace">
+                    <button name="print_sale_order" type="object" string="Print" class="oe_highlight"/>
+                </button>
+                <field name="validity_date" position="before">
+                    <field name="is_logo"/>
+                    <field name="certificate_id"                                
+                        options="{'no_create': True}"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

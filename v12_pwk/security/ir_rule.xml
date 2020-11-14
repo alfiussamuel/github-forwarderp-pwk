@@ -1,0 +1,45 @@
+<odoo>
+	<data>
+
+		<!-- <record model="ir.module.category" id="module_category_level">
+            <field name="name">LEVEL EIGHT</field>            
+            <field name="sequence">0</field>
+        </record> -->
+
+        <record model="ir.module.category" id="module_category_purchase_order">
+            <field name="name">Purchase Order</field>            
+            <field name="sequence">1</field>
+        </record>
+
+        <record id="group_purchase_order_all" model="res.groups">
+	        <field name="name">PO All</field>
+	        <field name="category_id" ref="v12_pwk.module_category_purchase_order"/>	        
+	        <field name="sequence">0</field>
+	    </record>
+
+        <record id="group_purchase_order_jasa" model="res.groups">
+	        <field name="name">PO Jasa</field>
+	        <field name="category_id" ref="v12_pwk.module_category_purchase_order"/>	        
+	        <field name="sequence">1</field>
+	    </record>
+
+	    <record id="group_purchase_order_bahan_baku" model="res.groups">
+	        <field name="name">PO Bahan Baku</field>
+	        <field name="category_id" ref="v12_pwk.module_category_purchase_order"/>	        
+	        <field name="sequence">2</field>
+	    </record>
+
+	    <record id="group_purchase_order_bahan_penolong" model="res.groups">
+	        <field name="name">PO Bahan Penolong</field>
+	        <field name="category_id" ref="v12_pwk.module_category_purchase_order"/>	        
+	        <field name="sequence">3</field>
+	    </record>
+
+	    <record id="group_purchase_order_rotary" model="res.groups">
+	        <field name="name">PO Rotary</field>
+	        <field name="category_id" ref="v12_pwk.module_category_purchase_order"/>	        
+	        <field name="sequence">4</field>
+	    </record>	    
+
+	</data>
+</odoo>

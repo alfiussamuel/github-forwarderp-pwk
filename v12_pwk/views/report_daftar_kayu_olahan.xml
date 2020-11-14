@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="external_layout_standard_daftar_kayu_olahan">
+	        <div class="header">		           
+	          	<table class="table table-condensed">
+					<tr>
+						<td width="10%" rowspan="4" 
+							style="text-align:left;vertical-align:middle;border:0px;padding:0px;font-size:8px;">
+							<img src='v12_pwk/static/logo_pwk.jpg' 
+								style="text-align:left;max-width:90%;"/>
+						</td>							
+						<td width="52%" rowspan="4"
+							style="font-size:8px; border:0px;padding:1px;vertical-align:middle;">
+							<strong>PT. PRIMA WANA KREASI WOOD INDUSTRY</strong>
+							<hr style="margin-bottom:3px;margin-top:3px;visibility:hidden;"/>
+							<strong>JL. RAYA TEMBUS PRINGSURAT, KRANGGAN KUPEN PRINGSURAT, TEMANGGUNG JAWA TENGAH</strong>
+							<hr style="height:1px;margin-bottom:3px;margin-top:3px;visibility:hidden;"/>
+							<strong>Phone. +62 293 319 4934  Fax. +62 293 4901 339</strong>
+						</td>
+						<td width="12%%" rowspan="4" 
+							style="text-align:right;vertical-align:top;border:0px;padding:0px;font-size:8px;">
+							<t t-if="o.is_logo">
+								<img src='v12_pwk/static/legal_wood_pwk.png' 
+									style="text-align:left;max-width:100%;vertical-align:bottom;"/>
+							</t>
+						</td>
+						<td width="26%" class="text-justify"
+							style="font-size:8px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">	
+							<span t-field="o.certificate_id.detail"/>
+						</td>
+					</tr>					
+					<tr>
+						<!-- <td width="52%" style="font-size:8px; border:0px;padding:1px;vertical-align:bottom;">
+							<strong>PT. PRIMA WANA KREASI WOOD INDUSTRY</strong>
+						</td> -->
+						<td width="26%"
+							style="font-size:8px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
+							<span t-field="o.certificate_id.detail2"/>
+						</td>
+					</tr>
+					<tr>
+						<!-- <td width="52%" style="font-size:8px; border:0px;padding:1px;vertical-align:bottom;">
+							<strong>JL. RAYA TEMBUS PRINGSURAT, KRANGGAN KUPEN PRINGSURAT, TEMANGGUNG JAWA TENGAH</strong>
+						</td> -->
+						<td width="26%"
+							style="font-size:8px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
+							<span t-field="o.certificate_id.detail3"/>
+						</td>
+					</tr>
+					<tr>
+						<!-- <td width="52%" style="font-size:8px; border:0px;padding:1px;vertical-align:bottom;">
+							<strong>Phone. +62 293 319 4934  Fax. +62 293 4901 339</strong>
+						</td> -->
+						<td width="26%"
+							style="font-size:8px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
+							<span t-field="o.certificate_id.detail4"/>
+						</td>
+					</tr>
+				</table>
+				
+				<table class="table table-condensed" style="margin-top:15px;">
+					<tr>													
+						<td width="100%" style="font-size:18px; text-align:center;padding:1px;
+							border-left:0px;
+							border-right:0px;
+							border-top:0px;
+							border-bottom:0px;">
+							<strong>DAFTAR KAYU OLAHAN</strong>							
+						</td>									
+					</tr>
+				</table>
+			
+				<table class="table table-condensed" style="margin-top:0px;">					
+					<tr>
+						<td width="15%" style="font-size:10px; text-align:left;padding:3px;border:0px;vertical-align:middle;">
+							<strong>Provinsi</strong>							
+						</td>
+						<td width="3%" style="font-size:10px; text-align:center;padding:3px;border:0px;vertical-align:middle;">
+							<strong>:</strong>
+						</td>
+						<td width="82%" style="font-size:10px; text-align:left;padding:3px;border:0px;vertical-align:middle;">
+							<span t-field="o.provinsi"/>
+						</td>						
+					</tr>
+					<tr>
+						<td style="font-size:10px; text-align:left;padding:3px;border:0px;vertical-align:middle;">
+							<strong>Kabupaten / Kota</strong>							
+						</td>
+						<td style="font-size:10px; text-align:center;padding:3px;border:0px;vertical-align:middle;">
+							<strong>:</strong>
+						</td>
+						<td style="font-size:10px; text-align:left;padding:3px;border:0px;vertical-align:middle;">
+							<span t-field="o.kota"/>
+						</td>						
+					</tr>						
+				</table>				
+	        </div>
+
+	        <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">	
+	            <t t-raw="0"/>
+	        </div>
+
+	        <div class="footer o_standard_footer">
+	        	<!-- <table class="table table-condensed" style="margin-top:0px;">
+	        		<tr>
+	        			<td colspan="4" 
+	        				style="font-size:11px;border:0px;text-align:right;padding:1px;">
+	        				<span t-field="o.office_selection"/>, <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%B-%Y')"/>
+	        			</td>
+	        		</tr>
+                    <tr height="120px">                  
+                        <td width="25%"
+                            style="text-align:center;padding:5px;font-size:10px;border:0px;">
+                            Supplier,
+                        </td>
+                        <td width="25%"
+                            style="text-align:center;padding:5px;font-size:10px;border:0px;">
+                            Disetujui,
+                        </td>
+                        <td width="25%"
+                            style="text-align:center;padding:5px;font-size:10px;border:0px;">
+                            Diminta,
+                        </td>                        
+                        <td width="25%"
+                            style="text-align:center;padding:5px;font-size:10px;border:0px;">
+                            Dibuat,
+                        </td>                        
+                    </tr>                    
+                    <tr height="100px">
+                        <td width="25%"
+                            style="text-align:center;padding:5px;font-size:10px;border:0px;">
+                            ( ______________ )
+                        </td>
+                        <td width="25%"
+                            style="text-align:center;padding:5px;font-size:10px;border:0px;">
+                            ( ______________ )
+                        </td>                        
+                        <td width="25%"
+                            style="text-align:center;padding:5px;font-size:10px;border:0px;">
+                            ( ______________ )
+                        </td>
+                        <td width="25%"
+                            style="text-align:center;padding:5px;font-size:10px;border:0px;">
+                            ( ______________ )
+                        </td>
+                    </tr>                              
+                </table> -->
+	            <div class="text-center">		            
+	                <div t-if="report_type == 'pdf'" class="text-muted">
+	                    Page: <span class="page"/> / <span class="topage"/>
+	                </div>
+	            </div>
+	        </div>
+
+	    </template>
+
+		<!-- Header for Sales Order -->
+    	<template id="external_layout_daftar_kayu_olahan">
+	        <t t-if="not o" t-set="o" t-value="doc"/>
+	        <t t-if="not company">
+	            <!-- Multicompany -->
+	            <t t-if="company_id">
+	                <t t-set="company" t-value="company_id"/>
+	            </t>
+	            <t t-elif="o and 'company_id' in o">
+	                <t t-set="company" t-value="o.company_id.sudo()"/>
+	            </t>
+	            <t t-else="else">
+	                <t t-set="company" t-value="res_company"/>
+	            </t>
+	        </t>
+	        <!-- <t t-if="company.external_report_layout_id" t-call="{{company.external_report_layout_id.key}}"><t t-raw="0"/></t> -->
+	        <t t-call="v12_pwk.external_layout_standard_daftar_kayu_olahan"><t t-raw="0"/></t>
+	    </template>	  
+
+        <template id="report_daftar_kayu_olahan_document">
+            <t t-call="v12_pwk.external_layout_daftar_kayu_olahan">
+                <t t-set="o" t-value="o.with_context(lang=lang)" />
+                <t t-set="address">
+                    <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
+                    <div t-if="o.partner_id.vat" class="mt16"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.partner_id.vat"/></div>
+                </t>
+                <div class="page">
+                	<table class="table table-condensed">
+                		<thead>							
+							<tr>
+								<td width="5%" rowspan="2"
+									style="font-size:9px; text-align:center;padding:3px;border:1px solid black;vertical-align:middle;background-color:#4ead2f;color:white;">
+									<strong>NO.</strong>
+								</td>
+								<td width="25%" rowspan="2"
+									style="font-size:9px; text-align:center;padding:3px;border:1px solid black;vertical-align:middle;background-color:#4ead2f;color:white;">
+									<strong>JENIS KAYU OLAHAN</strong>
+								</td>
+								<td width="15%" colspan="3"
+									style="font-size:9px; text-align:center;padding:3px;border:1px solid black;vertical-align:middle;background-color:#4ead2f;color:white;">
+									<strong>UKURAN</strong>
+								</td>
+								<td width="15%"
+									style="font-size:9px; text-align:center;padding:3px;border:1px solid black;vertical-align:middle;background-color:#4ead2f;color:white;">
+									<strong>JUMLAH</strong>
+								</td>
+								<td width="15%" rowspan="2"
+									style="font-size:9px; text-align:center;padding:3px;border:1px solid black;vertical-align:middle;background-color:#4ead2f;color:white;">
+									<strong>VOL ( M<sup>3</sup> )</strong>
+								</td>
+								<td width="25%" rowspan="2"
+									style="font-size:9px; text-align:center;padding:3px;border:1px solid black;vertical-align:middle;background-color:#4ead2f;color:white;">
+									<strong>KETERANGAN</strong>
+								</td>
+							</tr>
+							<tr>								
+								<td width="15%" colspan="3"
+									style="font-size:9px; text-align:center;padding:3px;border:1px solid black;vertical-align:middle;background-color:#4ead2f;color:white;">
+									<strong>( P x L x T )</strong>
+								</td>
+								<td width="15%"
+									style="font-size:9px; text-align:center;padding:3px;border:1px solid black;vertical-align:middle;background-color:#4ead2f;color:white;">
+									<strong>LBR / BDL / IKAT</strong>
+								</td>								
+							</tr>
+						</thead>
+						<tbody class="invoice_tbody">
+							<t t-set="i" t-value="1" />
+							<tr t-foreach="o.line_ids" t-as="l">
+								<td style="font-size:9px; text-align:center;padding:3px;border:1px solid black;vertical-align:middle;">
+									<span t-esc="i"/> 
+		        					<t t-set="i" t-value="i+1"/> 		
+								</td>
+								<td style="font-size:9px; text-align:center;padding:3px;border:1px solid black;vertical-align:middle;">
+									<span t-field="l.jenis_kayu_id.name"/>
+								</td>
+								<td width="5%" 
+									style="font-size:9px; text-align:center;padding:3px;border:1px solid black;vertical-align:middle;">
+									<span t-esc="'{0:,.0f}'.format(l.product_id.panjang)"/>
+								</td>
+								<td width="5%" 
+									style="font-size:9px; text-align:center;padding:3px;border:1px solid black;vertical-align:middle;">
+									<span t-esc="'{0:,.0f}'.format(l.product_id.lebar)"/>
+								</td>
+								<td width="5%" 
+									style="font-size:9px; text-align:center;padding:3px;border:1px solid black;vertical-align:middle;">
+									<span t-esc="'{0:,.0f}'.format(l.product_id.tebal)"/>
+								</td>
+								<td style="font-size:9px; text-align:center;padding:3px;border:1px solid black;vertical-align:middle;">
+									<span t-esc="'{0:,.0f}'.format(l.quantity)"/>
+								</td>
+								<td style="font-size:9px; text-align:center;padding:3px;border:1px solid black;vertical-align:middle;">
+									<span t-esc="'{0:,.4f}'.format(l.volume_kubik)"/>
+								</td>
+								<td style="font-size:9px; text-align:center;padding:3px;border:1px solid black;vertical-align:middle;">
+									<span t-field="l.keterangan"/>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="5"
+									style="font-size:9px; text-align:center;padding:3px;border:1px solid black;vertical-align:middle;">
+									<strong>JUMLAH</strong>
+								</td>								
+								<td style="font-size:9px; text-align:center;padding:3px;border:1px solid black;vertical-align:middle;">
+									<span t-esc="'{0:,.0f}'.format(o.total_qty)"/>
+								</td>								
+								<td style="font-size:9px; text-align:center;padding:3px;border:1px solid black;vertical-align:middle;">
+									<span t-esc="'{0:,.4f}'.format(o.total_volume_kubik)"/>
+								</td>
+								<td style="font-size:9px; text-align:center;padding:3px;border:1px solid black;vertical-align:middle;">
+									
+								</td>
+							</tr>							
+						</tbody>
+					</table>	
+					<table class="table table-condensed" style="margin-top:0px;">					
+						<tr>
+							<td width="100%"
+								style="font-size:10px; text-align:left;padding:3px;border:0px;vertical-align:middle;">
+								<strong>Catatan :</strong>
+							</td>							
+						</tr>
+						<tr>
+							<td width="100%"
+								style="font-size:10px; text-align:left;padding:3px;border:0px;vertical-align:middle;">
+								DKO ini merupakan lampiran NOTA PERUSAHAAN : <strong><span t-field="o.name"/></strong> Tanggal <span t-field="o.tanggal_penerbit"/>
+							</td>							
+						</tr>
+					</table>
+					<table class="table table-condensed" style="margin-bottom:0px;">
+		            	<tr>
+		            		<td width="70%" style="border:0px;font-size:10px;padding:2px;">		            			
+		            		</td>
+		            		<td width="30%" style="border:0px;font-size:10px;padding:2px;text-align:center;">
+		            		</td>
+		            	</tr>
+		            	<tr>
+		            		<td width="70%" style="border:0px;font-size:10px;padding:2px;">
+		            			
+		            		</td>
+		            		<td width="30%" style="border:0px;font-size:10px;padding:2px;text-align:center;">
+		            			<span t-field="o.office_selection"/>, <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%B-%Y')"/>
+		            		</td>
+		            	</tr>
+		            	<tr height="70px">
+		            		<td width="70%" style="border:0px;font-size:10px;padding:2px;">
+		            		</td>
+		            		<td width="30%" style="border:0px;font-size:10px;padding:2px;text-align:center;">
+		            			PRIMA WANA KREASI WOOD INDUSTRY
+		            		</td>
+		            	</tr>
+		            	<tr>
+		            		<td width="70%" style="border:0px;font-size:10px;padding:2px;">
+		            		</td>
+		            		<td width="30%" style="border:0px;font-size:10px;padding:2px;text-align:center;">
+		            			ANDREW TANUJAYA
+		            		</td>
+		            	</tr>
+		            </table>
+                </div>
+            </t>
+        </template>        
+
+        <template id="report_daftar_kayu_olahan">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-set="lang" t-value="o.partner_id.lang"/>
+                    <t t-call="v12_pwk.report_daftar_kayu_olahan_document" t-lang="lang"/>
+                </t>
+            </t>
+        </template>
+
+        <!-- New Report Sales Order -->
+    	<record id="paperformat_daftar_kayu_olahan" model="report.paperformat">
+	        <field name="name">Daftar Kayu Olahan</field>
+	        <field name="default" eval="True"/>
+	        <field name="format">A4</field>
+	        <field name="page_height">0</field>
+	        <field name="page_width">0</field>
+	        <field name="orientation">Portrait</field>
+	        <field name="margin_top">50</field>
+	        <field name="margin_bottom">50</field>
+	        <field name="margin_left">5</field>
+	        <field name="margin_right">5</field>
+	        <field name="header_line" eval="False"/>
+	        <field name="header_spacing">46</field>
+	        <field name="dpi">80</field>
+	        <field name="sequence">3</field>
+	    </record>
+
+    	<report
+            id="daftar_kayu_olahan"
+            model="pwk.nota.perusahaan"
+            string="Daftar Kayu Olahan"
+            report_type="qweb-pdf"
+            name="v12_pwk.report_daftar_kayu_olahan"
+            file="v12_pwk.report_daftar_kayu_olahan"            
+            print_report_name="'Daftar Kayu Olahan - %s' % object.name"
+            groups="base.group_user"
+            paperformat="v12_pwk.paperformat_daftar_kayu_olahan"
+            menu="False"
+        />
+
+
+    </data>
+</openerp>

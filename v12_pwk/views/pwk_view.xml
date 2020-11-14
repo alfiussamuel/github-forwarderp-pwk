@@ -1,0 +1,1541 @@
+<odoo>
+    <data>                      
+
+        <!-- Mutasi Veneer Basah -->
+        <record id="pwk_mutasi_veneer_basah_tree" model="ir.ui.view">
+            <field name="name">Mutasi Veneer Basah</field>
+            <field name="model">pwk.mutasi.veneer.basah</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="state"/>                    
+                </tree>
+            </field>
+        </record>
+
+        <record id="pwk_mutasi_veneer_basah_form" model="ir.ui.view">
+            <field name="name">Mutasi Veneer Basah</field>
+            <field name="model">pwk.mutasi.veneer.basah</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <label for="name" class="oe_edit_only" />
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                        <group>
+                            <field name="date" class="oe_inline" required="1"/>
+                            <field name="user_id" class="oe_inline" readonly="1"/>
+                        </group>
+                        <group>
+                            <notebook>
+                                <page string="Veneer Basah - Stacking">
+                                    <group>
+                                        <field name="stacking_ids" nolabel="1">
+                                            <tree>
+                                                <field name="product_id"/>
+                                                <field name="tebal"/>
+                                                <field name="lebar"/>
+                                                <field name="panjang"/>
+                                                <field name="grade"/>
+                                                <field name="stock_awal_pcs"/>
+                                                <field name="stock_masuk_supplier_pcs"/>
+                                                <field name="stock_masuk_rotary_pcs"/>
+                                                <field name="stock_keluar_stacking_pcs"/>
+                                                <field name="stock_keluar_roler_pcs"/>
+                                                <field name="stock_akhir_pcs"/>
+                                            </tree>
+                                            <form>
+                                                <group>
+                                                    <field name="product_id"/>
+                                                    <field name="tebal"/>
+                                                    <field name="lebar"/>
+                                                    <field name="panjang"/>
+                                                    <field name="grade"/>
+                                                </group>                                        
+                                                <group>
+                                                    <group string="Perhitungan Stock (Pcs)">
+                                                        <field name="stock_awal_pcs"/>                  
+                                                        <field name="stock_masuk_supplier_pcs"/>
+                                                        <field name="stock_masuk_rotary_pcs"/>
+                                                        <field name="stock_keluar_stacking_pcs"/>
+                                                        <field name="stock_keluar_roler_pcs"/>
+                                                        <field name="stock_akhir_pcs"/>
+                                                    </group>
+                                                    <group string="Perhitungan Stock (Vol)">
+                                                        <field name="stock_awal_vol"/>
+                                                        <field name="stock_masuk_supplier_vol"/>
+                                                        <field name="stock_masuk_rotary_vol"/>
+                                                        <field name="stock_keluar_stacking_vol"/>
+                                                        <field name="stock_keluar_roler_vol"/>
+                                                        <field name="stock_akhir_vol"/>
+                                                    </group>
+                                                </group>
+                                            </form>
+                                        </field>
+                                    </group>
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Nota Perusahaan -->
+        <record id="pwk_nota_perusahaan_tree" model="ir.ui.view">
+            <field name="name">Nota Perusahaan</field>
+            <field name="model">pwk.nota.perusahaan</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>                    
+                    <field name="period_start"/>
+                    <field name="period_end"/>
+                    <field name="masa_berlaku"/>                    
+                    <field name="partner_id"/>                    
+                    <field name="jenis_alat_angkut"/>
+                    <field name="alamat_bongkar"/>
+                    <field name="tanggal_penerbit"/>
+                    <field name="nama_penerima"/>
+                    <field name="tanggal_penerimaan"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pwk_nota_perusahaan_form" model="ir.ui.view">
+            <field name="name">Nota Perusahaan</field>
+            <field name="model">pwk.nota.perusahaan</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="print_nota_perusahaan" string="Print Nota Perusahaan" 
+                            type="object" class="oe_highlight"/>
+                        <button name="print_daftar_kayu_olahan" string="Print Daftar Kayu Olahan" 
+                            type="object" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <label for="name" class="oe_edit_only" />
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                        <group string="Header">
+                            <group>
+                                <field name="period_start"/>
+                                <field name="period_end"/>
+                                <field name="masa_berlaku"/>
+                            </group>
+                            <group>
+                                <field name="partner_id"/>
+                                <field name="is_logo"/>
+                                <field name="certificate_id"                                
+                                    options="{'no_create': True}"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Pengangkutan">                                
+                                <field name="jenis_alat_angkut"/>
+                                <field name="alamat_bongkar"/>
+                                <field name="nama_penerima"/>
+                            </group>
+                            <group string="Footer">
+                                <field name="tanggal_penerbit"/>                                
+                                <field name="tanggal_penerimaan"/>
+                                <field name="office_selection"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="dengan_huruf"/>
+                        </group>
+                        <group>
+                            <notebook>
+                                <page string="Data Surat Jalan">
+                                    <group>
+                                        <field name="line_ids" nolabel="1">
+                                            <tree editable="top">
+                                                <field name="product_id"
+                                                    options="{'no_create': True, 'no_open': True}"/>
+                                                <!-- <field name="jenis_kayu_id"
+                                                    options="{'no_create': True, 'no_open': True}"/> -->
+                                                <field name="quantity"/>
+                                                <field name="volume_stepel_meter"/>
+                                                <field name="volume_kubik"/>
+                                                <field name="keterangan"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </page>
+                            </notebook>
+                        </group>
+                        <group string="Notes">
+                            <field name="keterangan" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Payment Note -->
+        <record id="pwk_payment_note_tree" model="ir.ui.view">
+            <field name="name">Payment Notes</field>
+            <field name="model">pwk.payment.note</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="partner_id"/>
+                    <field name="pembayaran_untuk"/>
+                    <field name="rekening"/>
+                    <field name="tanggal_bayar"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pwk_payment_note_form" model="ir.ui.view">
+            <field name="name">Payment Notes</field>
+            <field name="model">pwk.payment.note</field>
+            <field name="arch" type="xml">
+                <form>     
+                    <header>
+                        <button name="print_payment_note" string="Print Payment Note" type="object"
+                            class="oe_highlight" states="Draft,Paid"/>
+                        <button name="button_paid" string="Pay Payment Note" type="object"
+                            states="Draft"/>
+                        <button name="button_cancel" string="Cancel" type="object"/>
+                        <button name="button_draft" string="Set to Draft" type="object" 
+                            states="Cancelled"/>
+                        <field name="state" readonly="1" widget="statusbar"/>
+                    </header>               
+                    <sheet>
+                        <label for="name" class="oe_edit_only" />
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                        <group>
+                            <group>                                
+                                <field name="partner_id"
+                                    options='{"always_reload": True, "no_quick_create": True}'
+                                    attrs="{'readonly':[('state', '!=', 'Draft')]}"/>
+                                <field name="pembayaran_untuk"
+                                    attrs="{'readonly':[('state', '!=', 'Draft')]}"/>
+                                <field name="journal_id"
+                                    options='{"always_reload": True, "no_quick_create": True}'
+                                    attrs="{'readonly':[('state', '!=', 'Draft')]}"/>
+                            </group>
+                            <group>
+                                <field name="date"
+                                    attrs="{'readonly':[('state', '!=', 'Draft')]}"/>
+                                <field name="tanggal_bayar"
+                                    attrs="{'readonly':[('state', '!=', 'Draft')]}"/>
+                                <field name="pph_rate"
+                                    attrs="{'readonly':[('state', '!=', 'Draft')]}"/>
+                                <field name="rekening"
+                                    attrs="{'readonly':[('state', '!=', 'Draft')]}"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="date_from"
+                                    attrs="{'readonly':[('state', '!=', 'Draft')]}"/>
+                                <field name="date_to"
+                                    attrs="{'readonly':[('state', '!=', 'Draft')]}"/>
+                                <field name="move_id"
+                                    readonly="1"
+                                    options='{"always_reload": True, "no_quick_create": True}'
+                                    attrs="{'invisible':[('state', '!=', 'Paid')]}"/>  
+                            </group>
+                            <group>
+                                <field name="amount_untaxed"/>
+                                <field name="amount_tax"/>
+                                <field name="amount_total"/>
+                            </group>
+                        </group>
+                        <group>                            
+                            <notebook>
+                                <page string="Payment Details">
+                                    <button name="button_reload" string="Reload Purchase Order" 
+                                        type="object" class="btn-primary" 
+                                        attrs="{'invisible':[('state', '!=', 'Draft')]}"/>  
+                                    <field name="line_ids" nolabel="1"
+                                        attrs="{'readonly':[('state', '!=', 'Draft')]}">
+                                        <tree editable="top">
+                                            <field name="purchase_id"/>
+                                            <field name="tanggal_pembelian"/>
+                                            <field name="volume" sum="Total"/>
+                                            <field name="amount" sum="Total"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_company_form_pwk" model="ir.ui.view">
+            <field name="name">Companies</field>
+            <field name="model">res.company</field>            
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="nomor_tdp"/>
+                </field>
+            </field>
+        </record>    
+
+        <record id="invoice_tree_pwk" model="ir.ui.view">
+            <field name="name">Invoices</field>
+            <field name="model">account.invoice</field>            
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+                <field name="state" position="before">
+                    <field name="invoice_type"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="invoice_form_credit_note" model="ir.ui.view">
+            <field name="name">account.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="arch" type="xml">
+                <form string="Invoice" class="o_invoice_form">
+                <header>
+                    <button name="action_invoice_sent" string="Send &amp; Print" type="object" attrs="{'invisible':['|',('sent','=',True), ('state', 'not in', ('open','in_payment','paid'))]}" class="oe_highlight" groups="base.group_user" invisible="1"/>
+
+                    <button name="print_credit_note" string="Print Credit Note" 
+                        type="object" class="oe_highlight"
+                        attrs="{'invisible':['|','|','|',
+                        ('invoice_type','=','Export'),
+                        ('type','!=','out_refund'),
+                        ('state','not in',['draft','proforma','open'])]}"/>
+
+                    <button name="print_credit_note_en" string="Print Credit Note" 
+                        type="object" class="oe_highlight"
+                        attrs="{'invisible':['|','|','|',
+                        ('invoice_type','!=','Export'),
+                        ('type','!=','out_refund'),
+                        ('state','not in',['draft','proforma','open'])]}"/>
+
+                    <button name="print_debit_note" string="Print Debit Note"
+                        type="object" class="oe_highlight"
+                        attrs="{'invisible':['|','|','|',
+                        ('invoice_type','=','Export'),
+                        ('type','!=','out_invoice'),
+                        ('is_debit_note','=',False),
+                        ('state','not in',['draft','proforma','open'])]}"/>
+
+                    <button name="print_debit_note_en" string="Print Debit Note"
+                        type="object" class="oe_highlight"
+                        attrs="{'invisible':['|','|','|',
+                        ('invoice_type','!=','Export'),
+                        ('type','!=','out_invoice'),
+                        ('is_debit_note','=',False),
+                        ('state','not in',['draft','proforma','open'])]}"/>
+
+                    <button name="action_invoice_sent" string="Send &amp; Print" type="object" attrs="{'invisible':['|',('sent','=',False), ('state', 'not in', ('open','in_payment','paid'))]}" groups="base.group_user" invisible="1"/>
+
+                    <button name="%(account.action_account_invoice_payment)d" id="account_invoice_payment_btn" type="action"
+                            attrs="{'invisible': [('state', '!=', 'open')]}"
+                            string="Register Payment" groups="account.group_account_invoice" class="oe_highlight"/>
+
+                    <button name="action_invoice_open" type="object" states="draft" string="Validate" class="oe_highlight o_invoice_validate" groups="account.group_account_invoice"/>
+
+                    <!-- <button name="%(account.action_account_invoice_refund)d" type='action' string='Add Credit Note' groups="account.group_account_invoice" attrs="{'invisible': ['|',('type', '=', 'out_refund'), ('state', 'not in', ('open','in_payment','paid'))]}"/> -->
+
+                    <button name="preview_invoice" type="object" string="Preview" 
+                        invisible="1"/>
+
+                    <button name="action_invoice_draft" states="cancel" string="Reset to Draft" type="object" groups="account.group_account_invoice"/>
+
+                    <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,open,paid"/>
+                    
+                </header>
+                <div groups="account.group_account_invoice" class="alert alert-info" role="alert" style="margin-bottom:0px;" attrs="{'invisible': [('has_outstanding','=',False)]}">
+                    You have <bold><a class="alert-link" href="#outstanding" role="button">outstanding payments</a></bold> for this customer. You can allocate them to mark this invoice as paid.
+                </div>
+                <field name="has_outstanding" invisible="1"/>
+                <sheet string="Invoice">
+                    <div class="oe_button_box" name="button_box">
+                    </div>
+                    <span class="o_form_label" attrs="{'invisible': ['|',('state','=','draft'), ('type','!=','out_refund')]}">Credit Note</span>
+                    <h1 class="mt0">
+                        <div attrs="{'invisible': [('sequence_number_next_prefix','!=',False)]}">
+                            <label for="number" string="Draft Invoice" 
+                                attrs="{'invisible': ['|','|',('state','not in',('draft',)), ('type','!=','out_invoice'),('is_debit_note','=',True)]}"/>
+                            <label for="number" string="Draft Debit Note" 
+                                attrs="{'invisible': ['|','|',('state','not in',('draft',)), ('type','!=','out_invoice'),('is_debit_note','=',False)]}"/>
+                            <label for="number" string="Draft Credit Note" 
+                                attrs="{'invisible': ['|',('state','not in',('draft',)), ('type','!=','out_refund')]}"/>
+                            <field name="number" readonly="1" class="oe_inline" 
+                                attrs="{'invisible': [('state','in',('draft',))]}"/>
+                        </div>
+                        <div  attrs="{'invisible': [('sequence_number_next_prefix','=',False)]}">
+                            <label for="sequence_number_next_prefix" string="Invoice Number:"/><br/>
+                            <field name="sequence_number_next_prefix" class="oe_inline"/>
+                            <field name="sequence_number_next" class="oe_inline"/>
+                        </div>
+                    </h1>
+                    <field name="type" invisible="1"/>
+                    <group>
+                        <group>
+                            <field name="invoice_type"/>
+                            <field string="Customer" name="partner_id"
+                                widget="res_partner_many2one"
+                                context="{'search_default_customer':1, 'show_address': 1, 'default_is_company': True, 'show_vat': True}"
+                                options='{"always_reload": True, "no_quick_create": True}'
+                                domain="[('customer', '=', True)]" required="1"/>
+                            <field name="attn"/>                            
+                            <field name="payment_term_id"/>
+                            <field name="is_sign"/>
+                            <field name="document_id" widget="binary" 
+                                height="64" filename="document_id_name"/>
+                            <field name="document_id_name" invisible="1"/>
+                            <field name="cash_rounding_id" groups="account.group_cash_rounding"/>
+                        </group>
+                        <group>
+                            <field name="is_logo"/>
+                            <field name="certificate_id"                                
+                                options="{'no_create': True}"/>
+                            <field name="date_invoice" options="{'datepicker': {'warn_future': true}}"/>
+                            <field name="date_due" attrs="{'readonly': ['|',('payment_term_id','!=',False), ('state', 'in', ['open', 'in_payment', 'paid'])]}" force_save="1"/>
+                            <field name="move_name" invisible="1"/>
+                            <field name="user_id" groups="base.group_user"/>
+                            <label for="currency_id" groups="base.group_multi_currency"/>
+                            <div groups="base.group_multi_currency">
+                                <field name="currency_id" options="{'no_create': True, 'no_open': True}" class="oe_inline"/>
+                                <field name="company_currency_id" invisible="1"/>
+                            </div>
+                            <field name="sheet_name"/>
+                            <field name="is_debit_note" invisible="1"/>
+                            <field name="is_credit_note" invisible="1"/>
+                        </group>
+                    </group>
+                    <field name="sent" invisible="1"/>
+                    <notebook colspan="4">
+                        <page string="Invoice Lines">
+                            <field
+                                name="invoice_line_ids"
+                                nolabel="1"
+                                widget="section_and_note_one2many"
+                                mode="tree,kanban"
+                                context="{'type': type, 'journal_id': journal_id, 'default_invoice_id': id}"
+                            >
+                                <tree string="Invoice Lines" editable="bottom">
+                                    <!-- <control>
+                                        <create string="Add a line"/>
+                                        <create string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                                        <create string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                                    </control>
+ -->
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="product_id" domain="[('sale_ok','=',True)]"/>
+                                    <field name="origin" invisible="1"/>
+                                    <field name="is_rounding_line" invisible="1"/>
+                                    <field name="name" widget="section_and_note_text"/>
+                                    <field name="display_type" invisible="1"/>
+                                    <field name="company_id" invisible="1"/>
+                                    <field
+                                        name="account_id"
+                                        groups="account.group_account_user"
+                                        domain="[('company_id', '=', parent.company_id), ('internal_type', '=', 'other'), ('deprecated', '=', False)]"
+                                        attrs="{'required': [('display_type', '=', False)]}"
+                                    />
+                                    <!-- <field name="account_analytic_id" groups="analytic.group_analytic_accounting"
+                                        domain="[('company_id', '=', parent.company_id)]"
+                                        context="{'default_partner_id': parent.partner_id}"/>
+                                    <field name="analytic_tag_ids" groups="analytic.group_analytic_tags" widget="many2many_tags" options="{'color_field': 'color'}"/> -->
+                                    <field name="sheets"/>
+                                    <field name="quantity" string="Vol (m3)"/>
+                                    <field name="uom_id" groups="uom.group_uom"/>
+                                    <field name="price_unit" string="Price"/>
+                                    <field name="discount" groups="base.group_no_one" string="Disc (%)"/>
+                                    <field name="invoice_line_tax_ids" widget="many2many_tags" options="{'no_create': True}" context="{'type':parent.type, 'tree_view_ref': 'account.account_tax_view_tree', 'search_view_ref': 'account.account_tax_view_search'}"
+                                        domain="[('type_tax_use','=','sale'),('company_id', '=', parent.company_id)]"/>
+                                    <field name="price_subtotal" string="Subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                                    <field name="price_total" string="Total" groups="account.group_show_line_subtotals_tax_included"/>
+                                    <field name="currency_id" invisible="1"/>
+                                </tree>
+                                <kanban class="o_kanban_mobile">
+                                    <field name="name"/>
+                                    <field name="product_id"/>
+                                    <field name="price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                                    <field name="price_total" groups="account.group_show_line_subtotals_tax_included"/>
+                                    <field name="quantity"/>
+                                    <field name="uom_id" groups="uom.group_uom"/>
+                                    <field name="price_unit"/>
+                                    <field name="display_type"/>
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div t-attf-class="oe_kanban_card oe_kanban_global_click {{ record.display_type.raw_value ? 'o_is_' + record.display_type.raw_value : '' }}">
+                                                <t t-if="!record.display_type.raw_value">
+                                                    <div class="row">
+                                                        <div class="col-8">
+                                                            <strong>
+                                                                <span>
+                                                                    <t t-esc="record.product_id.value"/>
+                                                                </span>
+                                                            </strong>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <strong>
+                                                                <span class="float-right text-right">
+                                                                    <t t-esc="record.price_subtotal.value" groups="account.group_show_line_subtotals_tax_excluded"/>
+                                                                    <t t-esc="record.price_total.value" groups="account.group_show_line_subtotals_tax_included"/>
+                                                                </span>
+                                                            </strong>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-12 text-muted">
+                                                            <span>
+                                                                Quantity:
+                                                                <t t-esc="record.quantity.value"/>
+                                                                <t t-esc="record.uom_id.value"/>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-12 text-muted">
+                                                            <span>
+                                                                Unit Price:
+                                                                <t t-esc="record.price_unit.value"/>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </t>
+                                                <t t-if="record.display_type.raw_value === 'line_section' || record.display_type.raw_value === 'line_note'">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <span>
+                                                                <t t-esc="record.name.value"/>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                        </t>
+                                    </templates>
+                                </kanban>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right">
+                                <field name="amount_untaxed"/>
+                                <field name="amount_tax"/>
+                                <field name="amount_total" class="oe_subtotal_footer_separator"/>
+                                <field name="payments_widget" colspan="2" nolabel="1" widget="payment"/>
+                                <field name="residual" class="oe_subtotal_footer_separator" attrs="{'invisible': [('state', '=', 'draft')]}"/>
+                                <field name="reconciled" invisible="1"/>
+                                <field name="outstanding_credits_debits_widget" colspan="2" nolabel="1" widget="payment" attrs="{'invisible': [('state', 'not in', 'open')]}"/>
+                            </group>
+                            <field name="amount_total_terbilang" invisible="1"/>
+                            <field name="amount_total_terbilang_en" invisible="1"/>
+                            <field name="comment" placeholder="Terms and conditions..."/>
+                        </page>
+                        <page string="Other Info" name="other_info">
+                            <group>
+                                <group>                                    
+                                    <field name="journal_id" groups="account.group_account_user"
+                                        options="{'no_create': True}" attrs="{'readonly':[('move_name','!=',False)]}"/>
+                                    <field domain="[('company_id', '=', company_id),('internal_type','=', 'receivable'), ('deprecated', '=', False)]"
+                                        name="account_id" groups="account.group_account_user"/>
+                                    <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                                    <field name="reference" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                    <field name="name"/>
+                                </group>
+                                <group>
+                                    <field name="office_selection" required="1"/>
+                                    <field name="sign" required="1"/>
+                                    <field name="incoterm_id" options="{'no_create': True}"/>
+                                    <field name="fiscal_position_id" options="{'no_create': True}" />
+                                    <field name="move_id" groups="account.group_account_user" attrs="{'invisible': [('move_id', '=', False)]}"/>
+                                    <field name="origin" groups="base.group_user" attrs="{'invisible': [('origin', '=', False)]}"/>
+                                    <!-- Since the same form view is used for customer invoices and credit notes,
+                                    we can't set a domain or a default value context on partner_bank_id. We must
+                                    rely on the onchange -->
+                                    <field name="partner_bank_id"/>
+                                </group>
+                            </group>
+                            <field name="tax_line_ids">
+                                <tree editable="bottom" string="Taxes" create="0">
+                                    <field name="name"/>
+                                    <!--Need invisible fields for on_change to create all necessary info -->
+                                    <field name="tax_id" invisible="1"/>
+                                    <field name="sequence" invisible="1"/>
+                                    <field name="manual" invisible="1"/>
+                                    <field name="account_id" groups="account.group_account_user"/>
+                                    <field name="amount" invisible="1"/>
+                                    <!-- <field name="account_analytic_id" domain="[('company_id', '=', parent.company_id)]" groups="analytic.group_analytic_accounting"/>
+                                    <field name="analytic_tag_ids" groups="analytic.group_analytic_tags" widget="many2many_tags" options="{'color_field': 'color'}"/> -->
+                                    <field name="amount_rounding" invisible="1"/>
+                                    <field name="amount_total"/>
+                                    <field name="currency_id" invisible="1" force_save="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>        
+
+        <record id="action_invoice_out_refund_pwk" model="ir.actions.act_window">
+            <field name="name">Credit Notes</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+            <field eval="False" name="view_id"/>
+            <field name="domain">[('type','=','out_refund')]</field>
+            <field name="context">{'default_type': 'out_refund', 'type': 'out_refund', 'journal_type': 'sale'}</field>
+            <field name="search_view_id" ref="account.view_account_invoice_filter"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a credit note
+              </p><p>
+                Note that the easiest way to create a credit note is to do it directly
+                from the customer invoice.
+              </p>
+            </field>
+        </record>
+
+        <record id="action_invoice_out_refund_pwk_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="account.invoice_tree"/>
+            <field name="act_window_id" ref="action_invoice_out_refund_pwk"/>
+        </record>
+
+        <record id="action_invoice_out_refund_pwk_form" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="invoice_form_credit_note"/>
+            <field name="act_window_id" ref="action_invoice_out_refund_pwk"/>
+        </record>
+
+        <menuitem action="action_invoice_out_refund_pwk"
+                  id="account.menu_action_invoice_out_refund"
+                  parent="account.menu_finance_receivables"
+                  sequence="1"/>
+
+
+        <!-- Debit Note Customer -->
+        <record id="account.action_invoice_tree1" model="ir.actions.act_window">
+            <field name="name">Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+            <field eval="False" name="view_id"/>
+            <field name="domain">
+                [('type','=','out_invoice'),('is_debit_note','=',False)]
+            </field>
+            <field name="context">{'type':'out_invoice', 'journal_type': 'sale'}</field>
+            <field name="search_view_id" ref="account.view_account_invoice_filter"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a customer invoice
+              </p><p>
+                Create invoices, register payments and keep track of the discussions with your customers.
+              </p>
+            </field>
+        </record>
+
+        <record id="action_invoice_debit_note_pwk" model="ir.actions.act_window">
+            <field name="name">Debit Notes</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+            <field eval="False" name="view_id"/>
+            <field name="domain">
+                [('type','=','out_invoice'),('is_debit_note','=',True)]
+            </field>
+            <field name="context">
+                {'default_type': 'out_invoice', 'type': 'out_invoice', 'journal_type': 'sale', 'default_is_debit_note': True'}
+            </field>
+            <field name="search_view_id" ref="account.view_account_invoice_filter"/>
+        </record>
+
+        <record id="action_invoice_debit_note_pwk_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="account.invoice_tree"/>
+            <field name="act_window_id" ref="action_invoice_debit_note_pwk"/>
+        </record>
+
+        <record id="action_invoice_debit_note_pwk_form" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="invoice_form_credit_note"/>
+            <field name="act_window_id" ref="action_invoice_debit_note_pwk"/>
+        </record>
+
+        <menuitem action="action_invoice_debit_note_pwk"
+                  id="menu_action_invoice_debit_note"
+                  parent="account.menu_finance_receivables"
+                  sequence="2"/>
+
+        <!-- Credit Note Supplier -->
+        <record id="account.action_vendor_bill_template" model="ir.actions.act_window">
+            <field name="name">Vendor Bills</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+            <field eval="False" name="view_id"/>
+            <field name="domain">
+                [('type','=','in_invoice'),('is_credit_note','=',False)]
+            </field>
+            <field name="context">{'default_type': 'in_invoice', 'type': 'in_invoice', 'journal_type': 'purchase'}</field>
+            <field name="search_view_id" ref="account.view_account_invoice_filter"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Record a new vendor bill
+              </p>
+            </field>
+        </record>
+
+        <record id="action_invoice_credit_note_pwk" model="ir.actions.act_window">
+            <field name="name">Credit Notes</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+            <field eval="False" name="view_id"/>
+            <field name="domain">
+                [('type','=','in_invoice'),('is_credit_note','=',True)]
+            </field>
+            <field name="context">
+                {'default_type': 'in_invoice', 'type': 'in_invoice', 'journal_type': 'purchase', 'default_is_credit_note': True'}
+            </field>
+            <field name="search_view_id" ref="account.view_account_invoice_filter"/>
+        </record>
+
+        <record id="action_invoice_credit_note_pwk_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="account.invoice_tree"/>
+            <field name="act_window_id" ref="action_invoice_credit_note_pwk"/>
+        </record>
+
+        <record id="action_invoice_credit_note_pwk_form" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account.invoice_supplier_form"/>
+            <field name="act_window_id" ref="action_invoice_credit_note_pwk"/>
+        </record>
+
+        <menuitem action="action_invoice_credit_note_pwk"
+                  id="menu_action_invoice_credit_note"
+                  parent="account.menu_finance_payables"
+                  sequence="2"/>
+
+        <!-- Debit Note Supplier-->
+        <record id="action_invoice_in_refund_pwk" model="ir.actions.act_window">
+            <field name="name">Debit Notes</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+            <field eval="False" name="view_id"/>
+            <field name="domain">[('type','=','in_refund')]</field>
+            <field name="context">{'default_type': 'in_refund', 'type': 'in_refund', 'journal_type': 'purchase'}</field>
+            <field name="search_view_id" ref="account.view_account_invoice_filter"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a vendor credit note
+              </p><p>
+                Note that the easiest way to create a vendor credit note it to do it directly from the vendor bill.
+              </p>
+            </field>
+        </record>
+
+        <menuitem action="action_invoice_in_refund_pwk"
+                  id="account.menu_action_invoice_in_refund"
+                  parent="account.menu_finance_payables"
+                  sequence="5"/>
+
+        <record id="view_account_form_pwk" model="ir.ui.view">
+            <field name="name">Accounts</field>
+            <field name="model">account.account</field>            
+            <field name="inherit_id" ref="account.view_account_form"/>
+            <field name="arch" type="xml">
+                <field name="user_type_id" position="after">
+                    <field name="liquidity_type"/>
+                    <field name="short_name"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_move_form_pwk" model="ir.ui.view">
+            <field name="name">Journal Entries</field>
+            <field name="model">account.move</field>            
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <sheet position="after">
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </sheet>
+                <field name="journal_id" position="after">
+                    <field name="transaction_type"/>
+                </field>
+                <xpath expr="//page[1]" position="after">
+                    <page string="Bank and Cash">
+                        <group>
+                            <group>
+                                <field name="bank_account_id"
+                                    options="{'no_create': True}" string="Bank Company"/>
+                                <field name="from_bank" string="Bank Partner"
+                                    options="{'no_create': True}"/>
+                                <field name="account_bank" invisible="1"/>
+                                <field name="amount_bank" invisible="1"/>
+                                <field name="amount_bank_terbilang" invisible="1"/>
+                                <field name="type_bank" invisible="1"/>
+                                <field name="method_type" invisible="1"/>
+                            </group>
+                            <group>                                
+                                <field name="description_bank"/>                                
+                                <field name="source_destination"
+                                    options="{'no_create': True}"/>
+                                <field name="office_selection" required="1"/>                                
+                            </group>
+                        </group>                        
+                    </page>
+                </xpath>                
+            </field>
+        </record>
+
+        <record id="view_partner_form_pwk" model="ir.ui.view">
+            <field name="name">Customers</field>
+            <field name="model">res.partner</field>            
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="category_id" position="after">
+                    <field name="code"/>
+                    <field name="komisi"/>
+                    <field name="bank_account_id"
+                        options="{'no_create': True}"/>
+                </field>
+                <field name="phone" position="after">
+                    <field name="fax"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="invoice_supplier_efaktur_pwk" model="ir.ui.view">
+            <field name="name">Vendor Bills</field>
+            <field name="model">account.invoice</field>            
+            <field name="inherit_id" ref="vit_efaktur.invoice_supplier_efaktur"/>
+            <field name="arch" type="xml">
+                <field name="masa_pajak" position="before">
+                    <field name="objek_penghasilan"/>
+                    <field name="bukti_potong"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="invoice_supplier_form_pwk" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form</field>
+            <field name="model">account.invoice</field>            
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <field name="reference" position="after">
+                    <field name="dpp_amount"/>                    
+                </field>
+                <field name="partner_id" position="after">
+                    <field name="vendor_invoice_no"/>                    
+                </field>
+                <field name="date_invoice" position="attributes">
+                    <attribute name="string">Vendor Invoice Date</attribute>
+                </field>
+                <field name="date_invoice" position="after">
+                    <field name="vendor_invoice_date" string="Bill Date"/>
+                    <field name="certificate_id"/>
+                    <field name="document_id" widget="binary" 
+                        height="64" filename="document_id_name"/>
+                    <field name="document_id_name" invisible="1"/>
+                    <field name="is_debit_note" invisible="1"/>
+                    <field name="is_credit_note" invisible="1"/>
+                </field>
+                <button name="action_invoice_open" position="after">
+                    <button name="print_debit_note" string="Print Debit Note" 
+                        type="object" class="oe_highlight"
+                        attrs="{'invisible':['|',
+                        ('type','!=','in_refund'),                        
+                        ('state','not in',['draft','proforma','open'])]}"/>
+                    <button name="print_credit_note" string="Print Credit Note" 
+                        type="object" class="oe_highlight"
+                        attrs="{'invisible':['|','|',
+                        ('type','!=','in_invoice'),
+                        ('is_credit_note','=',False),
+                        ('state','not in',['draft','proforma','open'])]}"/>
+                </button>
+            </field>
+        </record>
+
+        <record id="invoice_form_cancel_inherit_pwk" model="ir.ui.view">
+            <field name="name">invoice.form.cancel.inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account_cancel.invoice_form_cancel_inherit"/>
+            <field name="arch" type="xml">
+                <button name="action_invoice_cancel" position="attributes">
+                    <attribute name="states">draft,proforma,open</attribute>
+                </button>
+            </field>
+        </record>
+
+        <record id="invoice_form_pwk" model="ir.ui.view">
+            <field name="name">Invoices</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="before">
+                    <field name="number_packing_list"/>
+                </field>
+                <field name="partner_id" position="after">
+                    <field name="attn"/>
+                </field>
+                <field name="state" position="replace">
+                    <field name="state" widget="statusbar"/>
+                </field>
+                <field name="incoterm_id" position="after">
+                    <field name="note_delivery"/>
+                </field>
+                <field name="comment" position="before">
+                    <field name="amount_total_terbilang"/>
+                    <field name="amount_total_terbilang_en"/>
+                    <field name="is_debit_note" invisible="1"/>
+                    <field name="is_credit_note" invisible="1"/>
+                </field>
+                <button name="preview_invoice" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
+                <button name="action_invoice_open" position="attributes">
+                    <attribute name="states">proforma</attribute>
+                </button>
+                <button name="%(account.action_account_invoice_refund)d" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
+                <button name="action_invoice_cancel" position="before">
+                    <button name="print_invoice_export" string="Print Invoice Export" 
+                        type="object" class="oe_highlight"
+                        attrs="{'invisible':['|','|',
+                        ('type','!=','out_invoice'),
+                        ('invoice_type','!=','Export'),
+                        ('state','not in',['draft','proforma','open'])]}"/>
+
+                    <button name="print_invoice_local" string="Print Invoice Local" 
+                        type="object" class="oe_highlight"
+                        attrs="{'invisible':['|','|',
+                        ('type','!=','out_invoice'),
+                        ('invoice_type','!=','Lokal'),
+                        ('state','not in',['draft','proforma','open'])]}"/>
+
+                    <button name="print_invoice_waste" string="Print Invoice Waste" 
+                        type="object" class="oe_highlight"
+                        attrs="{'invisible':['|','|',
+                        ('type','!=','out_invoice'),
+                        ('invoice_type','not in',['Waste Rotary','Waste Pabrik PPN','Waste Pabrik Non-PPN']),
+                        ('state','not in',['draft','proforma','open'])]}"/>
+
+                    <button name="print_packing_list_export" string="Print Packing List Export"
+                        type="object" class="oe_highlight"
+                        attrs="{'invisible':['|','|',
+                        ('type','!=','out_invoice'),
+                        ('invoice_type','!=','Export'),
+                        ('state','not in',['draft','proforma','open'])]}"/>
+
+                    <button name="print_packing_list_local" string="Print Packing List Local" 
+                        type="object" class="oe_highlight"
+                        attrs="{'invisible':['|','|',
+                        ('type','!=','out_invoice'),
+                        ('invoice_type','!=','Lokal'),
+                        ('state','not in',['draft','proforma','open'])]}"/>
+
+                    <button name="print_packing_list_waste" string="Print Packing List Waste" 
+                        type="object" class="oe_highlight"
+                        attrs="{'invisible':['|','|',
+                        ('type','!=','out_invoice'),
+                        ('invoice_type','not in',['Waste Rotary','Waste Pabrik PPN','Waste Pabrik Non-PPN']),
+                        ('state','not in',['draft','proforma','open'])]}"/>
+
+                    <button name="action_invoice_proforma" string="Pro-Forma" 
+                        type="object" class="oe_highlight" states="draft"/>
+
+                </button>
+                <button name="action_invoice_draft" position="attributes">
+                    <attribute name="string">Reset to Draft</attribute>
+                </button>
+                <field name="payment_term_id" position="after">
+                    <field name="method_payment_id"
+                        options="{'no_create': True}"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}"/>
+                    <field name="formula_type"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}"/>
+                    <field name="shipping_marks"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}"/>
+                    <field name="container_number"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}"/>
+                    <field name="gross_weight"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}"/>
+                    <field name="net_weight"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}"/>                    
+                    <field name="komisi" string="Komisi per Pcs/Vol"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}"/>
+                    <field name="total_komisi"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}"/>
+                    <field name="is_seal_container"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}"/>
+                    <field name="is_marking"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}"/>
+                    <field name="is_sign"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}"/>
+                    <field name="sign_type"
+                        attrs="{'invisible':['|',('type','!=','out_invoice'),('is_sign','=',False)]}"/>
+                </field>
+                <field name="journal_id" position="after">
+                    <field name="office_selection" required="1"/>
+                    <field name="sign" required="1"/>
+                    <field name="is_cancel" invisible="1"/>
+                </field>
+                <field name="partner_id" position="before">
+                    <field name="invoice_type"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}"/>
+                </field>                
+                <!-- <field name="partner_id" position="after">
+                    <field name="commercial_option"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}"/>
+                </field>                 -->
+                <field name="partner_id" position="attributes">
+                    <attribute name="options">{'no_create': True}</attribute>
+                </field>                
+                <field name="date_invoice" position="before">
+                    <field name="is_logo"/>
+                    <field name="certificate_id"
+                        attrs="{'invisible':[('invoice_type','=','Waste')],'invisible':[('type','!=','out_invoice')]}"
+                        options="{'no_create': True}"/>
+                </field>
+                <xpath expr="//page[1]" position="after">
+                    <page string="Export Information" 
+                        attrs="{'invisible':[('invoice_type','!=','Export')], 'invisible':[('type','!=','out_invoice')]}">
+                        <group>                            
+                            <field name="consignee_id"
+                                options="{'no_create': True}"/>
+                            <field name="notify_party_id"
+                                options="{'no_create': True}"/>
+                        </group>                        
+                        <group>
+                            <group>                                    
+                                <field name="pre_carriage"/>
+                                <field name="vessel_name"/>
+                                <field name="departure_date"/>
+                                <field name="container_no"/>
+                                <field name="seal_no"/>                                
+                            </group>
+                            <group>
+                                <field name="port_loading"
+                                    options="{'no_create': True}"/>
+                                <field name="port_discharge"
+                                    options="{'no_create': True}"/>
+                                <field name="country_origin"
+                                    options="{'no_create': True}"/>
+                                <field name="destination"
+                                    options="{'no_create': True}"/>
+                                <field name="country_final_destination"
+                                    options="{'no_create': True}"/>
+                            </group>
+                        </group>                        
+                    </page>
+                    <page string="Description / Instruction"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}">
+                        <group>
+                            <field name="description1" widget="html"/>
+                            <field name="description2" widget="html"/>
+                            <field name="description3" widget="html"/>
+                        </group>
+                    </page>
+                </xpath>
+                <field
+                    name="invoice_line_ids"
+                    nolabel="1"
+                    widget="section_and_note_one2many"
+                    mode="tree,kanban"
+                    context="{'type': type, 'journal_id': journal_id, 'default_invoice_id': id}">
+                    <tree string="Invoice Lines">
+                        <control>
+                            <create string="Add a line"/>
+                            <!-- <create string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                            <create string="Add a note" context="{'default_display_type': 'line_note'}"/> -->
+                        </control>                        
+                        <field name="sequence" widget="handle"/>
+                        <field name="product_id" domain="[('sale_ok','=',True)]"/>
+                        <field name="commercial_option"/>
+                        <field name="marking"/>
+                        <field name="seal_no"/>
+                        <field name="container_no"/>
+                        <field name="origin" invisible="1"/>
+                        <field name="is_rounding_line" invisible="1"/>
+                        <field name="name" widget="section_and_note_text"/>
+                        <field name="commercial_name3"/>
+                        <field name="thick" onchange="_onchange_volume"/>
+                        <field name="width" onchange="_onchange_volume"/>
+                        <field name="length" onchange="_onchange_volume"/>
+                        <field name="crates" onchange="_onchange_volume"/>
+                        <!-- <field name="crates_conversion_id"/> -->                            
+                        <field name="sheets"/>
+                        <field name="display_type" invisible="1"/>
+                        <field name="company_id" invisible="1"/>
+                        <field
+                            name="account_id"
+                            groups="account.group_account_user"
+                            domain="[('company_id', '=', parent.company_id), ('internal_type', '=', 'other'), ('deprecated', '=', False)]"
+                            attrs="{'required': [('display_type', '=', False)]}"
+                            invisible="1"
+                        />                        
+                        <field name="quantity" string="Vol (m3)"/>
+                        <field name="uom_id" groups="uom.group_uom" string="UoM"/>
+                        <field name="price_unit" string="Price"/>
+                        <field name="discount" string="Disc (%)" invisible="1"/>
+                        <!-- <field name="account_analytic_id" groups="analytic.group_analytic_accounting"
+                            domain="[('company_id', '=', parent.company_id)]"
+                            context="{'default_partner_id': parent.partner_id}"/>
+                        <field name="analytic_tag_ids" groups="analytic.group_analytic_tags" widget="many2many_tags" options="{'color_field': 'color'}" invisible="1"/> -->
+                        <field name="invoice_line_tax_ids" widget="many2many_tags" options="{'no_create': True}" context="{'type':parent.type, 'tree_view_ref': 'account.account_tax_view_tree', 'search_view_ref': 'account.account_tax_view_search'}"
+                            domain="[('type_tax_use','=','sale'),('company_id', '=', parent.company_id)]"/>
+                        <field name="price_subtotal" string="Subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                        <field name="remarks" string="Remarks"/>
+                        <field name="price_total" string="Total" groups="account.group_show_line_subtotals_tax_included"/>
+                        <field name="currency_id" invisible="1"/>
+                    </tree>
+                    <form string="Invoice Lines">
+                        <group string="Products">
+                            <group>
+                                <field name="product_id" domain="[('sale_ok','=',True)]"/>
+                                <field name="commercial_option"/>
+                                <field name="name"/>
+                                <field name="commercial_name3"/>
+                            </group>
+                            <group>
+                                <field name="marking"/>
+                                <field name="seal_no"/>
+                                <field name="container_no"/>
+                                <field name="origin" invisible="1"/>
+                                <field name="is_rounding_line" invisible="1"/>
+                            </group>
+                        </group>                                        
+                        <group string="Measurement">
+                            <group>                                
+                                <field name="thick" string="Thick (T)"/>
+                                <field name="width" string="Width (W)"/>
+                                <field name="length" string="Length (L)"/>
+                                <field name="uom_id" groups="uom.group_uom" string="UoM"/>
+                                <field name="display_type" invisible="1"/>
+                                <field name="company_id" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="crates"/>
+                                <field name="crates_conversion_id"
+                                    options="{'no_create': True}"/>
+                                <field name="sheets"/>
+                                <field
+                                    name="account_id"
+                                    groups="account.group_account_user"
+                                    domain="[('company_id', '=', parent.company_id), ('internal_type', '=', 'other'), ('deprecated', '=', False)]"
+                                    attrs="{'required': [('display_type', '=', False)]}"
+                                    invisible="1"
+                                />
+                                <field name="quantity" string="Vol (m3)"/>
+                                <field name="discount" string="Disc (%)" invisible="1"/>
+                            </group>
+                        </group>    
+                        <group string="Pricing">
+                            <field name="price_unit" string="Price" class="oe_inline"/>
+                            <field name="invoice_line_tax_ids" 
+                                widget="many2many_tags" 
+                                options="{'no_create': True}" 
+                                context="{'type':parent.type, 'tree_view_ref': 'account.account_tax_view_tree', 'search_view_ref': 'account.account_tax_view_search'}"
+                            domain="[('type_tax_use','=','sale'),('company_id', '=', parent.company_id)]"/>
+                            <field name="price_subtotal" string="Subtotal"/>
+                            <field name="price_total" string="Total"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group string="Remarks">
+                            <field name="remarks" nolabel="1"/>
+                        </group>
+                    </form>
+                    <kanban class="o_kanban_mobile">
+                        <field name="name"/>
+                        <field name="product_id"/>
+                        <field name="price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                        <field name="price_total" groups="account.group_show_line_subtotals_tax_included"/>
+                        <field name="quantity"/>
+                        <field name="uom_id" groups="uom.group_uom"/>
+                        <field name="price_unit"/>
+                        <field name="display_type"/>
+                        <templates>
+                            <t t-name="kanban-box">
+                                <div t-attf-class="oe_kanban_card oe_kanban_global_click {{ record.display_type.raw_value ? 'o_is_' + record.display_type.raw_value : '' }}">
+                                    <t t-if="!record.display_type.raw_value">
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <strong>
+                                                    <span>
+                                                        <t t-esc="record.product_id.value"/>
+                                                    </span>
+                                                </strong>
+                                            </div>
+                                            <div class="col-4">
+                                                <strong>
+                                                    <span class="float-right text-right">
+                                                        <t t-esc="record.price_subtotal.value" groups="account.group_show_line_subtotals_tax_excluded"/>
+                                                        <t t-esc="record.price_total.value" groups="account.group_show_line_subtotals_tax_included"/>
+                                                    </span>
+                                                </strong>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 text-muted">
+                                                <span>
+                                                    Quantity:
+                                                    <t t-esc="record.quantity.value"/>
+                                                    <t t-esc="record.uom_id.value"/>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 text-muted">
+                                                <span>
+                                                    Unit Price:
+                                                    <t t-esc="record.price_unit.value"/>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </t>
+                                    <t t-if="record.display_type.raw_value === 'line_section' || record.display_type.raw_value === 'line_note'">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <span>
+                                                    <t t-esc="record.name.value"/>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </t>
+                        </templates>
+                    </kanban>
+                </field>                
+                <field name="date_invoice" position="before">
+                    <field name="ship_via"
+                        options="{'no_open': True, 'no_create': True}"
+                        attrs="{'invisible':[('invoice_type','=','Export')],'invisible':[('type','!=','out_invoice')]}"/>
+                    <field name="do_number"
+                        attrs="{'invisible':[('invoice_type','=','Export')],'invisible':[('type','!=','out_invoice')]}"/>
+                    <field name="do_date"
+                        attrs="{'invisible':[('invoice_type','=','Export')],'invisible':[('type','!=','out_invoice')]}"/>
+                    <field name="po_number"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}"/>
+                </field>
+                <field name="user_id" position="after">
+                    <field name="contract_no"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}"/>
+                    <field name="sale_order_no"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}"/>
+                    <field name="packing_list_no"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}"/>
+                    <field name="sheet_name"
+                        attrs="{'invisible': [('invoice_type', 'in', ['Export','Local'])]}"/>
+                    <field name="total_crates"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}"/>
+                    <field name="total_sheets"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}"/>
+                    <field name="total_volume"
+                        attrs="{'invisible':[('type','!=','out_invoice')]}"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_account_journal_form_pwk" model="ir.ui.view">
+            <field name="name">Journals</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <field name="refund_sequence_id" position="attributes">
+                    <attribute name="readonly">0</attribute>
+                </field>                    
+                <field name="currency_id" position="after">
+                    <field name="sequence_export_id"/>
+                    <field name="refund_sequence_export_id"/>
+                    <field name="sequence_waste_rotary_id"/>
+                    <field name="sequence_waste_pabrik_ppn_id"/>
+                    <field name="sequence_waste_pabrik_non_ppn_id"/>                    
+                </field>                
+            </field>
+        </record>
+
+        <record id="product_template_tree_view_pwk" model="ir.ui.view">
+            <field name="name">Products</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="default_code" position="replace">                    
+                </field>                
+                <field name="list_price" position="replace">
+                </field>
+                <field name="standard_price" position="replace">
+                </field>
+                <field name="name" position="after">
+                    <field name="jenis_kayu_id"/>                    
+                    <field name="tebal_id"/>
+                    <field name="lebar_id"/>
+                    <field name="panjang_id"/>
+                    <field name="grade_id"/>
+                    <field name="marking_grade_id"/>
+                    <field name="glue_id"/>
+                    <field name="glue_certificate_id"/>                    
+                </field>
+            </field>
+        </record>
+
+        <record id="product_product_tree_view_pwk" model="ir.ui.view">
+            <field name="name">product.product.tree</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="arch" type="xml">
+                <tree position="replace">
+                    <tree string="Product Variants">
+                        <field name="default_code" invisible="1"/>
+                        <field name="name"/>
+                        <field name="commercial_name1"/>
+                        <field name="commercial_name2"/>
+                        <field name="commercial_name3"/>
+                        <field name="jenis_kayu"/>
+                        <field name="tebal"/>
+                        <field name="lebar"/>
+                        <field name="panjang"/>
+                        <field name="grade"/>
+                        <field name="marking_grade"/>
+                        <field name="glue"/>
+                        <field name="glue_certificate"/>
+                        <field name="attribute_value_ids" widget="many2many_tags" groups="product.group_product_variant" invisible="1"/>
+                        <field name="lst_price" invisible="1"/>
+                        <field name="standard_price" invisible="1"/>
+                        <field name="type" invisible="1"/>
+                        <field name="price" invisible="not context.get('pricelist',False)"/>
+                        <field name="uom_id" options="{'no_open': True, 'no_create': True}" groups="uom.group_uom"/>
+                        <field name="barcode" invisible="1"/>
+                        <field name="product_tmpl_id" invisible="1"/>
+                        <field name="active" invisible="1"/>
+                    </tree>
+                </tree>
+            </field>
+        </record>
+
+        <record id="product_product_view_tree_pwk" model="ir.ui.view">
+            <field name="name">Products</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="account.product_product_view_tree"/>
+            <field name="arch" type="xml">
+                <field name="default_code" position="replace">                    
+                </field>
+                <field name="taxes_id" position="replace">
+                </field>
+                <field name="supplier_taxes_id" position="replace">
+                </field>
+                <field name="name" position="after">
+                    <field name="commercial_name1"/>
+                    <field name="commercial_name2"/>
+                    <field name="commercial_name3"/>
+                    <field name="jenis_kayu"/>
+                    <field name="tebal"/>
+                    <field name="lebar"/>
+                    <field name="panjang"/>
+                    <field name="grade"/>
+                    <field name="marking_grade"/>
+                    <field name="glue"/>
+                    <field name="glue_certificate"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="product_normal_form_view_pwk" model="ir.ui.view">
+            <field name="name">Products</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <field name="type" position="after">
+                    <field name="commercial_name1"/>
+                    <field name="commercial_name2"/>
+                    <field name="commercial_name3"/>
+                    <field name="jenis_kayu"
+                        options="{'no_create': True, 'no_open': True}"/>
+                    <field name="tebal"/>
+                    <field name="lebar"/>
+                    <field name="panjang"/>
+                    <field name="grade"
+                        options="{'no_create': True, 'no_open': True}"/>
+                    <field name="glue"
+                        options="{'no_create': True, 'no_open': True}"/>
+                    <field name="goods_type"/>
+                </field>                
+            </field>
+        </record>
+
+        <record id="pwk_jenis_kayu_tree" model="ir.ui.view">
+            <field name="name">Jenis Kayu</field>
+            <field name="model">pwk.jenis.kayu</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Jenis Kayu" editable="top">
+                    <field name="name" required="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pwk_grade_tree" model="ir.ui.view">
+            <field name="name">Grade</field>
+            <field name="model">pwk.grade</field>            
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Grade" editable="top">
+                    <field name="name" required="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pwk_glue_tree" model="ir.ui.view">
+            <field name="name">Glue</field>
+            <field name="model">pwk.glue</field>            
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Glue" editable="top">
+                    <field name="name" required="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pwk_consignee_tree" model="ir.ui.view">
+            <field name="name">Consignee</field>
+            <field name="model">pwk.consignee</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Consignee" editable="top">
+                    <field name="name" required="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pwk_port_tree" model="ir.ui.view">
+            <field name="name">Port</field>
+            <field name="model">pwk.port</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Port" editable="top">
+                    <field name="name" required="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pwk_destination_tree" model="ir.ui.view">
+            <field name="name">Destination</field>
+            <field name="model">pwk.destination</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Destination" editable="top">
+                    <field name="name" required="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pwk_notify_party_tree" model="ir.ui.view">
+            <field name="name">Notify Party</field>
+            <field name="model">pwk.notify.party</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Notify Party" editable="top">
+                    <field name="name" required="1"/>
+                    <field name="address1"/>
+                    <field name="address2"/>
+                    <field name="address3"/>
+                    <field name="phone"/>
+                    <field name="fax"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pwk_method_payment_tree" model="ir.ui.view">
+            <field name="name">Method of Payment</field>
+            <field name="model">pwk.method.payment</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Method of Payment" editable="top">
+                    <field name="name"/>                    
+                </tree>
+            </field>
+        </record>
+
+        <record id="pwk_certificate_tree" model="ir.ui.view">
+            <field name="name">Certificate</field>
+            <field name="model">pwk.certificate</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Certificate">
+                    <field name="name"/>
+                    <field name="detail"/>
+                    <field name="detail2"/>
+                    <field name="detail3"/>
+                    <field name="detail4"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pwk_certificate_form" model="ir.ui.view">
+            <field name="name">Certificate</field>
+            <field name="model">pwk.certificate</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Certificate">
+                    <sheet>
+                        <group>
+                            <field name="name" required="1"/>
+                            <field name="detail" required="1"/>
+                            <field name="detail2"/>
+                            <field name="detail3"/>
+                            <field name="detail4"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="pwk_ship_via_tree" model="ir.ui.view">
+            <field name="name">Shipping Transportation</field>
+            <field name="model">pwk.ship.via</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Shipping Transportation" editable="top">
+                    <field name="name"/>                    
+                </tree>
+            </field>
+        </record>
+
+        <record id="pwk_crates_conversion_tree" model="ir.ui.view">
+            <field name="name">Crates Conversion</field>
+            <field name="model">pwk.crates.conversion</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Crates Conversion" editable="top">
+                    <field name="name" required="1"/>
+                    <field name="conversion" required="1"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

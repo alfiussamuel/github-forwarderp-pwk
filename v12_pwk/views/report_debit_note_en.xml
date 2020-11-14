@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="external_layout_standard_debit_note_en">
+	        <div class="header">		           
+	          	<table class="table table-condensed">
+					<tr>
+						<td width="10%" rowspan="4" 
+							style="text-align:left;vertical-align:middle;border:0px;padding:0px;font-size:8px;">
+							<img src='v12_pwk/static/logo_pwk.jpg' 
+								style="text-align:left;max-width:90%;"/>
+						</td>							
+						<td width="52%" 
+							style="font-size:8px; border:0px;padding:1px;vertical-align:bottom;">
+						</td>
+						<td width="12%%" rowspan="4" 
+							style="text-align:right;vertical-align:top;border:0px;padding:0px;font-size:8px;">
+							<t t-if="o.is_logo">
+								<img src='v12_pwk/static/legal_wood_pwk.png' 
+									style="text-align:left;max-width:100%;vertical-align:bottom;"/>
+							</t>
+						</td>
+						<td width="26%" class="text-justify"
+							style="font-size:8px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">	
+							<span t-field="o.certificate_id.detail"/>
+						</td>
+					</tr>					
+					<tr>
+						<td width="52%" style="font-size:8px; border:0px;padding:1px;vertical-align:bottom;">
+							<strong>PT. PRIMA WANA KREASI WOOD INDUSTRY</strong>
+						</td>
+						<td width="26%"
+							style="font-size:8px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
+							<span t-field="o.certificate_id.detail2"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="52%" style="font-size:8px; border:0px;padding:1px;vertical-align:bottom;">
+							<strong>JL. RAYA TEMBUS PRINGSURAT, KRANGGAN KUPEN PRINGSURAT, TEMANGGUNG JAWA TENGAH</strong>
+						</td>
+						<td width="26%"
+							style="font-size:8px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
+							<span t-field="o.certificate_id.detail3"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="52%" style="font-size:8px; border:0px;padding:1px;vertical-align:bottom;">
+							<strong>Phone. +62 293 319 4934  Fax. +62 293 4901 339</strong>
+						</td>
+						<td width="26%"
+							style="font-size:8px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
+							<span t-field="o.certificate_id.detail4"/>
+						</td>
+					</tr>
+				</table>
+
+				<table class="table table-condensed" style="margin-top:15px;">
+					<tr>													
+						<td width="100%" style="font-size:18px; text-align:center;padding:1px;
+							border-left:0px;
+							border-right:0px;
+							border-top:0px;
+							border-bottom:0px;">
+							<strong>DEBIT NOTE</strong>							
+						</td>									
+					</tr>
+				</table>
+
+				<!-- <table class="table table-condensed" style="margin-top:15px;">
+					<tr>
+						<td width="10%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<strong>INVOICE</strong>
+						</td>
+						<td width="5%" style="font-size:12px; text-align:center;padding:0px;border:0px;vertical-align:middle;">
+							<strong>:</strong>
+						</td>
+						<td width="85%" style="font-size:12px; text-align:center;padding:0px;border:1px solid black;vertical-align:middle;">
+							<span t-field="o.number"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="10%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<strong>DATE</strong>
+						</td>
+						<td width="5%" style="font-size:12px; text-align:center;padding:0px;border:0px;vertical-align:middle;">
+							<strong>:</strong>
+						</td>
+						<td width="85%" style="font-size:12px; text-align:center;padding:0px;border:1px solid black;vertical-align:middle;">
+							<span t-field="o.date_invoice"/>
+						</td>
+					</tr>
+				</table> -->
+
+				<table class="table table-condensed" style="margin-top:0px;">
+					<!-- <tr>													
+						<td width="100%" colspan="3" style="font-size:18px;  text-align:center;padding:1px;
+							border-left:0px;
+							border-right:0px;
+							border-top:0px;
+							border-bottom:1px solid black;">
+						</td>									
+					</tr> -->
+					<tr>
+						<td width="15%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<strong>DEBIT NOTE NO.</strong>
+						</td>
+						<td width="5%" style="font-size:12px; text-align:center;padding:0px;border:0px;vertical-align:middle;">
+							<strong>:</strong>
+						</td>
+						<td width="80%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<span t-field="o.number"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="15%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<strong>DATE</strong>
+						</td>
+						<td width="5%" style="font-size:12px; text-align:center;padding:0px;border:0px;vertical-align:middle;">
+							<strong>:</strong>
+						</td>
+						<td width="80%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<span t-field="o.date_invoice" t-options='{"format": "dd-MMMM-yyyy"}'/>
+						</td>
+					</tr>
+					<tr>
+						<td width="15%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<strong>NAME</strong>
+						</td>
+						<td width="5%" style="font-size:12px; text-align:center;padding:0px;border:0px;vertical-align:middle;">
+							<strong>:</strong>
+						</td>
+						<td width="80%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<span t-field="o.partner_id.name"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="15%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<strong>ATTN.</strong>
+						</td>
+						<td width="5%" style="font-size:12px; text-align:center;padding:0px;border:0px;vertical-align:middle;">
+							<strong>:</strong>
+						</td>
+						<td width="80%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<span t-field="o.attn"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="15%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<strong>ADDRESS</strong>
+						</td>
+						<td width="5%" style="font-size:12px; text-align:center;padding:0px;border:0px;vertical-align:middle;">
+							<strong>:</strong>
+						</td>
+						<td width="80%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+							<span t-field="o.partner_id.street"/>
+						</td>
+					</tr>
+				</table>
+	        </div>
+
+	        <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">	
+	            <t t-raw="0"/>
+	        </div>
+
+	        <div class="footer o_standard_footer">
+	            <div class="text-center">		            
+	                <div t-if="report_type == 'pdf'" class="text-muted">
+	                    Page: <span class="page"/> / <span class="topage"/>
+	                </div>
+	            </div>
+	        </div>
+
+	    </template>
+
+		<!-- Header for Invoice Lokal -->
+    	<template id="external_layout_debit_note_en">
+	        <t t-if="not o" t-set="o" t-value="doc"/>
+	        <t t-if="not company">
+	            <!-- Multicompany -->
+	            <t t-if="company_id">
+	                <t t-set="company" t-value="company_id"/>
+	            </t>
+	            <t t-elif="o and 'company_id' in o">
+	                <t t-set="company" t-value="o.company_id.sudo()"/>
+	            </t>
+	            <t t-else="else">
+	                <t t-set="company" t-value="res_company"/>
+	            </t>
+	        </t>
+	        <!-- <t t-if="company.external_report_layout_id" t-call="{{company.external_report_layout_id.key}}"><t t-raw="0"/></t> -->
+	        <t t-call="v12_pwk.external_layout_standard_debit_note_en"><t t-raw="0"/></t>
+	    </template>	  
+
+        <template id="report_debit_note_en_document">
+            <t t-call="v12_pwk.external_layout_debit_note_en">
+                <t t-set="o" t-value="o.with_context(lang=lang)" />
+                <t t-set="address">
+                    <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
+                    <div t-if="o.partner_id.vat" class="mt16"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.partner_id.vat"/></div>
+                </t>
+                <div class="page">                    					
+					<table class="table table-condensed" style="margin-top:0px;">
+		                <thead>
+		                    <tr>
+		                        <th width="5%" 
+		                        	style="font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;vertical-align:middle;">
+		                        	NO.
+		                        </th>		
+		                        <th width="25%" 
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;vertical-align:middle;">
+		                        	DESCRIPTION
+		                        </th>
+		                        <th width="20%" 
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;vertical-align:middle;">
+		                        	PRODUCT
+		                        </th>
+		                        <th width="15%" 
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:1px;vertical-align:middle;">
+		                        	VOL
+		                        </th>
+		                        <th width="15%" 
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;padding:1px;vertical-align:middle;">
+		                        	<span t-field="o.sheet_name"/>
+		                        </th>
+		                        <th width="20%" 
+		                        	style="text-align:center;font-size:11px;border:1px solid black;background-color:#4ead2f;color:white;vertical-align:middle;">
+		                        	AMOUNT
+		                        </th>		                        
+		                    </tr>
+		                </thead>
+		                <tbody class="invoice_tbody">
+		                	<t t-set="i" t-value="1" />
+		                    <tr t-foreach="o.invoice_line_ids" t-as="l">
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<span t-esc="i"/> 
+        							<t t-set="i" t-value="i+1"/> 
+		                        </td>
+		                        <td style="text-align:left;border:1px solid black;font-size:11px;padding:4px;">	
+        							<t t-if="l.commercial_name3">
+	    								<span t-field="l.commercial_name3"/>
+	    							</t>
+	    							<t t-if="not l.commercial_name3">
+	    								<span t-field="l.name"/>
+	    							</t>
+		                        </td>
+		                        <td style="text-align:left;border:1px solid black;font-size:11px;padding:4px;">
+	    							<span t-field="l.product_id.name"/>
+		                        </td>
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-esc="'%.0f'%(l.quantity)"/>
+		                        </td>		                        
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-esc="'%.0f'%(l.sheets)"/>
+		                        </td>
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                            <span t-esc="'{0:,.0f}'.format(l.price_subtotal)"/>
+		                        </td>
+		                    </tr>
+		                    <tr>
+		                        <td colspan="3" style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                        </td>
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong><span t-esc="'%.0f'%(o.total_volume)"/></strong>
+		                        </td>		                        
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong><span t-esc="'%.4f'%(o.total_sheets)"/></strong>
+		                        </td>		                        
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong>
+		                        		<span t-esc="'{0:,.0f}'.format(o.amount_untaxed)"/>
+		                        	</strong>
+		                        </td>		                        
+		                    </tr>
+		                    <tr>
+		                        <td colspan="4" style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                        </td>
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong>DPP</strong>
+		                        </td>		                        
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong>
+		                        		<span t-esc="'{0:,.0f}'.format(o.amount_untaxed)"/>
+		                        	</strong>
+		                        </td>		                        
+		                    </tr>
+		                    <tr>
+		                        <td colspan="4" style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                        </td>
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong>PPN 10%</strong>
+		                        </td>		                        
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong>
+		                        		<span t-esc="'{0:,.0f}'.format(o.amount_tax)"/>
+		                        	</strong>
+		                        </td>		                        
+		                    </tr>
+		                    <tr>
+		                        <td colspan="4" style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                        </td>
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong>TOTAL AMOUNT</strong>
+		                        </td>		                        
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong>
+		                        		<span t-esc="'{0:,.0f}'.format(o.amount_total)"/>
+		                        	</strong>
+		                        </td>		                        
+		                    </tr>
+		                    <!-- <tr>
+		                        <td colspan="4" style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                        </td>
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong>GRAND TOTAL</strong>
+		                        </td>		                        
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong>
+		                        		<span t-esc="'{0:,.0f}'.format(o.amount_total)"/>
+		                        	</strong>
+		                        </td>		                        
+		                    </tr> -->
+		                    <!-- <tr>
+		                        <td colspan="6" style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong>
+		                        		<span t-field="o.amount_total_terbilang"/>
+		                        	</strong>
+		                        </td>		                        
+		                    </tr>		                     -->
+		                </tbody>
+		            </table>			            
+		            <table class="table table-condensed" style="margin-bottom:0px;">
+		            	<tr>
+		            		<td width="70%" style="border:0px;font-size:10px;padding:2px;">
+		            			<i>Terbilang : <span t-field="o.amount_total_terbilang"/></i>
+		            		</td>
+		            		<td width="30%" style="border:0px;font-size:10px;padding:2px;text-align:center;">
+		            		</td>
+		            	</tr>
+		            	<tr>
+		            		<td width="70%" style="border:0px;font-size:10px;padding:2px;">
+		            			<strong>Notes : <span t-field="o.comment"/></strong>
+		            		</td>
+		            		<td width="30%" style="border:0px;font-size:10px;padding:2px;text-align:center;">
+		            			<span t-field="o.office_selection"/>, <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%B-%Y')"/>
+		            		</td>
+		            	</tr>
+		            	<tr>
+		            		<td width="70%" style="border:0px;font-size:10px;padding:2px;">
+		            		</td>
+		            		<td width="30%" style="border:0px;font-size:10px;padding:2px;text-align:center;">
+		            			<span t-field="o.company_id.name"/>
+		            		</td>
+		            	</tr>
+		            </table>	            
+		            <table class="table table-condensed" style="margin-top:0px;">
+		            	<tr>
+		            		<td width="15%" style="padding:2px;font-size:10px;border:0px;">
+		            			<strong>Please Transfer To :</strong>
+		            		</td>
+		            		<td width="2%" style="padding:2px;font-size:10px;border:0px;">
+		            		</td>
+		            		<td width="50%" style="padding:2px;font-size:10px;border:0px;">
+		            		</td>
+		            		<td rowspan="6" width="30%" 
+		            			style="text-align:center;font-size:10px;border:0px;vertical-align:top;
+		            			padding-top:0px;
+		            			padding-bottom:0px;
+		            			padding-left:10px;
+		            			padding-right:10px;">
+		            			<t t-if="o.is_sign == True">
+			            			<img src='v12_pwk/static/sign.jpg' 
+										style="text-align:center;vertical-align:top;max-width:70%;
+										padding-top:10px;
+				            			padding-bottom:0px;
+				            			padding-left:38px;
+				            			padding-right:10px;"/>
+				            	</t>
+		            		</td>
+		            	</tr>
+		            	<tr>
+		            		<td width="15%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			Bank
+		            		</td>
+		            		<td width="2%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			:
+		            		</td>
+		            		<td width="50%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			<span t-field="o.partner_bank_id.bank_id.name"/>
+		            		</td>		            		
+		            	</tr>
+		            	<tr>
+		            		<td width="15%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			Name
+		            		</td>
+		            		<td width="2%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			:
+		            		</td>
+		            		<td width="50%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			<span t-field="o.partner_bank_id.acc_holder_name"/>
+		            		</td>		            		
+		            	</tr>
+		            	<tr>
+		            		<td width="15%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			Account No.
+		            		</td>
+		            		<td width="2%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			:
+		            		</td>
+		            		<td width="50%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			<span t-field="o.partner_bank_id.acc_number"/>
+		            		</td>		            		
+		            	</tr>
+		            	<tr>
+		            		<td width="15%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			Swift Code
+		            		</td>
+		            		<td width="2%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			:
+		            		</td>
+		            		<td width="50%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			<span t-field="o.partner_bank_id.bank_id.bic"/>
+		            		</td>		            		
+		            	</tr>
+		            	<tr>
+		            		<td width="15%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			Bank Address
+		            		</td>
+		            		<td width="2%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			:
+		            		</td>
+		            		<td width="50%" style="padding:2px;font-size:10px;border:0px;padding:2px;">
+		            			<span t-field="o.partner_bank_id.bank_id.street"/>
+		            		</td>		            		
+		            	</tr>
+		            	<tr>
+		            		<td width="15%" style="padding:2px;font-size:10px;border:0px;">
+		            		</td>
+		            		<td width="2%" style="padding:2px;font-size:10px;border:0px;">
+		            		</td>
+		            		<td width="50%" style="padding:2px;font-size:10px;border:0px;">
+		            		</td>
+		            		<td width="30%" style="padding:2px;font-size:10px;border:0px;padding:2px;text-align:center;">
+		            			<span t-field="o.sign"/>
+		            		</td>
+		            	</tr>
+		            </table>
+                </div>
+            </t>
+        </template>        
+
+        <template id="report_debit_note_en">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-set="lang" t-value="o.user_id.sudo().lang if o.type in ('in_invoice', 'in_refund') else o.partner_id.lang"/>
+                    <t t-call="v12_pwk.report_debit_note_en_document" t-lang="lang"/>
+                </t>
+            </t>
+        </template>
+
+        <!-- New Report Packing List -->
+    	<record id="paperformat_debit_note_en" model="report.paperformat">
+	        <field name="name">Debit Note</field>
+	        <field name="default" eval="True"/>
+	        <field name="format">A4</field>
+	        <field name="page_height">0</field>
+	        <field name="page_width">0</field>
+	        <field name="orientation">Portrait</field>
+	        <field name="margin_top">62</field>
+	        <field name="margin_bottom">10</field>
+	        <field name="margin_left">5</field>
+	        <field name="margin_right">5</field>
+	        <field name="header_line" eval="False"/>
+	        <field name="header_spacing">58</field>
+	        <field name="dpi">80</field>
+	        <field name="sequence">3</field>
+	    </record>
+
+    	<report
+            id="debit_note_en"
+            model="account.invoice"
+            string="Debit Note"
+            report_type="qweb-pdf"
+            name="v12_pwk.report_debit_note_en"
+            file="v12_pwk.report_debit_note_en"            
+            print_report_name="'Debit Note - %s' % object.number"
+            groups="account.group_account_invoice"
+            paperformat="v12_pwk.paperformat_debit_note_en"
+            menu="False"
+        />
+
+
+    </data>
+</openerp>

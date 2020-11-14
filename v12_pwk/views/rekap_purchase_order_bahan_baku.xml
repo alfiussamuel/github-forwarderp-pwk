@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+	    <template id="external_layout_standard_pph_report">
+            <div class="header">                   
+            	<table class="table table-condensed">
+                    <tr>
+                        <td width="8%" rowspan="4" 
+                            style="text-align:left;vertical-align:middle;border:0px;padding:0px;">
+                            <img src='v12_pwk/static/logo_pwk.jpg' 
+                                style="text-align:left;max-width:88%;"/>
+                        </td>                           
+                        <td width="50%" 
+                            style="font-size:10px; border:0px;padding:1px;vertical-align:bottom;">
+                        </td>
+                        <td width="15%%" rowspan="4" 
+                            style="text-align:right;vertical-align:top;border:0px;padding:0px;">
+                        </td>
+                        <td width="23%" class="text-justify"
+                            style="font-size:11px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
+                        </td>
+                    </tr>                   
+                    <tr>
+                        <td width="100%" style="font-size:11px; border:0px;padding:1px;vertical-align:bottom;">
+                            <strong>PT. PRIMA WANA KREASI WOOD INDUSTRY</strong>
+                        </td>                       
+                    </tr>
+                    <tr>
+                        <td width="100%" style="font-size:11px; border:0px;padding:1px;vertical-align:bottom;">
+                            <strong>JL. RAYA TEMBUS PRINGSURAT, KRANGGAN KUPEN PRINGSURAT, TEMANGGUNG JAWA TENGAH</strong>
+                        </td>                       
+                    </tr>
+                    <tr>
+                        <td width="100%" style="font-size:11px; border:0px;padding:1px;vertical-align:bottom;">
+                            <strong>Phone. +62 293 319 4934  Fax. +62 293 4901 339</strong>
+                        </td>                       
+                    </tr>                    
+                </table>                
+            </div>
+
+            <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">   
+                <t t-raw="0"/>
+            </div>
+
+            <div class="footer o_standard_footer">                
+                <div class="text-center">                   
+                    <div t-if="report_type == 'pdf'" class="text-muted">
+                        Page: <span class="page"/> / <span class="topage"/>
+                    </div>
+                </div>
+            </div>
+
+        </template>
+
+        <!-- Header for Packing List -->
+        <template id="external_layout_pph_report">
+            <t t-if="not o" t-set="o" t-value="doc"/>
+            <t t-if="not company">
+                <!-- Multicompany -->
+                <t t-if="company_id">
+                    <t t-set="company" t-value="company_id"/>
+                </t>
+                <t t-elif="o and 'company_id' in o">
+                    <t t-set="company" t-value="o.company_id.sudo()"/>
+                </t>
+                <t t-else="else">
+                    <t t-set="company" t-value="res_company"/>
+                </t>
+            </t>            
+            <t t-call="v12_pwk.external_layout_standard_pph_report"><t t-raw="0"/></t>
+        </template>
+
+        <!-- New Report Account Move -->
+        <record id="paperformat_pph_report_pwk" model="report.paperformat">
+            <field name="name">Rekap Pajak</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">34</field>
+            <field name="margin_bottom">20</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">30</field>
+            <field name="dpi">80</field>
+        </record>
+
+        <report
+	        id="action_report_pph_report"
+	        string="Rekap Pajak"
+	        model="pph.report.wizard"
+	        report_type="qweb-pdf"
+	        name="v12_pwk.report_pph_report"
+	        file="v12_pwk.report_pph_report"
+	        print_report_name="'Rekap Pajak (%s - %s)' % object.date_from,object.date_to"
+            groups="account.group_account_invoice"
+            paperformat="v12_pwk.paperformat_pph_report_pwk"
+	        menu="False"/>
+	
+		<template id="report_pph_report">						
+     		<t t-call="web.html_container">
+	    		<t t-call="v12_pwk.external_layout_pph_report">
+	    			<div class="page">		
+                        <h4 style="text-align: center;padding:3px;">
+                            <t t-foreach="total" t-as="t">
+                                <strong>LAPORAN REKAP PAJAK <span t-esc="t['account_name']"/></strong>
+                            </t>
+                        </h4>
+                        <h4 style="text-align: center;padding:3px;">
+                            <t t-foreach="total" t-as="t">
+                                <strong>Periode : <span t-esc="t['period_start']"/> s/d <span t-esc="t['period_end']"/></strong>
+                            </t>
+                        </h4>
+						<table class="table table-condensed" style="margin-top:40px;">
+                            <t t-foreach="total" t-as="t">
+                                <thead>
+        							<tr>
+                                        <th width="3%" style="padding:3px;border:1px solid black;text-align:center;font-size:10px;vertical-align:middle;background-color:#4ead2f;color:white;">
+                                            <strong>No.</strong>
+                                        </th>                                           
+        								<th width="7%" style="padding:3px;border:1px solid black;text-align:center;font-size:10px;vertical-align:middle;background-color:#4ead2f;color:white;">
+        									<strong>Tanggal Pembayaran</strong>
+        								</th>					
+                                        <th width="7%" style="padding:3px;border:1px solid black;text-align:center;font-size:10px;vertical-align:middle;background-color:#4ead2f;color:white;">
+                                            <strong>No. Invoice</strong>
+                                        </th>						
+        								<th width="5%" style="padding:3px;border:1px solid black;text-align:center;font-size:10px;vertical-align:middle;background-color:#4ead2f;color:white;">
+        									<strong>No. Bukti Potong</strong>
+        								</th>					
+                                        <th width="5%" style="padding:3px;border:1px solid black;text-align:center;font-size:10px;vertical-align:middle;background-color:#4ead2f;color:white;">
+                                            <strong>Objek Pajak</strong>
+                                        </th>                       						
+                                        <th width="8%" style="padding:3px;border:1px solid black;text-align:center;font-size:10px;vertical-align:middle;background-color:#4ead2f;color:white;">
+                                            <strong>Nama Wajib Pajak</strong>
+                                        </th>       
+                                        <th width="12%" style="padding:3px;border:1px solid black;text-align:center;font-size:10px;vertical-align:middle;background-color:#4ead2f;color:white;">
+                                            <strong>Alamat WP</strong>
+                                        </th>                       
+                                        <th width="5%" style="padding:3px;border:1px solid black;text-align:center;font-size:10px;vertical-align:middle;background-color:#4ead2f;color:white;">
+                                            <strong>No. NPWP WP</strong>
+                                        </th>            
+                                        <th width="9%" style="padding:3px;border:1px solid black;text-align:center;font-size:10px;vertical-align:middle;background-color:#4ead2f;color:white;">
+                                            <strong>Total Tagihan</strong>
+                                        </th>
+                                        <th width="9%" style="padding:3px;border:1px solid black;text-align:center;font-size:10px;vertical-align:middle;background-color:#4ead2f;color:white;">
+                                            <strong>DPP</strong>
+                                        </th>
+                                        <th width="4%" style="padding:3px;border:1px solid black;text-align:center;font-size:10px;vertical-align:middle;background-color:#4ead2f;color:white;">
+                                            <strong>Tarif</strong>
+                                        </th>                  								
+        								<th width="9%" style="padding:3px;border:1px solid black;text-align:center;font-size:11px;vertical-align:middle;
+                                            background-color:#4ead2f;color:white;">
+                                            <strong><span t-esc="t['account_name']"/> yang dipotong</strong>
+                                        </th>
+                                        <th width="9%" style="padding:3px;border:1px solid black;text-align:center;font-size:10px;vertical-align:middle;
+                                            background-color:#4ead2f;color:white;">
+                                            <strong>Jumlah <span t-esc="t['account_name']"/></strong>
+                                        </th>
+                                        <th width="9%" style="padding:3px;border:1px solid black;text-align:center;font-size:10px;vertical-align:middle;
+                                            background-color:#4ead2f;color:white;">
+                                            <strong>Keterangan</strong>
+                                        </th>
+                                        <!-- <th width="12%" style="padding:3px;border:1px solid black;text-align:center;font-size:11px;vertical-align:middle;
+                                            background-color:#4ead2f;color:white;">
+                                            <strong><span t-esc="t['account_name']"/> yang ditanggung PT. PWKWI</strong>
+                                        </th>                                     -->
+        							</tr>
+                                </thead>
+                            </t>
+                            <tbody class="invoice_tbody">
+                                <t t-set="i" t-value="1" />
+    							<t t-foreach="orders" t-as="a">
+    								<tr>
+                                        <td style="padding:3px;border:1px solid black;text-align:center;font-size:10px;">
+                                            <span t-esc="i"/> 
+                                            <t t-set="i" t-value="i+1"/> 
+                                        </td>
+    									<td style="padding:3px;border:1px solid black;text-align:center;font-size:10px;">
+    										<span t-esc="a['tanggal_pembayaran']"/>
+    									</td>											
+                                        <td style="padding:3px;border:1px solid black;text-align:center;font-size:10px;">
+                                            <span t-esc="a['invoice_no']"/>
+                                        </td>
+    									<td style="padding:3px;border:1px solid black;text-align:center;font-size:10px;">
+    										<span t-esc="a['bukti_potong']"/>
+    									</td>
+    									<td style="padding:3px;border:1px solid black;text-align:center;font-size:10px;">
+    										<span t-esc="a['jenis_penghasilan']"/>
+    									</td>
+    									<td style="padding:3px;border:1px solid black;text-align:left;font-size:10px;">
+    										<span t-esc="a['nama_wajib_pajak']"/>
+    									</td>						
+    									<td style="padding:3px;border:1px solid black;text-align:left;font-size:10px;">
+    										<span t-esc="a['alamat_wp']"/>
+    									</td>						
+    									<td style="padding:3px;border:1px solid black;text-align:center;font-size:10px;">
+    										<span t-esc="a['npwp_wp']"/>
+    									</td>
+                                        <td style="padding:3px;border:1px solid black;text-align:right;font-size:10px;">
+                                            <span t-esc="'{0:,.0f}'.format(a['invoice_amount'])"/>
+                                        </td>
+                                        <td style="padding:3px;border:1px solid black;text-align:right;font-size:10px;">
+                                            <span t-esc="'{0:,.0f}'.format(a['penghasilan_bruto'])"/>
+                                        </td>
+                                        <td style="padding:3px;border:1px solid black;text-align:right;font-size:10px;">
+                                            <span t-esc="a['tarif']"/>
+                                        </td>
+                                        <td style="padding:3px;border:1px solid black;text-align:right;font-size:10px;">
+                                            <span t-esc="'{0:,.0f}'.format(a['tax_dipotong'])"/>
+                                        </td>
+                                        <td style="padding:3px;border:1px solid black;text-align:right;font-size:10px;">
+                                            <span t-esc="'{0:,.0f}'.format(a['tax_amount'])"/>
+                                        </td>
+                                        <td style="padding:3px;border:1px solid black;text-align:right;font-size:10px;">
+                                            <span t-esc="a['keterangan']"/>
+                                        </td>
+                                                                                
+                                        <!-- <td style="padding:3px;border:1px solid black;text-align:right;font-size:10px;">
+                                            <span t-esc="'{0:,.0f}'.format(a['tax_ditanggung'])"/>
+                                        </td>                                         -->
+    								</tr>
+    							</t>                            
+    							<t t-foreach="total" t-as="t">
+    								<tr>
+    									<td colspan="8" style="padding:3px;border:1px solid black;text-align:right;font-size:10px;">
+    										<strong>Total</strong>
+    									</td>											
+    									<td style="padding:3px;border:1px solid black;text-align:right;font-size:10px;">
+    										<strong>
+    											<span t-esc="'{0:,.0f}'.format(t['total_invoice_amount'])"/>
+    										</strong>
+    									</td>
+    									<td style="padding:3px;border:1px solid black;text-align:right;font-size:10px;">
+    										<strong>
+                                                <span t-esc="'{0:,.0f}'.format(t['total_penghasilan_bruto'])"/>
+                                            </strong>
+    									</td>
+                                        <td style="padding:3px;border:1px solid black;text-align:right;font-size:10px;">
+                                            <strong>
+                                                <span t-esc="t['total_tarif']"/>
+                                            </strong>
+                                        </td>
+                                        <td style="padding:3px;border:1px solid black;text-align:right;font-size:10px;">
+                                            <strong>
+                                                <span t-esc="'{0:,.0f}'.format(t['total_tax_amount'])"/>
+                                            </strong>
+                                        </td>
+                                        <td style="padding:3px;border:1px solid black;text-align:right;font-size:10px;">
+                                            <strong>
+                                                <span t-esc="'{0:,.0f}'.format(t['total_tax_dipotong'])"/>
+                                            </strong>
+                                        </td>
+                                        <td style="padding:3px;border:1px solid black;text-align:right;font-size:10px;">
+                                            <strong>
+                                                <span t-esc="'{0:,.0f}'.format(t['total_tax_ditanggung'])"/>
+                                            </strong>
+                                        </td>
+    								</tr>
+    							</t>
+                            </tbody>
+						</table>	
+                        <table class="table table-condensed" style="margin-top:0px;margin-bottom:0px">
+                            <tr>
+                                <t t-foreach="total" t-as="t">
+                                    <td width="100%"
+                                        style="text-align:right;border:0px;padding:5px;font-size:11px;">
+                                        <span t-esc="t['office']"/>, <span t-esc="t['print_date']"/>
+                                    </td>
+                                </t>
+                            </tr>
+                        </table>	
+                        <!-- <table class="table table-condensed" style="margin-top:0px;">
+                            <tr height="160px">                  
+                                <td width="25%"
+                                    style="text-align:center;padding:5px;font-size:10px;border:1px solid black;">
+                                    PREPARE BY
+                                </td>
+                                <td width="25%"
+                                    style="text-align:center;padding:5px;font-size:10px;border:1px solid black;">
+                                    APPROVE BY
+                                </td>
+                                <td width="25%"
+                                    style="text-align:center;padding:5px;font-size:10px;border:1px solid black;">
+                                    CONTROL BY
+                                </td>
+                                <td width="25%"
+                                    style="text-align:center;padding:5px;font-size:10px;border:1px solid black;">
+                                    RECEIVE BY
+                                </td>
+                            </tr>                                       
+                        </table> -->
+					</div>			
+	    		</t>        	
+	    	</t>
+		</template>
+	</data>
+
+</odoo>

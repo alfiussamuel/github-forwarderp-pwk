@@ -1,0 +1,23 @@
+<odoo>
+    <data>              
+
+        <record id="view_company_form_ap" model="ir.ui.view">
+            <field name="name">Companies</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="before">
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <button name="sql_push_area" string="Push Area" type="object" 
+                        class="oe_highlight"/>
+                    <button name="sql_push_room" string="Push Room" type="object" 
+                        class="oe_highlight"/>
+                    <button name="sql_push_booking" string="Push Booking" type="object" 
+                        class="oe_highlight"/>
+                </field>                    
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,261 @@
+<odoo>
+	<data>
+
+		<record id="action_pwk_mutasi_veneer_basah" model="ir.actions.act_window">
+			<field name="name">Mutasi Veneer Basah</field>
+			<field name="res_model">pwk.mutasi.veneer.basah</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_nota_perusahaan" model="ir.actions.act_window">
+			<field name="name">Nota Perusahaan</field>
+			<field name="res_model">pwk.nota.perusahaan</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_payment_note" model="ir.actions.act_window">
+			<field name="name">Payment Notes</field>
+			<field name="res_model">pwk.payment.note</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_sale_mc" model="ir.actions.act_window">
+			<field name="name">Measurement Content</field>
+			<field name="res_model">sale.mc</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_sale_discrepancy" model="ir.actions.act_window">
+			<field name="name">Discrepancy</field>
+			<field name="res_model">sale.discrepancy</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_crates_conversion" model="ir.actions.act_window">
+			<field name="name">Crates Conversion</field>
+			<field name="res_model">pwk.crates.conversion</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_ship_via" model="ir.actions.act_window">
+			<field name="name">Shipping Transportation</field>
+			<field name="res_model">pwk.ship.via</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_port" model="ir.actions.act_window">
+			<field name="name">Port</field>
+			<field name="res_model">pwk.port</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_method_payment" model="ir.actions.act_window">
+			<field name="name">Method of Payment</field>
+			<field name="res_model">pwk.method.payment</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_destination" model="ir.actions.act_window">
+			<field name="name">Destination</field>
+			<field name="res_model">pwk.destination</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_consignee" model="ir.actions.act_window">
+			<field name="name">Consignee</field>
+			<field name="res_model">pwk.consignee</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_notify_party" model="ir.actions.act_window">
+			<field name="name">Notify Party</field>
+			<field name="res_model">pwk.notify.party</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_certificate" model="ir.actions.act_window">
+			<field name="name">Certificate</field>
+			<field name="res_model">pwk.certificate</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_jenis_kayu" model="ir.actions.act_window">
+			<field name="name">Jenis Kayu</field>
+			<field name="res_model">pwk.jenis.kayu</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_grade" model="ir.actions.act_window">
+			<field name="name">Grade</field>
+			<field name="res_model">pwk.grade</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_glue" model="ir.actions.act_window">
+			<field name="name">Glue</field>
+			<field name="res_model">pwk.glue</field>
+			<field name="view_mode">tree,form</field>			
+		</record>				
+
+		<menuitem id="menu_rotary"
+        	sequence="4"
+        	name="Rotary"
+        	web_icon="v12_pwk,static/icon_rotary.jpg"
+        	groups="base.group_user"/>
+
+        	<menuitem id="menu_rotary_transaksi"
+	        	sequence="0"
+	        	name="Transaksi"
+	        	groups="base.group_user"
+	        	parent="menu_rotary"/>
+
+	        	<menuitem id="menu_rotary_transaksi_purchase" 
+		            action="v12_pwk.purchase_form_action_rotary"
+		            parent="v12_pwk.menu_rotary_transaksi"
+		            groups="base.group_user"
+		            sequence="0"/>
+
+		    <menuitem id="menu_rotary_laporan"
+	        	sequence="1"
+	        	name="Laporan"
+	        	groups="base.group_user"
+	        	parent="menu_rotary"/>
+
+		<menuitem id="menu_exim"
+        	sequence="5"
+        	name="Export / Import"
+        	web_icon="v12_pwk,static/icon_exim.png"
+        	groups="base.group_user"/>
+
+        	<menuitem id="menu_exim_document"
+	        	sequence="0"
+	        	name="Document Exim"
+	        	groups="base.group_user"
+	        	parent="menu_exim"/>
+
+	        	<menuitem id="menu_exim_document_nota_perusahaan" 
+		            action="action_pwk_nota_perusahaan"
+		            parent="menu_exim_document"
+		            groups="base.group_user"
+		            sequence="0"/>
+
+		    <menuitem id="menu_exim_report"
+	        	sequence="1"
+	        	name="Laporan Exim"
+	        	groups="base.group_user"
+	        	parent="menu_exim"/>	
+
+	    <menuitem id="menu_production"
+        	sequence="6"
+        	name="Production"
+        	web_icon="v12_pwk,static/icon_production.png"
+        	groups="base.group_user"/>
+
+        	<menuitem id="menu_production_transaksi"
+	        	sequence="0"
+	        	name="Transaksi Mutasi"
+	        	groups="base.group_user"
+	        	parent="menu_production"/>
+
+	        	<menuitem id="menu_production_transaksi_veneer_basah" 
+		            action="v12_pwk.action_pwk_mutasi_veneer_basah"
+		            parent="v12_pwk.menu_production_transaksi"
+		            groups="base.group_user"
+		            sequence="0"/>        	
+
+		<menuitem id="menu_pwk_payment_note" 
+            action="action_pwk_payment_note"
+            parent="purchase.menu_procurement_management"
+            groups="purchase.group_purchase_user"
+            sequence="12"/>
+
+		<menuitem id="menu_sale_mc"
+        	sequence="1"
+        	name="Measurement Content"
+        	action="action_pwk_sale_mc"
+        	parent="sale.menu_sale_config"/>
+
+        <menuitem id="menu_sale_discrepancy"
+        	sequence="2"
+        	name="Discrepancy"
+        	action="action_pwk_sale_discrepancy"
+        	parent="sale.menu_sale_config"/>
+
+        <menuitem id="menu_account_product_configuration"
+        	sequence="1"
+        	name="Products"
+        	parent="account.menu_finance_configuration"/>
+
+	        <menuitem id="menu_account_product_configuration_jenis_kayu"
+	        	sequence="1"
+	        	name="Jenis Kayu"
+	        	action="action_pwk_jenis_kayu"
+	        	parent="menu_account_product_configuration"/>
+
+	        <menuitem id="menu_account_product_configuration_grade"
+	        	sequence="2"
+	        	name="Grade"
+	        	action="action_pwk_grade"
+	        	parent="menu_account_product_configuration"/>
+
+	        <menuitem id="menu_account_product_configuration_glue"
+	        	sequence="3"
+	        	name="Glue"
+	        	action="action_pwk_glue"
+	        	parent="menu_account_product_configuration"/>
+
+	    <menuitem id="menu_account_invoice_configuration"
+        	sequence="2"
+        	name="Invoices"
+        	parent="account.menu_finance_configuration"/>
+
+	        <menuitem id="menu_account_invoice_configuration_consignee"
+	        	sequence="1"
+	        	name="Consignee"
+	        	action="action_pwk_consignee"
+	        	parent="menu_account_invoice_configuration"/>
+
+	        <menuitem id="menu_account_invoice_configuration_notify_party"
+	        	sequence="2"
+	        	name="Notify Party"
+	        	action="action_pwk_notify_party"
+	        	parent="menu_account_invoice_configuration"/>
+
+	       	<menuitem id="menu_account_invoice_configuration_certificate"
+	        	sequence="3"
+	        	name="Certificate"
+	        	action="action_pwk_certificate"
+	        	parent="menu_account_invoice_configuration"/>
+
+	        <menuitem id="menu_account_invoice_configuration_port"
+	        	sequence="4"
+	        	name="Port"
+	        	action="action_pwk_port"
+	        	parent="menu_account_invoice_configuration"/>
+
+	        <menuitem id="menu_account_invoice_configuration_destination"
+	        	sequence="6"
+	        	name="Destination"
+	        	action="action_pwk_destination"
+	        	parent="menu_account_invoice_configuration"/>
+
+	        <menuitem id="menu_account_invoice_configuration_ship_via"
+	        	sequence="7"
+	        	name="Shipping Transportation"
+	        	action="action_pwk_ship_via"
+	        	parent="menu_account_invoice_configuration"/>
+
+	       	<menuitem id="menu_account_invoice_configuration_method_payment"
+	        	sequence="8"
+	        	name="Method of Payment"
+	        	action="action_pwk_method_payment"
+	        	parent="menu_account_invoice_configuration"/>
+
+	       	<menuitem id="menu_account_invoice_configuration_crates_conversion"
+	        	sequence="9"
+	        	name="Crates Conversion"
+	        	action="action_pwk_crates_conversion"
+	        	parent="menu_account_invoice_configuration"/>
+       
+    </data>
+</odoo>

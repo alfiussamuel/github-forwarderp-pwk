@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="external_layout_standard_payment_voucher">           
+            <div class="header">                   
+                <!-- <table class="table table-condensed">
+                    <tr>
+                        <td width="13%" rowspan="4" 
+                            style="text-align:left;vertical-align:middle;border:0px;padding:0px;">
+                            <img src='v12_pwk/static/logo_pwk.jpg' 
+                                style="text-align:left;max-width:75%;"/>
+                        </td>                           
+                        <td width="50%" 
+                            style="font-size:13px; border:0px;padding:1px;vertical-align:bottom;">
+                        </td>
+                        <td width="15%%" rowspan="4" 
+                            style="text-align:right;vertical-align:top;border:0px;padding:0px;">
+                        </td>
+                        <td width="23%" class="text-justify"
+                            style="font-size:11px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">   
+                        </td>
+                    </tr>                   
+                    <tr>
+                        <td width="100%" style="font-size:11px; border:0px;padding:1px;vertical-align:bottom;">
+                            <strong>PT. PRIMA WANA KREASI WOOD INDUSTRY</strong>
+                        </td>                       
+                    </tr>
+                    <tr>
+                        <td width="100%" style="font-size:11px; border:0px;padding:1px;vertical-align:bottom;">
+                            <strong>JL. RAYA TEMBUS PRINGSURAT, KRANGGAN KUPEN PRINGSURAT, TEMANGGUNG JAWA TENGAH</strong>
+                        </td>                       
+                    </tr>
+                    <tr>
+                        <td width="100%" style="font-size:11px; border:0px;padding:1px;vertical-align:bottom;">
+                            <strong>Phone. +62 293 319 4934  Fax. +62 293 4901 339</strong>
+                        </td>                       
+                    </tr>
+                </table> -->
+            </div>
+
+            <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">   
+                <t t-raw="0"/>
+            </div>
+
+            <div class="footer o_standard_footer">
+                <table class="table table-condensed" style="margin_bottom:0px;">
+                    <!-- <tr height="30px;"/>     -->           
+                    <tr>                            
+                        <td width="15%"
+                            style="text-align:right;border:0px;padding:5px;font-size:12px;">
+                            <strong>METHOD</strong>
+                        </td>
+                        <td width="2%"
+                            style="text-align:left;border:0px;padding:5px;font-size:12px;">
+                            <strong>:</strong>
+                        </td>                            
+                        <td width="15%"
+                            style="text-align:left;border:0px;padding:5px;font-size:12px;">
+                            <span t-field="o.method_type"/>
+                        </td>                            
+                        <td width="20%"
+                            style="text-align:right;border:0px;padding:5px;font-size:12px;">
+                            <strong>CHECK NO / REF NO</strong>
+                        </td>
+                        <td width="2%"
+                            style="text-align:left;border:0px;padding:5px;font-size:12px;">
+                            <strong>:</strong>
+                        </td>                            
+                        <td width="15%"
+                            style="text-align:left;border:0px;padding:5px;font-size:12px;">
+                            <span t-field="o.ref"/>
+                        </td>
+                        <td width="25%"
+                            style="text-align:right;border:0px;padding:5px;font-size:12px;">
+                            <span t-field="o.office_selection"/>, <span t-field="o.date" t-options='{"format": "dd-MMMM-yyyy"}'/>
+                        </td>
+                    </tr>                        
+                </table>   
+                <table class="table table-condensed" style="margin-top:0px;">
+                    <tr height="120px">                  
+                        <td width="25%"
+                            style="text-align:center;padding:5px;font-size:12px;border:1px solid black;">
+                            PREPARE BY
+                        </td>
+                        <td width="25%"
+                            style="text-align:center;padding:5px;font-size:12px;border:1px solid black;">
+                            APPROVE BY
+                        </td>
+                        <td width="25%"
+                            style="text-align:center;padding:5px;font-size:12px;border:1px solid black;">
+                            CONTROL BY
+                        </td>
+                        <td width="25%"
+                            style="text-align:center;padding:5px;font-size:12px;border:1px solid black;">
+                            RECEIVE BY
+                        </td>
+                    </tr>                              
+                </table>                
+                <!-- <div class="text-center">                   
+                    <div t-if="report_type == 'pdf'" class="text-muted">
+                        Page: <span class="page"/> / <span class="topage"/>
+                    </div>
+                </div> -->
+            </div>
+
+        </template>
+
+        <!-- Header for Packing List -->
+        <template id="external_layout_payment_voucher">
+            <t t-if="not o" t-set="o" t-value="doc"/>
+            <t t-if="not company">
+                <!-- Multicompany -->
+                <t t-if="company_id">
+                    <t t-set="company" t-value="company_id"/>
+                </t>
+                <t t-elif="o and 'company_id' in o">
+                    <t t-set="company" t-value="o.company_id.sudo()"/>
+                </t>
+                <t t-else="else">
+                    <t t-set="company" t-value="res_company"/>
+                </t>
+            </t>            
+            <t t-call="v12_pwk.external_layout_standard_payment_voucher"><t t-raw="0"/></t>
+        </template>
+
+        <!-- New Report Account Move -->
+        <record id="paperformat_payment_voucher_pwk" model="report.paperformat">
+            <field name="name">Payment Voucher</field>
+            <field name="default" eval="True"/>
+            <!-- <field name="format">A5</field> -->
+            <field name="page_height">210</field>
+            <field name="page_width">148</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">25</field>
+            <field name="margin_bottom">60</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">20</field>
+            <field name="dpi">80</field>
+        </record>
+
+        <report
+            id="payment_voucher"
+            model="account.move"
+            string="Payment Voucher"
+            report_type="qweb-pdf"
+            name="v12_pwk.report_payment_voucher"
+            file="v12_pwk.report_payment_voucher"            
+            print_report_name="'Payment Voucher - %s' % object.name"
+            groups="account.group_account_invoice"
+            paperformat="v12_pwk.paperformat_payment_voucher_pwk"
+        />
+
+        <template id="report_payment_voucher_document">
+            <t t-call="v12_pwk.external_layout_payment_voucher">
+                <t t-set="o" t-value="o.with_context(lang=lang)" />
+                <t t-set="address">
+                    <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
+                    <div t-if="o.partner_id.vat" class="mt16"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.partner_id.vat"/></div>
+                </t>                
+                <div class="page">
+                    <!-- <table class="table table-condensed">
+                        <tr>
+                            <td width="100%"
+                                style="text-align:left;border:0px;padding:5px;">
+                                <font color="green">
+                                    <strong>PRIMA WANA KREASI WOOD INDUSTRY</strong>
+                                </font>
+                            </td>                                                   
+                        </tr>                                       
+                    </table> -->
+                    <table class="table table-condensed" style="margin-top:40px;">
+                        <tr>
+                            <td width="30%"
+                                style="text-align:center;border:0px;padding:5px;">
+                            </td>
+                            <td width="40%"
+                                style="text-align:center;border:1px solid black;padding:5px;">
+                                <t t-if="o.type_bank == 'Receipt' and o.method_type == 'Cash'">
+                                    <strong>CASH RECEIPT</strong>
+                                </t>
+                                <t t-if="o.type_bank == 'Receipt' and o.method_type == 'Transfer'">
+                                    <strong>BANK RECEIPT</strong>
+                                </t>
+                                <t t-if="o.type_bank == 'Payment' and o.method_type == 'Cash'">
+                                    <strong>CASH VOUCHER</strong>
+                                </t>
+                                <t t-if="o.type_bank == 'Payment' and o.method_type == 'Transfer'">
+                                    <strong>BANK VOUCHER</strong>
+                                </t>
+                            </td>
+                            <td width="30%"
+                                style="text-align:center;border:0px;padding:5px;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="100%" colspan="3"
+                                style="text-align:center;border:0px;padding:5px;">
+                                <span t-field="o.name"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table table-condensed" style="margin-top:20px;">
+                        <tr>                            
+                            <td width="14%"
+                                style="text-align:left;border:0px;padding:5px;font-size:12px;">
+                                <strong>AMOUNT</strong>
+                            </td>
+                            <td width="2%"
+                                style="text-align:left;border:0px;padding:5px;font-size:12px;">
+                                <strong>:</strong>
+                            </td>
+                            <td width="20%"
+                                style="text-align:left;border:1px solid black;;padding:5px;font-size:12px;">
+                                <span t-field="o.amount_bank" 
+                                        t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                            </td>
+                            <td width="54%"
+                                style="text-align:left;border:1px solid black;padding:5px;font-size:12px;">
+                                <span t-field="o.amount_bank_terbilang"/>
+                            </td>
+                        </tr>      
+                        <tr>                            
+                            <td width="14%"
+                                style="text-align:left;border:0px;padding:5px;font-size:12px;">
+                                <t t-if="o.type_bank == 'Receipt' and o.method_type == 'Cash'">
+                                    <strong>FROM</strong>                                
+                                </t>
+                                <t t-if="o.type_bank == 'Payment' and o.method_type == 'Cash'">
+                                    <strong>TO</strong>                                
+                                </t>
+                                <t t-if="o.type_bank == 'Receipt' and o.method_type == 'Transfer'">
+                                    <strong>FROM</strong>                                
+                                </t>
+                                <t t-if="o.type_bank == 'Payment' and o.method_type == 'Transfer'">
+                                    <strong>FROM</strong>                                
+                                </t>
+                            </td>
+                            <td width="2%"
+                                style="text-align:left;border:0px;padding:5px;font-size:12px;">
+                                <strong>:</strong>
+                            </td>                            
+                            <td width="74%" colspan="2"
+                                style="text-align:left;border:0px;padding:5px;font-size:12px;">
+                                <t t-if="o.type_bank == 'Receipt' and o.method_type == 'Cash'">
+                                    <span t-field="o.source_destination.name"/>
+                                </t>
+                                <t t-if="o.type_bank == 'Payment' and o.method_type == 'Cash'">
+                                    <span t-field="o.source_destination.name"/>
+                                </t>
+                                <t t-if="o.type_bank == 'Receipt' and o.method_type == 'Transfer'">
+                                    <span t-field="o.from_bank.bank_id.name"/> <span t-field="o.from_bank.acc_number"/> a/n <span t-field="o.partner_id.name"/>
+                                </t>
+                                <t t-if="o.type_bank == 'Payment' and o.method_type == 'Transfer'">
+                                    <span t-field="o.bank_account_id.bank_id.name"/> <span t-field="o.bank_account_id.acc_number"/> a/n <span t-field="o.bank_account_id.acc_holder_name"/>
+                                </t>
+                            </td>
+                        </tr>                               
+                        <!-- <tr height="30px;"/>                -->
+                        <tr>                            
+                            <td width="14%"
+                                style="text-align:left;border:0px;padding:5px;font-size:12px;">
+                                <strong>DESCRIPTION</strong>
+                            </td>
+                            <td width="2%"
+                                style="text-align:left;border:0px;padding:5px;font-size:12px;">
+                                <strong>:</strong>
+                            </td>                            
+                            <td width="74%" colspan="2"
+                                style="text-align:left;border:0px;padding:5px;font-size:12px;">
+                                <span t-field="o.description_bank"/>
+                            </td>
+                        </tr>       
+                        <t t-if="o.method_type == 'Transfer'">
+                            <tr>                            
+                                <td width="14%"
+                                    style="text-align:left;border:0px;padding:5px;font-size:12px;">
+                                    <strong>TO</strong>                                
+                                </td>
+                                <td width="2%"
+                                    style="text-align:left;border:0px;padding:5px;font-size:12px;">
+                                    <strong>:</strong>
+                                </td>                            
+                                <td width="74%" colspan="2"
+                                    style="text-align:left;border:0px;padding:5px;font-size:12px;">
+                                    <t t-if="o.type_bank == 'Receipt'">
+                                        <span t-field="o.bank_account_id.bank_id.name"/> <span t-field="o.bank_account_id.acc_number"/> a/n <span t-field="o.bank_account_id.acc_holder_name"/>
+                                    </t>
+                                    <t t-if="o.type_bank == 'Payment'">
+                                        <span t-field="o.from_bank.bank_id.name"/> <span t-field="o.from_bank.acc_number"/> a/n <span t-field="o.from_bank.acc_holder_name"/>
+                                    </t>
+                                </td>
+                            </tr>    
+                        </t>     
+                    </table>                                                 
+                </div>
+            </t>
+        </template>        
+
+        <template id="report_payment_voucher">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">                    
+                    <t t-call="v12_pwk.report_payment_voucher_document"/>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</openerp>

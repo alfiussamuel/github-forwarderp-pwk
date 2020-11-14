@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+		<record id="receipt_report_wizard_view_forms" model="ir.ui.view">
+			<field name="name">receipt.report.wizard.view.form</field>
+			<field name="model">receipt.report.wizard</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>												
+            			<field name="office"/>
+            			<field name="date_from" required="1"/>
+            			<field name="date_to" required="1"/>
+            			<field name="partner_ids" widget="many2many_tags"
+            				options="{'no_create': True}" string="Customer"/>
+            			<field name="journal_ids" widget="many2many_tags"
+            				options="{'no_create': True}"/>
+					</group>
+                    <newline/>
+					<footer>
+						<button name="print_report" string="Print Report" type="object" class="btn-primary"/>
+						<button string="Cancel" class="btn-default" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_wizard_receipt_report" model="ir.actions.act_window">
+			<field name="name">Summary Receipt</field>
+			<field name="res_model">receipt.report.wizard</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="receipt_report_wizard_view_forms"/>
+			<field name="target">new</field>
+		</record>
+
+		<menuitem id="receipt_report_menu" name="Summary Receipt" 
+			action="action_wizard_receipt_report" 
+			parent="v12_pwk.accounting_report_pwk_menu" sequence="1"/>
+
+	</data>
+</odoo>
