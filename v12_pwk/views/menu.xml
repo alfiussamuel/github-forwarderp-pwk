@@ -1,6 +1,30 @@
 <odoo>
 	<data>
 
+		<record id="action_pwk_position" model="ir.actions.act_window">
+			<field name="name">Position</field>
+			<field name="res_model">pwk.position</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_strapping" model="ir.actions.act_window">
+			<field name="name">Strapping</field>
+			<field name="res_model">pwk.strapping</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_pallet" model="ir.actions.act_window">
+			<field name="name">Pallet</field>
+			<field name="res_model">pwk.pallet</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_rpb" model="ir.actions.act_window">
+			<field name="name">Rencana Produksi Bulanan</field>
+			<field name="res_model">pwk.rpb</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
 		<record id="action_pwk_mutasi_veneer_basah" model="ir.actions.act_window">
 			<field name="name">Mutasi Veneer Basah</field>
 			<field name="res_model">pwk.mutasi.veneer.basah</field>
@@ -151,9 +175,21 @@
         	web_icon="v12_pwk,static/icon_production.png"
         	groups="base.group_user"/>
 
-        	<menuitem id="menu_production_transaksi"
+        	<menuitem id="menu_production_rencana"
 	        	sequence="0"
-	        	name="Transaksi Mutasi"
+	        	name="Rencana Produksi"
+	        	groups="base.group_user"
+	        	parent="menu_production"/>
+
+	        	<menuitem id="menu_production_rencana_bulanan" 
+		            action="v12_pwk.action_pwk_rpb"
+		            parent="v12_pwk.menu_production_rencana"
+		            groups="base.group_user"
+		            sequence="0"/>        	
+
+        	<menuitem id="menu_production_transaksi"
+	        	sequence="1"
+	        	name="Laporan Tally"
 	        	groups="base.group_user"
 	        	parent="menu_production"/>
 
@@ -179,6 +215,24 @@
         	sequence="2"
         	name="Discrepancy"
         	action="action_pwk_sale_discrepancy"
+        	parent="sale.menu_sale_config"/>
+
+        <menuitem id="menu_pwk_position"
+        	sequence="3"
+        	name="Position"
+        	action="action_pwk_position"
+        	parent="sale.menu_sale_config"/>
+
+        <menuitem id="menu_pwk_pallet"
+        	sequence="4"
+        	name="Pallet"
+        	action="action_pwk_pallet"
+        	parent="sale.menu_sale_config"/>
+
+        <menuitem id="menu_pwk_strapping"
+        	sequence="4"
+        	name="Strapping"
+        	action="action_pwk_strapping"
         	parent="sale.menu_sale_config"/>
 
         <menuitem id="menu_account_product_configuration"

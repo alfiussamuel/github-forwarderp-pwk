@@ -1,6 +1,61 @@
 <odoo>
     <data>              
 
+        <record id="view_pwk_position_tree" model="ir.ui.view">
+            <field name="name">Position</field>
+            <field name="model">pwk.position</field>            
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_pwk_strapping_tree" model="ir.ui.view">
+            <field name="name">Strapping</field>
+            <field name="model">pwk.strapping</field>            
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+                    <field name="name"/>
+                    <field name="strapping_type"/>
+                    <field name="qty1"/>
+                    <field name="qty2"/>
+                    <field name="qty3"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_pwk_pallet_tree" model="ir.ui.view">
+            <field name="name">Pallet</field>
+            <field name="model">pwk.pallet</field>            
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_pwk_pallet_form" model="ir.ui.view">
+            <field name="name">Pallet</field>
+            <field name="model">pwk.pallet</field>            
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="document_id" widget="binary" 
+                                height="64" filename="document_id_name"/>
+                            <field name="document_id_name" invisible="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
         <record id="view_sale_mc_tree" model="ir.ui.view">
             <field name="name">Measurement Content</field>
             <field name="model">sale.mc</field>            
@@ -156,7 +211,8 @@
                 </xpath>
                 <field name="partner_shipping_id" position="after">
                     <field name="attn"/>
-                    <field name="formula_type"/>                    
+                    <field name="formula_type"/>
+                    <field name="job_order_status" readonly="1"/>
                 </field>
                 <field name="origin" position="after">
                     <field name="amount_total_terbilang"/>
@@ -180,6 +236,9 @@
                         <button name="action_quotation_send" type="object" 
                             string="Send PRO-FORMA Invoice" groups="sale.group_proforma_sales" class="btn-primary" context="{'proforma': True}" invisible="1"/>
                         <button name="print_sale_contract" type="object" string="Print Sales Contract" 
+                            class="oe_highlight" states="Sales Contract,sale"/>
+                        <button name="print_lampiran_sale_order" type="object" 
+                            string="Print Lampiran" 
                             class="oe_highlight" states="Sales Contract,sale"/>
                         <button name="print_sale_order" type="object" string="Print Sales Order" 
                             class="oe_highlight" states="sale"/>
@@ -268,7 +327,7 @@
                                         <field name="discount" class="oe_inline"/> %%
                                     </div>                                    
                                     <field name="sequence" invisible="1"/>
-                                </group>
+                                </group>                                
                                 <group attrs="{'invisible': [('display_type', '!=', False)]}">
                                     <field name="tax_id" widget="many2many_tags" options="{'no_create': True}" context="{'search_view_ref': 'account.account_tax_view_search'}" domain="[('type_tax_use','=','sale'),('company_id','=',parent.company_id)]"
                                         attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"/>
@@ -280,7 +339,29 @@
                                     <div>
                                         <field name="analytic_tag_ids" widget="many2many_tags" groups="analytic.group_analytic_tags" options="{'color_field': 'color'}"/>
                                     </div>
+                                    <field name="marking"/>
                                 </group>
+                            </group>
+                            <group>                                   
+                                <field name="thick"/>
+                                <field name="width"/>
+                                <field name="length"/>
+                                <field name="volume"/>
+                            </group>
+                            <group>
+                                <notebook>
+                                    <page string="Crates">
+                                        <field name="container_ids" nolabel="1">
+                                            <tree editable="bottom">
+                                                <field name="number"/>
+                                                <field name="qty"/>
+                                                <field name="position_id"/>
+                                                <field name="strapping_id"/>
+                                                <field name="pallet_id"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                </notebook>
                             </group>
                             <label for="name" string="Description" attrs="{'invisible': [('display_type', '!=', False)]}"/>
                             <label for="name" string="Section Name (eg. Products, Services)" attrs="{'invisible': [('display_type', '!=', 'line_section')]}"/>
@@ -298,7 +379,6 @@
                         -->
                         <tree
                             string="Sales Order Lines"
-                            editable="bottom"
                             decoration-info="(not display_type and invoice_status == 'to invoice')">
                             <control>
                                 <create string="Add a product"/>

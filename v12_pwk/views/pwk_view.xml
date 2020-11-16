@@ -1,6 +1,97 @@
 <odoo>
     <data>                      
 
+        <!-- Rencana Produksi Bulanan-->
+        <record id="pwk_rpb_tree" model="ir.ui.view">
+            <field name="name">Rencana Produksi Bulanan</field>
+            <field name="model">pwk.rpb</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                    <field name="target"/>
+                    <field name="actual"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pwk_rpb_form" model="ir.ui.view">
+            <field name="name">Rencana Produksi Bulanan</field>
+            <field name="model">pwk.rpb</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar" readonly="1"/>
+                        <button name="%(action_pwk_generate_rpb)d" type="action" 
+                            string="Select Order" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <label for="name" class="oe_edit_only" />
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                        <group>
+                            <label for="date_start"/>
+                            <div>
+                                <field name="date_start" class="oe_inline" required="1"/> - 
+                                <field name="date_end" class="oe_inline" required="1"/>
+                            </div>
+                            <field name="target"/>
+                            <field name="actual"/>
+                        </group>
+                        <group>
+                            <notebook>
+                                <page string="List Order">
+                                    <group>
+                                        <field name="line_ids" nolabel="1">
+                                            <tree>
+                                                <field name="partner_id"/>
+                                                <field name="sale_id"/>
+                                                <field name="product_id"/>
+                                                <field name="thick"/>
+                                                <field name="width"/>
+                                                <field name="length"/>
+                                                <field name="glue_id"/>
+                                                <field name="grade_id"/>
+                                                <field name="total_qty"/>
+                                                <field name="total_volume"/>
+                                                <field name="job_order_status"/>
+                                            </tree>
+                                            <form>
+                                                <group>
+                                                    <field name="partner_id"/>
+                                                    <field name="sale_id"/>
+                                                </group>
+                                                <group>
+                                                    <group>
+                                                        <field name="product_id"/>
+                                                        <field name="thick"/>
+                                                        <field name="width"/>
+                                                        <field name="length"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="glue_id"/>
+                                                        <field name="grade_id"/>
+                                                        <field name="total_qty"/>
+                                                        <field name="total_volume"/>
+                                                    </group>
+                                                </group>
+                                                <group>
+                                                    <field name="job_order_status"/>
+                                                </group>
+                                            </form>
+                                        </field>
+                                    </group>
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
         <!-- Mutasi Veneer Basah -->
         <record id="pwk_mutasi_veneer_basah_tree" model="ir.ui.view">
             <field name="name">Mutasi Veneer Basah</field>

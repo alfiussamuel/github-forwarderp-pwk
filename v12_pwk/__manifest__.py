@@ -12,8 +12,7 @@
                  'report_xlsx',
                 ],
     'data': [             
-             'security/ir_rule.xml',
-             'security/ir.model.access.csv',
+             'security/ir_rule.xml',             
              'views/pwk_view.xml',
              'views/sale_view.xml',
              'views/purchase_view.xml',
@@ -30,6 +29,7 @@
              'wizard/peb_report_wizard_view.xml',
              'wizard/stuffing_report_wizard_view.xml',
              'wizard/log_report_wizard_view.xml',
+             'wizard/generate_rpb_view.xml',
              'views/report_packing_list_local.xml',
              'views/report_packing_list_export.xml',
              'views/report_packing_list_waste.xml',
@@ -43,6 +43,7 @@
              'views/report_account_move.xml',
              'views/report_account_payment.xml',
              'views/report_sale_order.xml',
+             'views/report_lampiran_sale_order.xml',
              'views/report_sale_contract.xml',
              'views/report_purchase_order_jasa.xml',
              'views/report_purchase_order_bahan_baku.xml',
@@ -53,6 +54,7 @@
              'views/report_daftar_kayu_olahan.xml',
              'views/report_nota_pembelian_jenis_kayu.xml',
              'views/rekap_purchase_order_bahan_baku.xml',
+             'security/ir.model.access.csv',
              ],
              
     'installable': True,

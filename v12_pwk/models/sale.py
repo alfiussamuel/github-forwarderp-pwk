@@ -23,6 +23,38 @@ class SaleDiscrepancy(models.Model):
 
     name = fields.Char('Name')
 
+class PwkPosition(models.Model):    
+    _name = "pwk.position"
+
+    name = fields.Char('Name')
+
+class PwkPallet(models.Model):    
+    _name = "pwk.pallet"
+
+    name = fields.Char('Name')
+    document_id = fields.Binary(attachment=True)
+    document_id_name = fields.Char("Document Name")
+
+class PwkStrapping(models.Model):    
+    _name = "pwk.strapping"
+
+    name = fields.Char('Name')
+    strapping_type = fields.Char('Type')
+    qty1 = fields.Char('Quantity 1')
+    qty2 = fields.Char('Quantity 2')
+    qty3 = fields.Char('Quantity 3')
+
+class SaleOrderLineContainer(models.Model):    
+    _name = "sale.order.line.container"
+    _order = 'number asc'
+
+    reference = fields.Many2one('sale.order.line', 'Reference')
+    position_id = fields.Many2one('pwk.position', 'Position')
+    pallet_id = fields.Many2one('pwk.pallet', 'Pallet')
+    strapping_id = fields.Many2one('pwk.strapping', 'Strapping')    
+    qty = fields.Float('Quantity')
+    number = fields.Char('Number')
+
 class SaleOrderLine(models.Model):    
     _inherit = "sale.order.line"
 
@@ -51,6 +83,7 @@ class SaleOrderLine(models.Model):
     width = fields.Float(compute="_get_size", string='Width', digits=dp.get_precision('TwoDecimal'))
     length = fields.Float(compute="_get_size", string='Length', digits=dp.get_precision('TwoDecimal'))
     volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))    
+    container_ids = fields.One2many('sale.order.line.container', 'reference', 'Container')
 
     @api.depends('product_id')
     def _get_size(self):
@@ -113,6 +146,7 @@ class SaleOrder(models.Model):
     total_qty = fields.Float(compute="_get_total", string="Total Qty", digits=dp.get_precision('TwoDecimal'))
     formula_type = fields.Selection([('Volume','Volume'),('PCS','PCS')], string="Price Formula", default="PCS")
     number_contract = fields.Char(compute="_get_contract_no", string="Sales Contract No.")
+    job_order_status = fields.Char(string='Job Order Status', default='Not Ready')
     
     def get_sequence(self, name=False, obj=False, pref=False, context=None):
         sequence_id = self.env['ir.sequence'].search([
@@ -219,6 +253,10 @@ class SaleOrder(models.Model):
     @api.multi
     def print_sale_contract(self):                
         return self.env.ref('v12_pwk.sale_contract').report_action(self)
+
+    @api.multi
+    def print_lampiran_sale_order(self):                
+        return self.env.ref('v12_pwk.lampiran_sale_order').report_action(self)
 
     @api.multi
     def print_sale_order(self):                
