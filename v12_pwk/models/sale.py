@@ -81,7 +81,8 @@ class SaleOrderLineContainer(models.Model):
     position_id = fields.Many2one('pwk.position', 'Position')
     pallet_id = fields.Many2one('pwk.pallet', 'Pallet')
     strapping_id = fields.Many2one('pwk.strapping', 'Strapping')    
-    qty = fields.Float('Quantity')
+    total_crate = fields.Float('Total Crates')
+    qty = fields.Float('Quantity / Crate')
     number = fields.Char('Number')
 
 class SaleOrderLine(models.Model):    
