@@ -24,21 +24,21 @@ class PwkMutasiVeneerBasahStacking(models.Model):
     stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
     stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal')
     stock_masuk_supplier_pcs = fields.Float('Stok Masuk Supplier')
-    acc_stock_masuk_supplier_pcs = fields.Float('Acc Stok Masuk Supplier')
+    acc_stock_masuk_supplier_pcs = fields.Float(compute="_get_acc", string='Akumulasi')
     stock_masuk_supplier_vol = fields.Float(compute="_get_volume", string='Stok Masuk Supplier')
     acc_stock_masuk_supplier_vol = fields.Float(compute="_get_volume", string='Acc Stok Masuk Supplier')
-    stock_masuk_rotary_pcs = fields.Float('Acc Stok Masuk Rotary')
-    acc_stock_masuk_rotary_pcs = fields.Float('/Stok Masuk Rotary')
-    stock_masuk_rotary_vol = fields.Float(compute="_get_volume", string='Acc Stok Masuk Rotary')
-    acc_stock_masuk_rotary_vol = fields.Float(compute="_get_volume", string='Stok Masuk Rotary')
+    stock_masuk_rotary_pcs = fields.Float('Stok Masuk Rotary')
+    acc_stock_masuk_rotary_pcs = fields.Float(compute="_get_acc", string='Akumulasi')
+    stock_masuk_rotary_vol = fields.Float(compute="_get_volume", string='Stok Masuk Rotary')
+    acc_stock_masuk_rotary_vol = fields.Float(compute="_get_volume", string='Akumulasi')
     stock_keluar_stacking_pcs = fields.Float('Stok Keluar Stacking')
-    acc_stock_keluar_stacking_pcs = fields.Float('Acc Stok Keluar Stacking')
+    acc_stock_keluar_stacking_pcs = fields.Float(compute="_get_acc", string='Akumulasi')
     stock_keluar_stacking_vol = fields.Float(compute="_get_volume", string='Stok Keluar Stacking')
-    acc_stock_keluar_stacking_vol = fields.Float(compute="_get_volume", string='Acc Stok Keluar Stacking')
+    acc_stock_keluar_stacking_vol = fields.Float(compute="_get_volume", string='Akumulasi')
     stock_keluar_roler_pcs = fields.Float('Stok Keluar Roler')
-    acc_stock_keluar_roler_pcs = fields.Float('Acc Stok Keluar Roler')
+    acc_stock_keluar_roler_pcs = fields.Float(compute="_get_acc", string='Akumulasi')
     stock_keluar_roler_vol = fields.Float(compute="_get_volume", string='Stok Keluar Roler')
-    acc_stock_keluar_roler_vol = fields.Float(compute="_get_volume", string='Acc Stok Keluar Roler')
+    acc_stock_keluar_roler_vol = fields.Float(compute="_get_volume", string='Akumulasi')
     stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
     stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir')
 
@@ -55,14 +55,14 @@ class PwkMutasiVeneerBasahStacking(models.Model):
     def _get_volume(self):
         for res in self:            
             res.stock_awal_vol = res.stock_awal_pcs
-            res.stock_masuk_rotary_vol = res.stock_masuk_rotary_pcs * res.thick * res.width * res.length / 1000000000
-            res.stock_masuk_supplier_vol = res.stock_masuk_supplier_pcs * res.thick * res.width * res.length / 1000000000
-            res.stock_keluar_roler_vol = res.stock_keluar_roler_pcs * res.thick * res.width * res.length / 1000000000
-            res.stock_keluar_stacking_vol = res.stock_keluar_stacking_pcs * res.thick * res.width * res.length / 1000000000
-            res.acc_stock_masuk_rotary_vol = res.acc_stock_masuk_rotary_pcs * res.thick * res.width * res.length / 1000000000
-            res.acc_stock_masuk_supplier_vol = res.acc_stock_masuk_supplier_pcs * res.thick * res.width * res.length / 1000000000
-            res.acc_stock_keluar_roler_vol = res.acc_stock_keluar_roler_pcs * res.thick * res.width * res.length / 1000000000
-            res.acc_stock_keluar_stacking_vol = res.acc_stock_keluar_stacking_pcs * res.thick * res.width * res.length / 1000000000
+            res.stock_masuk_rotary_vol = res.stock_masuk_rotary_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.stock_masuk_supplier_vol = res.stock_masuk_supplier_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.stock_keluar_roler_vol = res.stock_keluar_roler_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.stock_keluar_stacking_vol = res.stock_keluar_stacking_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.acc_stock_masuk_rotary_vol = res.acc_stock_masuk_rotary_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.acc_stock_masuk_supplier_vol = res.acc_stock_masuk_supplier_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.acc_stock_keluar_roler_vol = res.acc_stock_keluar_roler_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.acc_stock_keluar_stacking_vol = res.acc_stock_keluar_stacking_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.stock_akhir_vol = res.stock_akhir_pcs
 
     @api.depends('product_id')
@@ -93,6 +93,12 @@ class PwkMutasiVeneerBasahStacking(models.Model):
                 ('reference.date','=',res.reference.date - timedelta(1)),
                 ('product_id','=',res.product_id.id)
                 ])
+
+            if not source_ids:
+                source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
+                    ('reference.date','<',res.reference.date),
+                    ('product_id','=',res.product_id.id)
+                    ])
 
             if source_ids:
                 acc_stock_masuk_supplier_pcs = source_ids[0].acc_stock_masuk_supplier_pcs

@@ -46,12 +46,12 @@ class PwkMutasiVeneerRolerLine(models.Model):
     @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
     def _get_volume(self):
         for res in self:            
-            res.stock_awal_vol = res.stock_awal_pcs * res.thick * res.width * res.length / 1000000000
-            res.stock_masuk_vol = res.stock_masuk_pcs * res.thick * res.width * res.length / 1000000000
-            res.stock_keluar_vol = res.stock_keluar_pcs * res.thick * res.width * res.length / 1000000000
-            res.acc_stock_masuk_vol = res.acc_stock_masuk_pcs * res.thick * res.width * res.length / 1000000000
-            res.acc_stock_keluar_vol = res.acc_stock_keluar_pcs * res.thick * res.width * res.length / 1000000000
-            res.stock_akhir_vol = res.stock_akhir_pcs * res.thick * res.width * res.length / 1000000000
+            res.stock_awal_vol = res.stock_awal_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.stock_masuk_vol = res.stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.stock_keluar_vol = res.stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.acc_stock_masuk_vol = res.acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.acc_stock_keluar_vol = res.acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.stock_akhir_vol = res.stock_akhir_pcs * res.tebal * res.lebar * res.panjang / 1000000000
 
     @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
     def _get_acc(self):
@@ -60,6 +60,12 @@ class PwkMutasiVeneerRolerLine(models.Model):
                 ('reference.date','=',res.reference.date - timedelta(1)),
                 ('product_id','=',res.product_id.id)
                 ])
+
+            if not source_ids:
+                source_ids = self.env['pwk.mutasi.veneer.roler.line'].search([
+                    ('reference.date','<',res.reference.date),
+                    ('product_id','=',res.product_id.id)
+                    ])
 
             if source_ids:
                 acc_stock_masuk_pcs = source_ids[0].acc_stock_masuk_pcs
