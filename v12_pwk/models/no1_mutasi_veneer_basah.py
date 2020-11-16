@@ -145,7 +145,7 @@ class PwkMutasiVeneerBasahStacking(models.Model):
     acc_stock_keluar_roler_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Roler')
     acc_stock_keluar_roler_vol = fields.Float(compute="_get_volume", string='Stok Keluar Roler', digits=dp.get_precision('FourDecimal'))
     stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir (Pcs)')
-    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
+    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir (M3)', digits=dp.get_precision('FourDecimal'))
 
     @api.depends('product_id')
     def _get_product_attribute(self):
