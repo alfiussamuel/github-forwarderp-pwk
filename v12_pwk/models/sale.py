@@ -68,6 +68,11 @@ class PwkStrapping(models.Model):
     qty2 = fields.Char('Quantity 2')
     qty3 = fields.Char('Quantity 3')
 
+class PwkPacking(models.Model):    
+    _name = "pwk.packing"
+
+    name = fields.Char('Name')
+
 class SaleOrderLineContainer(models.Model):    
     _name = "sale.order.line.container"
     _order = 'number asc'
@@ -101,7 +106,8 @@ class SaleOrderLine(models.Model):
                 'price_subtotal': taxes['total_excluded'],
             })
 
-    marking = fields.Char('Marking')
+    marking = fields.Char('No. Marking')
+    marking_id = fields.Many2one('pwk.marking', 'Marking Image')
     actual_size = fields.Float('Actual Size')
     thick = fields.Float(compute="_get_size", string='Thick', digits=dp.get_precision('OneDecimal'))
     width = fields.Float(compute="_get_size", string='Width', digits=dp.get_precision('TwoDecimal'))
@@ -175,6 +181,7 @@ class SaleOrder(models.Model):
     date_order = fields.Date(string='Order Date', required=True, readonly=True, index=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, copy=False, default=fields.Date.today())
     office_selection = fields.Selection([('Temanggung','Temanggung'),('Jakarta','Jakarta')], string="Lokasi", default="Temanggung", track_visibility="always")
     certificate_id = fields.Many2one('pwk.certificate', 'Certificate')
+    packing_id = fields.Many2one('pwk.packing', 'Packing')
     is_logo = fields.Boolean('Show Legal Logo', default=True)
     contract_type = fields.Selection([('Lokal','Lokal'),('Export','Export'),('Waste Rotary','Waste Rotary'),('Waste Pabrik PPN','Waste Pabrik PPN'),('Waste Pabrik Non-PPN','Waste Pabrik Non-PPN')], string="Contract Type", default="Lokal")
     amount_total_terbilang = fields.Char(compute="_get_terbilang", string='Amount Total Terbilang')

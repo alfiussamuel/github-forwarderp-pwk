@@ -41,3 +41,5 @@ pwk_marking_employee,pwk_marking_employee,v12_pwk.model_pwk_marking,base.group_u
 sale_order_stempel_employee,sale_order_stempel_employee,v12_pwk.model_sale_order_stempel,base.group_user,1,1,1,1
 sale_order_sticker_employee,sale_order_sticker_employee,v12_pwk.model_sale_order_sticker,base.group_user,1,1,1,1
 sale_order_marking_employee,sale_order_marking_employee,v12_pwk.model_sale_order_marking,base.group_user,1,1,1,1
+
+pwk_packing_employee,pwk_packing_employee,v12_pwk.model_pwk_packing,base.group_user,1,1,1,1

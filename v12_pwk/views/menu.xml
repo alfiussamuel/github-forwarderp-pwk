@@ -1,6 +1,12 @@
 <odoo>
 	<data>
 
+		<record id="action_pwk_packing" model="ir.actions.act_window">
+			<field name="name">Packing</field>
+			<field name="res_model">pwk.packing</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
 		<record id="action_pwk_stempel" model="ir.actions.act_window">
 			<field name="name">Stempel</field>
 			<field name="res_model">pwk.stempel</field>
@@ -281,6 +287,12 @@
         	sequence="4"
         	name="Strapping"
         	action="action_pwk_strapping"
+        	parent="sale.menu_sale_config"/>
+
+        <menuitem id="menu_pwk_packing"
+        	sequence="4"
+        	name="Packing"
+        	action="action_pwk_packing"
         	parent="sale.menu_sale_config"/>
 
         <menuitem id="menu_account_product_configuration"

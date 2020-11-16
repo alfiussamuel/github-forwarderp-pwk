@@ -1,6 +1,18 @@
 <odoo>
     <data>                      
 
+        <!-- Packing -->
+        <record id="view_pwk_packing_tree" model="ir.ui.view">
+            <field name="name">Packing</field>
+            <field name="model">pwk.packing</field>            
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name" required="1"/>
+                </tree>
+            </field>
+        </record>
+
         <!-- Stempel -->
         <record id="view_pwk_stempel_tree" model="ir.ui.view">
             <field name="name">Stempel</field>
@@ -315,6 +327,8 @@
                     <field name="attn"/>
                     <field name="formula_type"/>
                     <field name="job_order_status" readonly="1"/>
+                    <field name="packing_id"
+                        options="{'no_create': True}"/>
                 </field>
                 <field name="origin" position="after">
                     <field name="amount_total_terbilang"/>
@@ -483,6 +497,8 @@
                                     <field name="sticker_id"
                                         options='{"no_open": True}'/>
                                     <field name="marking"/>
+                                    <field name="marking_id"
+                                        options="{'no_create': True}"/>
                                 </group>
                             </group>
                             <group>
