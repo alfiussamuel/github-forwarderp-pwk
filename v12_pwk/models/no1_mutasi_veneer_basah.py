@@ -135,16 +135,14 @@ class PwkMutasiVeneerBasah(models.Model):
         sequence_id = self.env['ir.sequence'].search([
             ('name', '=', name),
             ('code', '=', obj),
-            ('prefix', '=', 'PWKWI.'),
-            ('suffix', '=', '.MVB.%(month)s.%(year)s')
+            ('suffix', '=', '.MVBS.%(month)s.%(year)s')
         ])
         if not sequence_id :
             sequence_id = self.env['ir.sequence'].sudo().create({
                 'name': name,
                 'code': obj,
                 'implementation': 'no_gap',
-                'prefix': 'PWKWI.',
-                'suffix': '.MVB.%(month)s.%(year)s',
+                'suffix': '.MVBS.%(month)s.%(year)s',
                 'padding': 3
             })
         return sequence_id.next_by_id()
