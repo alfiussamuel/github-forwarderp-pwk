@@ -86,7 +86,7 @@ class PwkMutasiVeneerBasahStacking(models.Model):
 
                 res.stock_awal_pcs = stock_awal_pcs
 
-    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
+    @api.depends('stock_awal_pcs','stock_masuk_rotary_pcs','stock_masuk_supplier_pcs','stock_keluar_roler_pcs','stock_keluar_stacking_pcs')
     def _get_acc(self):
         for res in self:
             source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
