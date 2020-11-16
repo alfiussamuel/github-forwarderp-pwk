@@ -62,20 +62,31 @@
                                             </group>                                        
                                             <group>
                                                 <group string="Perhitungan Stock (Pcs)">
-                                                    <field name="stock_awal_pcs"/>
-                                                    <field name="stock_masuk_supplier_pcs"/>        
-                                                    <field name="stock_masuk_rotary_pcs"/>        
-                                                    <field name="stock_keluar_stacking_pcs"/>
-                                                    <field name="stock_keluar_roler_pcs"/>
-                                                    <field name="stock_akhir_pcs"/>
+                                                    <field name="stock_awal_pcs" string="Stock Awal"/>
+                                                    <field name="stock_masuk_supplier_pcs" 
+                                                        string="Stock Masuk Supplier"/>
+                                                    <field name="stock_masuk_rotary_pcs"
+                                                        string="Stock Masuk Rotary"/>
+                                                    <field name="stock_keluar_stacking_pcs"
+                                                        string="Stock Keluar Stacking"/>
+                                                    <field name="stock_keluar_roler_pcs"
+                                                        string="Stock Keluar Roler"/>
+                                                    <field name="stock_akhir_pcs"
+                                                        string="Stock Akhir"/>
                                                 </group>
                                                 <group string="Perhitungan Stock (Vol)">
-                                                    <field name="stock_awal_vol"/>
-                                                    <field name="stock_masuk_supplier_vol"/>
-                                                    <field name="stock_masuk_rotary_vol"/>
-                                                    <field name="stock_keluar_stacking_vol"/>
-                                                    <field name="stock_keluar_roler_vol"/>
-                                                    <field name="stock_akhir_vol"/>
+                                                    <field name="stock_awal_vol"
+                                                        string="Stock Awal"/>
+                                                    <field name="stock_masuk_supplier_vol"
+                                                        string="Stock Masuk Supplier"/>
+                                                    <field name="stock_masuk_rotary_vol"
+                                                        string="Stock Masuk Rotary"/>
+                                                    <field name="stock_keluar_stacking_vol"
+                                                        string="Stock Keluar Stacking"/>
+                                                    <field name="stock_keluar_roler_vol"
+                                                        string="Stock Keluar Roler"/>
+                                                    <field name="stock_akhir_vol"
+                                                        string="Stock Akhir"/>
                                                 </group>
                                             </group>
                                             <group>
@@ -122,16 +133,24 @@
                                             </group>                                        
                                             <group>
                                                 <group string="Perhitungan Stock (Pcs)">
-                                                    <field name="stock_awal_pcs"/>
-                                                    <field name="stock_masuk_pcs"/>        
-                                                    <field name="stock_keluar_pcs"/>
-                                                    <field name="stock_akhir_pcs"/>
+                                                    <field name="stock_awal_pcs"
+                                                        string="Stock Awal"/>
+                                                    <field name="stock_masuk_pcs"
+                                                        string="Stock Masuk"/>
+                                                    <field name="stock_keluar_pcs"
+                                                        string="Stock Keluar"/>
+                                                    <field name="stock_akhir_pcs"
+                                                        string="Stock Akhir"/>
                                                 </group>
                                                 <group string="Perhitungan Stock (Vol)">
-                                                    <field name="stock_awal_vol"/>
-                                                    <field name="stock_masuk_vol"/>
-                                                    <field name="stock_keluar_vol"/>
-                                                    <field name="stock_akhir_vol"/>
+                                                    <field name="stock_awal_vol"
+                                                        string="Stock Awal"/>
+                                                    <field name="stock_masuk_vol"
+                                                        string="Stock Masuk"/>
+                                                    <field name="stock_keluar_vol"
+                                                        string="Stock Keluar"/>
+                                                    <field name="stock_akhir_vol"
+                                                        string="Stock Akhir"/>
                                                 </group>
                                             </group>
                                             <group>
@@ -149,7 +168,12 @@
                                 </group>
                             </page>
                         </notebook>
-                    </group>                    
+                    </group>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
                 </form>
             </field>
         </record>
@@ -213,16 +237,24 @@
                                                 </group>                                        
                                                 <group>
                                                     <group string="Perhitungan Stock (Pcs)">
-                                                        <field name="stock_awal_pcs"/>                  
-                                                        <field name="stock_masuk_pcs"/> 
-                                                        <field name="stock_keluar_pcs"/>
-                                                        <field name="stock_akhir_pcs"/>
+                                                        <field name="stock_awal_pcs"
+                                                            string="Stock Awal"/>                  
+                                                        <field name="stock_masuk_pcs"
+                                                            string="Stock Masuk"/> 
+                                                        <field name="stock_keluar_pcs"
+                                                            string="Stock Keluar"/>
+                                                        <field name="stock_akhir_pcs"
+                                                            string="Stock Akhir"/>
                                                     </group>
                                                     <group string="Perhitungan Stock (Vol)">
-                                                        <field name="stock_awal_vol"/>
-                                                        <field name="stock_masuk_vol"/>
-                                                        <field name="stock_keluar_vol"/>
-                                                        <field name="stock_akhir_vol"/>
+                                                        <field name="stock_awal_vol"
+                                                            string="Stock Awal"/>
+                                                        <field name="stock_masuk_vol"
+                                                            string="Stock Masuk"/>
+                                                        <field name="stock_keluar_vol"
+                                                            string="Stock Keluar"/>
+                                                        <field name="stock_akhir_vol"
+                                                            string="Stock Akhir"/>
                                                     </group>
                                                 </group>
                                                 <group>
@@ -265,16 +297,24 @@
                                                 </group>                                        
                                                 <group>
                                                     <group string="Perhitungan Stock (Pcs)">
-                                                        <field name="stock_awal_pcs"/>                  
-                                                        <field name="stock_masuk_pcs"/> 
-                                                        <field name="stock_keluar_pcs"/>
-                                                        <field name="stock_akhir_pcs"/>
+                                                        <field name="stock_awal_pcs"
+                                                            string="Stock Awal"/>
+                                                        <field name="stock_masuk_pcs"
+                                                            string="Stock Masuk"/>
+                                                        <field name="stock_keluar_pcs"
+                                                            string="Stock Keluar"/>
+                                                        <field name="stock_akhir_pcs"
+                                                            string="Stock Akhir"/>
                                                     </group>
                                                     <group string="Perhitungan Stock (Vol)">
-                                                        <field name="stock_awal_vol"/>
-                                                        <field name="stock_masuk_vol"/>
-                                                        <field name="stock_keluar_vol"/>
-                                                        <field name="stock_akhir_vol"/>
+                                                        <field name="stock_awal_vol"
+                                                            string="Stock Awal"/>
+                                                        <field name="stock_masuk_vol"
+                                                            string="Stock Masuk"/>
+                                                        <field name="stock_keluar_vol"
+                                                            string="Stock Keluar"/>
+                                                        <field name="stock_akhir_vol"
+                                                            string="Stock Akhir"/>
                                                     </group>
                                                 </group>
                                                 <group>

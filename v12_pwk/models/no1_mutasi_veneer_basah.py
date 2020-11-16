@@ -13,7 +13,7 @@ import re
 from num2words import num2words
 
 class PwkMutasiVeneerBasahKd(models.Model):    
-    _name = "pwk.mutasi.veneer.basah.kd"
+    _name = "pwk.mutasi.veneer.basah.kd"    
 
     reference = fields.Many2one('pwk.mutasi.veneer.basah', 'Reference')
     product_id = fields.Many2one('product.product', 'Product')
@@ -228,13 +228,14 @@ class PwkMutasiVeneerBasahStacking(models.Model):
 
 class PwkMutasiVeneerBasah(models.Model):    
     _name = "pwk.mutasi.veneer.basah"
+    _inherit = ["mail.thread", "mail.activity.mixin"]
 
-    name = fields.Char('No. Dokumen')
-    date = fields.Date('Tanggal', default=fields.Date.today())
-    user_id = fields.Many2one('res.users', string="Dibuat Oleh", default=lambda self: self.env.user)
-    state = fields.Selection([('Draft','Draft'),('Approved','Approved')], string="Status")
-    stacking_ids = fields.One2many('pwk.mutasi.veneer.basah.stacking', 'reference', string="Stacking")
-    kd_ids = fields.One2many('pwk.mutasi.veneer.basah.kd', 'reference', string="In KD")
+    name = fields.Char('No. Dokumen', track_visibility="always")
+    date = fields.Date('Tanggal', default=fields.Date.today(), track_visibility="always")
+    user_id = fields.Many2one('res.users', string="Dibuat Oleh", default=lambda self: self.env.user, track_visibility="always")
+    state = fields.Selection([('Draft','Draft'),('Approved','Approved')], string="Status", track_visibility="always")
+    stacking_ids = fields.One2many('pwk.mutasi.veneer.basah.stacking', 'reference', string="Stacking", track_visibility="always")
+    kd_ids = fields.One2many('pwk.mutasi.veneer.basah.kd', 'reference', string="In KD", track_visibility="always")
 
     def get_sequence(self, name=False, obj=False, context=None):
         sequence_id = self.env['ir.sequence'].search([
