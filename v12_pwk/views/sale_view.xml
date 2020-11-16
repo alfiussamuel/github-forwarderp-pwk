@@ -7,8 +7,9 @@
             <field name="model">pwk.stempel</field>            
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree editable="top">
+                <tree>
                     <field name="name"/>
+                    <field name="partner_id"/>
                 </tree>
             </field>
         </record>
@@ -38,8 +39,9 @@
             <field name="model">pwk.sticker</field>            
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree editable="top">
+                <tree>
                     <field name="name"/>
+                    <field name="partner_id"/>
                 </tree>
             </field>
         </record>
@@ -69,8 +71,9 @@
             <field name="model">pwk.marking</field>            
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree editable="top">
+                <tree>
                     <field name="name"/>
+                    <field name="partner_id"/>
                 </tree>
             </field>
         </record>
