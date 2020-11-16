@@ -23,7 +23,7 @@ class PwkMutasiVeneerRolerLine(models.Model):
     grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
     stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
     stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal')
-    stock_masuk_pcs = fields.Float('Stok Masuk Basah')
+    stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk Basah')
     stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Basah')
     stock_keluar_pcs = fields.Float('Stok Keluar Kering')
     stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Kering')
@@ -57,14 +57,23 @@ class PwkMutasiVeneerRolerLine(models.Model):
                 ])
                         
             if source_ids:
-                print ("Masukk aa")
                 stock_awal_pcs = source_ids[0].stock_akhir_pcs
-            else:
-                print ("Masukk bb")
-                stock_awal_pcs = 0
 
-            print ("Masukk cc ", stock_awal_pcs)
             res.stock_awal_pcs = stock_awal_pcs
+
+    @api.depends('product_id')
+    def _get_stock_masuk(self):
+        for res in self:
+            stock_masuk_pcs = 0
+            source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
+                ('reference.date','=',res.reference.date - timedelta(1)),
+                ('product_id','=',res.product_id.id)
+                ])
+                        
+            if source_ids:
+                stock_masuk_pcs = source_ids[0].stock_keluar_roler_pcs
+
+            res.stock_masuk_pcs = stock_masuk_pcs
 
     @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
     def _get_stock_akhir(self):
@@ -117,8 +126,6 @@ class PwkMutasiVeneerRolerReLine(models.Model):
             
             if source_ids:
                 stock_awal_pcs = source_ids[0].stock_akhir_pcs
-            else:
-                stock_awal_pcs = 0
 
             res.stock_awal_pcs = stock_awal_pcs
 
@@ -233,8 +240,6 @@ class PwkMutasiVeneerBasahStacking(models.Model):
                 
                 if source_ids:
                     stock_awal_pcs = source_ids[0].stock_akhir_pcs
-                else:
-                    stock_awal_pcs = 0
 
                 res.stock_awal_pcs = stock_awal_pcs
 

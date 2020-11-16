@@ -21,6 +21,7 @@
                 <form>
                     <header>
                         <field name="state" widget="statusbar" readonly="1"/>
+                        <button name="button_approve" type="object" string="Approve" states="Draft"/>
                     </header>
                     <sheet>
                         <label for="name" class="oe_edit_only" />
@@ -106,6 +107,7 @@
                 <form>
                     <header>
                         <field name="state" widget="statusbar" readonly="1"/>
+                        <button name="button_approve" type="object" string="Approve" states="Draft"/>
                     </header>
                     <sheet>
                         <label for="name" class="oe_edit_only" />
