@@ -231,12 +231,12 @@ class PwkMutasiVeneerRoler(models.Model):
     def button_reload(self):
         for res in self:
             source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
-                ('reference.date','=',res.date - timedelta(1)),
+                ('reference.date','=',res.date),
                 ])
 
             if not source_ids:
                 source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
-                    ('reference.date','=',res.date),
+                    ('reference.date','<',res.date),
                     ])
 
             if source_ids:
