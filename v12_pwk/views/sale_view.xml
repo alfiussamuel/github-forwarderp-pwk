@@ -23,7 +23,8 @@
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="partner_id"/>
+                            <field name="partner_id"
+                                options="{'no_create': True}"/>
                             <field name="document_id" widget="binary" 
                                 height="64" filename="document_id_name"/>
                             <field name="document_id_name" invisible="1"/>
@@ -55,7 +56,8 @@
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="partner_id"/>
+                            <field name="partner_id"
+                                options="{'no_create': True}"/>
                             <field name="document_id" widget="binary" 
                                 height="64" filename="document_id_name"/>
                             <field name="document_id_name" invisible="1"/>
@@ -87,7 +89,8 @@
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="partner_id"/>
+                            <field name="partner_id"
+                                options="{'no_create': True}"/>
                             <field name="document_id" widget="binary" 
                                 height="64" filename="document_id_name"/>
                             <field name="document_id_name" invisible="1"/>
@@ -369,23 +372,26 @@
                 </header>       
                 <xpath expr="//page[1]" position="after">
                     <page string="Stempel">
-                        <field name="stempel_ids">
-                            <tree>
-                                <field name="stempel_id"/>                                
+                        <field name="stempel_ids" nolabel="1">
+                            <tree editable="top">
+                                <field name="stempel_id"
+                                    options="{'no_create': True}"/>
                             </tree>
                         </field>
                     </page>
                     <page string="Sticker">
-                        <field name="sticker_ids">
-                            <tree>
-                                <field name="sticker_id"/>                                
+                        <field name="sticker_ids" nolabel="1">
+                            <tree editable="top">
+                                <field name="sticker_id"
+                                    options="{'no_create': True}"/>
                             </tree>
                         </field>
                     </page>
                     <page string="Marking">
-                        <field name="marking_ids">
-                            <tree>
-                                <field name="marking_id"/>                                
+                        <field name="marking_ids" nolabel="1">
+                            <tree editable="top">
+                                <field name="marking_id"
+                                    options="{'no_create': True}"/>
                             </tree>
                         </field>
                     </page>
