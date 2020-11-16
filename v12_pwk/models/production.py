@@ -210,7 +210,19 @@ class PwkMutasiVeneerBasahStacking(models.Model):
     @api.multi
     def _get_stock_awal(self):
         for res in self:
-            res.stock_awal_pcs = 0
+            for res in self:
+                stock_awal_pcs = 0
+                source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
+                    ('reference.date','=',res.reference.date - timedelta(1)),
+                    ('product_id','=',res.product_id.id)
+                    ])
+                
+                if source_ids:
+                    stock_awal_pcs = source_ids[0].stock_akhir_pcs
+                else:
+                    stock_awal_pcs = 0
+
+                res.stock_awal_pcs = stock_awal_pcs
 
     @api.depends('stock_awal_pcs','stock_masuk_rotary_pcs','stock_masuk_supplier_pcs','stock_keluar_roler_pcs','stock_keluar_stacking_pcs')
     def _get_stock_akhir(self):
