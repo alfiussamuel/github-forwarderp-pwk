@@ -113,8 +113,8 @@ class PwkMutasiVeneerBasahStacking(models.Model):
 
             res.acc_stock_masuk_supplier_pcs = acc_stock_masuk_supplier_pcs + res.stock_masuk_supplier_pcs
             res.acc_stock_masuk_rotary_pcs = acc_stock_masuk_rotary_pcs + res.stock_masuk_rotary_pcs
-            res.stock_keluar_roler_pcs = stock_keluar_roler_pcs + res.stock_keluar_roler_pcs
-            res.stock_keluar_stacking_pcs = stock_keluar_stacking_pcs + res.stock_keluar_stacking_pcs
+            res.acc_stock_keluar_roler_pcs = acc_stock_keluar_roler_pcs + res.stock_keluar_roler_pcs
+            res.acc_stock_keluar_stacking_pcs = acc_stock_keluar_stacking_pcs + res.stock_keluar_stacking_pcs
 
     @api.depends('stock_awal_pcs','stock_masuk_rotary_pcs','stock_masuk_supplier_pcs','stock_keluar_roler_pcs','stock_keluar_stacking_pcs')
     def _get_stock_akhir(self):
