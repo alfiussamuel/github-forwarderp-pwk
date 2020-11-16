@@ -23,9 +23,7 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <field name="state" widget="statusbar" readonly="1"/>
-                        <!-- <button name="%(action_pwk_generate_rpb)d" type="action" 
-                            string="Select Order" class="oe_highlight"/> -->
+                        <field name="state" widget="statusbar" readonly="1"/>                        
                     </header>
                     <sheet>
                         <label for="name" class="oe_edit_only" />
