@@ -39,16 +39,18 @@
                                         <field name="stacking_ids" nolabel="1">
                                             <tree>
                                                 <field name="product_id"/>
-                                                <field name="tebal"/>
-                                                <field name="lebar"/>
-                                                <field name="panjang"/>
-                                                <field name="grade"/>
                                                 <field name="stock_awal_pcs" sum="Total"/>
+                                                <field name="stock_awal_vol" sum="Total"/>
                                                 <field name="stock_masuk_supplier_pcs" sum="Total"/>
+                                                <field name="stock_masuk_supplier_vol" sum="Total"/>
                                                 <field name="stock_masuk_rotary_pcs" sum="Total"/>
+                                                <field name="stock_masuk_rotary_vol" sum="Total"/>
                                                 <field name="stock_keluar_stacking_pcs" sum="Total"/>
+                                                <field name="stock_keluar_stacking_vol" sum="Total"/>
                                                 <field name="stock_keluar_roler_pcs" sum="Total"/>
+                                                <field name="stock_keluar_roler_vol" sum="Total"/>
                                                 <field name="stock_akhir_pcs" sum="Total"/>
+                                                <field name="stock_akhir_vol" sum="Total"/>
                                             </tree>
                                             <form>
                                                 <group>
@@ -101,14 +103,14 @@
                                         <field name="kd_ids" nolabel="1">
                                             <tree>
                                                 <field name="product_id"/>
-                                                <field name="tebal"/>
-                                                <field name="lebar"/>
-                                                <field name="panjang"/>
-                                                <field name="grade"/>
                                                 <field name="stock_awal_pcs" sum="Total"/>
+                                                <field name="stock_awal_vol" sum="Total"/>
                                                 <field name="stock_masuk_pcs" sum="Total"/>
+                                                <field name="stock_masuk_vol" sum="Total"/>
                                                 <field name="stock_keluar_pcs" sum="Total"/>
+                                                <field name="stock_keluar_vol" sum="Total"/>
                                                 <field name="stock_akhir_pcs" sum="Total"/>
+                                                <field name="stock_akhir_vol" sum="Total"/>
                                             </tree>
                                             <form>
                                                 <group>
