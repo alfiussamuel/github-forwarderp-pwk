@@ -63,7 +63,7 @@ class PwkMutasiVeneerBasahStacking(models.Model):
             res.acc_stock_masuk_supplier_vol = res.acc_stock_masuk_supplier_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.acc_stock_keluar_roler_vol = res.acc_stock_keluar_roler_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.acc_stock_keluar_stacking_vol = res.acc_stock_keluar_stacking_pcs * res.tebal * res.lebar * res.panjang / 1000000000
-            res.stock_akhir_vol = res.stock_akhir_pcs
+            res.stock_akhir_vol = res.stock_akhir_pcs * res.tebal * res.lebar * res.panjang / 1000000000
 
     @api.depends('product_id')
     def _get_stock_awal(self):
