@@ -25,12 +25,12 @@ class PwkMutasiVeneerRolerLine(models.Model):
     stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal')    
     stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk Basah')
     stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Basah')
-    acc_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Acc Stok Masuk Basah')
-    acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Acc Stok Masuk Basah')
+    acc_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Akumulasi')
+    acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Akumulasi')
     stock_keluar_pcs = fields.Float('Stok Keluar Kering')
     stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Kering')
-    acc_stock_keluar_pcs = fields.Float('Acc Stok Keluar Kering')
-    acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Acc Stok Keluar Kering')
+    acc_stock_keluar_pcs = fields.Float('Akumulasi')
+    acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Akumulasi')
     stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
     stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir')
 
@@ -128,10 +128,10 @@ class PwkMutasiVeneerRolerReLine(models.Model):
     stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Basah')
     stock_keluar_pcs = fields.Float('Stok Keluar Kering')
     stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Kering')
-    acc_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Acc Stok Masuk Basah')
-    acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Acc Stok Masuk Basah')
-    acc_stock_keluar_pcs = fields.Float('Acc Stok Keluar Kering')
-    acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Acc Stok Keluar Kering')
+    acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Akumulasi')
+    acc_stock_masuk_vol = fields.Float(compute="_get_acc", string='Akumulasi')
+    acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Akumulasi')
+    acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Akumulasi')
     stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
     stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir')
 
@@ -184,8 +184,8 @@ class PwkMutasiVeneerRolerReLine(models.Model):
                 acc_stock_masuk_pcs = source_ids[0].acc_stock_masuk_pcs
                 acc_stock_keluar_pcs = source_ids[0].acc_stock_keluar_pcs
 
-            res.acc_stock_masuk_pcs = acc_stock_masuk_pcs
-            res.acc_stock_keluar_pcs = acc_stock_keluar_pcs
+            res.acc_stock_masuk_pcs = acc_stock_masuk_pcs + res.stock_awal_pcs
+            res.acc_stock_keluar_pcs = acc_stock_keluar_pcs + res.stock_keluar_pcs
 
     @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
     def _get_stock_akhir(self):

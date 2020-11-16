@@ -23,21 +23,21 @@ class PwkMutasiVeneerBasahStacking(models.Model):
     grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
     stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
     stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal')
-    stock_masuk_supplier_pcs = fields.Float('Stok Masuk Supplier')
-    acc_stock_masuk_supplier_pcs = fields.Float(compute="_get_acc", string='Akumulasi')
+    stock_masuk_supplier_pcs = fields.Float('Stok Masuk Supplier')    
     stock_masuk_supplier_vol = fields.Float(compute="_get_volume", string='Stok Masuk Supplier')
+    acc_stock_masuk_supplier_pcs = fields.Float(compute="_get_acc", string='Akumulasi')
     acc_stock_masuk_supplier_vol = fields.Float(compute="_get_volume", string='Acc Stok Masuk Supplier')
-    stock_masuk_rotary_pcs = fields.Float('Stok Masuk Rotary')
-    acc_stock_masuk_rotary_pcs = fields.Float(compute="_get_acc", string='Akumulasi')
+    stock_masuk_rotary_pcs = fields.Float('Stok Masuk Rotary')    
     stock_masuk_rotary_vol = fields.Float(compute="_get_volume", string='Stok Masuk Rotary')
+    acc_stock_masuk_rotary_pcs = fields.Float(compute="_get_acc", string='Akumulasi')
     acc_stock_masuk_rotary_vol = fields.Float(compute="_get_volume", string='Akumulasi')
-    stock_keluar_stacking_pcs = fields.Float('Stok Keluar Stacking')
-    acc_stock_keluar_stacking_pcs = fields.Float(compute="_get_acc", string='Akumulasi')
+    stock_keluar_stacking_pcs = fields.Float('Stok Keluar Stacking')    
     stock_keluar_stacking_vol = fields.Float(compute="_get_volume", string='Stok Keluar Stacking')
+    acc_stock_keluar_stacking_pcs = fields.Float(compute="_get_acc", string='Akumulasi')
     acc_stock_keluar_stacking_vol = fields.Float(compute="_get_volume", string='Akumulasi')
-    stock_keluar_roler_pcs = fields.Float('Stok Keluar Roler')
-    acc_stock_keluar_roler_pcs = fields.Float(compute="_get_acc", string='Akumulasi')
+    stock_keluar_roler_pcs = fields.Float('Stok Keluar Roler')    
     stock_keluar_roler_vol = fields.Float(compute="_get_volume", string='Stok Keluar Roler')
+    acc_stock_keluar_roler_pcs = fields.Float(compute="_get_acc", string='Akumulasi')
     acc_stock_keluar_roler_vol = fields.Float(compute="_get_volume", string='Akumulasi')
     stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
     stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir')
@@ -106,10 +106,10 @@ class PwkMutasiVeneerBasahStacking(models.Model):
                 acc_stock_keluar_roler_pcs = source_ids[0].acc_stock_keluar_roler_pcs
                 acc_stock_keluar_stacking_pcs = source_ids[0].acc_stock_keluar_stacking_pcs
 
-            res.acc_stock_masuk_supplier_pcs = acc_stock_masuk_supplier_pcs
-            res.acc_stock_masuk_rotary_pcs = acc_stock_masuk_rotary_pcs
-            res.stock_keluar_roler_pcs = stock_keluar_roler_pcs
-            res.stock_keluar_stacking_pcs = stock_keluar_stacking_pcs            
+            res.acc_stock_masuk_supplier_pcs = acc_stock_masuk_supplier_pcs + res.stock_masuk_supplier_pcs
+            res.acc_stock_masuk_rotary_pcs = acc_stock_masuk_rotary_pcs + res.stock_masuk_rotary_pcs
+            res.stock_keluar_roler_pcs = stock_keluar_roler_pcs + res.stock_keluar_roler_pcs
+            res.stock_keluar_stacking_pcs = stock_keluar_stacking_pcs + res.stock_keluar_stacking_pcs
 
     @api.depends('stock_awal_pcs','stock_masuk_rotary_pcs','stock_masuk_supplier_pcs','stock_keluar_roler_pcs','stock_keluar_stacking_pcs')
     def _get_stock_akhir(self):
