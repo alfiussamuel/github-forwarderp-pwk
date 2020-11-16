@@ -237,7 +237,6 @@ class PwkMutasiVeneerRoler(models.Model):
             if not source_ids:
                 source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
                     ('reference.date','<',res.date),
-                    ('product_id','=',res.product_id.id)
                     ])
 
             if source_ids:
