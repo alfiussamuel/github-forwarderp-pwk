@@ -56,7 +56,7 @@
 		</record>
 
 		<record id="action_pwk_mutasi_veneer_roler" model="ir.actions.act_window">
-			<field name="name">Mutasi Veneer Roler Dryer</field>
+			<field name="name">Mutasi Veneer Roller Dryer</field>
 			<field name="res_model">pwk.mutasi.veneer.roler</field>
 			<field name="view_mode">tree,form</field>			
 		</record>

@@ -14,7 +14,9 @@
     'data': [             
              'security/ir_rule.xml',             
              'views/pwk_view.xml',
-             'views/production_view.xml',
+             'views/no1_mutasi_veneer_basah.xml',
+             'views/no2_mutasi_veneer_rolerdryer.xml',
+             'views/no3_mutasi_veneer_klindry.xml',
              'views/sale_view.xml',
              'views/purchase_view.xml',
              'views/menu.xml',
