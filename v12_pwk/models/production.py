@@ -30,6 +30,11 @@ class PwkMutasiVeneerRolerLine(models.Model):
     stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
     stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir')
 
+    @api.multi
+    def button_reload(self):
+        for res in self:
+            if 
+
     @api.depends('product_id')
     def _get_product_attribute(self):
         for res in self:
@@ -51,7 +56,7 @@ class PwkMutasiVeneerRolerLine(models.Model):
     def _get_stock_awal(self):
         for res in self:
             stock_awal_pcs = 0
-            source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
+            source_ids = self.env['pwk.mutasi.veneer.roler.line'].search([
                 ('reference.date','=',res.reference.date - timedelta(1)),
                 ('product_id','=',res.product_id.id)
                 ])
@@ -110,7 +115,7 @@ class PwkMutasiVeneerRolerReLine(models.Model):
     def _get_stock_awal(self):
         for res in self:
             stock_awal_pcs = 0
-            source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
+            source_ids = self.env['pwk.mutasi.veneer.roler.reline'].search([
                 ('reference.date','=',res.reference.date - timedelta(1)),
                 ('product_id','=',res.product_id.id)
                 ])

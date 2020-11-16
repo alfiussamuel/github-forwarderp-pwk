@@ -370,7 +370,7 @@
                         <field name="state" widget="statusbar" statusbar_visible="draft,Sales Contract,sale,cancel"/>
                     </header>
                 </header>       
-                <xpath expr="//page[1]" position="after">
+                <!-- <xpath expr="//page[1]" position="after">
                     <page string="Stempel">
                         <field name="stempel_ids" nolabel="1">
                             <tree editable="bottom">
@@ -396,7 +396,7 @@
                             </tree>
                         </field>
                     </page>
-                </xpath>         
+                </xpath>     -->     
                 <field name="validity_date" position="before">
                     <field name="is_logo"/>
                     <field name="certificate_id"                                
@@ -468,14 +468,22 @@
                                     <div>
                                         <field name="analytic_tag_ids" widget="many2many_tags" groups="analytic.group_analytic_tags" options="{'color_field': 'color'}"/>
                                     </div>
-                                    <field name="marking"/>
                                 </group>
                             </group>
-                            <group>                                   
-                                <field name="thick"/>
-                                <field name="width"/>
-                                <field name="length"/>
-                                <field name="volume"/>
+                            <group>         
+                                <group>                          
+                                    <field name="thick"/>
+                                    <field name="width"/>
+                                    <field name="length"/>
+                                    <field name="volume"/>
+                                </group>
+                                <group>
+                                    <field name="stempel_id"
+                                        options='{"no_open": True}'/>
+                                    <field name="sticker_id"
+                                        options='{"no_open": True}'/>
+                                    <field name="marking"/>
+                                </group>
                             </group>
                             <group>
                                 <notebook>
@@ -540,6 +548,9 @@
                             <field name="product_custom_attribute_value_ids" invisible="1" />
                             <field name="product_no_variant_attribute_value_ids" invisible="1" />
                             <field name="name" widget="section_and_note_text"/>
+                            <field name="stempel_id" string="Stempel"/>
+                            <field name="stempel_position" string="Posisi Stempel"/>
+                            <field name="sticker"/>
                             <field name="marking"/>
                             <field name="thick"/>
                             <field name="width"/>
