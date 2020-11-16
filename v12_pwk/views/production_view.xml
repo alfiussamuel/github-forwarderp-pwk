@@ -60,28 +60,34 @@
                                                 </group>                                        
                                                 <group>
                                                     <group string="Perhitungan Stock (Pcs)">
-                                                        <field name="stock_awal_pcs"/>                  
-                                                        <field name="stock_masuk_supplier_pcs"/>
-                                                        <field name="acc_stock_masuk_supplier_pcs"/>
-                                                        <field name="stock_masuk_rotary_pcs"/>
-                                                        <field name="acc_stock_masuk_rotary_pcs"/>
+                                                        <field name="stock_awal_pcs"/>
+                                                        <field name="stock_masuk_supplier_pcs"/>        
+                                                        <field name="stock_masuk_rotary_pcs"/>        
                                                         <field name="stock_keluar_stacking_pcs"/>
-                                                        <field name="acc_stock_keluar_stacking_pcs"/>
                                                         <field name="stock_keluar_roler_pcs"/>
-                                                        <field name="acc_stock_keluar_roler_pcs"/>
                                                         <field name="stock_akhir_pcs"/>
                                                     </group>
                                                     <group string="Perhitungan Stock (Vol)">
                                                         <field name="stock_awal_vol"/>
                                                         <field name="stock_masuk_supplier_vol"/>
-                                                        <field name="acc_stock_masuk_supplier_vol"/>
                                                         <field name="stock_masuk_rotary_vol"/>
-                                                        <field name="acc_stock_masuk_rotary_vol"/>
                                                         <field name="stock_keluar_stacking_vol"/>
-                                                        <field name="acc_stock_keluar_stacking_vol"/>
                                                         <field name="stock_keluar_roler_vol"/>
-                                                        <field name="acc_stock_keluar_roler_vol"/>
                                                         <field name="stock_akhir_vol"/>
+                                                    </group>
+                                                </group>
+                                                <group>
+                                                    <group string="Akumulasi Stock Masuk">
+                                                        <field name="acc_stock_masuk_supplier_pcs"/>
+                                                        <field name="acc_stock_masuk_supplier_vol"/>
+                                                        <field name="acc_stock_masuk_rotary_pcs"/>
+                                                        <field name="acc_stock_masuk_rotary_vol"/>
+                                                    </group>
+                                                    <group string="Akumulasi Stock Keluar">
+                                                        <field name="acc_stock_keluar_stacking_pcs"/>
+                                                        <field name="acc_stock_keluar_stacking_vol"/>
+                                                        <field name="acc_stock_keluar_roler_pcs"/>
+                                                        <field name="acc_stock_keluar_roler_vol"/>
                                                     </group>
                                                 </group>
                                             </form>
