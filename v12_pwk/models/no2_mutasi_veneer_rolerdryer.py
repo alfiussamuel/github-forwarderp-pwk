@@ -226,7 +226,7 @@ class PwkMutasiVeneerRoler(models.Model):
         return sequence_id.next_by_id()
 
     @api.multi
-    def button_reload(self):
+    def button_reload_rd(self):
         for res in self:
             source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
                 ('reference.date','=',res.date),
@@ -243,6 +243,10 @@ class PwkMutasiVeneerRoler(models.Model):
                         'reference': res.id,
                         'product_id': source.product_id.id,
                         })
+
+    @api.multi
+    def button_reload_re_rd(self):
+        return True
 
     @api.model
     def create(self, vals):

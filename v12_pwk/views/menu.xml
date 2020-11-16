@@ -225,7 +225,7 @@
 
         	<menuitem id="menu_production_transaksi"
 	        	sequence="1"
-	        	name="Laporan Tally"
+	        	name="Laporan Mutasi Harian"
 	        	groups="base.group_user"
 	        	parent="menu_production"/>
 

@@ -234,8 +234,7 @@ class PwkMutasiVeneerBasah(models.Model):
     user_id = fields.Many2one('res.users', string="Dibuat Oleh", default=lambda self: self.env.user)
     state = fields.Selection([('Draft','Draft'),('Approved','Approved')], string="Status")
     stacking_ids = fields.One2many('pwk.mutasi.veneer.basah.stacking', 'reference', string="Stacking")
-    kd_ids = fields.One2many('pwk.mutasi.veneer.basah.kd', 'reference', string="Stacking")
-    # kd_ids = fields.One2many('pwk.mutasi.veneer.basah.kd', 'reference', string="KD")
+    kd_ids = fields.One2many('pwk.mutasi.veneer.basah.kd', 'reference', string="In KD")
 
     def get_sequence(self, name=False, obj=False, context=None):
         sequence_id = self.env['ir.sequence'].search([
