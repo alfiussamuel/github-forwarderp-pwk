@@ -550,7 +550,7 @@
                             <field name="name" widget="section_and_note_text"/>
                             <field name="stempel_id" string="Stempel"/>
                             <field name="stempel_position" string="Posisi Stempel"/>
-                            <field name="sticker"/>
+                            <field name="sticker_id"/>
                             <field name="marking"/>
                             <field name="thick"/>
                             <field name="width"/>

@@ -30,10 +30,10 @@ class PwkMutasiVeneerRolerLine(models.Model):
     stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
     stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir')
 
-    @api.multi
-    def button_reload(self):
-        for res in self:
-            if 
+    # @api.multi
+    # def button_reload(self):
+    #     for res in self:
+    #         return True
 
     @api.depends('product_id')
     def _get_product_attribute(self):

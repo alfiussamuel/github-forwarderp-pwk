@@ -110,7 +110,6 @@ class SaleOrderLine(models.Model):
     container_ids = fields.One2many('sale.order.line.container', 'reference', 'Container')
     stempel_id = fields.Many2one('pwk.stempel', 'Stempel')
     sticker_id = fields.Many2one('pwk.sticker', 'Sticker')
-    marking_id = fields.Many2one('pwk.marking', 'Marking')
     stempel_position = fields.Selection([('Edge','Edge'),('Back','Back'),('Edge and Back','Edge and Back')], string="Position", default="Edge")
 
     @api.depends('product_id')
