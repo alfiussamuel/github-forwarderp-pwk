@@ -179,7 +179,7 @@
                                                     </group>
                                                     <group string="Akumulasi Stock (Vol)">
                                                         <field name="acc_stock_masuk_vol"/>      
-                                                        <field name="acc_stock_masuk_vol"/>
+                                                        <field name="acc_stock_keluar_vol"/>
                                                     </group>
                                                 </group>
                                             </form>
