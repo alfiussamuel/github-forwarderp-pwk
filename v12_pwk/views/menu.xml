@@ -1,6 +1,24 @@
 <odoo>
 	<data>
 
+		<record id="action_pwk_stempel" model="ir.actions.act_window">
+			<field name="name">Stempel</field>
+			<field name="res_model">pwk.stempel</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_sticker" model="ir.actions.act_window">
+			<field name="name">Sticker</field>
+			<field name="res_model">pwk.sticker</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_marking" model="ir.actions.act_window">
+			<field name="name">Marking</field>
+			<field name="res_model">pwk.marking</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
 		<record id="action_pwk_position" model="ir.actions.act_window">
 			<field name="name">Position</field>
 			<field name="res_model">pwk.position</field>
@@ -28,6 +46,12 @@
 		<record id="action_pwk_mutasi_veneer_basah" model="ir.actions.act_window">
 			<field name="name">Mutasi Veneer Basah</field>
 			<field name="res_model">pwk.mutasi.veneer.basah</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_mutasi_veneer_roler" model="ir.actions.act_window">
+			<field name="name">Mutasi Veneer RolerDryer</field>
+			<field name="res_model">pwk.mutasi.veneer.roler</field>
 			<field name="view_mode">tree,form</field>			
 		</record>
 
@@ -199,6 +223,12 @@
 		            groups="base.group_user"
 		            sequence="0"/>        	
 
+		        <menuitem id="menu_production_transaksi_veneer_roler"
+		            action="v12_pwk.action_pwk_mutasi_veneer_roler"
+		            parent="v12_pwk.menu_production_transaksi"
+		            groups="base.group_user"
+		            sequence="1"/>
+
 		<menuitem id="menu_pwk_payment_note" 
             action="action_pwk_payment_note"
             parent="purchase.menu_procurement_management"
@@ -215,6 +245,24 @@
         	sequence="2"
         	name="Discrepancy"
         	action="action_pwk_sale_discrepancy"
+        	parent="sale.menu_sale_config"/>
+
+        <menuitem id="menu_pwk_stempel"
+        	sequence="3"
+        	name="Stempel"
+        	action="action_pwk_stempel"
+        	parent="sale.menu_sale_config"/>
+
+        <menuitem id="menu_pwk_sticker"
+        	sequence="3"
+        	name="Sticker"
+        	action="action_pwk_sticker"
+        	parent="sale.menu_sale_config"/>
+
+        <menuitem id="menu_pwk_marking"
+        	sequence="3"
+        	name="Marking"
+        	action="action_pwk_marking"
         	parent="sale.menu_sale_config"/>
 
         <menuitem id="menu_pwk_position"

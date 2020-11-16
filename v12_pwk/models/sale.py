@@ -16,22 +16,46 @@ from num2words import num2words
 class SaleMc(models.Model):    
     _name = "sale.mc"
 
-    name = fields.Char('Name')
+    name = fields.Char('MC')
 
 class SaleDiscrepancy(models.Model):    
     _name = "sale.discrepancy"
 
-    name = fields.Char('Name')
+    name = fields.Char('Discrepancy')
 
 class PwkPosition(models.Model):    
     _name = "pwk.position"
 
-    name = fields.Char('Name')
+    name = fields.Char('Position')
 
 class PwkPallet(models.Model):    
     _name = "pwk.pallet"
 
-    name = fields.Char('Name')
+    name = fields.Char('Pallet')
+    document_id = fields.Binary(attachment=True)
+    document_id_name = fields.Char("Document Name")
+
+class PwkStempel(models.Model):    
+    _name = "pwk.stempel"
+
+    name = fields.Char('Stempel')
+    partner_id = fields.Many2one('res.partner', string="Customer", domain="[('customer','=',True)]")
+    document_id = fields.Binary(attachment=True)
+    document_id_name = fields.Char("Document Name")
+
+class PwkSticker(models.Model):    
+    _name = "pwk.sticker"
+
+    name = fields.Char('Sticker')
+    partner_id = fields.Many2one('res.partner', string="Customer", domain="[('customer','=',True)]")
+    document_id = fields.Binary(attachment=True)
+    document_id_name = fields.Char("Document Name")
+
+class PwkMarking(models.Model):    
+    _name = "pwk.marking"
+
+    name = fields.Char('Marking')
+    partner_id = fields.Many2one('res.partner', string="Customer", domain="[('customer','=',True)]")
     document_id = fields.Binary(attachment=True)
     document_id_name = fields.Char("Document Name")
 
@@ -106,6 +130,24 @@ class SaleOrderLine(models.Model):
         for res in self:                        
             res.volume = ((res.width * res.length * res.thick)) / 1000000000
 
+class SaleOrderStempel(models.Model):    
+    _name = "sale.order.stempel"
+
+    reference = fields.Many2one('sale.order', 'Reference')
+    stempel_id = fields.Many2one('pwk.stempel', 'Stempel')    
+
+class SaleOrderSticker(models.Model):    
+    _name = "sale.order.sticker"
+
+    reference = fields.Many2one('sale.order', 'Reference')
+    sticker_id = fields.Many2one('pwk.sticker', 'Sticker')    
+
+class SaleOrderMarking(models.Model):    
+    _name = "sale.order.marking"
+
+    reference = fields.Many2one('sale.order', 'Reference')
+    marking_id = fields.Many2one('pwk.marking', 'Marking')    
+
 class SaleOrder(models.Model):    
     _inherit = "sale.order"
 
@@ -134,6 +176,9 @@ class SaleOrder(models.Model):
     amount_total_terbilang = fields.Char(compute="_get_terbilang", string='Amount Total Terbilang')
     amount_total_terbilang_en = fields.Char(compute="_get_terbilang_english", string='Amount Total Terbilang English')
     attn = fields.Char('Attn')
+    stempel_ids = fields.One2many('sale.order.stempel', 'reference', 'Stempel')
+    marking_ids = fields.One2many('sale.order.marking', 'reference', 'Marking')
+    sticker_ids = fields.One2many('sale.order.sticker', 'reference', 'Sticker')
     state = fields.Selection([
         ('draft', 'Quotation'),
         ('sent', 'Quotation Sent'),

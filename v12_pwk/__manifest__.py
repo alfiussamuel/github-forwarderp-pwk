@@ -14,6 +14,7 @@
     'data': [             
              'security/ir_rule.xml',             
              'views/pwk_view.xml',
+             'views/production_view.xml',
              'views/sale_view.xml',
              'views/purchase_view.xml',
              'views/menu.xml',
