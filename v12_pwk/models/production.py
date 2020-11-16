@@ -228,7 +228,9 @@ class PwkMutasiVeneerBasahStacking(models.Model):
             res.stock_keluar_stacking_vol = res.stock_keluar_stacking_pcs
             res.stock_akhir_vol = res.stock_akhir_pcs
 
-    @api.multi
+    # @api.onchange('product_id')
+
+    @api.depends('product_id')
     def _get_stock_awal(self):
         for res in self:
             for res in self:
