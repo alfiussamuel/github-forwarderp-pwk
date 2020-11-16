@@ -102,7 +102,7 @@ class PwkMutasiVeneerRolerLine(models.Model):
         for res in self:
             stock_masuk_pcs = 0
             source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
-                ('reference.date','=',res.reference.date - timedelta(1)),
+                ('reference.date','=',res.reference.date),
                 ('product_id','=',res.product_id.id)
                 ])
                         
