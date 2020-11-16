@@ -12,10 +12,10 @@ import math
 import re    
 from num2words import num2words
 
-class PwkMutasiVeneerRolerLine(models.Model):    
-    _name = "pwk.mutasi.veneer.roler.line"
+class PwkMutasiVeneerKlinDryLine(models.Model):
+    _name = "pwk.mutasi.veneer.klindry.line"
 
-    reference = fields.Many2one('pwk.mutasi.veneer.roler', 'Reference')
+    reference = fields.Many2one('pwk.mutasi.veneer.klindry', 'Reference')
     product_id = fields.Many2one('product.product', 'Product')
     tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
     lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
@@ -59,13 +59,13 @@ class PwkMutasiVeneerRolerLine(models.Model):
             acc_stock_masuk_pcs = 0
             acc_stock_keluar_pcs = 0
 
-            source_ids = self.env['pwk.mutasi.veneer.roler.line'].search([
+            source_ids = self.env['pwk.mutasi.veneer.klindry.line'].search([
                 ('reference.date','=',res.reference.date - timedelta(1)),
                 ('product_id','=',res.product_id.id)
                 ])
 
             if not source_ids:
-                source_ids = self.env['pwk.mutasi.veneer.roler.line'].search([
+                source_ids = self.env['pwk.mutasi.veneer.klindry.line'].search([
                     ('reference.date','<',res.reference.date),
                     ('product_id','=',res.product_id.id)
                     ])
@@ -81,13 +81,13 @@ class PwkMutasiVeneerRolerLine(models.Model):
     def _get_stock_awal(self):
         for res in self:
             stock_awal_pcs = 0
-            source_ids = self.env['pwk.mutasi.veneer.roler.line'].search([
+            source_ids = self.env['pwk.mutasi.veneer.klindry.line'].search([
                 ('reference.date','=',res.reference.date - timedelta(1)),
                 ('product_id','=',res.product_id.id)
                 ])
 
             if not source_ids:
-                source_ids = self.env['pwk.mutasi.veneer.roler.line'].search([
+                source_ids = self.env['pwk.mutasi.veneer.klindry.line'].search([
                     ('reference.date','<',res.reference.date),
                     ('product_id','=',res.product_id.id)
                     ])
@@ -102,12 +102,12 @@ class PwkMutasiVeneerRolerLine(models.Model):
         for res in self:
             stock_masuk_pcs = 0
             source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
-                ('reference.date','=',res.reference.date),
+                ('reference.date','=',res.reference.date - timedelta(1)),
                 ('product_id','=',res.product_id.id)
                 ])
                         
             if source_ids:
-                stock_masuk_pcs = source_ids[0].stock_keluar_roler_pcs
+                stock_masuk_pcs = source_ids[0].stock_keluar_stacking_pcs
 
             res.stock_masuk_pcs = stock_masuk_pcs
 
@@ -116,111 +116,27 @@ class PwkMutasiVeneerRolerLine(models.Model):
         for res in self:
             res.stock_akhir_pcs = res.stock_awal_pcs + res.stock_masuk_pcs - res.stock_keluar_pcs
 
-class PwkMutasiVeneerRolerReLine(models.Model):    
-    _name = "pwk.mutasi.veneer.roler.reline"
-
-    reference = fields.Many2one('pwk.mutasi.veneer.roler', 'Reference')
-    product_id = fields.Many2one('product.product', 'Product')
-    tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
-    lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
-    panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
-    grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
-    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
-    stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
-    stock_masuk_pcs = fields.Float('Stok Masuk Basah')
-    stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Basah', digits=dp.get_precision('FourDecimal'))
-    acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Basah')
-    acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Basah', digits=dp.get_precision('FourDecimal'))
-    stock_keluar_pcs = fields.Float('Stok Keluar Kering')
-    stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Kering', digits=dp.get_precision('FourDecimal'))
-    acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Kering')
-    acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Kering', digits=dp.get_precision('FourDecimal'))
-    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
-    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
-
-    @api.depends('product_id')
-    def _get_product_attribute(self):
-        for res in self:
-            if res.product_id:
-                res.tebal = res.product_id.tebal
-                res.lebar = res.product_id.lebar
-                res.panjang = res.product_id.panjang
-                res.grade = res.product_id.grade.id
-
-    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
-    def _get_volume(self):
-        for res in self:            
-            res.stock_awal_vol = res.stock_awal_pcs
-            res.stock_masuk_vol = res.stock_masuk_pcs
-            res.stock_keluar_vol = res.stock_keluar_pcs
-            res.stock_akhir_vol = res.stock_akhir_pcs
-
-    @api.depends('product_id')
-    def _get_stock_awal(self):
-        for res in self:
-            stock_awal_pcs = 0
-            source_ids = self.env['pwk.mutasi.veneer.roler.reline'].search([
-                ('reference.date','=',res.reference.date - timedelta(1)),
-                ('product_id','=',res.product_id.id)
-                ])
-
-            if not source_ids:
-                source_ids = self.env['pwk.mutasi.veneer.roler.reline'].search([
-                    ('reference.date','<',res.reference.date),
-                    ('product_id','=',res.product_id.id)
-                    ])
-            
-            if source_ids:
-                stock_awal_pcs = source_ids[0].stock_akhir_pcs
-
-            res.stock_awal_pcs = stock_awal_pcs
-
-    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
-    def _get_acc(self):
-        for res in self:
-            acc_stock_masuk_pcs = 0
-            acc_stock_keluar_pcs = 0
-
-            source_ids = self.env['pwk.mutasi.veneer.roler.reline'].search([
-                ('reference.date','=',res.reference.date - timedelta(1)),
-                ('product_id','=',res.product_id.id)
-                ])
-
-            if source_ids:
-                acc_stock_masuk_pcs = source_ids[0].acc_stock_masuk_pcs
-                acc_stock_keluar_pcs = source_ids[0].acc_stock_keluar_pcs
-
-            res.acc_stock_masuk_pcs = acc_stock_masuk_pcs + res.stock_masuk_pcs
-            res.acc_stock_keluar_pcs = acc_stock_keluar_pcs + res.stock_keluar_pcs
-
-    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
-    def _get_stock_akhir(self):
-        for res in self:
-            res.stock_akhir_pcs = res.stock_awal_pcs + res.stock_masuk_pcs - res.stock_keluar_pcs
-
-
-class PwkMutasiVeneerRoler(models.Model):    
-    _name = "pwk.mutasi.veneer.roler"
+class PwkMutasiVeneerKlindry(models.Model):    
+    _name = "pwk.mutasi.veneer.klindry"
 
     name = fields.Char('No. Dokumen')
     date = fields.Date('Tanggal', default=fields.Date.today())
     user_id = fields.Many2one('res.users', string="Dibuat Oleh", default=lambda self: self.env.user)
     state = fields.Selection([('Draft','Draft'),('Approved','Approved')], string="Status")
-    line_ids = fields.One2many('pwk.mutasi.veneer.roler.line', 'reference', string="RolerDryer")
-    reline_ids = fields.One2many('pwk.mutasi.veneer.roler.reline', 'reference', string="Re-RolerDryer")
+    line_ids = fields.One2many('pwk.mutasi.veneer.klindry.line', 'reference', string="RolerDryer")
 
     def get_sequence(self, name=False, obj=False, context=None):
         sequence_id = self.env['ir.sequence'].search([
             ('name', '=', name),
             ('code', '=', obj),
-            ('suffix', '=', '.MVRD.%(month)s.%(year)s')
+            ('suffix', '=', '.MVKD.%(month)s.%(year)s')
         ])
         if not sequence_id :
             sequence_id = self.env['ir.sequence'].sudo().create({
                 'name': name,
                 'code': obj,
                 'implementation': 'no_gap',
-                'suffix': '.MVRD.%(month)s.%(year)s',
+                'suffix': '.MVKD.%(month)s.%(year)s',
                 'padding': 3
             })
         return sequence_id.next_by_id()
@@ -229,7 +145,7 @@ class PwkMutasiVeneerRoler(models.Model):
     def button_reload(self):
         for res in self:
             source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
-                ('reference.date','=',res.date),
+                ('reference.date','=',res.date - timedelta(1)),
                 ])
 
             if not source_ids:
@@ -239,15 +155,15 @@ class PwkMutasiVeneerRoler(models.Model):
 
             if source_ids:
                 for source in source_ids:
-                    self.env['pwk.mutasi.veneer.roler.line'].create({
+                    self.env['pwk.mutasi.veneer.klindry.line'].create({
                         'reference': res.id,
                         'product_id': source.product_id.id,
                         })
 
     @api.model
     def create(self, vals):
-        vals['name'] = self.get_sequence('Mutasi Veneer Roler Dryer', 'pwk.mutasi.veneer.roler')
-        return super(PwkMutasiVeneerRoler, self).create(vals)
+        vals['name'] = self.get_sequence('Mutasi Veneer Klin Dry', 'pwk.mutasi.veneer.klindry')
+        return super(PwkMutasiVeneerKlindry, self).create(vals)
 
     @api.multi
     def button_approve(self):

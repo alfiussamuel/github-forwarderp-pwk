@@ -61,6 +61,12 @@
 			<field name="view_mode">tree,form</field>			
 		</record>
 
+		<record id="action_pwk_mutasi_veneer_klindry" model="ir.actions.act_window">
+			<field name="name">Mutasi Veneer Klin Dry</field>
+			<field name="res_model">pwk.mutasi.veneer.klindry</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
 		<record id="action_pwk_nota_perusahaan" model="ir.actions.act_window">
 			<field name="name">Nota Perusahaan</field>
 			<field name="res_model">pwk.nota.perusahaan</field>
@@ -234,6 +240,12 @@
 		            parent="v12_pwk.menu_production_transaksi"
 		            groups="base.group_user"
 		            sequence="1"/>
+
+		        <menuitem id="menu_production_transaksi_veneer_klindry"
+		            action="v12_pwk.action_pwk_mutasi_veneer_klindry"
+		            parent="v12_pwk.menu_production_transaksi"
+		            groups="base.group_user"
+		            sequence="3"/>
 
 		<menuitem id="menu_pwk_payment_note" 
             action="action_pwk_payment_note"

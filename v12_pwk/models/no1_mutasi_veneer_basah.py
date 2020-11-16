@@ -54,7 +54,7 @@ class PwkMutasiVeneerBasahStacking(models.Model):
     @api.depends('stock_awal_pcs','stock_masuk_rotary_pcs','stock_masuk_supplier_pcs','stock_keluar_roler_pcs','stock_keluar_stacking_pcs')
     def _get_volume(self):
         for res in self:            
-            res.stock_awal_vol = res.stock_awal_pcs
+            res.stock_awal_vol = res.stock_awal_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.stock_masuk_rotary_vol = res.stock_masuk_rotary_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.stock_masuk_supplier_vol = res.stock_masuk_supplier_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.stock_keluar_roler_vol = res.stock_keluar_roler_pcs * res.tebal * res.lebar * res.panjang / 1000000000
