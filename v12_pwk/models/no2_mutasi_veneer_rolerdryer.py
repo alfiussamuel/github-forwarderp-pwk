@@ -56,6 +56,9 @@ class PwkMutasiVeneerRolerLine(models.Model):
     @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
     def _get_acc(self):
         for res in self:
+            acc_stock_masuk_pcs = 0
+            acc_stock_keluar_pcs = 0
+
             source_ids = self.env['pwk.mutasi.veneer.roler.line'].search([
                 ('reference.date','=',res.reference.date - timedelta(1)),
                 ('product_id','=',res.product_id.id)
@@ -175,6 +178,9 @@ class PwkMutasiVeneerRolerReLine(models.Model):
     @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
     def _get_acc(self):
         for res in self:
+            acc_stock_masuk_pcs = 0
+            acc_stock_keluar_pcs = 0
+
             source_ids = self.env['pwk.mutasi.veneer.roler.reline'].search([
                 ('reference.date','=',res.reference.date - timedelta(1)),
                 ('product_id','=',res.product_id.id)
