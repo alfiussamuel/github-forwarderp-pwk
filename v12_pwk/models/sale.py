@@ -134,7 +134,8 @@ class SaleOrderStempel(models.Model):
     _name = "sale.order.stempel"
 
     reference = fields.Many2one('sale.order', 'Reference')
-    stempel_id = fields.Many2one('pwk.stempel', 'Stempel')    
+    stempel_id = fields.Many2one('pwk.stempel', 'Stempel')
+    position = fields.Selection([('Edge','Edge'),('Back','Back'),('Edge and Back','Edge and Back')], string="Position", default="Edge")
 
 class SaleOrderSticker(models.Model):    
     _name = "sale.order.sticker"

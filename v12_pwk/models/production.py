@@ -47,10 +47,24 @@ class PwkMutasiVeneerRolerLine(models.Model):
             res.stock_keluar_vol = res.stock_keluar_pcs
             res.stock_akhir_vol = res.stock_akhir_pcs
 
-    @api.multi
+    @api.depends('product_id')
     def _get_stock_awal(self):
         for res in self:
-            res.stock_awal_pcs = 0
+            stock_awal_pcs = 0
+            source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
+                ('reference.date','=',res.reference.date - timedelta(1)),
+                ('product_id','=',res.product_id.id)
+                ])
+                        
+            if source_ids:
+                print ("Masukk aa")
+                stock_awal_pcs = source_ids[0].stock_akhir_pcs
+            else:
+                print ("Masukk bb")
+                stock_awal_pcs = 0
+
+            print ("Masukk cc ", stock_awal_pcs)
+            res.stock_awal_pcs = stock_awal_pcs
 
     @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
     def _get_stock_akhir(self):
@@ -92,28 +106,21 @@ class PwkMutasiVeneerRolerReLine(models.Model):
             res.stock_keluar_vol = res.stock_keluar_pcs
             res.stock_akhir_vol = res.stock_akhir_pcs
 
-    # @api.depends('product_id')
-    # def _onchange_product_id(self):
-    #     if self.product_id:
-    #         source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
-    #             ('reference.date','<',res.reference.date - timedelta(1))
-    #             ])
-
-    #         print("Source Ids ", source_ids)
-
     @api.depends('product_id')
     def _get_stock_awal(self):
         for res in self:
+            stock_awal_pcs = 0
             source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
-                ('reference.date','<',res.reference.date - timedelta(1)),
-                ('product_id','<',res.product_id.id)
+                ('reference.date','=',res.reference.date - timedelta(1)),
+                ('product_id','=',res.product_id.id)
                 ])
+            
+            if source_ids:
+                stock_awal_pcs = source_ids[0].stock_akhir_pcs
+            else:
+                stock_awal_pcs = 0
 
-            print("Source Ids ", source_ids)
-            # if source_ids:
-            #     res.stock_awal_pcs = source_ids[0].stock_akhir_pcs
-            # else:
-            #     res.stock_awal_pcs = 0
+            res.stock_awal_pcs = stock_awal_pcs
 
     @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
     def _get_stock_akhir(self):
@@ -153,6 +160,11 @@ class PwkMutasiVeneerRoler(models.Model):
     def create(self, vals):
         vals['name'] = self.get_sequence('Mutasi Veneer RolerDryer', 'pwk.mutasi.veneer.roler')
         return super(PwkMutasiVeneerRoler, self).create(vals)
+
+    @api.multi
+    def button_approve(self):
+        for res in self:
+            res.state = "Approved"
 
 class PwkMutasiVeneerBasahStacking(models.Model):    
     _name = "pwk.mutasi.veneer.basah.stacking"
