@@ -33,7 +33,9 @@
                     </group>
                     <group>
                         <notebook>
-                            <page string="Veneer Glue Spreader">                                
+                            <page string="Veneer Glue Spreader">
+                                <button name="button_reload_line" string="Reload" 
+                                    type="object" class="oe_highlight"/>
                                 <group>
                                     <field name="line_ids" nolabel="1">
                                         <tree>
