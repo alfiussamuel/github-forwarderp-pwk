@@ -165,7 +165,7 @@ class PwkMutasiVeneerGs(models.Model):
     def button_reload_line(self):
         for res in self:
             source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
-                ('reference.date','=',res.date - timedelta(1)),
+                ('reference.date','=',res.date),
                 ])
 
             if not source_ids:
