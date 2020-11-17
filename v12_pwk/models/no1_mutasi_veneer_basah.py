@@ -281,3 +281,22 @@ class PwkMutasiVeneerBasah(models.Model):
                         'reference': res.id,
                         'product_id': source.product_id.id,
                         })
+
+    @api.multi
+    def button_reload_line(self):
+        for res in self:
+            source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
+                ('reference.date','=',res.date - timedelta(1)),
+                ])
+
+            if not source_ids:
+                source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
+                    ('reference.date','<',res.date),
+                    ])
+
+            if source_ids:
+                for source in source_ids:
+                    self.env['pwk.mutasi.veneer.basah.stacking'].create({
+                        'reference': res.id,
+                        'product_id': source.product_id.id,
+                        })

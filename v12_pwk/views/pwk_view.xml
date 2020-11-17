@@ -55,8 +55,8 @@
                                                 <field name="length"/>
                                                 <field name="glue_id"/>
                                                 <field name="grade_id"/>
-                                                <field name="total_qty"/>
-                                                <field name="total_volume"/>
+                                                <field name="container_qty"/>
+                                                <field name="container_vol"/>
                                                 <field name="job_order_status"/>
                                             </tree>
                                             <form>
@@ -74,8 +74,8 @@
                                                     <group>
                                                         <field name="glue_id"/>
                                                         <field name="grade_id"/>
-                                                        <field name="total_qty"/>
-                                                        <field name="total_volume"/>
+                                                        <field name="container_qty"/>
+                                                        <field name="container_vol"/>
                                                     </group>
                                                 </group>
                                                 <group>

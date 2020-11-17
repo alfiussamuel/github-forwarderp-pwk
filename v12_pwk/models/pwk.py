@@ -32,11 +32,12 @@ class PwkRpbLine(models.Model):
     width = fields.Float(compute="_get_sale_fields", string='Width')
     length = fields.Float(compute="_get_sale_fields", string='Length')
     glue_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.glue', string='Glue')
-    grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')
-    container_ids = fields.One2many('pwk.rpb.line.container', 'reference', string='Container')
+    grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')    
     total_qty = fields.Float(compute="_get_sale_fields", string='Total Qty')
     total_volume = fields.Float(compute="_get_sale_fields", string='Total Volume', digits=dp.get_precision('FourDecimal'))
     job_order_status = fields.Char(compute="_get_sale_fields", string='Job Order Status')
+    container_qty = fields.Float('Pcs Container')
+    container_vol = fields.Float('M3 Container')
 
     @api.depends('sale_line_id')
     def _get_sale_fields(self):
@@ -87,7 +88,6 @@ class PwkRpb(models.Model):
         sequence_id = self.env['ir.sequence'].search([
             ('name', '=', name),
             ('code', '=', obj),
-            ('prefix', '=', 'PWKWI.'),
             ('suffix', '=', '.RPB.%(month)s.%(year)s')
         ])
         if not sequence_id :
@@ -95,7 +95,6 @@ class PwkRpb(models.Model):
                 'name': name,
                 'code': obj,
                 'implementation': 'no_gap',
-                'prefix': 'PWKWI.',
                 'suffix': '.RPB.%(month)s.%(year)s',
                 'padding': 3
             })
@@ -103,7 +102,7 @@ class PwkRpb(models.Model):
 
     @api.model
     def create(self, vals):
-        vals['name'] = self.get_sequence('Rencana Produksi Bulanan', 'pwk.rpm')
+        vals['name'] = self.get_sequence('Rencana Produksi Bulanan', 'pwk.rpb')
         return super(PwkRpb, self).create(vals)
 
 class ResCompany(models.Model):    
