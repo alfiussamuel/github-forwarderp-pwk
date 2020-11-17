@@ -101,7 +101,7 @@ class PwkMutasiAssemblingFinishingGs1(models.Model):
             res.hot_acc_stock_keluar_pcs = hot_acc_stock_keluar_pcs + res.hot_stock_keluar_pcs
             res.gs_acc_stock_keluar_pcs = gs_acc_stock_keluar_pcs + res.gs_stock_keluar_pcs
 
-    @api.depends('product_id')
+    @api.depends('product_id','gs_stock_keluar_pcs')
     def _get_stock_masuk(self):
         for res in self:
             gs_stock_masuk_pcs = 0
