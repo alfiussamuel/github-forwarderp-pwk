@@ -1,6 +1,36 @@
 <odoo>
 	<data>
 
+		<record id="action_pwk_mutasi_veneer_basah" model="ir.actions.act_window">
+			<field name="name">Mutasi Veneer Basah</field>
+			<field name="res_model">pwk.mutasi.veneer.basah</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_mutasi_veneer_roler" model="ir.actions.act_window">
+			<field name="name">Mutasi Veneer Roller Dryer</field>
+			<field name="res_model">pwk.mutasi.veneer.roler</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_mutasi_veneer_klindry" model="ir.actions.act_window">
+			<field name="name">Mutasi Veneer Klin Dry</field>
+			<field name="res_model">pwk.mutasi.veneer.klindry</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_mutasi_veneer_gs" model="ir.actions.act_window">
+			<field name="name">Mutasi Veneer Glue Spreader</field>
+			<field name="res_model">pwk.mutasi.veneer.gs</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_mutasi_assembling_finishing" model="ir.actions.act_window">
+			<field name="name">Mutasi Assembly Finishing</field>
+			<field name="res_model">pwk.mutasi.assembling.finishing</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
 		<record id="action_pwk_packing" model="ir.actions.act_window">
 			<field name="name">Packing</field>
 			<field name="res_model">pwk.packing</field>
@@ -47,25 +77,7 @@
 			<field name="name">Rencana Produksi Bulanan</field>
 			<field name="res_model">pwk.rpb</field>
 			<field name="view_mode">tree,form</field>			
-		</record>
-
-		<record id="action_pwk_mutasi_veneer_basah" model="ir.actions.act_window">
-			<field name="name">Mutasi Veneer Basah</field>
-			<field name="res_model">pwk.mutasi.veneer.basah</field>
-			<field name="view_mode">tree,form</field>			
-		</record>
-
-		<record id="action_pwk_mutasi_veneer_roler" model="ir.actions.act_window">
-			<field name="name">Mutasi Veneer Roller Dryer</field>
-			<field name="res_model">pwk.mutasi.veneer.roler</field>
-			<field name="view_mode">tree,form</field>			
-		</record>
-
-		<record id="action_pwk_mutasi_veneer_klindry" model="ir.actions.act_window">
-			<field name="name">Mutasi Veneer Klin Dry</field>
-			<field name="res_model">pwk.mutasi.veneer.klindry</field>
-			<field name="view_mode">tree,form</field>			
-		</record>
+		</record>		
 
 		<record id="action_pwk_nota_perusahaan" model="ir.actions.act_window">
 			<field name="name">Nota Perusahaan</field>
@@ -246,6 +258,18 @@
 		            parent="v12_pwk.menu_production_transaksi"
 		            groups="base.group_user"
 		            sequence="3"/>
+
+		        <menuitem id="menu_production_transaksi_veneer_gs"
+		            action="v12_pwk.action_pwk_mutasi_veneer_gs"
+		            parent="v12_pwk.menu_production_transaksi"
+		            groups="base.group_user"
+		            sequence="7"/>
+
+		        <menuitem id="menu_production_transaksi_assembling_finishing"
+		            action="v12_pwk.action_pwk_mutasi_assembling_finishing"
+		            parent="v12_pwk.menu_production_transaksi"
+		            groups="base.group_user"
+		            sequence="8"/>
 
 		<menuitem id="menu_pwk_payment_note" 
             action="action_pwk_payment_note"

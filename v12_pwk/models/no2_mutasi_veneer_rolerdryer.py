@@ -21,18 +21,18 @@ class PwkMutasiVeneerRolerLine(models.Model):
     lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
     panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
     grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
-    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
-    stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
-    stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk Basah')
-    stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Basah', digits=dp.get_precision('FourDecimal'))
-    acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Basah')
-    acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Basah', digits=dp.get_precision('FourDecimal'))
-    stock_keluar_pcs = fields.Float('Stok Keluar Kering')
-    stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Kering', digits=dp.get_precision('FourDecimal'))
-    acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Kering')
-    acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Kering', digits=dp.get_precision('FourDecimal'))
-    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
-    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
+    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal (Pcs)')
+    stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal (M3)', digits=dp.get_precision('FourDecimal'))
+    stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk (Pcs)')
+    stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk (M3)', digits=dp.get_precision('FourDecimal'))
+    acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk')
+    acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk', digits=dp.get_precision('FourDecimal'))
+    stock_keluar_pcs = fields.Float('Stok Keluar (Pcs)')
+    stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar (M3)', digits=dp.get_precision('FourDecimal'))
+    acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar')
+    acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar', digits=dp.get_precision('FourDecimal'))
+    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir (Pcs)')
+    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir (M3)', digits=dp.get_precision('FourDecimal'))
 
     @api.depends('product_id')
     def _get_product_attribute(self):
@@ -125,18 +125,18 @@ class PwkMutasiVeneerRolerReLine(models.Model):
     lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
     panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
     grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
-    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
-    stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
-    stock_masuk_pcs = fields.Float('Stok Masuk Basah')
-    stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Basah', digits=dp.get_precision('FourDecimal'))
-    acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Basah')
-    acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Basah', digits=dp.get_precision('FourDecimal'))
-    stock_keluar_pcs = fields.Float('Stok Keluar Kering')
-    stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Kering', digits=dp.get_precision('FourDecimal'))
-    acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Kering')
-    acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Kering', digits=dp.get_precision('FourDecimal'))
-    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
-    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
+    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal (Pcs)')
+    stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal (M3)', digits=dp.get_precision('FourDecimal'))
+    stock_masuk_pcs = fields.Float('Stok Masuk (Pcs)')
+    stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk (M3)', digits=dp.get_precision('FourDecimal'))
+    acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk')
+    acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk', digits=dp.get_precision('FourDecimal'))
+    stock_keluar_pcs = fields.Float('Stok Keluar (Pcs)')
+    stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar (M3)', digits=dp.get_precision('FourDecimal'))
+    acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar')
+    acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar', digits=dp.get_precision('FourDecimal'))
+    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir (Pcs)')
+    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir (M3)', digits=dp.get_precision('FourDecimal'))
 
     @api.depends('product_id')
     def _get_product_attribute(self):
@@ -201,6 +201,7 @@ class PwkMutasiVeneerRolerReLine(models.Model):
 
 class PwkMutasiVeneerRoler(models.Model):    
     _name = "pwk.mutasi.veneer.roler"
+    _inherit = ["mail.thread", "mail.activity.mixin"]
 
     name = fields.Char('No. Dokumen')
     date = fields.Date('Tanggal', default=fields.Date.today())
@@ -257,3 +258,4 @@ class PwkMutasiVeneerRoler(models.Model):
     def button_approve(self):
         for res in self:
             res.state = "Approved"
+            

@@ -269,10 +269,11 @@ class PurchaseOrder(models.Model):
                         'subtotal' : subtotal3
                         })
 
-            order.write({
-                'state': 'to approve',
-                'move_id': move_id.id
-                })
+            if move_id:
+                order.write({
+                    'state': 'to approve',
+                    'move_id': move_id.id
+                    })
 
         return True
 

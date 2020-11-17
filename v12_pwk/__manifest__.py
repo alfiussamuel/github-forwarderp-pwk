@@ -17,6 +17,8 @@
              'views/no1_mutasi_veneer_basah_view.xml',
              'views/no2_mutasi_veneer_rolerdryer_view.xml',
              'views/no3_mutasi_veneer_klindry_view.xml',
+             'views/no8_mutasi_veneer_gs_view.xml',
+             'views/no9_mutasi_assembling_finishing_view.xml',
              'views/sale_view.xml',
              'views/purchase_view.xml',
              'views/menu.xml',
