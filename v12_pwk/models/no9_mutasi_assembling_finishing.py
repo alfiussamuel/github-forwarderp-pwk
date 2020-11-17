@@ -15,7 +15,7 @@ from num2words import num2words
 class PwkMutasiAssemblingFinishingGs1(models.Model):
     _name = "pwk.mutasi.assembling.finishing.gs1"
 
-    reference = fields.Many2one('pwk.mutasi.assembling.finishing.gs1', 'Reference')
+    reference = fields.Many2one('pwk.mutasi.assembling.finishing', 'Reference')
     product_id = fields.Many2one('product.product', 'Product')
     tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
     lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
@@ -24,12 +24,12 @@ class PwkMutasiAssemblingFinishingGs1(models.Model):
     stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
     stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
     
-    gs_stock_masuk_pcs = fields.Float(string='Stok Masuk GS (Pcs)')
+    gs_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk GS (Pcs)')
     gs_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk GS (M3)', digits=dp.get_precision('FourDecimal'))
     gs_acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk GS')
     gs_acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk GS', digits=dp.get_precision('FourDecimal'))
 
-    re_stock_masuk_pcs = fields.Float(string='Stok Masuk Re-GS (Pcs)')
+    re_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk Re-GS (Pcs)')
     re_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Re-GS (M3)', digits=dp.get_precision('FourDecimal'))
     re_acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Re-GS')
     re_acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Re-GS', digits=dp.get_precision('FourDecimal'))
@@ -78,22 +78,23 @@ class PwkMutasiAssemblingFinishingGs1(models.Model):
             hot_acc_stock_keluar_pcs = 0
             gs_acc_stock_keluar_pcs = 0
 
-            source_ids = self.env['pwk.mutasi.assembling.finishing.gs1'].search([
-                ('reference.date','=',res.reference.date - timedelta(1)),
-                ('product_id','=',res.product_id.id)
-                ])
-
-            if not source_ids:
+            if res.product_id:
                 source_ids = self.env['pwk.mutasi.assembling.finishing.gs1'].search([
-                    ('reference.date','<',res.reference.date),
+                    ('reference.date','=',res.reference.date - timedelta(1)),
                     ('product_id','=',res.product_id.id)
                     ])
 
-            if source_ids:
-                gs_acc_stock_masuk_pcs = source_ids[0].gs_acc_stock_masuk_pcs
-                re_acc_stock_masuk_pcs = source_ids[0].re_acc_stock_masuk_pcs
-                hot_acc_stock_keluar_pcs = source_ids[0].hot_acc_stock_keluar_pcs
-                gs_acc_stock_keluar_pcs = source_ids[0].gs_acc_stock_keluar_pcs
+                if not source_ids:
+                    source_ids = self.env['pwk.mutasi.assembling.finishing.gs1'].search([
+                        ('reference.date','<',res.reference.date),
+                        ('product_id','=',res.product_id.id)
+                        ])
+
+                if source_ids:
+                    gs_acc_stock_masuk_pcs = source_ids[0].gs_acc_stock_masuk_pcs
+                    re_acc_stock_masuk_pcs = source_ids[0].re_acc_stock_masuk_pcs
+                    hot_acc_stock_keluar_pcs = source_ids[0].hot_acc_stock_keluar_pcs
+                    gs_acc_stock_keluar_pcs = source_ids[0].gs_acc_stock_keluar_pcs
 
             res.gs_acc_stock_masuk_pcs = gs_acc_stock_masuk_pcs + res.gs_stock_masuk_pcs
             res.re_acc_stock_masuk_pcs = re_acc_stock_masuk_pcs + res.re_stock_masuk_pcs
@@ -103,43 +104,43 @@ class PwkMutasiAssemblingFinishingGs1(models.Model):
     @api.depends('product_id')
     def _get_stock_masuk(self):
         for res in self:
-            stock_masuk_pcs = 0
+            gs_stock_masuk_pcs = 0
+            re_stock_masuk_pcs = 0
 
-            if res.gs1_selection == "Veneer GS":
-                source_ids = self.env['pwk.mutasi.veneer.gs.line'].search([
-                    ('reference.date','=',res.reference.date),
-                    ('product_id','=',res.product_id.id)
-                    ])                        
-                if source_ids:
-                    stock_masuk_pcs = source_ids[0].stock_keluar_gs_pcs
+            if res.product_id:
+                if res.reference.gs1_selection == "Veneer GS":
+                    source_ids = self.env['pwk.mutasi.veneer.gs.line'].search([
+                        ('reference.date','=',res.reference.date - timedelta(1)),
+                        ('product_id','=',res.product_id.id)
+                        ])
 
-            # elif res.gs1_selection == "Proses Ulang 2":
-            #     source_ids = self.env['pwk.mutasi.veneer.gs.line'].search([
-            #         ('reference.date','=',res.reference.date),
-            #         ('product_id','=',res.product_id.id)
-            #         ])                        
-            #     if source_ids:
-            #         stock_masuk_pcs = source_ids[0].stock_keluar_gs_pcs
+                    if source_ids:
+                        gs_stock_masuk_pcs = source_ids[0].stock_keluar_gs_pcs
+                
+                re_stock_masuk_pcs = res.gs_stock_keluar_pcs
 
-            res.stock_masuk_pcs = stock_masuk_pcs
+            res.gs_stock_masuk_pcs = gs_stock_masuk_pcs
+            res.re_stock_masuk_pcs = re_stock_masuk_pcs
 
     @api.depends('product_id')
     def _get_stock_awal(self):
         for res in self:
             stock_awal_pcs = 0
-            source_ids = self.env['pwk.mutasi.assembling.finishing.gs1'].search([
-                ('reference.date','=',res.reference.date - timedelta(1)),
-                ('product_id','=',res.product_id.id)
-                ])
 
-            if not source_ids:
+            if res.product_id:
                 source_ids = self.env['pwk.mutasi.assembling.finishing.gs1'].search([
-                    ('reference.date','<',res.reference.date),
+                    ('reference.date','=',res.reference.date - timedelta(1)),
                     ('product_id','=',res.product_id.id)
                     ])
-                        
-            if source_ids:
-                stock_awal_pcs = source_ids[0].stock_akhir_pcs
+
+                if not source_ids:
+                    source_ids = self.env['pwk.mutasi.assembling.finishing.gs1'].search([
+                        ('reference.date','<',res.reference.date),
+                        ('product_id','=',res.product_id.id)
+                        ])
+                            
+                if source_ids:
+                    stock_awal_pcs = source_ids[0].stock_akhir_pcs
 
             res.stock_awal_pcs = stock_awal_pcs
 
@@ -157,7 +158,7 @@ class PwkMutasiAssemblingFinishing(models.Model):
     user_id = fields.Many2one('res.users', string="Dibuat Oleh", default=lambda self: self.env.user)
     state = fields.Selection([('Draft','Draft'),('Approved','Approved')], string="Status")
     gs1_ids = fields.One2many('pwk.mutasi.assembling.finishing.gs1', 'reference', string="GS 1")
-    gs1_selection = fields.Selection([('Veneer GS','Veneer GS'),('Proses Ulang 2','Proses Ulang 2'),('Semua Proses','Semua Proses')], string="Proses Asal")
+    gs1_selection = fields.Selection([('Veneer GS','Veneer GS'),('Proses Ulang 2','Proses Ulang 2'),('Semua Proses','Semua Proses')], string="Proses Asal", default="Veneer GS")
 
     def get_sequence(self, name=False, obj=False, context=None):
         sequence_id = self.env['ir.sequence'].search([
@@ -175,10 +176,29 @@ class PwkMutasiAssemblingFinishing(models.Model):
             })
         return sequence_id.next_by_id()
 
+    @api.multi
+    def button_reload_gs1(self):
+        for res in self:
+            source_ids = self.env['pwk.mutasi.veneer.gs.line'].search([
+                ('reference.date','=',res.date - timedelta(1)),
+                ])
+
+            if not source_ids:
+                source_ids = self.env['pwk.mutasi.veneer.gs.line'].search([
+                    ('reference.date','<',res.date),
+                    ])
+
+            if source_ids:
+                for source in source_ids:
+                    self.env['pwk.mutasi.assembling.finishing.gs1'].create({
+                        'reference': res.id,
+                        'product_id': source.product_id.id,
+                        })
+
     @api.model
     def create(self, vals):
-        vals['name'] = self.get_sequence('Mutasi Assembling Finishing', 'pwk.mutasi.veneer.gs')
-        return super(PwkMutasiVeneerGs, self).create(vals)
+        vals['name'] = self.get_sequence('Mutasi Assembling Finishing', 'pwk.mutasi.assembling.finishing')
+        return super(PwkMutasiAssemblingFinishing, self).create(vals)
 
     @api.multi
     def button_approve(self):

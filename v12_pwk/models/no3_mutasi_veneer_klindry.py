@@ -118,6 +118,7 @@ class PwkMutasiVeneerKlinDryLine(models.Model):
 
 class PwkMutasiVeneerKlindry(models.Model):    
     _name = "pwk.mutasi.veneer.klindry"
+    _inherit = ["mail.thread", "mail.activity.mixin"]
 
     name = fields.Char('No. Dokumen')
     date = fields.Date('Tanggal', default=fields.Date.today())
