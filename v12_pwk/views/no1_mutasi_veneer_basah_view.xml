@@ -35,6 +35,8 @@
                     <group>
                         <notebook>
                             <page string="Veneer Basah - Stacking">
+                                <button name="button_reload_line" string="Reload" 
+                                    type="object" class="oe_highlight"/>
                                 <group>
                                     <field name="stacking_ids" nolabel="1">
                                         <tree>
