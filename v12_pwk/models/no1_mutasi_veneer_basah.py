@@ -233,7 +233,7 @@ class PwkMutasiVeneerBasah(models.Model):
     name = fields.Char('No. Dokumen', track_visibility="always")
     date = fields.Date('Tanggal', default=fields.Date.today(), track_visibility="always")
     user_id = fields.Many2one('res.users', string="Dibuat Oleh", default=lambda self: self.env.user, track_visibility="always")
-    state = fields.Selection([('Draft','Draft'),('Approved','Approved')], string="Status", track_visibility="always")
+    state = fields.Selection([('Draft','Draft'),('Approved','Approved')], string="Status", default="Draft", track_visibility="always")
     stacking_ids = fields.One2many('pwk.mutasi.veneer.basah.stacking', 'reference', string="Stacking", track_visibility="always")
     kd_ids = fields.One2many('pwk.mutasi.veneer.basah.kd', 'reference', string="In KD", track_visibility="always")
 
@@ -262,6 +262,11 @@ class PwkMutasiVeneerBasah(models.Model):
     def button_approve(self):
         for res in self:
             res.state = "Approved"
+
+    @api.multi
+    def button_cancel(self):
+        for res in self:
+            res.state = "Draft"
 
     @api.multi
     def button_reload_kd(self):

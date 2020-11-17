@@ -22,6 +22,7 @@
                     <header>
                         <field name="state" widget="statusbar" readonly="1"/>
                         <button name="button_approve" type="object" string="Approve" states="Draft"/>
+                        <button name="button_cancel" type="object" string="Cancel" states="Approved"/>
                     </header>
                     
                     <label for="name" class="oe_edit_only" />

@@ -153,12 +153,12 @@ class PwkMutasiAssemblingFinishing(models.Model):
     _name = "pwk.mutasi.assembling.finishing"
     _inherit = ["mail.thread", "mail.activity.mixin"]
 
-    name = fields.Char('No. Dokumen')
-    date = fields.Date('Tanggal', default=fields.Date.today())
-    user_id = fields.Many2one('res.users', string="Dibuat Oleh", default=lambda self: self.env.user)
-    state = fields.Selection([('Draft','Draft'),('Approved','Approved')], string="Status")
-    gs1_ids = fields.One2many('pwk.mutasi.assembling.finishing.gs1', 'reference', string="GS 1")
-    gs1_selection = fields.Selection([('Veneer GS','Veneer GS'),('Proses Ulang 2','Proses Ulang 2'),('Semua Proses','Semua Proses')], string="Proses Asal", default="Veneer GS")
+    name = fields.Char('No. Dokumen', track_visibility="always")
+    date = fields.Date('Tanggal', default=fields.Date.today(), track_visibility="always")
+    user_id = fields.Many2one('res.users', string="Dibuat Oleh", default=lambda self: self.env.user, track_visibility="always")
+    state = fields.Selection([('Draft','Draft'),('Approved','Approved')], string="Status", default="Draft", track_visibility="always")
+    gs1_ids = fields.One2many('pwk.mutasi.assembling.finishing.gs1', 'reference', string="GS 1", track_visibility="always")
+    gs1_selection = fields.Selection([('Veneer GS','Veneer GS'),('Proses Ulang 2','Proses Ulang 2'),('Semua Proses','Semua Proses')], string="Proses Asal", default="Veneer GS", track_visibility="always")
 
     def get_sequence(self, name=False, obj=False, context=None):
         sequence_id = self.env['ir.sequence'].search([

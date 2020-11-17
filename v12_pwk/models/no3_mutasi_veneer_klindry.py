@@ -120,11 +120,11 @@ class PwkMutasiVeneerKlindry(models.Model):
     _name = "pwk.mutasi.veneer.klindry"
     _inherit = ["mail.thread", "mail.activity.mixin"]
 
-    name = fields.Char('No. Dokumen')
-    date = fields.Date('Tanggal', default=fields.Date.today())
-    user_id = fields.Many2one('res.users', string="Dibuat Oleh", default=lambda self: self.env.user)
-    state = fields.Selection([('Draft','Draft'),('Approved','Approved')], string="Status")
-    line_ids = fields.One2many('pwk.mutasi.veneer.klindry.line', 'reference', string="RolerDryer")
+    name = fields.Char('No. Dokumen', track_visibility="always")
+    date = fields.Date('Tanggal', default=fields.Date.today(), track_visibility="always")
+    user_id = fields.Many2one('res.users', string="Dibuat Oleh", default=lambda self: self.env.user, track_visibility="always")
+    state = fields.Selection([('Draft','Draft'),('Approved','Approved')], string="Status", default="Draft", track_visibility="always")
+    line_ids = fields.One2many('pwk.mutasi.veneer.klindry.line', 'reference', string="RolerDryer", track_visibility="always")
 
     def get_sequence(self, name=False, obj=False, context=None):
         sequence_id = self.env['ir.sequence'].search([
