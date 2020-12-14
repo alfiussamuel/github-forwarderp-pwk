@@ -12,6 +12,7 @@ import math
 import re    
 from num2words import num2words
 from xlsxwriter.workbook import Workbook
+from odoo.tools.misc import xlwt
 
 class PwkMutasiVeneerBasahKd(models.Model):    
     _name = "pwk.mutasi.veneer.basah.kd"    
@@ -311,7 +312,7 @@ class PwkMutasiVeneerBasah(models.Model):
     def button_print(self):
         alamat = ' Jl. Raya Krangan - Pringsurat, Karanglo, Kupen, Kec. Pringsurat, Kabupaten Temanggung, Jawa Tengah 56272'
 
-        workbook = Workbook
+        workbook= xlwt.Workbook()
         sheet = workbook.add_worksheet('Laporan PEB')
         format0 = workbook.add_format({'font_size': 20, 'align': 'center', 'bold': True})
         format1 = workbook.add_format({'font_size': 14, 'align': 'vcenter', 'bold': True})
