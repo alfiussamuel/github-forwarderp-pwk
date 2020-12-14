@@ -48,8 +48,8 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
 
     def get_data2(self, data):        
         lines = []
-        if data.stacking_ids:
-            for line in data.stacking_ids:
+        if data.kd_ids:
+            for line in data.kd_ids:
                 vals = {
                         'jenis_kayu' : line.product_id.jenis_kayu_id.name,
                         'tebal': line.tebal,

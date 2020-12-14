@@ -312,3 +312,4 @@ class PwkMutasiVeneerBasah(models.Model):
     @api.multi
     def button_print(self):
         return self.env.ref('v12_pwk.report_mutasi_veneer_basah').report_action(self)
+        

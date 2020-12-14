@@ -12,8 +12,8 @@ class MutasiVeneerRolerdryerReportXls(models.AbstractModel):
 
     def get_data(self, data):        
         lines = []
-        if data.stacking_ids:
-            for line in data.stacking_ids:
+        if data.line_ids:
+            for line in data.line_ids:
                 vals = {
                         'jenis_kayu' : line.product_id.jenis_kayu_id.name,
                         'tebal': line.tebal,
@@ -48,8 +48,8 @@ class MutasiVeneerRolerdryerReportXls(models.AbstractModel):
 
     def get_data2(self, data):        
         lines = []
-        if data.stacking_ids:
-            for line in data.stacking_ids:
+        if data.reline_ids:
+            for line in data.reline_ids:
                 vals = {
                         'jenis_kayu' : line.product_id.jenis_kayu_id.name,
                         'tebal': line.tebal,
