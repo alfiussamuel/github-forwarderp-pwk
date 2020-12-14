@@ -24,7 +24,7 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
         return lines
 
     def generate_xlsx_report(self, workbook, data, lines):        
-        get_data = self.get_data
+        get_data = self.get_data(lines)
         alamat = ' Jl. Raya Krangan - Pringsurat, Karanglo, Kupen, Kec. Pringsurat, Kabupaten Temanggung, Jawa Tengah 56272'
 
         sheet = workbook.add_worksheet('Sheet 1')
