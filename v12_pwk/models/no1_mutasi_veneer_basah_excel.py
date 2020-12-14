@@ -10,16 +10,39 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
     _name = 'report.v12_pwk.mutasi_veneer_basah_report_xls.xlsx'
     _inherit = 'report.report_xlsx.abstract'
 
-    def get_data(self, data):
-        print('data ', data)
-        print('self', self)
+    def get_data(self, data):        
         lines = []
+        if data.stacking_ids:
+            for line in data.stacking_ids:
+                vals = {
+                        'jenis_kayu' : line.product_id.jenis_kayu_id.name,
+                        'tebal': line.tebal,
+                        'lebar': line.lebar,
+                        'panjang': line.panjang,
+                        'grade': line.grade.name,
+                        'awal_pcs': line.stock_awal_pcs,
+                        'awal_vol': line.stock_awal_vol,
+                        'masuk_supplier_pcs': line.stock_masuk_supplier_pcs,
+                        'masuk_supplier_vol': line.stock_masuk_supplier_vol,
+                        'masuk_supplier_acc_pcs': line.acc_stock_masuk_supplier_pcs,
+                        'masuk_supplier_acc_vol': line.acc_stock_masuk_supplier_vol,
+                        'masuk_rotary_pcs': line.stock_masuk_rotary_pcs,
+                        'masuk_rotary_vol': line.stock_masuk_rotary_vol,
+                        'masuk_rotary_acc_pcs': line.acc_stock_masuk_rotary_pcs,
+                        'masuk_rotary_acc_vol': line.acc_stock_masuk_rotary_vol,
+                        'keluar_stacking_pcs': line.stock_keluar_stacking_pcs,
+                        'keluar_stacking_vol': line.stock_keluar_stacking_vol,
+                        'keluar_stacking_acc_pcs': line.acc_stock_keluar_stacking_pcs,
+                        'keluar_stacking_acc_vol': line.acc_stock_keluar_stacking_vol,
+                        'keluar_roler_pcs': line.stock_keluar_roler_pcs,
+                        'keluar_roler_vol': line.stock_keluar_roler_vol,
+                        'keluar_roler_acc_pcs': line.acc_stock_keluar_roler_pcs,
+                        'keluar_roler_acc_vol': line.acc_stock_keluar_roler_vol,
+                        'akhir_pcs': line.stock_akhir_pcs,
+                        'akhir_vol': line.stock_akhir_vol,
+                        }
 
-        vals = {
-                'name' : 'add',
-                }
-
-        lines.append(vals)
+                lines.append(vals)
 
         return lines
 
@@ -156,43 +179,42 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
 
         row = 9
         number = 1
-        print (get_data)
-        # for i in get_data:         
-            # sheet.write(row, 0, number, formatHeaderDetailCenter)
-            # sheet.write(row, 1, i['jenis_kayu'], formatHeaderDetailCenter)            
-            # sheet.write(row, 2, i['tebal'], formatHeaderDetailCenter)
-            # sheet.write(row, 3, '', formatHeaderDetailCenter)
-            # sheet.write(row, 4, i['lebar'], formatHeaderDetailCenter)
-            # sheet.write(row, 5, '', formatHeaderDetailCenter)
-            # sheet.write(row, 6, i['panjang'], formatHeaderDetailCenter)
+        for i in get_data:         
+            sheet.write(row, 0, number, formatHeaderDetailCenter)
+            sheet.write(row, 1, i['jenis_kayu'], formatHeaderDetailCenter)            
+            sheet.write(row, 2, i['tebal'], formatHeaderDetailCenter)
+            sheet.write(row, 3, '', formatHeaderDetailCenter)
+            sheet.write(row, 4, i['lebar'], formatHeaderDetailCenter)
+            sheet.write(row, 5, '', formatHeaderDetailCenter)
+            sheet.write(row, 6, i['panjang'], formatHeaderDetailCenter)
 
-            # sheet.write(row, 7, i['grade'], formatHeaderDetailCenterNumberFour)
-            # sheet.write(row, 8, i['awal_pcs'], formatHeaderDetailCenterNumber)
-            # sheet.write(row, 9, i['awal_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 7, i['grade'], formatHeaderDetailCenterNumberFour)
+            sheet.write(row, 8, i['awal_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 9, i['awal_vol'], formatHeaderDetailCenterNumber)
 
-            # sheet.write(row, 10, i['masuk_supplier_pcs'], formatHeaderDetailCenterNumber)
-            # sheet.write(row, 11, i['masuk_supplier_vol'], formatHeaderDetailCenter)
-            # sheet.write(row, 12, i['masuk_supplier_acc_pcs'], formatHeaderDetailCenter)
-            # sheet.write(row, 13, i['masuk_supplier_acc_vol'], formatHeaderDetailCenter)
+            sheet.write(row, 10, i['masuk_supplier_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 11, i['masuk_supplier_vol'], formatHeaderDetailCenter)
+            sheet.write(row, 12, i['masuk_supplier_acc_pcs'], formatHeaderDetailCenter)
+            sheet.write(row, 13, i['masuk_supplier_acc_vol'], formatHeaderDetailCenter)
 
-            # sheet.write(row, 14, i['masuk_rotary_pcs'], formatHeaderDetailCenterNumber)
-            # sheet.write(row, 15, i['masuk_rotary_vol'], formatHeaderDetailCenterNumber)
-            # sheet.write(row, 14, i['masuk_rotary_acc_pcs'], formatHeaderDetailCenterNumber)
-            # sheet.write(row, 15, i['masuk_rotary_acc_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 14, i['masuk_rotary_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 15, i['masuk_rotary_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 14, i['masuk_rotary_acc_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 15, i['masuk_rotary_acc_vol'], formatHeaderDetailCenterNumber)
 
 
-            # sheet.write(row, 16, i['keluar_stacking_pcs'], formatHeaderDetailCenterNumber)
-            # sheet.write(row, 16, i['keluar_stacking_vol'], formatHeaderDetailCenterNumber)
-            # sheet.write(row, 16, i['keluar_stacking_acc_pcs'], formatHeaderDetailCenterNumber)
-            # sheet.write(row, 16, i['keluar_stacking_acc_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 16, i['keluar_stacking_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 16, i['keluar_stacking_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 16, i['keluar_stacking_acc_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 16, i['keluar_stacking_acc_vol'], formatHeaderDetailCenterNumber)
 
-            # sheet.write(row, 16, i['keluar_roler_pcs'], formatHeaderDetailCenterNumber)
-            # sheet.write(row, 16, i['keluar_roler_vol'], formatHeaderDetailCenterNumber)
-            # sheet.write(row, 16, i['keluar_roler_acc_pcs'], formatHeaderDetailCenterNumber)
-            # sheet.write(row, 16, i['keluar_roler_acc_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 16, i['keluar_roler_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 16, i['keluar_roler_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 16, i['keluar_roler_acc_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 16, i['keluar_roler_acc_vol'], formatHeaderDetailCenterNumber)
 
-            # sheet.write(row, 16, i['akhir_pcs'], formatHeaderDetailCenterNumber)
-            # sheet.write(row, 16, i['akhir_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 16, i['akhir_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 16, i['akhir_vol'], formatHeaderDetailCenterNumber)
             
-            # row += 1
-            # number += 1
+            row += 1
+            number += 1
