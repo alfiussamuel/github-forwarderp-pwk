@@ -19,6 +19,7 @@ class PebReport(models.TransientModel):
         datas = {'ids': context.get('active_ids', [])}
         datas['model'] = 'wizard.peb.report'
         datas['form'] = self.read()[0]
+        print(context)
         for field in datas['form'].keys():
             if isinstance(datas['form'][field], tuple):
                 datas['form'][field] = datas['form'][field][0]
