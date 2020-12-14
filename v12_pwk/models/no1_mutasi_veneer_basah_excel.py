@@ -7,12 +7,8 @@ from odoo import models
 
 
 class MutasiVeneerBasahReportXls(models.AbstractModel):
-    _name = 'mutasi_veneer_basah_report_xls'
+    _name = 'report.v12_pwk.mutasi_veneer_basah_report_xls'
     _inherit = 'report.report_xlsx.abstract'
-
-    def _get_stacking_lines(self, data):
-        lines = []       
-        return lines
 
     def generate_xlsx_report(self, workbook, data, lines):
         get_invoice = self.get_invoice(lines)        
@@ -107,29 +103,3 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
         sheet.write(9, 8, 'Netto ( Kg )', formatHeaderTable)
         sheet.write(9, 9, 'Jumlah ( Unit )', formatHeaderTable)
         sheet.write(9, 10, 'Nilai ( USD )', formatHeaderTable)                
-
-        row = 10
-        number = 1
-        # for i in get_invoice:         
-        #     sheet.set_row(row, 55)
-        #     sheet.write(row, 0, number, formatHeaderDetailCenter)
-        #     sheet.write(row, 1, 'PT. PRIMA WANA KREASI WOOD INDUSTRY', formatHeaderDetailCenter)            
-        #     sheet.write(row, 2, i['tdp'], formatHeaderDetailCenter)
-        #     sheet.write(row, 3, alamat, formatHeaderDetailCenter)
-        #     sheet.write(row, 4, '', formatHeaderDetailCenter)
-        #     sheet.write(row, 5, '', formatHeaderDetailCenter)
-        #     sheet.write(row, 6, alamat, formatHeaderDetailCenter)
-        #     sheet.write(row, 7, i['volume'], formatHeaderDetailCenterNumberFour)
-        #     sheet.write(row, 8, i['netto'], formatHeaderDetailCenterNumber)
-        #     sheet.write(row, 9, i['jumlah'], formatHeaderDetailCenterNumber)
-        #     sheet.write(row, 10, i['nilai'], formatHeaderDetailCenterNumber)
-        #     sheet.write(row, 11, i['buyer'], formatHeaderDetailCenter)
-        #     sheet.write(row, 12, i['lc_tt'], formatHeaderDetailCenter)
-        #     sheet.write(row, 13, i['cnf_fob'], formatHeaderDetailCenter)
-        #     sheet.write(row, 14, i['kurs_bi'], formatHeaderDetailCenterNumber)
-        #     sheet.write(row, 15, i['kurs_mk'], formatHeaderDetailCenterNumber)
-        #     sheet.write(row, 16, i['total'], formatHeaderDetailCenterNumber)
-        #     # sheet.write_formula(row, 16, '{=SUM(B1:C1*B2:C2)}', cell_format, 2005)
-        #     row += 1
-        #     number += 1
-

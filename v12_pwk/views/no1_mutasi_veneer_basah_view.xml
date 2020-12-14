@@ -2,14 +2,12 @@
     <data>                      
 
         <report
-            id="mutasi_veneer_basah_xlsx"
+            id="report_mutasi_veneer_basah"
             model="pwk.mutasi.veneer.basah"
             string="Laporan Mutasi Veneer Basah"
             report_type="xlsx"
             name="v12_pwk.mutasi_veneer_basah_report_xls.xlsx"
-            file="v12_pwk.mutasi_veneer_basah_report_xls.xlsx"
-            menu="False"
-            attachment_use="False"/>
+            file="v12_pwk.mutasi_veneer_basah_report_xls.xlsx"/>
 
         <!-- Mutasi Veneer Basah -->
         <record id="pwk_mutasi_veneer_basah_tree" model="ir.ui.view">
