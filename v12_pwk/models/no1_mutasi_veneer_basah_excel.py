@@ -123,6 +123,7 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
         formatHeaderDetailCenterNumberFour = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'num_format': '#,##4'})
         formatHeaderDetailLeft = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'left'})
         formatHeaderDetailRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0'})
+        formatHeaderDetailRightFour = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0.0000'})
         format11 = workbook.add_format({'font_size': 12, 'align': 'center', 'bold': True})
         format21 = workbook.add_format({'font_size': 10, 'align': 'center', 'bold': True})
         format3 = workbook.add_format({'bottom': True, 'top': True, 'font_size': 12})
@@ -249,33 +250,33 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
             sheet.write(row, 5, '', formatHeaderDetailCenter)
             sheet.write(row, 6, i['panjang'], formatHeaderDetailCenter)
 
-            sheet.write(row, 7, i['grade'], formatHeaderDetailCenterNumberFour)
-            sheet.write(row, 8, i['awal_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 9, i['awal_vol'], formatHeaderDetailCenterNumberFour)
+            sheet.write(row, 7, i['grade'], formatHeaderDetailCenter)
+            sheet.write(row, 8, i['awal_pcs'], formatHeaderDetailRight)
+            sheet.write(row, 9, i['awal_vol'], formatHeaderDetailRightFour)
 
-            sheet.write(row, 10, i['masuk_supplier_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 11, i['masuk_supplier_vol'], formatHeaderDetailCenterNumberFour)
-            sheet.write(row, 12, i['masuk_supplier_acc_pcs'], formatHeaderDetailCenter)
-            sheet.write(row, 13, i['masuk_supplier_acc_vol'], formatHeaderDetailCenterNumberFour)
+            sheet.write(row, 10, i['masuk_supplier_pcs'], formatHeaderDetailRight)
+            sheet.write(row, 11, i['masuk_supplier_vol'], formatHeaderDetailRightFour)
+            sheet.write(row, 12, i['masuk_supplier_acc_pcs'], formatHeaderDetailRight)
+            sheet.write(row, 13, i['masuk_supplier_acc_vol'], formatHeaderDetailRightFour)
 
-            sheet.write(row, 14, i['masuk_rotary_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 15, i['masuk_rotary_vol'], formatHeaderDetailCenterNumberFour)
-            sheet.write(row, 16, i['masuk_rotary_acc_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 17, i['masuk_rotary_acc_vol'], formatHeaderDetailCenterNumberFour)
+            sheet.write(row, 14, i['masuk_rotary_pcs'], formatHeaderDetailRight)
+            sheet.write(row, 15, i['masuk_rotary_vol'], formatHeaderDetailRightFour)
+            sheet.write(row, 16, i['masuk_rotary_acc_pcs'], formatHeaderDetailRight)
+            sheet.write(row, 17, i['masuk_rotary_acc_vol'], formatHeaderDetailRightFour)
 
 
-            sheet.write(row, 18, i['keluar_stacking_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 19, i['keluar_stacking_vol'], formatHeaderDetailCenterNumberFour)
-            sheet.write(row, 20, i['keluar_stacking_acc_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 21, i['keluar_stacking_acc_vol'], formatHeaderDetailCenterNumberFour)
+            sheet.write(row, 18, i['keluar_stacking_pcs'], formatHeaderDetailRight)
+            sheet.write(row, 19, i['keluar_stacking_vol'], formatHeaderDetailRightFour)
+            sheet.write(row, 20, i['keluar_stacking_acc_pcs'], formatHeaderDetailRight)
+            sheet.write(row, 21, i['keluar_stacking_acc_vol'], formatHeaderDetailRightFour)
 
-            sheet.write(row, 22, i['keluar_roler_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 23, i['keluar_roler_vol'], formatHeaderDetailCenterNumberFour)
-            sheet.write(row, 24, i['keluar_roler_acc_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 25, i['keluar_roler_acc_vol'], formatHeaderDetailCenterNumberFour)
+            sheet.write(row, 22, i['keluar_roler_pcs'], formatHeaderDetailRight)
+            sheet.write(row, 23, i['keluar_roler_vol'], formatHeaderDetailRightFour)
+            sheet.write(row, 24, i['keluar_roler_acc_pcs'], formatHeaderDetailRight)
+            sheet.write(row, 25, i['keluar_roler_acc_vol'], formatHeaderDetailRightFour)
 
-            sheet.write(row, 26, i['akhir_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 27, i['akhir_vol'], formatHeaderDetailCenterNumberFour)
+            sheet.write(row, 26, i['akhir_pcs'], formatHeaderDetailRight)
+            sheet.write(row, 27, i['akhir_vol'], formatHeaderDetailRightFour)
             
             row += 1
             number += 1
