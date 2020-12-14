@@ -7,7 +7,7 @@ from odoo import models
 
 
 class MutasiVeneerBasahReportXls(models.AbstractModel):
-    _name = 'report.v12_pwk.mutasi_veneer_basah_report_xls'
+    _name = 'report.v12_pwk.mutasi_veneer_basah_report_xls.xlsx'
     _inherit = 'report.report_xlsx.abstract'
 
     def generate_xlsx_report(self, workbook, data, lines):
