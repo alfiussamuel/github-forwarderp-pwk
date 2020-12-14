@@ -13,6 +13,15 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
     def get_data(self, data):
         print('data ', data)
         print('self', self)
+        lines = []
+
+        vals = {
+                'name' : 'add',
+                }
+
+        lines.append(vals)
+        
+        return lines
 
     def generate_xlsx_report(self, workbook, data, lines):        
         get_data = self.get_data
