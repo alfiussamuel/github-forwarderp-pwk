@@ -282,9 +282,18 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
             row += 1
             number += 1
 
+        # Footer
+        sheet.merge_range(row+2, 19, row+2, 21, 'Mengetahui,', formatHeaderTable)
+        sheet.merge_range(row+3, 1, row+3, 8, 'Mengetahui,', formatHeaderTable)
+        sheet.merge_range(row+3, 11, row+3, 15, 'Diperiksa Oleh,', formatHeaderTable)
+        sheet.merge_range(row+3, 19, row+3, 21, 'Dibuat Oleh,', formatHeaderTable)
+        
+        sheet.merge_range(row+7, 1, row+7, 8, '( Parwoto )', formatHeaderTable)
+        sheet.merge_range(row+7, 11, row+7, 15, '( Dwi Rakasiwi )', formatHeaderTable)
+        sheet.merge_range(row+7, 19, row+7, 21, '( Nurul Sholikhah )', formatHeaderTable)
 
         # Data 2
-        row += 5
+        row += 11
         number = 1
 
         sheet.merge_range(row-3, 0, row-3, 27, 'LAPORAN MUTASI VENEER BASAH - IN KD', formatHeaderCenter)
@@ -363,10 +372,19 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
             row += 1
             number += 1
 
+        # Footer
+        sheet.merge_range(row+2, 19, row+2, 21, 'Mengetahui,', formatHeaderTable)
+        sheet.merge_range(row+3, 1, row+3, 8, 'Mengetahui,', formatHeaderTable)
+        sheet.merge_range(row+3, 11, row+3, 15, 'Diperiksa Oleh,', formatHeaderTable)
+        sheet.merge_range(row+3, 19, row+3, 21, 'Dibuat Oleh,', formatHeaderTable)
+        
+        sheet.merge_range(row+7, 1, row+7, 8, '( Parwoto )', formatHeaderTable)
+        sheet.merge_range(row+7, 11, row+7, 15, '( Dwi Rakasiwi )', formatHeaderTable)
+        sheet.merge_range(row+7, 19, row+7, 21, '( Nurul Sholikhah )', formatHeaderTable)
 
         # Data 3
         if get_data3:
-            row += 5
+            row += 11
             number = 1
 
             sheet.merge_range(row-3, 0, row-3, 27, 'LAPORAN MUTASI VENEER BASAH - RE-IN KD', formatHeaderCenter)
@@ -444,3 +462,13 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
                 
                 row += 1
                 number += 1
+
+            # Footer
+            sheet.merge_range(row+2, 19, row+2, 21, 'Mengetahui,', formatHeaderTable)
+            sheet.merge_range(row+3, 1, row+3, 8, 'Mengetahui,', formatHeaderTable)
+            sheet.merge_range(row+3, 11, row+3, 15, 'Diperiksa Oleh,', formatHeaderTable)
+            sheet.merge_range(row+3, 19, row+3, 21, 'Dibuat Oleh,', formatHeaderTable)
+            
+            sheet.merge_range(row+7, 1, row+7, 8, '( Parwoto )', formatHeaderTable)
+            sheet.merge_range(row+7, 11, row+7, 15, '( Dwi Rakasiwi )', formatHeaderTable)
+            sheet.merge_range(row+7, 19, row+7, 21, '( Nurul Sholikhah )', formatHeaderTable)
