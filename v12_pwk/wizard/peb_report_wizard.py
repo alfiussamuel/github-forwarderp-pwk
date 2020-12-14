@@ -15,7 +15,7 @@ class PebReport(models.TransientModel):
 
     @api.multi
     def export_xls(self):
-        print ('context 1 ', _context)
+        print ('context 1 ', self._context)
         context = self._context
         datas = {'ids': context.get('active_ids', [])}
         datas['model'] = 'wizard.peb.report'

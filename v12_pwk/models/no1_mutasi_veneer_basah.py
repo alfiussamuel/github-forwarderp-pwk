@@ -308,7 +308,7 @@ class PwkMutasiVeneerBasah(models.Model):
 
     @api.multi
     def button_print(self):
-        print ('context 1 ', _context)
+        print ('context 1 ', self._context)
         context = self._context
         datas = {'ids': self.id}
         datas['model'] = 'pwk.mutasi.veneer.basah'
