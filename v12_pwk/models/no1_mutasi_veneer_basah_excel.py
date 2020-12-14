@@ -235,6 +235,8 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
         sheet.write(row+3, 23, 'M3', formatHeaderTable)
         sheet.write(row+3, 24, 'PCS', formatHeaderTable)
         sheet.write(row+3, 25, 'M3', formatHeaderTable)
+        sheet.write(row+3, 26, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 27, 'M3', formatHeaderTable)
 
         row = 9
         number = 1
