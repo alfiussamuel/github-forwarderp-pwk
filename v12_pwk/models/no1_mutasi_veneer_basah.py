@@ -230,7 +230,8 @@ class PwkMutasiVeneerBasahStacking(models.Model):
 
 class PwkMutasiVeneerBasah(models.Model):    
     _name = "pwk.mutasi.veneer.basah"
-    _inherit = ["mail.thread", "mail.activity.mixin"]
+    _inherit = ["mail.thread", "mail.activity.mixin", "report.report_xlsx.abstract"]
+
 
     name = fields.Char('No. Dokumen', track_visibility="always")
     date = fields.Date('Tanggal', default=fields.Date.today(), track_visibility="always")
@@ -309,10 +310,9 @@ class PwkMutasiVeneerBasah(models.Model):
                         })
 
     @api.multi
-    def button_print(self):
+    def button_print(self, workbook, data, lines):
         alamat = ' Jl. Raya Krangan - Pringsurat, Karanglo, Kupen, Kec. Pringsurat, Kabupaten Temanggung, Jawa Tengah 56272'
 
-        workbook= xlwt.Workbook()
         sheet = workbook.add_worksheet('Laporan PEB')
         format0 = workbook.add_format({'font_size': 20, 'align': 'center', 'bold': True})
         format1 = workbook.add_format({'font_size': 14, 'align': 'vcenter', 'bold': True})
