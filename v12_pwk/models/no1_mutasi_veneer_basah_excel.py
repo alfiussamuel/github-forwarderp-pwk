@@ -10,10 +10,7 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
     _name = 'report.v12_pwk.mutasi_veneer_basah_report_xls.xlsx'
     _inherit = 'report.report_xlsx.abstract'
 
-    def generate_xlsx_report(self, workbook, data, lines):
-        get_invoice = self.get_invoice(lines)        
-        start_date = lines.start_date
-        end_date = lines.end_date        
+    def generate_xlsx_report(self, workbook, data, lines):        
         alamat = ' Jl. Raya Krangan - Pringsurat, Karanglo, Kupen, Kec. Pringsurat, Kabupaten Temanggung, Jawa Tengah 56272'
 
         sheet = workbook.add_worksheet('Laporan PEB')
