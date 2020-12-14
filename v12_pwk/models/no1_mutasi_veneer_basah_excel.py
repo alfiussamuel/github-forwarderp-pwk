@@ -11,9 +11,11 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
     _inherit = 'report.report_xlsx.abstract'
 
     def generate_xlsx_report(self, workbook, data, lines):        
+        print ('data ', data)
+        print ('lines ', lines)
         alamat = ' Jl. Raya Krangan - Pringsurat, Karanglo, Kupen, Kec. Pringsurat, Kabupaten Temanggung, Jawa Tengah 56272'
 
-        sheet = workbook.add_worksheet('Laporan PEB')
+        sheet = workbook.add_worksheet('Sheet 1')
         format0 = workbook.add_format({'font_size': 20, 'align': 'center', 'bold': True})
         format1 = workbook.add_format({'font_size': 14, 'align': 'vcenter', 'bold': True})
         formatHeaderCompany = workbook.add_format({'font_size': 12, 'align': 'left', 'bold': True})
@@ -75,9 +77,8 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
         sheet.set_row(9, 30)
 
         # Header        
-        sheet.merge_range(4, 0, 4, 16, 'REKAPITULASI LAPORAN PEMBERITAHUAN EKSPOR BARANG (PEB)', formatHeaderCenter)
-        sheet.merge_range(5, 0, 5, 16, 'PT. PRIMA WANA KREASI WOOD INDUSTRY', formatHeaderCenter)
-        sheet.merge_range(6, 0, 6, 16, 'BULAN : MARET', formatHeaderCenter)        
+        sheet.merge_range(4, 0, 4, 16, 'LAPORAN MUTASI VENEER BASAH - STACKING', formatHeaderCenter)
+        sheet.merge_range(5, 0, 5, 16, '', formatHeaderCenter)
 
         # Table Header
         sheet.merge_range(8, 0, 9, 0, 'NO', formatHeaderTable)
