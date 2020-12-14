@@ -93,6 +93,7 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
         formatHeaderCompany = workbook.add_format({'font_size': 12, 'align': 'left', 'bold': True})
         formatHeader = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'left', 'bold': False, 'text_wrap': True})
         formatHeaderCenter = workbook.add_format({'font_size': 14, 'valign':'vcenter', 'align': 'center', 'bold': True, 'text_wrap': True})
+        formatHeaderLeft = workbook.add_format({'font_size': 14, 'valign':'vcenter', 'align': 'left', 'bold': True, 'text_wrap': True})
         formatHeaderRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'left', 'num_format': '#,##0'})
         formatHeaderTable = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'bold': True, 'bg_color':'#4ead2f', 'color':'white', 'text_wrap': True})
         formatHeaderTableRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'bold': True, 'bg_color':'#3eaec2', 'text_wrap': True, 'num_format': '#,##0'})
@@ -114,6 +115,7 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
         formatHeaderTable.set_border(1)
         formatHeaderTableRight.set_border(1)
         formatHeaderDetailCenter.set_border(1)
+        formatHeaderDetailLeft.set_border(1)
         formatHeaderDetailCenterNumber.set_border(1)
         formatHeaderDetailCenterNumberFour.set_border(1)
         formatHeaderDetailRight.set_border(1)
@@ -154,11 +156,11 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
         # sheet.set_row(8, 25)
         # sheet.set_row(9, 30)
 
-        # Header        
-        sheet.merge_range(2, 0, 2, 16, 'LAPORAN MUTASI VENEER BASAH - STACKING', formatHeaderCenter)
-        sheet.merge_range(3, 0, 3, 16, lines.date.strftime("%d-%m-%Y"), formatHeaderCenter)
-
+        # Header                
         row = 5
+
+        sheet.merge_range(row-3, 0, row-3, 27, 'LAPORAN MUTASI VENEER BASAH - STACKING', formatHeaderCenter)
+        sheet.merge_range(row-2, 0, row-2, 27, lines.date.strftime("%d-%m-%Y"), formatHeaderCenter)
 
         # merge 1 - 4 
         sheet.merge_range(row, 0, row+3, 0, 'NO', formatHeaderTable)
@@ -262,6 +264,9 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
         row += 3
         number = 1
 
+        sheet.merge_range(row-3, 0, row-3, 27, 'LAPORAN MUTASI VENEER BASAH - IN KD', formatHeaderCenter)
+        sheet.merge_range(row-2, 0, row-2, 27, lines.date.strftime("%d-%m-%Y"), formatHeaderCenter)
+
         sheet.merge_range(row, 0, row+3, 0, 'NO', formatHeaderTable)
         sheet.merge_range(row, 1, row+3, 1, 'JENIS KAYU', formatHeaderTable)
         sheet.merge_range(row, 2, row+1, 6, 'UKURAN', formatHeaderTable)
@@ -363,6 +368,9 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
         # Data 3
         row += 3
         number = 1
+
+        sheet.merge_range(row-3, 0, row-3, 27, 'LAPORAN MUTASI VENEER BASAH - IN KD (RE-KD)', formatHeaderCenter)
+        sheet.merge_range(row-2, 0, row-2, 27, lines.date.strftime("%d-%m-%Y"), formatHeaderCenter)
 
         sheet.merge_range(row, 0, row+3, 0, 'NO', formatHeaderTable)
         sheet.merge_range(row, 1, row+3, 1, 'JENIS KAYU', formatHeaderTable)
