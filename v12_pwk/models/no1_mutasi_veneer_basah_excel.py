@@ -204,17 +204,17 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
 
 
             sheet.write(row, 16, i['keluar_stacking_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 16, i['keluar_stacking_vol'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 16, i['keluar_stacking_acc_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 16, i['keluar_stacking_acc_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 17, i['keluar_stacking_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 18, i['keluar_stacking_acc_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 19, i['keluar_stacking_acc_vol'], formatHeaderDetailCenterNumber)
 
-            sheet.write(row, 16, i['keluar_roler_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 16, i['keluar_roler_vol'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 16, i['keluar_roler_acc_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 16, i['keluar_roler_acc_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 20, i['keluar_roler_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 21, i['keluar_roler_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 22, i['keluar_roler_acc_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 23, i['keluar_roler_acc_vol'], formatHeaderDetailCenterNumber)
 
-            sheet.write(row, 16, i['akhir_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 16, i['akhir_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 24, i['akhir_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 25, i['akhir_vol'], formatHeaderDetailCenterNumber)
             
             row += 1
             number += 1
