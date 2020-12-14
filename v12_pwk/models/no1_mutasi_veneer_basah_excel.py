@@ -261,7 +261,7 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
             number += 1
 
         # Data 2
-        row += 3
+        row += 5
         number = 1
 
         sheet.merge_range(row-3, 0, row-3, 27, 'LAPORAN MUTASI VENEER BASAH - IN KD', formatHeaderCenter)
@@ -366,7 +366,7 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
 
 
         # Data 3
-        row += 3
+        row += 5
         number = 1
 
         sheet.merge_range(row-3, 0, row-3, 27, 'LAPORAN MUTASI VENEER BASAH - IN KD (RE-KD)', formatHeaderCenter)

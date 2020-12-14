@@ -170,3 +170,7 @@ class PwkMutasiVeneerKlindry(models.Model):
     def button_approve(self):
         for res in self:
             res.state = "Approved"
+
+    @api.multi
+    def button_print(self):
+        return self.env.ref('v12_pwk.report_mutasi_veneer_klindry').report_action(self)

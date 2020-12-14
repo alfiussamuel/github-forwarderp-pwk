@@ -19,6 +19,30 @@
 			<field name="view_mode">tree,form</field>			
 		</record>
 
+		<record id="action_pwk_mutasi_veneer_kering" model="ir.actions.act_window">
+			<field name="name">Mutasi Veneer Kering</field>
+			<field name="res_model">pwk.mutasi.veneer.kering</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_mutasi_veneer_barecore" model="ir.actions.act_window">
+			<field name="name">Mutasi Veneer Barecore</field>
+			<field name="res_model">pwk.mutasi.barecore</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_mutasi_veneer_unrepair" model="ir.actions.act_window">
+			<field name="name">Mutasi Veneer Unrepair</field>
+			<field name="res_model">pwk.mutasi.veneer.unrepair</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_mutasi_veneer_ok_repair" model="ir.actions.act_window">
+			<field name="name">Mutasi Veneer OK Repair</field>
+			<field name="res_model">pwk.mutasi.veneer.ok.repair</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
 		<record id="action_pwk_mutasi_veneer_gs" model="ir.actions.act_window">
 			<field name="name">Mutasi Veneer Glue Spreader</field>
 			<field name="res_model">pwk.mutasi.veneer.gs</field>
@@ -259,17 +283,41 @@
 		            groups="base.group_user"
 		            sequence="3"/>
 
+		        <menuitem id="menu_production_transaksi_veneer_kering"
+		            action="v12_pwk.action_pwk_mutasi_veneer_kering"
+		            parent="v12_pwk.menu_production_transaksi"
+		            groups="base.group_user"
+		            sequence="4"/>
+
+		        <menuitem id="menu_production_transaksi_barecore"
+		            action="v12_pwk.action_pwk_mutasi_barecore"
+		            parent="v12_pwk.menu_production_transaksi"
+		            groups="base.group_user"
+		            sequence="5"/>
+
+		        <menuitem id="menu_production_transaksi_veneer_unrepair"
+		            action="v12_pwk.action_pwk_mutasi_veneer_unrepair"
+		            parent="v12_pwk.menu_production_transaksi"
+		            groups="base.group_user"
+		            sequence="6"/>
+
+		        <menuitem id="menu_production_transaksi_veneer_ok_repair"
+		            action="v12_pwk.action_pwk_mutasi_veneer_ok_repair"
+		            parent="v12_pwk.menu_production_transaksi"
+		            groups="base.group_user"
+		            sequence="7"/>
+
 		        <menuitem id="menu_production_transaksi_veneer_gs"
 		            action="v12_pwk.action_pwk_mutasi_veneer_gs"
 		            parent="v12_pwk.menu_production_transaksi"
 		            groups="base.group_user"
-		            sequence="7"/>
+		            sequence="8"/>
 
 		        <menuitem id="menu_production_transaksi_assembling_finishing"
 		            action="v12_pwk.action_pwk_mutasi_assembling_finishing"
 		            parent="v12_pwk.menu_production_transaksi"
 		            groups="base.group_user"
-		            sequence="8"/>
+		            sequence="9"/>
 
 		<menuitem id="menu_pwk_payment_note" 
             action="action_pwk_payment_note"

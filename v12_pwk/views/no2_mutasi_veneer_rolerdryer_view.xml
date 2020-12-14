@@ -1,6 +1,14 @@
 <odoo>
     <data>                      
 
+        <report
+            id="report_mutasi_veneer_roler"
+            model="pwk.mutasi.veneer.roler"
+            string="Laporan Mutasi Veneer Rolerdryer"
+            report_type="xlsx"
+            name="v12_pwk.mutasi_veneer_roler_report_xls.xlsx"
+            file="v12_pwk.mutasi_veneer_roler_report_xls.xlsx"/>
+
         <!-- Mutasi Veneer RolerDryer -->
         <record id="pwk_mutasi_veneer_roler_tree" model="ir.ui.view">
             <field name="name">Mutasi Veneer Roller Dryer</field>
@@ -22,6 +30,7 @@
                     <header>
                         <field name="state" widget="statusbar" readonly="1"/>
                         <button name="button_approve" type="object" string="Approve" states="Draft"/>
+                        <button name="button_print" type="object" string="Print"/>
                     </header>
                     <sheet>
                         <label for="name" class="oe_edit_only" />

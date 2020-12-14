@@ -1,10 +1,18 @@
 <odoo>
     <data>                      
 
+        <report
+            id="report_mutasi_veneer_unrepair"
+            model="pwk.mutasi.veneer.unrepair"
+            string="Laporan Mutasi Veneer Unrepair"
+            report_type="xlsx"
+            name="v12_pwk.mutasi_veneer_unrepair_report_xls.xlsx"
+            file="v12_pwk.mutasi_veneer_unrepair_report_xls.xlsx"/>
+
         <!-- Mutasi Veneer Klin Dry -->
-        <record id="pwk_mutasi_veneer_klindry_tree" model="ir.ui.view">
-            <field name="name">Mutasi Veneer Klin Dry</field>
-            <field name="model">pwk.mutasi.veneer.klindry</field>
+        <record id="pwk_mutasi_veneer_unrepair_tree" model="ir.ui.view">
+            <field name="name">Mutasi Veneer Unrepair</field>
+            <field name="model">pwk.mutasi.veneer.unrepair</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
@@ -14,9 +22,9 @@
             </field>
         </record>
 
-        <record id="pwk_mutasi_veneer_klindry_form" model="ir.ui.view">
-            <field name="name">Mutasi Veneer Klin Dry</field>
-            <field name="model">pwk.mutasi.veneer.klindry</field>
+        <record id="pwk_mutasi_veneer_unrepair_form" model="ir.ui.view">
+            <field name="name">Mutasi Veneer Unrepair</field>
+            <field name="model">pwk.mutasi.veneer.unrepair</field>
             <field name="arch" type="xml">
                 <form>
                     <header>

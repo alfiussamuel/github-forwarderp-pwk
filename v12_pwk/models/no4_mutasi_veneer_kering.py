@@ -12,10 +12,10 @@ import math
 import re    
 from num2words import num2words
 
-class PwkMutasiVeneerKlinDryLine(models.Model):
-    _name = "pwk.mutasi.veneer.klindry.line"
+class PwkMutasiVeneerKeringLine(models.Model):
+    _name = "pwk.mutasi.veneer.kering.line"
 
-    reference = fields.Many2one('pwk.mutasi.veneer.klindry', 'Reference')
+    reference = fields.Many2one('pwk.mutasi.veneer.kering', 'Reference')
     product_id = fields.Many2one('product.product', 'Product')
     tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
     lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
@@ -59,13 +59,13 @@ class PwkMutasiVeneerKlinDryLine(models.Model):
             acc_stock_masuk_pcs = 0
             acc_stock_keluar_pcs = 0
 
-            source_ids = self.env['pwk.mutasi.veneer.klindry.line'].search([
+            source_ids = self.env['pwk.mutasi.veneer.kering.line'].search([
                 ('reference.date','=',res.reference.date - timedelta(1)),
                 ('product_id','=',res.product_id.id)
                 ])
 
             if not source_ids:
-                source_ids = self.env['pwk.mutasi.veneer.klindry.line'].search([
+                source_ids = self.env['pwk.mutasi.veneer.kering.line'].search([
                     ('reference.date','<',res.reference.date),
                     ('product_id','=',res.product_id.id)
                     ])
@@ -81,13 +81,13 @@ class PwkMutasiVeneerKlinDryLine(models.Model):
     def _get_stock_awal(self):
         for res in self:
             stock_awal_pcs = 0
-            source_ids = self.env['pwk.mutasi.veneer.klindry.line'].search([
+            source_ids = self.env['pwk.mutasi.veneer.kering.line'].search([
                 ('reference.date','=',res.reference.date - timedelta(1)),
                 ('product_id','=',res.product_id.id)
                 ])
 
             if not source_ids:
-                source_ids = self.env['pwk.mutasi.veneer.klindry.line'].search([
+                source_ids = self.env['pwk.mutasi.veneer.kering.line'].search([
                     ('reference.date','<',res.reference.date),
                     ('product_id','=',res.product_id.id)
                     ])
@@ -116,28 +116,28 @@ class PwkMutasiVeneerKlinDryLine(models.Model):
         for res in self:
             res.stock_akhir_pcs = res.stock_awal_pcs + res.stock_masuk_pcs - res.stock_keluar_pcs
 
-class PwkMutasiVeneerKlindry(models.Model):    
-    _name = "pwk.mutasi.veneer.klindry"
+class PwkMutasiVeneerKering(models.Model):    
+    _name = "pwk.mutasi.veneer.kering"
     _inherit = ["mail.thread", "mail.activity.mixin"]
 
     name = fields.Char('No. Dokumen', track_visibility="always")
     date = fields.Date('Tanggal', default=fields.Date.today(), track_visibility="always")
     user_id = fields.Many2one('res.users', string="Dibuat Oleh", default=lambda self: self.env.user, track_visibility="always")
     state = fields.Selection([('Draft','Draft'),('Approved','Approved')], string="Status", default="Draft", track_visibility="always")
-    line_ids = fields.One2many('pwk.mutasi.veneer.klindry.line', 'reference', string="RolerDryer", track_visibility="always")
+    line_ids = fields.One2many('pwk.mutasi.veneer.kering.line', 'reference', string="RolerDryer", track_visibility="always")
 
     def get_sequence(self, name=False, obj=False, context=None):
         sequence_id = self.env['ir.sequence'].search([
             ('name', '=', name),
             ('code', '=', obj),
-            ('suffix', '=', '.MVKD.%(month)s.%(year)s')
+            ('suffix', '=', '.MVKR.%(month)s.%(year)s')
         ])
         if not sequence_id :
             sequence_id = self.env['ir.sequence'].sudo().create({
                 'name': name,
                 'code': obj,
                 'implementation': 'no_gap',
-                'suffix': '.MVKD.%(month)s.%(year)s',
+                'suffix': '.MVKR.%(month)s.%(year)s',
                 'padding': 3
             })
         return sequence_id.next_by_id()
@@ -156,17 +156,21 @@ class PwkMutasiVeneerKlindry(models.Model):
 
             if source_ids:
                 for source in source_ids:
-                    self.env['pwk.mutasi.veneer.klindry.line'].create({
+                    self.env['pwk.mutasi.veneer.kering.line'].create({
                         'reference': res.id,
                         'product_id': source.product_id.id,
                         })
 
     @api.model
     def create(self, vals):
-        vals['name'] = self.get_sequence('Mutasi Veneer Klin Dry', 'pwk.mutasi.veneer.klindry')
-        return super(PwkMutasiVeneerKlindry, self).create(vals)
+        vals['name'] = self.get_sequence('Mutasi Veneer Kering', 'pwk.mutasi.veneer.kering')
+        return super(PwkMutasiVeneerKering, self).create(vals)
 
     @api.multi
     def button_approve(self):
         for res in self:
             res.state = "Approved"
+
+    @api.multi
+    def button_print(self):
+        return self.env.ref('v12_pwk.report_mutasi_veneer_kering').report_action(self)

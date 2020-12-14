@@ -1,10 +1,18 @@
 <odoo>
-    <data>                      
+    <data>                          
 
-        <!-- Mutasi Veneer Klin Dry -->
-        <record id="pwk_mutasi_veneer_klindry_tree" model="ir.ui.view">
-            <field name="name">Mutasi Veneer Klin Dry</field>
-            <field name="model">pwk.mutasi.veneer.klindry</field>
+        <report
+            id="report_mutasi_veneer_kering"
+            model="pwk.mutasi.veneer.kering"
+            string="Laporan Mutasi Veneer Kering"
+            report_type="xlsx"
+            name="v12_pwk.mutasi_veneer_kering_report_xls.xlsx"
+            file="v12_pwk.mutasi_veneer_kering_report_xls.xlsx"/>
+
+        <!-- Mutasi Veneer Kering -->
+        <record id="pwk_mutasi_veneer_kering_tree" model="ir.ui.view">
+            <field name="name">Mutasi Veneer Kering</field>
+            <field name="model">pwk.mutasi.veneer.kering</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
@@ -14,9 +22,9 @@
             </field>
         </record>
 
-        <record id="pwk_mutasi_veneer_klindry_form" model="ir.ui.view">
-            <field name="name">Mutasi Veneer Klin Dry</field>
-            <field name="model">pwk.mutasi.veneer.klindry</field>
+        <record id="pwk_mutasi_veneer_kering_form" model="ir.ui.view">
+            <field name="name">Mutasi Veneer Kering</field>
+            <field name="model">pwk.mutasi.veneer.kering</field>
             <field name="arch" type="xml">
                 <form>
                     <header>
@@ -35,7 +43,7 @@
                         </group>
                         <group>
                             <notebook>
-                                <page string="Veneer Klin Dry">
+                                <page string="Veneer Kering">
                                     <button name="button_reload" string="Reload" 
                                         type="object" class="oe_highlight"/>
                                     <group>
