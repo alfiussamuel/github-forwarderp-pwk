@@ -158,61 +158,63 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
         sheet.merge_range(2, 0, 2, 16, 'LAPORAN MUTASI VENEER BASAH - STACKING', formatHeaderCenter)
         sheet.merge_range(3, 0, 3, 16, lines.date.strftime("%d-%m-%Y"), formatHeaderCenter)
 
+        row = 5
+
         # merge 1 - 4 
-        sheet.merge_range(5, 0, 8, 0, 'NO', formatHeaderTable)
-        sheet.merge_range(5, 1, 8, 1, 'JENIS KAYU', formatHeaderTable)
-        sheet.merge_range(5, 2, 6, 6, 'UKURAN', formatHeaderTable)
-        sheet.merge_range(5, 7, 8, 7, 'GRADE', formatHeaderTable)
-        sheet.merge_range(5, 8, 7, 9, 'STOK AWAL', formatHeaderTable)
-        sheet.merge_range(5, 10, 5, 17, 'MASUK', formatHeaderTable)
-        sheet.merge_range(5, 18, 5, 25, 'KELUAR', formatHeaderTable)
-        sheet.merge_range(5, 26, 7, 27, 'STOK AKHIR', formatHeaderTable)
+        sheet.merge_range(row, 0, row+3, 0, 'NO', formatHeaderTable)
+        sheet.merge_range(row, 1, row+3, 1, 'JENIS KAYU', formatHeaderTable)
+        sheet.merge_range(row, 2, row+1, 6, 'UKURAN', formatHeaderTable)
+        sheet.merge_range(row, 7, row+3, 7, 'GRADE', formatHeaderTable)
+        sheet.merge_range(row, 8, row+2, 9, 'STOK AWAL', formatHeaderTable)
+        sheet.merge_range(row, 10, row, 17, 'MASUK', formatHeaderTable)
+        sheet.merge_range(row, 18, row, 25, 'KELUAR', formatHeaderTable)
+        sheet.merge_range(row, 26, row+2, 27, 'STOK AKHIR', formatHeaderTable)
 
         # Merge 3 and 4
-        sheet.merge_range(7, 2, 8, 2, 'T', formatHeaderTable)
-        sheet.merge_range(7, 3, 8, 3, '', formatHeaderTable)
-        sheet.merge_range(7, 4, 8, 4, 'L', formatHeaderTable)
-        sheet.merge_range(7, 5, 8, 5, '', formatHeaderTable)
-        sheet.merge_range(7, 6, 8, 6, 'P', formatHeaderTable)
+        sheet.merge_range(row+2, 2, row+3, 2, 'T', formatHeaderTable)
+        sheet.merge_range(row+2, 3, row+3, 3, '', formatHeaderTable)
+        sheet.merge_range(row+2, 4, row+3, 4, 'L', formatHeaderTable)
+        sheet.merge_range(row+2, 5, row+3, 5, '', formatHeaderTable)
+        sheet.merge_range(row+2, 6, row+3, 6, 'P', formatHeaderTable)
         
         # Row 2
-        sheet.merge_range(6, 10, 6, 13, 'SUPPLIER', formatHeaderTable)
-        sheet.merge_range(6, 14, 6, 17, 'ROTARY', formatHeaderTable)
-        sheet.merge_range(6, 18, 6, 21, 'STACKING', formatHeaderTable)
-        sheet.merge_range(6, 22, 6, 25, 'ROLERDRYER', formatHeaderTable)
+        sheet.merge_range(row+1, 10, row+1, 13, 'SUPPLIER', formatHeaderTable)
+        sheet.merge_range(row+1, 14, row+1, 17, 'ROTARY', formatHeaderTable)
+        sheet.merge_range(row+1, 18, row+1, 21, 'STACKING', formatHeaderTable)
+        sheet.merge_range(row+1, 22, row+1, 25, 'ROLERDRYER', formatHeaderTable)
 
         # Row 3
-        sheet.merge_range(7, 10, 7, 11, 'HARI INI', formatHeaderTable)
-        sheet.merge_range(7, 12, 7, 13, 'AKUMULASI', formatHeaderTable)
+        sheet.merge_range(row+2, 10, row+2, 11, 'HARI INI', formatHeaderTable)
+        sheet.merge_range(row+2, 12, row+2, 13, 'AKUMULASI', formatHeaderTable)
 
-        sheet.merge_range(7, 14, 7, 15, 'HARI INI', formatHeaderTable)
-        sheet.merge_range(7, 16, 7, 17, 'AKUMULASI', formatHeaderTable)
+        sheet.merge_range(row+2, 14, row+2, 15, 'HARI INI', formatHeaderTable)
+        sheet.merge_range(row+2, 16, row+2, 17, 'AKUMULASI', formatHeaderTable)
 
-        sheet.merge_range(7, 18, 7, 19, 'HARI INI', formatHeaderTable)
-        sheet.merge_range(7, 20, 7, 21, 'AKUMULASI', formatHeaderTable)
+        sheet.merge_range(row+2, 18, row+2, 19, 'HARI INI', formatHeaderTable)
+        sheet.merge_range(row+2, 20, row+2, 21, 'AKUMULASI', formatHeaderTable)
 
-        sheet.merge_range(7, 22, 7, 23, 'HARI INI', formatHeaderTable)
-        sheet.merge_range(7, 24, 7, 25, 'AKUMULASI', formatHeaderTable)
+        sheet.merge_range(row+2, 22, row+2, 23, 'HARI INI', formatHeaderTable)
+        sheet.merge_range(row+2, 24, row+2, 25, 'AKUMULASI', formatHeaderTable)
 
         # Row 4
-        sheet.write(8, 8, 'PCS', formatHeaderTable)
-        sheet.write(8, 9, 'M3', formatHeaderTable)
-        sheet.write(8, 10, 'PCS', formatHeaderTable)
-        sheet.write(8, 11, 'M3', formatHeaderTable)
-        sheet.write(8, 12, 'PCS', formatHeaderTable)
-        sheet.write(8, 13, 'M3', formatHeaderTable)
-        sheet.write(8, 14, 'PCS', formatHeaderTable)
-        sheet.write(8, 15, 'M3', formatHeaderTable)
-        sheet.write(8, 16, 'PCS', formatHeaderTable)
-        sheet.write(8, 17, 'M3', formatHeaderTable)
-        sheet.write(8, 18, 'PCS', formatHeaderTable)
-        sheet.write(8, 19, 'M3', formatHeaderTable)
-        sheet.write(8, 20, 'PCS', formatHeaderTable)
-        sheet.write(8, 21, 'M3', formatHeaderTable)
-        sheet.write(8, 22, 'PCS', formatHeaderTable)
-        sheet.write(8, 23, 'M3', formatHeaderTable)
-        sheet.write(8, 24, 'PCS', formatHeaderTable)
-        sheet.write(8, 25, 'M3', formatHeaderTable)
+        sheet.write(row+3, 8, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 9, 'M3', formatHeaderTable)
+        sheet.write(row+3, 10, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 11, 'M3', formatHeaderTable)
+        sheet.write(row+3, 12, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 13, 'M3', formatHeaderTable)
+        sheet.write(row+3, 14, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 15, 'M3', formatHeaderTable)
+        sheet.write(row+3, 16, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 17, 'M3', formatHeaderTable)
+        sheet.write(row+3, 18, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 19, 'M3', formatHeaderTable)
+        sheet.write(row+3, 20, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 21, 'M3', formatHeaderTable)
+        sheet.write(row+3, 22, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 23, 'M3', formatHeaderTable)
+        sheet.write(row+3, 24, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 25, 'M3', formatHeaderTable)
 
         row = 9
         number = 1
@@ -257,8 +259,66 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
             number += 1
 
         # Data 2
-        row = row + 3
+        row += 3
         number = 1
+
+        sheet.merge_range(row, 0, row+3, 0, 'NO', formatHeaderTable)
+        sheet.merge_range(row, 1, row+3, 1, 'JENIS KAYU', formatHeaderTable)
+        sheet.merge_range(row, 2, row+1, 6, 'UKURAN', formatHeaderTable)
+        sheet.merge_range(row, 7, row+3, 7, 'GRADE', formatHeaderTable)
+        sheet.merge_range(row, 8, row+2, 9, 'STOK AWAL', formatHeaderTable)
+        sheet.merge_range(row, 10, row, 17, 'MASUK', formatHeaderTable)
+        sheet.merge_range(row, 18, row, 25, 'KELUAR', formatHeaderTable)
+        sheet.merge_range(row, 26, row+2, 27, 'STOK AKHIR', formatHeaderTable)
+
+        # Merge 3 and 4
+        sheet.merge_range(row+2, 2, row+3, 2, 'T', formatHeaderTable)
+        sheet.merge_range(row+2, 3, row+3, 3, '', formatHeaderTable)
+        sheet.merge_range(row+2, 4, row+3, 4, 'L', formatHeaderTable)
+        sheet.merge_range(row+2, 5, row+3, 5, '', formatHeaderTable)
+        sheet.merge_range(row+2, 6, row+3, 6, 'P', formatHeaderTable)
+        
+        # Row 2
+        sheet.merge_range(row+1, 10, row+1, 13, 'SUPPLIER', formatHeaderTable)
+        sheet.merge_range(row+1, 14, row+1, 17, 'ROTARY', formatHeaderTable)
+        sheet.merge_range(row+1, 18, row+1, 21, 'STACKING', formatHeaderTable)
+        sheet.merge_range(row+1, 22, row+1, 25, 'ROLERDRYER', formatHeaderTable)
+
+        # Row 3
+        sheet.merge_range(row+2, 10, row+2, 11, 'HARI INI', formatHeaderTable)
+        sheet.merge_range(row+2, 12, row+2, 13, 'AKUMULASI', formatHeaderTable)
+
+        sheet.merge_range(row+2, 14, row+2, 15, 'HARI INI', formatHeaderTable)
+        sheet.merge_range(row+2, 16, row+2, 17, 'AKUMULASI', formatHeaderTable)
+
+        sheet.merge_range(row+2, 18, row+2, 19, 'HARI INI', formatHeaderTable)
+        sheet.merge_range(row+2, 20, row+2, 21, 'AKUMULASI', formatHeaderTable)
+
+        sheet.merge_range(row+2, 22, row+2, 23, 'HARI INI', formatHeaderTable)
+        sheet.merge_range(row+2, 24, row+2, 25, 'AKUMULASI', formatHeaderTable)
+
+        # Row 4
+        sheet.write(row+3, 8, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 9, 'M3', formatHeaderTable)
+        sheet.write(row+3, 10, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 11, 'M3', formatHeaderTable)
+        sheet.write(row+3, 12, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 13, 'M3', formatHeaderTable)
+        sheet.write(row+3, 14, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 15, 'M3', formatHeaderTable)
+        sheet.write(row+3, 16, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 17, 'M3', formatHeaderTable)
+        sheet.write(row+3, 18, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 19, 'M3', formatHeaderTable)
+        sheet.write(row+3, 20, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 21, 'M3', formatHeaderTable)
+        sheet.write(row+3, 22, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 23, 'M3', formatHeaderTable)
+        sheet.write(row+3, 24, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 25, 'M3', formatHeaderTable)
+
+        row += 1
+
         for i in get_data2:
             sheet.write(row, 0, number, formatHeaderDetailCenter)
             sheet.write(row, 1, i['jenis_kayu'], formatHeaderDetailCenter)            
