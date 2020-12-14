@@ -317,7 +317,7 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
         sheet.write(row+3, 24, 'PCS', formatHeaderTable)
         sheet.write(row+3, 25, 'M3', formatHeaderTable)
 
-        row += 1
+        row += 4
 
         for i in get_data2:
             sheet.write(row, 0, number, formatHeaderDetailCenter)
