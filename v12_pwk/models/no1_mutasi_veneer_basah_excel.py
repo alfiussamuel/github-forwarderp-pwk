@@ -251,31 +251,31 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
 
             sheet.write(row, 7, i['grade'], formatHeaderDetailCenterNumberFour)
             sheet.write(row, 8, i['awal_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 9, i['awal_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 9, i['awal_vol'], formatHeaderDetailCenterNumberFour)
 
             sheet.write(row, 10, i['masuk_supplier_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 11, i['masuk_supplier_vol'], formatHeaderDetailCenter)
+            sheet.write(row, 11, i['masuk_supplier_vol'], formatHeaderDetailCenterNumberFour)
             sheet.write(row, 12, i['masuk_supplier_acc_pcs'], formatHeaderDetailCenter)
-            sheet.write(row, 13, i['masuk_supplier_acc_vol'], formatHeaderDetailCenter)
+            sheet.write(row, 13, i['masuk_supplier_acc_vol'], formatHeaderDetailCenterNumberFour)
 
             sheet.write(row, 14, i['masuk_rotary_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 15, i['masuk_rotary_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 15, i['masuk_rotary_vol'], formatHeaderDetailCenterNumberFour)
             sheet.write(row, 16, i['masuk_rotary_acc_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 17, i['masuk_rotary_acc_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 17, i['masuk_rotary_acc_vol'], formatHeaderDetailCenterNumberFour)
 
 
             sheet.write(row, 18, i['keluar_stacking_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 19, i['keluar_stacking_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 19, i['keluar_stacking_vol'], formatHeaderDetailCenterNumberFour)
             sheet.write(row, 20, i['keluar_stacking_acc_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 21, i['keluar_stacking_acc_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 21, i['keluar_stacking_acc_vol'], formatHeaderDetailCenterNumberFour)
 
             sheet.write(row, 22, i['keluar_roler_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 23, i['keluar_roler_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 23, i['keluar_roler_vol'], formatHeaderDetailCenterNumberFour)
             sheet.write(row, 24, i['keluar_roler_acc_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 25, i['keluar_roler_acc_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 25, i['keluar_roler_acc_vol'], formatHeaderDetailCenterNumberFour)
 
             sheet.write(row, 26, i['akhir_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 27, i['akhir_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 27, i['akhir_vol'], formatHeaderDetailCenterNumberFour)
             
             row += 1
             number += 1
@@ -343,20 +343,20 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
 
             sheet.write(row, 7, i['grade'], formatHeaderDetailCenterNumberFour)
             sheet.write(row, 8, i['awal_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 9, i['awal_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 9, i['awal_vol'], formatHeaderDetailCenterNumberFour)
 
             sheet.write(row, 10, i['masuk_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 11, i['masuk_vol'], formatHeaderDetailCenter)
+            sheet.write(row, 11, i['masuk_vol'], formatHeaderDetailCenterNumberFour)
             sheet.write(row, 12, i['masuk_acc_pcs'], formatHeaderDetailCenter)
-            sheet.write(row, 13, i['masuk_acc_vol'], formatHeaderDetailCenter)
+            sheet.write(row, 13, i['masuk_acc_vol'], formatHeaderDetailCenterNumberFour)
 
             sheet.write(row, 14, i['keluar_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 15, i['keluar_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 15, i['keluar_vol'], formatHeaderDetailCenterNumberFour)
             sheet.write(row, 16, i['keluar_acc_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 17, i['keluar_acc_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 17, i['keluar_acc_vol'], formatHeaderDetailCenterNumberFour)
 
             sheet.write(row, 18, i['akhir_pcs'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 19, i['akhir_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 19, i['akhir_vol'], formatHeaderDetailCenterNumberFour)
             
             row += 1
             number += 1
@@ -425,20 +425,20 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
 
                 sheet.write(row, 7, i['grade'], formatHeaderDetailCenterNumberFour)
                 sheet.write(row, 8, i['awal_pcs'], formatHeaderDetailCenterNumber)
-                sheet.write(row, 9, i['awal_vol'], formatHeaderDetailCenterNumber)
+                sheet.write(row, 9, i['awal_vol'], formatHeaderDetailCenterNumberFour)
 
                 sheet.write(row, 10, i['masuk_pcs'], formatHeaderDetailCenterNumber)
-                sheet.write(row, 11, i['masuk_vol'], formatHeaderDetailCenter)
+                sheet.write(row, 11, i['masuk_vol'], formatHeaderDetailCenterNumberFour)
                 sheet.write(row, 12, i['masuk_acc_pcs'], formatHeaderDetailCenter)
-                sheet.write(row, 13, i['masuk_acc_vol'], formatHeaderDetailCenter)
+                sheet.write(row, 13, i['masuk_acc_vol'], formatHeaderDetailCenterNumberFour)
 
                 sheet.write(row, 14, i['keluar_pcs'], formatHeaderDetailCenterNumber)
-                sheet.write(row, 15, i['keluar_vol'], formatHeaderDetailCenterNumber)
+                sheet.write(row, 15, i['keluar_vol'], formatHeaderDetailCenterNumberFour)
                 sheet.write(row, 16, i['keluar_acc_pcs'], formatHeaderDetailCenterNumber)
-                sheet.write(row, 17, i['keluar_acc_vol'], formatHeaderDetailCenterNumber)
+                sheet.write(row, 17, i['keluar_acc_vol'], formatHeaderDetailCenterNumberFour)
 
                 sheet.write(row, 18, i['akhir_pcs'], formatHeaderDetailCenterNumber)
-                sheet.write(row, 19, i['akhir_vol'], formatHeaderDetailCenterNumber)
+                sheet.write(row, 19, i['akhir_vol'], formatHeaderDetailCenterNumberFour)
                 
                 row += 1
                 number += 1
