@@ -1,6 +1,16 @@
 <odoo>
     <data>                      
 
+        <report
+            id="mutasi_veneer_basah_xlsx"
+            model="pwk.mutasi.veneer.basah"
+            string="Laporan Mutasi Veneer Basah"
+            report_type="xlsx"
+            name="v12_pwk.mutasi_veneer_basah_report_xls.xlsx"
+            file="v12_pwk.mutasi_veneer_basah_report_xls.xlsx"
+            menu="False"
+            attachment_use="False"/>
+
         <!-- Mutasi Veneer Basah -->
         <record id="pwk_mutasi_veneer_basah_tree" model="ir.ui.view">
             <field name="name">Mutasi Veneer Basah</field>
@@ -23,6 +33,7 @@
                         <field name="state" widget="statusbar" readonly="1"/>
                         <button name="button_approve" type="object" string="Approve" states="Draft"/>
                         <button name="button_cancel" type="object" string="Cancel" states="Approved"/>
+                        <button name="button_print" type="object" string="Print"/>
                     </header>
                     
                     <label for="name" class="oe_edit_only" />

@@ -305,3 +305,15 @@ class PwkMutasiVeneerBasah(models.Model):
                         'reference': res.id,
                         'product_id': source.product_id.id,
                         })
+
+    @api.multi
+    def button_print(self):
+        context = self._context
+        datas = {'ids': self.id}
+        datas['model'] = 'pwk.mutasi.veneer.basah'
+        datas['form'] = self.read()[0]
+        for field in datas['form'].keys():
+            if isinstance(datas['form'][field], tuple):
+                datas['form'][field] = datas['form'][field][0]
+        if context.get('xls_export'):
+            return self.env.ref('v12_pwk.peb_xlsx').report_action(self, data=datas)
