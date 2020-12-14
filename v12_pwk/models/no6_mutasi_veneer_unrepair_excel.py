@@ -20,7 +20,7 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
                 }
 
         lines.append(vals)
-
+        
         return lines
 
     def generate_xlsx_report(self, workbook, data, lines):        
@@ -156,8 +156,7 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
 
         row = 9
         number = 1
-        print (get_data)
-        # for i in get_data:         
+        for i in get_data:         
             # sheet.write(row, 0, number, formatHeaderDetailCenter)
             # sheet.write(row, 1, i['jenis_kayu'], formatHeaderDetailCenter)            
             # sheet.write(row, 2, i['tebal'], formatHeaderDetailCenter)
@@ -194,5 +193,5 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
             # sheet.write(row, 16, i['akhir_pcs'], formatHeaderDetailCenterNumber)
             # sheet.write(row, 16, i['akhir_vol'], formatHeaderDetailCenterNumber)
             
-            # row += 1
-            # number += 1
+            row += 1
+            number += 1
