@@ -147,7 +147,7 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
 
         row = 9
         number = 1
-        for i in _get_data:         
+        for i in self._get_data:         
             # sheet.write(row, 0, number, formatHeaderDetailCenter)
             # sheet.write(row, 1, i['jenis_kayu'], formatHeaderDetailCenter)            
             # sheet.write(row, 2, i['tebal'], formatHeaderDetailCenter)
