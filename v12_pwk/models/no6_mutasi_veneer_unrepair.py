@@ -13,7 +13,7 @@ import re
 from num2words import num2words
 
 class PwkMutasiVeneerUnrepairLine(models.Model):
-    _name = "pwk.mutasi.veneer.unrepair"
+    _name = "pwk.mutasi.veneer.unrepair.line"
 
     reference = fields.Many2one('pwk.mutasi.veneer.unrepair', 'Reference')
     product_id = fields.Many2one('product.product', 'Product')
