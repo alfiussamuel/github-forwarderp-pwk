@@ -312,6 +312,7 @@ class PwkMutasiVeneerBasah(models.Model):
         datas = {'ids': self.id}
         datas['model'] = 'pwk.mutasi.veneer.basah'
         datas['form'] = self.read()[0]
+        print (context)
         for field in datas['form'].keys():
             if isinstance(datas['form'][field], tuple):
                 datas['form'][field] = datas['form'][field][0]
