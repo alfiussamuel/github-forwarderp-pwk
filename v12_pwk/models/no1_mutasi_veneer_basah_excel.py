@@ -118,7 +118,7 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
         formatHeaderRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'left', 'num_format': '#,##0'})
         formatHeaderTable = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'bold': True, 'bg_color':'#4ead2f', 'color':'white', 'text_wrap': True})
         formatHeaderTableRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'bold': True, 'bg_color':'#3eaec2', 'text_wrap': True, 'num_format': '#,##0'})
-        formatHeaderTableWhite = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'bold': True, 'text_wrap': True, 'num_format': '#,##0'})
+        formatHeaderTableCenterWhite = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'center', 'bold': True, 'text_wrap': True, 'num_format': '#,##0'})
         formatHeaderDetailCenter = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True})
         formatHeaderDetailCenterNumber = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'num_format': '#,##0'})
         formatHeaderDetailCenterNumberFour = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'num_format': '#,##4'})
@@ -137,6 +137,7 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
         
         formatHeaderTable.set_border(1)
         formatHeaderTableRight.set_border(1)
+        formatHeaderTableCenterWhite.set_border(1)
         formatHeaderDetailCenter.set_border(1)
         formatHeaderDetailLeft.set_border(1)
         formatHeaderDetailCenterNumber.set_border(1)
@@ -289,13 +290,13 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
         sheet.merge_range(row+3, 11, row+3, 15, 'Diperiksa Oleh,', formatHeaderTable)
         sheet.merge_range(row+3, 19, row+3, 21, 'Dibuat Oleh,', formatHeaderTable)
         
-        sheet.merge_range(row+4, 1, row+6, 6, '', formatHeaderTableWhite)
-        sheet.merge_range(row+4, 11, row+6, 15, '', formatHeaderTableWhite)
-        sheet.merge_range(row+4, 19, row+6, 21, '', formatHeaderTableWhite)
+        sheet.merge_range(row+4, 1, row+7, 6, '', formatHeaderTableWhite)
+        sheet.merge_range(row+4, 11, row+7, 15, '', formatHeaderTableWhite)
+        sheet.merge_range(row+4, 19, row+7, 21, '', formatHeaderTableWhite)
 
-        sheet.merge_range(row+7, 1, row+7, 6, '( Parwoto )', formatHeaderTableWhite)
-        sheet.merge_range(row+7, 11, row+7, 15, '( Dwi Rakasiwi )', formatHeaderTableWhite)
-        sheet.merge_range(row+7, 19, row+7, 21, '( Nurul Sholikhah )', formatHeaderTableWhite)
+        sheet.merge_range(row+7, 1, row+8, 6, '( Parwoto )', formatHeaderTableWhite)
+        sheet.merge_range(row+7, 11, row+8, 15, '( Dwi Rakasiwi )', formatHeaderTableWhite)
+        sheet.merge_range(row+7, 19, row+8, 21, '( Nurul Sholikhah )', formatHeaderTableWhite)
 
         # Data 2
         row += 16
@@ -379,13 +380,17 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
 
         # Footer
         sheet.merge_range(row+2, 19, row+2, 21, 'Mengetahui,', formatHeaderTable)
-        sheet.merge_range(row+3, 1, row+3, 8, 'Mengetahui,', formatHeaderTable)
+        sheet.merge_range(row+3, 1, row+3, 6, 'Mengetahui,', formatHeaderTable)
         sheet.merge_range(row+3, 11, row+3, 15, 'Diperiksa Oleh,', formatHeaderTable)
         sheet.merge_range(row+3, 19, row+3, 21, 'Dibuat Oleh,', formatHeaderTable)
         
-        sheet.merge_range(row+7, 1, row+7, 8, '( Parwoto )', formatHeaderTable)
-        sheet.merge_range(row+7, 11, row+7, 15, '( Dwi Rakasiwi )', formatHeaderTable)
-        sheet.merge_range(row+7, 19, row+7, 21, '( Nurul Sholikhah )', formatHeaderTable)
+        sheet.merge_range(row+4, 1, row+7, 6, '', formatHeaderTableWhite)
+        sheet.merge_range(row+4, 11, row+7, 15, '', formatHeaderTableWhite)
+        sheet.merge_range(row+4, 19, row+7, 21, '', formatHeaderTableWhite)
+
+        sheet.merge_range(row+7, 1, row+8, 6, '( Parwoto )', formatHeaderTableWhite)
+        sheet.merge_range(row+7, 11, row+8, 15, '( Dwi Rakasiwi )', formatHeaderTableWhite)
+        sheet.merge_range(row+7, 19, row+8, 21, '( Nurul Sholikhah )', formatHeaderTableWhite)
 
         # Data 3
         if get_data3:
@@ -468,12 +473,16 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
                 row += 1
                 number += 1
 
-            # Footer
+            # Footer            
             sheet.merge_range(row+2, 19, row+2, 21, 'Mengetahui,', formatHeaderTable)
-            sheet.merge_range(row+3, 1, row+3, 8, 'Mengetahui,', formatHeaderTable)
+            sheet.merge_range(row+3, 1, row+3, 6, 'Mengetahui,', formatHeaderTable)
             sheet.merge_range(row+3, 11, row+3, 15, 'Diperiksa Oleh,', formatHeaderTable)
             sheet.merge_range(row+3, 19, row+3, 21, 'Dibuat Oleh,', formatHeaderTable)
             
-            sheet.merge_range(row+7, 1, row+7, 8, '( Parwoto )', formatHeaderTable)
-            sheet.merge_range(row+7, 11, row+7, 15, '( Dwi Rakasiwi )', formatHeaderTable)
-            sheet.merge_range(row+7, 19, row+7, 21, '( Nurul Sholikhah )', formatHeaderTable)
+            sheet.merge_range(row+4, 1, row+7, 6, '', formatHeaderTableWhite)
+            sheet.merge_range(row+4, 11, row+7, 15, '', formatHeaderTableWhite)
+            sheet.merge_range(row+4, 19, row+7, 21, '', formatHeaderTableWhite)
+
+            sheet.merge_range(row+7, 1, row+8, 6, '( Parwoto )', formatHeaderTableWhite)
+            sheet.merge_range(row+7, 11, row+8, 15, '( Dwi Rakasiwi )', formatHeaderTableWhite)
+            sheet.merge_range(row+7, 19, row+8, 21, '( Nurul Sholikhah )', formatHeaderTableWhite)
