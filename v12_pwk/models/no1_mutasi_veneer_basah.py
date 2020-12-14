@@ -307,7 +307,7 @@ class PwkMutasiVeneerBasah(models.Model):
                         })
 
     @api.multi
-    def button_print(self):
+    def button_print(self, workbook):
         alamat = ' Jl. Raya Krangan - Pringsurat, Karanglo, Kupen, Kec. Pringsurat, Kabupaten Temanggung, Jawa Tengah 56272'
 
         sheet = workbook.add_worksheet('Laporan PEB')
