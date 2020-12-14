@@ -316,5 +316,5 @@ class PwkMutasiVeneerBasah(models.Model):
         for field in datas['form'].keys():
             if isinstance(datas['form'][field], tuple):
                 datas['form'][field] = datas['form'][field][0]
-        if context.get('xls_export'):
-            return self.env.ref('v12_pwk.mutasi_veneer_basah_report_xls').report_action(self, data=datas)
+        # if context.get('xls_export'):
+        return self.env.ref('v12_pwk.mutasi_veneer_basah_report_xls').report_action(self, data=datas)
