@@ -11,9 +11,7 @@ from odoo.tools import email_re, email_split, email_escape_char, float_is_zero, 
 import math
 import re    
 from num2words import num2words
-import xlwt
-import base64
-import StringIO
+from xlsxwriter.workbook import Workbook
 
 class PwkMutasiVeneerBasahKd(models.Model):    
     _name = "pwk.mutasi.veneer.basah.kd"    
@@ -313,7 +311,7 @@ class PwkMutasiVeneerBasah(models.Model):
     def button_print(self):
         alamat = ' Jl. Raya Krangan - Pringsurat, Karanglo, Kupen, Kec. Pringsurat, Kabupaten Temanggung, Jawa Tengah 56272'
 
-        workbook = xlwt.Workbook(encoding='utf-8')
+        workbook = Workbook
         sheet = workbook.add_worksheet('Laporan PEB')
         format0 = workbook.add_format({'font_size': 20, 'align': 'center', 'bold': True})
         format1 = workbook.add_format({'font_size': 14, 'align': 'vcenter', 'bold': True})
