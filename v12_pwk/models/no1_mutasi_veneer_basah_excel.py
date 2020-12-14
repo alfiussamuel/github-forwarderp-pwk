@@ -10,12 +10,12 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
     _name = 'report.v12_pwk.mutasi_veneer_basah_report_xls.xlsx'
     _inherit = 'report.report_xlsx.abstract'
 
-    def _get_data(self, data):
+    def get_data(self, data):
         print('data ', data)
         print('self', self)
-        
 
     def generate_xlsx_report(self, workbook, data, lines):        
+        get_data = self.get_data
         alamat = ' Jl. Raya Krangan - Pringsurat, Karanglo, Kupen, Kec. Pringsurat, Kabupaten Temanggung, Jawa Tengah 56272'
 
         sheet = workbook.add_worksheet('Sheet 1')
@@ -147,7 +147,7 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
 
         row = 9
         number = 1
-        for i in self._get_data:         
+        for i in get_data:         
             # sheet.write(row, 0, number, formatHeaderDetailCenter)
             # sheet.write(row, 1, i['jenis_kayu'], formatHeaderDetailCenter)            
             # sheet.write(row, 2, i['tebal'], formatHeaderDetailCenter)
