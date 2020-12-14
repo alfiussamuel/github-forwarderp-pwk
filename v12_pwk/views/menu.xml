@@ -309,7 +309,7 @@
 
 		    <menuitem id="menu_production_mutasi_produksi"
 	        	sequence="1"
-	        	name="Laporan Mutasi Produksi"
+	        	name="Laporan Mutasi Assembly - GBJ"
 	        	groups="base.group_user"
 	        	parent="menu_production"/>
 
