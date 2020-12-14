@@ -335,7 +335,7 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
         row += 5
         number = 1
 
-        sheet.merge_range(row-3, 0, row-3, 27, 'LAPORAN MUTASI VENEER BASAH - IN KD', formatHeaderCenter)
+        sheet.merge_range(row-3, 0, row-3, 27, 'LAPORAN MUTASI VENEER BASAH - RE-IN KD', formatHeaderCenter)
         sheet.merge_range(row-2, 0, row-2, 27, lines.date.strftime("%d-%m-%Y"), formatHeaderCenter)
 
         sheet.merge_range(row, 0, row+3, 0, 'NO', formatHeaderTable)
@@ -377,6 +377,8 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
         sheet.write(row+3, 15, 'M3', formatHeaderTable)
         sheet.write(row+3, 16, 'PCS', formatHeaderTable)
         sheet.write(row+3, 17, 'M3', formatHeaderTable)
+        sheet.write(row+3, 18, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 19, 'M3', formatHeaderTable)
 
         row += 4
 

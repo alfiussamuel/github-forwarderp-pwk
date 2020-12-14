@@ -22,14 +22,42 @@ class MutasiVeneerRolerdryerReportXls(models.AbstractModel):
                         'grade': line.grade.name,
                         'awal_pcs': line.stock_awal_pcs,
                         'awal_vol': line.stock_awal_vol,
-                        'masuk_pcs': line.stock_masuk_supplier_pcs,
-                        'masuk_vol': line.stock_masuk_supplier_vol,
-                        'masuk_acc_pcs': line.acc_stock_masuk_supplier_pcs,
-                        'masuk_acc_vol': line.acc_stock_masuk_supplier_vol,
-                        'keluar_pcs': line.stock_keluar_stacking_pcs,
-                        'keluar_vol': line.stock_keluar_stacking_vol,
-                        'keluar_acc_pcs': line.acc_stock_keluar_stacking_pcs,
-                        'keluar_acc_vol': line.acc_stock_keluar_stacking_vol,
+                        'masuk_pcs': line.stock_masuk_pcs,
+                        'masuk_vol': line.stock_masuk_vol,
+                        'masuk_acc_pcs': line.acc_stock_masuk_pcs,
+                        'masuk_acc_vol': line.acc_stock_masuk_vol,
+                        'keluar_pcs': line.stock_keluar_pcs,
+                        'keluar_vol': line.stock_keluar_vol,
+                        'keluar_acc_pcs': line.acc_stock_keluar_pcs,
+                        'keluar_acc_vol': line.acc_stock_keluar_vol,
+                        'akhir_pcs': line.stock_akhir_pcs,
+                        'akhir_vol': line.stock_akhir_vol,
+                        }
+
+                lines.append(vals)
+
+        return lines
+
+    def get_data2(self, data):        
+        lines = []
+        if data.reline_ids:
+            for line in data.reline_ids:
+                vals = {
+                        'jenis_kayu' : line.product_id.jenis_kayu_id.name,
+                        'tebal': line.tebal,
+                        'lebar': line.lebar,
+                        'panjang': line.panjang,
+                        'grade': line.grade.name,
+                        'awal_pcs': line.stock_awal_pcs,
+                        'awal_vol': line.stock_awal_vol,
+                        'masuk_pcs': line.stock_masuk_pcs,
+                        'masuk_vol': line.stock_masuk_vol,
+                        'masuk_acc_pcs': line.acc_stock_masuk_pcs,
+                        'masuk_acc_vol': line.acc_stock_masuk_vol,
+                        'keluar_pcs': line.stock_keluar_pcs,
+                        'keluar_vol': line.stock_keluar_vol,
+                        'keluar_acc_pcs': line.acc_stock_keluar_pcs,
+                        'keluar_acc_vol': line.acc_stock_keluar_vol,
                         'akhir_pcs': line.stock_akhir_pcs,
                         'akhir_vol': line.stock_akhir_vol,
                         }
@@ -40,6 +68,7 @@ class MutasiVeneerRolerdryerReportXls(models.AbstractModel):
 
     def generate_xlsx_report(self, workbook, data, lines):        
         get_data = self.get_data(lines)
+        get_data2 = self.get_data2(lines)
         alamat = ' Jl. Raya Krangan - Pringsurat, Karanglo, Kupen, Kec. Pringsurat, Kabupaten Temanggung, Jawa Tengah 56272'
 
         sheet = workbook.add_worksheet('Sheet 1')
@@ -163,6 +192,87 @@ class MutasiVeneerRolerdryerReportXls(models.AbstractModel):
         row += 4
 
         for i in get_data:
+            sheet.write(row, 0, number, formatHeaderDetailCenter)
+            sheet.write(row, 1, i['jenis_kayu'], formatHeaderDetailCenter)            
+            sheet.write(row, 2, i['tebal'], formatHeaderDetailCenter)
+            sheet.write(row, 3, '', formatHeaderDetailCenter)
+            sheet.write(row, 4, i['lebar'], formatHeaderDetailCenter)
+            sheet.write(row, 5, '', formatHeaderDetailCenter)
+            sheet.write(row, 6, i['panjang'], formatHeaderDetailCenter)
+
+            sheet.write(row, 7, i['grade'], formatHeaderDetailCenterNumberFour)
+            sheet.write(row, 8, i['awal_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 9, i['awal_vol'], formatHeaderDetailCenterNumber)
+
+            sheet.write(row, 10, i['masuk_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 11, i['masuk_vol'], formatHeaderDetailCenter)
+            sheet.write(row, 12, i['masuk_acc_pcs'], formatHeaderDetailCenter)
+            sheet.write(row, 13, i['masuk_acc_vol'], formatHeaderDetailCenter)
+
+            sheet.write(row, 14, i['keluar_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 15, i['keluar_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 16, i['keluar_acc_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 17, i['keluar_acc_vol'], formatHeaderDetailCenterNumber)
+
+            sheet.write(row, 18, i['akhir_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 19, i['akhir_vol'], formatHeaderDetailCenterNumber)
+            
+            row += 1
+            number += 1
+
+
+        # Data 2
+        row = +5
+        number = 1
+
+        sheet.merge_range(row-3, 0, row-3, 27, 'LAPORAN MUTASI VENEER BASAH - IN KD', formatHeaderCenter)
+        sheet.merge_range(row-2, 0, row-2, 27, lines.date.strftime("%d-%m-%Y"), formatHeaderCenter)
+
+        sheet.merge_range(row, 0, row+3, 0, 'NO', formatHeaderTable)
+        sheet.merge_range(row, 1, row+3, 1, 'JENIS KAYU', formatHeaderTable)
+        sheet.merge_range(row, 2, row+1, 6, 'UKURAN', formatHeaderTable)
+        sheet.merge_range(row, 7, row+3, 7, 'GRADE', formatHeaderTable)
+        sheet.merge_range(row, 8, row+2, 9, 'STOK AWAL', formatHeaderTable)
+        sheet.merge_range(row, 10, row, 13, 'MASUK', formatHeaderTable)
+        sheet.merge_range(row, 14, row, 17, 'KELUAR', formatHeaderTable)
+        sheet.merge_range(row, 18, row+2, 19, 'STOK AKHIR', formatHeaderTable)
+
+        # Merge 3 and 4
+        sheet.merge_range(row+2, 2, row+3, 2, 'T', formatHeaderTable)
+        sheet.merge_range(row+2, 3, row+3, 3, '', formatHeaderTable)
+        sheet.merge_range(row+2, 4, row+3, 4, 'L', formatHeaderTable)
+        sheet.merge_range(row+2, 5, row+3, 5, '', formatHeaderTable)
+        sheet.merge_range(row+2, 6, row+3, 6, 'P', formatHeaderTable)
+        
+        # Row 2
+        sheet.merge_range(row+1, 10, row+1, 13, 'SUPPLIER', formatHeaderTable)                
+        sheet.merge_range(row+1, 14, row+1, 17, 'ROLERDRYER', formatHeaderTable)
+
+        # Row 3
+        sheet.merge_range(row+2, 10, row+2, 11, 'HARI INI', formatHeaderTable)
+        sheet.merge_range(row+2, 12, row+2, 13, 'AKUMULASI', formatHeaderTable)
+
+        sheet.merge_range(row+2, 14, row+2, 15, 'HARI INI', formatHeaderTable)
+        sheet.merge_range(row+2, 16, row+2, 17, 'AKUMULASI', formatHeaderTable)
+        
+
+        # Row 4
+        sheet.write(row+3, 8, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 9, 'M3', formatHeaderTable)
+        sheet.write(row+3, 10, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 11, 'M3', formatHeaderTable)
+        sheet.write(row+3, 12, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 13, 'M3', formatHeaderTable)
+        sheet.write(row+3, 14, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 15, 'M3', formatHeaderTable)
+        sheet.write(row+3, 16, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 17, 'M3', formatHeaderTable)
+        sheet.write(row+3, 18, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 19, 'M3', formatHeaderTable)
+
+        row += 4
+
+        for i in get_data2:
             sheet.write(row, 0, number, formatHeaderDetailCenter)
             sheet.write(row, 1, i['jenis_kayu'], formatHeaderDetailCenter)            
             sheet.write(row, 2, i['tebal'], formatHeaderDetailCenter)
