@@ -259,63 +259,69 @@
 		            groups="base.group_user"
 		            sequence="0"/>        	
 
-        	<menuitem id="menu_production_transaksi"
+        	<menuitem id="menu_production_mutasi_pembahanan"
 	        	sequence="1"
-	        	name="Laporan Mutasi Harian"
+	        	name="Laporan Mutasi Pembahanan"
 	        	groups="base.group_user"
 	        	parent="menu_production"/>
 
 	        	<menuitem id="menu_production_transaksi_veneer_basah" 
 		            action="v12_pwk.action_pwk_mutasi_veneer_basah"
-		            parent="v12_pwk.menu_production_transaksi"
+		            parent="v12_pwk.menu_production_mutasi_pembahanan"
 		            groups="base.group_user"
 		            sequence="0"/>        	
 
 		        <menuitem id="menu_production_transaksi_veneer_roler"
 		            action="v12_pwk.action_pwk_mutasi_veneer_roler"
-		            parent="v12_pwk.menu_production_transaksi"
+		            parent="v12_pwk.menu_production_mutasi_pembahanan"
 		            groups="base.group_user"
 		            sequence="1"/>
 
 		        <menuitem id="menu_production_transaksi_veneer_klindry"
 		            action="v12_pwk.action_pwk_mutasi_veneer_klindry"
-		            parent="v12_pwk.menu_production_transaksi"
+		            parent="v12_pwk.menu_production_mutasi_pembahanan"
 		            groups="base.group_user"
 		            sequence="3"/>
 
 		        <menuitem id="menu_production_transaksi_veneer_kering"
 		            action="v12_pwk.action_pwk_mutasi_veneer_kering"
-		            parent="v12_pwk.menu_production_transaksi"
+		            parent="v12_pwk.menu_production_mutasi_pembahanan"
 		            groups="base.group_user"
 		            sequence="4"/>
 
 		        <menuitem id="menu_production_transaksi_barecore"
 		            action="v12_pwk.action_pwk_mutasi_barecore"
-		            parent="v12_pwk.menu_production_transaksi"
+		            parent="v12_pwk.menu_production_mutasi_pembahanan"
 		            groups="base.group_user"
 		            sequence="5"/>
 
 		        <menuitem id="menu_production_transaksi_veneer_unrepair"
 		            action="v12_pwk.action_pwk_mutasi_veneer_unrepair"
-		            parent="v12_pwk.menu_production_transaksi"
+		            parent="v12_pwk.menu_production_mutasi_pembahanan"
 		            groups="base.group_user"
 		            sequence="6"/>
 
 		        <menuitem id="menu_production_transaksi_veneer_ok_repair"
 		            action="v12_pwk.action_pwk_mutasi_veneer_ok_repair"
-		            parent="v12_pwk.menu_production_transaksi"
+		            parent="v12_pwk.menu_production_mutasi_pembahanan"
 		            groups="base.group_user"
 		            sequence="7"/>
 
+		    <menuitem id="menu_production_mutasi_produksi"
+	        	sequence="1"
+	        	name="Laporan Mutasi Produksi"
+	        	groups="base.group_user"
+	        	parent="menu_production"/>
+
 		        <menuitem id="menu_production_transaksi_veneer_gs"
 		            action="v12_pwk.action_pwk_mutasi_veneer_gs"
-		            parent="v12_pwk.menu_production_transaksi"
+		            parent="v12_pwk.menu_production_mutasi_produksi"
 		            groups="base.group_user"
 		            sequence="8"/>
 
 		        <menuitem id="menu_production_transaksi_assembling_finishing"
 		            action="v12_pwk.action_pwk_mutasi_assembling_finishing"
-		            parent="v12_pwk.menu_production_transaksi"
+		            parent="v12_pwk.menu_production_mutasi_produksi"
 		            groups="base.group_user"
 		            sequence="9"/>
 
