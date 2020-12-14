@@ -157,6 +157,8 @@ class MutasiBarecoreReportXls(models.AbstractModel):
         sheet.write(row+3, 15, 'M3', formatHeaderTable)
         sheet.write(row+3, 16, 'PCS', formatHeaderTable)
         sheet.write(row+3, 17, 'M3', formatHeaderTable)
+        sheet.write(row+3, 18, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 19, 'M3', formatHeaderTable)
 
         row += 4
 
