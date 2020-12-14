@@ -293,7 +293,7 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
         sheet.merge_range(row+7, 19, row+7, 21, '( Nurul Sholikhah )', formatHeaderTable)
 
         # Data 2
-        row += 11
+        row += 16
         number = 1
 
         sheet.merge_range(row-3, 0, row-3, 27, 'LAPORAN MUTASI VENEER BASAH - IN KD', formatHeaderCenter)
@@ -384,7 +384,7 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
 
         # Data 3
         if get_data3:
-            row += 11
+            row += 16
             number = 1
 
             sheet.merge_range(row-3, 0, row-3, 27, 'LAPORAN MUTASI VENEER BASAH - RE-IN KD', formatHeaderCenter)

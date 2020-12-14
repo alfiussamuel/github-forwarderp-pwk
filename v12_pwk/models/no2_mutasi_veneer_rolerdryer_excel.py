@@ -232,7 +232,7 @@ class MutasiVeneerRolerdryerReportXls(models.AbstractModel):
 
 
         # Data 2
-        row = +11
+        row = +16
         number = 1
 
         sheet.merge_range(row-3, 0, row-3, 27, 'LAPORAN MUTASI VENEER BASAH - IN KD', formatHeaderCenter)
