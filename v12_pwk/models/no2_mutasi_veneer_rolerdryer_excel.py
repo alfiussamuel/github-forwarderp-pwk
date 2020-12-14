@@ -221,14 +221,18 @@ class MutasiVeneerRolerdryerReportXls(models.AbstractModel):
             number += 1
 
         # Footer
-        sheet.merge_range(row+2, 19, row+2, 21, 'Mengetahui,', formatHeaderTable)
-        sheet.merge_range(row+3, 1, row+3, 8, 'Mengetahui,', formatHeaderTable)
-        sheet.merge_range(row+3, 11, row+3, 15, 'Diperiksa Oleh,', formatHeaderTable)
-        sheet.merge_range(row+3, 19, row+3, 21, 'Dibuat Oleh,', formatHeaderTable)
+        sheet.merge_range(row+2, 17, row+2, 19, 'Temanggung, ' + lines.date.strftime("%d-%m-%Y"), formatHeaderTable)
+        sheet.merge_range(row+3, 1, row+3, 6, 'Mengetahui,', formatHeaderTable)
+        sheet.merge_range(row+3, 9, row+3, 13, 'Diperiksa Oleh,', formatHeaderTable)
+        sheet.merge_range(row+3, 17, row+3, 19, 'Dibuat Oleh,', formatHeaderTable)
         
-        sheet.merge_range(row+7, 1, row+7, 8, '( Parwoto )', formatHeaderTable)
-        sheet.merge_range(row+7, 11, row+7, 15, '( Dwi Rakasiwi )', formatHeaderTable)
-        sheet.merge_range(row+7, 19, row+7, 21, '( Nurul Sholikhah )', formatHeaderTable)
+        sheet.merge_range(row+4, 1, row+7, 6, '', formatHeaderTableCenterWhite)
+        sheet.merge_range(row+4, 9, row+7, 13, '', formatHeaderTableCenterWhite)
+        sheet.merge_range(row+4, 17, row+7, 19, '', formatHeaderTableCenterWhite)
+
+        sheet.merge_range(row+7, 1, row+8, 6, '( Parwoto )', formatHeaderTableCenterWhite)
+        sheet.merge_range(row+7, 9, row+8, 13, '( Dwi Rakasiwi )', formatHeaderTableCenterWhite)
+        sheet.merge_range(row+7, 17, row+8, 19, '( Nurul Sholikhah )', formatHeaderTableCenterWhite)
 
 
         # Data 2
@@ -312,11 +316,16 @@ class MutasiVeneerRolerdryerReportXls(models.AbstractModel):
             number += 1
 
         # Footer
-        sheet.merge_range(row+2, 19, row+2, 21, 'Mengetahui,', formatHeaderTable)
-        sheet.merge_range(row+3, 1, row+3, 8, 'Mengetahui,', formatHeaderTable)
-        sheet.merge_range(row+3, 11, row+3, 15, 'Diperiksa Oleh,', formatHeaderTable)
-        sheet.merge_range(row+3, 19, row+3, 21, 'Dibuat Oleh,', formatHeaderTable)
+        sheet.merge_range(row+2, 17, row+2, 19, 'Temanggung, ' + lines.date.strftime("%d-%m-%Y"), formatHeaderTable)
+        sheet.merge_range(row+3, 1, row+3, 6, 'Mengetahui,', formatHeaderTable)
+        sheet.merge_range(row+3, 9, row+3, 13, 'Diperiksa Oleh,', formatHeaderTable)
+        sheet.merge_range(row+3, 17, row+3, 19, 'Dibuat Oleh,', formatHeaderTable)
         
-        sheet.merge_range(row+7, 1, row+7, 8, '( Parwoto )', formatHeaderTable)
-        sheet.merge_range(row+7, 11, row+7, 15, '( Dwi Rakasiwi )', formatHeaderTable)
-        sheet.merge_range(row+7, 19, row+7, 21, '( Nurul Sholikhah )', formatHeaderTable)
+        sheet.merge_range(row+4, 1, row+7, 6, '', formatHeaderTableCenterWhite)
+        sheet.merge_range(row+4, 9, row+7, 13, '', formatHeaderTableCenterWhite)
+        sheet.merge_range(row+4, 17, row+7, 19, '', formatHeaderTableCenterWhite)
+
+        sheet.merge_range(row+7, 1, row+8, 6, '( Parwoto )', formatHeaderTableCenterWhite)
+        sheet.merge_range(row+7, 9, row+8, 13, '( Dwi Rakasiwi )', formatHeaderTableCenterWhite)
+        sheet.merge_range(row+7, 17, row+8, 19, '( Nurul Sholikhah )', formatHeaderTableCenterWhite)
+        
