@@ -15,11 +15,12 @@ class PebReport(models.TransientModel):
 
     @api.multi
     def export_xls(self):
+        print ('context 1 ', _context)
         context = self._context
         datas = {'ids': context.get('active_ids', [])}
         datas['model'] = 'wizard.peb.report'
         datas['form'] = self.read()[0]
-        print(context)
+        print('context 2', context)
         for field in datas['form'].keys():
             if isinstance(datas['form'][field], tuple):
                 datas['form'][field] = datas['form'][field][0]

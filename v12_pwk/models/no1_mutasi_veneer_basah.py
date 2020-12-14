@@ -308,11 +308,12 @@ class PwkMutasiVeneerBasah(models.Model):
 
     @api.multi
     def button_print(self):
+        print ('context 1 ', _context)
         context = self._context
         datas = {'ids': self.id}
         datas['model'] = 'pwk.mutasi.veneer.basah'
         datas['form'] = self.read()[0]
-        print (context)
+        print ('context 2 ', context)
         for field in datas['form'].keys():
             if isinstance(datas['form'][field], tuple):
                 datas['form'][field] = datas['form'][field][0]
