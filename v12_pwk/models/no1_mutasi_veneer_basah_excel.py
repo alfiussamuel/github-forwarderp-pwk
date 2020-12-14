@@ -74,6 +74,34 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
 
         return lines
 
+    def get_data3(self, data):        
+        lines = []
+        if data.kd_re_ids:
+            for line in data.kd_re_ids:
+                vals = {
+                        'jenis_kayu' : line.product_id.jenis_kayu_id.name,
+                        'tebal': line.tebal,
+                        'lebar': line.lebar,
+                        'panjang': line.panjang,
+                        'grade': line.grade.name,
+                        'awal_pcs': line.stock_awal_pcs,
+                        'awal_vol': line.stock_awal_vol,
+                        'masuk_pcs': line.stock_masuk_pcs,
+                        'masuk_vol': line.stock_masuk_vol,
+                        'masuk_acc_pcs': line.acc_stock_masuk_pcs,
+                        'masuk_acc_vol': line.acc_stock_masuk_vol,
+                        'keluar_pcs': line.stock_keluar_pcs,
+                        'keluar_vol': line.stock_keluar_vol,
+                        'keluar_acc_pcs': line.acc_stock_keluar_pcs,
+                        'keluar_acc_vol': line.acc_stock_keluar_vol,
+                        'akhir_pcs': line.stock_akhir_pcs,
+                        'akhir_vol': line.stock_akhir_vol,
+                        }
+
+                lines.append(vals)
+
+        return lines
+
     def generate_xlsx_report(self, workbook, data, lines):        
         get_data = self.get_data(lines)
         get_data2 = self.get_data2(lines)
@@ -382,7 +410,7 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
 
         row += 4
 
-        for i in get_data2:
+        for i in get_data3:
             sheet.write(row, 0, number, formatHeaderDetailCenter)
             sheet.write(row, 1, i['jenis_kayu'], formatHeaderDetailCenter)            
             sheet.write(row, 2, i['tebal'], formatHeaderDetailCenter)
