@@ -358,3 +358,105 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
             
             row += 1
             number += 1
+
+
+        # Data 3
+        row += 3
+        number = 1
+
+        sheet.merge_range(row, 0, row+3, 0, 'NO', formatHeaderTable)
+        sheet.merge_range(row, 1, row+3, 1, 'JENIS KAYU', formatHeaderTable)
+        sheet.merge_range(row, 2, row+1, 6, 'UKURAN', formatHeaderTable)
+        sheet.merge_range(row, 7, row+3, 7, 'GRADE', formatHeaderTable)
+        sheet.merge_range(row, 8, row+2, 9, 'STOK AWAL', formatHeaderTable)
+        sheet.merge_range(row, 10, row, 17, 'MASUK', formatHeaderTable)
+        sheet.merge_range(row, 18, row, 25, 'KELUAR', formatHeaderTable)
+        sheet.merge_range(row, 26, row+2, 27, 'STOK AKHIR', formatHeaderTable)
+
+        # Merge 3 and 4
+        sheet.merge_range(row+2, 2, row+3, 2, 'T', formatHeaderTable)
+        sheet.merge_range(row+2, 3, row+3, 3, '', formatHeaderTable)
+        sheet.merge_range(row+2, 4, row+3, 4, 'L', formatHeaderTable)
+        sheet.merge_range(row+2, 5, row+3, 5, '', formatHeaderTable)
+        sheet.merge_range(row+2, 6, row+3, 6, 'P', formatHeaderTable)
+        
+        # Row 2
+        sheet.merge_range(row+1, 10, row+1, 13, 'SUPPLIER', formatHeaderTable)
+        sheet.merge_range(row+1, 14, row+1, 17, 'ROTARY', formatHeaderTable)
+        sheet.merge_range(row+1, 18, row+1, 21, 'STACKING', formatHeaderTable)
+        sheet.merge_range(row+1, 22, row+1, 25, 'ROLERDRYER', formatHeaderTable)
+
+        # Row 3
+        sheet.merge_range(row+2, 10, row+2, 11, 'HARI INI', formatHeaderTable)
+        sheet.merge_range(row+2, 12, row+2, 13, 'AKUMULASI', formatHeaderTable)
+
+        sheet.merge_range(row+2, 14, row+2, 15, 'HARI INI', formatHeaderTable)
+        sheet.merge_range(row+2, 16, row+2, 17, 'AKUMULASI', formatHeaderTable)
+
+        sheet.merge_range(row+2, 18, row+2, 19, 'HARI INI', formatHeaderTable)
+        sheet.merge_range(row+2, 20, row+2, 21, 'AKUMULASI', formatHeaderTable)
+
+        sheet.merge_range(row+2, 22, row+2, 23, 'HARI INI', formatHeaderTable)
+        sheet.merge_range(row+2, 24, row+2, 25, 'AKUMULASI', formatHeaderTable)
+
+        # Row 4
+        sheet.write(row+3, 8, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 9, 'M3', formatHeaderTable)
+        sheet.write(row+3, 10, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 11, 'M3', formatHeaderTable)
+        sheet.write(row+3, 12, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 13, 'M3', formatHeaderTable)
+        sheet.write(row+3, 14, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 15, 'M3', formatHeaderTable)
+        sheet.write(row+3, 16, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 17, 'M3', formatHeaderTable)
+        sheet.write(row+3, 18, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 19, 'M3', formatHeaderTable)
+        sheet.write(row+3, 20, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 21, 'M3', formatHeaderTable)
+        sheet.write(row+3, 22, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 23, 'M3', formatHeaderTable)
+        sheet.write(row+3, 24, 'PCS', formatHeaderTable)
+        sheet.write(row+3, 25, 'M3', formatHeaderTable)
+
+        row += 4
+
+        for i in get_data2:
+            sheet.write(row, 0, number, formatHeaderDetailCenter)
+            sheet.write(row, 1, i['jenis_kayu'], formatHeaderDetailCenter)            
+            sheet.write(row, 2, i['tebal'], formatHeaderDetailCenter)
+            sheet.write(row, 3, '', formatHeaderDetailCenter)
+            sheet.write(row, 4, i['lebar'], formatHeaderDetailCenter)
+            sheet.write(row, 5, '', formatHeaderDetailCenter)
+            sheet.write(row, 6, i['panjang'], formatHeaderDetailCenter)
+
+            sheet.write(row, 7, i['grade'], formatHeaderDetailCenterNumberFour)
+            sheet.write(row, 8, i['awal_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 9, i['awal_vol'], formatHeaderDetailCenterNumber)
+
+            sheet.write(row, 10, i['masuk_supplier_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 11, i['masuk_supplier_vol'], formatHeaderDetailCenter)
+            sheet.write(row, 12, i['masuk_supplier_acc_pcs'], formatHeaderDetailCenter)
+            sheet.write(row, 13, i['masuk_supplier_acc_vol'], formatHeaderDetailCenter)
+
+            sheet.write(row, 14, i['masuk_rotary_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 15, i['masuk_rotary_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 16, i['masuk_rotary_acc_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 17, i['masuk_rotary_acc_vol'], formatHeaderDetailCenterNumber)
+
+
+            sheet.write(row, 18, i['keluar_stacking_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 19, i['keluar_stacking_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 20, i['keluar_stacking_acc_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 21, i['keluar_stacking_acc_vol'], formatHeaderDetailCenterNumber)
+
+            sheet.write(row, 22, i['keluar_roler_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 23, i['keluar_roler_vol'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 24, i['keluar_roler_acc_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 25, i['keluar_roler_acc_vol'], formatHeaderDetailCenterNumber)
+
+            sheet.write(row, 26, i['akhir_pcs'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 27, i['akhir_vol'], formatHeaderDetailCenterNumber)
+            
+            row += 1
+            number += 1
