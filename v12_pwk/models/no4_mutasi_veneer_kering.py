@@ -112,7 +112,7 @@ class PwkMutasiVeneerKeringLine(models.Model):
             res.stock_akhir_vol = res.stock_akhir_pcs * res.tebal * res.lebar * res.panjang / 1000000000
 
     @api.depends('stock_awal_pcs', 'kd_stock_masuk_pcs', 'rd_stock_masuk_pcs', 're_kd_stock_masuk_pcs', 're_rd_stock_masuk_pcs', 'supp_stock_masuk_pcs',
-                 'repairstock_keluar_pcs', 're_stacking_stock_keluar_pcs', 're_rd_stock_keluar_pcs', 'lain_stock_keluar_pcs',)
+                 'repair_stock_keluar_pcs', 're_stacking_stock_keluar_pcs', 're_rd_stock_keluar_pcs', 'lain_stock_keluar_pcs',)
     def _get_acc(self):
         for res in self:
             kd_acc_stock_masuk_pcs = 0
