@@ -102,7 +102,7 @@ class PwkMutasiVeneerKlinDryReline(models.Model):
         for res in self:
             stock_masuk_pcs = 0
             source_ids = self.env['pwk.mutasi.veneer.basah.kd.re'].search([
-                ('reference.date','=',res.reference.date - timedelta(1)),
+                ('reference.date','=',res.reference.date),
                 ('product_id','=',res.product_id.id)
                 ])
                         
@@ -250,6 +250,14 @@ class PwkMutasiVeneerKlindry(models.Model):
     @api.multi
     def button_reload(self):
         for res in self:
+            existing_ids = self.env['pwk.mutasi.veneer.klindry.line'].search([
+                ('reference', '=', self.id)
+            ])
+            
+            if existing_ids:
+                for existing in existing_ids:
+                    existing.unlink()
+                    
             source_ids = self.env['pwk.mutasi.veneer.basah.kd'].search([
                 ('reference.date','=',res.date - timedelta(1)),
                 ])
@@ -269,12 +277,20 @@ class PwkMutasiVeneerKlindry(models.Model):
     @api.multi
     def button_reload_re(self):
         for res in self:
-            source_ids = self.env['pwk.mutasi.veneer.klindry.line'].search([
+            existing_ids = self.env['pwk.mutasi.veneer.klindry.reline'].search([
+                ('reference', '=', self.id)
+            ])
+            
+            if existing_ids:
+                for existing in existing_ids:
+                    existing.unlink()
+                    
+            source_ids = self.env['pwk.mutasi.veneer.basah.kd.re'].search([
                 ('reference.date','=',res.date - timedelta(1)),
                 ])
 
             if not source_ids:
-                source_ids = self.env['pwk.mutasi.veneer.klindry.line'].search([
+                source_ids = self.env['pwk.mutasi.veneer.basah.kd.re'].search([
                     ('reference.date','<',res.date),
                     ])
 
