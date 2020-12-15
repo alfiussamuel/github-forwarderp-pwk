@@ -80,13 +80,13 @@ class PwkMutasiVeneerBasahKdRe(models.Model):
     def _get_stock_masuk(self):
         for res in self:
             stock_masuk_pcs = 0
-            source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
+            source_ids = self.env['pwk.mutasi.veneer.kering.line'].search([
                 ('reference.date','=',res.reference.date),
                 ('product_id','=',res.product_id.id)
                 ])
                         
             if source_ids:
-                stock_masuk_pcs = source_ids[0].stock_keluar_stacking_pcs
+                stock_masuk_pcs = source_ids[0].re_stacking_stock_keluar_pcs
 
             res.stock_masuk_pcs = stock_masuk_pcs
 
