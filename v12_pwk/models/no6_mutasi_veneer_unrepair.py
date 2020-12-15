@@ -101,13 +101,13 @@ class PwkMutasiVeneerUnrepairLine(models.Model):
     def _get_stock_masuk(self):
         for res in self:
             stock_masuk_pcs = 0
-            source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
-                ('reference.date','=',res.reference.date - timedelta(1)),
+            source_ids = self.env['pwk.mutasi.veneer.kering.line'].search([
+                ('reference.date','=',res.reference.date),
                 ('product_id','=',res.product_id.id)
                 ])
                         
             if source_ids:
-                stock_masuk_pcs = source_ids[0].stock_keluar_stacking_pcs
+                stock_masuk_pcs = source_ids[0].repair_stock_keluar_pcs
 
             res.stock_masuk_pcs = stock_masuk_pcs
 
@@ -145,12 +145,12 @@ class PwkMutasiVeneerUnrepair(models.Model):
     @api.multi
     def button_reload(self):
         for res in self:
-            source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
+            source_ids = self.env['pwk.mutasi.veneer.kering.line'].search([
                 ('reference.date','=',res.date - timedelta(1)),
                 ])
 
             if not source_ids:
-                source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
+                source_ids = self.env['pwk.mutasi.veneer.kering.line'].search([
                     ('reference.date','<',res.date),
                     ])
 
