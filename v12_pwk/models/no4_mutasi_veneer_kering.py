@@ -55,14 +55,14 @@ class PwkMutasiVeneerKeringLine(models.Model):
     repair_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Rep', digits=dp.get_precision('FourDecimal'))
     
     re_stacking_stock_keluar_pcs = fields.Float('Stok Keluar Stack')
-    re_stacking_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Stack', digits=dp.get_precision('FourDecimal'))
-    re_stacking_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Stack')
-    re_stacking_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Stack', digits=dp.get_precision('FourDecimal'))
+    re_stacking_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Re-Stack', digits=dp.get_precision('FourDecimal'))
+    re_stacking_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Re-Stack')
+    re_stacking_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Re-Stack', digits=dp.get_precision('FourDecimal'))
     
     re_rd_stock_keluar_pcs = fields.Float('Stok Keluar Roll')
-    re_rd_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Roll', digits=dp.get_precision('FourDecimal'))
-    re_rd_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Roll')
-    re_rd_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Roll', digits=dp.get_precision('FourDecimal'))
+    re_rd_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Re-Roll', digits=dp.get_precision('FourDecimal'))
+    re_rd_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Re-Roll')
+    re_rd_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Re-Roll', digits=dp.get_precision('FourDecimal'))
     
     lain_stock_keluar_pcs = fields.Float('Stok Keluar Lain')
     lain_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Lain', digits=dp.get_precision('FourDecimal'))
