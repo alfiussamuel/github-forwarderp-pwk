@@ -380,6 +380,14 @@ class PwkMutasiVeneerBasah(models.Model):
     @api.multi
     def button_reload_kd(self):
         for res in self:
+            existing_ids = self.env['pwk.mutasi.veneer.basah.kd'].search([
+                ('reference', '=', self.id)
+            ])
+            
+            if existing_ids:
+                for existing in existing_ids:
+                    existing.unlink()
+                    
             source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
                 ('reference.date','=',res.date),
                 ])
@@ -399,6 +407,14 @@ class PwkMutasiVeneerBasah(models.Model):
     @api.multi
     def button_reload_kd_re(self):
         for res in self:
+            existing_ids = self.env['pwk.mutasi.veneer.basah.kd.re'].search([
+                ('reference', '=', self.id)
+            ])
+            
+            if existing_ids:
+                for existing in existing_ids:
+                    existing.unlink()
+                    
             source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
                 ('reference.date','=',res.date),
                 ])
@@ -418,6 +434,14 @@ class PwkMutasiVeneerBasah(models.Model):
     @api.multi
     def button_reload_line(self):
         for res in self:
+            existing_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
+                ('reference', '=', self.id)
+            ])
+            
+            if existing_ids:
+                for existing in existing_ids:
+                    existing.unlink()
+                    
             source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
                 ('reference.date','=',res.date - timedelta(1)),
                 ])
