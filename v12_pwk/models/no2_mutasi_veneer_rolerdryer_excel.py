@@ -80,6 +80,7 @@ class MutasiVeneerRolerdryerReportXls(models.AbstractModel):
         formatHeaderLeft = workbook.add_format({'font_size': 14, 'valign':'vcenter', 'align': 'left', 'bold': True, 'text_wrap': True})
         formatHeaderRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'left', 'num_format': '#,##0'})
         formatHeaderTable = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'bold': True, 'bg_color':'#4ead2f', 'color':'white', 'text_wrap': True})
+        formatHeaderTableCenterWhite = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'center', 'bold': True, 'text_wrap': True, 'num_format': '#,##0'})
         formatHeaderTableRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'bold': True, 'bg_color':'#3eaec2', 'text_wrap': True, 'num_format': '#,##0'})
         formatHeaderDetailCenter = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True})
         formatHeaderDetailCenterNumber = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'num_format': '#,##0'})
@@ -104,6 +105,7 @@ class MutasiVeneerRolerdryerReportXls(models.AbstractModel):
         formatHeaderDetailCenterNumberFour.set_border(1)
         formatHeaderDetailRight.set_border(1)
         formatHeaderDetailLeft.set_border(1)
+        formatHeaderDetailCenterNumber.set_border(1)
 
         formatHeaderTable.set_text_wrap()
         formatHeaderTableRight.set_text_wrap()
@@ -328,4 +330,3 @@ class MutasiVeneerRolerdryerReportXls(models.AbstractModel):
         sheet.merge_range(row+7, 1, row+8, 6, '( Parwoto )', formatHeaderTableCenterWhite)
         sheet.merge_range(row+7, 9, row+8, 13, '( Dwi Rakasiwi )', formatHeaderTableCenterWhite)
         sheet.merge_range(row+7, 17, row+8, 19, '( Nurul Sholikhah )', formatHeaderTableCenterWhite)
-        
