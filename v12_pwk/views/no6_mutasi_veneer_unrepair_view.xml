@@ -43,7 +43,7 @@
                         </group>
                         <group>
                             <notebook>
-                                <page string="Veneer Klin Dry">
+                                <page string="Veneer Unrepair">
                                     <button name="button_reload" string="Reload" 
                                         type="object" class="oe_highlight"/>
                                     <group>
