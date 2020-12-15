@@ -101,7 +101,7 @@ class PwkMutasiVeneerKlinDryReline(models.Model):
     def _get_stock_masuk(self):
         for res in self:
             stock_masuk_pcs = 0
-            source_ids = self.env['pwk.mutasi.veneer.klindry.line'].search([
+            source_ids = self.env['pwk.mutasi.veneer.basah.kd.re'].search([
                 ('reference.date','=',res.reference.date - timedelta(1)),
                 ('product_id','=',res.product_id.id)
                 ])
