@@ -187,22 +187,22 @@ class PwkMutasiVeneerKeringLine(models.Model):
             supp_stock_masuk_pcs = 0
             
             kd_source_ids = self.env['pwk.mutasi.veneer.klindry.line'].search([
-                ('reference.date','=',res.reference.date - timedelta(1)),
+                ('reference.date','=',res.reference.date),
                 ('product_id','=',res.product_id.id)
                 ])
             
             re_kd_source_ids = self.env['pwk.mutasi.veneer.klindry.reline'].search([
-                ('reference.date','=',res.reference.date - timedelta(1)),
+                ('reference.date','=',res.reference.date),
                 ('product_id','=',res.product_id.id)
                 ])
             
             rd_source_ids = self.env['pwk.mutasi.veneer.roler.line'].search([
-                ('reference.date','=',res.reference.date - timedelta(1)),
+                ('reference.date','=',res.reference.date),
                 ('product_id','=',res.product_id.id)
                 ])
             
             re_rd_source_ids = self.env['pwk.mutasi.veneer.roler.reline'].search([
-                ('reference.date','=',res.reference.date - timedelta(1)),
+                ('reference.date','=',res.reference.date),
                 ('product_id','=',res.product_id.id)
                 ])
                         
