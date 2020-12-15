@@ -284,7 +284,7 @@ class MutasiVeneerBasahReportXls(models.AbstractModel):
             row += 1
             number += 1
 
-        row += 5
+        row += 2
 
         # Footer
         sheet.merge_range(row+2, 17, row+2, 19, 'Temanggung, ' + lines.date.strftime("%d-%m-%Y"), formatHeaderTable)
