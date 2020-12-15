@@ -145,6 +145,14 @@ class PwkMutasiVeneerUnrepair(models.Model):
     @api.multi
     def button_reload(self):
         for res in self:
+            existing_ids = self.env['pwk.mutasi.veneer.unrepair.line'].search([
+                ('reference', '=', self.id)
+            ])
+            
+            if existing_ids:
+                for existing in existing_ids:
+                    existing.unlink()
+                    
             source_ids = self.env['pwk.mutasi.veneer.kering.line'].search([
                 ('reference.date','=',res.date - timedelta(1)),
                 ])
