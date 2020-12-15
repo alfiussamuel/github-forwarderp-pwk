@@ -147,15 +147,15 @@ class PwkMutasiVeneerKeringLine(models.Model):
                 re_rd_acc_stock_keluar_pcs = source_ids[0].acc_stock_keluar_pcs
                 lain_acc_stock_keluar_pcs = source_ids[0].acc_stock_keluar_pcs
 
-            res.kd_acc_stock_masuk_pcs = acc_stock_masuk_pcs + res.kd_stock_masuk_pcs
-            res.rd_acc_stock_masuk_pcs = acc_stock_masuk_pcs + res.rd_stock_masuk_pcs
-            res.re_kd_acc_stock_masuk_pcs = acc_stock_masuk_pcs + res.re_kd_stock_masuk_pcs
-            res.re_rd_acc_stock_masuk_pcs = acc_stock_masuk_pcs + res.re_rd_stock_masuk_pcs
-            res.supp_acc_stock_masuk_pcs = acc_stock_masuk_pcs + res.supp_stock_masuk_pcs
-            res.repair_acc_stock_keluar_pcs = acc_stock_keluar_pcs + res.repair_stock_keluar_pcs
-            res.re_stacking_acc_stock_keluar_pcs = acc_stock_keluar_pcs + res.re_stacking_stock_keluar_pcs
-            res.re_rd_acc_stock_keluar_pcs = acc_stock_keluar_pcs + res.re_rd_stock_keluar_pcs
-            res.lain_acc_stock_keluar_pcs = acc_stock_keluar_pcs + res.lain_stock_keluar_pcs
+            res.kd_acc_stock_masuk_pcs = kd_acc_stock_masuk_pcs + res.kd_stock_masuk_pcs
+            res.rd_acc_stock_masuk_pcs = rd_acc_stock_masuk_pcs + res.rd_stock_masuk_pcs
+            res.re_kd_acc_stock_masuk_pcs = re_kd_acc_stock_masuk_pcs + res.re_kd_stock_masuk_pcs
+            res.re_rd_acc_stock_masuk_pcs = re_rd_acc_stock_masuk_pcs + res.re_rd_stock_masuk_pcs
+            res.supp_acc_stock_masuk_pcs = supp_acc_stock_masuk_pcs + res.supp_stock_masuk_pcs
+            res.repair_acc_stock_keluar_pcs = repair_acc_stock_keluar_pcs + res.repair_stock_keluar_pcs
+            res.re_stacking_acc_stock_keluar_pcs = re_stacking_acc_stock_keluar_pcs + res.re_stacking_stock_keluar_pcs
+            res.re_rd_acc_stock_keluar_pcs = re_rd_acc_stock_keluar_pcs + res.re_rd_stock_keluar_pcs
+            res.lain_acc_stock_keluar_pcs = lain_acc_stock_keluar_pcs + res.lain_stock_keluar_pcs
 
     @api.depends('product_id')
     def _get_stock_awal(self):
@@ -228,6 +228,14 @@ class PwkMutasiVeneerKering(models.Model):
     @api.multi
     def button_reload(self):
         for res in self:
+            existing_ids = self.env['pwk.mutasi.veneer.kering.line'].search([
+                ('reference', '=', self.id)
+            ])
+            
+            if existing_ids:
+                for existing in existing_ids:
+                    existing.unlink()
+            
             source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
                 ('reference.date','=',res.date - timedelta(1)),
                 ])
