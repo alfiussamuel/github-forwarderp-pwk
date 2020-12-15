@@ -415,12 +415,12 @@ class PwkMutasiVeneerBasah(models.Model):
                 for existing in existing_ids:
                     existing.unlink()
                     
-            source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
+            source_ids = self.env['pwk.mutasi.veneer.kering.line'].search([
                 ('reference.date','=',res.date),
                 ])
 
             if not source_ids:
-                source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
+                source_ids = self.env['pwk.mutasi.veneer.kering.line'].search([
                     ('reference.date','<',res.date),
                     ])
 
