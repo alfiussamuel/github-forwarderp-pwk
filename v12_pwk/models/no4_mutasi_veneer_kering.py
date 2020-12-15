@@ -180,16 +180,48 @@ class PwkMutasiVeneerKeringLine(models.Model):
     @api.depends('product_id')
     def _get_stock_masuk(self):
         for res in self:
-            stock_masuk_pcs = 0
-            source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
+            kd_stock_masuk_pcs = 0
+            rd_stock_masuk_pcs = 0
+            re_kd_stock_masuk_pcs = 0
+            re_rd_stock_masuk_pcs = 0
+            supp_stock_masuk_pcs = 0
+            
+            kd_source_ids = self.env['pwk.mutasi.veneer.klindry.line'].search([
+                ('reference.date','=',res.reference.date - timedelta(1)),
+                ('product_id','=',res.product_id.id)
+                ])
+            
+            re_kd_source_ids = self.env['pwk.mutasi.veneer.klindry.reline'].search([
+                ('reference.date','=',res.reference.date - timedelta(1)),
+                ('product_id','=',res.product_id.id)
+                ])
+            
+            rd_source_ids = self.env['pwk.mutasi.veneer.roler.line'].search([
+                ('reference.date','=',res.reference.date - timedelta(1)),
+                ('product_id','=',res.product_id.id)
+                ])
+            
+            re_rd_source_ids = self.env['pwk.mutasi.veneer.roler.reline'].search([
                 ('reference.date','=',res.reference.date - timedelta(1)),
                 ('product_id','=',res.product_id.id)
                 ])
                         
-            if source_ids:
-                stock_masuk_pcs = source_ids[0].stock_keluar_stacking_pcs
+            if kd_source_ids:
+                kd_stock_masuk_pcs = kd_source_ids[0].stock_keluar_pcs 
+               
+            if rd_source_ids:
+                rd_stock_masuk_pcs = rd_source_ids[0].stock_keluar_pcs 
+                
+            if re_kd_source_ids:
+                re_kd_stock_masuk_pcs = re_kd_source_ids[0].stock_keluar_pcs
+                
+            if re_rd_source_ids:
+                re_rd_stock_masuk_pcs = re_rd_source_ids[0].stock_keluar_pcs
 
-            res.stock_masuk_pcs = stock_masuk_pcs
+            res.kd_stock_masuk_pcs = kd_stock_masuk_pcs
+            res.rd_stock_masuk_pcs = rd_stock_masuk_pcs
+            res.re_kd_stock_masuk_pcs = re_kd_stock_masuk_pcs
+            res.re_rd_stock_masuk_pcs = re_rd_stock_masuk_pcs
 
     @api.depends('stock_awal_pcs', 'kd_stock_masuk_pcs', 'rd_stock_masuk_pcs', 're_kd_stock_masuk_pcs', 're_rd_stock_masuk_pcs', 'supp_stock_masuk_pcs',
                  'repair_stock_keluar_pcs', 're_stacking_stock_keluar_pcs', 're_rd_stock_keluar_pcs', 'lain_stock_keluar_pcs',)
