@@ -137,15 +137,15 @@ class PwkMutasiVeneerKeringLine(models.Model):
                     ])
 
             if source_ids:
-                kd_acc_stock_masuk_pcs = source_ids[0].acc_stock_masuk_pcs
-                rd_acc_stock_masuk_pcs = source_ids[0].acc_stock_masuk_pcs
-                re_kd_acc_stock_masuk_pcs = source_ids[0].acc_stock_masuk_pcs
-                re_rd_acc_stock_masuk_pcs = source_ids[0].acc_stock_masuk_pcs
-                supp_acc_stock_masuk_pcs = source_ids[0].acc_stock_masuk_pcs
-                repair_acc_stock_keluar_pcs = source_ids[0].acc_stock_keluar_pcs
-                re_stacking_acc_stock_keluar_pcs = source_ids[0].acc_stock_keluar_pcs
-                re_rd_acc_stock_keluar_pcs = source_ids[0].acc_stock_keluar_pcs
-                lain_acc_stock_keluar_pcs = source_ids[0].acc_stock_keluar_pcs
+                kd_acc_stock_masuk_pcs = source_ids[0].kd_acc_stock_masuk_pcs
+                rd_acc_stock_masuk_pcs = source_ids[0].rd_acc_stock_masuk_pcs
+                re_kd_acc_stock_masuk_pcs = source_ids[0].re_kd_acc_stock_masuk_pcs
+                re_rd_acc_stock_masuk_pcs = source_ids[0].re_rd_acc_stock_masuk_pcs
+                supp_acc_stock_masuk_pcs = source_ids[0].supp_acc_stock_masuk_pcs
+                repair_acc_stock_keluar_pcs = source_ids[0].repair_acc_stock_keluar_pcs
+                re_stacking_acc_stock_keluar_pcs = source_ids[0].re_stacking_acc_stock_keluar_pcs
+                re_rd_acc_stock_keluar_pcs = source_ids[0].re_rd_acc_stock_keluar_pcs
+                lain_acc_stock_keluar_pcs = source_ids[0].lain_acc_stock_keluar_pcs
 
             res.kd_acc_stock_masuk_pcs = kd_acc_stock_masuk_pcs + res.kd_stock_masuk_pcs
             res.rd_acc_stock_masuk_pcs = rd_acc_stock_masuk_pcs + res.rd_stock_masuk_pcs
