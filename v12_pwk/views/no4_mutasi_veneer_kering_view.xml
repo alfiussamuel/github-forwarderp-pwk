@@ -55,8 +55,15 @@
                                                 <field name="panjang"/>
                                                 <field name="grade"/>
                                                 <field name="stock_awal_pcs" sum="Total"/>
-                                                <field name="stock_masuk_pcs" sum="Total"/>
-                                                <field name="stock_keluar_pcs" sum="Total"/>
+                                                <field name="kd_stock_masuk_pcs" sum="Total"/>
+                                                <field name="rd_stock_masuk_pcs" sum="Total"/>
+                                                <field name="re_kd_stock_masuk_pcs" sum="Total"/>
+                                                <field name="re_rd_stock_masuk_pcs" sum="Total"/>
+                                                <field name="supp_stock_masuk_pcs" sum="Total"/>
+                                                <field name="repair_stock_keluar_pcs" sum="Total"/>
+                                                <field name="re_stacking_stock_keluar_pcs" sum="Total"/>
+                                                <field name="re_rd_stock_keluar_pcs" sum="Total"/>
+                                                <field name="lain_stock_keluar_pcs" sum="Total"/>
                                                 <field name="stock_akhir_pcs" sum="Total"/>
                                             </tree>
                                             <form>
@@ -70,25 +77,53 @@
                                                 <group>
                                                     <group string="Perhitungan Stock (Pcs)">
                                                         <field name="stock_awal_pcs"/>                  
-                                                        <field name="stock_masuk_pcs"/> 
-                                                        <field name="stock_keluar_pcs"/>
+                                                        <field name="kd_stock_masuk_pcs"/> 
+                                                        <field name="rd_stock_masuk_pcs"/>
+                                                        <field name="re_kd_stock_masuk_pcs"/> 
+                                                        <field name="re_rd_stock_masuk_pcs"/> 
+                                                        <field name="supp_stock_masuk_pcs"/> 
+                                                        <field name="repair_stock_keluar_pcs"/>
+                                                        <field name="re_stacking_stock_keluar_pcs"/>
+                                                        <field name="re_rd_stock_keluar_pcs"/>
+                                                        <field name="lain_stock_keluar_pcs"/>
                                                         <field name="stock_akhir_pcs"/>
                                                     </group>
                                                     <group string="Perhitungan Stock (Vol)">
                                                         <field name="stock_awal_vol"/>
-                                                        <field name="stock_masuk_vol"/>
-                                                        <field name="stock_keluar_vol"/>
+                                                        <field name="kd_stock_masuk_vol"/>
+                                                        <field name="rd_stock_masuk_vol"/>
+                                                        <field name="re_kd_stock_masuk_vol"/>
+                                                        <field name="re_rd_stock_masuk_vol"/>
+                                                        <field name="supp_stock_masuk_vol"/>
+                                                        <field name="repair_stock_keluar_vol"/>
+                                                        <field name="re_stacking_stock_keluar_vol"/>
+                                                        <field name="re_rd_stock_keluar_vol"/>
+                                                        <field name="lain_stock_keluar_vol"/>
                                                         <field name="stock_akhir_vol"/>
                                                     </group>
                                                 </group>
                                                 <group>
                                                     <group string="Akumulasi Stock (Pcs)">
-                                                        <field name="acc_stock_masuk_pcs"/> 
-                                                        <field name="acc_stock_keluar_pcs"/> 
+                                                        <field name="kd_acc_stock_masuk_pcs"/>
+                                                        <field name="rd_acc_stock_masuk_pcs"/> 
+                                                        <field name="re_kd_acc_stock_masuk_pcs"/> 
+                                                        <field name="re_rd_acc_stock_masuk_pcs"/> 
+                                                        <field name="supp_acc_stock_masuk_pcs"/> 
+                                                        <field name="repair_acc_stock_keluar_pcs"/> 
+                                                        <field name="re_stacking_acc_stock_keluar_pcs"/> 
+                                                        <field name="re_rd_acc_stock_keluar_pcs"/> 
+                                                        <field name="lain_acc_stock_keluar_pcs"/> 
                                                     </group>
                                                     <group string="Akumulasi Stock (Vol)">
-                                                        <field name="acc_stock_masuk_vol"/>      
-                                                        <field name="acc_stock_keluar_vol"/>
+                                                        <field name="kd_acc_stock_masuk_vol"/> 
+                                                        <field name="rd_acc_stock_masuk_vol"/> 
+                                                        <field name="re_kd_acc_stock_masuk_vol"/> 
+                                                        <field name="re_rd_acc_stock_masuk_vol"/> 
+                                                        <field name="supp_acc_stock_masuk_vol"/> 
+                                                        <field name="repair_acc_stock_keluar_vol"/>
+                                                        <field name="re_stacking_acc_stock_keluar_vol"/>
+                                                        <field name="re_rd_acc_stock_keluar_vol"/>
+                                                        <field name="lain_acc_stock_keluar_vol"/>
                                                     </group>
                                                 </group>
                                             </form>
