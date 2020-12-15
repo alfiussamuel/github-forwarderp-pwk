@@ -129,7 +129,7 @@ class PwkMutasiVeneerRolerReLine(models.Model):
     stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal (M3)', digits=dp.get_precision('FourDecimal'))
     stock_masuk_pcs = fields.Float('Stok Masuk (Pcs)')
     stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk (M3)', digits=dp.get_precision('FourDecimal'))
-    acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk')
+    acc_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk')
     acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk', digits=dp.get_precision('FourDecimal'))
     stock_keluar_pcs = fields.Float('Stok Keluar (Pcs)')
     stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar (M3)', digits=dp.get_precision('FourDecimal'))
@@ -174,7 +174,21 @@ class PwkMutasiVeneerRolerReLine(models.Model):
                 stock_awal_pcs = source_ids[0].stock_akhir_pcs
 
             res.stock_awal_pcs = stock_awal_pcs
+    
+    @api.depends('product_id')
+    def _get_stock_masuk(self):
+        for res in self:
+            stock_masuk_pcs = 0
+            source_ids = self.env['pwk.mutasi.veneer.kering.line'].search([
+                ('reference.date','=',res.reference.date),
+                ('product_id','=',res.product_id.id)
+                ])
+                        
+            if source_ids:
+                stock_masuk_pcs = source_ids[0].re_rd_stock_keluar_pcs
 
+            res.stock_masuk_pcs = stock_masuk_pcs
+            
     @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
     def _get_acc(self):
         for res in self:
@@ -229,6 +243,14 @@ class PwkMutasiVeneerRoler(models.Model):
     @api.multi
     def button_reload_rd(self):
         for res in self:
+            existing_ids = self.env['pwk.mutasi.veneer.roler.line'].search([
+                ('reference', '=', self.id)
+            ])
+            
+            if existing_ids:
+                for existing in existing_ids:
+                    existing.unlink()
+                    
             source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
                 ('reference.date','=',res.date),
                 ])
@@ -247,7 +269,30 @@ class PwkMutasiVeneerRoler(models.Model):
 
     @api.multi
     def button_reload_re_rd(self):
-        return True
+        for res in self:
+            existing_ids = self.env['pwk.mutasi.veneer.roler.reline'].search([
+                ('reference', '=', self.id)
+            ])
+            
+            if existing_ids:
+                for existing in existing_ids:
+                    existing.unlink()
+                    
+            source_ids = self.env['pwk.mutasi.veneer.kering.line'].search([
+                ('reference.date','=',res.date),
+                ])
+
+            if not source_ids:
+                source_ids = self.env['pwk.mutasi.veneer.kering.line'].search([
+                    ('reference.date','<',res.date),
+                    ])
+
+            if source_ids:
+                for source in source_ids:
+                    self.env['pwk.mutasi.veneer.roler.reline'].create({
+                        'reference': res.id,
+                        'product_id': source.product_id.id,
+                        })
 
     @api.model
     def create(self, vals):
