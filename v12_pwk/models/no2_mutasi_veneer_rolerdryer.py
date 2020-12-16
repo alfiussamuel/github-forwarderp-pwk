@@ -261,7 +261,7 @@ class PwkMutasiVeneerRoler(models.Model):
                     ])
 
             if source_ids:
-                for source in source_ids:
+                for source in source_ids[0]:
                     self.env['pwk.mutasi.veneer.roler.line'].create({
                         'reference': res.id,
                         'product_id': source.product_id.id,
@@ -288,7 +288,7 @@ class PwkMutasiVeneerRoler(models.Model):
                     ])
 
             if source_ids:
-                for source in source_ids:
+                for source in source_ids[0]:
                     self.env['pwk.mutasi.veneer.roler.reline'].create({
                         'reference': res.id,
                         'product_id': source.product_id.id,

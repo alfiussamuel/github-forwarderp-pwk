@@ -162,7 +162,7 @@ class PwkMutasiVeneerOkRepair(models.Model):
                     ])
 
             if source_ids:
-                for source in source_ids:
+                for source in source_ids[0]:
                     self.env['pwk.mutasi.veneer.ok.repair.line'].create({
                         'reference': res.id,
                         'product_id': source.product_id.id,

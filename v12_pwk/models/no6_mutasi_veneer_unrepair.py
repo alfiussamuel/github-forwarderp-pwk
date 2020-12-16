@@ -360,7 +360,7 @@ class PwkMutasiVeneerUnrepair(models.Model):
                     ])
 
             if source_ids:
-                for source in source_ids:
+                for source in source_ids[0]:
                     self.env['pwk.mutasi.veneer.unrepair.line'].create({
                         'reference': res.id,
                         'product_id': source.product_id.id,
@@ -388,7 +388,7 @@ class PwkMutasiVeneerUnrepair(models.Model):
                     ])
 
             if source_ids:
-                for source in source_ids:
+                for source in source_ids[0]:
                     self.env['pwk.mutasi.veneer.unrepair.line.core'].create({
                         'reference': res.id,
                         'product_id': source.product_id.id,
@@ -416,7 +416,7 @@ class PwkMutasiVeneerUnrepair(models.Model):
                     ])
 
             if source_ids:
-                for source in source_ids:
+                for source in source_ids[0]:
                     self.env['pwk.mutasi.veneer.unrepair.line.long'].create({
                         'reference': res.id,
                         'product_id': source.product_id.id,
@@ -450,7 +450,3 @@ class PwkMutasiVeneerUnrepair(models.Model):
 
             if (total_core + total_long) > total_product:
                 raise UserError(_('Volume Stock Masuk Core dan Long Core melebihi Volume Stock Keluar Unrepair'))
-
-    @api.multi
-    def button_print(self):
-        return self.env.ref('v12_pwk.report_mutasi_veneer_unrepair').report_action(self)
