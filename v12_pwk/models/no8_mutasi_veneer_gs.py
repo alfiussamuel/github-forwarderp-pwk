@@ -182,7 +182,7 @@ class PwkMutasiVeneerGs(models.Model):
                     ])
 
             if source_ids:
-                for source in source_ids[0]:
+                for source in source_ids:
                     self.env['pwk.mutasi.veneer.gs.line'].create({
                         'reference': res.id,
                         'product_id': source.product_id.id,
