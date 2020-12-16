@@ -308,7 +308,7 @@ class PwkMutasiVeneerKering(models.Model):
                             'new_product_id': new_product_id.ids[0].id
                         })
                     else:
-                        raise UserError(_('Product %s tidak ditemukan', new_product_name))
+                        raise UserError(_('Product %s tidak ditemukan' % new_product_name))
 
     @api.multi
     def button_draft(self):
