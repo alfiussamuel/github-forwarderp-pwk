@@ -20,7 +20,7 @@
 							<form>
 								<group>
 									<field name="container_no" required="1"/>
-									<field name="total_qty"/>
+									<field name="total_product"/>
 								</group>
 								<group>
 									<field name="sale_line_ids" nolabel="1"
