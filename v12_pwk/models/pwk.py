@@ -17,7 +17,7 @@ class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
     sale_date_order = fields.Date(related='order_id.date_order', string='Date Order')
-    sale_partner_id = fields.Date(related='order_id.partner_id', comodel_name='res.partner', string='Customer')
+    sale_partner_id = fields.Many2one(related='order_id.partner_id', comodel_name='res.partner', string='Customer')
 
 class PwkRpbLineContainer(models.Model):    
     _name = "pwk.rpb.line.container"
