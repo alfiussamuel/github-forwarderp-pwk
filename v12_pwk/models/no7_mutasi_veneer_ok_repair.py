@@ -24,14 +24,21 @@ class PwkMutasiVeneerOkRepairLine(models.Model):
     grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
     stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
     stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
-    stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk Unrepair')
+    stock_masuk_pcs = fields.Float('Stok Masuk Repair')
     stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Unrepair', digits=dp.get_precision('FourDecimal'))
     acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Unrepair')
     acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Unrepair', digits=dp.get_precision('FourDecimal'))
-    stock_keluar_pcs = fields.Float('Stok Keluar Kering')
-    stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar OK Repair', digits=dp.get_precision('FourDecimal'))
-    acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar OK Repair')
-    acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar OK Repair', digits=dp.get_precision('FourDecimal'))
+    
+    stock_keluar_pcs = fields.Float('Stok Keluar GS')
+    stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar GS', digits=dp.get_precision('FourDecimal'))
+    acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar GS')
+    acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar GS', digits=dp.get_precision('FourDecimal'))
+
+    lain_stock_keluar_pcs = fields.Float('Stok Keluar Lain')
+    lain_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Lain', digits=dp.get_precision('FourDecimal'))
+    lain_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Lain')
+    lain_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Lain', digits=dp.get_precision('FourDecimal'))
+    
     stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
     stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
 
@@ -44,21 +51,24 @@ class PwkMutasiVeneerOkRepairLine(models.Model):
                 res.panjang = res.product_id.panjang
                 res.grade = res.product_id.grade.id
 
-    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
+    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs','lain_stock_keluar_pcs')
     def _get_volume(self):
         for res in self:
             res.stock_awal_vol = res.stock_awal_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.stock_masuk_vol = res.stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.stock_keluar_vol = res.stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.lain_stock_keluar_vol = res.lain_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.acc_stock_masuk_vol = res.acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.acc_stock_keluar_vol = res.acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.lain_acc_stock_keluar_vol = res.acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.stock_akhir_vol = res.stock_akhir_pcs * res.tebal * res.lebar * res.panjang / 1000000000
 
-    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
+    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs','lain_stock_keluar_pcs')
     def _get_acc(self):
         for res in self:
             acc_stock_masuk_pcs = 0
             acc_stock_keluar_pcs = 0
+            lain_acc_stock_keluar_pcs = 0
 
             source_ids = self.env['pwk.mutasi.veneer.ok.repair.line'].search([
                 ('reference.date','=',res.reference.date - timedelta(1)),
@@ -74,9 +84,11 @@ class PwkMutasiVeneerOkRepairLine(models.Model):
             if source_ids:
                 acc_stock_masuk_pcs = source_ids[0].acc_stock_masuk_pcs
                 acc_stock_keluar_pcs = source_ids[0].acc_stock_keluar_pcs
+                lain_acc_stock_keluar_pcs = source_ids[0].lain_acc_stock_keluar_pcs
 
             res.acc_stock_masuk_pcs = acc_stock_masuk_pcs + res.stock_masuk_pcs
             res.acc_stock_keluar_pcs = acc_stock_keluar_pcs + res.stock_keluar_pcs
+            res.lain_acc_stock_keluar_pcs = lain_acc_stock_keluar_pcs + res.lain_stock_keluar_pcs
 
     @api.depends('product_id')
     def _get_stock_awal(self):
@@ -98,24 +110,10 @@ class PwkMutasiVeneerOkRepairLine(models.Model):
 
             res.stock_awal_pcs = stock_awal_pcs
 
-    @api.depends('product_id')
-    def _get_stock_masuk(self):
-        for res in self:
-            stock_masuk_pcs = 0
-            source_ids = self.env['pwk.mutasi.veneer.unrepair.line'].search([
-                ('reference.date','=',res.reference.date),
-                ('product_id','=',res.product_id.id)
-                ])
-                        
-            if source_ids:
-                stock_masuk_pcs = source_ids[0].stock_keluar_pcs
-
-            res.stock_masuk_pcs = stock_masuk_pcs
-
-    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
+    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs','lain_stock_keluar_pcs')
     def _get_stock_akhir(self):
         for res in self:
-            res.stock_akhir_pcs = res.stock_awal_pcs + res.stock_masuk_pcs - res.stock_keluar_pcs
+            res.stock_akhir_pcs = res.stock_awal_pcs + res.stock_masuk_pcs - res.stock_keluar_pcs - res.lain_stock_keluar_pcs
 
 class PwkMutasiVeneerOkRepair(models.Model):    
     _name = "pwk.mutasi.veneer.ok.repair"
