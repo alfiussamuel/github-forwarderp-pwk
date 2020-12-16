@@ -122,6 +122,7 @@ class PwkMutasiVeneerKlinDryLine(models.Model):
 
     reference = fields.Many2one('pwk.mutasi.veneer.klindry', 'Reference')
     product_id = fields.Many2one('product.product', 'Product')
+    new_product_id = fields.Many2one('product.product', 'Product')
     tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
     lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
     panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
