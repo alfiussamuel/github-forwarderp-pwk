@@ -42,6 +42,7 @@ class RpbReportXls(models.AbstractModel):
         formatHeaderCompany = workbook.add_format({'font_size': 12, 'align': 'left', 'bold': True})
         formatHeader = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'left', 'bold': False, 'text_wrap': True})
         formatHeaderCenter = workbook.add_format({'font_size': 14, 'valign':'vcenter', 'align': 'center', 'bold': True, 'text_wrap': True})
+        formatHeaderCenterNumber = workbook.add_format({'font_size': 14, 'valign':'vcenter', 'align': 'center', 'bold': True, 'text_wrap': True, 'num_format': '#,##0'})
         formatHeaderLeft = workbook.add_format({'font_size': 14, 'valign':'vcenter', 'align': 'left', 'bold': True, 'text_wrap': True})
         formatHeaderRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'left', 'num_format': '#,##0'})
         formatHeaderTable = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'bold': True, 'bg_color':'#4ead2f', 'color':'white', 'text_wrap': True})
@@ -90,7 +91,7 @@ class RpbReportXls(models.AbstractModel):
         sheet.set_column(6, 6, 7)
         sheet.set_column(7, 7, 2)
         sheet.set_column(8, 8, 7)
-        sheet.set_column(9, 9, 8)
+        sheet.set_column(9, 9, 5)
         sheet.set_column(10, 10, 8)
         sheet.set_column(11, 11, 8)
         sheet.set_column(12, 12, 10)
@@ -102,7 +103,7 @@ class RpbReportXls(models.AbstractModel):
         row = 5
 
         sheet.merge_range(row-3, 0, row-3, 15, 'RENCANA PRODUKSI', formatHeaderCenter)
-        sheet.merge_range(row-2, 0, row-2, 15, 'TARGET ' + str(lines.target), formatHeaderCenter)
+        sheet.merge_range(row-2, 0, row-2, 15, 'TARGET ' + str(lines.target), formatHeaderCenterNumber)
 
         # merge 1 - 4 
         sheet.merge_range(row, 0, row+1, 0, 'No', formatHeaderTable)
