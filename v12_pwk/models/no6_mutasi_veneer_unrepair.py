@@ -119,10 +119,17 @@ class PwkMutasiVeneerUnrepairLineCore(models.Model):
     stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Kering', digits=dp.get_precision('FourDecimal'))
     acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Kering')
     acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Kering', digits=dp.get_precision('FourDecimal'))
-    stock_keluar_pcs = fields.Float('Stok Keluar Kering')
-    stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar OK Repair', digits=dp.get_precision('FourDecimal'))
-    acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar OK Repair')
-    acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar OK Repair', digits=dp.get_precision('FourDecimal'))
+    
+    repair_stock_keluar_pcs = fields.Float('Stok Keluar Repair')
+    repair_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Repair', digits=dp.get_precision('FourDecimal'))
+    repair_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Repair')
+    repair_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Repair', digits=dp.get_precision('FourDecimal'))
+
+    mesin_stock_keluar_pcs = fields.Float('Stok Keluar Mesin')
+    mesin_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Mesin', digits=dp.get_precision('FourDecimal'))
+    mesin_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Mesin')
+    mesin_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Mesin', digits=dp.get_precision('FourDecimal'))
+    
     stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
     stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
 
@@ -420,6 +427,24 @@ class PwkMutasiVeneerUnrepair(models.Model):
     def button_approve(self):
         for res in self:
             res.state = "Approved"
+            total_product = 0
+            total_core = 0
+            total_long = 0
+
+            if res.line_ids:
+                for line in res.line_ids:
+                    total_product += line.stock_masuk_vol
+
+            if res.core_line_ids:
+                for line in res.core_line_ids:
+                    total_core += line.stock_masuk_vol
+
+            if res.long_line_ids:
+                for line in res.long_line_ids:
+                    total_long += line.stock_masuk_vol
+
+            if (total_core + total_long) > total_product:
+                raise UserError(_('Volume Stock Masuk Core dan Long Core melebihi Volume Stock Keluar Unrepair'))
 
     @api.multi
     def button_print(self):
