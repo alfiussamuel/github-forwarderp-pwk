@@ -37,8 +37,7 @@ class PwkGenerateRpbWizard(models.TransientModel):
     	context = dict(self._context or {})
     	active_id = context.get('active_id', False)
     	rpb_id = self.env['pwk.rpb'].search([('id', '=', active_id)])
-        sale_line_list = []
-
+        
     	if self.line_ids:
             for container in self.line_ids:
                 container_id = self.env['pwk.rpb.container'].create({
