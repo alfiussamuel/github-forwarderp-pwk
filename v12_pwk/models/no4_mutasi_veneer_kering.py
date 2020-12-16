@@ -269,12 +269,12 @@ class PwkMutasiVeneerKering(models.Model):
                 for existing in existing_ids:
                     existing.unlink()
             
-            source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
+            source_ids = self.env['pwk.mutasi.veneer.klindry.line'].search([
                 ('reference.date','=',res.date),
                 ])
 
             if not source_ids:
-                source_ids = self.env['pwk.mutasi.veneer.basah.stacking'].search([
+                source_ids = self.env['pwk.mutasi.veneer.klindry.line'].search([
                     ('reference.date','<',res.date),
                     ])
 
@@ -282,7 +282,7 @@ class PwkMutasiVeneerKering(models.Model):
                 for source in source_ids:
                     self.env['pwk.mutasi.veneer.kering.line'].create({
                         'reference': res.id,
-                        'product_id': source.product_id.id,
+                        'product_id': source.new_product_id.id,
                         })
 
     @api.model
