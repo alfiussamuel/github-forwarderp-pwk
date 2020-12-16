@@ -11,23 +11,19 @@ class PwkGenerateRpbWizardLine(models.TransientModel):
 
     reference = fields.Many2one('pwk.generate.rpb.wizard', 'Reference')
     container_no = fields.Char('Container No.')
-    sale_line_ids = fields.Many2many('sale.order.line', 'rpb_sale_line_default_rel',
-        'rpb_id', 'sale_line_id', string='Sales Orders')
-    total_product = fields.Float(compute="_get_total", string='Total Product')
+    sale_line_ids = fields.Many2many('sale.order.line', 'rpb_wizard_line_sale_line_default_rel',
+        'rpb_wizard_line_id', 'sale_line_id', string='Sales Order Lines')
     total_qty = fields.Float(compute="_get_total", string='Total Ordered Qty')
 
-    @api.depends('sale_line_ids.product_uom_qty', 'sale_line_ids.product_id')
+    @api.depends('sale_line_ids.product_id')
     def _get_total(self):
         for res in self:
             total_product = 0
-            total_qty = 0
 
             if res.sale_line_ids:
                 for line in res.sale_line_ids:
                     total_product += 1
-                    total_qty + line.product_uom_qty
 
-            res.total_qty = total_qty
             res.total_product = total_product
 
 

@@ -15,13 +15,11 @@
 						<field name="line_ids" nolabel="1">
 							<tree>							
 								<field name="container_no"/>
-								<field name="total_product"/>
 								<field name="total_qty"/>
 							</tree>
 							<form>
 								<group>
 									<field name="container_no" required="1"/>
-									<field name="total_product"/>
 									<field name="total_qty"/>
 								</group>
 								<group>
