@@ -16,7 +16,8 @@ class PwkMutasiVeneerOkRepairLine(models.Model):
     _name = "pwk.mutasi.veneer.ok.repair.line"
 
     reference = fields.Many2one('pwk.mutasi.veneer.ok.repair', 'Reference')
-    product_id = fields.Many2one('product.product', 'Product')
+    product_id = fields.Many2one('product.product', 'Bahan Baku')
+    new_product_id = fields.Many2one('product.product', 'WIP')
     tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
     lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
     panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
@@ -167,6 +168,7 @@ class PwkMutasiVeneerOkRepair(models.Model):
                     self.env['pwk.mutasi.veneer.ok.repair.line'].create({
                         'reference': res.id,
                         'product_id': source.product_id.id,
+                        'new_product_id': source.new_product_id.id,
                         })
 
     @api.model

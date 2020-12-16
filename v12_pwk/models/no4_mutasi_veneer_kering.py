@@ -16,8 +16,8 @@ class PwkMutasiVeneerKeringLine(models.Model):
     _name = "pwk.mutasi.veneer.kering.line"
 
     reference = fields.Many2one('pwk.mutasi.veneer.kering', 'Reference')
-    product_id = fields.Many2one('product.product', 'Product')
-    new_product_id = fields.Many2one('product.product', 'Product')
+    product_id = fields.Many2one('product.product', 'Bahan Baku')
+    new_product_id = fields.Many2one('product.product', 'WIP')
     tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
     lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
     panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
