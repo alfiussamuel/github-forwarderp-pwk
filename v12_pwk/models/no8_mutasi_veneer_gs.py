@@ -174,17 +174,17 @@ class PwkMutasiVeneerGs(models.Model):
 
             source_ids = self.env['pwk.mutasi.veneer.ok.repair.line'].search([
                 ('reference.date','=',res.date),
-                ])
+            ])
 
             print (source_ids)
 
             if not source_ids:
                 source_ids = self.env['pwk.mutasi.veneer.ok.repair.line'].search([
                     ('reference.date','=',res.date - timedelta(1)),
-                    ])
+                ])
 
             print (source_ids)
-            
+
             if source_ids:
                 for source in source_ids:
                     self.env['pwk.mutasi.veneer.gs.line'].create({
