@@ -166,7 +166,7 @@ class PwkMutasiVeneerUnrepair(models.Model):
                 for source in source_ids:
                     self.env['pwk.mutasi.veneer.unrepair.line'].create({
                         'reference': res.id,
-                        'product_id': source.product_id.id,
+                        'product_id': source.new_product_id.id,
                         })
 
     @api.model
