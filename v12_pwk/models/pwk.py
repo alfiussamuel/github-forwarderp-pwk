@@ -19,12 +19,66 @@ class SaleOrderLine(models.Model):
     sale_date_order = fields.Date(related='order_id.date_order', string='Date Order')
     sale_partner_id = fields.Many2one(related='order_id.partner_id', comodel_name='res.partner', string='Customer')
 
-class PwkRpbLineContainer(models.Model):    
-    _name = "pwk.rpb.line.container"
+class PwkRpbContainerLine(models.Model):    
+    _name = "pwk.rpb.container.line"
 
-    reference = fields.Many2one('pwk.rpb.line', string='Reference')
+    reference = fields.Many2one('pwk.rpb.container', string='Reference')
+    sale_id = fields.Many2one('sale.order.line', 'No. Order')
+    sale_line_id = fields.Many2one('sale.order.line', 'No. Order Line')
+    partner_id = fields.Many2one(compute="_get_sale_fields", comodel_name='res.partner', string='Buyer')
+    product_id = fields.Many2one(compute="_get_sale_fields", comodel_name='product.product', string='Product')
+    thick = fields.Float(compute="_get_sale_fields", string='Thick')
+    width = fields.Float(compute="_get_sale_fields", string='Width')
+    length = fields.Float(compute="_get_sale_fields", string='Length')
+    glue_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.glue', string='Glue')
+    grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')        
+    total_volume = fields.Float(compute="_get_sale_fields", string='Total Volume', digits=dp.get_precision('FourDecimal'))
+    job_order_status = fields.Char(compute="_get_sale_fields", string='Job Order Status')
+    total_qty = fields.Float(string='Ordered Qty')
+    container_qty = fields.Float('Cont Pcs')
+    container_vol = fields.Float(compute="_get_container_vol", string='Cont Vol')
+
+    @api.depends('container_qty')
+    def _get_container_vol(self):
+        for res in self:
+            container_vol = 0
+            if res.container_qty:
+                container_vol = res.container_qty * res.thick * res.width * res.length / 1000000000
+
+            res.container_vol = container_vol
+
+    @api.depends('sale_line_id')
+    def _get_sale_fields(self):
+        for res in self:
+            if res.sale_line_id:
+                res.partner_id = res.sale_line_id.order_id.partner_id.id
+                res.product_id = res.sale_line_id.product_id.id
+                res.thick = res.sale_line_id.thick
+                res.width = res.sale_line_id.width
+                res.length = res.sale_line_id.length
+                res.glue_id = res.sale_line_id.product_id.glue_id.id
+                res.grade_id = res.sale_line_id.product_id.grade_id.id
+                res.total_qty = res.sale_line_id.product_uom_qty
+                res.total_volume = res.sale_line_id.volume
+                res.job_order_status = res.sale_line_id.order_id.job_order_status
+
+class PwkRpbContainer(models.Model):    
+    _name = "pwk.rpb.container"
+
+    reference = fields.Many2one('pwk.rpb', string='Reference')
     container_no = fields.Char('Container No.')
-    qty = fields.Float('Quantity')
+    line_ids = fields.One2many('pwk.rpb.container.line', 'reference', string='Lines')
+    total_qty = fields.Float(compute="_get_qty", string='Quantity')
+
+    @api.depends('line_ids.container_qty')
+    def _get_qty(self):
+        for res in self:
+            total_qty = 0
+            if res.line_ids:
+                for line in res.line_ids:
+                    total_qty + line.container_qty
+
+            res.total_qty = total_qty
 
 class PwkRpbLine(models.Model):    
     _name = "pwk.rpb.line"
@@ -44,7 +98,6 @@ class PwkRpbLine(models.Model):
     total_qty = fields.Float(string='Ordered Qty')
     container_qty = fields.Float('Cont Pcs')
     container_vol = fields.Float(compute="_get_container_vol", string='Cont Vol')
-    container_no = fields.Char('Cont No.')
 
     @api.depends('container_qty')
     def _get_container_vol(self):
@@ -78,6 +131,7 @@ class PwkRpb(models.Model):
     date_end = fields.Date('Periode')
     state = fields.Selection([('Draft','Draft'),('Progress','Progress'),('Done','Done')], string="Status", default="Draft")
     line_ids = fields.One2many('pwk.rpb.line', 'reference', string='Lines')
+    container_ids = fields.One2many('pwk.rpb.container', 'reference', string='Container')
     target = fields.Float('Target ( M3 )', digits=dp.get_precision('FourDecimal'))    
     actual = fields.Float(compute="_get_actual", string='Aktual ( M3 )', digits=dp.get_precision('FourDecimal'))    
 
