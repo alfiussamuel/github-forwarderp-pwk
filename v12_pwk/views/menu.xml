@@ -103,11 +103,11 @@
 			<field name="view_mode">tree,form</field>			
 		</record>
 
-		<record id="action_pwk_rpm" model="ir.actions.act_window">
+		<!-- <record id="action_pwk_rpm" model="ir.actions.act_window">
 			<field name="name">Rencana Produksi Mingguan</field>
 			<field name="res_model">pwk.rpm</field>
 			<field name="view_mode">tree,form</field>			
-		</record>
+		</record> -->
 
 		<record id="action_pwk_nota_perusahaan" model="ir.actions.act_window">
 			<field name="name">Nota Perusahaan</field>
@@ -265,11 +265,11 @@
 		            groups="base.group_user"
 		            sequence="0"/>
 
-		        <menuitem id="menu_production_rencana_mingguan" 
+		        <!-- <menuitem id="menu_production_rencana_mingguan" 
 		            action="v12_pwk.action_pwk_rpm"
 		            parent="v12_pwk.menu_production_rencana"
 		            groups="base.group_user"
-		            sequence="1"/>
+		            sequence="1"/> -->
 
         	<menuitem id="menu_production_mutasi"
 	        	sequence="0"

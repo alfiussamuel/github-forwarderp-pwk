@@ -2,7 +2,7 @@
     <data>                              
 
         <!-- Rencana Produksi Mingguan-->
-        <report
+        <!-- <report
             id="report_rpm"
             model="pwk.rpm"
             string="Rencana Produksi Mingguan"
@@ -100,7 +100,7 @@
                     </sheet>
                 </form>
             </field>
-        </record>
+        </record> -->
 
         <!-- Rencana Produksi Bulanan-->
         <report
