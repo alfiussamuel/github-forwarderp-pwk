@@ -122,7 +122,7 @@
                                                 </group>                                        
                                                 <group>
                                                     <group string="Perhitungan Stock (Pcs)">
-                                                        <field name="stock_awal_pcs"/>                  
+                                                        <field name="stock_awal_pcs"/>
                                                         <field name="stock_masuk_pcs"/> 
                                                         <field name="repair_stock_keluar_pcs"/>
                                                         <field name="mesin_stock_keluar_pcs"/>

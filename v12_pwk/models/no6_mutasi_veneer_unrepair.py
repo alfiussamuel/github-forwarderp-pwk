@@ -142,21 +142,24 @@ class PwkMutasiVeneerUnrepairLineCore(models.Model):
                 res.panjang = res.product_id.panjang
                 res.grade = res.product_id.grade.id
 
-    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
+    @api.depends('repair_stock_awal_pcs', 'mesin_stock_keluar_pcs', 'stock_masuk_pcs','stock_keluar_pcs')
     def _get_volume(self):
         for res in self:
             res.stock_awal_vol = res.stock_awal_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.stock_masuk_vol = res.stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
-            res.stock_keluar_vol = res.stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.repair_stock_keluar_vol = res.repair_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.mesin_stock_keluar_vol = res.mesin_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.acc_stock_masuk_vol = res.acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
-            res.acc_stock_keluar_vol = res.acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.repair_acc_stock_keluar_vol = res.repair_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.mesin_acc_stock_keluar_vol = res.mesin_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.stock_akhir_vol = res.stock_akhir_pcs * res.tebal * res.lebar * res.panjang / 1000000000
 
-    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
+    @api.depends('stock_awal_pcs','stock_masuk_pcs','repair_stock_keluar_pcs', 'mesin_stock_keluar_pcs')
     def _get_acc(self):
         for res in self:
             acc_stock_masuk_pcs = 0
-            acc_stock_keluar_pcs = 0
+            repair_acc_stock_keluar_pcs = 0
+            mesin_acc_stock_keluar_pcs = 0
 
             source_ids = self.env['pwk.mutasi.veneer.unrepair.line.core'].search([
                 ('reference.date','=',res.reference.date - timedelta(1)),
@@ -171,10 +174,12 @@ class PwkMutasiVeneerUnrepairLineCore(models.Model):
 
             if source_ids:
                 acc_stock_masuk_pcs = source_ids[0].acc_stock_masuk_pcs
-                acc_stock_keluar_pcs = source_ids[0].acc_stock_keluar_pcs
+                repair_acc_stock_keluar_pcs = source_ids[0].repair_acc_stock_keluar_pcs
+                mesin_acc_stock_keluar_pcs = source_ids[0].mesin_acc_stock_keluar_pcs
 
             res.acc_stock_masuk_pcs = acc_stock_masuk_pcs + res.stock_masuk_pcs
-            res.acc_stock_keluar_pcs = acc_stock_keluar_pcs + res.stock_keluar_pcs
+            res.repair_acc_stock_keluar_pcs = repair_acc_stock_keluar_pcs + res.repair_stock_keluar_pcs
+            res.mesin_acc_stock_keluar_pcs = mesin_acc_stock_keluar_pcs + res.mesin_stock_keluar_pcs
 
     @api.depends('product_id')
     def _get_stock_awal(self):
@@ -196,10 +201,10 @@ class PwkMutasiVeneerUnrepairLineCore(models.Model):
 
             res.stock_awal_pcs = stock_awal_pcs
 
-    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
+    @api.depends('stock_awal_pcs','stock_masuk_pcs','repair_stock_keluar_pcs', 'mesin_stock_keluar_pcs')
     def _get_stock_akhir(self):
         for res in self:
-            res.stock_akhir_pcs = res.stock_awal_pcs + res.stock_masuk_pcs - res.stock_keluar_pcs
+            res.stock_akhir_pcs = res.stock_awal_pcs + res.stock_masuk_pcs - res.repair_stock_keluar_pcs - res.mesin_stock_keluar_pcs
 
 class PwkMutasiVeneerUnrepairLine(models.Model):
     _name = "pwk.mutasi.veneer.unrepair.line"
