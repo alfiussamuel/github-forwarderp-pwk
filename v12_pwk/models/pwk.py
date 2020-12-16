@@ -1657,7 +1657,12 @@ class ProductTemplate(models.Model):
     jenis_kayu_id = fields.Many2one(
         comodel_name='pwk.jenis.kayu',
         related='product_variant_id.jenis_kayu',
-        string='Jenis Kayu',
+        string='Jenis Kayu (FB)',
+        store=True, readonly=True)
+    jenis_kayu_core_id = fields.Many2one(
+        comodel_name='pwk.jenis.kayu',
+        related='product_variant_id.jenis_kayu_core',
+        string='Jenis Kayu (Core)',
         store=True, readonly=True)
     tebal_id = fields.Float(        
         related='product_variant_id.tebal',
@@ -1702,7 +1707,8 @@ class ProductProduct(models.Model):
     _inherit = 'product.product'
 
     service_to_purchase = fields.Boolean('Service to Purchase')
-    jenis_kayu = fields.Many2one('pwk.jenis.kayu', 'Jenis Kayu')
+    jenis_kayu = fields.Many2one('pwk.jenis.kayu', 'Jenis Kayu (FB)')
+    jenis_kayu_core = fields.Many2one('pwk.jenis.kayu', 'Jenis Kayu (Core)')
     goods_type = fields.Selection([('Plywood','Plywood'),('Blockboard','Blockboard')], string="Goods Type")
     tebal = fields.Float('Tebal')
     lebar = fields.Float('Lebar')

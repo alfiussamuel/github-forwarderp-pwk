@@ -1552,7 +1552,8 @@
                 <field name="standard_price" position="replace">
                 </field>
                 <field name="name" position="after">
-                    <field name="jenis_kayu_id"/>                    
+                    <field name="jenis_kayu_id"/>
+                    <field name="jenis_kayu_core_id"/>
                     <field name="tebal_id"/>
                     <field name="lebar_id"/>
                     <field name="panjang_id"/>
@@ -1577,6 +1578,7 @@
                         <field name="commercial_name2"/>
                         <field name="commercial_name3"/>
                         <field name="jenis_kayu"/>
+                        <field name="jenis_kayu_core"/>
                         <field name="tebal"/>
                         <field name="lebar"/>
                         <field name="panjang"/>
