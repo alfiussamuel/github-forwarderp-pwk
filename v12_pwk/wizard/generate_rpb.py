@@ -23,7 +23,9 @@ class PwkGenerateRpbWizard(models.TransientModel):
     			self.env['pwk.rpb.line'].create({
     				'reference': rpb_id.id,
     				'sale_id': line.order_id.id,
-    				'sale_line_id': line.id
+    				'sale_line_id': line.id,
+                    'total_qty': line.product_uom_qty,
+                    'container_qty': line.product_uom_qty
     				})
 
     	return True

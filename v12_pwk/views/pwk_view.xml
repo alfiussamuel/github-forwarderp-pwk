@@ -46,18 +46,19 @@
                                 <page string="List Order">
                                     <group>
                                         <field name="line_ids" nolabel="1">
-                                            <tree>
-                                                <field name="partner_id"/>
-                                                <field name="sale_id"/>
-                                                <field name="product_id"/>
-                                                <field name="thick"/>
-                                                <field name="width"/>
-                                                <field name="length"/>
-                                                <field name="glue_id"/>
-                                                <field name="grade_id"/>
+                                            <tree editable="top">
+                                                <field name="partner_id" readonly="1"/>
+                                                <field name="sale_id" readonly="1"/>
+                                                <field name="product_id" readonly="1"/>
+                                                <field name="thick" readonly="1"/>
+                                                <field name="width" readonly="1"/>
+                                                <field name="length" readonly="1"/>
+                                                <field name="glue_id" readonly="1"/>
+                                                <field name="grade_id" readonly="1"/>
+                                                <field name="total_qty" readonly="1"/>
                                                 <field name="container_qty"/>
                                                 <field name="container_vol"/>
-                                                <field name="job_order_status"/>
+                                                <field name="job_order_status" invisible="1"/>
                                             </tree>
                                             <form>
                                                 <group>
@@ -74,6 +75,7 @@
                                                     <group>
                                                         <field name="glue_id"/>
                                                         <field name="grade_id"/>
+                                                        <field name="total_qty"/>
                                                         <field name="container_qty"/>
                                                         <field name="container_vol"/>
                                                     </group>

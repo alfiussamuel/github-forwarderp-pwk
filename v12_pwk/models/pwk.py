@@ -38,12 +38,21 @@ class PwkRpbLine(models.Model):
     width = fields.Float(compute="_get_sale_fields", string='Width')
     length = fields.Float(compute="_get_sale_fields", string='Length')
     glue_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.glue', string='Glue')
-    grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')    
-    total_qty = fields.Float(compute="_get_sale_fields", string='Total Qty')
+    grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')        
     total_volume = fields.Float(compute="_get_sale_fields", string='Total Volume', digits=dp.get_precision('FourDecimal'))
     job_order_status = fields.Char(compute="_get_sale_fields", string='Job Order Status')
+    total_qty = fields.Float(string='Ordered Qty')
     container_qty = fields.Float('Pcs Container')
-    container_vol = fields.Float('M3 Container')
+    container_vol = fields.Float(compute="_get_container_vol", string='M3 Container')
+
+    @api.depends('container_qty')
+    def _get_container_vol(self):
+        for res in self:
+            container_vol = 0
+            if res.container_qty:
+                container_vol = res.container_qty * res.thick * res.width * res.length / 1000000000
+
+            res.container_vol = container_vol
 
     @api.depends('sale_line_id')
     def _get_sale_fields(self):
