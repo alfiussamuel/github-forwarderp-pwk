@@ -296,7 +296,7 @@ class PwkMutasiVeneerKering(models.Model):
             res.state = "Approved"
             if res.line_ids:
                 for line in res.line_ids:
-                    new_product_name = 'Veneer Kering' + line.product_id.jenis_kayu.name + '  ' + str(line.product_id.tebal) + 'x' + str(int(line.product_id.lebar)) + 'x' + str(int(line.product_id.panjang)) + ' Grade ' + line.product_id.grade.name
+                    new_product_name = 'Veneer Kering ' + line.product_id.jenis_kayu.name + ' ' + str(line.product_id.tebal) + 'x' + str(int(line.product_id.lebar)) + 'x' + str(int(line.product_id.panjang)) + ' Grade ' + line.product_id.grade.name
                     print (new_product_name)
 
                     new_product_ids = self.env['product.product'].search([
