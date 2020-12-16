@@ -17,6 +17,7 @@ class PwkMutasiVeneerKeringLine(models.Model):
 
     reference = fields.Many2one('pwk.mutasi.veneer.kering', 'Reference')
     product_id = fields.Many2one('product.product', 'Product')
+    new_product_id = fields.Many2one('product.product', 'Product')
     tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
     lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
     panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
@@ -293,7 +294,26 @@ class PwkMutasiVeneerKering(models.Model):
     def button_approve(self):
         for res in self:
             res.state = "Approved"
+            if res.line_ids:
+                for line in res.line_ids:
+                    new_product_name = 'Veneer Kering ' + \
+                        line.product_id.jenis_kayu + '  ' + 
+                        line.product_id.tebal + ' x ' + \
+                        line.product_id.lebar + ' x ' + \
+                        line.product_id.panjang + ' Grade ' + \
+                        line.product_id.grade.name.name
+
+                    print (new_product_name)
+
+                    new_product_ids = self.env['product.product'].search([
+                        ('name', '=', new_product_name)
+                    ])
+
+                    line.write({
+                        'new_product_id': new_product_id.id
+                    })
 
     @api.multi
-    def button_print(self):
-        return self.env.ref('v12_pwk.report_mutasi_veneer_kering').report_action(self)
+    def button_draft(self):
+        for res in self:
+            res,state = 'Draft'
