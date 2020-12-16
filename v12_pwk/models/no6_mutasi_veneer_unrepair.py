@@ -370,7 +370,7 @@ class PwkMutasiVeneerUnrepair(models.Model):
                         })
 
     @api.multi
-    def button_reload_core(self):
+    def button_reload_long(self):
         for res in self:
             existing_ids = self.env['pwk.mutasi.veneer.unrepair.line.long'].search([
                 ('reference', '=', self.id)
