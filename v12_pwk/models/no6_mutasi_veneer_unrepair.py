@@ -206,7 +206,7 @@ class PwkMutasiVeneerUnrepairLine(models.Model):
     grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
     stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
     stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
-    stock_masuk_pcs = fields.Float('Stok Masuk Kering')
+    stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk Kering')
     stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Kering', digits=dp.get_precision('FourDecimal'))
     acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Kering')
     acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Kering', digits=dp.get_precision('FourDecimal'))
@@ -259,6 +259,20 @@ class PwkMutasiVeneerUnrepairLine(models.Model):
 
             res.acc_stock_masuk_pcs = acc_stock_masuk_pcs + res.stock_masuk_pcs
             res.acc_stock_keluar_pcs = acc_stock_keluar_pcs + res.stock_keluar_pcs
+
+    @api.depends('product_id')
+    def _get_stock_masuk(self):
+        for res in self:
+            stock_masuk_pcs = 0
+            source_ids = self.env['pwk.mutasi.veneer.kering.line'].search([
+                ('reference.date','=',res.reference.date),
+                ('product_id','=',res.product_id.id)
+                ])
+                        
+            if source_ids:
+                stock_masuk_pcs = source_ids[0].repair_stock_keluar_pcs
+
+            res.stock_masuk_pcs = stock_masuk_pcs
 
     @api.depends('product_id')
     def _get_stock_awal(self):
