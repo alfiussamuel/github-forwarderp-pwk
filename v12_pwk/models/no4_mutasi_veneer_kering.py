@@ -313,4 +313,4 @@ class PwkMutasiVeneerKering(models.Model):
     @api.multi
     def button_draft(self):
         for res in self:
-            res,state = 'Draft'
+            res.state = 'Draft'
