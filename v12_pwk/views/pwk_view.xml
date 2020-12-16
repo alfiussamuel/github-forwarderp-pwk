@@ -78,7 +78,6 @@
                                                         <field name="total_qty"/>
                                                         <field name="container_qty"/>
                                                         <field name="container_vol"/>
-                                                        <field name="container_no"/>
                                                     </group>
                                                 </group>
                                                 <group>

@@ -175,6 +175,88 @@ class PwkRpb(models.Model):
         vals['name'] = self.get_sequence('Rencana Produksi Bulanan', 'pwk.rpb')
         return super(PwkRpb, self).create(vals)
 
+class PwkRpmLine(models.Model):    
+    _name = "pwk.rpm.line"
+
+    reference = fields.Many2one('pwk.rpm', string='Reference')
+    sale_id = fields.Many2one('sale.order.line', 'No. Order')
+    sale_line_id = fields.Many2one('sale.order.line', 'No. Order Line')
+    partner_id = fields.Many2one(compute="_get_sale_fields", comodel_name='res.partner', string='Buyer')
+    product_id = fields.Many2one(compute="_get_sale_fields", comodel_name='product.product', string='Product')
+    thick = fields.Float(compute="_get_sale_fields", string='Thick')
+    width = fields.Float(compute="_get_sale_fields", string='Width')
+    length = fields.Float(compute="_get_sale_fields", string='Length')
+    glue_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.glue', string='Glue')
+    grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')        
+    total_volume = fields.Float(compute="_get_sale_fields", string='Total Volume', digits=dp.get_precision('FourDecimal'))
+    job_order_status = fields.Char(compute="_get_sale_fields", string='Job Order Status')
+    total_qty = fields.Float(string='Ordered Qty')    
+
+    @api.depends('container_qty')
+    def _get_container_vol(self):
+        for res in self:
+            container_vol = 0
+            if res.container_qty:
+                container_vol = res.container_qty * res.thick * res.width * res.length / 1000000000
+
+            res.container_vol = container_vol
+
+    @api.depends('sale_line_id')
+    def _get_sale_fields(self):
+        for res in self:
+            if res.sale_line_id:
+                res.partner_id = res.sale_line_id.order_id.partner_id.id
+                res.product_id = res.sale_line_id.product_id.id
+                res.thick = res.sale_line_id.thick
+                res.width = res.sale_line_id.width
+                res.length = res.sale_line_id.length
+                res.glue_id = res.sale_line_id.product_id.glue_id.id
+                res.grade_id = res.sale_line_id.product_id.grade_id.id
+                res.total_qty = res.sale_line_id.product_uom_qty
+                res.total_volume = res.sale_line_id.volume
+                res.job_order_status = res.sale_line_id.order_id.job_order_status
+
+class PwkRpm(models.Model):    
+    _name = "pwk.rpm"
+
+    name = fields.Char('Nomor RPM')
+    date_start = fields.Date('Periode')
+    date_end = fields.Date('Periode')
+    rpb_id = fields.Many2one('pwk.rpb', string='RPB')
+    state = fields.Selection([('Draft','Draft'),('Progress','Progress'),('Done','Done')], string="Status", default="Draft")
+    line_ids = fields.One2many('pwk.rpm.line', 'reference', string='Lines')    
+
+    @api.multi
+    def button_progress(self):
+        for res in self:
+            res.state = "Progress"
+
+    @api.multi
+    def button_done(self):
+        for res in self:
+            res.state = "Done"
+
+    def get_sequence(self, name=False, obj=False, context=None):
+        sequence_id = self.env['ir.sequence'].search([
+            ('name', '=', name),
+            ('code', '=', obj),
+            ('suffix', '=', '.RPM.%(month)s.%(year)s')
+        ])
+        if not sequence_id :
+            sequence_id = self.env['ir.sequence'].sudo().create({
+                'name': name,
+                'code': obj,
+                'implementation': 'no_gap',
+                'suffix': '.RPM.%(month)s.%(year)s',
+                'padding': 3
+            })
+        return sequence_id.next_by_id()
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.get_sequence('Rencana Produksi Mingguan', 'pwk.rpm')
+        return super(PwkRpm, self).create(vals)
+
 class ResCompany(models.Model):    
     _inherit = "res.company"
 
