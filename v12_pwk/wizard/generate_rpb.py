@@ -18,7 +18,7 @@ class PwkGenerateRpbWizard(models.TransientModel):
     	active_id = context.get('active_id', False)
     	rpb_id = self.env['pwk.rpb'].search([('id', '=', active_id)])
 
-    	if self.sale_ids:
+    	if self.sale_line_ids:
     		for line in self.sale_line_ids:
     			self.env['pwk.rpb.line'].create({
     				'reference': rpb_id.id,
