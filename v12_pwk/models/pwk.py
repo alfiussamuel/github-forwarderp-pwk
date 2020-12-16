@@ -70,17 +70,23 @@ class PwkRpbContainer(models.Model):
     no_container = fields.Char('Container No.')
     jumlah_container = fields.Integer('Jumlah Container')
     line_ids = fields.One2many('pwk.rpb.container.line', 'reference', string='Lines')
-    total_qty = fields.Float(compute="_get_qty", string='Quantity')
+    total_product = fields.Float(compute="_get_qty", string='Jumlah Product')
+    total_product_qty = fields.Float(compute="_get_qty", string='Jumlah Qty Product')
 
     @api.depends('line_ids.container_qty')
     def _get_qty(self):
         for res in self:
             total_qty = 0
+            total_product = 0
+            total_product_qty = 0
+
             if res.line_ids:
                 for line in res.line_ids:
-                    total_qty + line.container_qty
+                    total_product += 1
+                    total_product_qty + line.container_qty
 
-            res.total_qty = total_qty
+            res.total_product_qty = total_product
+            res.total_product_qty = total_product_qty
 
 class PwkRpbLine(models.Model):    
     _name = "pwk.rpb.line"

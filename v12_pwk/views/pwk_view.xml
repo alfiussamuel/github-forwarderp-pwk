@@ -203,7 +203,9 @@
                                         <field name="container_ids" nolabel="1">
                                             <tree editable="top" create="false">
                                                 <field name="name" readonly="1"/>
-                                                <field name="total_qty" readonly="1"/>
+                                                <field name="jumlah_container" readonly="1"/>
+                                                <field name="total_product" readonly="1"/>
+                                                <field name="total_product_qty" readonly="1"/>
                                             </tree>
                                             <form>
                                                 <group>
