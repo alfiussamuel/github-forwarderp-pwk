@@ -144,7 +144,7 @@ class PwkRpb(models.Model):
     line_ids = fields.One2many('pwk.rpb.line', 'reference', string='Lines')
     container_ids = fields.One2many('pwk.rpb.container', 'reference', string='Container')
     target = fields.Float('Target ( M3 )', digits=dp.get_precision('FourDecimal'))    
-    actual = fields.Float(compute="_get_actual", string='Aktual ( M3 )', digits=dp.get_precision('FourDecimal'))    
+    actual = fields.Float(compute="_get_actual", string='Aktual ( M3 )', digits=dp.get_precision('FourDecimal'))
 
     @api.depends('line_ids.total_volume')
     def _get_actual(self):
