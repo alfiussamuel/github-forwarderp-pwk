@@ -259,7 +259,7 @@ class PwkMutasiVeneerKlindry(models.Model):
                     existing.unlink()
                     
             source_ids = self.env['pwk.mutasi.veneer.basah.kd'].search([
-                ('reference.date','=',res.date - timedelta(1)),
+                ('reference.date','=',res.date),
                 ])
 
             if not source_ids:
@@ -286,7 +286,7 @@ class PwkMutasiVeneerKlindry(models.Model):
                     existing.unlink()
                     
             source_ids = self.env['pwk.mutasi.veneer.basah.kd.re'].search([
-                ('reference.date','=',res.date - timedelta(1)),
+                ('reference.date','=',res.date),
                 ])
 
             if not source_ids:

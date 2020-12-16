@@ -154,7 +154,7 @@ class PwkMutasiVeneerOkRepair(models.Model):
                     existing.unlink()
                     
             source_ids = self.env['pwk.mutasi.veneer.unrepair.line'].search([
-                ('reference.date','=',res.date - timedelta(1)),
+                ('reference.date','=',res.date),
                 ])
 
             if not source_ids:
