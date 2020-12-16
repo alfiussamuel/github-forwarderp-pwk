@@ -210,9 +210,9 @@
                                             <form>
                                                 <group>
                                                     <field name="name" readonly="1"/>
-                                                    <field name="jumlah_container" readonly="1"/>
-                                                    <field name="total_product" readonly="1"/>
-                                                    <field name="total_product_qty" readonly="1"/>
+                                                    <field name="jumlah_container" readonly="1" sum="Total"/>
+                                                    <field name="total_product" readonly="1" sum="Total"/>
+                                                    <field name="total_product_qty" readonly="1" sum="Total"/>
                                                 </group>
                                                 <group>
                                                     <field name="line_ids" nolabel="1">

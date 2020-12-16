@@ -73,7 +73,7 @@ class PwkRpbContainer(models.Model):
     total_product = fields.Float(compute="_get_qty", string='Jumlah Product')
     total_product_qty = fields.Float(compute="_get_qty", string='Jumlah Qty Product')
 
-    @api.depends('line_ids.container_qty')
+    @api.depends('line_ids')
     def _get_qty(self):
         for res in self:
             total_qty = 0
@@ -85,7 +85,7 @@ class PwkRpbContainer(models.Model):
                     total_product += 1
                     total_product_qty + line.container_qty
 
-            res.total_product_qty = total_product
+            res.total_product = total_product
             res.total_product_qty = total_product_qty
 
 class PwkRpbLine(models.Model):    
