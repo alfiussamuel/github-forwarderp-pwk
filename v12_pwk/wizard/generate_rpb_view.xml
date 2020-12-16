@@ -20,7 +20,7 @@
 							</tree>
 							<form>
 								<group>
-									<field name="container_no" required="1"/>
+									<field name="no_container" required="1"/>
 									<field name="jumlah_container"/>
 									<field name="total_product"/>
 								</group>
