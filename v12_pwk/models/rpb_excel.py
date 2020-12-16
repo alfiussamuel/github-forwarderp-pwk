@@ -15,9 +15,9 @@ class RpbReportXls(models.AbstractModel):
         if data.line_ids:
             for line in data.line_ids:
                 vals = {
-                    'partner': line.sale_id.partner_id.name,
+                    'partner': line.sale_line_id.order_id.partner_id.name,
                     'jenis_kayu': line.product_id.jenis_kayu_id.name,
-                    'order': line.sale_id.name,
+                    'order': line.sale_line_id.order_id.name,
                     'tebal': line.thick,
                     'lebar': line.width,
                     'panjang': line.length,
