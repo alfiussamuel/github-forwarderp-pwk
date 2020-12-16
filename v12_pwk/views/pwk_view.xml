@@ -50,14 +50,15 @@
                                                 <field name="partner_id" readonly="1"/>
                                                 <field name="sale_id" readonly="1"/>
                                                 <field name="product_id" readonly="1"/>
-                                                <field name="thick" readonly="1"/>
-                                                <field name="width" readonly="1"/>
-                                                <field name="length" readonly="1"/>
-                                                <field name="glue_id" readonly="1"/>
-                                                <field name="grade_id" readonly="1"/>
+                                                <field name="thick" readonly="1" invisible="1"/>
+                                                <field name="width" readonly="1" invisible="1"/>
+                                                <field name="length" readonly="1" invisible="1"/>
+                                                <field name="glue_id" readonly="1" invisible="1"/>
+                                                <field name="grade_id" readonly="1" invisible="1"/>
                                                 <field name="total_qty" readonly="1"/>
-                                                <field name="container_qty"/>
+                                                <field name="container_qty" required="1"/>
                                                 <field name="container_vol"/>
+                                                <field name="container_no" required="1"/>
                                                 <field name="job_order_status" invisible="1"/>
                                             </tree>
                                             <form>
@@ -78,6 +79,7 @@
                                                         <field name="total_qty"/>
                                                         <field name="container_qty"/>
                                                         <field name="container_vol"/>
+                                                        <field name="container_no"/>
                                                     </group>
                                                 </group>
                                                 <group>

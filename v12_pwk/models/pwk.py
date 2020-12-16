@@ -42,8 +42,9 @@ class PwkRpbLine(models.Model):
     total_volume = fields.Float(compute="_get_sale_fields", string='Total Volume', digits=dp.get_precision('FourDecimal'))
     job_order_status = fields.Char(compute="_get_sale_fields", string='Job Order Status')
     total_qty = fields.Float(string='Ordered Qty')
-    container_qty = fields.Float('Pcs Container')
-    container_vol = fields.Float(compute="_get_container_vol", string='M3 Container')
+    container_qty = fields.Float('Cont Pcs')
+    container_vol = fields.Float(compute="_get_container_vol", string='Cont Vol')
+    container_no = fields.Char('Cont No.')
 
     @api.depends('container_qty')
     def _get_container_vol(self):
@@ -86,7 +87,7 @@ class PwkRpb(models.Model):
             actual = 0
             if res.line_ids:
                 for line in res.line_ids:
-                    actual += line.total_volume
+                    actual += line.container_vol
             res.actual = actual
 
     @api.multi
