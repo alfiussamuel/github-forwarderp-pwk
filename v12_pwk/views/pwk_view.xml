@@ -1,6 +1,107 @@
 <odoo>
     <data>                              
 
+        <!-- Rencana Produksi Mingguan-->
+        <report
+            id="report_rpm"
+            model="pwk.rpm"
+            string="Rencana Produksi Mingguan"
+            report_type="xlsx"
+            name="v12_pwk.rpm_report_xls.xlsx"
+            file="v12_pwk.rpm_report_xls.xlsx"/>
+
+        <record id="pwk_rpm_tree" model="ir.ui.view">
+            <field name="name">Rencana Produksi Mingguan</field>
+            <field name="model">pwk.rpm</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="rpb_id"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                    <field name="target"/>
+                    <field name="actual"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pwk_rpm_form" model="ir.ui.view">
+            <field name="name">Rencana Produksi Mingguan</field>
+            <field name="model">pwk.rpm</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar" readonly="1"/>                        
+                    </header>
+                    <sheet>
+                        <label for="name" class="oe_edit_only" />
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                        <group>
+                            <label for="date_start"/>
+                            <div>
+                                <field name="date_start" class="oe_inline" required="1"/> - 
+                                <field name="date_end" class="oe_inline" required="1"/>
+                            </div>
+                            <field name="target" class="oe_inline"/>
+                            <field name="actual"/>
+                        </group>
+                        <group>
+                            <notebook>
+                                <page string="List Order">
+                                    <group>
+                                        <field name="line_ids" nolabel="1">
+                                            <tree editable="top" create="false">
+                                                <field name="partner_id" readonly="1"/>
+                                                <field name="sale_id" readonly="1"/>
+                                                <field name="product_id" readonly="1"/>
+                                                <field name="thick" readonly="1" invisible="1"/>
+                                                <field name="width" readonly="1" invisible="1"/>
+                                                <field name="length" readonly="1" invisible="1"/>
+                                                <field name="glue_id" readonly="1" invisible="1"/>
+                                                <field name="grade_id" readonly="1" invisible="1"/>
+                                                <field name="total_qty" readonly="1"/>
+                                                <field name="container_qty" required="1"/>
+                                                <field name="container_vol"/>
+                                                <field name="container_id" readonly="1"/>
+                                                <field name="job_order_status" invisible="1"/>
+                                            </tree>
+                                            <form>
+                                                <group>
+                                                    <field name="partner_id"/>
+                                                    <field name="sale_id"/>
+                                                </group>
+                                                <group>
+                                                    <group>
+                                                        <field name="product_id"/>
+                                                        <field name="thick"/>
+                                                        <field name="width"/>
+                                                        <field name="length"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="glue_id"/>
+                                                        <field name="grade_id"/>
+                                                        <field name="total_qty"/>
+                                                        <field name="container_qty"/>
+                                                        <field name="container_vol"/>
+                                                    </group>
+                                                </group>
+                                                <group>
+                                                    <field name="job_order_status"/>
+                                                </group>
+                                            </form>
+                                        </field>
+                                    </group>
+                                </page>                                
+                            </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
         <!-- Rencana Produksi Bulanan-->
         <report
             id="report_rpb"

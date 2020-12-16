@@ -148,10 +148,6 @@ class PwkRpb(models.Model):
             res.actual = actual
 
     @api.multi
-    def button_print(self):
-        return self.env.ref('v12_pwk.report_rpb').report_action(self)
-
-    @api.multi
     def button_progress(self):
         for res in self:
             res.state = "Progress"
@@ -186,7 +182,7 @@ class PwkRpmLine(models.Model):
     _name = "pwk.rpm.line"
 
     reference = fields.Many2one('pwk.rpm', string='Reference')
-    sale_id = fields.Many2one('sale.order.line', 'No. Order')
+    sale_id = fields.Many2one('sale.order', 'No. Order')
     sale_line_id = fields.Many2one('sale.order.line', 'No. Order Line')
     partner_id = fields.Many2one(compute="_get_sale_fields", comodel_name='res.partner', string='Buyer')
     product_id = fields.Many2one(compute="_get_sale_fields", comodel_name='product.product', string='Product')

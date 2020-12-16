@@ -101,7 +101,13 @@
 			<field name="name">Rencana Produksi Bulanan</field>
 			<field name="res_model">pwk.rpb</field>
 			<field name="view_mode">tree,form</field>			
-		</record>		
+		</record>
+
+		<record id="action_pwk_rpm" model="ir.actions.act_window">
+			<field name="name">Rencana Produksi Mingguan</field>
+			<field name="res_model">pwk.rpm</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
 
 		<record id="action_pwk_nota_perusahaan" model="ir.actions.act_window">
 			<field name="name">Nota Perusahaan</field>
@@ -257,73 +263,85 @@
 		            action="v12_pwk.action_pwk_rpb"
 		            parent="v12_pwk.menu_production_rencana"
 		            groups="base.group_user"
-		            sequence="0"/>        	
+		            sequence="0"/>
 
-        	<menuitem id="menu_production_mutasi_pembahanan"
-	        	sequence="1"
-	        	name="Laporan Mutasi Pembahanan"
-	        	groups="base.group_user"
-	        	parent="menu_production"/>
-
-	        	<menuitem id="menu_production_transaksi_veneer_basah" 
-		            action="v12_pwk.action_pwk_mutasi_veneer_basah"
-		            parent="v12_pwk.menu_production_mutasi_pembahanan"
-		            groups="base.group_user"
-		            sequence="0"/>        	
-
-		        <menuitem id="menu_production_transaksi_veneer_roler"
-		            action="v12_pwk.action_pwk_mutasi_veneer_roler"
-		            parent="v12_pwk.menu_production_mutasi_pembahanan"
+		        <menuitem id="menu_production_rencana_mingguan" 
+		            action="v12_pwk.action_pwk_rpm"
+		            parent="v12_pwk.menu_production_rencana"
 		            groups="base.group_user"
 		            sequence="1"/>
 
-		        <menuitem id="menu_production_transaksi_veneer_klindry"
-		            action="v12_pwk.action_pwk_mutasi_veneer_klindry"
-		            parent="v12_pwk.menu_production_mutasi_pembahanan"
-		            groups="base.group_user"
-		            sequence="3"/>
-
-		        <menuitem id="menu_production_transaksi_veneer_kering"
-		            action="v12_pwk.action_pwk_mutasi_veneer_kering"
-		            parent="v12_pwk.menu_production_mutasi_pembahanan"
-		            groups="base.group_user"
-		            sequence="4"/>
-
-		        <menuitem id="menu_production_transaksi_barecore"
-		            action="v12_pwk.action_pwk_mutasi_barecore"
-		            parent="v12_pwk.menu_production_mutasi_pembahanan"
-		            groups="base.group_user"
-		            sequence="5"/>
-
-		        <menuitem id="menu_production_transaksi_veneer_unrepair"
-		            action="v12_pwk.action_pwk_mutasi_veneer_unrepair"
-		            parent="v12_pwk.menu_production_mutasi_pembahanan"
-		            groups="base.group_user"
-		            sequence="6"/>
-
-		        <menuitem id="menu_production_transaksi_veneer_ok_repair"
-		            action="v12_pwk.action_pwk_mutasi_veneer_ok_repair"
-		            parent="v12_pwk.menu_production_mutasi_pembahanan"
-		            groups="base.group_user"
-		            sequence="7"/>
-
-		    <menuitem id="menu_production_mutasi_produksi"
-	        	sequence="1"
-	        	name="Laporan Mutasi Assembly - GBJ"
+        	<menuitem id="menu_production_mutasi"
+	        	sequence="0"
+	        	name="Mutasi Produksi"
 	        	groups="base.group_user"
 	        	parent="menu_production"/>
 
-		        <menuitem id="menu_production_transaksi_veneer_gs"
-		            action="v12_pwk.action_pwk_mutasi_veneer_gs"
-		            parent="v12_pwk.menu_production_mutasi_produksi"
-		            groups="base.group_user"
-		            sequence="8"/>
+	        	<menuitem id="menu_production_mutasi_pembahanan"
+		        	sequence="1"
+		        	name="Mutasi Pembahanan"
+		        	groups="base.group_user"
+		        	parent="menu_production_mutasi"/>
 
-		        <menuitem id="menu_production_transaksi_assembling_finishing"
-		            action="v12_pwk.action_pwk_mutasi_assembling_finishing"
-		            parent="v12_pwk.menu_production_mutasi_produksi"
-		            groups="base.group_user"
-		            sequence="9"/>
+		        	<menuitem id="menu_production_transaksi_veneer_basah" 
+			            action="v12_pwk.action_pwk_mutasi_veneer_basah"
+			            parent="v12_pwk.menu_production_mutasi_pembahanan"
+			            groups="base.group_user"
+			            sequence="0"/>        	
+
+			        <menuitem id="menu_production_transaksi_veneer_roler"
+			            action="v12_pwk.action_pwk_mutasi_veneer_roler"
+			            parent="v12_pwk.menu_production_mutasi_pembahanan"
+			            groups="base.group_user"
+			            sequence="1"/>
+
+			        <menuitem id="menu_production_transaksi_veneer_klindry"
+			            action="v12_pwk.action_pwk_mutasi_veneer_klindry"
+			            parent="v12_pwk.menu_production_mutasi_pembahanan"
+			            groups="base.group_user"
+			            sequence="3"/>
+
+			        <menuitem id="menu_production_transaksi_veneer_kering"
+			            action="v12_pwk.action_pwk_mutasi_veneer_kering"
+			            parent="v12_pwk.menu_production_mutasi_pembahanan"
+			            groups="base.group_user"
+			            sequence="4"/>
+
+			        <menuitem id="menu_production_transaksi_barecore"
+			            action="v12_pwk.action_pwk_mutasi_barecore"
+			            parent="v12_pwk.menu_production_mutasi_pembahanan"
+			            groups="base.group_user"
+			            sequence="5"/>
+
+			        <menuitem id="menu_production_transaksi_veneer_unrepair"
+			            action="v12_pwk.action_pwk_mutasi_veneer_unrepair"
+			            parent="v12_pwk.menu_production_mutasi_pembahanan"
+			            groups="base.group_user"
+			            sequence="6"/>
+
+			        <menuitem id="menu_production_transaksi_veneer_ok_repair"
+			            action="v12_pwk.action_pwk_mutasi_veneer_ok_repair"
+			            parent="v12_pwk.menu_production_mutasi_pembahanan"
+			            groups="base.group_user"
+			            sequence="7"/>
+
+			    <menuitem id="menu_production_mutasi_produksi"
+		        	sequence="1"
+		        	name="Laporan Mutasi Assembly - GBJ"
+		        	groups="base.group_user"
+		        	parent="menu_production_mutasi"/>
+
+			        <menuitem id="menu_production_transaksi_veneer_gs"
+			            action="v12_pwk.action_pwk_mutasi_veneer_gs"
+			            parent="v12_pwk.menu_production_mutasi_produksi"
+			            groups="base.group_user"
+			            sequence="8"/>
+
+			        <menuitem id="menu_production_transaksi_assembling_finishing"
+			            action="v12_pwk.action_pwk_mutasi_assembling_finishing"
+			            parent="v12_pwk.menu_production_mutasi_produksi"
+			            groups="base.group_user"
+			            sequence="9"/>
 
 		<menuitem id="menu_pwk_payment_note" 
             action="action_pwk_payment_note"
