@@ -82,35 +82,27 @@ class RpbReportXls(models.AbstractModel):
         
         # Set Column Width
         sheet.set_column(0, 0, 5)
-        sheet.set_column(1, 1, 15)
-        sheet.set_column(2, 2, 7)
-        sheet.set_column(3, 3, 2)
+        sheet.set_column(1, 1, 25)
+        sheet.set_column(2, 2, 12)
+        sheet.set_column(3, 3, 15)
         sheet.set_column(4, 4, 7)
         sheet.set_column(5, 5, 2)
         sheet.set_column(6, 6, 7)
-        sheet.set_column(7, 7, 10)
+        sheet.set_column(7, 7, 2)
         sheet.set_column(8, 8, 7)
-        sheet.set_column(9, 9, 7)
+        sheet.set_column(9, 9, 8)
         sheet.set_column(10, 10, 8)
         sheet.set_column(11, 11, 8)
-        sheet.set_column(12, 12, 8)
-        sheet.set_column(13, 13, 8)
-        sheet.set_column(14, 14, 8)
-        sheet.set_column(15, 15, 8)
-        sheet.set_column(16, 16, 8)
-        sheet.set_column(17, 17, 8)
-        sheet.set_column(18, 18, 8)
-        sheet.set_column(19, 19, 8)
-        sheet.set_column(20, 20, 8)
-        sheet.set_column(21, 21, 8)
-        sheet.set_column(22, 22, 8)
-        sheet.set_column(23, 23, 8)
+        sheet.set_column(12, 12, 10)
+        sheet.set_column(13, 13, 10)
+        sheet.set_column(14, 14, 10)
+        sheet.set_column(15, 15, 10)        
 
         # Data 1
         row = 5
 
-        sheet.merge_range(row-3, 0, row-3, 27, 'RENCANA PRODUKSI', formatHeaderCenter)
-        sheet.merge_range(row-2, 0, row-2, 27, 'TARGET ' + str(lines.target), formatHeaderCenter)
+        sheet.merge_range(row-3, 0, row-3, 15, 'RENCANA PRODUKSI', formatHeaderCenter)
+        sheet.merge_range(row-2, 0, row-2, 15, 'TARGET ' + str(lines.target), formatHeaderCenter)
 
         # merge 1 - 4 
         sheet.merge_range(row, 0, row+1, 0, 'No', formatHeaderTable)
