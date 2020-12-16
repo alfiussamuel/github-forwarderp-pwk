@@ -15,7 +15,7 @@
 						<field name="line_ids" nolabel="1">
 							<tree>							
 								<field name="container_no"/>
-								<field name="total_qty"/>
+								<field name="total_product"/>
 							</tree>
 							<form>
 								<group>

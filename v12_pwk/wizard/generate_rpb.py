@@ -13,7 +13,7 @@ class PwkGenerateRpbWizardLine(models.TransientModel):
     container_no = fields.Char('Container No.')
     sale_line_ids = fields.Many2many('sale.order.line', 'rpb_wizard_line_sale_line_default_rel',
         'rpb_wizard_line_id', 'sale_line_id', string='Sales Order Lines')
-    total_qty = fields.Float(compute="_get_total", string='Total Ordered Qty')
+    total_product = fields.Float(compute="_get_total", string='Total Product')
 
     @api.depends('sale_line_ids.product_id')
     def _get_total(self):
@@ -37,6 +37,7 @@ class PwkGenerateRpbWizard(models.TransientModel):
     	context = dict(self._context or {})
     	active_id = context.get('active_id', False)
     	rpb_id = self.env['pwk.rpb'].search([('id', '=', active_id)])
+        sale_line_list = []
 
     	if self.line_ids:
             for container in self.line_ids:
@@ -57,6 +58,7 @@ class PwkGenerateRpbWizard(models.TransientModel):
 
                         self.env['pwk.rpb.line'].create({
                             'reference': rpb_id.id,
+                            'container_id': container_id.id,
                             'sale_id': line.order_id.id,
                             'sale_line_id': line.id,
                             'total_qty': line.product_uom_qty,

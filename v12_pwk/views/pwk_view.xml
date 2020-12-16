@@ -58,6 +58,7 @@
                                                 <field name="total_qty" readonly="1"/>
                                                 <field name="container_qty" required="1"/>
                                                 <field name="container_vol"/>
+                                                <field name="container_id" readonly="1"/>
                                                 <field name="job_order_status" invisible="1"/>
                                             </tree>
                                             <form>

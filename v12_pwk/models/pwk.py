@@ -84,6 +84,7 @@ class PwkRpbLine(models.Model):
     _name = "pwk.rpb.line"
 
     reference = fields.Many2one('pwk.rpb', string='Reference')
+    container_id = fields.Many2one('pwk.rpb.container', string='Container')
     sale_id = fields.Many2one('sale.order.line', 'No. Order')
     sale_line_id = fields.Many2one('sale.order.line', 'No. Order Line')
     partner_id = fields.Many2one(compute="_get_sale_fields", comodel_name='res.partner', string='Buyer')
