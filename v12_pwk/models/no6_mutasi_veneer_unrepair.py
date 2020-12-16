@@ -356,11 +356,11 @@ class PwkMutasiVeneerUnrepair(models.Model):
 
             if not source_ids:
                 source_ids = self.env['pwk.mutasi.veneer.kering.line'].search([
-                    ('reference.date','<',res.date),
+                    ('reference.date','=',res.date - timedelta(1)),
                     ])
 
             if source_ids:
-                for source in source_ids[0]:
+                for source in source_ids:
                     self.env['pwk.mutasi.veneer.unrepair.line'].create({
                         'reference': res.id,
                         'product_id': source.product_id.id,
@@ -384,11 +384,11 @@ class PwkMutasiVeneerUnrepair(models.Model):
 
             if not source_ids:
                 source_ids = self.env['pwk.mutasi.veneer.unrepair.line.core'].search([
-                    ('reference.date','<',res.date),
+                    ('reference.date','=',res.date - timedelta(1)),
                     ])
 
             if source_ids:
-                for source in source_ids[0]:
+                for source in source_ids:
                     self.env['pwk.mutasi.veneer.unrepair.line.core'].create({
                         'reference': res.id,
                         'product_id': source.product_id.id,
@@ -412,11 +412,11 @@ class PwkMutasiVeneerUnrepair(models.Model):
 
             if not source_ids:
                 source_ids = self.env['pwk.mutasi.veneer.unrepair.line.long'].search([
-                    ('reference.date','<',res.date),
+                    ('reference.date','=',res.date - timedelta(1)),
                     ])
 
             if source_ids:
-                for source in source_ids[0]:
+                for source in source_ids:
                     self.env['pwk.mutasi.veneer.unrepair.line.long'].create({
                         'reference': res.id,
                         'product_id': source.product_id.id,
