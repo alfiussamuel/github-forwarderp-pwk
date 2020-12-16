@@ -142,7 +142,7 @@ class PwkMutasiVeneerUnrepairLineCore(models.Model):
                 res.panjang = res.product_id.panjang
                 res.grade = res.product_id.grade.id
 
-    @api.depends('repair_stock_awal_pcs', 'mesin_stock_keluar_pcs', 'stock_masuk_pcs','stock_keluar_pcs')
+    @api.depends('stock_awal_pcs', 'stock_masuk_pcs','repair_stock_keluar_pcs', 'mesin_stock_keluar_pcs')
     def _get_volume(self):
         for res in self:
             res.stock_awal_vol = res.stock_awal_pcs * res.tebal * res.lebar * res.panjang / 1000000000
