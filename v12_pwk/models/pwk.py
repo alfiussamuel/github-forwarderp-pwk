@@ -66,6 +66,7 @@ class PwkRpbContainer(models.Model):
     _name = "pwk.rpb.container"
 
     reference = fields.Many2one('pwk.rpb', string='Reference')
+    name = fields.Char('Container No.')
     container_no = fields.Char('Container No.')
     line_ids = fields.One2many('pwk.rpb.container.line', 'reference', string='Lines')
     total_qty = fields.Float(compute="_get_qty", string='Quantity')
@@ -82,6 +83,7 @@ class PwkRpbContainer(models.Model):
 
 class PwkRpbLine(models.Model):    
     _name = "pwk.rpb.line"
+    _order = 'container_id.name asc'
 
     reference = fields.Many2one('pwk.rpb', string='Reference')
     container_id = fields.Many2one('pwk.rpb.container', string='Container')

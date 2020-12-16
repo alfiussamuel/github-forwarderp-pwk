@@ -92,12 +92,12 @@
                                     <group>
                                         <field name="container_ids" nolabel="1">
                                             <tree editable="top" create="false">
-                                                <field name="container_no" readonly="1"/>
+                                                <field name="name" readonly="1"/>
                                                 <field name="total_qty" readonly="1"/>
                                             </tree>
                                             <form>
                                                 <group>
-                                                    <field name="container_no" readonly="1"/>
+                                                    <field name="name" readonly="1"/>
                                                     <field name="total_qty" readonly="1"/> 
                                                 </group>
                                                 <group>
