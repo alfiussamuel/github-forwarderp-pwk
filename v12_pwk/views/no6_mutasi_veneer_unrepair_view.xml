@@ -95,11 +95,13 @@
                                         </field>
                                     </group>
                                 </page>
-                                <page string="Veneer Core Builder">                                    
+                                <page string="Veneer Core Builder">
+                                    <button name="button_reload_core" string="Reload" 
+                                        type="object" class="oe_highlight"/>
                                     <group>
                                         <field name="core_line_ids" nolabel="1">
                                             <tree>
-                                                <field name="new_product_id"/>
+                                                <field name="product_id"/>
                                                 <field name="tebal"/>
                                                 <field name="lebar"/>
                                                 <field name="panjang"/>
@@ -145,11 +147,13 @@
                                         </field>
                                     </group>
                                 </page>                                
-                                <page string="Veneer Long Core">                                    
+                                <page string="Veneer Long Core">
+                                    <button name="button_reload_long" string="Reload" 
+                                        type="object" class="oe_highlight"/>          
                                     <group>
                                         <field name="long_line_ids" nolabel="1">
                                             <tree>
-                                                <field name="new_product_id"/>
+                                                <field name="product_id"/>
                                                 <field name="tebal"/>
                                                 <field name="lebar"/>
                                                 <field name="panjang"/>

@@ -341,6 +341,62 @@ class PwkMutasiVeneerUnrepair(models.Model):
                         'new_product_id': source.new_product_id.id,
                         })
 
+    @api.multi
+    def button_reload_core(self):
+        for res in self:
+            existing_ids = self.env['pwk.mutasi.veneer.unrepair.line.core'].search([
+                ('reference', '=', self.id)
+            ])
+            
+            if existing_ids:
+                for existing in existing_ids:
+                    existing.unlink()
+                    
+            source_ids = self.env['pwk.mutasi.veneer.unrepair.line.core'].search([
+                ('reference.date','=',res.date),
+                ])
+
+            if not source_ids:
+                source_ids = self.env['pwk.mutasi.veneer.unrepair.line.core'].search([
+                    ('reference.date','<',res.date),
+                    ])
+
+            if source_ids:
+                for source in source_ids:
+                    self.env['pwk.mutasi.veneer.unrepair.line.core'].create({
+                        'reference': res.id,
+                        'product_id': source.product_id.id,
+                        'new_product_id': source.new_product_id.id,
+                        })
+
+    @api.multi
+    def button_reload_core(self):
+        for res in self:
+            existing_ids = self.env['pwk.mutasi.veneer.unrepair.line.long'].search([
+                ('reference', '=', self.id)
+            ])
+            
+            if existing_ids:
+                for existing in existing_ids:
+                    existing.unlink()
+                    
+            source_ids = self.env['pwk.mutasi.veneer.unrepair.line.long'].search([
+                ('reference.date','=',res.date),
+                ])
+
+            if not source_ids:
+                source_ids = self.env['pwk.mutasi.veneer.unrepair.line.long'].search([
+                    ('reference.date','<',res.date),
+                    ])
+
+            if source_ids:
+                for source in source_ids:
+                    self.env['pwk.mutasi.veneer.unrepair.line.long'].create({
+                        'reference': res.id,
+                        'product_id': source.product_id.id,
+                        'new_product_id': source.new_product_id.id,
+                        })
+
     @api.model
     def create(self, vals):
         vals['name'] = self.get_sequence('Mutasi Veneer Unrepair', 'pwk.mutasi.veneer.unrepair')
