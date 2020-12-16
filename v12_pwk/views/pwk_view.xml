@@ -46,7 +46,7 @@
                                 <page string="List Order">
                                     <group>
                                         <field name="line_ids" nolabel="1">
-                                            <tree editable="top">
+                                            <tree editable="top" create="false">
                                                 <field name="partner_id" readonly="1"/>
                                                 <field name="sale_id" readonly="1"/>
                                                 <field name="product_id" readonly="1"/>
@@ -58,7 +58,6 @@
                                                 <field name="total_qty" readonly="1"/>
                                                 <field name="container_qty" required="1"/>
                                                 <field name="container_vol"/>
-                                                <field name="container_no" required="1"/>
                                                 <field name="job_order_status" invisible="1"/>
                                             </tree>
                                             <form>
@@ -86,6 +85,65 @@
                                                     <field name="job_order_status"/>
                                                 </group>
                                             </form>
+                                        </field>
+                                    </group>
+                                </page>
+                                <page string="List Order by Container">
+                                    <group>
+                                        <field name="container_ids" nolabel="1">
+                                            <tree editable="top" create="false">
+                                                <field name="container_no" readonly="1"/>
+                                                <field name="total_qty" readonly="1"/>
+                                            </tree>
+                                            <form>
+                                                <group>
+                                                    <field name="container_no" readonly="1"/>
+                                                    <field name="total_qty" readonly="1"/> 
+                                                </group>
+                                                <group>
+                                                    <field name="line_ids" nolabel="1">
+                                                        <tree editable="top">
+                                                            <field name="partner_id" readonly="1"/>
+                                                            <field name="sale_id" readonly="1"/>
+                                                            <field name="product_id" readonly="1"/>
+                                                            <field name="thick" readonly="1" invisible="1"/>
+                                                            <field name="width" readonly="1" invisible="1"/>
+                                                            <field name="length" readonly="1" invisible="1"/>
+                                                            <field name="glue_id" readonly="1" invisible="1"/>
+                                                            <field name="grade_id" readonly="1" invisible="1"/>
+                                                            <field name="total_qty" readonly="1"/>
+                                                            <field name="container_qty" required="1"/>
+                                                            <field name="container_vol"/>
+                                                            <field name="job_order_status" invisible="1"/>
+                                                        </tree>
+                                                        <form>
+                                                            <group>
+                                                                <field name="partner_id"/>
+                                                                <field name="sale_id"/>
+                                                            </group>
+                                                            <group>
+                                                                <group>
+                                                                    <field name="product_id"/>
+                                                                    <field name="thick"/>
+                                                                    <field name="width"/>
+                                                                    <field name="length"/>
+                                                                </group>
+                                                                <group>
+                                                                    <field name="glue_id"/>
+                                                                    <field name="grade_id"/>
+                                                                    <field name="total_qty"/>
+                                                                    <field name="container_qty"/>
+                                                                    <field name="container_vol"/>
+                                                                    <field name="container_no"/>
+                                                                </group>
+                                                            </group>
+                                                            <group>
+                                                                <field name="job_order_status"/>
+                                                            </group>
+                                                        </form>
+                                                    </field>
+                                                </group>
+                                            </form>                         
                                         </field>
                                     </group>
                                 </page>
