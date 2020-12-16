@@ -10,7 +10,8 @@ class PwkGenerateRpbWizardLine(models.TransientModel):
     _name = 'pwk.generate.rpb.wizard.line'
 
     reference = fields.Many2one('pwk.generate.rpb.wizard', 'Reference')
-    container_no = fields.Char('Container No.')
+    no_container = fields.Char('No. Container')
+    jumlah_container = fields.Integer('Jumlah Container')
     sale_line_ids = fields.Many2many('sale.order.line', 'rpb_wizard_line_sale_line_default_rel',
         'rpb_wizard_line_id', 'sale_line_id', string='Sales Order Lines')
     total_product = fields.Float(compute="_get_total", string='Total Product')
@@ -42,8 +43,9 @@ class PwkGenerateRpbWizard(models.TransientModel):
             for container in self.line_ids:
                 container_id = self.env['pwk.rpb.container'].create({
                     'reference': rpb_id.id,
-                    'container_no': container.container_no,
-                    'name': container.container_no,
+                    'no_container': container.no_container,
+                    'jumlah_container': container.jumlah_container,
+                    'name': container.no_container,
                     })
 
                 if container.sale_line_ids:    		
@@ -59,6 +61,7 @@ class PwkGenerateRpbWizard(models.TransientModel):
                         self.env['pwk.rpb.line'].create({
                             'reference': rpb_id.id,
                             'container_id': container_id.id,
+                            'jumlah_container': container_id.jumlah_container,
                             'sale_id': line.order_id.id,
                             'sale_line_id': line.id,
                             'total_qty': line.product_uom_qty,

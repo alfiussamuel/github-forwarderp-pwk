@@ -14,12 +14,14 @@
 					<group>
 						<field name="line_ids" nolabel="1">
 							<tree>							
-								<field name="container_no"/>
+								<field name="no_container"/>
+								<field name="jumlah_container"/>
 								<field name="total_product"/>
 							</tree>
 							<form>
 								<group>
 									<field name="container_no" required="1"/>
+									<field name="jumlah_container"/>
 									<field name="total_product"/>
 								</group>
 								<group>

@@ -237,6 +237,12 @@ class SaleOrder(models.Model):
         result = super(SaleOrder, self).create(vals)
         return result
 
+    @api.multi
+    def action_close_order(self):
+        for res in self:
+            if res.is_closed:
+                
+
     def _get_contract_no(self):
         for res in self:
             number_contract = ''
