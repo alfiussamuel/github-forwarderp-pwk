@@ -53,7 +53,12 @@ pwk_mutasi_assembling_finishing_gs1_employee,pwk_mutasi_assembling_finishing_gs1
 
 pwk_rpb_employee,pwk_rpb_employee,v12_pwk.model_pwk_rpb,base.group_user,1,1,1,1
 pwk_rpb_line_employee,pwk_rpb_line_employee,v12_pwk.model_pwk_rpb_line,base.group_user,1,1,1,1
-pwk_rpb_line_container_employee,pwk_rpb_line_container_employee,v12_pwk.model_pwk_rpb_line_container,base.group_user,1,1,1,1
+pwk_rpb_container_employee,pwk_rpb_container_employee,v12_pwk.model_pwk_rpb_container,base.group_user,1,1,1,1
+pwk_rpb_container_line_employee,pwk_rpb_container_line_employee,v12_pwk.model_pwk_rpb_container_line,base.group_user,1,1,1,1
+
+pwk_rpm_employee,pwk_rpm_employee,v12_pwk.model_pwk_rpm,base.group_user,1,1,1,1
+pwk_rpm_line_employee,pwk_rpm_line_employee,v12_pwk.model_pwk_rpm_line,base.group_user,1,1,1,1
+
 sale_order_line_container_employee,sale_order_line_container_employee,v12_pwk.model_sale_order_line_container,base.group_user,1,1,1,1
 
 pwk_position_employee,pwk_position_employee,v12_pwk.model_pwk_position,base.group_user,1,1,1,1
