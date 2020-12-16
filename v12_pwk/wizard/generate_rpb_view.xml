@@ -12,14 +12,15 @@
 	                    </div>
 	                </group>
 					<group>
-						<field name="sale_ids" nolabel="1"
+						<field name="sale_line_ids" nolabel="1"
 							options="{'no_create': True}"
-							domain="[('state','=','sale')]">
+							domain="[('order_id.state','=','sale')]">
 							<tree>
-								<field name="name" string="Order Number"/>
-								<field name="date_order"/>
-								<field name="partner_id"/>
-								<field name="amount_total"/>
+								<field name="order_id" string="Order Number"/>
+								<field name="sale_date_order"/>
+								<field name="sale_partner_id"/>
+								<field name="product_id"/>
+								<field name="product_uom_qty"/>
 								<field name="state" invisible="1"/>
 							</tree>
 						</field>
