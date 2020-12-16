@@ -20,3 +20,4 @@ from . import purchase
 from . import peb_report_excel
 from . import stuffing_report_excel
 from . import log_report_excel
+from . import rpb_excel

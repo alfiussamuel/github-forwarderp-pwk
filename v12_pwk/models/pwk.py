@@ -148,6 +148,10 @@ class PwkRpb(models.Model):
             res.actual = actual
 
     @api.multi
+    def button_print(self):
+        return self.env.ref('v12_pwk.report_rpb').report_action(self)
+
+    @api.multi
     def button_progress(self):
         for res in self:
             res.state = "Progress"

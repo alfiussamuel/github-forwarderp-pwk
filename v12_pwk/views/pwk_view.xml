@@ -1,7 +1,15 @@
 <odoo>
-    <data>                      
+    <data>                              
 
         <!-- Rencana Produksi Bulanan-->
+        <report
+            id="report_rpb"
+            model="pwk.rpb"
+            string="Rencana Produksi Bulanan"
+            report_type="xlsx"
+            name="v12_pwk.rpb_report_xls.xlsx"
+            file="v12_pwk.rpb_report_xls.xlsx"/>
+
         <record id="pwk_rpb_tree" model="ir.ui.view">
             <field name="name">Rencana Produksi Bulanan</field>
             <field name="model">pwk.rpb</field>
