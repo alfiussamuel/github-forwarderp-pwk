@@ -51,20 +51,18 @@ class PwkGenerateRpbWizard(models.TransientModel):
 
                 if container.sale_line_ids:    		
                     for line in container.sale_line_ids:
-            			self.env['pwk.rpb.container.line'].create({
-            				'reference': container_id.id,
-            				'sale_id': line.order_id.id,
-            				'sale_line_id': line.id,
+                        self.env['pwk.rpb.container.line'].create({
+                            'reference': container_id.id,
+                            'sale_id': line.order_id.id,
+                            'sale_line_id': line.id,
                             'total_qty': line.product_uom_qty,
-                            'container_qty': line.product_uom_qty
-            				})
+                            'container_qty': line.product_uom_qty                            
+                            })                        
 
                         self.env['pwk.rpb.line'].create({
                             'reference': rpb_id.id,
                             'sale_id': line.order_id.id,
                             'sale_line_id': line.id,
                             'total_qty': line.product_uom_qty,
-                            'container_qty': line.product_uom_qty
+                            'container_qty': line.product_uom_qty                            
                             })
-
-    	return True
