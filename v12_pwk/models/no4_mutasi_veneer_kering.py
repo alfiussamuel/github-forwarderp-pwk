@@ -305,7 +305,7 @@ class PwkMutasiVeneerKering(models.Model):
 
                     if new_product_ids:
                         line.write({
-                            'new_product_id': new_product_id.ids[0].id
+                            'new_product_id': new_product_ids[0].id
                         })
                     else:
                         raise UserError(_('Product %s tidak ditemukan' % new_product_name))
