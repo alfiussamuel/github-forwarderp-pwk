@@ -38,18 +38,18 @@ class PwkPemakaianVeneerGsLine(models.Model):
     @api.depends('bj_product_id', 'bb_product_id')
     def _get_product_attribute(self):
         for res in self:
-            if res.bj_product_id:                         
-                res.bj_tebal = res.bj_product_id.tebal
-                res.bj_lebar = res.bj_product_id.lebar
-                res.bj_panjang = res.bj_product_id.panjang
-                res.bj_grade = res.bj_product_id.grade.id
-                res.bj_jenis_kayu = res.bj_product_id.jenis_kayu.id
-            if res.bb_product_id:    
-                res.bb_tebal = res.bb_product_id.tebal
-                res.bb_lebar = res.bb_product_id.lebar
-                res.bb_panjang = res.bb_product_id.panjang
-                res.bb_grade = res.bb_product_id.grade.id
-                res.bb_jenis_kayu = res.bb_product_id.jenis_kayu.id
+#             if res.bj_product_id:                         
+            res.bj_tebal = 0
+            res.bj_lebar = 0
+            res.bj_panjang = 0
+            res.bj_grade = 0
+            res.bj_jenis_kayu = 0
+                          #             if res.bb_product_id:    
+#                 res.bb_tebal = res.bb_product_id.tebal
+#                 res.bb_lebar = res.bb_product_id.lebar
+#                 res.bb_panjang = res.bb_product_id.panjang
+#                 res.bb_grade = res.bb_product_id.grade.id
+#                 res.bb_jenis_kayu = res.bb_product_id.jenis_kayu.id
                          
 #     @api.depends('bj_product_id', 'bb_product_id')
 #     def _get_product_attribute(self):
