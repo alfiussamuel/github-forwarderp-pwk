@@ -25,7 +25,7 @@ class PwkPemakaianVeneerGsLineDetail(models.Model):
     bb_pcs = fields.Float('PCS')
     bb_vol = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal'))
     
-    @api.depends(''bb_product_id')
+    @api.depends('bb_product_id')
     def _get_product_attribute(self):
         for res in self:
             if res.bb_product_id:    
