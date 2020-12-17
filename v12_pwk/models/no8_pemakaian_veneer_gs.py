@@ -33,7 +33,7 @@ class PwkPemakaianVeneerGsLine(models.Model):
     bb_jenis_kayu = fields.Float(compute="_get_product_attribute", comodel_name="pwk.jenis.kayu", string='Jenis Kayu')
     bb_grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
     bb_pcs = fields.Float('PCS')
-    bb_vol = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal')
+    bb_vol = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal'))
                           
     keterangan = fields.Selection([('P1','P1'), ('P2','P2'), ('LU P2','LU P2')], default='P1', string='Keterangan')
     
