@@ -35,7 +35,7 @@ class PwkPemakaianVeneerGsLine(models.Model):
     bb_pcs = fields.Float('PCS')
     bb_vol = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal')
                           
-    keterangan = fields.Selection([('P1', 'P1'),('P2', 'P2'),('LU P2', 'LU P2')], default='P1', string='Keterangan')
+    keterangan = fields.Selection([('P1','P1'), ('P2','P2'), ('LU P2','LU P2')], default='P1', string='Keterangan')
     
     @api.depends('bj_product_id', 'bb_product_id')
     def _get_product_attribute(self):
