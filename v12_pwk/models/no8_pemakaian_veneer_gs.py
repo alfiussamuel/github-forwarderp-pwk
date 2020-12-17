@@ -52,7 +52,7 @@ class PwkPemakaianVeneerGsLine(models.Model):
     bj_jenis_kayu = fields.Float(compute="_get_product_attribute", comodel_name="pwk.jenis.kayu",  string='Jenis Kayu')
     bj_grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
     bj_pcs = fields.Float('PCS')
-    bj_vol = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal')                      
+    bj_vol = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal'))
     keterangan = fields.Selection([('P1','P1'), ('P2','P2'), ('LU P2','LU P2')], default='P1', string='Keterangan')
     
     @api.depends('bj_product_id')
