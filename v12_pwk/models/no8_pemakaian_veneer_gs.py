@@ -13,7 +13,7 @@ import re
 from num2words import num2words
 
 class PwkPemakaianVeneerGsLineDetail(models.Model):
-    _name = "pwk.pemakaian.veneer.gs.line.detail
+    _name = "pwk.pemakaian.veneer.gs.line.detail"
     
     reference = fields.Many2one('pwk.pemakaian.veneer.gs.line', 'reference', string='Reference')
     bb_product_id = fields.Many2one('product.product', 'Veneer/Core')
