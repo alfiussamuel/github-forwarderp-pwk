@@ -58,18 +58,7 @@
                                                     <field name="bj_panjang"/>
                                                     <field name="bj_pcs"/>
                                                     <field name="bj_vol"/>
-                                                </group>
-                                                <group string="Veneer">
-                                                    <field name="bb_product_id"/>
-                                                    <field name="bb_tebal"/>
-                                                    <field name="bb_lebar"/>
-                                                    <field name="bb_panjang"/>                                            
-                                                    <field name="bb_grade"/>
-                                                    <field name="bb_jenis_kayu"/>                                                    
-                                                    <field name="bb_pcs"/>
-                                                    <field name="bb_vol"/>
-                                                    <field name="keterangan"/>
-                                                </group>
+                                                </group>                                                
                                             </group>       
                                             <group>
                                                 <notebook>
