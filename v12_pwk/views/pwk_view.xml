@@ -135,6 +135,8 @@
                         <field name="state" widget="statusbar" readonly="1"/>
                         <button name="%(action_pwk_generate_rpb)d" type="action" 
                             string="Select Order" class="oe_highlight"/>
+                        <button name="%(action_pwk_generate_rpm)d" type="action" 
+                            string="Create RPM" class="oe_highlight"/>
                     </header>
                     <sheet>
                         <label for="name" class="oe_edit_only" />
@@ -257,6 +259,16 @@
                                                     </field>
                                                 </group>
                                             </form>                         
+                                        </field>
+                                    </group>
+                                </page>
+                                <page string="RPM">
+                                    <group>
+                                        <field name="rpm_ids" nolabel="1">
+                                            <tree>
+                                                <field name="date_start"/>
+                                                <field name="date_end"/>
+                                            </tree>
                                         </field>
                                     </group>
                                 </page>

@@ -143,6 +143,7 @@ class PwkRpb(models.Model):
     state = fields.Selection([('Draft','Draft'),('Progress','Progress'),('Done','Done')], string="Status", default="Draft")
     line_ids = fields.One2many('pwk.rpb.line', 'reference', string='Lines')
     container_ids = fields.One2many('pwk.rpb.container', 'reference', string='Container')
+    rpm_ids = fields.One2many('pwk.rpm', 'rpb_id', string='RPM')
     target = fields.Float('Target ( M3 )', digits=dp.get_precision('FourDecimal'))    
     actual = fields.Float(compute="_get_actual", string='Aktual ( M3 )', digits=dp.get_precision('FourDecimal'))
 
@@ -199,18 +200,13 @@ class PwkRpmLine(models.Model):
     length = fields.Float(compute="_get_sale_fields", string='Length')
     glue_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.glue', string='Glue')
     grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')        
-    total_volume = fields.Float(compute="_get_sale_fields", string='Total Volume', digits=dp.get_precision('FourDecimal'))
-    job_order_status = fields.Char(compute="_get_sale_fields", string='Job Order Status')
     total_qty = fields.Float(string='Ordered Qty')    
+    total_volume = fields.Float(compute="_get_vol", string='Vol RPM', digits=dp.get_precision('FourDecimal'))
 
-    @api.depends('container_qty')
-    def _get_container_vol(self):
+    @api.depends('total_qty')
+    def _get_volume(self):
         for res in self:
-            container_vol = 0
-            if res.container_qty:
-                container_vol = res.container_qty * res.thick * res.width * res.length / 1000000000
-
-            res.container_vol = container_vol
+            res.total_volume = res.total_qty * res.thick * res.width * res.length / 1000000000
 
     @api.depends('sale_line_id')
     def _get_sale_fields(self):
@@ -224,8 +220,6 @@ class PwkRpmLine(models.Model):
                 res.glue_id = res.sale_line_id.product_id.glue_id.id
                 res.grade_id = res.sale_line_id.product_id.grade_id.id
                 res.total_qty = res.sale_line_id.product_uom_qty
-                res.total_volume = res.sale_line_id.volume
-                res.job_order_status = res.sale_line_id.order_id.job_order_status
 
 class PwkRpm(models.Model):    
     _name = "pwk.rpm"
