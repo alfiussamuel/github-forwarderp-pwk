@@ -60,15 +60,17 @@
                                         </tree>
                                         <form>
                                             <group>
-                                                <group>
+                                                <group string="Plywood / Blockboard">
                                                     <field name="bj_product_id"/>
                                                     <field name="bj_jenis_kayu"/>
                                                     <field name="bj_grade"/>
                                                     <field name="bj_tebal"/>
                                                     <field name="bj_lebar"/>
                                                     <field name="bj_panjang"/>
+                                                    <field name="bj_pcs"/>
+                                                    <field name="bj_vol"/>
                                                 </group>
-                                                <group>
+                                                <group string="Veneer">
                                                     <field name="bb_product_id"/>
                                                     <field name="bb_tebal"/>
                                                     <field name="bb_lebar"/>
@@ -76,18 +78,10 @@
                                                     <field name="bb_grade"/>
                                                     <field name="bb_jenis_kayu"/>
                                                     <field name="keterangan"/>
-                                                </group>
-                                            </group>                                          
-                                            <group>
-                                                <group string="Perhitungan Stock (Pcs)">
-                                                    <field name="bj_pcs"/>
-                                                    <field name="bb_pcs"/>                                                  
-                                                </group>
-                                                <group string="Perhitungan Stock (Vol)">
-                                                    <field name="bj_vol"/>
+                                                    <field name="bb_pcs"/>
                                                     <field name="bb_vol"/>
                                                 </group>
-                                            </group>                                            
+                                            </group>                                                                                                                                  
                                         </form>
                                     </field>
                                 </group>
