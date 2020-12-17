@@ -12,20 +12,10 @@ import math
 import re    
 from num2words import num2words
 
-class PwkPemakaianVeneerGsLine(models.Model):
-    _name = "pwk.pemakaian.veneer.gs.line"
-
-    reference = fields.Many2one('pwk.pemakaian.veneer.gs', 'Reference')
+class PwkPemakaianVeneerGsLineDetail(models.Model):
+    _name = "pwk.pemakaian.veneer.gs.line.detail
     
-    bj_product_id = fields.Many2one('product.product', 'Ply/BB')
-    bj_tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
-    bj_lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
-    bj_panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
-    bj_jenis_kayu = fields.Float(compute="_get_product_attribute", comodel_name="pwk.jenis.kayu",  string='Jenis Kayu')
-    bj_grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
-    bj_pcs = fields.Float('PCS')
-    bj_vol = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal'))
-    
+    reference = fields.Many2one('pwk.pemakaian.veneer.gs.line', 'reference', string='Reference')
     bb_product_id = fields.Many2one('product.product', 'Veneer/Core')
     bb_tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
     bb_lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
@@ -34,10 +24,38 @@ class PwkPemakaianVeneerGsLine(models.Model):
     bb_grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
     bb_pcs = fields.Float('PCS')
     bb_vol = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal'))
-                          
+    
+    @api.depends(''bb_product_id')
+    def _get_product_attribute(self):
+        for res in self:
+            if res.bb_product_id:    
+                res.bb_tebal = res.bb_product_id.tebal
+                res.bb_lebar = res.bb_product_id.lebar
+                res.bb_panjang = res.bb_product_id.panjang
+                res.bb_grade = res.bb_product_id.grade.id
+                res.bb_jenis_kayu = res.bb_product_id.jenis_kayu.id
+
+    @api.depends('bb_pcs')
+    def _get_volume(self):
+        for res in self:
+            res.bb_vol = res.bb_pcs * res.bb_tebal * res.bb_lebar * res.bb_panjang / 1000000000
+    
+class PwkPemakaianVeneerGsLine(models.Model):
+    _name = "pwk.pemakaian.veneer.gs.line"
+
+    reference = fields.Many2one('pwk.pemakaian.veneer.gs', 'Reference')
+    detail_ids = fields.One2many('pwk.pemakaian.veneer.gs.line.detail', 'reference', string='Detail')
+    bj_product_id = fields.Many2one('product.product', 'Ply/BB')
+    bj_tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
+    bj_lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
+    bj_panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
+    bj_jenis_kayu = fields.Float(compute="_get_product_attribute", comodel_name="pwk.jenis.kayu",  string='Jenis Kayu')
+    bj_grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
+    bj_pcs = fields.Float('PCS')
+    bj_vol = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal')                      
     keterangan = fields.Selection([('P1','P1'), ('P2','P2'), ('LU P2','LU P2')], default='P1', string='Keterangan')
     
-    @api.depends('bj_product_id', 'bb_product_id')
+    @api.depends('bj_product_id')
     def _get_product_attribute(self):
         for res in self:
             if res.bj_product_id:                         
@@ -46,18 +64,11 @@ class PwkPemakaianVeneerGsLine(models.Model):
                 res.bj_panjang = res.bj_product_id.panjang
                 res.bj_grade = res.bj_product_id.grade.id
                 res.bj_jenis_kayu = res.bj_product_id.jenis_kayu.id
-            if res.bb_product_id:    
-                res.bb_tebal = res.bb_product_id.tebal
-                res.bb_lebar = res.bb_product_id.lebar
-                res.bb_panjang = res.bb_product_id.panjang
-                res.bb_grade = res.bb_product_id.grade.id
-                res.bb_jenis_kayu = res.bb_product_id.jenis_kayu.id
-
-    @api.depends('bj_pcs','bb_pcs')
+            
+    @api.depends('bj_pcs')
     def _get_volume(self):
         for res in self:
             res.bj_vol = res.bj_pcs * res.bj_tebal * res.bj_lebar * res.bj_panjang / 1000000000
-            res.bb_vol = res.bb_pcs * res.bb_tebal * res.bb_lebar * res.bb_panjang / 1000000000
                   
                           
 class PwkPemakaianVeneerGs(models.Model):    
