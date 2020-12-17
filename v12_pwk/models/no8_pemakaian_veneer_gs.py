@@ -15,7 +15,7 @@ from num2words import num2words
 class PwkPemakaianVeneerGsLineDetail(models.Model):
     _name = "pwk.pemakaian.veneer.gs.line.detail"
     
-    reference = fields.Many2one('pwk.pemakaian.veneer.gs.line', 'reference', string='Reference')
+    reference = fields.Many2one('pwk.pemakaian.veneer.gs.line', string='Reference')
     bb_product_id = fields.Many2one('product.product', 'Veneer/Core')
     bb_tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
     bb_lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
