@@ -56,6 +56,7 @@
                                             <field name="bb_jenis_kayu"/>
                                             <field name="bb_pcs" sum="Total"/>
                                             <field name="bb_vol" sum="Total"/>
+                                            <field name="keterangan"/>
                                         </tree>
                                         <form>
                                             <group>
@@ -74,8 +75,9 @@
                                                     <field name="bb_panjang"/>                                            
                                                     <field name="bb_grade"/>
                                                     <field name="bb_jenis_kayu"/>
+                                                    <field name="keterangan"/>
                                                 </group>
-                                            </group>                                        
+                                            </group>                                          
                                             <group>
                                                 <group string="Perhitungan Stock (Pcs)">
                                                     <field name="bj_pcs"/>
