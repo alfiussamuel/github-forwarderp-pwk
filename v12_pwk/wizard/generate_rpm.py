@@ -5,6 +5,7 @@ import time
 from dateutil.parser import parse
 from odoo.exceptions import UserError
 from odoo import models, fields, api
+import odoo.addons.decimal_precision as dp
 
 class PwkGenerateRpmWizardLine(models.TransientModel):
     _name = 'pwk.generate.rpm.wizard.line'
