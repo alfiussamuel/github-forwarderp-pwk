@@ -64,7 +64,7 @@
                                                 <notebook>
                                                     <page string="Komponen Veneer">
                                                         <group>
-                                                            <field name="detail_ids">
+                                                            <field name="detail_ids" nolabel="1">
                                                                 <tree editable="top">
                                                                     <field name="bb_product_id"/>
                                                                     <field name="bb_tebal"/>
