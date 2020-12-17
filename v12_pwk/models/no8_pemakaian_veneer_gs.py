@@ -44,7 +44,8 @@ class PwkPemakaianVeneerGsLine(models.Model):
     _name = "pwk.pemakaian.veneer.gs.line"
 
     reference = fields.Many2one('pwk.pemakaian.veneer.gs', 'Reference')
-    detail_ids = fields.One2many('pwk.pemakaian.veneer.gs.line.detail', 'reference', string='Detail')
+    detail_ids = fields.One2many('pwk.pemakaian.veneer.gs.line.detail', 'reference', string='Detail', track_visibility="always")
+#     line_ids = fields.One2many('pwk.pemakaian.veneer.gs.line', 'reference', string="Pemakaian Veneer GS", track_visibility="always")
     bj_product_id = fields.Many2one('product.product', 'Ply/BB')
     bj_tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
     bj_lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
