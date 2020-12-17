@@ -24,7 +24,7 @@ class PwkMutasiVeneerGsLine(models.Model):
     stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
     stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
     
-    stock_masuk_repair_pcs = fields.Float(string='Stok Masuk Repair (Pcs)')
+    stock_masuk_repair_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk (Pcs)')
     stock_masuk_repair_vol = fields.Float(compute="_get_volume", string='Stok Masuk Repair (M3)', digits=dp.get_precision('FourDecimal'))
     acc_stock_masuk_repair_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Repair')
     acc_stock_masuk_repair_vol = fields.Float(compute="_get_volume", string='Stok Masuk Repair', digits=dp.get_precision('FourDecimal'))
@@ -119,7 +119,21 @@ class PwkMutasiVeneerGsLine(models.Model):
                 stock_awal_pcs = source_ids[0].stock_akhir_pcs
 
             res.stock_awal_pcs = stock_awal_pcs
+    
+    @api.depends('product_id')
+    def _get_stock_masuk(self):
+        for res in self:
+            stock_masuk_pcs = 0
+            source_ids = self.env['pwk.mutasi.veneer.ok.repair.line'].search([
+                ('reference.date','=',res.reference.date),
+                ('product_id','=',res.product_id.id)
+                ])
+                        
+            if source_ids:
+                stock_masuk_pcs = source_ids[0].stock_keluar_pcs
 
+            res.stock_masuk_repair_pcs = stock_masuk_pcs
+            
     @api.depends('stock_awal_pcs','stock_masuk_repair_pcs','stock_keluar_gs_pcs','stock_masuk_supplier_pcs','stock_keluar_hpr_pcs')
     def _get_stock_akhir(self):
         for res in self:

@@ -12,98 +12,66 @@ import math
 import re    
 from num2words import num2words
 
+class PwkPemakaianVeneerGsLineDetail(models.Model):
+    _name = "pwk.pemakaian.veneer.gs.line.detail"
+    
+    reference = fields.Many2one('pwk.pemakaian.veneer.gs.line', string='Reference')
+    bb_product_id = fields.Many2one('product.product', 'Veneer/Core')
+    bb_tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
+    bb_lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
+    bb_panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
+    bb_jenis_kayu = fields.Float(compute="_get_product_attribute", comodel_name="pwk.jenis.kayu", string='Jenis Kayu')
+    bb_grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
+    bb_pcs = fields.Float('PCS')
+    bb_vol = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal'))
+    
+    @api.depends('bb_product_id')
+    def _get_product_attribute(self):
+        for res in self:
+            if res.bb_product_id:    
+                res.bb_tebal = res.bb_product_id.tebal
+                res.bb_lebar = res.bb_product_id.lebar
+                res.bb_panjang = res.bb_product_id.panjang
+                res.bb_grade = res.bb_product_id.grade.id
+                res.bb_jenis_kayu = res.bb_product_id.jenis_kayu.id
+
+    @api.depends('bb_pcs')
+    def _get_volume(self):
+        for res in self:
+            res.bb_vol = res.bb_pcs * res.bb_tebal * res.bb_lebar * res.bb_panjang / 1000000000
+    
 class PwkPemakaianVeneerGsLine(models.Model):
     _name = "pwk.pemakaian.veneer.gs.line"
 
     reference = fields.Many2one('pwk.pemakaian.veneer.gs', 'Reference')
-    product_id = fields.Many2one('product.product', 'Product')
-    new_product_id = fields.Many2one('product.product', 'Product')
-    tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
-    lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
-    panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
-    grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
-    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
-    stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
-    stock_masuk_pcs = fields.Float('Stok Masuk Basah')
-    stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Basah', digits=dp.get_precision('FourDecimal'))
-    acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Basah')
-    acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Basah', digits=dp.get_precision('FourDecimal'))
-    stock_keluar_pcs = fields.Float('Stok Keluar Kering')
-    stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Kering', digits=dp.get_precision('FourDecimal'))
-    acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Kering')
-    acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Kering', digits=dp.get_precision('FourDecimal'))
-    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
-    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
-
-    @api.depends('product_id')
+    detail_ids = fields.One2many('pwk.pemakaian.veneer.gs.line.detail', 'reference', string="Detail", track_visibility="always")
+#     line_ids = fields.One2many('pwk.pemakaian.veneer.gs.line', 'reference', string="Pemakaian Veneer GS", track_visibility="always")
+    bj_product_id = fields.Many2one('product.product', 'Ply/BB')
+    bj_tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
+    bj_lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
+    bj_panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
+    bj_jenis_kayu = fields.Float(compute="_get_product_attribute", comodel_name="pwk.jenis.kayu",  string='Jenis Kayu')
+    bj_grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
+    bj_pcs = fields.Float('PCS')
+    bj_vol = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal'))
+    keterangan = fields.Selection([('P1','P1'), ('P2','P2'), ('LU P2','LU P2')], default='P1', string='Keterangan')
+    
+    @api.depends('bj_product_id')
     def _get_product_attribute(self):
         for res in self:
-            if res.product_id:
-                res.tebal = res.product_id.tebal
-                res.lebar = res.product_id.lebar
-                res.panjang = res.product_id.panjang
-                res.grade = res.product_id.grade.id
-
-    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
+            if res.bj_product_id:                         
+                res.bj_tebal = res.bj_product_id.tebal
+                res.bj_lebar = res.bj_product_id.lebar
+                res.bj_panjang = res.bj_product_id.panjang
+                res.bj_grade = res.bj_product_id.grade.id
+                res.bj_jenis_kayu = res.bj_product_id.jenis_kayu.id
+            
+    @api.depends('bj_pcs')
     def _get_volume(self):
         for res in self:
-            res.stock_awal_vol = res.stock_awal_pcs * res.tebal * res.lebar * res.panjang / 1000000000
-            res.stock_masuk_vol = res.stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
-            res.stock_keluar_vol = res.stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
-            res.acc_stock_masuk_vol = res.acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
-            res.acc_stock_keluar_vol = res.acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
-            res.stock_akhir_vol = res.stock_akhir_pcs * res.tebal * res.lebar * res.panjang / 1000000000
-
-    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
-    def _get_acc(self):
-        for res in self:
-            acc_stock_masuk_pcs = 0
-            acc_stock_keluar_pcs = 0
-
-            source_ids = self.env['pwk.pemakaian.veneer.gs.line'].search([
-                ('reference.date','=',res.reference.date - timedelta(1)),
-                ('product_id','=',res.product_id.id)
-                ])
-
-            if not source_ids:
-                source_ids = self.env['pwk.pemakaian.veneer.gs.line'].search([
-                    ('reference.date','<',res.reference.date),
-                    ('product_id','=',res.product_id.id)
-                    ])
-
-            if source_ids:
-                acc_stock_masuk_pcs = source_ids[0].acc_stock_masuk_pcs
-                acc_stock_keluar_pcs = source_ids[0].acc_stock_keluar_pcs
-
-            res.acc_stock_masuk_pcs = acc_stock_masuk_pcs + res.stock_masuk_pcs
-            res.acc_stock_keluar_pcs = acc_stock_keluar_pcs + res.stock_keluar_pcs
-
-    @api.depends('product_id')
-    def _get_stock_awal(self):
-        for res in self:
-            stock_awal_pcs = 0
-            source_ids = self.env['pwk.pemakaian.veneer.gs.line'].search([
-                ('reference.date','=',res.reference.date - timedelta(1)),
-                ('product_id','=',res.product_id.id)
-                ])
-
-            if not source_ids:
-                source_ids = self.env['pwk.pemakaian.veneer.gs.line'].search([
-                    ('reference.date','<',res.reference.date),
-                    ('product_id','=',res.product_id.id)
-                    ])
-                        
-            if source_ids:
-                stock_awal_pcs = source_ids[0].stock_akhir_pcs
-
-            res.stock_awal_pcs = stock_awal_pcs
-
-    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
-    def _get_stock_akhir(self):
-        for res in self:
-            res.stock_akhir_pcs = res.stock_awal_pcs + res.stock_masuk_pcs - res.stock_keluar_pcs
-
-
+            res.bj_vol = res.bj_pcs * res.bj_tebal * res.bj_lebar * res.bj_panjang / 1000000000
+                  
+                          
 class PwkPemakaianVeneerGs(models.Model):    
     _name = "pwk.pemakaian.veneer.gs"
     _inherit = ["mail.thread", "mail.activity.mixin"]
