@@ -43,6 +43,7 @@
              'wizard/stuffing_report_wizard_view.xml',
              'wizard/log_report_wizard_view.xml',
              'wizard/generate_rpb_view.xml',
+             'wizard/generate_rpm_view.xml',
              'views/report_packing_list_local.xml',
              'views/report_packing_list_export.xml',
              'views/report_packing_list_waste.xml',

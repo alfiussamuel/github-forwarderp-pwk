@@ -7,5 +7,4 @@ from . import peb_report_wizard
 from . import stuffing_report_wizard
 from . import log_report_wizard
 from . import generate_rpb
-# from . import whatsapp
-# from . import print_shipment_profit
+from . import generate_rpm
