@@ -43,13 +43,13 @@ class PwkPemakaianVeneerGsLine(models.Model):
                 res.bj_lebar = res.bj_product_id.lebar
                 res.bj_panjang = res.bj_product_id.panjang
                 res.bj_grade = res.bj_product_id.grade.id
-                res.bj_jenis_kayu = res.bj_product_id.jenis_kayu
+                res.bj_jenis_kayu = res.bj_product_id.jenis_kayu.id
             if res.bb_product_id:    
                 res.bb_tebal = res.bb_product_id.tebal
                 res.bb_lebar = res.bb_product_id.lebar
                 res.bb_panjang = res.bb_product_id.panjang
                 res.bb_grade = res.bb_product_id.grade.id
-                res.bb_jenis_kayu = res.bb_product_id.jenis_kayu
+                res.bb_jenis_kayu = res.bb_product_id.jenis_kayu.id
 
     @api.depends('bj_pcs','bb_pcs')
     def _get_volume(self):
