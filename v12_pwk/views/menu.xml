@@ -49,9 +49,33 @@
 			<field name="view_mode">tree,form</field>			
 		</record>
 
+		<record id="action_pwk_pemakaian_veneer_gs" model="ir.actions.act_window">
+			<field name="name">Pemakaian Veneer Glue Spreader</field>
+			<field name="res_model">pwk.pemakaian.veneer.gs</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
 		<record id="action_pwk_mutasi_assembling_finishing" model="ir.actions.act_window">
 			<field name="name">Mutasi Assembly Finishing</field>
 			<field name="res_model">pwk.mutasi.assembling.finishing</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_mutasi_sf_grading" model="ir.actions.act_window">
+			<field name="name">Mutasi SF Grading</field>
+			<field name="res_model">pwk.mutasi.sf.grading</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_mutasi_harian_grading" model="ir.actions.act_window">
+			<field name="name">Mutasi Harian Grading</field>
+			<field name="res_model">pwk.mutasi.harian.grading</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
+		<record id="action_pwk_mutasi_harian_pmg" model="ir.actions.act_window">
+			<field name="name">Mutasi Harian PMG</field>
+			<field name="res_model">pwk.mutasi.harian.pmg</field>
 			<field name="view_mode">tree,form</field>			
 		</record>
 
@@ -331,17 +355,41 @@
 		        	groups="base.group_user"
 		        	parent="menu_production_mutasi"/>
 
-			        <menuitem id="menu_production_transaksi_veneer_gs"
+			        <menuitem id="menu_production_produksi_mutasi_veneer_gs"
 			            action="v12_pwk.action_pwk_mutasi_veneer_gs"
 			            parent="v12_pwk.menu_production_mutasi_produksi"
 			            groups="base.group_user"
-			            sequence="8"/>
+			            sequence="0"/>
+
+			        <menuitem id="menu_production_produksi_pemakaian_veneer_gs"
+			            action="v12_pwk.action_pwk_pemakaian_veneer_gs"
+			            parent="v12_pwk.menu_production_mutasi_produksi"
+			            groups="base.group_user"
+			            sequence="1"/>
 
 			        <menuitem id="menu_production_transaksi_assembling_finishing"
 			            action="v12_pwk.action_pwk_mutasi_assembling_finishing"
 			            parent="v12_pwk.menu_production_mutasi_produksi"
 			            groups="base.group_user"
-			            sequence="9"/>
+			            sequence="2"/>
+
+			        <menuitem id="menu_production_transaksi_mutasi_sf_grading"
+			            action="v12_pwk.action_pwk_mutasi_sf_grading"
+			            parent="v12_pwk.menu_production_mutasi_produksi"
+			            groups="base.group_user"
+			            sequence="3"/>
+
+			        <menuitem id="menu_production_transaksi_mutasi_harian_grading"
+			            action="v12_pwk.action_pwk_mutasi_harian_grading"
+			            parent="v12_pwk.menu_production_mutasi_produksi"
+			            groups="base.group_user"
+			            sequence="4"/>
+
+			        <menuitem id="menu_production_transaksi_mutasi_harian_pmg"
+			            action="v12_pwk.action_pwk_mutasi_harian_pmg"
+			            parent="v12_pwk.menu_production_mutasi_produksi"
+			            groups="base.group_user"
+			            sequence="5"/>
 
 		<menuitem id="menu_pwk_payment_note" 
             action="action_pwk_payment_note"

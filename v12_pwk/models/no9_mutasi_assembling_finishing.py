@@ -179,13 +179,21 @@ class PwkMutasiAssemblingFinishing(models.Model):
     @api.multi
     def button_reload_gs1(self):
         for res in self:
-            source_ids = self.env['pwk.mutasi.veneer.gs.line'].search([
-                ('reference.date','=',res.date - timedelta(1)),
+            existing_ids = self.env['pwk.mutasi.assembling.finishing.gs1'].search([
+                ('reference', '=', self.id)
+            ])
+            
+            if existing_ids:
+                for existing in existing_ids:
+                    existing.unlink()
+                    
+            source_ids = self.env['pwk.pemakaian.veneer.gs.line'].search([
+                ('reference.date','=',res.date),
                 ])
 
             if not source_ids:
-                source_ids = self.env['pwk.mutasi.veneer.gs.line'].search([
-                    ('reference.date','<',res.date),
+                source_ids = self.env['pwk.pemakaian.veneer.gs.line'].search([
+                    ('reference.date','<',res.date - timedelta(1)),
                     ])
 
             if source_ids:

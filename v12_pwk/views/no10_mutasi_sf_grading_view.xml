@@ -1,0 +1,126 @@
+<odoo>
+    <data>                      
+
+        <!-- Mutasi Veneer Glue Spreader -->
+        <record id="pwk_mutasi_sf_grading_tree" model="ir.ui.view">
+            <field name="name">Mutasi SF Grading</field>
+            <field name="model">pwk.mutasi.sf.grading</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="state"/>                    
+                </tree>
+            </field>
+        </record>
+
+        <record id="pwk_mutasi_sf_grading_form" model="ir.ui.view">
+            <field name="name">Mutasi SF Grading</field>
+            <field name="model">pwk.mutasi.sf.grading</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar" readonly="1"/>
+                        <button name="button_approve" type="object" string="Approve" states="Draft"/>
+                    </header>
+                    <label for="name" class="oe_edit_only" />
+                    <h1>
+                        <field name="name" readonly="1"/>
+                    </h1>
+                    <group>
+                        <field name="date" class="oe_inline" required="1"/>
+                        <field name="user_id" class="oe_inline" readonly="1"/>
+                    </group>
+                    <group>
+                        <notebook>
+                            <page string="Mutasi SF Grading">
+                                <button name="button_reload" string="Reload" 
+                                    type="object" class="oe_highlight"/>
+                                <group>
+                                    <field name="line_ids" nolabel="1">
+                                        <tree>
+                                            <field name="product_id"/>
+                                            <field name="tebal"/>
+                                            <field name="lebar"/>
+                                            <field name="panjang"/>
+                                            <field name="grade"/>
+                                            <field name="stock_awal_pcs" sum="Total"/>
+                                            <field name="stock_masuk_repair_pcs" sum="Total"/>
+                                            <field name="stock_masuk_repair_vol" sum="Total"/>
+                                            <field name="stock_masuk_supplier_pcs" sum="Total"/>
+                                            <field name="stock_masuk_supplier_vol" sum="Total"/>
+                                            <field name="stock_keluar_gs_pcs" sum="Total"/>
+                                            <field name="stock_keluar_gs_vol" sum="Total"/>
+                                            <field name="stock_keluar_hpr_pcs" sum="Total"/>
+                                            <field name="stock_keluar_hpr_vol" sum="Total"/>
+                                            <field name="stock_akhir_pcs" sum="Total"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="product_id"/>
+                                                <field name="tebal"/>
+                                                <field name="lebar"/>
+                                                <field name="panjang"/>
+                                                <field name="grade"/>
+                                            </group>                                        
+                                            <group>
+                                                <group string="Perhitungan Stock (Pcs)">
+                                                    <field name="stock_awal_pcs" 
+                                                        string="Stok Awal"/>
+                                                    <field name="stock_masuk_repair_pcs"
+                                                        string="Stok Masuk Repair"/> 
+                                                    <field name="stock_masuk_supplier_pcs"
+                                                        string="Stok Masuk Supplier"/> 
+                                                    <field name="stock_keluar_gs_pcs"
+                                                        string="Stok Keluar GS"/>
+                                                    <field name="stock_keluar_hpr_pcs"
+                                                        string="Stok Keluar H/PR"/>
+                                                    <field name="stock_akhir_pcs"
+                                                        string="Stok Akhir"/>
+                                                </group>
+                                                <group string="Perhitungan Stock (Vol)">
+                                                    <field name="stock_awal_vol"
+                                                        string="Stok Awal"/>
+                                                    <field name="stock_masuk_repair_vol"
+                                                        string="Stok Masuk Repair"/>
+                                                    <field name="stock_masuk_supplier_vol"
+                                                        string="Stok Masuk Supplier"/>
+                                                    <field name="stock_keluar_gs_vol"
+                                                        string="Stok Keluar GS"/>
+                                                    <field name="stock_keluar_hpr_vol"
+                                                        string="Stok Keluar H/PR"/>
+                                                    <field name="stock_akhir_vol"
+                                                        string="Stok Akhir"/>
+                                                </group>
+                                            </group>
+                                            <group>
+                                                <group string="Akumulasi Stock (Pcs)">
+                                                    <field name="acc_stock_masuk_repair_pcs"/> 
+                                                    <field name="acc_stock_masuk_supplier_pcs"/> 
+                                                    <field name="acc_stock_keluar_gs_pcs"/> 
+                                                    <field name="acc_stock_keluar_hpr_pcs"/> 
+                                                </group>
+                                                <group string="Akumulasi Stock (Vol)">
+                                                    <field name="acc_stock_masuk_repair_vol"/>
+                                                    <field name="acc_stock_masuk_supplier_vol"/>
+                                                    <field name="acc_stock_keluar_gs_vol"/>
+                                                    <field name="acc_stock_keluar_hpr_vol"/>
+                                                </group>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                            </page>                                
+                        </notebook>
+                    </group>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>
