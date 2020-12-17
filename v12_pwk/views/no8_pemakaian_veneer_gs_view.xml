@@ -75,14 +75,18 @@
                                                 <notebook>
                                                     <page string="Komponen Veneer">
                                                         <group>
-                                                            <field name="bb_product_id"/>
-                                                            <field name="bb_tebal"/>
-                                                            <field name="bb_lebar"/>
-                                                            <field name="bb_panjang"/>                                            
-                                                            <field name="bb_grade"/>
-                                                            <field name="bb_jenis_kayu"/>
-                                                            <field name="bb_pcs" sum="Total"/>
-                                                            <field name="bb_vol" sum="Total"/>
+                                                            <field name="detail_ids">
+                                                                <tree editable="top">
+                                                                    <field name="bb_product_id"/>
+                                                                    <field name="bb_tebal"/>
+                                                                    <field name="bb_lebar"/>
+                                                                    <field name="bb_panjang"/>                                            
+                                                                    <field name="bb_grade"/>
+                                                                    <field name="bb_jenis_kayu"/>
+                                                                    <field name="bb_pcs" sum="Total"/>
+                                                                    <field name="bb_vol" sum="Total"/>
+                                                                </tree>
+                                                            </field>
                                                         </group>
                                                     </page>
                                                 </notebook>                                                     
