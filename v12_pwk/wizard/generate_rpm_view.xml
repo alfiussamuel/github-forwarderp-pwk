@@ -1,41 +1,50 @@
 <?xml version="1.0"?>
 <odoo>
 	<data>
-		<record id="pwk_generate_rpb_wizard_form" model="ir.ui.view">
-			<field name="name">Select Order RPB</field>
-			<field name="model">pwk.generate.rpb.wizard</field>
+		<record id="pwk_generate_rpm_wizard_form" model="ir.ui.view">
+			<field name="name">Create RPM</field>
+			<field name="model">pwk.generate.rpm.wizard</field>
 			<field name="arch" type="xml">
 				<form>
 					<group>
 						<div>
-	                        Silahkan memilih Order yang akan di Produksi di dalam Rencana Produksi Bulanan
+	                        Silahkan memilih Order yang akan di Produksi di dalam Rencana Produksi Mingguan
 	                    </div>
 	                </group>
+	                <group>
+	                	<field name="date_start" required="1"/>
+	                	<field name="date_end" required="1"/>
+	                </group>
 					<group>
+						<button name="button_reload" string="Reload" 
+							type="object" class="btn-primary"/>
 						<field name="line_ids" nolabel="1">
-							<tree>							
-								<field name="no_container"/>
-								<field name="jumlah_container"/>
-								<field name="total_product"/>
+							<tree editable="top" create="false">
+								<field name="product_id" readonly="1"/>
+							    <field name="thick" readonly="1"/>
+							    <field name="width" readonly="1"/>
+							    <field name="length" readonly="1"/>
+							    <field name="glue_id" readonly="1"/>
+							    <field name="grade_id" readonly="1"/>
+							    <field name="remaining_qty" readonly="1"/>
+							    <field name="remaining_volume" readonly="1"/>
+							    <field name="total_qty"/>
+							    <field name="total_volume"/>
 							</tree>
 							<form>
 								<group>
-									<field name="no_container" required="1"/>
-									<field name="jumlah_container"/>
-									<field name="total_product"/>
+									<field name="product_id"/>
+								    <field name="thick"/>
+								    <field name="width"/>
+								    <field name="length"/>
+								    <field name="glue_id"/>
+								    <field name="grade_id"/>
 								</group>
 								<group>
-									<field name="sale_line_ids" nolabel="1"
-										domain="[('order_id.state','=','sale')]">
-										<tree>
-											<field name="order_id" string="Order Number"/>
-											<field name="sale_date_order"/>
-											<field name="sale_partner_id"/>
-											<field name="product_id"/>
-											<field name="product_uom_qty"/>
-											<field name="state" invisible="1"/>
-										</tree>
-									</field>
+									<field name="remaining_qty"/>
+								    <field name="remaining_volume"/>
+								    <field name="total_qty"/>
+								    <field name="total_volume"/>
 								</group>
 							</form>
 						</field>						

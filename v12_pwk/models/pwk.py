@@ -35,17 +35,19 @@ class PwkRpbContainerLine(models.Model):
     total_volume = fields.Float(compute="_get_sale_fields", string='Total Volume', digits=dp.get_precision('FourDecimal'))
     job_order_status = fields.Char(compute="_get_sale_fields", string='Job Order Status')
     total_qty = fields.Float(string='Ordered Qty')
+    remaining_qty = fields.Float(string='Qty Remaining')
+    remaining_volume = fields.Float(compute="_get_container_vol", string='Vol Remaining')
     container_qty = fields.Float('Cont Pcs')
     container_vol = fields.Float(compute="_get_container_vol", string='Cont Vol')
 
-    @api.depends('container_qty')
+    @api.depends('container_qty', 'remaining_qty')
     def _get_container_vol(self):
         for res in self:
-            container_vol = 0
             if res.container_qty:
-                container_vol = res.container_qty * res.thick * res.width * res.length / 1000000000
+                res.container_vol = res.container_qty * res.thick * res.width * res.length / 1000000000
 
-            res.container_vol = container_vol
+            if res.container_qty:
+                res.remaining_volume = res.remaining_qty * res.thick * res.width * res.length / 1000000000
 
     @api.depends('sale_line_id')
     def _get_sale_fields(self):
@@ -109,15 +111,17 @@ class PwkRpbLine(models.Model):
     total_qty = fields.Float(string='Ordered Qty')
     container_qty = fields.Float('Cont Pcs')
     container_vol = fields.Float(compute="_get_container_vol", string='Cont Vol')
+    remaining_qty = fields.Float(string='Qty Remaining')
+    remaining_volume = fields.Float(compute="_get_container_vol", string='Vol Remaining')
 
-    @api.depends('container_qty')
+    @api.depends('container_qty', 'remaining_qty')
     def _get_container_vol(self):
         for res in self:
-            container_vol = 0
             if res.container_qty:
-                container_vol = res.container_qty * res.thick * res.width * res.length / 1000000000
+                res.container_vol = res.container_qty * res.thick * res.width * res.length / 1000000000
 
-            res.container_vol = container_vol
+            if res.container_qty:
+                res.remaining_volume = res.remaining_qty * res.thick * res.width * res.length / 1000000000
 
     @api.depends('sale_line_id')
     def _get_sale_fields(self):
