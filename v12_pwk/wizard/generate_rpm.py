@@ -35,8 +35,8 @@ class PwkGenerateRpmWizard(models.TransientModel):
     date_start = fields.Date('Periode')
     date_end = fields.Date('Periode')
 
-    @api.multi
-    def button_reload(self):
+    @api.onchange('date_start', 'date_end')
+    def _onchange_date(self):
         context = dict(self._context or {})
         active_id = context.get('active_id', False)
         rpb_id = self.env['pwk.rpb'].search([('id', '=', active_id)])
