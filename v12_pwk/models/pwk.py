@@ -114,13 +114,15 @@ class PwkRpbLine(models.Model):
     remaining_qty = fields.Float(compute="_get_remaining_qty", string='Qty Remaining')
     remaining_volume = fields.Float(compute="_get_container_vol", string='Vol Remaining')
 
-    @api.depends('rpm_ids.total_qty')
+    @api.depends('reference.rpm_ids.line_ids.total_qty')
     def _get_remaining_qty(self):
         for res in self:
             remaining_qty = res.container_qty
             if res.rpm_ids:
-                for rpm in res.rpm_ids:
-                    remaining_qty -= rpm.total_qty
+                for line in res.rpm_ids.line_ids:
+                    if line.sale_line_id == res.sale_line_id:
+                        remaining_qty -= rpm.total_qty
+
             res.remaining_qty = remaining_qty
 
     @api.depends('container_qty', 'remaining_qty')
