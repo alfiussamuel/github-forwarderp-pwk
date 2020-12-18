@@ -206,6 +206,15 @@ class PwkRpb(models.Model):
         vals['name'] = self.get_sequence('Rencana Produksi Bulanan', 'pwk.rpb')
         return super(PwkRpb, self).create(vals)
 
+class PwkRpmLineDetail(models.Model):    
+    _name = "pwk.rpm.line"
+
+    reference = fields.Many2one('pwk.rpm.line', string='Reference')
+    product_id = fields.Many2one('product.product', string='Product')
+    thick = fields.Float(string='Thick')
+    width = fields.Float(string='Width')
+    length = fields.Float(string='Length')
+
 class PwkRpmLine(models.Model):    
     _name = "pwk.rpm.line"
 
@@ -221,8 +230,10 @@ class PwkRpmLine(models.Model):
     grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')        
     remaining_qty = fields.Float(string='Qty Remaining')
     remaining_volume = fields.Float(compute="_get_volume", string='Vol Remaining')
-    total_qty = fields.Float(string='Ordered Qty')
+    total_qty = fields.Float(string='Qty RPM')
     total_volume = fields.Float(compute="_get_volume", string='Vol RPM', digits=dp.get_precision('FourDecimal'))
+    bom_id = fields.Many2one('mrp.bom', string='BoM')
+    detail_ids = fields.One2many('pwk.rpm.line.detail', 'reference', string='Lines')
 
     @api.depends('total_qty', 'remaining_qty')
     def _get_volume(self):
@@ -262,12 +273,27 @@ class PwkRpm(models.Model):
                         current_line.unlink()
 
                 for line in res.rpb_id.line_ids:                
-                    self.env['pwk.rpm.line'].create({
+                    rpm_line_id = self.env['pwk.rpm.line'].create({
                         'reference': res.id,
                         'sale_line_id': line.sale_line_id.id,
                         'sale_id': line.sale_line_id.order_id.id,
                         'remaining_qty': line.remaining_qty
                     })
+
+                    bom_ids = self.env['mrp.bom'].search([
+                        ('product_id', '=', line.product_id.id)
+                    ])
+
+
+                    if rpm_line_id and bom_ids:
+                        for bom_line in bom_ids[0].bom_line_ids:
+                            self.env['pwk.rpm.line.detail'].create({
+                                'reference': rpm_line_id,
+                                'product_id': bom_line.product_id.id,
+                                'thick': bom_line.product_id.tebal,
+                                'width': bom_line.product_id.lebar,
+                                'length': bom_line.product_id.panjang
+                            })
 
     @api.multi
     def button_progress(self):
