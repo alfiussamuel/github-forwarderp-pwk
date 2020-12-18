@@ -214,6 +214,7 @@ class PwkRpmLineDetail(models.Model):
     thick = fields.Float(string='Thick')
     width = fields.Float(string='Width')
     length = fields.Float(string='Length')
+    quantity = fields.Float(string='Quantity')
 
 class PwkRpmLine(models.Model):    
     _name = "pwk.rpm.line"
@@ -280,16 +281,9 @@ class PwkRpm(models.Model):
                         'remaining_qty': line.remaining_qty
                     })
 
-                    simple_bom_ids = self.env['mrp.bom'].search([])
-
-                    print(simple_bom_ids[0].product_tmpl_id)
-                    print(simple_bom_ids[0].product_tmpl_id.product_variant_id)
-
                     bom_ids = self.env['mrp.bom'].search([
-                        ('product_tmpl_id.product_variant_id', '=', line.product_id.id)
+                        ('product_tmpl_id.name', '=', line.product_id.name)
                     ])
-
-                    print(bom_ids)
 
                     if rpm_line_id and bom_ids:
                         for bom_line in bom_ids[0].bom_line_ids:
