@@ -19,8 +19,7 @@
 						<notebook>
 							<page string="Detail Product">
 								<group>
-									<button name="button_reload" string="Reload" 
-										type="object" class="btn-primary"/>
+									<button name="button_reload" string="Reload" type="object"/>
 								</group>
 								<group>
 									<field name="line_ids" nolabel="1">
