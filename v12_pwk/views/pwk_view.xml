@@ -34,9 +34,7 @@
                             <div>
                                 <field name="date_start" class="oe_inline" required="1"/> - 
                                 <field name="date_end" class="oe_inline" required="1"/>
-                            </div>
-                            <field name="target" class="oe_inline"/>
-                            <field name="actual"/>
+                            </div>                            
                         </group>
                         <group>
                             <notebook>
