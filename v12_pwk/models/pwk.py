@@ -281,7 +281,7 @@ class PwkRpm(models.Model):
                     })
 
                     bom_ids = self.env['mrp.bom'].search([
-                        ('product_id.name', '=', line.product_id.name)
+                        ('product_id.product_variant_id', '=', line.product_id.id)
                     ])
 
                     print(bom_ids)
