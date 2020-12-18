@@ -280,8 +280,13 @@ class PwkRpm(models.Model):
                         'remaining_qty': line.remaining_qty
                     })
 
+                    simple_bom_ids = self.env['mrp.bom'].search([])
+
+                    print(simple_bom_ids[0].product_tmpl_id)
+                    print(simple_bom_ids[0].product_tmpl_id.product_variant_id)
+
                     bom_ids = self.env['mrp.bom'].search([
-                        ('product_id.product_variant_id', '=', line.product_id.id)
+                        ('product_tmpl_id.product_variant_id', '=', line.product_id.id)
                     ])
 
                     print(bom_ids)
