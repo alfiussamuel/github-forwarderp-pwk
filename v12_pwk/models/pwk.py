@@ -126,7 +126,7 @@ class PwkRpbLine(models.Model):
             if rpm_line_ids:
                 for line in rpm_line_ids:                            
                     if line.sale_line_id == res.sale_line_id:
-                        remaining_qty -= rpm.total_qty
+                        remaining_qty -= line.total_qty
                         print(remaining_qty)
 
             res.remaining_qty = remaining_qty
