@@ -48,6 +48,7 @@ class PwkGenerateRpmWizard(models.TransientModel):
         if rpb_id.line_ids:
             for line in rpb_id.line_ids:
                 self.env['pwk.generate.rpm.wizard.line'].create({
+                    'reference': self.id,
                     'sale_line_id': line.sale_line_id.id,
                     'product_id': line.product_id.id,
                     'thick': line.thick,
