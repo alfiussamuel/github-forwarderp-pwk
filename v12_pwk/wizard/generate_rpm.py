@@ -35,8 +35,8 @@ class PwkGenerateRpmWizard(models.TransientModel):
     date_start = fields.Date('Periode')
     date_end = fields.Date('Periode')
 
-    @api.onchange('date_start', 'date_end')
-    def _onchange_date(self):
+    @api.multi
+    def button_reload(self):
         context = dict(self._context or {})
         active_id = context.get('active_id', False)
         rpb_id = self.env['pwk.rpb'].search([('id', '=', active_id)])
@@ -58,6 +58,8 @@ class PwkGenerateRpmWizard(models.TransientModel):
                     'remaining_qty': line.remaining_qty,
                     'remaining_volume': line.remaining_volume,
                 })
+
+        return {"type": "ir.actions.do_nothing"}
 
 
     @api.multi
