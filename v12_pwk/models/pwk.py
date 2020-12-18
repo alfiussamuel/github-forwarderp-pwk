@@ -207,7 +207,7 @@ class PwkRpb(models.Model):
         return super(PwkRpb, self).create(vals)
 
 class PwkRpmLineDetail(models.Model):    
-    _name = "pwk.rpm.line"
+    _name = "pwk.rpm.line.detail"
 
     reference = fields.Many2one('pwk.rpm.line', string='Reference')
     product_id = fields.Many2one('product.product', string='Product')
