@@ -37,6 +37,7 @@ class PwkGenerateRpmWizard(models.TransientModel):
 
     @api.multi
     def button_reload(self):
+        context = dict(self._context or {})
         active_id = context.get('active_id', False)
         rpb_id = self.env['pwk.rpb'].search([('id', '=', active_id)])
         
