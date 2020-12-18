@@ -55,7 +55,7 @@
                                                 <field name="glue_id" readonly="1" invisible="1"/>
                                                 <field name="grade_id" readonly="1" invisible="1"/>
                                                 <field name="total_qty"/>
-                                                <field name="total_vol"/>
+                                                <field name="total_volume"/>
                                                 <field name="remaining_qty" readonly="1"/>
                                                 <field name="remaining_volume" readonly="1"/>          
                                             </tree>
@@ -75,7 +75,7 @@
                                                         <field name="glue_id"/>
                                                         <field name="grade_id"/>
                                                         <field name="total_qty"/>
-                                                        <field name="total_vol"/>
+                                                        <field name="total_volume"/>
                                                         <field name="remaining_qty" readonly="1"/>
                                                         <field name="remaining_volume" readonly="1"/>
                                                     </group>
