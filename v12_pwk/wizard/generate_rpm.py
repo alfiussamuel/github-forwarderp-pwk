@@ -7,26 +7,6 @@ from odoo.exceptions import UserError
 from odoo import models, fields, api
 import odoo.addons.decimal_precision as dp
 
-class PwkGenerateRpmWizardLine(models.TransientModel):
-    _name = 'pwk.generate.rpm.wizard.line'
-
-    reference = fields.Many2one('pwk.generate.rpm.wizard', 'Reference')
-    sale_line_id = fields.Many2one('sale.order.line', 'No. Order Line')
-    product_id = fields.Many2one('product.product', string='Product')
-    thick = fields.Float(string='Thick')
-    width = fields.Float(string='Width')
-    length = fields.Float(string='Length')
-    glue_id = fields.Many2one('pwk.glue', string='Glue')
-    grade_id = fields.Many2one('pwk.grade', string='Grade')                
-    remaining_qty = fields.Float(string='Qty Remaining')
-    remaining_volume = fields.Float(string='Vol Remaining')
-    total_qty = fields.Float(string='Qty RPM')
-    total_volume = fields.Float(compute="_get_vol", string='Vol RPM', digits=dp.get_precision('FourDecimal'))
-
-    @api.depends('total_qty')
-    def _get_volume(self):
-        for res in self:
-            res.total_volume = res.total_qty * res.thick * res.width * res.length / 1000000000
 
 class PwkGenerateRpmWizard(models.TransientModel):
     _name = 'pwk.generate.rpm.wizard'
@@ -87,3 +67,26 @@ class PwkGenerateRpmWizard(models.TransientModel):
                     'sale_id': line.sale_line_id.order_id.id,
                     'total_qty': line.total_qty
                 })
+
+
+class PwkGenerateRpmWizardLine(models.TransientModel):
+    _name = 'pwk.generate.rpm.wizard.line'
+
+    reference = fields.Many2one('pwk.generate.rpm.wizard', 'Reference')
+    sale_line_id = fields.Many2one('sale.order.line', 'No. Order Line')
+    product_id = fields.Many2one('product.product', string='Product')
+    thick = fields.Float(string='Thick')
+    width = fields.Float(string='Width')
+    length = fields.Float(string='Length')
+    glue_id = fields.Many2one('pwk.glue', string='Glue')
+    grade_id = fields.Many2one('pwk.grade', string='Grade')                
+    remaining_qty = fields.Float(string='Qty Remaining')
+    remaining_volume = fields.Float(string='Vol Remaining')
+    total_qty = fields.Float(string='Qty RPM')
+    total_volume = fields.Float(compute="_get_vol", string='Vol RPM', digits=dp.get_precision('FourDecimal'))
+
+    @api.depends('total_qty')
+    def _get_volume(self):
+        for res in self:
+            res.total_volume = res.total_qty * res.thick * res.width * res.length / 1000000000
+            
