@@ -284,11 +284,12 @@ class PwkRpm(models.Model):
                         ('product_id', '=', line.product_id.id)
                     ])
 
+                    print(bom_ids)
 
                     if rpm_line_id and bom_ids:
                         for bom_line in bom_ids[0].bom_line_ids:
                             self.env['pwk.rpm.line.detail'].create({
-                                'reference': rpm_line_id,
+                                'reference': rpm_line_id.id,
                                 'product_id': bom_line.product_id.id,
                                 'thick': bom_line.product_id.tebal,
                                 'width': bom_line.product_id.lebar,
