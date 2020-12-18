@@ -119,7 +119,7 @@ class PwkRpbLine(models.Model):
         for res in self:
             remaining_qty = res.container_qty
             rpm_line_ids = self.env['pwk.rpm.line'].search([
-                ('reference.rpb_id', '=', res.id)
+                ('reference.rpb_id', '=', res.reference.id)
             ])
 
             print(rpm_line_ids)
