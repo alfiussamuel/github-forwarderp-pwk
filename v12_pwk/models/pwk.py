@@ -122,10 +122,12 @@ class PwkRpbLine(models.Model):
                 ('reference.rpb_id', '=', res.id)
             ])
 
+            print(rpm_line_ids)
             if rpm_line_ids:
                 for line in rpm_line_ids:                            
                     if line.sale_line_id == res.sale_line_id:
                         remaining_qty -= rpm.total_qty
+                        print(remaining_qty)
 
             res.remaining_qty = remaining_qty
 
@@ -230,7 +232,7 @@ class PwkRpmLine(models.Model):
     glue_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.glue', string='Glue')
     grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')        
     remaining_qty = fields.Float(string='Qty Remaining')
-    remaining_volume = fields.Float(compute="_get_volume", string='Vol Remaining')
+    remaining_volume = fields.Float(compute="_get_volume", string='Vol Remaining', digits=dp.get_precision('FourDecimal'))
     total_qty = fields.Float(string='Qty RPM')
     total_volume = fields.Float(compute="_get_volume", string='Vol RPM', digits=dp.get_precision('FourDecimal'))
     bom_id = fields.Many2one('mrp.bom', string='BoM')
