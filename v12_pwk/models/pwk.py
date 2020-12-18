@@ -257,6 +257,10 @@ class PwkRpm(models.Model):
     def button_reload(self):              
         for res in self:
             if res.rpb_id:
+                if res.line_ids:
+                    for current_line in res.line_ids:
+                        current_line.unlink()
+
                 for line in res.rpb_id.line_ids:                
                     self.env['pwk.rpm.line'].create({
                         'reference': res.id,
