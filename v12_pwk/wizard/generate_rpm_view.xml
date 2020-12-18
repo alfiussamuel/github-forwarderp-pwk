@@ -58,12 +58,12 @@
 			</field>
 		</record>
 
-		<record id="action_pwk_generate_rpb" model="ir.actions.act_window">
-            <field name="name">Select Order RPB</field>
-            <field name="res_model">pwk.generate.rpb.wizard</field>
+		<record id="action_pwk_generate_rpm" model="ir.actions.act_window">
+            <field name="name">Create RPM</field>
+            <field name="res_model">pwk.generate.rpm.wizard</field>
             <field name="view_type">form</field>
            	<field name="view_mode">tree,form</field>
-           	<field name="view_id" ref="pwk_generate_rpb_wizard_form"/>
+           	<field name="view_id" ref="pwk_generate_rpm_wizard_form"/>
            	<field name="target">new</field>
         </record>
 
