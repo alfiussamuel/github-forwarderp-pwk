@@ -1,15 +1,7 @@
 <odoo>
     <data>                              
 
-        <!-- Rencana Produksi Mingguan-->
-        <!-- <report
-            id="report_rpm"
-            model="pwk.rpm"
-            string="Rencana Produksi Mingguan"
-            report_type="xlsx"
-            name="v12_pwk.rpm_report_xls.xlsx"
-            file="v12_pwk.rpm_report_xls.xlsx"/>
-
+        <!-- Rencana Produksi Mingguan-->        
         <record id="pwk_rpm_tree" model="ir.ui.view">
             <field name="name">Rencana Produksi Mingguan</field>
             <field name="model">pwk.rpm</field>
@@ -18,9 +10,7 @@
                     <field name="name"/>
                     <field name="rpb_id"/>
                     <field name="date_start"/>
-                    <field name="date_end"/>
-                    <field name="target"/>
-                    <field name="actual"/>
+                    <field name="date_end"/>                    
                     <field name="state"/>
                 </tree>
             </field>
@@ -50,7 +40,9 @@
                         </group>
                         <group>
                             <notebook>
-                                <page string="List Order">
+                                <page string="Detail RPM">
+                                    <button name="button_reload" string="Reload" 
+                                        type="object" class="oe_highlight"/>
                                     <group>
                                         <field name="line_ids" nolabel="1">
                                             <tree editable="top" create="false">
@@ -62,11 +54,10 @@
                                                 <field name="length" readonly="1" invisible="1"/>
                                                 <field name="glue_id" readonly="1" invisible="1"/>
                                                 <field name="grade_id" readonly="1" invisible="1"/>
-                                                <field name="total_qty" readonly="1"/>
-                                                <field name="container_qty" required="1"/>
-                                                <field name="container_vol"/>
-                                                <field name="container_id" readonly="1"/>
-                                                <field name="job_order_status" invisible="1"/>
+                                                <field name="total_qty"/>
+                                                <field name="total_vol"/>
+                                                <field name="remaining_qty" readonly="1"/>
+                                                <field name="remaining_volume" readonly="1"/>          
                                             </tree>
                                             <form>
                                                 <group>
@@ -84,13 +75,11 @@
                                                         <field name="glue_id"/>
                                                         <field name="grade_id"/>
                                                         <field name="total_qty"/>
-                                                        <field name="container_qty"/>
-                                                        <field name="container_vol"/>
+                                                        <field name="total_vol"/>
+                                                        <field name="remaining_qty" readonly="1"/>
+                                                        <field name="remaining_volume" readonly="1"/>
                                                     </group>
-                                                </group>
-                                                <group>
-                                                    <field name="job_order_status"/>
-                                                </group>
+                                                </group>                                                
                                             </form>
                                         </field>
                                     </group>
@@ -100,7 +89,7 @@
                     </sheet>
                 </form>
             </field>
-        </record> -->
+        </record>
 
         <!-- Rencana Produksi Bulanan-->
         <report

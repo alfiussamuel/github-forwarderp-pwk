@@ -114,12 +114,16 @@ class PwkRpbLine(models.Model):
     remaining_qty = fields.Float(compute="_get_remaining_qty", string='Qty Remaining')
     remaining_volume = fields.Float(compute="_get_container_vol", string='Vol Remaining')
 
-    @api.depends('reference.rpm_ids.line_ids.total_qty')
+    @api.multi
     def _get_remaining_qty(self):
         for res in self:
             remaining_qty = res.container_qty
-            if res.reference.rpm_ids:
-                for line in res.reference.rpm_ids.line_ids:
+            rpm_line_ids = self.env['pwk.rpm.line'].search([
+                ('reference.rpb_id', '=', res.id)
+            ])
+
+            if rpm_line_ids:
+                for line in rpm_line_ids:                            
                     if line.sale_line_id == res.sale_line_id:
                         remaining_qty -= rpm.total_qty
 
@@ -215,13 +219,16 @@ class PwkRpmLine(models.Model):
     length = fields.Float(compute="_get_sale_fields", string='Length')
     glue_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.glue', string='Glue')
     grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')        
-    total_qty = fields.Float(string='Ordered Qty')    
-    total_volume = fields.Float(compute="_get_vol", string='Vol RPM', digits=dp.get_precision('FourDecimal'))
+    remaining_qty = fields.Float(string='Qty Remaining')
+    remaining_volume = fields.Float(compute="_get_volume", string='Vol Remaining')
+    total_qty = fields.Float(string='Ordered Qty')
+    total_volume = fields.Float(compute="_get_volume", string='Vol RPM', digits=dp.get_precision('FourDecimal'))
 
-    @api.depends('total_qty')
+    @api.depends('total_qty', 'remaining_qty')
     def _get_volume(self):
         for res in self:
             res.total_volume = res.total_qty * res.thick * res.width * res.length / 1000000000
+            res.remaining_volume = res.remaining_qty * res.thick * res.width * res.length / 1000000000
 
     @api.depends('sale_line_id')
     def _get_sale_fields(self):
@@ -245,6 +252,18 @@ class PwkRpm(models.Model):
     rpb_id = fields.Many2one('pwk.rpb', string='RPB')
     state = fields.Selection([('Draft','Draft'),('Progress','Progress'),('Done','Done')], string="Status", default="Draft")
     line_ids = fields.One2many('pwk.rpm.line', 'reference', string='Lines')    
+
+    @api.multi
+    def button_reload(self):              
+        for res in self:
+            if res.rpb_id:
+                for line in res.rpb_id.line_ids:                
+                    self.env['pwk.rpm.line'].create({
+                        'reference': res.id,
+                        'sale_line_id': line.sale_line_id.id,
+                        'sale_id': line.sale_line_id.order_id.id,
+                        'remaining_qty': line.remaining_qty
+                    })
 
     @api.multi
     def button_progress(self):
