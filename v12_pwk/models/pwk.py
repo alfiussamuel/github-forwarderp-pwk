@@ -13,6 +13,12 @@ import math
 import re    
 from num2words import num2words
 
+class SaleOrderLine(models.Model):    
+    _inherit = "sale.order.line"
+
+    sale_date_order = fields.Date(related='order_id.date_order', string='Date Order')
+    sale_partner_id = fields.Many2one(related='order_id.partner_id', comodel_name='res.partner', string='Customer')
+    
 class PwkPurchaseRequestLine(models.Model):    
     _name = "pwk.purchase.request.line"
 
@@ -81,12 +87,6 @@ class PwkPurchaseRequest(models.Model):
     def create(self, vals):
         vals['name'] = self.get_sequence('Purchase Request', 'pwk.purchase.request')
         return super(PwkPurchaseRequest, self).create(vals)    
-
-class SaleOrderLine(models.Model):    
-    _inherit = "sale.order.line"
-
-    sale_date_order = fields.Date(related='order_id.date_order', string='Date Order')
-    sale_partner_id = fields.Many2one(related='order_id.partner_id', comodel_name='res.partner', string='Customer')
 
 class PwkRpbContainerLine(models.Model):    
     _name = "pwk.rpb.container.line"
