@@ -456,6 +456,7 @@
                                                 'required': [('display_type', '=', False)],
                                             }"/>
                                     </div>
+                                    <field name="outstanding_order_pcs"/>
                                     <label for="qty_delivered" string="Delivered Quantity" attrs="{'invisible': [('parent.state', 'not in', ['sale', 'done'])]}"/>
                                     <div attrs="{'invisible': [('parent.state', 'not in', ['sale', 'done'])]}">
                                         <field name="qty_delivered" attrs="{'readonly': [('qty_delivered_method', '!=', 'manual')]}"/>

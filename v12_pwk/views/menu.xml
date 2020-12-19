@@ -217,6 +217,12 @@
 			<field name="view_mode">tree,form</field>			
 		</record>
 
+		<record id="action_pwk_jenis_core" model="ir.actions.act_window">
+			<field name="name">Jenis Core</field>
+			<field name="res_model">pwk.jenis.core</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
 		<record id="action_pwk_grade" model="ir.actions.act_window">
 			<field name="name">Grade</field>
 			<field name="res_model">pwk.grade</field>
@@ -467,6 +473,12 @@
         	sequence="1"
         	name="Products"
         	parent="account.menu_finance_configuration"/>
+
+	        <menuitem id="menu_account_product_configuration_jenis_core"
+	        	sequence="1"
+	        	name="Jenis Core"
+	        	action="action_pwk_jenis_core"
+	        	parent="menu_account_product_configuration"/>
 
 	        <menuitem id="menu_account_product_configuration_jenis_kayu"
 	        	sequence="1"

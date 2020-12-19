@@ -55,8 +55,8 @@ class PwkGenerateRpbWizard(models.TransientModel):
                             'sale_id': line.order_id.id,
                             'sale_line_id': line.id,
                             'total_qty': line.product_uom_qty,
-                            'container_qty': line.product_uom_qty                            
-                            })                        
+                            'container_qty': line.product_uom_qty
+                            })
 
                         self.env['pwk.rpb.line'].create({
                             'reference': rpb_id.id,
@@ -65,5 +65,6 @@ class PwkGenerateRpbWizard(models.TransientModel):
                             'sale_id': line.order_id.id,
                             'sale_line_id': line.id,
                             'total_qty': line.product_uom_qty,
-                            'container_qty': line.product_uom_qty                            
+                            'container_qty': line.product_uom_qty,
+                            'outstanding_order_pcs': line.outstanding_order_pcs
                             })

@@ -20,7 +20,7 @@ class PwkPemakaianVeneerGsLineDetail(models.Model):
     bb_tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
     bb_lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
     bb_panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
-    bb_jenis_kayu = fields.Float(compute="_get_product_attribute", comodel_name="pwk.jenis.kayu", string='Jenis Kayu')
+    bb_jenis_kayu = fields.Many2one(compute="_get_product_attribute", comodel_name="pwk.jenis.kayu", string='Jenis Kayu')    
     bb_grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
     bb_pcs = fields.Float('PCS')
     bb_vol = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal'))
@@ -45,16 +45,16 @@ class PwkPemakaianVeneerGsLine(models.Model):
 
     reference = fields.Many2one('pwk.pemakaian.veneer.gs', 'Reference')
     detail_ids = fields.One2many('pwk.pemakaian.veneer.gs.line.detail', 'reference', string="Detail", track_visibility="always")
-#     line_ids = fields.One2many('pwk.pemakaian.veneer.gs.line', 'reference', string="Pemakaian Veneer GS", track_visibility="always")
     bj_product_id = fields.Many2one('product.product', 'Ply/BB')
     bj_tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
     bj_lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
     bj_panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
-    bj_jenis_kayu = fields.Float(compute="_get_product_attribute", comodel_name="pwk.jenis.kayu",  string='Jenis Kayu')
+    bj_jenis_kayu = fields.Many2one(compute="_get_product_attribute", comodel_name="pwk.jenis.kayu",  string='Jenis Kayu')
+    bj_jenis_core = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.jenis.core', string='Jenis Core')
     bj_grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
     bj_pcs = fields.Float('PCS')
     bj_vol = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal'))
-    keterangan = fields.Selection([('P1','P1'), ('P2','P2'), ('LU P2','LU P2')], default='P1', string='Keterangan')
+    keterangan = fields.Selection([('P1','P1'), ('P2','P2'), ('LU P1','LU P1'), ('LU P2','LU P2'), ('1x Proses','1x Proses')], default='P1', string='Keterangan')
     
     @api.depends('bj_product_id')
     def _get_product_attribute(self):
@@ -65,6 +65,7 @@ class PwkPemakaianVeneerGsLine(models.Model):
                 res.bj_panjang = res.bj_product_id.panjang
                 res.bj_grade = res.bj_product_id.grade.id
                 res.bj_jenis_kayu = res.bj_product_id.jenis_kayu.id
+                res.bj_jenis_core = res.bj_product_id.jenis_core.id
             
     @api.depends('bj_pcs')
     def _get_volume(self):

@@ -39,6 +39,7 @@
                                         <tree>
                                             <field name="bj_product_id"/>
                                             <field name="bj_jenis_kayu"/>
+                                            <field name="bj_jenis_core"/>
                                             <field name="bj_grade"/>
                                             <field name="bj_tebal"/>
                                             <field name="bj_lebar"/>
@@ -49,16 +50,23 @@
                                         </tree>
                                         <form>
                                             <group>
-                                                <group string="Plywood / Blockboard">
+                                                <field name="bj_product_id"/>
+                                            </group>
+                                            <group>
+                                                <group>
                                                     <field name="bj_product_id"/>
-                                                    <field name="bj_jenis_kayu"/>
+                                                    <field name="bj_jenis_core"/>
+                                                    <field name="bj_jenis_kayu"/>      
+                                                    <field name="bj_pcs"/>
+                                                    <field name="bj_vol"/>
+                                                </group>
+                                                <group>
                                                     <field name="bj_grade"/>
                                                     <field name="bj_tebal"/>
                                                     <field name="bj_lebar"/>
                                                     <field name="bj_panjang"/>
-                                                    <field name="bj_pcs"/>
-                                                    <field name="bj_vol"/>
-                                                </group>                                                
+                                                    <field name="keterangan"/>
+                                                </group>                                        
                                             </group>       
                                             <group>
                                                 <notebook>
@@ -69,11 +77,13 @@
                                                                     <field name="bb_product_id"/>
                                                                     <field name="bb_tebal"/>
                                                                     <field name="bb_lebar"/>
-                                                                    <field name="bb_panjang"/>                                            
+                                                                    <field name="bb_panjang"/>
                                                                     <field name="bb_grade"/>
                                                                     <field name="bb_jenis_kayu"/>
-                                                                    <field name="bb_pcs" sum="Total"/>
-                                                                    <field name="bb_vol" sum="Total"/>
+                                                                    <field name="bb_pcs" 
+                                                                        sum="Total"/>
+                                                                    <field name="bb_vol" 
+                                                                        sum="Total"/>
                                                                 </tree>
                                                             </field>
                                                         </group>

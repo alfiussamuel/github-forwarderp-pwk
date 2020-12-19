@@ -109,13 +109,13 @@ class PwkMutasiAssemblingFinishingGs1(models.Model):
 
             if res.product_id:
                 if res.reference.gs1_selection == "Veneer GS":
-                    source_ids = self.env['pwk.mutasi.veneer.gs.line'].search([
-                        ('reference.date','=',res.reference.date - timedelta(1)),
-                        ('product_id','=',res.product_id.id)
+                    source_ids = self.env['pwk.pemakaian.veneer.gs.line'].search([
+                        ('reference.date','=',res.reference.date),
+                        ('bj_product_id','=',res.product_id.id)
                         ])
 
                     if source_ids:
-                        gs_stock_masuk_pcs = source_ids[0].stock_keluar_gs_pcs
+                        gs_stock_masuk_pcs = source_ids[0].bj_pcs
                 
                 re_stock_masuk_pcs = res.gs_stock_keluar_pcs
 
@@ -149,6 +149,461 @@ class PwkMutasiAssemblingFinishingGs1(models.Model):
         for res in self:
             res.stock_akhir_pcs = res.stock_awal_pcs + res.gs_stock_masuk_pcs + res.re_stock_masuk_pcs - res.hot_stock_keluar_pcs - res.gs_stock_keluar_pcs
 
+class PwkMutasiAssemblingFinishingGs2(models.Model):
+    _name = "pwk.mutasi.assembling.finishing.gs2"
+
+    reference = fields.Many2one('pwk.mutasi.assembling.finishing', 'Reference')
+    product_id = fields.Many2one('product.product', 'Product')
+    tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
+    lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
+    panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
+    grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
+    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
+    stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
+    
+    gs_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk GS (Pcs)')
+    gs_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk GS (M3)', digits=dp.get_precision('FourDecimal'))
+    gs_acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk GS')
+    gs_acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk GS', digits=dp.get_precision('FourDecimal'))
+
+    re_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk Re-GS (Pcs)')
+    re_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Re-GS (M3)', digits=dp.get_precision('FourDecimal'))
+    re_acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Re-GS')
+    re_acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Re-GS', digits=dp.get_precision('FourDecimal'))
+    
+    hot_stock_keluar_pcs = fields.Float('Stok Keluar Hot (Pcs)')
+    hot_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Hot (M3)', digits=dp.get_precision('FourDecimal'))
+    hot_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Hot')
+    hot_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Hot', digits=dp.get_precision('FourDecimal'))
+
+    sk_stock_keluar_pcs = fields.Float('Stok Keluar SK (Pcs)')
+    sk_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar SK (M3)', digits=dp.get_precision('FourDecimal'))
+    sk_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar SK')
+    sk_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar SK', digits=dp.get_precision('FourDecimal'))
+
+    gs_stock_keluar_pcs = fields.Float('Stok Keluar GS (Pcs)')
+    gs_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar GS (M3)', digits=dp.get_precision('FourDecimal'))
+    gs_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar GS')
+    gs_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar GS', digits=dp.get_precision('FourDecimal'))
+
+    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
+    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
+
+    @api.depends('product_id')
+    def _get_product_attribute(self):
+        for res in self:
+            if res.product_id:
+                res.tebal = res.product_id.tebal
+                res.lebar = res.product_id.lebar
+                res.panjang = res.product_id.panjang
+                res.grade = res.product_id.grade.id
+
+    @api.depends('stock_awal_pcs','gs_stock_masuk_pcs','re_stock_masuk_pcs','hot_stock_keluar_pcs','gs_stock_keluar_pcs','sk_stock_keluar_pcs')
+    def _get_volume(self):
+        for res in self:
+            res.stock_awal_vol = res.stock_awal_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.gs_stock_masuk_vol = res.gs_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.re_stock_masuk_vol = res.re_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.hot_stock_keluar_vol = res.hot_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.gs_stock_keluar_vol = res.gs_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.gs_acc_stock_masuk_vol = res.gs_acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.re_acc_stock_masuk_vol = res.re_acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.hot_acc_stock_keluar_vol = res.hot_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.gs_acc_stock_keluar_vol = res.gs_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.sk_acc_stock_keluar_vol = res.sk_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.stock_akhir_vol = res.stock_akhir_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+
+    @api.depends('stock_awal_pcs','gs_stock_masuk_pcs','re_stock_masuk_pcs','gs_stock_keluar_pcs','hot_stock_keluar_pcs')
+    def _get_acc(self):
+        for res in self:
+            gs_acc_stock_masuk_pcs = 0
+            re_acc_stock_masuk_pcs = 0
+            hot_acc_stock_keluar_pcs = 0
+            gs_acc_stock_keluar_pcs = 0
+            sk_acc_stock_keluar_pcs = 0
+
+            if res.product_id:
+                source_ids = self.env['pwk.mutasi.assembling.finishing.gs2'].search([
+                    ('reference.date','=',res.reference.date - timedelta(1)),
+                    ('product_id','=',res.product_id.id)
+                    ])
+
+                if not source_ids:
+                    source_ids = self.env['pwk.mutasi.assembling.finishing.gs2'].search([
+                        ('reference.date','<',res.reference.date),
+                        ('product_id','=',res.product_id.id)
+                        ])
+
+                if source_ids:
+                    gs_acc_stock_masuk_pcs = source_ids[0].gs_acc_stock_masuk_pcs
+                    re_acc_stock_masuk_pcs = source_ids[0].re_acc_stock_masuk_pcs
+                    hot_acc_stock_keluar_pcs = source_ids[0].hot_acc_stock_keluar_pcs
+                    gs_acc_stock_keluar_pcs = source_ids[0].gs_acc_stock_keluar_pcs
+                    sk_acc_stock_keluar_pcs = source_ids[0].sk_acc_stock_keluar_pcs
+
+            res.gs_acc_stock_masuk_pcs = gs_acc_stock_masuk_pcs + res.gs_stock_masuk_pcs
+            res.re_acc_stock_masuk_pcs = re_acc_stock_masuk_pcs + res.re_stock_masuk_pcs
+            res.hot_acc_stock_keluar_pcs = hot_acc_stock_keluar_pcs + res.hot_stock_keluar_pcs
+            res.gs_acc_stock_keluar_pcs = gs_acc_stock_keluar_pcs + res.gs_stock_keluar_pcs
+            res.sk_acc_stock_keluar_pcs = sk_acc_stock_keluar_pcs + res.sk_stock_keluar_pcs
+
+    @api.depends('product_id')
+    def _get_stock_masuk(self):
+        for res in self:
+            gs_stock_masuk_pcs = 0
+            re_stock_masuk_pcs = 0
+
+            if res.product_id:
+                if res.reference.gs1_selection == "Veneer GS":
+                    source_ids = self.env['pwk.pemakaian.veneer.gs.line'].search([
+                        ('reference.date','=',res.reference.date),
+                        ('bj_product_id','=',res.product_id.id)
+                        ])
+
+                    if source_ids:
+                        gs_stock_masuk_pcs = source_ids[0].bj_pcs
+                
+            res.gs_stock_masuk_pcs = gs_stock_masuk_pcs
+
+    @api.depends('product_id')
+    def _get_stock_awal(self):
+        for res in self:
+            stock_awal_pcs = 0
+
+            if res.product_id:
+                source_ids = self.env['pwk.mutasi.assembling.finishing.gs2'].search([
+                    ('reference.date','=',res.reference.date - timedelta(1)),
+                    ('product_id','=',res.product_id.id)
+                    ])
+
+                if not source_ids:
+                    source_ids = self.env['pwk.mutasi.assembling.finishing.gs2'].search([
+                        ('reference.date','<',res.reference.date),
+                        ('product_id','=',res.product_id.id)
+                        ])
+                            
+                if source_ids:
+                    stock_awal_pcs = source_ids[0].stock_akhir_pcs
+
+            res.stock_awal_pcs = stock_awal_pcs
+
+    @api.depends('stock_awal_pcs','gs_stock_masuk_pcs','re_stock_masuk_pcs','hot_stock_keluar_pcs','gs_stock_keluar_pcs','sk_stock_keluar_pcs')
+    def _get_stock_akhir(self):
+        for res in self:
+            res.stock_akhir_pcs = res.stock_awal_pcs + res.gs_stock_masuk_pcs + res.re_stock_masuk_pcs - res.hot_stock_keluar_pcs - res.gs_stock_keluar_pcs - res.sk_stock_keluar_pcs
+
+class PwkMutasiAssemblingFinishingUnsander(models.Model):
+    _name = "pwk.mutasi.assembling.finishing.unsander"
+
+    reference = fields.Many2one('pwk.mutasi.assembling.finishing', 'Reference')
+    product_id = fields.Many2one('product.product', 'Product')
+    tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
+    lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
+    panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
+    grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
+    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
+    stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
+    
+    hot_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk Hot (Pcs)')
+    hot_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Hot (M3)', digits=dp.get_precision('FourDecimal'))
+    hot_acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Hot')
+    hot_acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Hot', digits=dp.get_precision('FourDecimal'))
+
+    re_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk Re (Pcs)')
+    re_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Re (M3)', digits=dp.get_precision('FourDecimal'))
+    re_acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Re')
+    re_acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Re', digits=dp.get_precision('FourDecimal'))
+    
+    sander_stock_keluar_pcs = fields.Float('Stok Keluar Sander (Pcs)')
+    sander_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Sander (M3)', digits=dp.get_precision('FourDecimal'))
+    sander_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Sander')
+    sander_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Sander', digits=dp.get_precision('FourDecimal'))
+
+    reproses_stock_keluar_pcs = fields.Float('Stok Keluar Reproses (Pcs)')
+    reproses_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Reproses (M3)', digits=dp.get_precision('FourDecimal'))
+    reproses_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Reproses')
+    reproses_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Reproses', digits=dp.get_precision('FourDecimal'))
+
+    lain_stock_keluar_pcs = fields.Float('Stok Keluar Lain (Pcs)')
+    lain_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Lain (M3)', digits=dp.get_precision('FourDecimal'))
+    lain_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Lain')
+    lain_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Lain', digits=dp.get_precision('FourDecimal'))
+
+    re_stock_keluar_pcs = fields.Float('Stok Keluar Re (Pcs)')
+    re_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Re (M3)', digits=dp.get_precision('FourDecimal'))
+    re_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Re')
+    re_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Re', digits=dp.get_precision('FourDecimal'))    
+
+    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
+    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
+
+    @api.depends('product_id')
+    def _get_product_attribute(self):
+        for res in self:
+            if res.product_id:
+                res.tebal = res.product_id.tebal
+                res.lebar = res.product_id.lebar
+                res.panjang = res.product_id.panjang
+                res.grade = res.product_id.grade.id
+
+    @api.depends('stock_awal_pcs','hot_stock_masuk_pcs','re_stock_masuk_pcs',
+        'sander_stock_keluar_pcs','reproses_stock_keluar_pcs','lain_stock_keluar_pcs','re_stock_keluar_pcs',
+        'hot_acc_stock_masuk_pcs','re_acc_stock_masuk_pcs',
+        'sander_acc_stock_keluar_pcs','reproses_acc_stock_keluar_pcs','lain_acc_stock_keluar_pcs','re_acc_stock_keluar_pcs',
+        'stock_akhir_pcs')
+    def _get_volume(self):
+        for res in self:
+            res.stock_awal_vol = res.stock_awal_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+
+            res.hot_stock_masuk_vol = res.hot_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.re_stock_masuk_vol = res.re_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.hot_acc_stock_masuk_vol = res.hot_acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.re_acc_stock_masuk_vol = res.re_acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            
+            res.sander_stock_keluar_vol = res.sander_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.reproses_stock_keluar_vol = res.reproses_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.lain_stock_keluar_vol = res.lain_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.re_stock_keluar_vol = res.lain_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.sander_acc_stock_keluar_vol = res.sander_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.reproses_acc_stock_keluar_vol = res.reproses_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.lain_acc_stock_keluar_vol = res.lain_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.re_acc_stock_keluar_vol = res.re_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            
+            res.stock_akhir_vol = res.stock_akhir_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+
+    @api.depends('stock_awal_pcs','hot_stock_masuk_pcs','re_stock_masuk_pcs','sander_stock_keluar_pcs','reproses_stock_keluar_pcs','lain_stock_keluar_pcs','re_stock_keluar_pcs')
+    def _get_acc(self):
+        for res in self:
+            hot_acc_stock_masuk_pcs = 0
+            re_acc_stock_masuk_pcs = 0
+            sander_acc_stock_keluar_pcs = 0
+            reproses_acc_stock_keluar_pcs = 0
+            lain_acc_stock_keluar_pcs = 0
+            re_acc_stock_keluar_pcs = 0
+
+            if res.product_id:
+                source_ids = self.env['pwk.mutasi.assembling.finishing.unsander'].search([
+                    ('reference.date','=',res.reference.date - timedelta(1)),
+                    ('product_id','=',res.product_id.id)
+                    ])
+
+                if not source_ids:
+                    source_ids = self.env['pwk.mutasi.assembling.finishing.unsander'].search([
+                        ('reference.date','<',res.reference.date),
+                        ('product_id','=',res.product_id.id)
+                        ])
+
+                if source_ids:
+                    hot_acc_stock_masuk_pcs = source_ids[0].hot_acc_stock_masuk_pcs
+                    re_acc_stock_masuk_pcs = source_ids[0].re_acc_stock_masuk_pcs
+                    sander_acc_stock_keluar_pcs = source_ids[0].sanderer_acc_stock_keluar_pcs
+                    reproses_acc_stock_keluar_pcs = source_ids[0].gs_acc_stock_keluar_pcs
+                    lain_acc_stock_keluar_pcs = source_ids[0].lain_acc_stock_keluar_pcs
+                    rer_acc_stock_keluar_pcs = source_ids[0].re_acc_stock_keluar_pcs
+
+            res.hot_acc_stock_masuk_pcs = hot_acc_stock_masuk_pcs + res.hot_stock_masuk_pcs
+            res.re_acc_stock_masuk_pcs = re_acc_stock_masuk_pcs + res.re_stock_masuk_pcs
+            res.sander_acc_stock_keluar_pcs = sander_acc_stock_keluar_pcs + res.sander_stock_keluar_pcs
+            res.reproses_acc_stock_keluar_pcs = reproses_acc_stock_keluar_pcs + res.reproses_stock_keluar_pcs
+            res.lain_acc_stock_keluar_pcs = lain_acc_stock_keluar_pcs + res.lain_stock_keluar_pcs
+            res.re_acc_stock_keluar_pcs = re_acc_stock_keluar_pcs + res.re_stock_keluar_pcs
+
+    @api.depends('product_id')
+    def _get_stock_masuk(self):
+        for res in self:
+            hot_stock_masuk_pcs = 0
+
+            if res.product_id:
+                if res.reference.gs1_selection == "Veneer GS":
+                    source_ids = self.env['pwk.mutasi.assembling.finishing.gs1'].search([
+                        ('reference.date','=',res.reference.date),
+                        ('product_id','=',res.product_id.id)
+                        ])
+
+                    if source_ids:
+                        hot_stock_masuk_pcs = source_ids[0].hot_stock_keluar_pcs
+                
+            res.hot_stock_masuk_pcs = hot_stock_masuk_pcs
+
+    @api.depends('product_id')
+    def _get_stock_awal(self):
+        for res in self:
+            stock_awal_pcs = 0
+
+            if res.product_id:
+                source_ids = self.env['pwk.mutasi.assembling.finishing.unsander'].search([
+                    ('reference.date','=',res.reference.date - timedelta(1)),
+                    ('product_id','=',res.product_id.id)
+                    ])
+
+                if not source_ids:
+                    source_ids = self.env['pwk.mutasi.assembling.finishing.unsander'].search([
+                        ('reference.date','<',res.reference.date),
+                        ('product_id','=',res.product_id.id)
+                        ])
+                            
+                if source_ids:
+                    stock_awal_pcs = source_ids[0].stock_akhir_pcs
+
+            res.stock_awal_pcs = stock_awal_pcs
+
+    @api.depends('stock_awal_pcs','hot_stock_masuk_pcs','re_stock_masuk_pcs','sander_stock_keluar_pcs','reproses_stock_keluar_pcs','lain_stock_keluar_pcs','re_stock_keluar_pcs')
+    def _get_stock_akhir(self):
+        for res in self:
+            res.stock_akhir_pcs = res.stock_awal_pcs + res.hot_stock_masuk_pcs + res.re_stock_masuk_pcs - res.sander_stock_keluar_pcs - res.reproses_stock_keluar_pcs - res.lain_stock_keluar_pcs - res.re_stock_keluar_pcs
+
+class PwkMutasiAssemblingFinishingProses1(models.Model):
+    _name = "pwk.mutasi.assembling.finishing.proses1"
+
+    reference = fields.Many2one('pwk.mutasi.assembling.finishing', 'Reference')
+    product_id = fields.Many2one('product.product', 'Product')
+    tebal = fields.Float(compute="_get_product_attribute", string='Tebal')
+    lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
+    panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
+    grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
+    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
+    stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
+    
+    sander_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk Sander (Pcs)')
+    sander_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Sander (M3)', digits=dp.get_precision('FourDecimal'))
+    sander_acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Sander')
+    sander_acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Sander', digits=dp.get_precision('FourDecimal'))
+
+    re_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Re (M3)', digits=dp.get_precision('FourDecimal'))
+    re_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk Re (Pcs)')
+    re_acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Re')
+    re_acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Re', digits=dp.get_precision('FourDecimal'))
+    
+    sander_stock_keluar_pcs = fields.Float('Stok Keluar Sander (Pcs)')
+    sander_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Sander (M3)', digits=dp.get_precision('FourDecimal'))
+    sander_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Sander')
+    sander_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Sander', digits=dp.get_precision('FourDecimal'))
+    
+    lain_stock_keluar_pcs = fields.Float('Stok Keluar Lain (Pcs)')
+    lain_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Lain (M3)', digits=dp.get_precision('FourDecimal'))
+    lain_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Lain')
+    lain_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Lain', digits=dp.get_precision('FourDecimal'))
+
+    re_stock_keluar_pcs = fields.Float('Stok Keluar Re (Pcs)')
+    re_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Re (M3)', digits=dp.get_precision('FourDecimal'))
+    re_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Re')
+    re_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Re', digits=dp.get_precision('FourDecimal'))    
+
+    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
+    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
+
+    @api.depends('product_id')
+    def _get_product_attribute(self):
+        for res in self:
+            if res.product_id:
+                res.tebal = res.product_id.tebal
+                res.lebar = res.product_id.lebar
+                res.panjang = res.product_id.panjang
+                res.grade = res.product_id.grade.id
+
+    @api.depends('stock_awal_pcs',
+        'sander_stock_masuk_pcs','re_stock_masuk_pcs',
+        'sander_stock_keluar_pcs','lain_stock_keluar_pcs','re_stock_keluar_pcs',
+        'sander_acc_stock_masuk_pcs','re_acc_stock_masuk_pcs',
+        'sander_acc_stock_keluar_pcs','lain_acc_stock_keluar_pcs','re_acc_stock_keluar_pcs',
+        'stock_akhir_pcs')
+    def _get_volume(self):
+        for res in self:
+            res.stock_awal_vol = res.stock_awal_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+
+            res.sander_stock_masuk_vol = res.sander_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.re_stock_masuk_vol = res.re_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.sander_acc_stock_masuk_vol = res.sander_acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.re_acc_stock_masuk_vol = res.re_acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            
+            res.sander_stock_keluar_vol = res.sander_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000            
+            res.lain_stock_keluar_vol = res.lain_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.re_stock_keluar_vol = res.lain_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.sander_acc_stock_keluar_vol = res.sander_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000            
+            res.lain_acc_stock_keluar_vol = res.lain_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.re_acc_stock_keluar_vol = res.re_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            
+            res.stock_akhir_vol = res.stock_akhir_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+
+    @api.depends('stock_awal_pcs','sander_stock_masuk_pcs','re_stock_masuk_pcs','sander_stock_keluar_pcs','lain_stock_keluar_pcs','re_stock_keluar_pcs')
+    def _get_acc(self):
+        for res in self:
+            sander_acc_stock_masuk_pcs = 0
+            re_acc_stock_masuk_pcs = 0
+            sander_acc_stock_keluar_pcs = 0
+            lain_acc_stock_keluar_pcs = 0
+            re_acc_stock_keluar_pcs = 0
+
+            if res.product_id:
+                source_ids = self.env['pwk.mutasi.assembling.finishing.proses1'].search([
+                    ('reference.date','=',res.reference.date - timedelta(1)),
+                    ('product_id','=',res.product_id.id)
+                    ])
+
+                if not source_ids:
+                    source_ids = self.env['pwk.mutasi.assembling.finishing.proses1'].search([
+                        ('reference.date','<',res.reference.date),
+                        ('product_id','=',res.product_id.id)
+                        ])
+
+                if source_ids:
+                    sander_acc_stock_masuk_pcs = source_ids[0].sander_acc_stock_masuk_pcs
+                    re_acc_stock_masuk_pcs = source_ids[0].re_acc_stock_masuk_pcs
+                    sander_acc_stock_keluar_pcs = source_ids[0].sanderer_acc_stock_keluar_pcs
+                    lain_acc_stock_keluar_pcs = source_ids[0].lain_acc_stock_keluar_pcs
+                    rer_acc_stock_keluar_pcs = source_ids[0].re_acc_stock_keluar_pcs
+
+            res.sander_acc_stock_masuk_pcs = sander_acc_stock_masuk_pcs + res.sander_stock_masuk_pcs
+            res.re_acc_stock_masuk_pcs = re_acc_stock_masuk_pcs + res.re_stock_masuk_pcs
+            res.sander_acc_stock_keluar_pcs = sander_acc_stock_keluar_pcs + res.sander_stock_keluar_pcs
+            res.lain_acc_stock_keluar_pcs = lain_acc_stock_keluar_pcs + res.lain_stock_keluar_pcs
+            res.re_acc_stock_keluar_pcs = re_acc_stock_keluar_pcs + res.re_stock_keluar_pcs
+
+    @api.depends('product_id')
+    def _get_stock_masuk(self):
+        for res in self:
+            sander_stock_masuk_pcs = 0
+
+            if res.product_id:
+                if res.reference.gs1_selection == "Veneer GS":
+                    source_ids = self.env['pwk.mutasi.assembling.finishing.unsander'].search([
+                        ('reference.date','=',res.reference.date),
+                        ('product_id','=',res.product_id.id)
+                        ])
+
+                    if source_ids:
+                        sander_stock_masuk_pcs = source_ids[0].reproses_stock_keluar_pcs
+                
+            res.sander_stock_masuk_pcs = sander_stock_masuk_pcs
+            res.re_stock_masuk_pcs = res.re_stock_keluar_pcs
+
+    @api.depends('product_id')
+    def _get_stock_awal(self):
+        for res in self:
+            stock_awal_pcs = 0
+
+            if res.product_id:
+                source_ids = self.env['pwk.mutasi.assembling.finishing.proses1'].search([
+                    ('reference.date','=',res.reference.date - timedelta(1)),
+                    ('product_id','=',res.product_id.id)
+                    ])
+
+                if not source_ids:
+                    source_ids = self.env['pwk.mutasi.assembling.finishing.proses1'].search([
+                        ('reference.date','<',res.reference.date),
+                        ('product_id','=',res.product_id.id)
+                        ])
+                            
+                if source_ids:
+                    stock_awal_pcs = source_ids[0].stock_akhir_pcs
+
+            res.stock_awal_pcs = stock_awal_pcs
+
+    @api.depends('stock_awal_pcs','sander_stock_masuk_pcs','re_stock_masuk_pcs','sander_stock_keluar_pcs','lain_stock_keluar_pcs','re_stock_keluar_pcs')
+    def _get_stock_akhir(self):
+        for res in self:
+            res.stock_akhir_pcs = res.stock_awal_pcs + res.sander_stock_masuk_pcs + res.re_stock_masuk_pcs - res.sander_stock_keluar_pcs - res.lain_stock_keluar_pcs - res.re_stock_keluar_pcs
+
 class PwkMutasiAssemblingFinishing(models.Model):    
     _name = "pwk.mutasi.assembling.finishing"
     _inherit = ["mail.thread", "mail.activity.mixin"]
@@ -158,6 +613,9 @@ class PwkMutasiAssemblingFinishing(models.Model):
     user_id = fields.Many2one('res.users', string="Dibuat Oleh", default=lambda self: self.env.user, track_visibility="always")
     state = fields.Selection([('Draft','Draft'),('Approved','Approved')], string="Status", default="Draft", track_visibility="always")
     gs1_ids = fields.One2many('pwk.mutasi.assembling.finishing.gs1', 'reference', string="GS 1", track_visibility="always")
+    gs2_ids = fields.One2many('pwk.mutasi.assembling.finishing.gs2', 'reference', string="GS 2", track_visibility="always")
+    unsander_ids = fields.One2many('pwk.mutasi.assembling.finishing.unsander', 'reference', string="Unsander Kalibrasi", track_visibility="always")
+    proses1_ids = fields.One2many('pwk.mutasi.assembling.finishing.proses1', 'reference', string="Proses Ulang 1", track_visibility="always")
     gs1_selection = fields.Selection([('Veneer GS','Veneer GS'),('Proses Ulang 2','Proses Ulang 2'),('Semua Proses','Semua Proses')], string="Proses Asal", default="Veneer GS", track_visibility="always")
 
     def get_sequence(self, name=False, obj=False, context=None):
@@ -189,16 +647,101 @@ class PwkMutasiAssemblingFinishing(models.Model):
                     
             source_ids = self.env['pwk.pemakaian.veneer.gs.line'].search([
                 ('reference.date','=',res.date),
+                ('keterangan','=','P1'),
                 ])
 
             if not source_ids:
                 source_ids = self.env['pwk.pemakaian.veneer.gs.line'].search([
                     ('reference.date','<',res.date - timedelta(1)),
+                    ('keterangan','=','P1'),
                     ])
 
             if source_ids:
                 for source in source_ids:
                     self.env['pwk.mutasi.assembling.finishing.gs1'].create({
+                        'reference': res.id,
+                        'product_id': source.bj_product_id.id,
+                        })
+
+    @api.multi
+    def button_reload_gs2(self):
+        for res in self:
+            existing_ids = self.env['pwk.mutasi.assembling.finishing.gs2'].search([
+                ('reference', '=', self.id)
+            ])
+            
+            if existing_ids:
+                for existing in existing_ids:
+                    existing.unlink()
+                    
+            source_ids = self.env['pwk.pemakaian.veneer.gs.line'].search([
+                ('reference.date','=',res.date),
+                ('keterangan','=','P2'),
+                ])
+
+            if not source_ids:
+                source_ids = self.env['pwk.pemakaian.veneer.gs.line'].search([
+                    ('reference.date','<',res.date - timedelta(1)),
+                    ('keterangan','=','P2'),
+                    ])
+
+            if source_ids:
+                for source in source_ids:
+                    self.env['pwk.mutasi.assembling.finishing.gs2'].create({
+                        'reference': res.id,
+                        'product_id': source.bj_product_id.id,
+                        })
+
+    @api.multi
+    def button_reload_unsander(self):
+        for res in self:
+            existing_ids = self.env['pwk.mutasi.assembling.finishing.unsander'].search([
+                ('reference', '=', self.id)
+            ])
+            
+            if existing_ids:
+                for existing in existing_ids:
+                    existing.unlink()
+                    
+            source_ids = self.env['pwk.mutasi.assembling.finishing.gs1'].search([
+                ('reference.date','=',res.date),
+                ])
+
+            if not source_ids:
+                source_ids = self.env['pwk.mutasi.assembling.finishing.gs1'].search([
+                    ('reference.date','<',res.date - timedelta(1)),
+                    ])
+
+            if source_ids:
+                for source in source_ids:
+                    self.env['pwk.mutasi.assembling.finishing.unsander'].create({
+                        'reference': res.id,
+                        'product_id': source.product_id.id,
+                        })
+
+    @api.multi
+    def button_reload_proses1(self):
+        for res in self:
+            existing_ids = self.env['pwk.mutasi.assembling.finishing.proses1'].search([
+                ('reference', '=', self.id)
+            ])
+            
+            if existing_ids:
+                for existing in existing_ids:
+                    existing.unlink()
+                    
+            source_ids = self.env['pwk.mutasi.assembling.finishing.gs1'].search([
+                ('reference.date','=',res.date),
+                ])
+
+            if not source_ids:
+                source_ids = self.env['pwk.mutasi.assembling.finishing.gs1'].search([
+                    ('reference.date','<',res.date - timedelta(1)),
+                    ])
+
+            if source_ids:
+                for source in source_ids:
+                    self.env['pwk.mutasi.assembling.finishing.proses1'].create({
                         'reference': res.id,
                         'product_id': source.product_id.id,
                         })
