@@ -13,7 +13,6 @@ import math
 import re    
 from num2words import num2words
 
-
 class PwkPurchaseRequestLine(models.Model):    
     _name = "pwk.purchase.request.line"
 
@@ -336,6 +335,23 @@ class PwkRpm(models.Model):
     rpb_id = fields.Many2one('pwk.rpb', string='RPB')
     state = fields.Selection([('Draft','Draft'),('Progress','Progress'),('Done','Done')], string="Status", default="Draft")
     line_ids = fields.One2many('pwk.rpm.line', 'reference', string='Lines')    
+
+    @api.multi
+    def action_create_pr(self):
+        for res in self:
+            if res.line_ids:
+                request_id = self.env['pwk.purchase.request'].create({
+                    'date': fields.Date.today(),                    
+                })
+
+                if res.line_ids.bom_ids:
+                    for bom in res.line_ids.bom_ids:
+                        self.env['pwk.purchase.request.line'].create({
+                            'reference': request_id.id,
+                            'product_id': bom.product_id.id,                    
+                            'quantity': bom.quantity,
+                        })
+
 
     @api.multi
     def button_reload(self):              
