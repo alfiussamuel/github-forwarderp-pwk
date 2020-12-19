@@ -339,66 +339,68 @@ class PwkRpm(models.Model):
     @api.multi
     def action_create_pr(self):
         for res in self:
-            product_list = []
+            # product_list = []
 
-            if res.line_ids:
-                request_id = self.env['pwk.purchase.request'].create({
-                    'date': fields.Date.today(),                    
-                })
+            # if res.line_ids:
+            #     request_id = self.env['pwk.purchase.request'].create({
+            #         'date': fields.Date.today(),                    
+            #     })
 
-                if res.line_ids.bom_ids:
-                    for bom in res.line_ids.bom_ids:
-                        if bom.product_id.id not in product_list:
-                            product_list.append(bom.product_id.id)
+            #     if res.line_ids.bom_ids:
+            #         for bom in res.line_ids.bom_ids:
+            #             if bom.product_id.id not in product_list:
+            #                 product_list.append(bom.product_id.id)
 
-                            self.env['pwk.purchase.request.line'].create({
-                                'reference': request_id.id,
-                                'product_id': bom.product_id.id,                    
-                                'quantity': bom.quantity,
-                            })
+            #                 self.env['pwk.purchase.request.line'].create({
+            #                     'reference': request_id.id,
+            #                     'product_id': bom.product_id.id,                    
+            #                     'quantity': bom.quantity,
+            #                 })
 
-                        else:
-                            current_line_ids = self.env['pwk.purchase.request.line'].search([
-                                ('reference', '=', request_id.id),
-                                ('product_id', '=', bom.product_id.id),
-                            ])
+            #             else:
+            #                 current_line_ids = self.env['pwk.purchase.request.line'].search([
+            #                     ('reference', '=', request_id.id),
+            #                     ('product_id', '=', bom.product_id.id),
+            #                 ])
 
-                            if current_line_ids:
-                                current_line_ids[0].write({
-                                    'quantity': current_line_ids[0].quantity + bom.quantity
-                                })
+            #                 if current_line_ids:
+            #                     current_line_ids[0].write({
+            #                         'quantity': current_line_ids[0].quantity + bom.quantity
+            #                     })
+            return True
 
 
     @api.multi
     def button_reload(self):              
         for res in self:
-            if res.rpb_id:
-                if res.line_ids:
-                    for current_line in res.line_ids:
-                        current_line.unlink()
+            # if res.rpb_id:
+            #     if res.line_ids:
+            #         for current_line in res.line_ids:
+            #             current_line.unlink()
 
-                for line in res.rpb_id.line_ids:                
-                    rpm_line_id = self.env['pwk.rpm.line'].create({
-                        'reference': res.id,
-                        'sale_line_id': line.sale_line_id.id,
-                        'sale_id': line.sale_line_id.order_id.id,
-                        'remaining_qty': line.remaining_qty
-                    })
+            #     for line in res.rpb_id.line_ids:                
+            #         rpm_line_id = self.env['pwk.rpm.line'].create({
+            #             'reference': res.id,
+            #             'sale_line_id': line.sale_line_id.id,
+            #             'sale_id': line.sale_line_id.order_id.id,
+            #             'remaining_qty': line.remaining_qty
+            #         })
 
-                    bom_ids = self.env['mrp.bom'].search([
-                        ('product_tmpl_id.name', '=', line.product_id.name)
-                    ])
+            #         bom_ids = self.env['mrp.bom'].search([
+            #             ('product_tmpl_id.name', '=', line.product_id.name)
+            #         ])
 
-                    if rpm_line_id and bom_ids:
-                        for bom_line in bom_ids[0].bom_line_ids:
-                            self.env['pwk.rpm.line.detail'].create({
-                                'reference': rpm_line_id.id,
-                                'product_id': bom_line.product_id.id,
-                                'thick': bom_line.product_id.tebal,
-                                'width': bom_line.product_id.lebar,
-                                'length': bom_line.product_id.panjang,
-                                'quantity': bom_line.product_qty * line.total_qty
-                            })
+            #         if rpm_line_id and bom_ids:
+            #             for bom_line in bom_ids[0].bom_line_ids:
+            #                 self.env['pwk.rpm.line.detail'].create({
+            #                     'reference': rpm_line_id.id,
+            #                     'product_id': bom_line.product_id.id,
+            #                     'thick': bom_line.product_id.tebal,
+            #                     'width': bom_line.product_id.lebar,
+            #                     'length': bom_line.product_id.panjang,
+            #                     'quantity': bom_line.product_qty * line.total_qty
+            #                 })
+            return True
 
     @api.multi
     def button_progress(self):
