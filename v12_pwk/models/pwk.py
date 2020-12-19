@@ -13,6 +13,76 @@ import math
 import re    
 from num2words import num2words
 
+
+class PwkPurchaseRequestLine(models.Model):    
+    _name = "pwk.purchase.request.line"
+
+    reference = fields.Many2one('pwk.rpm', string='Reference')    
+    product_id = fields.Many2one('product.product', string='Product')
+    thick = fields.Float(compute="_get_sale_fields", string='Thick')
+    width = fields.Float(compute="_get_sale_fields", string='Width')
+    length = fields.Float(compute="_get_sale_fields", string='Length')
+    grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')        
+
+    quantity = fields.Float(string='Quantity')
+    volume = fields.Float(compute="_get_volume", string='Volume')
+    product_uom_id = fields.Float(compute="_get_sale_fields", string='UoM')
+    truck = fields.Float(string='Truck')    
+
+    @api.depends('quantity')
+    def _get_volume(self):
+        for res in self:
+            res.volume = res.quantity * res.thick * res.width * res.length / 1000000000    
+
+    @api.depends('product_id')
+    def _get_sale_fields(self):
+        for res in self:
+            if res.product_id:
+                res.product_id = res.product_id.product_id.id
+                res.thick = res.product_id.thick
+                res.width = res.product_id.width
+                res.length = res.product_id.length
+                res.grade_id = res.product_id.product_id.grade_id.id
+
+class PwkPurchaseRequest(models.Model):    
+    _name = "pwk.purchase.request"
+
+    name = fields.Char('Nomor PR')
+    date = fields.Date('Periode')    
+    state = fields.Selection([('Draft','Draft'),('Progress','Progress'),('Done','Done')], string="Status", default="Draft")
+    line_ids = fields.One2many('pwk.purchase.request.line', 'reference', string='Lines')    
+
+    @api.multi
+    def button_progress(self):
+        for res in self:
+            res.state = "Progress"
+
+    @api.multi
+    def button_done(self):
+        for res in self:
+            res.state = "Done"
+
+    def get_sequence(self, name=False, obj=False, context=None):
+        sequence_id = self.env['ir.sequence'].search([
+            ('name', '=', name),
+            ('code', '=', obj),
+            ('suffix', '=', '.PR.%(month)s.%(year)s')
+        ])
+        if not sequence_id :
+            sequence_id = self.env['ir.sequence'].sudo().create({
+                'name': name,
+                'code': obj,
+                'implementation': 'no_gap',
+                'suffix': '.PR.%(month)s.%(year)s',
+                'padding': 3
+            })
+        return sequence_id.next_by_id()
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.get_sequence('Purchase Request', 'pwk.purchase.request')
+        return super(PwkPurchaseRequest, self).create(vals)    
+
 class SaleOrderLine(models.Model):    
     _inherit = "sale.order.line"
 
