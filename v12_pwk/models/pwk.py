@@ -18,7 +18,7 @@ class SaleOrderLine(models.Model):
 
     sale_date_order = fields.Date(related='order_id.date_order', string='Date Order')
     sale_partner_id = fields.Many2one(related='order_id.partner_id', comodel_name='res.partner', string='Customer')
-    
+
 class PwkPurchaseRequestLine(models.Model):    
     _name = "pwk.purchase.request.line"
 
@@ -386,14 +386,35 @@ class PwkRpm(models.Model):
                         'remaining_qty': line.remaining_qty
                     })
 
+                    # bom_ids = self.env['mrp.bom'].search([
+                    #     ('product_tmpl_id.name', '=', line.product_id.name)
+                    # ])
+
+                    # if rpm_line_id and bom_ids:
+                    #     for bom_line in bom_ids[0].bom_line_ids:
+                    #         self.env['pwk.rpm.line.detail'].create({
+                    #             'reference': rpm_line_id.id,
+                    #             'product_id': bom_line.product_id.id,
+                    #             'thick': bom_line.product_id.tebal,
+                    #             'width': bom_line.product_id.lebar,
+                    #             'length': bom_line.product_id.panjang,
+                    #             'quantity': bom_line.product_qty * line.total_qty
+                    #         })
+            return True
+
+    @api.multi
+    def button_reload_bom(self):              
+        for res in self:
+            if res.rpb_id:        
+                for line in res.line_ids:
                     bom_ids = self.env['mrp.bom'].search([
                         ('product_tmpl_id.name', '=', line.product_id.name)
                     ])
 
-                    if rpm_line_id and bom_ids:
+                    if bom_ids:
                         for bom_line in bom_ids[0].bom_line_ids:
                             self.env['pwk.rpm.line.detail'].create({
-                                'reference': rpm_line_id.id,
+                                'reference': line.id,
                                 'product_id': bom_line.product_id.id,
                                 'thick': bom_line.product_id.tebal,
                                 'width': bom_line.product_id.lebar,
