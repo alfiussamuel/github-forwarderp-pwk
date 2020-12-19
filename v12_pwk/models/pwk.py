@@ -396,7 +396,8 @@ class PwkRpm(models.Model):
                                 'product_id': bom_line.product_id.id,
                                 'thick': bom_line.product_id.tebal,
                                 'width': bom_line.product_id.lebar,
-                                'length': bom_line.product_id.panjang
+                                'length': bom_line.product_id.panjang,
+                                'quantity': bom_line.product_qty * line.total_qty
                             })
 
     @api.multi
