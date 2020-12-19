@@ -1,5 +1,0 @@
-<odoo>
-	<record id="product_timesheet_journal" model="product.product">
-		<field name="name">Timesheet Product</field>
-	</record>
-</odoo>
