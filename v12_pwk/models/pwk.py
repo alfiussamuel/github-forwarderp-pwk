@@ -339,6 +339,8 @@ class PwkRpm(models.Model):
     @api.multi
     def action_create_pr(self):
         for res in self:
+            product_list = []
+
             if res.line_ids:
                 request_id = self.env['pwk.purchase.request'].create({
                     'date': fields.Date.today(),                    
@@ -346,11 +348,25 @@ class PwkRpm(models.Model):
 
                 if res.line_ids.bom_ids:
                     for bom in res.line_ids.bom_ids:
-                        self.env['pwk.purchase.request.line'].create({
-                            'reference': request_id.id,
-                            'product_id': bom.product_id.id,                    
-                            'quantity': bom.quantity,
-                        })
+                        if bom.product_id.id not in product_list:
+                            product_list.append(bom.product_id.id)
+
+                            self.env['pwk.purchase.request.line'].create({
+                                'reference': request_id.id,
+                                'product_id': bom.product_id.id,                    
+                                'quantity': bom.quantity,
+                            })
+
+                        else:
+                            current_line_ids = self.env['pwk.purchase.request.line'].search([
+                                ('reference', '=', request_id.id),
+                                ('product_id', '=', bom.product_id.id),
+                            ])
+
+                            if current_line_ids:
+                                current_line_ids[0].write({
+                                    'quantity': current_line_ids[0].quantity + bom.quantity
+                                })
 
 
     @api.multi
