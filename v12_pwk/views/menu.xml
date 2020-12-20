@@ -1,6 +1,61 @@
 <odoo>
 	<data>
 
+		<!-- All Purchase Order -->
+        <record id="purchase.purchase_form_action" model="ir.actions.act_window">
+            <field name="name">All Purchase Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
+            <!-- <field name="domain">[('is_hidden','=',False)]</field> -->
+            <field name="context">{}</field>
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>            
+        </record>
+
+        <!-- PO Jasa -->
+        <record id="purchase_form_action_jasa" model="ir.actions.act_window">
+            <field name="name">Purchase Orders (Jasa)</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
+            <field name="context">{"default_purchase_type":'Jasa', "purchase_type":'Jasa'}</field>
+            <field name="domain">[('purchase_type','=','Jasa')]</field>
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>            
+        </record>       
+
+        <!-- PO Bahan Baku -->
+        <record id="purchase_form_action_bahan_baku" model="ir.actions.act_window">
+            <field name="name">Purchase Orders (BB)</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
+            <field name="context">{"default_purchase_type":'Bahan Baku', "purchase_type":'Bahan Baku'}</field>
+            <field name="domain">[('purchase_type','=','Bahan Baku')]</field>
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>            
+        </record>                
+
+        <!-- PO Bahan Penolong -->
+        <record id="purchase_form_action_bahan_penolong" model="ir.actions.act_window">
+            <field name="name">Purchase Orders (BP)</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
+            <field name="context">{"default_purchase_type":'Bahan Penolong', "purchase_type":'Bahan Penolong'}</field>
+            <field name="domain">[('purchase_type','=','Bahan Penolong')]</field>
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>            
+        </record>              
+
+        <!-- PO Rotary -->
+        <record id="purchase_form_action_rotary" model="ir.actions.act_window">
+            <field name="name">Nota Pembelian Log</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
+            <field name="context">{"default_purchase_type":'Rotary', "purchase_type":'Rotary'}</field>
+            <field name="domain">[('purchase_type','=','Rotary')]</field>
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>            
+        </record>
+
 		<record id="action_pwk_purchase_request" model="ir.actions.act_window">
 			<field name="name">Purchase Request</field>
 			<field name="res_model">pwk.purchase.request</field>
@@ -235,6 +290,48 @@
 			<field name="view_mode">tree,form</field>			
 		</record>				
 
+		<menuitem id="menu_product_product_stock" 
+			name="Products" 
+			action="account.product_product_action_sellable"
+        	parent="stock.menu_stock_inventory_control" 
+        	sequence="1"/>
+
+        <menuitem id="stock.menu_product_variant_config_stock" 
+        	name="Products" 
+        	groups="base.group_no_one"
+        	action="stock.product_template_action_product"
+        	parent="stock.menu_stock_inventory_control" 
+        	sequence="1"/>
+
+        <menuitem action="action_pwk_purchase_request" 
+            id="menu_purchase_form_action_request" 
+            parent="purchase.menu_procurement_management" 
+            sequence="5"/>
+
+		<menuitem action="purchase.purchase_form_action" 
+            id="menu_purchase_form_action" 
+            parent="purchase.menu_procurement_management" 
+            groups="v12_pwk.group_purchase_order_all"
+            sequence="6"/>
+
+        <menuitem id="menu_purchase_form_action_jasa" 
+            action="purchase_form_action_jasa"             
+            parent="purchase.menu_procurement_management"             
+            groups="v12_pwk.group_purchase_order_jasa"
+            sequence="8"/>
+
+        <menuitem id="menu_purchase_form_action_bahan_baku" 
+            action="purchase_form_action_bahan_baku"
+            parent="purchase.menu_procurement_management"
+            groups="v12_pwk.group_purchase_order_bahan_baku"
+            sequence="9"/>
+
+        <menuitem id="menu_purchase_form_action_bahan_penolong" 
+            action="purchase_form_action_bahan_penolong"
+            parent="purchase.menu_procurement_management"
+            groups="v12_pwk.group_purchase_order_bahan_penolong"
+            sequence="10"/>
+            
 		<menuitem id="menu_rotary"
         	sequence="4"
         	name="Rotary"
@@ -289,8 +386,26 @@
         	web_icon="v12_pwk,static/icon_production.png"
         	groups="base.group_user"/>
 
-        	<menuitem id="menu_production_rencana"
+        	<menuitem id="menu_production_master"
 	        	sequence="0"
+	        	name="Master Data"
+	        	groups="base.group_user"
+	        	parent="menu_production"/>
+
+	        	<menuitem id="menu_production_master_product" 
+					name="Products" 
+					action="account.product_product_action_sellable"
+		        	parent="menu_production_master" 
+		        	sequence="0"/>
+
+	        	<menuitem id="menu_production_master_bom" 
+					name="Bill of Materials" 
+					action="mrp.mrp_bom_form_action"
+		        	parent="menu_production_master" 
+		        	sequence="1"/>
+
+        	<menuitem id="menu_production_rencana"
+	        	sequence="1"
 	        	name="Rencana Produksi"
 	        	groups="base.group_user"
 	        	parent="menu_production"/>
@@ -314,7 +429,7 @@
 		            sequence="2"/>
 
         	<menuitem id="menu_production_mutasi"
-	        	sequence="0"
+	        	sequence="2"
 	        	name="Mutasi Produksi"
 	        	groups="base.group_user"
 	        	parent="menu_production"/>
@@ -469,10 +584,16 @@
         	action="action_pwk_packing"
         	parent="sale.menu_sale_config"/>
 
+        <menuitem id="account_account_menu_bank"
+        	sequence="0"
+        	name="Bank"
+        	action="base.action_res_bank_form"
+        	parent="account.account_account_menu"/>
+
         <menuitem id="menu_account_product_configuration"
         	sequence="1"
         	name="Products"
-        	parent="account.menu_finance_configuration"/>
+        	parent="account.menu_finance_configuration"/>        	        	        
 
 	        <menuitem id="menu_account_product_configuration_jenis_core"
 	        	sequence="1"

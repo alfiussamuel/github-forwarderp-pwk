@@ -424,16 +424,26 @@
                             <field name="display_type" invisible="1"/>
                             <field name="sequence" invisible="1"/>
                             <group>
+                                <field name="product_id"
+                                    context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+                                    attrs="{
+                                        'readonly': [('product_updatable', '=', False)],
+                                        'required': [('display_type', '=', False)],
+                                    }"
+                                    force_save="1"
+                                    options="{'no_create': True}"/>
+                            </group>
+                            <group>
                                 <group attrs="{'invisible': [('display_type', '!=', False)]}">
                                     <field name="product_updatable" invisible="1"/>
-                                    <field name="product_id"
+                                    <!-- <field name="product_id"
                                         context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
                                         attrs="{
                                             'readonly': [('product_updatable', '=', False)],
                                             'required': [('display_type', '=', False)],
                                         }"
                                         force_save="1"
-                                        options="{'no_create': True}"/>
+                                        options="{'no_create': True}"/> -->
                                     <field name="invoice_status" invisible="1"/>
                                     <field name="qty_to_invoice" invisible="1"/>
                                     <field name="qty_delivered_manual" invisible="1"/>
@@ -486,12 +496,12 @@
                                 </group>
                             </group>
                             <group>         
-                                <group>                          
+                                <!-- <group>                          
                                     <field name="thick"/>
                                     <field name="width"/>
                                     <field name="length"/>
                                     <field name="volume"/>
-                                </group>
+                                </group> -->
                                 <group>
                                     <field name="stempel_id"
                                         options='{"no_open": True}'/>
@@ -584,6 +594,7 @@
                                     'uom': product_uom,
                                     'company_id': parent.company_id
                                 }"/>
+                            <field name="outstanding_order_pcs"/>
                             <field
                                 name="qty_delivered" invisible="1"
                                 attrs="{

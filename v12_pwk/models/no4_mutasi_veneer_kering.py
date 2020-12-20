@@ -280,11 +280,19 @@ class PwkMutasiVeneerKering(models.Model):
 
             if source_ids:
                 for source in source_ids:
-                    self.env['pwk.mutasi.veneer.kering.line'].create({
-                        'reference': res.id,
-                        'product_id': source.product_id.id,
-                        'new_product_id': source.new_product_id.id,
-                        })
+                    new_product_name = 'Veneer Kering ' + line.product_id.jenis_kayu.name + ' ' + str(line.product_id.tebal) + 'x' + str(int(line.product_id.lebar)) + 'x' + str(int(line.product_id.panjang)) + ' Grade ' + line.product_id.grade.name
+                    new_product_ids = self.env['product.product'].search([
+                        ('name', '=', new_product_name)
+                    ])
+
+                    if new_product_ids:
+                        self.env['pwk.mutasi.veneer.kering.line'].create({
+                            'reference': res.id,
+                            'product_id': source.product_id.id,
+                            'new_product_id': new_product_ids[0].id,
+                            })
+                    else:
+                        raise UserError(_('Product %s tidak ditemukan' % new_product_name))
 
     @api.model
     def create(self, vals):

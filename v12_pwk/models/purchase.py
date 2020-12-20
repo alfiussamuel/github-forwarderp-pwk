@@ -153,6 +153,23 @@ class PurchaseOrder(models.Model):
     afkir_ids = fields.One2many('purchase.order.afkir', 'reference', string="Detail Afkir")
     product_ids = fields.One2many('purchase.order.product', 'reference', string="Range Diameter")
 
+    request_id = fields.Many2one('pwk.purchase.request', 'Purchase Request', domain="[('state','=','Purchasing Approved')]")
+
+    @api.multi
+    def button_reload_pr(self):
+        for res in self:
+            if res.request_id:
+                for line in res.request_id.line_ids:
+                    self.env['purchase.order.line'].create({
+                        'order_id': self.id,
+                        'product_id': line.product_id.id,
+                        'name': line.product_id.name,
+                        'product_qty': line.quantity,
+                        'request_line_id': line.id,
+                        'date_planned': fields.Date.today(),
+                        'product_uom': line.product_id.purchase_uom_id.id
+                    })
+
     @api.multi
     def button_confirm(self):
         for order in self:

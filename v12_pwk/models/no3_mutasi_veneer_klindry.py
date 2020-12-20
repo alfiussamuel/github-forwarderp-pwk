@@ -312,21 +312,21 @@ class PwkMutasiVeneerKlindry(models.Model):
     def button_approve(self):
         for res in self:
             res.state = "Approved"
-            if res.line_ids:
-                for line in res.line_ids:
-                    new_product_name = 'Veneer Kering ' + line.product_id.jenis_kayu.name + ' ' + str(line.product_id.tebal) + 'x' + str(int(line.product_id.lebar)) + 'x' + str(int(line.product_id.panjang)) + ' Grade ' + line.product_id.grade.name
-                    print (new_product_name)
+            # if res.line_ids:
+            #     for line in res.line_ids:
+            #         new_product_name = 'Veneer Kering ' + line.product_id.jenis_kayu.name + ' ' + str(line.product_id.tebal) + 'x' + str(int(line.product_id.lebar)) + 'x' + str(int(line.product_id.panjang)) + ' Grade ' + line.product_id.grade.name
+            #         print (new_product_name)
 
-                    new_product_ids = self.env['product.product'].search([
-                        ('name', '=', new_product_name)
-                    ])
+            #         new_product_ids = self.env['product.product'].search([
+            #             ('name', '=', new_product_name)
+            #         ])
 
-                    if new_product_ids:
-                        line.write({
-                            'new_product_id': new_product_ids[0].id
-                        })
-                    else:
-                        raise UserError(_('Product %s tidak ditemukan' % new_product_name))
+            #         if new_product_ids:
+            #             line.write({
+            #                 'new_product_id': new_product_ids[0].id
+            #             })
+            #         else:
+            #             raise UserError(_('Product %s tidak ditemukan' % new_product_name))
 
     @api.multi
     def button_draft(self):

@@ -74,6 +74,14 @@
                         string="Print Nota Pembelian Supplier" class="oe_highlight"
                         attrs="{'invisible': ['|', ('purchase_type', '!=', 'Rotary'),('state', '=', 'draft')]}"/>
                 </button>
+                <field name="date_order" position="after">
+                    <label for="request_id"/>
+                    <div>
+                        <field name="request_id" class="oe_inline" options="{'no_create': True}"/>
+                         | <button name="button_reload_pr" type="object" string="Reload PR" 
+                         class="oe_highlight"/>
+                     </div>
+                </field> 
                 <field name="partner_id" position="after">
                     <field name="attn"/>
                     <field name="is_paid"
@@ -123,7 +131,7 @@
                             <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
                             <field name="account_analytic_id" context="{'default_partner_id':parent.partner_id}" groups="analytic.group_analytic_accounting" invisible="1"/>
                             <field name="analytic_tag_ids" groups="analytic.group_analytic_tags" widget="many2many_tags" options="{'color_field': 'color'}" invisible="1"/>
-                            <field name="diameter"/>                            
+                            <field name="diameter"/>
                             <field name="actual_size"/>
                             <field name="actual_thick"/>
                             <field name="actual_width"/>
@@ -147,7 +155,8 @@
                                     <group>
                                         <field name="product_id" context="{'partner_id': parent.partner_id}"/>
                                         <field name="name"/>
-                                        <field name="diameter"/>                
+                                        <field name="diameter"
+                                            attrs="{'invisible': [('parent.purchase_type', '!=', 'Rotary')]}"/>
                                         <field name="product_uom" string="UoM"/>
                                     </group>
                                     <group>   
@@ -167,7 +176,7 @@
                                             attrs="{'invisible': [('parent.purchase_type', '!=', 'Rotary')]}"/>                                        
                                         <field name="qty_afkir"
                                             attrs="{'invisible': [('parent.purchase_type', '!=', 'Rotary')]}"/>
-                                        <field name="product_qty" string="Qty Ukur"/>
+                                        <field name="product_qty" string="Quantity"/>
                                     </group>
                                     <group>
                                         <field name="volume_surat_jalan"
@@ -226,86 +235,7 @@
                     <field name="export_local"/>
                 </field>
             </field>
-        </record>
-
-        <!-- All Purchase Order -->
-        <record id="purchase.purchase_form_action" model="ir.actions.act_window">
-            <field name="name">All Purchase Orders</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">purchase.order</field>
-            <field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
-            <!-- <field name="domain">[('is_hidden','=',False)]</field> -->
-            <field name="context">{}</field>
-            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>            
-        </record>
-
-        <menuitem action="purchase.purchase_form_action" 
-            id="menu_purchase_form_action" 
-            parent="purchase.menu_procurement_management" 
-            groups="v12_pwk.group_purchase_order_all"
-            sequence="6"/>
-
-        <!-- PO Jasa -->
-        <record id="purchase_form_action_jasa" model="ir.actions.act_window">
-            <field name="name">Purchase Orders (Jasa)</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">purchase.order</field>
-            <field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
-            <field name="context">{"default_purchase_type":'Jasa', "purchase_type":'Jasa'}</field>
-            <field name="domain">[('purchase_type','=','Jasa')]</field>
-            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>            
-        </record>
-        
-        <menuitem id="menu_purchase_form_action_jasa" 
-            action="purchase_form_action_jasa"             
-            parent="purchase.menu_procurement_management"             
-            groups="v12_pwk.group_purchase_order_jasa"
-            sequence="8"/>
-
-        <!-- PO Bahan Baku -->
-        <record id="purchase_form_action_bahan_baku" model="ir.actions.act_window">
-            <field name="name">Purchase Orders (BB)</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">purchase.order</field>
-            <field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
-            <field name="context">{"default_purchase_type":'Bahan Baku', "purchase_type":'Bahan Baku'}</field>
-            <field name="domain">[('purchase_type','=','Bahan Baku')]</field>
-            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>            
-        </record>
-        
-        <menuitem id="menu_purchase_form_action_bahan_baku" 
-            action="purchase_form_action_bahan_baku"
-            parent="purchase.menu_procurement_management"
-            groups="v12_pwk.group_purchase_order_bahan_baku"
-            sequence="9"/>
-
-        <!-- PO Bahan Penolong -->
-        <record id="purchase_form_action_bahan_penolong" model="ir.actions.act_window">
-            <field name="name">Purchase Orders (BP)</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">purchase.order</field>
-            <field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
-            <field name="context">{"default_purchase_type":'Bahan Penolong', "purchase_type":'Bahan Penolong'}</field>
-            <field name="domain">[('purchase_type','=','Bahan Penolong')]</field>
-            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>            
-        </record>
-        
-        <menuitem id="menu_purchase_form_action_bahan_penolong" 
-            action="purchase_form_action_bahan_penolong"
-            parent="purchase.menu_procurement_management"
-            groups="v12_pwk.group_purchase_order_bahan_penolong"
-            sequence="10"/>
-
-        <!-- PO Rotary -->
-        <record id="purchase_form_action_rotary" model="ir.actions.act_window">
-            <field name="name">Nota Pembelian Log</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">purchase.order</field>
-            <field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
-            <field name="context">{"default_purchase_type":'Rotary', "purchase_type":'Rotary'}</field>
-            <field name="domain">[('purchase_type','=','Rotary')]</field>
-            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>            
-        </record>
+        </record>        
         
         <!-- <menuitem id="menu_purchase_form_action_rotary" 
             action="purchase_form_action_rotary"

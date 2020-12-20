@@ -378,6 +378,358 @@
                                     </field>
                                 </group>
                             </page>
+                            <page string="Mutasi Ulang Proses 2">
+                                <button name="button_reload_proses2" string="Reload" 
+                                    type="object" class="oe_highlight"/>
+                                <group>
+                                    <field name="proses2_ids" nolabel="1">
+                                        <tree>
+                                            <field name="product_id"/>
+                                            <field name="tebal"/>
+                                            <field name="lebar"/>
+                                            <field name="panjang"/>
+                                            <field name="grade"/>
+                                            <field name="stock_awal_pcs" sum="Total"/>
+                                            <field name="sander_stock_masuk_pcs" sum="Total"/>
+                                            <field name="sander_stock_masuk_vol" sum="Total"/>
+                                            <field name="re_stock_masuk_pcs" sum="Total"/>
+                                            <field name="re_stock_masuk_vol" sum="Total"/>
+                                            <field name="gs_stock_keluar_pcs" sum="Total"/>
+                                            <field name="gs_stock_keluar_vol" sum="Total"/>
+                                            <field name="lain_stock_keluar_pcs" sum="Total"/>
+                                            <field name="lain_stock_keluar_vol" sum="Total"/>
+                                            <field name="re_stock_keluar_pcs" sum="Total"/>
+                                            <field name="re_stock_keluar_vol" sum="Total"/>
+                                            <field name="stock_akhir_pcs" sum="Total"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="product_id"/>
+                                                <field name="tebal"/>
+                                                <field name="lebar"/>
+                                                <field name="panjang"/>
+                                                <field name="grade"/>
+                                            </group>                                        
+                                            <group>
+                                                <group string="Perhitungan Stock (Pcs)">
+                                                    <field name="stock_awal_pcs" 
+                                                        string="Stok Awal"/>
+                                                    <field name="sander_stock_masuk_pcs"
+                                                        string="Stok Masuk Sander"/> 
+                                                    <field name="re_stock_masuk_pcs"
+                                                        string="Stok Masuk Re"/> 
+                                                    <field name="gs_stock_keluar_pcs"
+                                                        string="Stok Keluar Sander"/>
+                                                    <field name="lain_stock_keluar_pcs"
+                                                        string="Stok Keluar Lain"/>
+                                                    <field name="re_stock_keluar_pcs"
+                                                        string="Stok Keluar Re"/>
+                                                    <field name="stock_akhir_pcs"
+                                                        string="Stok Akhir"/>
+                                                </group>
+                                                <group string="Perhitungan Stock (Vol)">
+                                                    <field name="stock_awal_vol"
+                                                        string="Stok Awal"/>
+                                                    <field name="sander_stock_masuk_vol"
+                                                        string="Stok Masuk Hot"/>
+                                                    <field name="re_stock_masuk_vol"
+                                                        string="Stok Masuk Re"/>
+                                                    <field name="gs_stock_keluar_vol"
+                                                        string="Stok Keluar Sander"/>
+                                                    <field name="lain_stock_keluar_vol"
+                                                        string="Stok Keluar Lain"/>
+                                                    <field name="re_stock_keluar_vol"
+                                                        string="Stok Keluar Re"/>
+                                                    <field name="stock_akhir_vol"
+                                                        string="Stok Akhir"/>
+                                                </group>
+                                            </group>
+                                            <group>
+                                                <group string="Akumulasi Stock (Pcs)">
+                                                    <field name="sander_acc_stock_masuk_pcs"/> 
+                                                    <field name="re_acc_stock_masuk_pcs"/> 
+                                                    <field name="gs_acc_stock_keluar_pcs"/> 
+                                                    <field name="lain_acc_stock_keluar_pcs"/> 
+                                                    <field name="re_acc_stock_keluar_pcs"/> 
+                                                </group>
+                                                <group string="Akumulasi Stock (Vol)">
+                                                    <field name="sander_acc_stock_masuk_vol"/>
+                                                    <field name="re_acc_stock_masuk_vol"/>
+                                                    <field name="gs_acc_stock_keluar_vol"/>
+                                                    <field name="lain_acc_stock_keluar_vol"/>
+                                                    <field name="re_acc_stock_keluar_vol"/>
+                                                </group>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="OK Sander Kalibrasi">
+                                <button name="button_reload_kalibrasi" string="Reload" 
+                                    type="object" class="oe_highlight"/>
+                                <group>
+                                    <field name="kalibrasi_ids" nolabel="1">
+                                        <tree>
+                                            <field name="product_id"/>
+                                            <field name="tebal"/>
+                                            <field name="lebar"/>
+                                            <field name="panjang"/>
+                                            <field name="grade"/>
+                                            <field name="stock_awal_pcs" sum="Total"/>
+                                            <field name="sander_stock_masuk_pcs" sum="Total"/>
+                                            <field name="sander_stock_masuk_vol" sum="Total"/>
+                                            <field name="re_stock_masuk_pcs" sum="Total"/>
+                                            <field name="re_stock_masuk_vol" sum="Total"/>
+                                            <field name="gs_stock_keluar_pcs" sum="Total"/>
+                                            <field name="gs_stock_keluar_vol" sum="Total"/>
+                                            <field name="lain_stock_keluar_pcs" sum="Total"/>
+                                            <field name="lain_stock_keluar_vol" sum="Total"/>
+                                            <field name="re_stock_keluar_pcs" sum="Total"/>
+                                            <field name="re_stock_keluar_vol" sum="Total"/>
+                                            <field name="stock_akhir_pcs" sum="Total"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="product_id"/>
+                                                <field name="tebal"/>
+                                                <field name="lebar"/>
+                                                <field name="panjang"/>
+                                                <field name="grade"/>
+                                            </group>                                        
+                                            <group>
+                                                <group string="Perhitungan Stock (Pcs)">
+                                                    <field name="stock_awal_pcs" 
+                                                        string="Stok Awal"/>
+                                                    <field name="sander_stock_masuk_pcs"
+                                                        string="Stok Masuk Sander"/> 
+                                                    <field name="re_stock_masuk_pcs"
+                                                        string="Stok Masuk Re"/> 
+                                                    <field name="gs_stock_keluar_pcs"
+                                                        string="Stok Keluar GS"/>
+                                                    <field name="lain_stock_keluar_pcs"
+                                                        string="Stok Keluar Lain"/>
+                                                    <field name="re_stock_keluar_pcs"
+                                                        string="Stok Keluar Re"/>
+                                                    <field name="stock_akhir_pcs"
+                                                        string="Stok Akhir"/>
+                                                </group>
+                                                <group string="Perhitungan Stock (Vol)">
+                                                    <field name="stock_awal_vol"
+                                                        string="Stok Awal"/>
+                                                    <field name="sander_stock_masuk_vol"
+                                                        string="Stok Masuk Sander"/>
+                                                    <field name="re_stock_masuk_vol"
+                                                        string="Stok Masuk Re"/>
+                                                    <field name="gs_stock_keluar_vol"
+                                                        string="Stok Keluar GS"/>
+                                                    <field name="lain_stock_keluar_vol"
+                                                        string="Stok Keluar Lain"/>
+                                                    <field name="re_stock_keluar_vol"
+                                                        string="Stok Keluar Re"/>
+                                                    <field name="stock_akhir_vol"
+                                                        string="Stok Akhir"/>
+                                                </group>
+                                            </group>
+                                            <group>
+                                                <group string="Akumulasi Stock (Pcs)">
+                                                    <field name="sander_acc_stock_masuk_pcs"/> 
+                                                    <field name="re_acc_stock_masuk_pcs"/> 
+                                                    <field name="gs_acc_stock_keluar_pcs"/> 
+                                                    <field name="lain_acc_stock_keluar_pcs"/> 
+                                                    <field name="re_acc_stock_keluar_pcs"/> 
+                                                </group>
+                                                <group string="Akumulasi Stock (Vol)">
+                                                    <field name="sander_acc_stock_masuk_vol"/>
+                                                    <field name="re_acc_stock_masuk_vol"/>
+                                                    <field name="gs_acc_stock_keluar_vol"/>
+                                                    <field name="lain_acc_stock_keluar_vol"/>
+                                                    <field name="re_acc_stock_keluar_vol"/>
+                                                </group>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Double Sizer">
+                                <button name="button_reload_sizer" string="Reload" 
+                                    type="object" class="oe_highlight"/>
+                                <group>
+                                    <field name="sizer_ids" nolabel="1">
+                                        <tree>
+                                            <field name="product_id"/>
+                                            <field name="tebal"/>
+                                            <field name="lebar"/>
+                                            <field name="panjang"/>
+                                            <field name="grade"/>
+                                            <field name="stock_awal_pcs" sum="Total"/>
+                                            <field name="hot_stock_masuk_pcs" sum="Total"/>
+                                            <field name="hot_stock_masuk_vol" sum="Total"/>
+                                            <field name="re_stock_masuk_pcs" sum="Total"/>
+                                            <field name="re_stock_masuk_vol" sum="Total"/>
+                                            <field name="sander_stock_keluar_pcs" sum="Total"/>
+                                            <field name="sander_stock_keluar_vol" sum="Total"/>
+                                            <field name="grading_stock_keluar_pcs" sum="Total"/>
+                                            <field name="grading_stock_keluar_vol" sum="Total"/>
+                                            <field name="lain_stock_keluar_pcs" sum="Total"/>
+                                            <field name="lain_stock_keluar_vol" sum="Total"/>
+                                            <field name="re_stock_keluar_pcs" sum="Total"/>
+                                            <field name="re_stock_keluar_vol" sum="Total"/>
+                                            <field name="stock_akhir_pcs" sum="Total"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="product_id"/>
+                                                <field name="tebal"/>
+                                                <field name="lebar"/>
+                                                <field name="panjang"/>
+                                                <field name="grade"/>
+                                            </group>                                        
+                                            <group>
+                                                <group string="Perhitungan Stock (Pcs)">
+                                                    <field name="stock_awal_pcs" 
+                                                        string="Stok Awal"/>
+                                                    <field name="hot_stock_masuk_pcs"
+                                                        string="Stok Masuk Hot"/> 
+                                                    <field name="re_stock_masuk_pcs"
+                                                        string="Stok Masuk Re"/> 
+                                                    <field name="sander_stock_keluar_pcs"
+                                                        string="Stok Keluar Sander"/>
+                                                    <field name="grading_stock_keluar_pcs"
+                                                        string="Stok Keluar Grading"/>
+                                                    <field name="lain_stock_keluar_pcs"
+                                                        string="Stok Keluar Lain"/>
+                                                    <field name="re_stock_keluar_pcs"
+                                                        string="Stok Keluar Re"/>
+                                                    <field name="stock_akhir_pcs"
+                                                        string="Stok Akhir"/>
+                                                </group>
+                                                <group string="Perhitungan Stock (Vol)">
+                                                    <field name="stock_awal_vol"
+                                                        string="Stok Awal"/>
+                                                    <field name="hot_stock_masuk_vol"
+                                                        string="Stok Masuk Hot"/>
+                                                    <field name="re_stock_masuk_vol"
+                                                        string="Stok Masuk Re"/>
+                                                    <field name="sander_stock_keluar_vol"
+                                                        string="Stok Keluar Sander"/>
+                                                    <field name="grading_stock_keluar_vol"
+                                                        string="Stok Keluar Grading"/>
+                                                    <field name="lain_stock_keluar_vol"
+                                                        string="Stok Keluar Lain"/>
+                                                    <field name="re_stock_keluar_vol"
+                                                        string="Stok Keluar Re"/>
+                                                    <field name="stock_akhir_vol"
+                                                        string="Stok Akhir"/>
+                                                </group>
+                                            </group>
+                                            <group>
+                                                <group string="Akumulasi Stock (Pcs)">
+                                                    <field name="hot_acc_stock_masuk_pcs"/> 
+                                                    <field name="re_acc_stock_masuk_pcs"/> 
+                                                    <field name="sander_acc_stock_keluar_pcs"/> 
+                                                    <field name="grading_acc_stock_keluar_pcs"/> 
+                                                    <field name="lain_acc_stock_keluar_pcs"/> 
+                                                    <field name="re_acc_stock_keluar_pcs"/> 
+                                                </group>
+                                                <group string="Akumulasi Stock (Vol)">
+                                                    <field name="hot_acc_stock_masuk_vol"/>
+                                                    <field name="re_acc_stock_masuk_vol"/>
+                                                    <field name="sander_acc_stock_keluar_vol"/>
+                                                    <field name="grading_acc_stock_keluar_vol"/>
+                                                    <field name="lain_acc_stock_keluar_vol"/>
+                                                    <field name="re_acc_stock_keluar_vol"/>
+                                                </group>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Sander Finish">
+                                <button name="button_reload_finish" string="Reload" 
+                                    type="object" class="oe_highlight"/>
+                                <group>
+                                    <field name="finish_ids" nolabel="1">
+                                        <tree>
+                                            <field name="product_id"/>
+                                            <field name="tebal"/>
+                                            <field name="lebar"/>
+                                            <field name="panjang"/>
+                                            <field name="grade"/>
+                                            <field name="stock_awal_pcs" sum="Total"/>
+                                            <field name="sizer_stock_masuk_pcs" sum="Total"/>
+                                            <field name="sizer_stock_masuk_vol" sum="Total"/>
+                                            <field name="re_stock_masuk_pcs" sum="Total"/>
+                                            <field name="re_stock_masuk_vol" sum="Total"/>
+                                            <field name="grading_stock_keluar_pcs" sum="Total"/>
+                                            <field name="grading_stock_keluar_vol" sum="Total"/>
+                                            <field name="lain_stock_keluar_pcs" sum="Total"/>
+                                            <field name="lain_stock_keluar_vol" sum="Total"/>
+                                            <field name="re_stock_keluar_pcs" sum="Total"/>
+                                            <field name="re_stock_keluar_vol" sum="Total"/>
+                                            <field name="stock_akhir_pcs" sum="Total"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="product_id"/>
+                                                <field name="tebal"/>
+                                                <field name="lebar"/>
+                                                <field name="panjang"/>
+                                                <field name="grade"/>
+                                            </group>                                        
+                                            <group>
+                                                <group string="Perhitungan Stock (Pcs)">
+                                                    <field name="stock_awal_pcs" 
+                                                        string="Stok Awal"/>
+                                                    <field name="sizer_stock_masuk_pcs"
+                                                        string="Stok Masuk Sizer"/> 
+                                                    <field name="re_stock_masuk_pcs"
+                                                        string="Stok Masuk Re"/>                            
+                                                    <field name="grading_stock_keluar_pcs"
+                                                        string="Stok Keluar Grading"/>
+                                                    <field name="lain_stock_keluar_pcs"
+                                                        string="Stok Keluar Lain"/>
+                                                    <field name="re_stock_keluar_pcs"
+                                                        string="Stok Keluar Re"/>
+                                                    <field name="stock_akhir_pcs"
+                                                        string="Stok Akhir"/>
+                                                </group>
+                                                <group string="Perhitungan Stock (Vol)">
+                                                    <field name="stock_awal_vol"
+                                                        string="Stok Awal"/>
+                                                    <field name="sizer_stock_masuk_vol"
+                                                        string="Stok Masuk Sizer"/>
+                                                    <field name="re_stock_masuk_vol"
+                                                        string="Stok Masuk Re"/>
+                                                    <field name="grading_stock_keluar_vol"
+                                                        string="Stok Keluar Grading"/>
+                                                    <field name="lain_stock_keluar_vol"
+                                                        string="Stok Keluar Lain"/>
+                                                    <field name="re_stock_keluar_vol"
+                                                        string="Stok Keluar Re"/>
+                                                    <field name="stock_akhir_vol"
+                                                        string="Stok Akhir"/>
+                                                </group>
+                                            </group>
+                                            <group>
+                                                <group string="Akumulasi Stock (Pcs)">
+                                                    <field name="sizer_acc_stock_masuk_pcs"/> 
+                                                    <field name="re_acc_stock_masuk_pcs"/> 
+                                                    <field name="grading_acc_stock_keluar_pcs"/> 
+                                                    <field name="lain_acc_stock_keluar_pcs"/> 
+                                                    <field name="re_acc_stock_keluar_pcs"/> 
+                                                </group>
+                                                <group string="Akumulasi Stock (Vol)">
+                                                    <field name="sizer_acc_stock_masuk_vol"/>
+                                                    <field name="re_acc_stock_masuk_vol"/>
+                                                    <field name="grading_acc_stock_keluar_vol"/>
+                                                    <field name="lain_acc_stock_keluar_vol"/>
+                                                    <field name="re_acc_stock_keluar_vol"/>
+                                                </group>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                            </page>
                         </notebook>
                     </group>
                     <div class="oe_chatter">

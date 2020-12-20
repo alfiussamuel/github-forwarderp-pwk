@@ -88,6 +88,26 @@ class SaleOrderLineContainer(models.Model):
 class SaleOrderLine(models.Model):    
     _inherit = "sale.order.line"
 
+    sale_date_order = fields.Date(related='order_id.date_order', string='Date Order')
+    sale_partner_id = fields.Many2one(related='order_id.partner_id', comodel_name='res.partner', string='Customer')    
+    outstanding_order_pcs = fields.Float(compute="_get_outstanding_order_pcs", string="Outstanding Order")
+
+    @api.multi
+    def _get_outstanding_order_pcs(self):
+        for res in self:
+            outstanding_order_pcs = res.product_uom_qty
+
+            rpb_line_ids = self.env['pwk.rpb.line'].search([
+                ('product_id', '=', res.product_id.id),
+                ('sale_line_id', '=', res.id)
+            ])
+
+            if rpb_line_ids:
+                for line in rpb_line_ids:
+                    outstanding_order_pcs -= line.subtotal_qty
+
+            res.outstanding_order_pcs = outstanding_order_pcs
+
     @api.depends('product_uom_qty', 'discount', 'price_unit', 'tax_id', 'volume', 'order_id.formula_type')
     def _compute_amount(self):
         """
@@ -107,6 +127,11 @@ class SaleOrderLine(models.Model):
                 'price_subtotal': taxes['total_excluded'],
             })
 
+    @api.multi
+    def _get_default_name(self):
+        # return "Apasih"
+        return self.product_id.name
+
     marking = fields.Char('No. Marking')
     marking_id = fields.Many2one('pwk.marking', 'Marking Image')
     actual_size = fields.Float('Actual Size')
@@ -118,6 +143,7 @@ class SaleOrderLine(models.Model):
     stempel_id = fields.Many2one('pwk.stempel', 'Stempel')
     sticker_id = fields.Many2one('pwk.sticker', 'Sticker')
     stempel_position = fields.Selection([('Edge','Edge'),('Back','Back'),('Edge and Back','Edge and Back')], string="Position", default="Edge")
+    name = fields.Text(string='Description', required=True, default=_get_default_name)
 
     @api.depends('product_id')
     def _get_size(self):
@@ -127,9 +153,9 @@ class SaleOrderLine(models.Model):
             length = 0
 
             if res.product_id:
-                thick = res.product_id.tebal_id
-                width = res.product_id.lebar_id
-                length = res.product_id.panjang_id
+                thick = res.product_id.tebal
+                width = res.product_id.lebar
+                length = res.product_id.panjang
 
             res.thick = thick
             res.width = width
@@ -139,6 +165,96 @@ class SaleOrderLine(models.Model):
     def _get_volume(self):
         for res in self:                        
             res.volume = ((res.width * res.length * res.thick)) / 1000000000
+
+    @api.onchange('product_uom_qty', 'product_uom', 'route_id')
+    def _onchange_product_id_check_availability(self):
+        if not self.product_id or not self.product_uom_qty or not self.product_uom:
+            self.product_packaging = False
+            return {}
+        if self.product_id.type == 'product':
+            precision = self.env['decimal.precision'].precision_get('Product Unit of Measure')
+            product = self.product_id.with_context(
+                warehouse=self.order_id.warehouse_id.id,
+                lang=self.order_id.partner_id.lang or self.env.user.lang or 'en_US'
+            )
+            product_qty = self.product_uom._compute_quantity(self.product_uom_qty, self.product_id.uom_id)
+            if float_compare(product.virtual_available, product_qty, precision_digits=precision) == -1:
+                is_available = self._check_routing()
+                if not is_available:
+                    print("Nothing to do")
+                    # message =  _('You plan to sell %s %s of %s but you only have %s %s available in %s warehouse.') % \
+                    #         (self.product_uom_qty, self.product_uom.name, self.product_id.name, product.virtual_available, product.uom_id.name, self.order_id.warehouse_id.name)
+                    # # We check if some products are available in other warehouses.
+                    # if float_compare(product.virtual_available, self.product_id.virtual_available, precision_digits=precision) == -1:
+                    #     message += _('\nThere are %s %s available across all warehouses.\n\n') % \
+                    #             (self.product_id.virtual_available, product.uom_id.name)
+                    #     for warehouse in self.env['stock.warehouse'].search([]):
+                    #         quantity = self.product_id.with_context(warehouse=warehouse.id).virtual_available
+                    #         if quantity > 0:
+                    #             message += "%s: %s %s\n" % (warehouse.name, quantity, self.product_id.uom_id.name)
+                    # warning_mess = {
+                    #     'title': _('Not enough inventory!'),
+                    #     'message' : message
+                    # }
+                    # return {'warning': warning_mess}
+        return {}
+
+    @api.onchange('product_id', 'product_uom_qty', 'product_uom')
+    def product_id_change(self):
+        if not self.product_id:
+            return {'domain': {'product_uom': []}}
+
+        # remove the is_custom values that don't belong to this template
+        # for pacv in self.product_custom_attribute_value_ids:
+        #     if pacv.attribute_value_id not in self.product_id.product_tmpl_id._get_valid_product_attribute_values():
+        #         self.product_custom_attribute_value_ids -= pacv
+
+        # remove the no_variant attributes that don't belong to this template
+        # for ptav in self.product_no_variant_attribute_value_ids:
+        #     if ptav.product_attribute_value_id not in self.product_id.product_tmpl_id._get_valid_product_attribute_values():
+        #         self.product_no_variant_attribute_value_ids -= ptav
+
+        vals = {}
+        domain = {'product_uom': [('category_id', '=', self.product_id.uom_id.category_id.id)]}
+        if not self.product_uom or (self.product_id.uom_id.id != self.product_uom.id):
+            vals['product_uom'] = self.product_id.uom_id
+            vals['product_uom_qty'] = self.product_uom_qty or 1.0
+
+        product = self.product_id.with_context(
+            lang=self.order_id.partner_id.lang,
+            partner=self.order_id.partner_id,
+            quantity=vals.get('product_uom_qty') or self.product_uom_qty,
+            date=self.order_id.date_order,
+            pricelist=self.order_id.pricelist_id.id,
+            uom=self.product_uom.id
+        )
+
+        result = {'domain': domain}
+
+        # name = self.get_sale_order_line_multiline_description_sale(product)
+        name = product.name
+        print ("Description ", name)
+        vals.update(name=name)
+
+        self._compute_tax_id()
+
+        if self.order_id.pricelist_id and self.order_id.partner_id:
+            vals['price_unit'] = self.env['account.tax']._fix_tax_included_price_company(self._get_display_price(product), product.taxes_id, self.tax_id, self.company_id)
+        self.update(vals)
+
+        title = False
+        message = False
+        warning = {}
+        if product.sale_line_warn != 'no-message':
+            title = _("Warning for %s") % product.name
+            message = product.sale_line_warn_msg
+            warning['title'] = title
+            warning['message'] = message
+            result = {'warning': warning}
+            if product.sale_line_warn == 'block':
+                self.product_id = False
+
+        return result
 
 class SaleOrderStempel(models.Model):    
     _name = "sale.order.stempel"

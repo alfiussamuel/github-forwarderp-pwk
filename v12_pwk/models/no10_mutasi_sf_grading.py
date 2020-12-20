@@ -24,14 +24,32 @@ class PwkMutasiSfGradingLine(models.Model):
     grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
     stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
     stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
-    stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk')
-    stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk', digits=dp.get_precision('FourDecimal'))
-    acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk')
-    acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk', digits=dp.get_precision('FourDecimal'))
-    stock_keluar_pcs = fields.Float('Stok Keluar')
-    stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar', digits=dp.get_precision('FourDecimal'))
-    acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar')
-    acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar', digits=dp.get_precision('FourDecimal'))
+    
+    finish_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk SF (Pcs)')
+    finish_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk SF (M3)', digits=dp.get_precision('FourDecimal'))
+    finish_acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk SF')
+    finish_acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk SF', digits=dp.get_precision('FourDecimal'))
+
+    sizer_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk Sizer (Pcs)')
+    sizer_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Sizer (M3)', digits=dp.get_precision('FourDecimal'))
+    sizer_acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Sizer')
+    sizer_acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Sizer', digits=dp.get_precision('FourDecimal'))
+    
+    ok_stock_keluar_pcs = fields.Float('Stok Keluar OK (Pcs)')
+    ok_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar OK (M3)', digits=dp.get_precision('FourDecimal'))
+    ok_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar OK')
+    ok_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar OK', digits=dp.get_precision('FourDecimal'))
+
+    grading_stock_keluar_pcs = fields.Float('Stok Keluar Grading (Pcs)')
+    grading_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Grading (M3)', digits=dp.get_precision('FourDecimal'))
+    grading_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Grading')
+    grading_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Grading', digits=dp.get_precision('FourDecimal'))
+
+    repair_stock_keluar_pcs = fields.Float('Stok Keluar Repair (Pcs)')
+    repair_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Repair (M3)', digits=dp.get_precision('FourDecimal'))
+    repair_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Repair')
+    repair_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Repair', digits=dp.get_precision('FourDecimal'))
+    
     stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
     stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
 
@@ -44,21 +62,43 @@ class PwkMutasiSfGradingLine(models.Model):
                 res.panjang = res.product_id.panjang
                 res.grade = res.product_id.grade.id
 
-    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
+    @api.depends('stock_awal_pcs',
+        'finish_stock_masuk_pcs','sizer_stock_masuk_pcs',
+        'ok_stock_keluar_pcs','grading_stock_keluar_pcs','repair_stock_keluar_pcs',
+        'finish_acc_stock_masuk_pcs','sizer_acc_stock_masuk_pcs',
+        'ok_acc_stock_keluar_pcs','grading_acc_stock_keluar_pcs','repair_acc_stock_keluar_pcs',
+        'stock_akhir_pcs'
+        )
     def _get_volume(self):
         for res in self:
             res.stock_awal_vol = res.stock_awal_pcs * res.tebal * res.lebar * res.panjang / 1000000000
-            res.stock_masuk_vol = res.stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
-            res.stock_keluar_vol = res.stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
-            res.acc_stock_masuk_vol = res.acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
-            res.acc_stock_keluar_vol = res.acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            
+            res.finish_stock_masuk_vol = res.finish_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.sizer_stock_masuk_vol = res.sizer_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            
+            res.ok_stock_keluar_vol = res.ok_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.grading_stock_keluar_vol = res.grading_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.repair_stock_keluar_vol = res.repair_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            
+            res.finish_acc_stock_masuk_vol = res.finish_acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.ok_acc_stock_masuk_vol = res.ok_acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+
+            res.ok_acc_stock_keluar_vol = res.ok_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.grading_acc_stock_keluar_vol = res.grading_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.repair_acc_stock_keluar_vol = res.repair_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            
             res.stock_akhir_vol = res.stock_akhir_pcs * res.tebal * res.lebar * res.panjang / 1000000000
 
-    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
+    @api.depends('stock_awal_pcs',
+        'finish_stock_masuk_pcs','sizer_stock_masuk_pcs',
+        'ok_stock_keluar_pcs','grading_stock_keluar_pcs','repair_stock_keluar_pcs')
     def _get_acc(self):
         for res in self:
-            acc_stock_masuk_pcs = 0
-            acc_stock_keluar_pcs = 0
+            finish_acc_stock_masuk_pcs = 0
+            sizer_acc_stock_masuk_pcs = 0
+            ok_acc_stock_keluar_pcs = 0
+            grading_acc_stock_keluar_pcs = 0
+            repair_acc_stock_keluar_pcs = 0
 
             source_ids = self.env['pwk.mutasi.sf.grading.line'].search([
                 ('reference.date','=',res.reference.date - timedelta(1)),
@@ -72,11 +112,17 @@ class PwkMutasiSfGradingLine(models.Model):
                     ])
 
             if source_ids:
-                acc_stock_masuk_pcs = source_ids[0].acc_stock_masuk_pcs
-                acc_stock_keluar_pcs = source_ids[0].acc_stock_keluar_pcs
+                finish_acc_stock_masuk_pcs = source_ids[0].finish_acc_stock_masuk_pcs
+                sizer_acc_stock_masuk_pcs = source_ids[0].sizer_acc_stock_masuk_pcs
+                ok_acc_stock_keluar_pcs = source_ids[0].ok_acc_stock_keluar_pcs
+                grading_acc_stock_keluar_pcs = source_ids[0].grading_acc_stock_keluar_pcs
+                repair_acc_stock_keluar_pcs = source_ids[0].repair_acc_stock_keluar_pcs
 
-            res.acc_stock_masuk_pcs = acc_stock_masuk_pcs + res.stock_masuk_pcs
-            res.acc_stock_keluar_pcs = acc_stock_keluar_pcs + res.stock_keluar_pcs
+            res.finish_acc_stock_masuk_pcs = finish_acc_stock_masuk_pcs + res.finish_stock_masuk_pcs
+            res.sizer_acc_stock_masuk_pcs = sizer_acc_stock_masuk_pcs + res.sizer_stock_masuk_pcs
+            res.ok_acc_stock_keluar_pcs = ok_acc_stock_keluar_pcs + res.ok_stock_keluar_pcs
+            res.grading_acc_stock_keluar_pcs = grading_acc_stock_keluar_pcs + res.grading_stock_keluar_pcs
+            res.repair_acc_stock_keluar_pcs = repair_acc_stock_keluar_pcs + res.repair_stock_keluar_pcs
 
     @api.depends('product_id')
     def _get_stock_awal(self):
@@ -101,21 +147,34 @@ class PwkMutasiSfGradingLine(models.Model):
     @api.depends('product_id')
     def _get_stock_masuk(self):
         for res in self:
-            stock_masuk_pcs = 0
-            source_ids = self.env['pwk.mutasi.assembling.finishing.gs1'].search([
+            finish_stock_masuk_pcs = 0
+            sizer_stock_masuk_pcs = 0
+
+            finish_source_ids = self.env['pwk.mutasi.assembling.finishing.finish'].search([
+                ('reference.date','=',res.reference.date),
+                ('product_id','=',res.product_id.id)
+                ])
+
+            sizer_source_ids = self.env['pwk.mutasi.assembling.finishing.sizer'].search([
                 ('reference.date','=',res.reference.date),
                 ('product_id','=',res.product_id.id)
                 ])
                         
-            if source_ids:
-                stock_masuk_pcs = source_ids[0].hot_stock_keluar_pcs
+            if finish_source_ids:
+                finish_stock_masuk_pcs = finish_source_ids[0].grading_stock_keluar_pcs
 
-            res.stock_masuk_pcs = stock_masuk_pcs
+            if sizer_source_ids:
+                sizer_stock_masuk_pcs = sizer_source_ids[0].grading_stock_keluar_pcs
 
-    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
+            res.finish_stock_masuk_pcs = finish_stock_masuk_pcs
+            res.sizer_stock_masuk_pcs = sizer_stock_masuk_pcs
+
+    @api.depends('stock_awal_pcs',
+        'finish_stock_masuk_pcs','sizer_stock_masuk_pcs',
+        'ok_stock_keluar_pcs','grading_stock_keluar_pcs','repair_stock_keluar_pcs')
     def _get_stock_akhir(self):
         for res in self:
-            res.stock_akhir_pcs = res.stock_awal_pcs + res.stock_masuk_pcs - res.stock_keluar_pcs
+            res.stock_akhir_pcs = res.stock_awal_pcs + res.finish_stock_masuk_pcs + res.sizer_stock_masuk_pcs - res.ok_stock_keluar_pcs - res.grading_stock_keluar_pcs - res.repair_stock_keluar_pcs
 
 
 class PwkMutasiSfGrading(models.Model):    
@@ -160,18 +219,18 @@ class PwkMutasiSfGrading(models.Model):
                 for existing in existing_ids:
                     existing.unlink()
                     
-            source_ids = self.env['pwk.mutasi.assembling.finishing.gs1'].search([
+            source_ids = self.env['pwk.mutasi.assembling.finishing.sizer'].search([
                 ('reference.date','=',res.date),
                 ])
 
             if not source_ids:
-                source_ids = self.env['pwk.mutasi.assembling.finishing.gs1'].search([
+                source_ids = self.env['pwk.mutasi.assembling.finishing.sizer'].search([
                     ('reference.date','=',res.date - timedelta(1)),
                     ])
 
             if source_ids:
                 for source in source_ids:
-                    self.env['pwk.mutasi.sf.grading'].create({
+                    self.env['pwk.mutasi.sf.grading.line'].create({
                         'reference': res.id,
                         'product_id': source.product_id.id,
                         })

@@ -14,8 +14,9 @@
     'data': [             
              'security/ir_rule.xml',             
              'wizard/generate_rpb_view.xml',
-             'wizard/generate_rpm_view.xml',
+             'wizard/generate_rpm_view.xml',             
              'views/pwk_view.xml',
+             'views/menu.xml',
              'views/no1_mutasi_veneer_basah_view.xml',
              'views/no2_mutasi_veneer_rolerdryer_view.xml',
              'views/no3_mutasi_veneer_klindry_view.xml',
@@ -31,7 +32,6 @@
              'views/no12_mutasi_harian_pmg_view.xml',
              'views/sale_view.xml',
              'views/purchase_view.xml',
-             'views/menu.xml',
              'views/payment_report.xml',
              'views/cash_report.xml',
              'views/receipt_report.xml',
@@ -68,7 +68,7 @@
              'views/report_daftar_kayu_olahan.xml',
              'views/report_nota_pembelian_jenis_kayu.xml',
              'views/rekap_purchase_order_bahan_baku.xml',
-             'security/ir.model.access.csv',
+             'security/ir.model.access.csv',             
              ],
              
     'installable': True,
