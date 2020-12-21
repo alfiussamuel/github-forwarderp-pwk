@@ -280,10 +280,18 @@ class PwkMutasiVeneerKering(models.Model):
 
             if source_ids:
                 for source in source_ids:
-                    new_product_name = 'Veneer Kering ' + line.product_id.jenis_kayu.name + ' ' + str(line.product_id.tebal) + 'x' + str(int(line.product_id.lebar)) + 'x' + str(int(line.product_id.panjang)) + ' Grade ' + line.product_id.grade.name
+                    print(source.product_id.tebal)
+                    print(source.product_id.panjang)
+                    print(source.product_id.lebar)
+                    print(source.product_id.grade.name)
+                    print(source.product_id.jenis_kayu.name)
+                    new_product_name = 'Veneer Kering ' + ' ' + str(source.product_id.tebal) + ' x ' + str(int(source.product_id.lebar)) + ' x ' + str(int(source.product_id.panjang)) + ' ' + source.product_id.jenis_kayu.name + ' ' + source.product_id.grade.name
+
                     new_product_ids = self.env['product.product'].search([
-                        ('name', '=', new_product_name)
+                        ('name', '=', 'Veneer Kering 3.0 x 1220 x 1220 ALBASIA OPC A')
                     ])
+
+                    print(new_product_ids)
 
                     if new_product_ids:
                         self.env['pwk.mutasi.veneer.kering.line'].create({

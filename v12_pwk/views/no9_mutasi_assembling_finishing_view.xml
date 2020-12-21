@@ -308,8 +308,10 @@
                                             <field name="sander_stock_masuk_vol" sum="Total"/>
                                             <field name="re_stock_masuk_pcs" sum="Total"/>
                                             <field name="re_stock_masuk_vol" sum="Total"/>
-                                            <field name="sander_stock_keluar_pcs" sum="Total"/>
-                                            <field name="sander_stock_keluar_vol" sum="Total"/>
+                                            <field name="lup1_sander_stock_keluar_pcs" sum="Total"/>
+                                            <field name="lup1_sander_stock_keluar_vol" sum="Total"/>
+                                            <field name="lup2_sander_stock_keluar_pcs" sum="Total"/>
+                                            <field name="lup2_sander_stock_keluar_vol" sum="Total"/>
                                             <field name="lain_stock_keluar_pcs" sum="Total"/>
                                             <field name="lain_stock_keluar_vol" sum="Total"/>
                                             <field name="re_stock_keluar_pcs" sum="Total"/>
@@ -332,8 +334,10 @@
                                                         string="Stok Masuk Sander"/> 
                                                     <field name="re_stock_masuk_pcs"
                                                         string="Stok Masuk Re"/> 
-                                                    <field name="sander_stock_keluar_pcs"
-                                                        string="Stok Keluar Sander"/>
+                                                    <field name="lup1_sander_stock_keluar_pcs"
+                                                        string="Stok Keluar LUP1"/>
+                                                    <field name="lup2_sander_stock_keluar_pcs"
+                                                        string="Stok Keluar LUP2"/>
                                                     <field name="lain_stock_keluar_pcs"
                                                         string="Stok Keluar Lain"/>
                                                     <field name="re_stock_keluar_pcs"
@@ -348,8 +352,10 @@
                                                         string="Stok Masuk Hot"/>
                                                     <field name="re_stock_masuk_vol"
                                                         string="Stok Masuk Re"/>
-                                                    <field name="sander_stock_keluar_vol"
-                                                        string="Stok Keluar Sander"/>
+                                                    <field name="lup1_sander_stock_keluar_vol"
+                                                        string="Stok Keluar LUP1"/>
+                                                    <field name="lup2_sander_stock_keluar_vol"
+                                                        string="Stok Keluar LUP2"/>
                                                     <field name="lain_stock_keluar_vol"
                                                         string="Stok Keluar Lain"/>
                                                     <field name="re_stock_keluar_vol"
@@ -362,14 +368,16 @@
                                                 <group string="Akumulasi Stock (Pcs)">
                                                     <field name="sander_acc_stock_masuk_pcs"/> 
                                                     <field name="re_acc_stock_masuk_pcs"/> 
-                                                    <field name="sander_acc_stock_keluar_pcs"/> 
+                                                    <field name="lup1_sander_acc_stock_keluar_pcs"/> 
+                                                    <field name="lup2_sander_acc_stock_keluar_pcs"/> 
                                                     <field name="lain_acc_stock_keluar_pcs"/> 
                                                     <field name="re_acc_stock_keluar_pcs"/> 
                                                 </group>
                                                 <group string="Akumulasi Stock (Vol)">
                                                     <field name="sander_acc_stock_masuk_vol"/>
                                                     <field name="re_acc_stock_masuk_vol"/>
-                                                    <field name="sander_acc_stock_keluar_vol"/>
+                                                    <field name="lup1_sander_acc_stock_keluar_vol"/>
+                                                    <field name="lup2_sander_acc_stock_keluar_vol"/>
                                                     <field name="lain_acc_stock_keluar_vol"/>
                                                     <field name="re_acc_stock_keluar_vol"/>
                                                 </group>

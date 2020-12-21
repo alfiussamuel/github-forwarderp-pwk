@@ -152,8 +152,10 @@
                             <sheet>
                                 <field name="state" invisible="1"/>
                                 <group>
+                                    <field name="product_id" context="{'partner_id': parent.partner_id}"/>
+                                </group>
+                                <group>
                                     <group>
-                                        <field name="product_id" context="{'partner_id': parent.partner_id}"/>
                                         <field name="name"/>
                                         <field name="diameter"
                                             attrs="{'invisible': [('parent.purchase_type', '!=', 'Rotary')]}"/>
@@ -177,6 +179,7 @@
                                         <field name="qty_afkir"
                                             attrs="{'invisible': [('parent.purchase_type', '!=', 'Rotary')]}"/>
                                         <field name="product_qty" string="Quantity"/>
+                                        <field name="volume_real"/>
                                     </group>
                                     <group>
                                         <field name="volume_surat_jalan"

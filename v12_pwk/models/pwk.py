@@ -41,7 +41,7 @@ class PwkPurchaseRequestLine(models.Model):
                 res.thick = res.product_id.tebal
                 res.width = res.product_id.lebar
                 res.length = res.product_id.panjang
-                res.grade_id = res.product_id.grade_id.id
+                res.grade_id = res.product_id.grade.id
 
 class PwkPurchaseRequest(models.Model):    
     _name = "pwk.purchase.request"
@@ -106,10 +106,10 @@ class PwkRpbContainerLine(models.Model):
     grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')        
     total_volume = fields.Float(compute="_get_sale_fields", string='Total Volume', digits=dp.get_precision('FourDecimal'))
     job_order_status = fields.Char(compute="_get_sale_fields", string='Job Order Status')
-    total_qty = fields.Float(string='Ordered Qty')
-    remaining_qty = fields.Float(string='Qty Remaining')
+    total_qty = fields.Float(string='Ordered Qty', digits=dp.get_precision('TwoDecimal'))
+    remaining_qty = fields.Float(string='Qty Remaining', digits=dp.get_precision('TwoDecimal'))
     remaining_volume = fields.Float(compute="_get_container_vol", string='Vol Remaining')
-    container_qty = fields.Float('Cont Pcs')
+    container_qty = fields.Float('Cont Pcs', digits=dp.get_precision('TwoDecimal'))
     container_vol = fields.Float(compute="_get_container_vol", string='Cont Vol')
 
     @api.depends('container_qty', 'remaining_qty')
@@ -144,8 +144,8 @@ class PwkRpbContainer(models.Model):
     no_container = fields.Char('Container No.')
     jumlah_container = fields.Integer('Jumlah Container')
     line_ids = fields.One2many('pwk.rpb.container.line', 'reference', string='Lines', ondelete="cascade")
-    total_product = fields.Float(compute="_get_qty", string='Jumlah Product')
-    total_product_qty = fields.Float(compute="_get_qty", string='Jumlah Qty Product')
+    total_product = fields.Float(compute="_get_qty", string='Jumlah Product', digits=dp.get_precision('TwoDecimal'))
+    total_product_qty = fields.Float(compute="_get_qty", string='Jumlah Qty Product', digits=dp.get_precision('TwoDecimal'))
 
     @api.depends('line_ids')
     def _get_qty(self):
@@ -161,6 +161,91 @@ class PwkRpbContainer(models.Model):
 
             res.total_product = total_product
             res.total_product_qty = total_product_qty
+
+class PwkRpbLineDetail1(models.Model):    
+    _name = "pwk.rpb.line.detail1"
+
+    reference = fields.Many2one('pwk.rpb.line', string='Reference')
+    product_id = fields.Many2one('product.product', string='Product')
+    thick = fields.Float(string='Thick')
+    width = fields.Float(string='Width')
+    length = fields.Float(string='Length')
+    quantity = fields.Float(string='Quantity')
+    available_qty = fields.Float(compute="_get_available_qty", string="Qty Available")
+    
+    @api.depends('product_id')
+    def _get_available_qty(self):
+        for res in self:
+            if res.product_id:
+                res.available_qty = res.product_id.qty_available
+
+class PwkRpbLineDetail2(models.Model):    
+    _name = "pwk.rpb.line.detail2"
+
+    reference = fields.Many2one('pwk.rpb.line', string='Reference')
+    product_id = fields.Many2one('product.product', string='Product')
+    thick = fields.Float(string='Thick')
+    width = fields.Float(string='Width')
+    length = fields.Float(string='Length')
+    quantity = fields.Float(string='Quantity')
+    available_qty = fields.Float(compute="_get_available_qty", string="Qty Available")
+    
+    @api.depends('product_id')
+    def _get_available_qty(self):
+        for res in self:
+            if res.product_id:
+                res.available_qty = res.product_id.qty_available
+
+class PwkRpbLineDetail3(models.Model):    
+    _name = "pwk.rpb.line.detail3"
+
+    reference = fields.Many2one('pwk.rpb.line', string='Reference')
+    product_id = fields.Many2one('product.product', string='Product')
+    thick = fields.Float(string='Thick')
+    width = fields.Float(string='Width')
+    length = fields.Float(string='Length')
+    quantity = fields.Float(string='Quantity')
+    available_qty = fields.Float(compute="_get_available_qty", string="Qty Available")
+    
+    @api.depends('product_id')
+    def _get_available_qty(self):
+        for res in self:
+            if res.product_id:
+                res.available_qty = res.product_id.qty_available
+
+class PwkRpbLineDetail4(models.Model):    
+    _name = "pwk.rpb.line.detail4"
+
+    reference = fields.Many2one('pwk.rpb.line', string='Reference')
+    product_id = fields.Many2one('product.product', string='Product')
+    thick = fields.Float(string='Thick')
+    width = fields.Float(string='Width')
+    length = fields.Float(string='Length')
+    quantity = fields.Float(string='Quantity')
+    available_qty = fields.Float(compute="_get_available_qty", string="Qty Available")
+    
+    @api.depends('product_id')
+    def _get_available_qty(self):
+        for res in self:
+            if res.product_id:
+                res.available_qty = res.product_id.qty_available
+
+class PwkRpbLineDetail5(models.Model):    
+    _name = "pwk.rpb.line.detail5"
+
+    reference = fields.Many2one('pwk.rpb.line', string='Reference')
+    product_id = fields.Many2one('product.product', string='Product')
+    thick = fields.Float(string='Thick')
+    width = fields.Float(string='Width')
+    length = fields.Float(string='Length')
+    quantity = fields.Float(string='Quantity')
+    available_qty = fields.Float(compute="_get_available_qty", string="Qty Available")
+    
+    @api.depends('product_id')
+    def _get_available_qty(self):
+        for res in self:
+            if res.product_id:
+                res.available_qty = res.product_id.qty_available
 
 class PwkRpbLine(models.Model):    
     _name = "pwk.rpb.line"
@@ -181,20 +266,38 @@ class PwkRpbLine(models.Model):
     total_volume = fields.Float(compute="_get_sale_fields", string='Total Volume', digits=dp.get_precision('FourDecimal'))
     job_order_status = fields.Char(compute="_get_sale_fields", string='Job Order Status')
 
-    total_qty = fields.Float(string='Order PCS')
+    total_qty = fields.Float(string='Order PCS', digits=dp.get_precision('TwoDecimal'))
     total_vol = fields.Float(compute="_get_volume", string='Order M3', digits=dp.get_precision('FourDecimal'))
 
-    container_qty = fields.Float('Cont Pcs')
+    container_qty = fields.Float('Cont Pcs', digits=dp.get_precision('TwoDecimal'))
     container_vol = fields.Float(compute="_get_volume", string='Cont M3', digits=dp.get_precision('FourDecimal'))
     
-    subtotal_qty = fields.Float(compute="_get_subtotal_qty", string='Total RPB PCS')
+    subtotal_qty = fields.Float(compute="_get_subtotal_qty", string='Total RPB PCS', digits=dp.get_precision('TwoDecimal'))
     subtotal_vol = fields.Float(compute="_get_volume", string='Total RPB M3', digits=dp.get_precision('FourDecimal'))
     
-    outstanding_rpb_pcs = fields.Float(compute="_get_outstanding_rpb", string='Sisa RPB PCS')
+    outstanding_rpb_pcs = fields.Float(compute="_get_outstanding_rpb", string='Sisa RPB PCS', digits=dp.get_precision('TwoDecimal'))
     outstanding_rpb_vol = fields.Float(compute="_get_volume", string='Sisa RPB M3', digits=dp.get_precision('FourDecimal'))
     
-    outstanding_order_pcs = fields.Float(string='Sisa Order PCS')
+    outstanding_order_pcs = fields.Float(string='Sisa Order PCS', digits=dp.get_precision('TwoDecimal'))
     outstanding_order_vol = fields.Float(compute="_get_volume", string='Sisa Order M3', digits=dp.get_precision('FourDecimal'))
+
+    detail_ids_1 = fields.One2many('pwk.rpb.line.detail1', 'reference', string='Lines', ondelete="cascade")
+    detail_ids_2 = fields.One2many('pwk.rpb.line.detail2', 'reference', string='Lines', ondelete="cascade")
+    detail_ids_3 = fields.One2many('pwk.rpb.line.detail3', 'reference', string='Lines', ondelete="cascade")
+    detail_ids_4 = fields.One2many('pwk.rpb.line.detail4', 'reference', string='Lines', ondelete="cascade")
+    detail_ids_5 = fields.One2many('pwk.rpb.line.detail5', 'reference', string='Lines', ondelete="cascade")
+
+    bom_id = fields.Many2one('mrp.bom', string='BoM')
+    is_detail1 = fields.Boolean('Detail 1')
+    is_detail2 = fields.Boolean('Detail 2')
+    is_detail3 = fields.Boolean('Detail 3')
+    is_detail4 = fields.Boolean('Detail 3')
+    is_detail5 = fields.Boolean('Detail 3')
+    is_selected_detail1 = fields.Boolean('Bill of Material 1')
+    is_selected_detail2 = fields.Boolean('Bill of Material 2')
+    is_selected_detail3 = fields.Boolean('Bill of Material 3')
+    is_selected_detail4 = fields.Boolean('Bill of Material 4')
+    is_selected_detail5 = fields.Boolean('Bill of Material 5')    
 
     @api.depends('container_qty', 'jumlah_container')
     def _get_subtotal_qty(self):
@@ -290,25 +393,58 @@ class PwkRpb(models.Model):
         for res in self:
             res.state = "Done"
 
-    def get_sequence(self, name=False, obj=False, context=None):
+    def get_sequence(self, name=False, obj=False, year_month=False, context=None):
+        print(year_month)
         sequence_id = self.env['ir.sequence'].search([
             ('name', '=', name),
             ('code', '=', obj),
-            ('suffix', '=', '.RPB.%(month)s.%(year)s')
+            ('suffix', '=', '.' + year_month + '.RPB.PWK')
         ])
         if not sequence_id :
             sequence_id = self.env['ir.sequence'].sudo().create({
                 'name': name,
                 'code': obj,
                 'implementation': 'no_gap',
-                'suffix': '.RPB.%(month)s.%(year)s',
+                'suffix': '.' + year_month + '.RPB.PWK',
                 'padding': 3
             })
         return sequence_id.next_by_id()
 
     @api.model
     def create(self, vals):
-        vals['name'] = self.get_sequence('Rencana Produksi Bulanan', 'pwk.rpb')
+        month_name = ''
+        print(vals['date_start'])
+        # month = vals['date_start'].month
+        # year = vals['date_start'].year        
+
+        # if month == 1:
+        #     month_name = 'Jan'
+        # elif month == 2:
+        #     month_name = 'Feb'
+        # elif month == 3:
+        #     month_name = 'Mar'
+        # elif month == 4:
+        #     month_name = 'Apr'
+        # elif month == 5:
+        #     month_name = 'Mei'
+        # elif month == 6:
+        #     month_name = 'Jun'
+        # elif month == 7:
+        #     month_name = 'Jul'
+        # elif month == 8:
+        #     month_name = 'Agt'
+        # elif month == 9:
+        #     month_name = 'Sep'
+        # elif month == 10:
+        #     month_name = 'Okt'
+        # elif month == 11:
+        #     month_name = 'Nov'
+        # elif month == 12:
+        #     month_name = 'Des'
+
+        year_month = str('Jan') + '-' + str('2021')
+        
+        vals['name'] = self.get_sequence('Rencana Produksi Bulanan', 'pwk.rpb', '%s' % year_month)
         return super(PwkRpb, self).create(vals)
 
 class PwkRpmLineDetail1(models.Model):    
@@ -409,11 +545,13 @@ class PwkRpmLine(models.Model):
     length = fields.Float(compute="_get_sale_fields", string='Length')
     glue_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.glue', string='Glue')
     grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')        
+    spare_qty = fields.Float('Qty Spare (%)', digits=dp.get_precision('ZeroDecimal'))  
     
     remaining_qty = fields.Float(string='Qty Remaining')
     remaining_volume = fields.Float(compute="_get_volume", string='Vol Remaining', digits=dp.get_precision('FourDecimal'))
 
     total_qty = fields.Float(string='Qty RPM')
+    total_qty_spare = fields.Float(compute="_get_total_qty_spare", string='Qty RPM (Spare)')
     total_volume = fields.Float(compute="_get_volume", string='Vol RPM', digits=dp.get_precision('FourDecimal'))
 
     detail_ids_1 = fields.One2many('pwk.rpm.line.detail1', 'reference', string='Lines', ondelete="cascade")
@@ -434,6 +572,11 @@ class PwkRpmLine(models.Model):
     is_selected_detail4 = fields.Boolean('Bill of Material 4')
     is_selected_detail5 = fields.Boolean('Bill of Material 5')    
 
+    @api.depends('total_qty', 'spare_qty')
+    def _get_total_qty_spare(self):
+        for res in self:
+            res.total_qty_spare = res.total_qty + round((res.total_qty * res.spare_qty / 100))
+
     @api.depends('total_qty', 'remaining_qty')
     def _get_volume(self):
         for res in self:
@@ -451,7 +594,6 @@ class PwkRpmLine(models.Model):
                 res.length = res.sale_line_id.length
                 res.glue_id = res.sale_line_id.product_id.glue.id
                 res.grade_id = res.sale_line_id.product_id.grade.id
-                res.total_qty = res.sale_line_id.product_uom_qty
 
     @api.multi
     def button_reload_bom(self):
@@ -486,13 +628,15 @@ class PwkRpmLine(models.Model):
                 if len(bom_ids) >= 1:
                     line.write({'is_detail1': True})
                     for bom_line in bom_ids[0].bom_line_ids:
+                        print ("Bom quantity ", bom_line.product_qty)
+                        print ("Line quantity ", line.total_qty)
                         self.env['pwk.rpm.line.detail1'].create({
                             'reference': line.id,
                             'product_id': bom_line.product_id.id,
                             'thick': bom_line.product_id.tebal,
                             'width': bom_line.product_id.lebar,
                             'length': bom_line.product_id.panjang,
-                            'quantity': bom_line.product_qty * line.total_qty
+                            'quantity': bom_line.product_qty * line.total_qty_spare
                         })
 
                 if len(bom_ids) >= 2:
@@ -504,7 +648,7 @@ class PwkRpmLine(models.Model):
                             'thick': bom_line.product_id.tebal,
                             'width': bom_line.product_id.lebar,
                             'length': bom_line.product_id.panjang,
-                            'quantity': bom_line.product_qty * line.total_qty
+                            'quantity': bom_line.product_qty * line.total_qty_spare
                         })
                     
                 if len(bom_ids) >= 3:
@@ -516,7 +660,7 @@ class PwkRpmLine(models.Model):
                             'thick': bom_line.product_id.tebal,
                             'width': bom_line.product_id.lebar,
                             'length': bom_line.product_id.panjang,
-                            'quantity': bom_line.product_qty * line.total_qty
+                            'quantity': bom_line.product_qty * line.total_qty_spare
                         })
 
                 if len(bom_ids) >= 4:
@@ -528,7 +672,7 @@ class PwkRpmLine(models.Model):
                             'thick': bom_line.product_id.tebal,
                             'width': bom_line.product_id.lebar,
                             'length': bom_line.product_id.panjang,
-                            'quantity': bom_line.product_qty * line.total_qty
+                            'quantity': bom_line.product_qty * line.total_qty_spare
                         })
 
                 if len(bom_ids) >= 5:
@@ -540,7 +684,7 @@ class PwkRpmLine(models.Model):
                             'thick': bom_line.product_id.tebal,
                             'width': bom_line.product_id.lebar,
                             'length': bom_line.product_id.panjang,
-                            'quantity': bom_line.product_qty * line.total_qty
+                            'quantity': bom_line.product_qty * line.total_qty_spare
                         })
 
 class PwkRpm(models.Model):    
@@ -587,16 +731,20 @@ class PwkRpm(models.Model):
                         bom_ids = line.detail_ids_2
                     elif line.is_detail3 and line.is_selected_detail3:
                         bom_ids = line.detail_ids_3
+                    elif line.is_detail4 and line.is_selected_detail4:
+                        bom_ids = line.detail_ids_4
+                    elif line.is_detail5 and line.is_selected_detail5:
+                        bom_ids = line.detail_ids_5
 
                     for bom in bom_ids:
-                        if bom.quantity > line.available_qty:
+                        if bom.quantity > bom.available_qty:
                             if bom.product_id.id not in product_list:
                                 product_list.append(bom.product_id.id)
 
                                 self.env['pwk.purchase.request.line'].create({
                                     'reference': request_id.id,
                                     'product_id': bom.product_id.id,                    
-                                    'quantity': bom.quantity - line.available_qty,
+                                    'quantity': bom.quantity - bom.available_qty,
                                 })
 
                             else:
@@ -607,7 +755,7 @@ class PwkRpm(models.Model):
 
                                 if current_line_ids:
                                     current_line_ids[0].write({
-                                        'quantity': current_line_ids[0].quantity + (bom.quantity - line.available_qty)
+                                        'quantity': current_line_ids[0].quantity + (bom.quantity - bom.available_qty)
                                     })
 
             return res.write({
@@ -651,25 +799,59 @@ class PwkRpm(models.Model):
         for res in self:
             res.state = "Done"
 
-    def get_sequence(self, name=False, obj=False, context=None):
+    def get_sequence(self, name=False, obj=False, year_month=False, context=None):
         sequence_id = self.env['ir.sequence'].search([
             ('name', '=', name),
             ('code', '=', obj),
-            ('suffix', '=', '.RPM.%(month)s.%(year)s')
+            ('suffix', '=', '.' + year_month + '.RPM.PWK')
         ])
         if not sequence_id :
             sequence_id = self.env['ir.sequence'].sudo().create({
                 'name': name,
                 'code': obj,
                 'implementation': 'no_gap',
-                'suffix': '.RPM.%(month)s.%(year)s',
+                'suffix': '.' + year_month + '.RPM.PWK',
                 'padding': 3
             })
         return sequence_id.next_by_id()
 
     @api.model
     def create(self, vals):
-        vals['name'] = self.get_sequence('Rencana Produksi Mingguan', 'pwk.rpm')
+        month_name = ''
+        # month = vals['date_start'].month
+        # year = vals['date_start'].year
+
+        # day_of_month = vals['date_start'].day
+        # week_number = (day_of_month - 1) // 7 + 1
+
+        # if month == 1:
+        #     month_name = 'Jan'
+        # elif month == 2:
+        #     month_name = 'Feb'
+        # elif month == 3:
+        #     month_name = 'Mar'
+        # elif month == 4:
+        #     month_name = 'Apr'
+        # elif month == 5:
+        #     month_name = 'Mei'
+        # elif month == 6:
+        #     month_name = 'Jun'
+        # elif month == 7:
+        #     month_name = 'Jul'
+        # elif month == 8:
+        #     month_name = 'Agt'
+        # elif month == 9:
+        #     month_name = 'Sep'
+        # elif month == 10:
+        #     month_name = 'Okt'
+        # elif month == 11:
+        #     month_name = 'Nov'
+        # elif month == 12:
+        #     month_name = 'Des'
+
+        year_month = 'Week-' + str('1') + '.' + str('Jan') + '-' + str('2021')
+
+        vals['name'] = self.get_sequence('Rencana Produksi Mingguan', 'pwk.rpm', '%s' % year_month)
         return super(PwkRpm, self).create(vals)
 
 class ResCompany(models.Model):    

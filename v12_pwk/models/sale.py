@@ -75,24 +75,73 @@ class PwkPacking(models.Model):
 
 class SaleOrderLineContainer(models.Model):    
     _name = "sale.order.line.container"
-    _order = 'number asc'
+    _order = 'id asc'
 
     reference = fields.Many2one('sale.order.line', 'Reference')
     position_id = fields.Many2one('pwk.position', 'Position')
     pallet_id = fields.Many2one('pwk.pallet', 'Pallet')
     strapping_id = fields.Many2one('pwk.strapping', 'Strapping')    
-    total_crates = fields.Float('Total Crates')
+    total_crates = fields.Float('Total Crates', default=1)
     qty = fields.Float('Quantity / Crate')
-    number = fields.Char('Number')
+    number = fields.Char('Number')    
 
 class SaleOrderLine(models.Model):    
-    _inherit = "sale.order.line"
+    _inherit = "sale.order.line"    
+
+    @api.depends('is_changed','product_uom_qty', 'discount', 'price_unit', 'tax_id', 'volume', 'order_id.formula_type')
+    def _compute_amount(self):
+        """
+        Compute the amounts of the SO line.
+        """
+        for line in self:
+            final_qty = line.product_uom_qty
+            price = line.price_unit * (1 - (line.discount or 0.0) / 100.0)
+
+            if line.order_id.formula_type == "Volume":
+                final_qty = line.volume
+
+            taxes = line.tax_id.compute_all(price, line.order_id.currency_id, final_qty, product=line.product_id, partner=line.order_id.partner_shipping_id)
+            line.update({
+                'price_tax': sum(t.get('amount', 0.0) for t in taxes.get('taxes', [])),
+                'price_total': taxes['total_included'],
+                'price_subtotal': taxes['total_excluded'],
+            })
+
+    @api.multi
+    def _get_default_name(self):
+        # return "Apasih"
+        return self.product_id.name
+    
+    is_changed = fields.Boolean('Changed')
+    marking = fields.Char('No. Marking')
+    marking_id = fields.Many2one('pwk.marking', 'Marking Image')
+    actual_size = fields.Float('Actual Size')
+    thick = fields.Float(compute="_get_size", string='Thick', digits=dp.get_precision('OneDecimal'))
+    width = fields.Float(compute="_get_size", string='Width', digits=dp.get_precision('TwoDecimal'))
+    length = fields.Float(compute="_get_size", string='Length', digits=dp.get_precision('TwoDecimal'))
+    volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))    
+    container_ids = fields.One2many('sale.order.line.container', 'reference', 'Container')
+    stempel_id = fields.Many2one('pwk.stempel', 'Stempel')
+    sticker_id = fields.Many2one('pwk.sticker', 'Sticker')
+    stempel_position = fields.Selection([('Edge','Edge'),('Back','Back'),('Edge and Back','Edge and Back')], string="Position", default="Edge")
+    name = fields.Text(string='Description', required=True, default=_get_default_name)
 
     sale_date_order = fields.Date(related='order_id.date_order', string='Date Order')
     sale_partner_id = fields.Many2one(related='order_id.partner_id', comodel_name='res.partner', string='Customer')    
     outstanding_order_pcs = fields.Float(compute="_get_outstanding_order_pcs", string="Outstanding Order")
+    total_crate_qty = fields.Float(compute="_get_total_crate_qty", string="Total Qty Crates")    
 
-    @api.multi
+    @api.depends('container_ids.qty')
+    def _get_total_crate_qty(self):
+        for res in self:
+            total_crate_qty = 0
+            if res.container_ids:
+                for container in res.container_ids:
+                    total_crate_qty += container.qty
+
+            res.total_crate_qty = total_crate_qty
+
+    @api.depends('product_uom_qty')
     def _get_outstanding_order_pcs(self):
         for res in self:
             outstanding_order_pcs = res.product_uom_qty
@@ -107,43 +156,6 @@ class SaleOrderLine(models.Model):
                     outstanding_order_pcs -= line.subtotal_qty
 
             res.outstanding_order_pcs = outstanding_order_pcs
-
-    @api.depends('product_uom_qty', 'discount', 'price_unit', 'tax_id', 'volume', 'order_id.formula_type')
-    def _compute_amount(self):
-        """
-        Compute the amounts of the SO line.
-        """
-        for line in self:
-            final_qty = line.product_uom_qty
-            price = line.price_unit * (1 - (line.discount or 0.0) / 100.0)
-
-            if line.order_id.formula_type == "Volume":
-                final_qty = line.product_uom_qty * line.volume            
-
-            taxes = line.tax_id.compute_all(price, line.order_id.currency_id, final_qty, product=line.product_id, partner=line.order_id.partner_shipping_id)
-            line.update({
-                'price_tax': sum(t.get('amount', 0.0) for t in taxes.get('taxes', [])),
-                'price_total': taxes['total_included'],
-                'price_subtotal': taxes['total_excluded'],
-            })
-
-    @api.multi
-    def _get_default_name(self):
-        # return "Apasih"
-        return self.product_id.name
-
-    marking = fields.Char('No. Marking')
-    marking_id = fields.Many2one('pwk.marking', 'Marking Image')
-    actual_size = fields.Float('Actual Size')
-    thick = fields.Float(compute="_get_size", string='Thick', digits=dp.get_precision('OneDecimal'))
-    width = fields.Float(compute="_get_size", string='Width', digits=dp.get_precision('TwoDecimal'))
-    length = fields.Float(compute="_get_size", string='Length', digits=dp.get_precision('TwoDecimal'))
-    volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))    
-    container_ids = fields.One2many('sale.order.line.container', 'reference', 'Container')
-    stempel_id = fields.Many2one('pwk.stempel', 'Stempel')
-    sticker_id = fields.Many2one('pwk.sticker', 'Sticker')
-    stempel_position = fields.Selection([('Edge','Edge'),('Back','Back'),('Edge and Back','Edge and Back')], string="Position", default="Edge")
-    name = fields.Text(string='Description', required=True, default=_get_default_name)
 
     @api.depends('product_id')
     def _get_size(self):
@@ -161,10 +173,10 @@ class SaleOrderLine(models.Model):
             res.width = width
             res.length = length
 
-    @api.depends('width','length','thick')
+    @api.depends('width','length','thick','product_uom_qty')
     def _get_volume(self):
         for res in self:                        
-            res.volume = ((res.width * res.length * res.thick)) / 1000000000
+            res.volume = ((res.product_uom_qty * res.width * res.length * res.thick)) / 1000000000
 
     @api.onchange('product_uom_qty', 'product_uom', 'route_id')
     def _onchange_product_id_check_availability(self):
@@ -320,6 +332,17 @@ class SaleOrder(models.Model):
     formula_type = fields.Selection([('Volume','Volume'),('PCS','PCS')], string="Price Formula", default="PCS")
     number_contract = fields.Char(compute="_get_contract_no", string="Sales Contract No.")
     job_order_status = fields.Char(string='Job Order Status', default='Not Ready')
+    is_changed = fields.Boolean('Changed')
+
+    @api.multi
+    def button_change(self):
+        for res in self:
+            if res.is_changed:
+                for line in res.order_line:                    
+                    line.write({'is_changed': False})
+            else:
+                for line in res.order_line:                    
+                    line.write({'is_changed': True})
     
     def get_sequence(self, name=False, obj=False, pref=False, context=None):
         sequence_id = self.env['ir.sequence'].search([

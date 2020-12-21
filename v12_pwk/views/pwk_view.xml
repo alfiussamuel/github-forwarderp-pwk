@@ -103,7 +103,7 @@
                         <button name="action_create_pr" string="Create Purchase Request" 
                             states="Draft" type="object" class="oe_highlight"/>
                         <button name="button_cancel" string="Cancel Purchase Request" 
-                            states="Purchase Request" type="object" class="oe_highlight"/>
+                            states="Purchase Request" type="object"/>
                         <field name="state" widget="statusbar" readonly="1"/>
                     </header>
                     <sheet>
@@ -117,7 +117,7 @@
                                 <field name="date_start" class="oe_inline" required="1"/> - 
                                 <field name="date_end" class="oe_inline" required="1"/>
                             </div>
-                            <field name="rpb_id"/>
+                            <field name="rpb_id" class="oe_inline"/>
                             <field name="pr_id" readonly="1"
                                 attrs="{'invisible':[('state', '!=', 'Purchase Request')]}"/>
                         </group>
@@ -171,13 +171,15 @@
                                                 <group>
                                                     <group>
                                                         <field name="remaining_qty" readonly="1"/>
-                                                        <label for="total_qty"/>
+                                                        <field name="total_qty" class="oe_inline"/>
+                                                        <field name="spare_qty" class="oe_inline"/>
+                                                        <label for="total_qty_spare"/>
                                                         <div>
-                                                            <field name="total_qty" class="oe_inline"/> | <button name="button_reload_bom" 
-                                                            string="Reload BoM" type="object" 
-                                                            class="oe_highlight"/>
+                                                            <field name="total_qty_spare"/>
+                                                               |   <button name="button_reload_bom" 
+                                                                string="Reload BoM" type="object" 
+                                                                class="oe_highlight"/>
                                                         </div>
-                                                        
                                                     </group>
                                                     <group>
                                                         <field name="remaining_volume"/>

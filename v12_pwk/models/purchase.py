@@ -14,7 +14,7 @@ import math
 import re
 
 class PurchaseOrderLine(models.Model):    
-    _inherit = "purchase.order.line"
+    _inherit = "purchase.order.line"   
 
     spp = fields.Char("No. SPP")
     qty_surat_jalan = fields.Float('Qty Surat Jalan')
@@ -37,9 +37,32 @@ class PurchaseOrderLine(models.Model):
     @api.depends('diameter','qty_surat_jalan','product_qty','qty_afkir','order_id.panjang')
     def _get_volume_ukur(self):
         for res in self:
-            res.volume_real = res.product_qty * res.diameter * res.diameter * res.order_id.panjang * 0.785 / 1000000
+            if res.diameter > 0:
+                res.volume_real = res.product_qty * res.diameter * res.diameter * res.order_id.panjang * 0.785 / 1000000
+            else:
+                print("masukkk")
+                res.volume_real = res.product_qty * res.product_id.panjang * res.product_id.lebar * res.product_id.tebal / 1000000000
+                print(res.volume_real)
+
             res.volume_surat_jalan = res.qty_surat_jalan * res.diameter * res.diameter * res.order_id.panjang * 0.785 / 1000000
-            res.volume_afkir = res.qty_afkir * res.diameter * res.diameter * res.order_id.panjang * 0.785 / 1000000
+            res.volume_afkir = res.qty_afkir * res.diameter * res.diameter * res.order_id.panjang * 0.785 / 1000000    
+
+    @api.depends('product_qty', 'price_unit', 'taxes_id')
+    def _compute_amount(self):
+        for line in self:
+            vals = line._prepare_compute_all_values()
+            print(vals)
+            taxes = line.taxes_id.compute_all(
+                vals['price_unit'],
+                vals['currency_id'],
+                vals['product_qty'],
+                vals['product'],
+                vals['partner'])
+            line.update({
+                'price_tax': sum(t.get('amount', 0.0) for t in taxes.get('taxes', [])),
+                'price_total': taxes['total_included'],
+                'price_subtotal': taxes['total_excluded'],
+            })
 
     def _prepare_compute_all_values(self):
         # Hook method to returns the different argument values for the
@@ -84,9 +107,9 @@ class PurchaseOrderLine(models.Model):
         # Reset date, price and quantity since _onchange_quantity will provide default values
         self.date_planned = datetime.today().strftime(DEFAULT_SERVER_DATETIME_FORMAT)
         self.price_unit = self.product_qty = 0.0
-        self.invoice_thick = self.product_id.tebal_id
-        self.invoice_width = self.product_id.lebar_id
-        self.invoice_length = self.product_id.panjang_id
+        self.invoice_thick = self.product_id.tebal
+        self.invoice_width = self.product_id.lebar
+        self.invoice_length = self.product_id.panjang
         self.product_uom = self.product_id.uom_po_id or self.product_id.uom_id
         result['domain'] = {'product_uom': [('category_id', '=', self.product_id.uom_id.category_id.id)]}
 
@@ -167,7 +190,8 @@ class PurchaseOrder(models.Model):
                         'product_qty': line.quantity,
                         'request_line_id': line.id,
                         'date_planned': fields.Date.today(),
-                        'product_uom': line.product_id.purchase_uom_id.id
+                        'price_unit': 1,
+                        'product_uom': line.product_id.uom_po_id.id
                     })
 
     @api.multi
