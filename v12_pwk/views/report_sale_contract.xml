@@ -15,7 +15,7 @@
 							style="font-size:8px; border:0px;padding:1px;vertical-align:middle;">
 							<strong>PT. PRIMA WANA KREASI WOOD INDUSTRY</strong>
 							<hr style="margin-bottom:3px;margin-top:3px;visibility:hidden;"/>
-							<strong>JL. RAYA TEMBUS PRINGSURAT, KRANGGAN KUPEN PRINGSURAT, TEMANGGUNG JAWA TENGAH</strong>
+							<strong>JL. RAYA TEMBUS PRINGSURAT KRANGGAN, KUPEN PRINGSURAT, TEMANGGUNG JAWA TENGAH</strong>
 							<hr style="height:1px;margin-bottom:3px;margin-top:3px;visibility:hidden;"/>
 							<strong>Phone. +62 293 319 4934  Fax. +62 293 4901 339</strong>
 						</td>
@@ -302,7 +302,7 @@
 		                            <span t-field="l.marking"/>
 		                        </td>
 		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-esc="'{0:,.0f}'.format(l.thick)"/>
+		                            <span t-esc="'{0:,.1f}'.format(l.thick)"/>
 		                        </td>
 		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
 		                            <span t-esc="'{0:,.0f}'.format(l.width)"/>
@@ -320,7 +320,7 @@
 		                            <span t-esc="'{0:,.0f}'.format(l.price_unit)"/>
 		                        </td>
 		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-esc="'{0:,.0f}'.format(l.price_total)"/>
+		                            <span t-esc="'{0:,.2f}'.format(l.price_total)"/>
 		                        </td>
 		                    </tr>
 		                    <tr>
@@ -331,13 +331,13 @@
 		                        	<span t-esc="'{0:,.0f}'.format(o.total_qty)"/>
 		                        </td>		                        
 		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                        	<span t-field="o.total_volume"/>
+		                        	<span t-esc="'{0:,.4f}'.format(o.total_volume)"/>
 		                        </td>
 		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
 		                        	
 		                        </td>
 		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
-		                        	<span t-esc="'{0:,.0f}'.format(o.amount_total)"/>
+		                        	<span t-esc="'{0:,.2f}'.format(o.amount_total)"/>
 		                        </td>
 		                    </tr>		                    
 		                </tbody>
@@ -396,7 +396,7 @@
 						</tr>
 						<tr>
 							<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
-								Measurement Content ( MC )
+								Moisture Content ( MC )
 							</td>
 							<td style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
 								<strong>:</strong>
@@ -484,7 +484,7 @@
 						</tr>
 						<tr>
 							<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
-								Banker
+								Bank Name
 							</td>
 							<td style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
 								<strong>:</strong>
@@ -539,10 +539,10 @@
 						</tr>
 						<tr>
 							<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
-								Note :
+								Note
 							</td>
 							<td style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
-								
+								<strong>:</strong>
 							</td>
 							<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 								

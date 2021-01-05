@@ -171,7 +171,7 @@
         </record>
 
         <record id="view_sale_mc_tree" model="ir.ui.view">
-            <field name="name">Measurement Content</field>
+            <field name="name">Moisture Content</field>
             <field name="model">sale.mc</field>            
             <field name="type">tree</field>
             <field name="arch" type="xml">
@@ -515,8 +515,22 @@
                                 </group>
                             </group>
                             <group>
+                                <group>
+                                    <field name="crate_number"/>
+                                    <field name="crate_qty_each"/>
+                                    <field name="crate_qty_total"/>
+                                </group>
+                                <group>
+                                    <field name="crate_position_id"/>
+                                    <field name="crate_pallet_id"/>
+                                    <field name="crate_strapping_id"/>
+                                </group>
+                            </group>
+                            <group>
                                 <notebook>
                                     <page string="Crates">
+                                        <button name="button_reload_crate" type="object"
+                                            string="Load Crate" class="oe_highlight"/>
                                         <field name="container_ids" nolabel="1">
                                             <tree editable="bottom">
                                                 <field name="number"/>

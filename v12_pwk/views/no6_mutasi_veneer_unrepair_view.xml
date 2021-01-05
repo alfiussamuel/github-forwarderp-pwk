@@ -50,10 +50,6 @@
                                         <field name="line_ids" nolabel="1">
                                             <tree>
                                                 <field name="new_product_id"/>
-                                                <field name="tebal"/>
-                                                <field name="lebar"/>
-                                                <field name="panjang"/>
-                                                <field name="grade"/>
                                                 <field name="stock_awal_pcs" sum="Total"/>
                                                 <field name="stock_masuk_pcs" sum="Total"/>
                                                 <field name="stock_keluar_pcs" sum="Total"/>
@@ -102,10 +98,6 @@
                                         <field name="core_line_ids" nolabel="1">
                                             <tree>
                                                 <field name="product_id"/>
-                                                <field name="tebal"/>
-                                                <field name="lebar"/>
-                                                <field name="panjang"/>
-                                                <field name="grade"/>
                                                 <field name="stock_awal_pcs" sum="Total"/>
                                                 <field name="stock_masuk_pcs" sum="Total"/>
                                                 <field name="repair_stock_keluar_pcs" sum="Total"/>
@@ -159,10 +151,6 @@
                                         <field name="long_line_ids" nolabel="1">
                                             <tree>
                                                 <field name="product_id"/>
-                                                <field name="tebal"/>
-                                                <field name="lebar"/>
-                                                <field name="panjang"/>
-                                                <field name="grade"/>
                                                 <field name="stock_awal_pcs" sum="Total"/>
                                                 <field name="stock_masuk_pcs" sum="Total"/>
                                                 <field name="stock_keluar_pcs" sum="Total"/>

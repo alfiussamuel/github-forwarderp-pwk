@@ -16,7 +16,9 @@ import re
 class PurchaseOrderLine(models.Model):    
     _inherit = "purchase.order.line"   
 
+    request_id = fields.Many2one('pwk.purchase.request', 'Purchase Request')
     spp = fields.Char("No. SPP")
+    is_changed = fields.Boolean('Changed', default=False)
     qty_surat_jalan = fields.Float('Qty Surat Jalan')
     volume_surat_jalan = fields.Float(compute="_get_volume_ukur", string='Volume Surat Jalan', digits=dp.get_precision('FourDecimal'))
     qty_afkir = fields.Float('Qty Afkir')
@@ -47,11 +49,10 @@ class PurchaseOrderLine(models.Model):
             res.volume_surat_jalan = res.qty_surat_jalan * res.diameter * res.diameter * res.order_id.panjang * 0.785 / 1000000
             res.volume_afkir = res.qty_afkir * res.diameter * res.diameter * res.order_id.panjang * 0.785 / 1000000    
 
-    @api.depends('product_qty', 'price_unit', 'taxes_id')
+    @api.depends('product_qty', 'price_unit', 'taxes_id', 'order_id.purchase_type', 'order_id.is_changed')
     def _compute_amount(self):
         for line in self:
             vals = line._prepare_compute_all_values()
-            print(vals)
             taxes = line.taxes_id.compute_all(
                 vals['price_unit'],
                 vals['currency_id'],
@@ -59,7 +60,7 @@ class PurchaseOrderLine(models.Model):
                 vals['product'],
                 vals['partner'])
             line.update({
-                'price_tax': sum(t.get('amount', 0.0) for t in taxes.get('taxes', [])),
+                'price_tax': math.ceil(sum(t.get('amount', 0.0) for t in taxes.get('taxes', []))),
                 'price_total': taxes['total_included'],
                 'price_subtotal': taxes['total_excluded'],
             })
@@ -71,13 +72,22 @@ class PurchaseOrderLine(models.Model):
         # This method should disappear as soon as this feature is
         # also introduced like in the sales module.
         self.ensure_one()
-        return {
-            'price_unit': self.price_unit,
-            'currency_id': self.order_id.currency_id,
-            'product_qty': self.volume_real,
-            'product': self.product_id,
-            'partner': self.order_id.partner_id,
-        }
+        if self.order_id.purchase_type == "Bahan Penolong" or self.order_id.purchase_type == "Jasa":
+            return {
+                'price_unit': self.price_unit,
+                'currency_id': self.order_id.currency_id,
+                'product_qty': self.product_qty,
+                'product': self.product_id,
+                'partner': self.order_id.partner_id,
+            }
+        else:
+            return {
+                'price_unit': self.price_unit,
+                'currency_id': self.order_id.currency_id,
+                'product_qty': self.volume_real,
+                'product': self.product_id,
+                'partner': self.order_id.partner_id,
+            }
 
     # @api.onchange('invoice_width','invoice_length','invoice_thick','order_id.formula_type','diameter','panjang','order_id.purchase_type')
     # def _onchange_volume(self):
@@ -175,8 +185,18 @@ class PurchaseOrder(models.Model):
     move_id = fields.Many2one('account.move', 'Journal Entries')
     afkir_ids = fields.One2many('purchase.order.afkir', 'reference', string="Detail Afkir")
     product_ids = fields.One2many('purchase.order.product', 'reference', string="Range Diameter")
-
     request_id = fields.Many2one('pwk.purchase.request', 'Purchase Request', domain="[('state','=','Purchasing Approved')]")
+    is_changed = fields.Boolean('Changed', default=False)
+
+    @api.multi
+    def button_change(self):
+        for res in self:
+            if res.is_changed:
+                for line in res.order_line:                    
+                    line.write({'is_changed': False})
+            else:
+                for line in res.order_line:                    
+                    line.write({'is_changed': True})
 
     @api.multi
     def button_reload_pr(self):
@@ -189,6 +209,7 @@ class PurchaseOrder(models.Model):
                         'name': line.product_id.name,
                         'product_qty': line.quantity,
                         'request_line_id': line.id,
+                        'request_id': line.reference.id,
                         'date_planned': fields.Date.today(),
                         'price_unit': 1,
                         'product_uom': line.product_id.uom_po_id.id
@@ -248,17 +269,22 @@ class PurchaseOrder(models.Model):
                 move_id.action_post()
 
                 # Create List Afkir            
+                for afkir in order.afkir_ids:
+                    afkir.unlink()
+                    
                 for line in order.order_line:
                     if line.qty_afkir > 0:
-                        print ("Masukkk")
                         self.env['purchase.order.afkir'].create({
                             'reference' : order.id,
                             'product_id' : line.product_id.id,
                             'diameter' : line.diameter,
-                            'qty' : line.product_qty,
+                            'qty' : line.qty_afkir,
                             })
 
-                # Create List Product            
+                # Create List Product         
+                for product in order.product_ids:
+                    product.unlink()
+
                 total_qty1 = total_qty2 = total_qty3 = 0
                 price1 = price2 = price3 = 0
                 subtotal1 = subtotal2 = subtotal3 = 0
@@ -315,6 +341,15 @@ class PurchaseOrder(models.Model):
                     'state': 'to approve',
                     'move_id': move_id.id
                     })
+
+            # Confirm Receipt
+            receipt_ids = self.env['stock.picking'].search([
+                ('origin', '=', order.name)
+            ])
+
+            if receipt_ids:
+                for receipt in receipt_ids:
+                    receipt.action_confirm()
 
         return True
 

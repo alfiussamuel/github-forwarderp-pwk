@@ -40,10 +40,6 @@
                                     <field name="line_ids" nolabel="1">
                                         <tree>
                                             <field name="product_id"/>
-                                            <field name="tebal"/>
-                                            <field name="lebar"/>
-                                            <field name="panjang"/>
-                                            <field name="grade"/>
                                             <field name="stock_awal_pcs" sum="Total"/>
                                             <field name="stock_masuk_repair_pcs" sum="Total"/>
                                             <field name="stock_masuk_repair_vol" sum="Total"/>

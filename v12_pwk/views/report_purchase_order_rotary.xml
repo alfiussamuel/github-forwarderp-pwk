@@ -74,7 +74,7 @@
 			
 				<table class="table table-condensed" style="margin-top:0px;">					
 					<tr>
-						<td width="10%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td width="12%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>Hari / Tanggal</strong>							
 						</td>
 						<td width="5%" style="font-size:12px; text-align:center;padding:0px;border:0px;vertical-align:middle;">
@@ -86,7 +86,7 @@
 						<td width="5%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							
 						</td>
-						<td width="10%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td width="14%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>No. Kendaraan</strong>							
 						</td>
 						<td width="5%" style="font-size:12px; text-align:center;padding:0px;border:0px;vertical-align:middle;">
@@ -105,7 +105,7 @@
 							<strong>:</strong>
 						</td>
 						<td width="15%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
-							<span t-field="o.panjang"/>
+							<span t-esc="'{0:,.0f}'.format(o.panjang)"/>
 						</td>
 					</tr>
 					<tr>
@@ -255,7 +255,7 @@
 		                            <span t-esc="'{0:,.4f}'.format(l.volume_surat_jalan)"/>
 		                        </td>		                       
 		                        <td style="text-align:center;border:1px solid black;font-size:12px;padding:4px;">
-		                            <span t-field="l.product_qty"/>
+		                            <span t-esc="'{0:,.0f}'.format(l.product_qty)"/>
 		                        </td>		                       
 		                        <td style="text-align:center;border:1px solid black;font-size:12px;padding:4px;">
 		                            <span t-esc="'{0:,.4f}'.format(l.volume_real)"/>
@@ -284,7 +284,7 @@
 		                        </td>
 		                        <td style="text-align:center;border:1px solid black;font-size:12px;padding:4px;">
 		                    		<strong>
-		                    			<span t-esc="'{0:,.0f}'.format(o.total_volume_surat_jalan)"/>
+		                    			<span t-esc="'{0:,.4f}'.format(o.total_volume_surat_jalan)"/>
 		                    		</strong>
 		                        </td>
 		                        <td style="text-align:center;border:1px solid black;font-size:12px;padding:4px;">
@@ -299,7 +299,7 @@
 		                        </td>
 		                        <td style="text-align:center;border:1px solid black;font-size:12px;padding:4px;">
 		                    		<strong>
-		                    			<span t-esc="'{0:,.4f}'.format(o.total_qty_afkir)"/>
+		                    			<span t-esc="'{0:,.0f}'.format(o.total_qty_afkir)"/>
 		                    		</strong>
 		                        </td>
 		                        <td style="text-align:center;border:1px solid black;font-size:12px;padding:4px;">
@@ -389,32 +389,38 @@
 			                    		style="text-align:center;border:0px;font-size:12px;padding:4px;">
 			                    		<strong>:</strong>
 			                        </td>
-			                        <td width="67%" 
-			                    		style="text-align:left;border:0px;font-size:12px;padding:4px;">
+			                        <td width="12%" 
+			                    		style="text-align:right;border:0px;font-size:12px;padding:4px;">
 			                    		<strong>
 			                    			<span t-esc="'{0:,.0f}'.format(o.amount_untaxed)"/>
 			                    		</strong>			                    		
+			                        </td>
+			                        <td width="55%" 
+			                    		style="text-align:right;border:0px;font-size:12px;padding:4px;">			                    		
 			                        </td>
 			                    </tr>
 			                    <tr>
 			                    	<td width="30%" 
 			                    		style="text-align:left;border:0px;font-size:12px;padding:4px;">
 			                    		<t t-if="o.partner_id.npwp">
-			                    			<strong>PPH (2.5%)</strong>
+			                    			<strong>PPH (0.25%)</strong>
 			                    		</t>
 			                    		<t t-if="not o.partner_id.npwp">
-			                    			<strong>PPH (5%)</strong>
+			                    			<strong>PPH (0.5%)</strong>
 			                    		</t>			                    		
 			                        </td>
 			                        <td width="3%" 
 			                    		style="text-align:center;border:0px;font-size:12px;padding:4px;">
 			                    		<strong>:</strong>
 			                        </td>
-			                        <td width="67%" 
-			                    		style="text-align:left;border:0px;font-size:12px;padding:4px;">
+			                        <td width="12%" 
+			                    		style="text-align:right;border:0px;font-size:12px;padding:4px;">
 			                    		<strong>
-			                    			<span t-esc="'{0:,.2f}'.format(o.amount_tax)"/>
+			                    			<span t-esc="'{0:,.0f}'.format(o.amount_tax)"/>
 			                    		</strong>			                    		
+			                        </td>
+			                        <td width="55%" 
+			                    		style="text-align:right;border:0px;font-size:12px;padding:4px;">			                    		
 			                        </td>
 			                    </tr>
 			                    <tr>
@@ -426,11 +432,14 @@
 			                    		style="text-align:center;border:0px;font-size:12px;padding:4px;">
 			                    		<strong>:</strong>
 			                        </td>
-			                        <td width="67%" 
-			                    		style="text-align:left;border:0px;font-size:12px;padding:4px;">
+			                        <td width="12%" 
+			                    		style="text-align:right;border:0px;font-size:12px;padding:4px;">
 			                    		<strong>
 			                    			<span t-esc="'{0:,.0f}'.format(o.amount_total)"/>
 			                    		</strong>			                    		
+			                        </td>
+			                        <td width="55%" 
+			                    		style="text-align:right;border:0px;font-size:12px;padding:4px;">			                    		
 			                        </td>
 			                    </tr>
 			                </table>
@@ -486,12 +495,12 @@
 	        <field name="page_height">0</field>
 	        <field name="page_width">0</field>
 	        <field name="orientation">Portrait</field>
-	        <field name="margin_top">64</field>
+	        <field name="margin_top">54</field>
 	        <field name="margin_bottom">50</field>
 	        <field name="margin_left">5</field>
 	        <field name="margin_right">5</field>
 	        <field name="header_line" eval="False"/>
-	        <field name="header_spacing">60</field>
+	        <field name="header_spacing">50</field>
 	        <field name="dpi">80</field>
 	        <field name="sequence">3</field>
 	    </record>

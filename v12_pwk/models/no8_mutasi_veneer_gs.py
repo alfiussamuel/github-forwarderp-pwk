@@ -124,13 +124,27 @@ class PwkMutasiVeneerGsLine(models.Model):
     def _get_stock_masuk(self):
         for res in self:
             stock_masuk_pcs = 0
-            source_ids = self.env['pwk.mutasi.veneer.ok.repair.line'].search([
+            sc_source_ids = self.env['pwk.mutasi.veneer.ok.repair.line.sc'].search([
+                ('reference.date','=',res.reference.date),
+                ('product_id','=',res.product_id.id)
+                ])
+
+            lc_source_ids = self.env['pwk.mutasi.veneer.ok.repair.line.lc'].search([
+                ('reference.date','=',res.reference.date),
+                ('product_id','=',res.product_id.id)
+                ])
+
+            fb_source_ids = self.env['pwk.mutasi.veneer.ok.repair.line.fb'].search([
                 ('reference.date','=',res.reference.date),
                 ('product_id','=',res.product_id.id)
                 ])
                         
-            if source_ids:
-                stock_masuk_pcs = source_ids[0].stock_keluar_pcs
+            if sc_source_ids:
+                stock_masuk_pcs = sc_source_ids[0].stock_keluar_pcs
+            elif lc_source_ids:
+                stock_masuk_pcs = lc_source_ids[0].stock_keluar_pcs
+            if fb_source_ids:
+                stock_masuk_pcs = fb_source_ids[0].stock_keluar_pcs
 
             res.stock_masuk_repair_pcs = stock_masuk_pcs
             
@@ -186,22 +200,54 @@ class PwkMutasiVeneerGs(models.Model):
                 for existing in existing_ids:
                     existing.unlink()
 
-            source_ids = self.env['pwk.mutasi.veneer.ok.repair.line'].search([
+            # Short Core
+            sc_source_ids = self.env['pwk.mutasi.veneer.ok.repair.line.sc'].search([
                 ('reference.date','=',res.date),
             ])
 
-            print (source_ids)
-
-            if not source_ids:
-                source_ids = self.env['pwk.mutasi.veneer.ok.repair.line'].search([
+            if not sc_source_ids:
+                sc_source_ids = self.env['pwk.mutasi.veneer.ok.repair.line.sc'].search([
                     ('reference.date','=',res.date - timedelta(1)),
                 ])
 
-            print (source_ids)
-
-            if source_ids:
-                for source in source_ids:
+            if sc_source_ids:
+                for source in sc_source_ids:
                     self.env['pwk.mutasi.veneer.gs.line'].create({
                         'reference': res.id,
                         'product_id': source.product_id.id,
                         })
+
+            # Long Core
+            lc_source_ids = self.env['pwk.mutasi.veneer.ok.repair.line.lc'].search([
+                ('reference.date','=',res.date),
+            ])
+
+            if not lc_source_ids:
+                lc_source_ids = self.env['pwk.mutasi.veneer.ok.repair.line.lc'].search([
+                    ('reference.date','=',res.date - timedelta(1)),
+                ])
+
+            if lc_source_ids:
+                for source in lc_source_ids:
+                    self.env['pwk.mutasi.veneer.gs.line'].create({
+                        'reference': res.id,
+                        'product_id': source.product_id.id,
+                        })
+
+            # Faceback
+            fb_source_ids = self.env['pwk.mutasi.veneer.ok.repair.line.fb'].search([
+                ('reference.date','=',res.date),
+            ])
+
+            if not fb_source_ids:
+                fb_source_ids = self.env['pwk.mutasi.veneer.ok.repair.line.fb'].search([
+                    ('reference.date','=',res.date - timedelta(1)),
+                ])
+
+            if fb_source_ids:
+                for source in fb_source_ids:
+                    self.env['pwk.mutasi.veneer.gs.line'].create({
+                        'reference': res.id,
+                        'product_id': source.product_id.id,
+                        })
+

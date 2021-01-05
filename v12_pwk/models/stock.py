@@ -12,6 +12,23 @@ from odoo.tools import email_re, email_split, email_escape_char, float_is_zero, 
 import math
 import re
 
+class StockMove(models.Model):    
+    _inherit = "stock.move"
+
+    thick = fields.Float(compute="_get_sale_fields", string='Thick')
+    width = fields.Float(compute="_get_sale_fields", string='Width')
+    length = fields.Float(compute="_get_sale_fields", string='Length')
+    grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')        
+
+    @api.depends('product_id')
+    def _get_sale_fields(self):
+        for res in self:
+            if res.product_id:
+                res.thick = res.product_id.tebal
+                res.width = res.product_id.lebar
+                res.length = res.product_id.panjang
+                res.grade_id = res.product_id.grade.id
+
 class StockPicking(models.Model):    
     _inherit = "stock.picking"
     

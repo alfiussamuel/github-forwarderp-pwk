@@ -1,36 +1,36 @@
 <odoo>
     <data>              
 
-        <record id="view_order_form_pwk" model="ir.ui.view">
-            <field name="name">Sales Order</field>
-            <field name="model">sale.order</field>            
-            <field name="inherit_id" ref="sale.view_order_form"/>
+        <!-- <record id="view_picking_form_pwk" model="ir.ui.view">
+            <field name="name">Stock Picking</field>
+            <field name="model">stock.picking</field>            
+            <field name="inherit_id" ref="stock.view_picking_form"/>
             <field name="arch" type="xml">
-                <button name="preview_sale_order" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </button>
-                <!-- <button name="action_quotation_send" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </button>
-                <button name="action_quotation_send" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </button> -->
-                <xpath expr="//form/header/button[@name='action_quotation_send'][1]" position="replace">
-                </xpath>
-                <xpath expr="//form/header/button[@name='action_quotation_send'][2]" position="replace">
-                </xpath>
-                <!-- <xpath expr="//form/header/button[@name='action_quotation_send'][0]" position="replace">
-                </xpath> -->
-                <!-- <xpath expr="//form/header/button[@name='action_quotation_send'][4]" position="replace">
-                </xpath> -->
-                <!-- <button name="action_quotation_send" position="replace"/> -->
-                <button name="print_quotation" position="replace">
-                    <button name="print_sale_order" type="object" string="Print" class="oe_highlight"/>
-                </button>
-                <field name="validity_date" position="before">
-                    <field name="is_logo"/>
-                    <field name="certificate_id"                                
-                        options="{'no_create': True}"/>
+                <field name="move_line_ids_without_package" position="replace">
+                    <field name="move_line_ids_without_package" attrs="{'readonly': ['|', '|', ('show_operations', '=', False), ('state', '=', 'cancel'), '&amp;', ('state', '=', 'done'), ('is_locked', '=', True)]}" context="{'default_picking_id': id, 'default_location_id': location_id, 'default_location_dest_id': location_dest_id}">
+                        <tree editable="bottom" decoration-muted="(state == 'done' and is_locked == True)" decoration-danger="qty_done&gt;product_uom_qty and state!='done'" decoration-success="qty_done==product_uom_qty and state!='done' and not result_package_id">
+                            <field name="product_id" required="1" attrs="{'readonly': ['|', ('state', '=', 'done'), ('move_id', '!=', False)]}"/>
+                            <!-- <field name="thick"/>
+                            <field name="width"/>
+                            <field name="length"/>
+                            <field name="grade_id"/> -->
+                            <field name="move_id" invisible="1"/>
+                            <field name="product_uom_id" force_save="1" attrs="{'readonly': [('state', '!=', 'draft')]}" groups="uom.group_uom"/>
+                            <field name="location_id" attrs="{'column_invisible': [('parent.picking_type_code', '=', 'incoming')]}" groups="stock.group_stock_multi_locations" domain="[('id', 'child_of', parent.location_id)]"/>
+                            <field name="location_dest_id" attrs="{'column_invisible': [('parent.picking_type_code', '=', 'outgoing')]}" groups="stock.group_stock_multi_locations" domain="[('id', 'child_of', parent.location_dest_id)]"/>
+                            <field name="package_id" groups="stock.group_tracking_lot" domain="[('location_id', '=', location_id)]"/>
+                            <field name="result_package_id" groups="stock.group_tracking_lot" domain="['|', '|', ('location_id', '=', False), ('location_id', '=', location_dest_id), ('id', '=', package_id)]"/>
+                            <field name="lots_visible" invisible="1"/>
+                            <field name="owner_id" groups="stock.group_tracking_owner"/>
+                            <field name="state" invisible="1"/>
+                            <field name="lot_id" groups="stock.group_production_lot" attrs="{'column_invisible': [('parent.show_lots_text', '=', True)], 'invisible': [('lots_visible', '=', False)]}" domain="[('product_id', '=', product_id)]" context="{'default_product_id': product_id}"/>
+                            <field name="lot_name" groups="stock.group_production_lot" attrs="{'column_invisible': [('parent.show_lots_text', '=', False)], 'invisible': [('lots_visible', '=', False)]}" context="{'default_product_id': product_id}"/>
+                            <field name="is_initial_demand_editable" invisible="1"/>
+                            <field name="product_uom_qty" readonly="1"/>
+                            <field name="is_locked" invisible="1"/>
+                            <field name="qty_done" attrs="{'readonly': [('state', 'in', ('done', 'cancel')), ('is_locked', '=', True)]}" force_save="1"/>
+                        </tree>
+                    </field>
                 </field>
             </field>
         </record>

@@ -20,7 +20,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//page[1]" position="after">
                     <page string="Detail Afkir">
-                        <field name="afkir_ids" nolabel="1" readonly="1">
+                        <field name="afkir_ids" nolabel="1">
                             <tree editable="top">
                                 <field name="product_id"/>
                                 <field name="diameter"/>
@@ -40,6 +40,7 @@
                 </xpath>
                 <header position="replace">
                     <header>
+                        <button name="button_change" string="Reload Price" type="object" states="draft"/>
                         <button name="action_rfq_send" states="draft" string="Send by Email" type="object" context="{'send_rfq':True}" class="oe_highlight" invisible="1"/>
                         <button name="print_quotation" string="Print RFQ" type="object" states="draft" class="oe_highlight" groups="base.group_user" invisible="1"/>
                         <button name="button_confirm" type="object" states="sent" string="Confirm Order" class="oe_highlight" id="bid_confirm"/>
@@ -75,6 +76,7 @@
                         attrs="{'invisible': ['|', ('purchase_type', '!=', 'Rotary'),('state', '=', 'draft')]}"/>
                 </button>
                 <field name="date_order" position="after">
+                    <field name="is_changed" invisible="1"/>
                     <label for="request_id"/>
                     <div>
                         <field name="request_id" class="oe_inline" options="{'no_create': True}"/>
@@ -119,6 +121,7 @@
                 <field name="order_line" position="replace">
                     <field name="order_line" attrs="{'readonly': [('state', 'in', ('done', 'cancel'))]}">
                          <tree string="Purchase Order Lines">
+                            <field name="is_changed" invisible="1"/>
                             <field name="currency_id" invisible="1"/>
                             <field name="state" invisible="1"/>
                             <field name="product_type" invisible="1"/>
@@ -126,7 +129,7 @@
                             <field name="sequence" widget="handle"/>
                             <field name="product_id" attrs="{'readonly': [('state', 'in', ('purchase', 'to approve','done', 'cancel'))]}" context="{'partner_id':parent.partner_id, 'quantity':product_qty,'uom':product_uom, 'company_id': parent.company_id}" force_save="1"/>
                             <field name="name"/>
-                            <field name="spp"/>
+                            <field name="request_id" readonly="1"/>
                             <field name="date_planned" invisible="1"/>
                             <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
                             <field name="account_analytic_id" context="{'default_partner_id':parent.partner_id}" groups="analytic.group_analytic_accounting" invisible="1"/>
@@ -162,7 +165,7 @@
                                         <field name="product_uom" string="UoM"/>
                                     </group>
                                     <group>   
-                                        <field name="spp"/>                     
+                                        <field name="request_id" readonly="1"/>             
                                         <field name="actual_size"
                                             attrs="{'invisible': [('parent.purchase_type', '!=', 'Jasa')]}"/>
                                         <field name="taxes_id" widget="many2many_tags" domain="[('type_tax_use', '=', 'purchase')]" options="{'no_create': True}"/>

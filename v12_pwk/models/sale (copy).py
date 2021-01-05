@@ -132,30 +132,6 @@ class SaleOrderLine(models.Model):
     outstanding_order_pcs = fields.Float(compute="_get_outstanding_order_pcs", string="Outstanding Order")
     total_crate_qty = fields.Float(compute="_get_total_crate_qty", string="Total Qty Crates")    
 
-    crate_number = fields.Integer('Crate Number')
-    crate_qty_each = fields.Integer('Crate Qty each')
-    crate_qty_total = fields.Integer('Crate Total')
-    crate_position_id = fields.Many2one('pwk.position', 'Crate Position')
-    crate_pallet_id = fields.Many2one('pwk.pallet', 'Crate Pallet')
-    crate_strapping_id = fields.Many2one('pwk.strapping', 'Crate Strapping')    
-
-    @api.multi
-    def button_reload_crate(self):
-        for res in self:
-            number = 1
-            while number < res.crate_number: 
-                self.env['sale.order.line.container'].create({
-                    'reference': res.id,
-                    'position_id': res.crate_position_id.id,
-                    'pallet_id': res.crate_pallet_id.id,
-                    'strapping_id': res.crate_strapping_id.id,
-                    'total_crates': res.crate_total,
-                    'qty': res.crate_qty_each,
-                    'number': number
-                })
-
-                number += 1
-
     @api.depends('container_ids.qty')
     def _get_total_crate_qty(self):
         for res in self:

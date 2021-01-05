@@ -400,10 +400,10 @@
 			                    	<td width="30%" 
 			                    		style="text-align:left;border:0px;font-size:12px;padding:4px;">
 			                    		<t t-if="o.partner_id.npwp">
-			                    			<strong>PPH (2.5%)</strong>
+			                    			<strong>PPH (0.25%)</strong>
 			                    		</t>
 			                    		<t t-if="not o.partner_id.npwp">
-			                    			<strong>PPH (5%)</strong>
+			                    			<strong>PPH (0.5%)</strong>
 			                    		</t>			                    		
 			                        </td>
 			                        <td width="3%" 

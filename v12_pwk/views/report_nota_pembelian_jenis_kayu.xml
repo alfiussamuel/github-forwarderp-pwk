@@ -401,32 +401,40 @@
 	                    		style="text-align:center;border:0px;font-size:11px;padding:1px;">
 	                    		<strong>:</strong>
 	                        </td>
-	                        <td width="87%" 
-	                    		style="text-align:left;border:0px;font-size:11px;padding:1px;">
+	                        <td width="12%" 
+	                    		style="text-align:right;border:0px;font-size:11px;padding:1px;">
 	                    		<strong>
 	                    			<span t-esc="'{0:,.0f}'.format(o.amount_untaxed)"/>
 	                    		</strong>			                    		
+	                        </td>
+	                        <td width="72%" 
+	                    		style="text-align:right;border:0px;font-size:11px;padding:1px;">
+	                    		
 	                        </td>
 	                    </tr>
 	                    <tr>
 	                    	<td width="10%" 
 	                    		style="text-align:left;border:0px;font-size:11px;padding:1px;">
 	                    		<t t-if="o.partner_id.npwp">
-	                    			<strong>PPH (2.5%)</strong>
+	                    			<strong>PPH (0.25%)</strong>
 	                    		</t>
 	                    		<t t-if="not o.partner_id.npwp">
-	                    			<strong>PPH (5%)</strong>
+	                    			<strong>PPH (0.5%)</strong>
 	                    		</t>			                    		
 	                        </td>
 	                        <td width="3%" 
 	                    		style="text-align:center;border:0px;font-size:11px;padding:1px;">
 	                    		<strong>:</strong>
 	                        </td>
-	                        <td width="87%" 
-	                    		style="text-align:left;border:0px;font-size:11px;padding:1px;">
+	                        <td width="12%" 
+	                    		style="text-align:right;border:0px;font-size:11px;padding:1px;">
 	                    		<strong>
-	                    			<span t-esc="'{0:,.2f}'.format(o.amount_tax)"/>
+	                    			<span t-esc="'{0:,.0f}'.format(o.amount_tax)"/>
 	                    		</strong>			                    		
+	                        </td>
+	                        <td width="72%" 
+	                    		style="text-align:right;border:0px;font-size:11px;padding:1px;">
+	                    		
 	                        </td>
 	                    </tr>
 	                    <tr>
@@ -438,11 +446,15 @@
 	                    		style="text-align:center;border:0px;font-size:11px;padding:1px;">
 	                    		<strong>:</strong>
 	                        </td>
-	                        <td width="87%" 
-	                    		style="text-align:left;border:0px;font-size:11px;padding:1px;">
+	                        <td width="12%" 
+	                    		style="text-align:right;border:0px;font-size:11px;padding:1px;">
 	                    		<strong>
 	                    			<span t-esc="'{0:,.0f}'.format(o.amount_total)"/>
 	                    		</strong>			                    		
+	                        </td>
+	                        <td width="72%" 
+	                    		style="text-align:right;border:0px;font-size:11px;padding:1px;">
+	                    		
 	                        </td>
 	                    </tr>
 	                </table>

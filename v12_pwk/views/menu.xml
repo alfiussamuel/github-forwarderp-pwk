@@ -7,7 +7,6 @@
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">purchase.order</field>
             <field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
-            <!-- <field name="domain">[('is_hidden','=',False)]</field> -->
             <field name="context">{}</field>
             <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>            
         </record>
@@ -207,7 +206,7 @@
 		</record>
 
 		<record id="action_pwk_sale_mc" model="ir.actions.act_window">
-			<field name="name">Measurement Content</field>
+			<field name="name">Moisture Content</field>
 			<field name="res_model">sale.mc</field>
 			<field name="view_mode">tree,form</field>			
 		</record>
@@ -289,7 +288,7 @@
 			<field name="res_model">pwk.glue</field>
 			<field name="view_mode">tree,form</field>			
 		</record>				
-
+		
 		<menuitem id="menu_product_product_stock" 
 			name="Products" 
 			action="account.product_product_action_sellable"
@@ -532,7 +531,7 @@
 
 		<menuitem id="menu_sale_mc"
         	sequence="1"
-        	name="Measurement Content"
+        	name="Moisture Content"
         	action="action_pwk_sale_mc"
         	parent="sale.menu_sale_config"/>
 

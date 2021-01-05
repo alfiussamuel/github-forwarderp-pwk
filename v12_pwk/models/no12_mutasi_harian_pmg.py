@@ -24,16 +24,41 @@ class PwkMutasiHarianPmgLine(models.Model):
     grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
     stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
     stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
-    stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk Basah')
-    stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Basah', digits=dp.get_precision('FourDecimal'))
-    acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Basah')
-    acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Basah', digits=dp.get_precision('FourDecimal'))
-    stock_keluar_pcs = fields.Float('Stok Keluar Kering')
-    stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Kering', digits=dp.get_precision('FourDecimal'))
-    acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Kering')
-    acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Kering', digits=dp.get_precision('FourDecimal'))
+        
+    stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk Grading')
+    stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Grading', digits=dp.get_precision('FourDecimal'))
+    acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Grading')
+    acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Grading', digits=dp.get_precision('FourDecimal'))
+    
+    re_stock_masuk_pcs = fields.Float(string='Stok Masuk Re')
+    re_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Re', digits=dp.get_precision('FourDecimal'))
+    re_acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Re')
+    re_acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Re', digits=dp.get_precision('FourDecimal'))
+    
+    lokal_stock_keluar_pcs = fields.Float('Stok Keluar Lokal')
+    lokal_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Lokal', digits=dp.get_precision('FourDecimal'))
+    lokal_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Lokal')
+    lokal_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Lokal', digits=dp.get_precision('FourDecimal'))
+
+    ekspor_stock_keluar_pcs = fields.Float('Stok Keluar Ekspor')
+    ekspor_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Ekspor', digits=dp.get_precision('FourDecimal'))
+    ekspor_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Ekspor')
+    ekspor_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Ekspor', digits=dp.get_precision('FourDecimal'))
+
+    grading_stock_keluar_pcs = fields.Float('Stok Keluar Lain')
+    grading_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Lain', digits=dp.get_precision('FourDecimal'))
+    grading_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Lain')
+    grading_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Lain', digits=dp.get_precision('FourDecimal'))
+    
+    re_stock_keluar_pcs = fields.Float('Stok Keluar Re')
+    re_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Re', digits=dp.get_precision('FourDecimal'))
+    re_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Re')
+    re_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Re', digits=dp.get_precision('FourDecimal'))
+
     stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
     stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
+
+    keterangan = fields.Selection([('Lokal','Lokal'),('Ekspor','Ekspor')], string="Keterangan")
 
     @api.depends('product_id')
     def _get_product_attribute(self):
@@ -44,21 +69,42 @@ class PwkMutasiHarianPmgLine(models.Model):
                 res.panjang = res.product_id.panjang
                 res.grade = res.product_id.grade.id
 
-    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
+    @api.depends('stock_awal_pcs',
+        'stock_masuk_pcs','re_stock_masuk_pcs',
+        'grading_stock_keluar_pcs','re_stock_keluar_pcs','lokal_stock_keluar_pcs','ekspor_stock_keluar_pcs',
+        'stock_akhir_pcs')
     def _get_volume(self):
         for res in self:
             res.stock_awal_vol = res.stock_awal_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            
             res.stock_masuk_vol = res.stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
-            res.stock_keluar_vol = res.stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.re_stock_masuk_vol = res.re_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            
+            res.grading_stock_keluar_vol = res.grading_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.lokal_stock_keluar_vol = res.lokal_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.ekspor_stock_keluar_vol = res.ekspor_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.re_stock_keluar_vol = res.re_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            
             res.acc_stock_masuk_vol = res.acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
-            res.acc_stock_keluar_vol = res.acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.re_acc_stock_masuk_vol = res.re_acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+
+            res.grading_acc_stock_keluar_vol = res.grading_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.lokal_acc_stock_keluar_vol = res.lokal_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.ekspor_acc_stock_keluar_vol = res.ekspor_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.re_acc_stock_keluar_vol = res.re_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            
             res.stock_akhir_vol = res.stock_akhir_pcs * res.tebal * res.lebar * res.panjang / 1000000000
 
-    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
+    @api.depends('stock_masuk_pcs','re_stock_masuk_pcs',
+        'grading_stock_keluar_pcs','re_stock_keluar_pcs','lokal_stock_keluar_pcs','ekspor_stock_keluar_pcs')
     def _get_acc(self):
         for res in self:
             acc_stock_masuk_pcs = 0
-            acc_stock_keluar_pcs = 0
+            re_acc_stock_masuk_pcs = 0
+            grading_acc_stock_keluar_pcs = 0
+            lokal_acc_stock_keluar_pcs = 0
+            ekspor_acc_stock_keluar_pcs = 0
+            re_acc_stock_keluar_pcs = 0
 
             source_ids = self.env['pwk.mutasi.harian.pmg.line'].search([
                 ('reference.date','=',res.reference.date - timedelta(1)),
@@ -73,16 +119,24 @@ class PwkMutasiHarianPmgLine(models.Model):
 
             if source_ids:
                 acc_stock_masuk_pcs = source_ids[0].acc_stock_masuk_pcs
-                acc_stock_keluar_pcs = source_ids[0].acc_stock_keluar_pcs
+                re_acc_stock_masuk_pcs = source_ids[0].re_acc_stock_masuk_pcs
+                grading_acc_stock_keluar_pcs = source_ids[0].grading_acc_stock_keluar_pcs
+                lokal_acc_stock_keluar_pcs = source_ids[0].lokal_acc_stock_keluar_pcs
+                ekspor_acc_stock_keluar_pcs = source_ids[0].ekspor_acc_stock_keluar_pcs
+                re_acc_stock_keluar_pcs = source_ids[0].re_acc_stock_keluar_pcs
 
             res.acc_stock_masuk_pcs = acc_stock_masuk_pcs + res.stock_masuk_pcs
-            res.acc_stock_keluar_pcs = acc_stock_keluar_pcs + res.stock_keluar_pcs
+            res.re_acc_stock_masuk_pcs = re_acc_stock_masuk_pcs + res.re_stock_masuk_pcs
+            res.grading_acc_stock_keluar_pcs = grading_acc_stock_keluar_pcs + res.grading_stock_keluar_pcs
+            res.lokal_acc_stock_keluar_pcs = lokal_acc_stock_keluar_pcs + res.lokal_stock_keluar_pcs
+            res.ekspor_acc_stock_keluar_pcs = ekspor_acc_stock_keluar_pcs + res.ekspor_stock_keluar_pcs
+            res.re_acc_stock_keluar_pcs = re_acc_stock_keluar_pcs + res.re_stock_keluar_pcs
 
     @api.depends('product_id')
     def _get_stock_awal(self):
         for res in self:
             stock_awal_pcs = 0
-            source_ids = self.env['pwk.pwk.mutasi.harian.pmg.line'].search([
+            source_ids = self.env['pwk.mutasi.harian.pmg.line'].search([
                 ('reference.date','=',res.reference.date - timedelta(1)),
                 ('product_id','=',res.product_id.id)
                 ])
@@ -102,20 +156,25 @@ class PwkMutasiHarianPmgLine(models.Model):
     def _get_stock_masuk(self):
         for res in self:
             stock_masuk_pcs = 0
-            source_ids = self.env['pwk.mutasi.harian.grading'].search([
+            source_ids = self.env['pwk.mutasi.harian.grading.line'].search([
                 ('reference.date','=',res.reference.date),
-                ('product_id','=',res.product_id.id)
+                ('new_product_id','=',res.product_id.id)
                 ])
                         
             if source_ids:
-                stock_masuk_pcs = source_ids[0].stock_keluar_pcs
+                stock_masuk_pcs = source_ids[0].pmg_stock_keluar_pcs
 
             res.stock_masuk_pcs = stock_masuk_pcs
+            res.re_stock_masuk_pcs = res.re_stock_keluar_pcs
 
-    @api.depends('stock_awal_pcs','stock_masuk_pcs','stock_keluar_pcs')
+    @api.depends('stock_awal_pcs',
+        'stock_masuk_pcs','re_stock_masuk_pcs',
+        'grading_stock_keluar_pcs','re_stock_keluar_pcs','lokal_stock_keluar_pcs','ekspor_stock_keluar_pcs')
     def _get_stock_akhir(self):
         for res in self:
-            res.stock_akhir_pcs = res.stock_awal_pcs + res.stock_masuk_pcs - res.stock_keluar_pcs
+            additional = res.stock_masuk_pcs + res.re_stock_masuk_pcs
+            deduction = res.grading_stock_keluar_pcs + res.re_stock_keluar_pcs + res.lokal_stock_keluar_pcs + res.ekspor_stock_keluar_pcs
+            res.stock_akhir_pcs = res.stock_awal_pcs + additional - deduction
 
 
 class PwkMutasiHarianPmg(models.Model):    
@@ -171,10 +230,11 @@ class PwkMutasiHarianPmg(models.Model):
 
             if source_ids:
                 for source in source_ids:
-                    self.env['pwk.mutasi.harian.pmg'].create({
-                        'reference': res.id,
-                        'product_id': source.product_id.id,
-                        })
+                    if source.pmg_stock_keluar_pcs > 0:
+                        self.env['pwk.mutasi.harian.pmg.line'].create({
+                            'reference': res.id,
+                            'product_id': source.new_product_id.id,
+                            })
 
     @api.multi
     def button_approve(self):

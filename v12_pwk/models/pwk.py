@@ -46,6 +46,7 @@ class PwkPurchaseRequestLine(models.Model):
 class PwkPurchaseRequest(models.Model):    
     _name = "pwk.purchase.request"
 
+    pr_type = fields.Selection([('Bahan Baku','Bahan Baku'),('Bahan Penolong','Bahan Penolong')], string='Nomor PR')
     name = fields.Char('Nomor PR')
     date = fields.Date('Periode')    
     state = fields.Selection([
@@ -344,6 +345,98 @@ class PwkRpbLine(models.Model):
                 res.total_qty = res.sale_line_id.product_uom_qty
                 res.total_volume = res.sale_line_id.volume
                 res.job_order_status = res.sale_line_id.order_id.job_order_status
+
+    @api.multi
+    def button_reload_bom(self):
+        for line in self:
+            if line.detail_ids_1:
+                for detail in line.detail_ids_1:
+                    detail.unlink()
+
+            if line.detail_ids_2:
+                for detail in line.detail_ids_2:
+                    detail.unlink()
+
+            if line.detail_ids_3:
+                for detail in line.detail_ids_3:
+                    detail.unlink()
+
+            if line.detail_ids_4:
+                for detail in line.detail_ids_4:
+                    detail.unlink()
+
+            if line.detail_ids_5:
+                for detail in line.detail_ids_5:
+                    detail.unlink()
+
+            bom_ids = self.env['mrp.bom'].search([
+                ('product_tmpl_id.name', '=', line.product_id.name)
+            ])
+
+            print("Bom ids ", bom_ids)
+
+            if bom_ids:
+                if len(bom_ids) >= 1:
+                    line.write({'is_detail1': True})
+                    for bom_line in bom_ids[0].bom_line_ids:
+                        print ("Bom quantity ", bom_line.product_qty)
+                        print ("Line quantity ", line.total_qty)
+                        self.env['pwk.rpm.line.detail1'].create({
+                            'reference': line.id,
+                            'product_id': bom_line.product_id.id,
+                            'thick': bom_line.product_id.tebal,
+                            'width': bom_line.product_id.lebar,
+                            'length': bom_line.product_id.panjang,
+                            'quantity': bom_line.product_qty * line.total_qty_spare
+                        })
+
+                if len(bom_ids) >= 2:
+                    line.write({'is_detail2': True})
+                    for bom_line in bom_ids[1].bom_line_ids:
+                        self.env['pwk.rpm.line.detail2'].create({
+                            'reference': line.id,
+                            'product_id': bom_line.product_id.id,
+                            'thick': bom_line.product_id.tebal,
+                            'width': bom_line.product_id.lebar,
+                            'length': bom_line.product_id.panjang,
+                            'quantity': bom_line.product_qty * line.total_qty_spare
+                        })
+                    
+                if len(bom_ids) >= 3:
+                    line.write({'is_detail3': True})                    
+                    for bom_line in bom_ids[2].bom_line_ids:
+                        self.env['pwk.rpm.line.detail3'].create({
+                            'reference': line.id,
+                            'product_id': bom_line.product_id.id,
+                            'thick': bom_line.product_id.tebal,
+                            'width': bom_line.product_id.lebar,
+                            'length': bom_line.product_id.panjang,
+                            'quantity': bom_line.product_qty * line.total_qty_spare
+                        })
+
+                if len(bom_ids) >= 4:
+                    line.write({'is_detail4': True})                    
+                    for bom_line in bom_ids[3].bom_line_ids:
+                        self.env['pwk.rpm.line.detail4'].create({
+                            'reference': line.id,
+                            'product_id': bom_line.product_id.id,
+                            'thick': bom_line.product_id.tebal,
+                            'width': bom_line.product_id.lebar,
+                            'length': bom_line.product_id.panjang,
+                            'quantity': bom_line.product_qty * line.total_qty_spare
+                        })
+
+                if len(bom_ids) >= 5:
+                    line.write({'is_detail5': True})                    
+                    for bom_line in bom_ids[4].bom_line_ids:
+                        self.env['pwk.rpm.line.detail5'].create({
+                            'reference': line.id,
+                            'product_id': bom_line.product_id.id,
+                            'thick': bom_line.product_id.tebal,
+                            'width': bom_line.product_id.lebar,
+                            'length': bom_line.product_id.panjang,
+                            'quantity': bom_line.product_qty * line.total_qty_spare
+                        })
 
 class PwkRpb(models.Model):    
     _name = "pwk.rpb"
@@ -863,6 +956,7 @@ class PwkNotaPerusahaanLine(models.Model):
     _name = "pwk.nota.perusahaan.line"
 
     reference = fields.Many2one('pwk.nota.perusahaan', 'Reference')
+    picking_id = fields.Many2one('stock.picking', 'Surat Jalan')
     product_id = fields.Many2one('product.product', 'Product')
     jenis_kayu_id = fields.Many2one('pwk.jenis.kayu', related='product_id.jenis_kayu', string='Jenis Kayu')
     quantity = fields.Float('Quantity', digits=dp.get_precision('TwoDecimal'))
@@ -2324,13 +2418,13 @@ class ProductProduct(models.Model):
 
     @api.model
     def create(self, vals):
-        product = self.env['product.product'].search(
-            [('name', '=', vals['name'])])
+    	# product_name = self.env['product.template'].browse(vals['product_tmpl_id']).name
+    	product = self.env['product.product'].search([('name', '=', vals['name'])])    	
 
-        if product:
-            raise ValueError(_('Exists ! Already a Product exists in this name'))
-            
-        return super(ProductProduct, self).create(vals)
+    	if product:
+    		raise ValueError(_('Exists ! Already a Product exists in this name'))
+
+    	return super(ProductProduct, self).create(vals)   
 
     # @api.multi
     # def name_get(self):

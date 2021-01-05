@@ -1,6 +1,6 @@
 <odoo>
     <data>                              
-
+        
         <!-- Purchase Request-->        
         <record id="pwk_purchase_request_tree" model="ir.ui.view">
             <field name="name">Purchase Request</field>
@@ -20,7 +20,7 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <field name="state" widget="statusbar" readonly="1"/>                        
+                        <field name="state" widget="statusbar" readonly="1"/>     
                         <button name="button_draft" string="Set to Draft" 
                             states="Department Approved,Purchasing Approved" type="object"/>
                         <button name="button_approve1" string="Approve Department" 
@@ -34,7 +34,8 @@
                             <field name="name" readonly="1"/>
                         </h1>
                         <group>                            
-                            <field name="date"/>
+                            <field name="date" required="1"/>
+                            <field name="pr_type" required="1"/>
                         </group>
                         <group>
                             <notebook>
@@ -42,13 +43,13 @@
                                     <group>
                                         <field name="line_ids" nolabel="1">
                                             <tree editable="top">
-                                                <field name="product_id" readonly="1"/>
+                                                <field name="product_id" required="1"/>
                                                 <field name="thick"/>
                                                 <field name="width"/>
                                                 <field name="length"/>
                                                 <field name="grade_id"/>
                                                 <field name="product_uom_id"/>
-                                                <field name="quantity"/>
+                                                <field name="quantity" required="1"/>
                                                 <field name="volume"/>
                                                 <field name="truck"/>
                                             </tree>
@@ -63,8 +64,8 @@
                                                         <field name="product_uom_id"/>
                                                     </group>
                                                     <group>   
-                                                        <field name="quantity" readonly="1"/>
-                                                        <field name="volume" readonly="1"/>
+                                                        <field name="quantity"/>
+                                                        <field name="volume"/>
                                                         <field name="truck"/>
                                                     </group>
                                                 </group>                                                
@@ -189,7 +190,6 @@
                                                 <group>
                                                     <notebook>
                                                         <page string="Bill of Materials">
-
                                                             <div attrs="{'invisible':['|','|','|','|',('is_detail1', '=', False),('is_selected_detail2', '=', True),('is_selected_detail3', '=', True),('is_selected_detail4', '=', True),('is_selected_detail5', '=', True)]}">
                                                                 <field name="is_selected_detail1"/> 
                                                                 Bill of Material 1
@@ -390,7 +390,104 @@
                                                     <field name="outstanding_rpb_pcs"/>
                                                     <field name="outstanding_rpb_vol"/>
                                                 </group>
-                                            </group>                                            
+                                            </group>
+                                            <group>
+                                                <field name="is_detail1" invisible="1"/>
+                                                <field name="is_detail2" invisible="1"/>
+                                                <field name="is_detail3" invisible="1"/>
+                                                <field name="is_detail4" invisible="1"/>
+                                                <field name="is_detail5" invisible="1"/>
+                                            </group>
+                                            <group>
+                                                <button name="button_reload_bom" 
+                                                    string="Reload BoM" type="object" 
+                                                    class="oe_highlight"/>
+                                            </group>
+                                            <group>
+                                                <notebook>
+                                                    <page string="Bill of Materials">
+                                                        <div attrs="{'invisible':['|','|','|','|',('is_detail1', '=', False),('is_selected_detail2', '=', True),('is_selected_detail3', '=', True),('is_selected_detail4', '=', True),('is_selected_detail5', '=', True)]}">
+                                                            <field name="is_selected_detail1"/> 
+                                                            Bill of Material 1
+                                                        </div>
+                                                        <field name="detail_ids_1" nolabel="1"
+                                                            attrs="{'invisible':['|','|','|','|',('is_detail1', '=', False),('is_selected_detail2', '=', True),('is_selected_detail3', '=', True),('is_selected_detail4', '=', True),('is_selected_detail5', '=', True)]}">
+                                                            <tree editable="top">
+                                                                <field name="product_id"/>
+                                                                <field name="thick"/>
+                                                                <field name="width"/>
+                                                                <field name="length"/>
+                                                                <field name="quantity"/>
+                                                                <field name="available_qty"/>
+                                                            </tree>
+                                                        </field>         
+
+                                                        <div attrs="{'invisible':['|','|','|','|',('is_detail2', '=', False), ('is_selected_detail1', '=', True),('is_selected_detail3', '=', True),('is_selected_detail4', '=', True),('is_selected_detail5', '=', True)]}">
+                                                            <field name="is_selected_detail2"/>
+                                                            Bill of Material 2
+                                                        </div>
+                                                        <field name="detail_ids_2" nolabel="1"
+                                                            attrs="{'invisible':['|','|','|','|',('is_detail2', '=', False),('is_selected_detail1', '=', True),('is_selected_detail3', '=', True),('is_selected_detail4', '=', True),('is_selected_detail5', '=', True)]}">
+                                                            <tree editable="top">
+                                                                <field name="product_id"/>
+                                                                <field name="thick"/>
+                                                                <field name="width"/>
+                                                                <field name="length"/>
+                                                                <field name="quantity"/>
+                                                                <field name="available_qty"/>
+                                                            </tree>
+                                                        </field>
+
+                                                        <div attrs="{'invisible':['|','|','|','|',('is_detail3', '=', False), ('is_selected_detail1', '=', True),('is_selected_detail2', '=', True),('is_selected_detail4', '=', True),('is_selected_detail5', '=', True)]}">
+                                                            <field name="is_selected_detail3"/>
+                                                            Bill of Material 3
+                                                        </div>
+                                                        <field name="detail_ids_3" nolabel="1"
+                                                            attrs="{'invisible':['|','|','|','|',('is_detail3', '=', False),('is_selected_detail1', '=', True),('is_selected_detail2', '=', True),('is_selected_detail4', '=', True),('is_selected_detail5', '=', True)]}">
+                                                            <tree editable="top">
+                                                                <field name="product_id"/>
+                                                                <field name="thick"/>
+                                                                <field name="width"/>
+                                                                <field name="length"/>
+                                                                <field name="quantity"/>
+                                                                <field name="available_qty"/>
+                                                            </tree>
+                                                        </field>
+
+                                                        <div attrs="{'invisible':['|','|','|','|',('is_detail4', '=', False), ('is_selected_detail1', '=', True),('is_selected_detail2', '=', True),('is_selected_detail3', '=', True),('is_selected_detail5', '=', True)]}">
+                                                            <field name="is_selected_detail4"/>
+                                                            Bill of Material 4
+                                                        </div>
+                                                        <field name="detail_ids_4" nolabel="1"
+                                                            attrs="{'invisible':['|','|','|','|',('is_detail4', '=', False),('is_selected_detail1', '=', True),('is_selected_detail2', '=', True),('is_selected_detail3', '=', True),('is_selected_detail5', '=', True)]}">
+                                                            <tree editable="top">
+                                                                <field name="product_id"/>
+                                                                <field name="thick"/>
+                                                                <field name="width"/>
+                                                                <field name="length"/>
+                                                                <field name="quantity"/>
+                                                                <field name="available_qty"/>
+                                                            </tree>
+                                                        </field>
+
+                                                        <div attrs="{'invisible':['|','|','|','|',('is_detail5', '=', False),('is_selected_detail1', '=', True),('is_selected_detail2', '=', True),('is_selected_detail3', '=', True),('is_selected_detail4', '=', True)]}">
+                                                            <field name="is_selected_detail5"/>
+                                                            Bill of Material 5
+                                                        </div>
+                                                        <field name="detail_ids_5" nolabel="1"
+                                                            attrs="{'invisible':['|','|','|','|',('is_detail5', '=', False),('is_selected_detail1', '=', True),('is_selected_detail2', '=', True),('is_selected_detail3', '=', True),('is_selected_detail4', '=', True)]}">
+                                                            <tree editable="top">
+                                                                <field name="product_id"/>
+                                                                <field name="thick"/>
+                                                                <field name="width"/>
+                                                                <field name="length"/>
+                                                                <field name="quantity"/>
+                                                                <field name="available_qty"/>
+                                                            </tree>
+                                                        </field>
+                                                    </page>
+                                                </notebook>
+                                            </group>
                                         </form>
                                     </field>
                                 </group>
@@ -453,7 +550,7 @@
                                                     </form>
                                                 </field>
                                             </group>
-                                        </form>                         
+                                        </form>
                                     </field>
                                 </group>
                             </page>
@@ -1750,31 +1847,6 @@
                 </field>                
             </field>
         </record>
-
-        <!-- <record id="product_template_tree_view_pwk" model="ir.ui.view">
-            <field name="name">Products</field>
-            <field name="model">product.template</field>
-            <field name="inherit_id" ref="product.product_template_tree_view"/>
-            <field name="arch" type="xml">
-                <field name="default_code" position="replace">                    
-                </field>                
-                <field name="list_price" position="replace">
-                </field>
-                <field name="standard_price" position="replace">
-                </field>
-                <field name="name" position="after">
-                    <field name="jenis_kayu"/>
-                    <field name="jenis_core"/>
-                    <field name="tebal"/>
-                    <field name="lebar"/>
-                    <field name="panjang"/>
-                    <field name="grade"/>
-                    <field name="marking_grade"/>
-                    <field name="glue"/>
-                    <field name="glue_certificate"/>
-                </field>
-            </field>
-        </record> -->
 
         <record id="product_product_tree_view_pwk" model="ir.ui.view">
             <field name="name">product.product.tree</field>
