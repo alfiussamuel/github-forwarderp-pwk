@@ -96,8 +96,6 @@ class PwkPurchaseRequest(models.Model):
     def create(self, vals):
         product_type = ""
 
-        print ("satuuuuuuuuuuuu ", vals.get('product_type'))
-
         if vals.get('product_type') == "Produksi":
             product_type = "PD."
         elif vals.get('product_type') == "Mekanik":
@@ -105,7 +103,6 @@ class PwkPurchaseRequest(models.Model):
         elif vals.get('product_type') == "Elektrik":
             product_type = "EL."
 
-        print("duaaaaa ", product_type)
         vals['name'] = self.get_sequence('Purchase Request', 'pwk.purchase.request', '%s' % product_type)
         # vals['name'] = self.get_sequence('Rencana Produksi Bulanan', 'pwk.rpb', '%s' % year_month)
         return super(PwkPurchaseRequest, self).create(vals)    
@@ -332,7 +329,6 @@ class PwkRpbLine(models.Model):
                 ('reference.rpb_id', '=', res.reference.id)
             ])
             
-            print(rpm_line_ids)
             if rpm_line_ids:
                 for line in rpm_line_ids:
                     if line.sale_line_id == res.sale_line_id:
@@ -391,14 +387,11 @@ class PwkRpbLine(models.Model):
                 ('product_tmpl_id.name', '=', line.product_id.name)
             ])
 
-            print("Bom ids ", bom_ids)
 
             if bom_ids:
                 if len(bom_ids) >= 1:
                     line.write({'is_detail1': True})
-                    for bom_line in bom_ids[0].bom_line_ids:
-                        print ("Bom quantity ", bom_line.product_qty)
-                        print ("Line quantity ", line.total_qty)
+                    for bom_line in bom_ids[0].bom_line_ids:                        
                         self.env['pwk.rpm.line.detail1'].create({
                             'reference': line.id,
                             'product_id': bom_line.product_id.id,
@@ -505,7 +498,6 @@ class PwkRpb(models.Model):
             res.state = "Done"
 
     def get_sequence(self, name=False, obj=False, year_month=False, context=None):
-        print(year_month)
         sequence_id = self.env['ir.sequence'].search([
             ('name', '=', name),
             ('code', '=', obj),
@@ -524,7 +516,6 @@ class PwkRpb(models.Model):
     @api.model
     def create(self, vals):
         month_name = ''
-        print(vals['date_start'])
         # month = vals['date_start'].month
         # year = vals['date_start'].year        
 
@@ -733,14 +724,10 @@ class PwkRpmLine(models.Model):
                 ('product_tmpl_id.name', '=', line.product_id.name)
             ])
 
-            print("Bom ids ", bom_ids)
-
             if bom_ids:
                 if len(bom_ids) >= 1:
                     line.write({'is_detail1': True})
-                    for bom_line in bom_ids[0].bom_line_ids:
-                        print ("Bom quantity ", bom_line.product_qty)
-                        print ("Line quantity ", line.total_qty)
+                    for bom_line in bom_ids[0].bom_line_ids:                        
                         self.env['pwk.rpm.line.detail1'].create({
                             'reference': line.id,
                             'product_id': bom_line.product_id.id,
@@ -1523,7 +1510,6 @@ class AccountMove(models.Model):
                 if invoice and invoice.move_name and invoice.move_name != '/':
                     new_name = invoice.move_name
                 else:
-                    print ("Invoice", invoice)
                     if journal.sequence_id:
                         # If invoice is actually refund and journal has a refund_sequence then use that one or use the regular one
                         if invoice:
@@ -1611,7 +1597,6 @@ class AccountInvoiceLine(models.Model):
         'product_id', 'invoice_id.partner_id', 'invoice_id.currency_id', 'invoice_id.company_id',
         'invoice_id.date_invoice', 'invoice_id.date','invoice_id.formula_type','sheets')
     def _compute_price(self):        
-        print ("Masukkkkkkkkkkkkkkkkkk")
         currency = self.invoice_id and self.invoice_id.currency_id or None
         price = self.price_unit * (1 - (self.discount or 0.0) / 100.0)
         taxes = False
@@ -1619,13 +1604,10 @@ class AccountInvoiceLine(models.Model):
         if self.invoice_line_tax_ids:
             if self.invoice_id.formula_type == "Volume":                
                 taxes = self.invoice_line_tax_ids.compute_all(price, currency, self.quantity, product=self.product_id, partner=self.invoice_id.partner_id)
-                print ("Tax Volume ", taxes)
             elif self.invoice_id.formula_type == "PCS":
                 taxes = self.invoice_line_tax_ids.compute_all(price, currency, self.sheets, product=self.product_id, partner=self.invoice_id.partner_id)
-                print ("Tax PCS ", taxes)
             else:
                 taxes = self.invoice_line_tax_ids.compute_all(price, currency, self.quantity, product=self.product_id, partner=self.invoice_id.partner_id)
-                print ("Tax Other ", taxes)
 
         if self.invoice_id.formula_type == "Volume":
             self.price_subtotal = price_subtotal_signed = taxes['total_excluded'] if taxes else self.quantity * price
@@ -1905,11 +1887,8 @@ class AccountInvoice(models.Model):
     def _get_packing_list_no(self):
         for res in self:
             number_packing_list = ''
-            print ("Invoice Number ", res.number)
             if res.number:
-                print ("Invoice Number ", res.number)
                 number_packing_list = res.number.replace('INV', 'PL')
-                print ("Packing List No ", number_packing_list)
             res.number_packing_list = number_packing_list
 
 
@@ -1949,31 +1928,22 @@ class AccountInvoice(models.Model):
         huruf = ["","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fivteen","Sixteen","Seventeen","Eighteen","Nineteen","Twenty"]
         hasil = ""; 
         if satuan < 21: 
-            print ("Masukk aa")
             hasil = hasil + huruf[int(satuan)];            
         elif satuan < 100:
             hasil = hasil + self.terbilang_english(satuan / 10) + "ty " + self.terbilang_english(satuan % 10);
-            print ("Masukk b")
         elif satuan < 1000: 
             hasil = hasil + self.terbilang_english(satuan / 100) +" Hundred " + self.terbilang_english(satuan % 100); 
-            print ("Masukk c")
         elif satuan < 2000: 
             hasil = hasil + self.terbilang_english(satuan / 1000) + "Thousand " + self.terbilang_english(satuan - 1000); 
-            print ("Masukk d")
         elif satuan < 1000000: 
             hasil = hasil + self.terbilang_english(satuan % 100000) + self.terbilang_english(satuan / 1000) + " Thousand " + self.terbilang_english(satuan % 1000); 
-            print ("Masukk e")
         elif satuan < 1000000000:
             hasil = hasil + self.terbilang_english(satuan % 100000000) + self.terbilang_english(satuan / 1000000) + " Million " + self.terbilang_english(satuan % 1000000);
-            print ("Masukk f")
         elif satuan < 1000000000000:
             hasil = hasil + self.terbilang_english(satuan / 1000000000) + " Billion " + self.terbilang_english(satuan % 1000000000)
-            print ("Masukk g")
         elif satuan >= 1000000000000:
-            print ("Masukk h")
             hasil = "Angka terlalu besar, harus kurang dari 1 Trilyun!"; 
 
-        print ("Hasil ", hasil)
         return hasil;       
 
     @api.depends('amount_total')
@@ -2143,7 +2113,6 @@ class AccountInvoice(models.Model):
             analytic_tag_ids = [(4, analytic_tag.id, None) for analytic_tag in line.analytic_tag_ids]
 
             if self.formula_type == "PCS":
-                print ("Masukk PCS")
                 move_line_dict = {
                     'invl_id': line.id,
                     'type': 'src',
@@ -2161,7 +2130,6 @@ class AccountInvoice(models.Model):
                 }
 
             elif self.formula_type == "Volume":
-                print ("Masukk Vol")
                 move_line_dict = {
                     'invl_id': line.id,
                     'type': 'src',
@@ -2196,7 +2164,7 @@ class AccountInvoice(models.Model):
                 }
 
             res.append(move_line_dict)
-            print ("Res ", res)
+
         return res
 
     @api.multi
@@ -2221,14 +2189,7 @@ class AccountInvoice(models.Model):
 
             # create move lines (one per invoice line + eventual taxes and analytic lines)
             iml = inv.invoice_line_move_line_get()
-            print ("IML 1 ", iml)
-            # if inv.total_komisi > 0:
-            # iml += inv.komisi_src_move_line_get()
-            # print ("IML 2 ", iml)
-            # iml += inv.komisi_dest_move_line_get()
-            # print ("IML 3 ", iml)
             iml += inv.tax_line_move_line_get()
-            print ("IML 4 ", iml)
 
             diff_currency = inv.currency_id != company_currency
             # create one move line for the total and possibly adjust the other lines amount

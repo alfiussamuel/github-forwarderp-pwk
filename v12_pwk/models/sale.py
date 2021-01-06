@@ -253,7 +253,6 @@ class SaleOrderLine(models.Model):
 
         # name = self.get_sale_order_line_multiline_description_sale(product)
         name = product.name
-        print ("Description ", name)
         vals.update(name=name)
 
         self._compute_tax_id()
