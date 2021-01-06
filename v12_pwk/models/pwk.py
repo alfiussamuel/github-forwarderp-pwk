@@ -99,7 +99,7 @@ class PwkPurchaseRequest(models.Model):
         print ("satuuuuuuuuuuuu ", vals.get('product_type'))
 
         if vals.get('product_type') == "Produksi":
-            product_type = "PROD."
+            product_type = "PD."
         elif vals.get('product_type') == "Mekanik":
             product_type = "MK."
         elif vals.get('product_type') == "Elektrik":
