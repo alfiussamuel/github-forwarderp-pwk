@@ -77,6 +77,7 @@ class PwkPurchaseRequest(models.Model):
             res.state = "Purchasing Approved"
 
     def get_sequence(self, name=False, obj=False, context=None, product=""):
+        print(product)
         sequence_id = self.env['ir.sequence'].search([
             ('name', '=', name),
             ('code', '=', obj),
