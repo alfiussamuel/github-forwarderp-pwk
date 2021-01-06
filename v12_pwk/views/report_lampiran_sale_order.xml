@@ -174,46 +174,48 @@
 		                </thead>
 		                <tbody class="invoice_tbody">
 		                	<t t-set="i" t-value="1" />
-		                    <tr t-foreach="o.order_line.container_ids" t-as="l">
-		                    	<td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-	    							<span t-field="l.number"/>
-		                        </td>
-		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
-	    							<span t-esc="'{0:,.0f}'.format(l.reference.thick)"/>
-		                        </td>
-		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-esc="'{0:,.0f}'.format(l.reference.width)"/>
-		                        </td>
-		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-esc="'{0:,.0f}'.format(l.reference.length)"/>
-		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-field="l.reference.product_id.name"/>
-		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-field="l.reference.product_id.grade_id.name"/>
-		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-esc="'{0:,.0f}'.format(l.reference.product_uom_qty)"/>
-		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-field="l.position_id.name"/>
-		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-field="l.strapping_id.strapping_type"/>
-		                        </td>
-		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-field="l.strapping_id.qty1"/>
-		                        </td>
-		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-field="l.strapping_id.qty2"/>
-		                        </td>
-		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-field="l.strapping_id.qty3"/>
-		                        </td>
-		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-field="l.pallet_id.name"/>
-		                        </td>
+		                    <tr t-foreach="o.order_line" t-as="o">
+		                    	<tr t-foreach="o.container_ids" t-as="l">
+			                    	<td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
+		    							<span t-field="l.number"/>
+			                        </td>
+			                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
+		    							<span t-esc="'{0:,.0f}'.format(l.reference.thick)"/>
+			                        </td>
+			                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
+			                            <span t-esc="'{0:,.0f}'.format(l.reference.width)"/>
+			                        </td>
+			                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
+			                            <span t-esc="'{0:,.0f}'.format(l.reference.length)"/>
+			                        </td>
+			                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
+			                            <span t-field="l.reference.product_id.name"/>
+			                        </td>
+			                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
+			                            <span t-field="l.reference.product_id.grade_id.name"/>
+			                        </td>
+			                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
+			                            <span t-esc="'{0:,.0f}'.format(l.reference.product_uom_qty)"/>
+			                        </td>
+			                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
+			                            <span t-field="l.position_id.name"/>
+			                        </td>
+			                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
+			                            <span t-field="l.strapping_id.strapping_type"/>
+			                        </td>
+			                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
+			                            <span t-field="l.strapping_id.qty1"/>
+			                        </td>
+			                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
+			                            <span t-field="l.strapping_id.qty2"/>
+			                        </td>
+			                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
+			                            <span t-field="l.strapping_id.qty3"/>
+			                        </td>
+			                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
+			                            <span t-field="l.pallet_id.name"/>
+			                        </td>
+			                    </tr>
 		                    </tr>		                                       
 		                </tbody>
 		            </table>		  						
