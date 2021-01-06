@@ -192,7 +192,7 @@
 			                            <span t-field="l.reference.product_id.name"/>
 			                        </td>
 			                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-			                            <span t-field="l.reference.product_id.grade_id.name"/>
+			                            <span t-field="l.reference.product_id.grade.name"/>
 			                        </td>
 			                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
 			                            <span t-esc="'{0:,.0f}'.format(l.reference.product_uom_qty)"/>
