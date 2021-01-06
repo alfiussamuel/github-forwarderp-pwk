@@ -96,7 +96,7 @@ class PwkPurchaseRequest(models.Model):
     def create(self, vals):
         product_type = ""
 
-        print (vals.get('product_type'))
+        print ("satuuuuuuuuuuuu ", vals.get('product_type'))
 
         if vals.get('product_type') == "Produksi":
             product_type = "PROD."
@@ -105,7 +105,7 @@ class PwkPurchaseRequest(models.Model):
         elif vals.get('product_type') == "Elektrik":
             product_type = "EL."
 
-        print(product_type)
+        print("duaaaaa ", product_type)
         vals['name'] = self.get_sequence('Purchase Request', 'pwk.purchase.request', '%s' % product_type)
         # vals['name'] = self.get_sequence('Rencana Produksi Bulanan', 'pwk.rpb', '%s' % year_month)
         return super(PwkPurchaseRequest, self).create(vals)    
