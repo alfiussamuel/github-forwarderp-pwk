@@ -76,7 +76,7 @@ class PwkPurchaseRequest(models.Model):
         for res in self:
             res.state = "Purchasing Approved"
 
-    def get_sequence(self, name=False, obj=False, context=None, product=False):
+    def get_sequence(self, name=False, obj=False, context=None, product=""):
         sequence_id = self.env['ir.sequence'].search([
             ('name', '=', name),
             ('code', '=', obj),
@@ -96,11 +96,13 @@ class PwkPurchaseRequest(models.Model):
     def create(self, vals):
         product_type = ""
 
-        if vals['product_type'] == "Produksi":
+        print (vals.get('product_type'))
+
+        if vals.get('product_type') == "Produksi":
             product_type = "PROD."
-        elif vals['product_type'] == "Mekanik":
+        elif vals.get('product_type') == "Mekanik":
             product_type = "MK."
-        elif vals['product_type'] == "Elektrik":
+        elif vals.get('product_type') == "Elektrik":
             product_type = "EL."
 
         vals['name'] = self.get_sequence('Purchase Request', 'pwk.purchase.request', product_type)
