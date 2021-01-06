@@ -353,9 +353,8 @@
                             string="Send PRO-FORMA Invoice" groups="sale.group_proforma_sales" class="btn-primary" context="{'proforma': True}" invisible="1"/>
                         <button name="print_sale_contract" type="object" string="Print Sales Contract" 
                             class="oe_highlight" states="Sales Contract,sale"/>
-                        <button name="print_lampiran_sale_order" type="object" 
-                            string="Print Lampiran" 
-                            class="oe_highlight" states="Sales Contract,sale"/>
+                        <button name="print_lampiran_sale_order" type="object" string="Print Lampiran" 
+                            class="oe_highlight"/>
                         <button name="print_sale_order" type="object" string="Print Sales Order" 
                             class="oe_highlight" states="sale"/>
                         <button name="button_contract" type="object" 
