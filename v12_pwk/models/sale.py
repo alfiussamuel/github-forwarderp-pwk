@@ -137,24 +137,7 @@ class SaleOrderLine(models.Model):
     crate_qty_total = fields.Integer('Crate Total')
     crate_position_id = fields.Many2one('pwk.position', 'Crate Position')
     crate_pallet_id = fields.Many2one('pwk.pallet', 'Crate Pallet')
-    crate_strapping_id = fields.Many2one('pwk.strapping', 'Crate Strapping')    
-
-    @api.multi
-    def button_reload_crate(self):
-        for res in self:
-            number = 1
-            while number < res.crate_number: 
-                self.env['sale.order.line.container'].create({
-                    'reference': res.id,
-                    'position_id': res.crate_position_id.id,
-                    'pallet_id': res.crate_pallet_id.id,
-                    'strapping_id': res.crate_strapping_id.id,
-                    'total_crates': res.crate_total,
-                    'qty': res.crate_qty_each,
-                    'number': number
-                })
-
-                number += 1
+    crate_strapping_id = fields.Many2one('pwk.strapping', 'Crate Strapping')
 
     @api.depends('container_ids.qty')
     def _get_total_crate_qty(self):
@@ -358,6 +341,27 @@ class SaleOrder(models.Model):
     number_contract = fields.Char(compute="_get_contract_no", string="Sales Contract No.")
     job_order_status = fields.Char(string='Job Order Status', default='Not Ready')
     is_changed = fields.Boolean('Changed')
+
+    @api.multi
+    def button_reload_crate(self):
+        for res in self:
+            for line in res.order_line:
+                if line.container_ids:
+                    for container in line.container_ids:
+                        container.unlink()
+
+                number = 1
+                while number <= line.crate_number: 
+                    self.env['sale.order.line.container'].create({
+                        'reference': line.id,
+                        'position_id': line.crate_position_id.id,
+                        'pallet_id': line.crate_pallet_id.id,
+                        'strapping_id': line.crate_strapping_id.id,
+                        'qty': line.crate_qty_each,
+                        'number': number
+                    })
+
+                    number += 1
 
     @api.multi
     def button_change(self):

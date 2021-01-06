@@ -49,6 +49,11 @@ class PwkPurchaseRequest(models.Model):
     pr_type = fields.Selection([('Bahan Baku','Bahan Baku'),('Bahan Penolong','Bahan Penolong')], string='Nomor PR')
     name = fields.Char('Nomor PR')
     date = fields.Date('Periode')    
+    product_type = fields.Selection([
+        ('Produksi','Produksi'),
+        ('Mekanik','Mekanik'),
+        ('Elektrik','Elektrik')]
+        , string="Tipe", default="Produksi")
     state = fields.Selection([
         ('Draft','Draft'),
         ('Department Approved','Department Approved'),
@@ -71,25 +76,34 @@ class PwkPurchaseRequest(models.Model):
         for res in self:
             res.state = "Purchasing Approved"
 
-    def get_sequence(self, name=False, obj=False, context=None):
+    def get_sequence(self, name=False, obj=False, context=None, product=False):
         sequence_id = self.env['ir.sequence'].search([
             ('name', '=', name),
             ('code', '=', obj),
-            ('suffix', '=', '.PR.%(month)s.%(year)s')
+            ('suffix', '=', '.PR.' + product + '%(month)s-%(year)s')
         ])
         if not sequence_id :
             sequence_id = self.env['ir.sequence'].sudo().create({
                 'name': name,
                 'code': obj,
                 'implementation': 'no_gap',
-                'suffix': '.PR.%(month)s.%(year)s',
+                'suffix': '.PR.' + product + '%(month)s-%(year)s',
                 'padding': 3
             })
         return sequence_id.next_by_id()
 
     @api.model
     def create(self, vals):
-        vals['name'] = self.get_sequence('Purchase Request', 'pwk.purchase.request')
+        product_type = ""
+
+        if vals['product_type'] == "Produksi":
+            product_type = "PROD."
+        elif vals['product_type'] == "Mekanik":
+            product_type = "MK."
+        elif vals['product_type'] == "Elektrik":
+            product_type = "EL."
+
+        vals['name'] = self.get_sequence('Purchase Request', 'pwk.purchase.request', product_type)
         return super(PwkPurchaseRequest, self).create(vals)    
 
 class PwkRpbContainerLine(models.Model):    

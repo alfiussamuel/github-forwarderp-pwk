@@ -357,7 +357,7 @@ class PurchaseOrder(models.Model):
     def _get_selisih(self):
         for res in self:
             res.selisih = res.total_volume_surat_jalan - res.total_volume_afkir
-            res.selisih_kubikasi = res.total_volume - res.total_volume_surat_jalan - res.total_volume_afkir
+            res.selisih_kubikasi = res.total_volume - (res.total_volume_surat_jalan - res.total_volume_afkir)
 
     @api.depends('order_line.product_qty','order_line.volume_real','order_line.qty_surat_jalan','order_line.volume_surat_jalan','order_line.qty_afkir','order_line.volume_afkir')
     def _get_total(self):

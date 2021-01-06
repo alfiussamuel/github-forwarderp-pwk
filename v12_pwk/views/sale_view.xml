@@ -336,7 +336,7 @@
                     <field name="is_changed" invisible="1"/>
                 </field>            
                 <header position="replace">
-                    <header>
+                    <header>                        
                         <button name="button_change" string="Reload Price" 
                             type="object" states="draft"/>
                         <field name="authorized_transaction_ids" invisible="1"/>
@@ -415,6 +415,10 @@
                     <field name="is_logo"/>
                     <field name="certificate_id"                                
                         options="{'no_create': True}"/>
+                </field>          
+                <field name="order_line" position="before">
+                    <button name="button_reload_crate" type="object" 
+                        string="Reload Crates" states="draft"/>      
                 </field>
                 <field name="order_line" position="replace">
                     <field name="order_line" widget="section_and_note_one2many" 
@@ -516,9 +520,9 @@
                             </group>
                             <group>
                                 <group>
-                                    <field name="crate_number"/>
+                                    <field name="crate_number" string="Total Crates"/>
                                     <field name="crate_qty_each"/>
-                                    <field name="crate_qty_total"/>
+                                    <!-- <field name="crate_qty_total"/> -->
                                 </group>
                                 <group>
                                     <field name="crate_position_id"/>
@@ -528,14 +532,12 @@
                             </group>
                             <group>
                                 <notebook>
-                                    <page string="Crates">
-                                        <button name="button_reload_crate" type="object"
-                                            string="Load Crate" class="oe_highlight"/>
+                                    <page string="Crates">                                        
                                         <field name="container_ids" nolabel="1">
                                             <tree editable="bottom">
                                                 <field name="number"/>
                                                 <field name="qty"/>
-                                                <field name="total_crates"/>
+                                                <!-- <field name="total_crates"/> -->
                                                 <field name="position_id"/>
                                                 <field name="strapping_id"/>
                                                 <field name="pallet_id"/>
@@ -593,7 +595,7 @@
                             <field name="product_no_variant_attribute_value_ids" invisible="1" />
                             <field name="name" widget="section_and_note_text"/>
                             <field name="stempel_id" string="Stempel"/>
-                            <field name="stempel_position" string="Posisi Stempel"/>
+                            <!-- <field name="stempel_position" string="Posisi Stempel"/> -->
                             <field name="sticker_id"/>
                             <field name="marking"/>
                             <field name="thick"/>
