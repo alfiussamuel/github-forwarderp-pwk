@@ -15,7 +15,7 @@
 							style="font-size:8px; border:0px;padding:1px;vertical-align:middle;">
 							<strong>PT. PRIMA WANA KREASI WOOD INDUSTRY</strong>
 							<hr style="margin-bottom:3px;margin-top:3px;visibility:hidden;"/>
-							<strong>JL. RAYA TEMBUS PRINGSURAT, KRANGGAN KUPEN PRINGSURAT, TEMANGGUNG JAWA TENGAH</strong>
+							<strong>JL. RAYA KRANGGAN - PRINGSURAT, KARANGLO, KUPEN, KEC. PRINGSURAT, KAB. TEMANGGUNG, JAWA TENGAH 56272</strong>
 							<hr style="height:1px;margin-bottom:3px;margin-top:3px;visibility:hidden;"/>
 							<strong>Phone. +62 293 319 4934  Fax. +62 293 4901 339</strong>
 						</td>
@@ -203,16 +203,16 @@
 			                        <td style="vertical-align:middle;text-align:center;border:1px solid black;font-size:10px;padding:2px;">
 			                            <span t-field="l.strapping_id.strapping_type"/>
 			                        </td>
-			                        <td style="vertical-align:middle;text-align:right;border:1px solid black;font-size:10px;padding:2px;">
+			                        <td style="vertical-align:middle;text-align:center;border:1px solid black;font-size:10px;padding:2px;">
 			                            <span t-field="l.strapping_id.qty1"/>
 			                        </td>
-			                        <td style="vertical-align:middle;text-align:right;border:1px solid black;font-size:10px;padding:2px;">
+			                        <td style="vertical-align:middle;text-align:center;border:1px solid black;font-size:10px;padding:2px;">
 			                            <span t-field="l.strapping_id.qty2"/>
 			                        </td>
-			                        <td style="vertical-align:middle;text-align:right;border:1px solid black;font-size:10px;padding:2px;">
+			                        <td style="vertical-align:middle;text-align:center;border:1px solid black;font-size:10px;padding:2px;">
 			                            <span t-field="l.strapping_id.qty3"/>
 			                        </td>
-			                        <td style="vertical-align:middle;text-align:right;border:1px solid black;font-size:10px;padding:2px;">
+			                        <td style="vertical-align:middle;text-align:center;border:1px solid black;font-size:10px;padding:2px;">
 			                            <span t-field="l.pallet_id.name"/>
 			                        </td>
 			                    </tr>
