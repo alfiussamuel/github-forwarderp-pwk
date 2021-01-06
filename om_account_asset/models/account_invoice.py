@@ -30,6 +30,7 @@ class AccountInvoice(models.Model):
 
     @api.multi
     def action_move_create(self):
+        print ("masukkk ")
         result = super(AccountInvoice, self).action_move_create()
         for inv in self:
             context = dict(self.env.context)
@@ -38,6 +39,7 @@ class AccountInvoice(models.Model):
             # This has to be cleaned from the context before creating the asset,
             # otherwise it tries to create the asset with the type of the invoice.
             context.pop('default_type', None)
+            print ("masukkk 2 ")
             inv.invoice_line_ids.with_context(context).asset_create()
         return result
 
@@ -71,7 +73,9 @@ class AccountInvoiceLine(models.Model):
 
     @api.one
     def asset_create(self):
+        print ("masukkk 3")
         if self.asset_category_id:
+            print ("masukkk 4")
             vals = {
                 'name': self.name,
                 'code': self.invoice_id.number or False,
@@ -85,6 +89,7 @@ class AccountInvoiceLine(models.Model):
             }
             changed_vals = self.env['account.asset.asset'].onchange_category_id_values(vals['category_id'])
             vals.update(changed_vals['value'])
+            print ("masukkk 5")
             asset = self.env['account.asset.asset'].create(vals)
             if self.asset_category_id.open_asset:
                 asset.validate()
