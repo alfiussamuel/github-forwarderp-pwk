@@ -46,9 +46,9 @@ class PwkPurchaseRequestLine(models.Model):
 class PwkPurchaseRequest(models.Model):    
     _name = "pwk.purchase.request"
 
-    pr_type = fields.Selection([('Bahan Baku','Bahan Baku'),('Bahan Penolong','Bahan Penolong')], string='Nomor PR')
+    pr_type = fields.Selection([('Bahan Baku','Bahan Baku'),('Bahan Penolong','Bahan Penolong')], string='Jenis PR')
     name = fields.Char('Nomor PR')
-    date = fields.Date('Periode')    
+    date = fields.Date('Tanggal PR')    
     product_type = fields.Selection([
         ('Produksi','Produksi'),
         ('Mekanik','Mekanik'),
