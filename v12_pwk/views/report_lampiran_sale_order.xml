@@ -11,8 +11,8 @@
 							<img src='v12_pwk/static/logo_pwk.jpg' 
 								style="text-align:left;max-width:90%;"/>
 						</td>							
-						<td width="52%" rowspan="4"
-							style="font-size:8px; border:0px;padding:1px;vertical-align:middle;">
+						<td width="60%" rowspan="4"
+							style="font-size:7px; border:0px;padding:1px;vertical-align:middle;">
 							<strong>PT. PRIMA WANA KREASI WOOD INDUSTRY</strong>
 							<hr style="margin-bottom:3px;margin-top:3px;visibility:hidden;"/>
 							<strong>JL. RAYA KRANGGAN - PRINGSURAT, KARANGLO, KUPEN, KEC. PRINGSURAT, KAB. TEMANGGUNG, JAWA TENGAH 56272</strong>
@@ -20,14 +20,14 @@
 							<strong>Phone. +62 293 319 4934  Fax. +62 293 4901 339</strong>
 						</td>
 						<td width="12%%" rowspan="4" 
-							style="text-align:right;vertical-align:top;border:0px;padding:0px;font-size:8px;">
+							style="text-align:right;vertical-align:top;border:0px;padding:0px;font-size:7px;">
 							<t t-if="o.is_logo">
 								<img src='v12_pwk/static/legal_wood_pwk.png' 
 									style="text-align:left;max-width:100%;vertical-align:bottom;"/>
 							</t>
 						</td>
 						<td width="26%" class="text-justify"
-							style="font-size:8px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">	
+							style="font-size:7px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">	
 							<span t-field="o.certificate_id.detail"/>
 						</td>
 					</tr>					
@@ -36,7 +36,7 @@
 							<strong>PT. PRIMA WANA KREASI WOOD INDUSTRY</strong>
 						</td> -->
 						<td width="26%"
-							style="font-size:8px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
+							style="font-size:7px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
 							<span t-field="o.certificate_id.detail2"/>
 						</td>
 					</tr>
@@ -45,7 +45,7 @@
 							<strong>JL. RAYA TEMBUS PRINGSURAT, KRANGGAN KUPEN PRINGSURAT, TEMANGGUNG JAWA TENGAH</strong>
 						</td> -->
 						<td width="26%"
-							style="font-size:8px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
+							style="font-size:7px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
 							<span t-field="o.certificate_id.detail3"/>
 						</td>
 					</tr>
@@ -54,7 +54,7 @@
 							<strong>Phone. +62 293 319 4934  Fax. +62 293 4901 339</strong>
 						</td> -->
 						<td width="26%"
-							style="font-size:8px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
+							style="font-size:7px; text-align:justify;vertical-align:bottom;border:0px;padding:1px;">
 							<span t-field="o.certificate_id.detail4"/>
 						</td>
 					</tr>
