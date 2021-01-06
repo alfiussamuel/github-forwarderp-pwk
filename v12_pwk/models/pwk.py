@@ -76,8 +76,7 @@ class PwkPurchaseRequest(models.Model):
         for res in self:
             res.state = "Purchasing Approved"
 
-    def get_sequence(self, name=False, obj=False, context=None, product=""):
-        print(product)
+    def get_sequence(self, name=False, obj=False, product=None, context=None):
         sequence_id = self.env['ir.sequence'].search([
             ('name', '=', name),
             ('code', '=', obj),
@@ -106,7 +105,8 @@ class PwkPurchaseRequest(models.Model):
         elif vals.get('product_type') == "Elektrik":
             product_type = "EL."
 
-        vals['name'] = self.get_sequence('Purchase Request', 'pwk.purchase.request', product_type)
+        vals['name'] = self.get_sequence('Purchase Request', 'pwk.purchase.request', '%s' % product_type)
+        # vals['name'] = self.get_sequence('Rencana Produksi Bulanan', 'pwk.rpb', '%s' % year_month)
         return super(PwkPurchaseRequest, self).create(vals)    
 
 class PwkRpbContainerLine(models.Model):    
