@@ -174,8 +174,8 @@
 		                </thead>
 		                <tbody class="invoice_tbody">
 		                	<t t-set="i" t-value="1" />
-		                    <tr t-foreach="o.order_line" t-as="o">
-		                    	<tr t-foreach="o.container_ids" t-as="l">
+		                    <tr t-foreach="o.order_line" t-as="ol">
+		                    	<tr t-foreach="ol.container_ids" t-as="l">
 			                    	<td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
 		    							<span t-field="l.number"/>
 			                        </td>
