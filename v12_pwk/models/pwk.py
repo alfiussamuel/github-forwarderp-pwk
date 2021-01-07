@@ -20,10 +20,10 @@ class PwkPurchaseRequestLine(models.Model):
 
     reference = fields.Many2one('pwk.purchase.request', string='Reference')    
     product_id = fields.Many2one('product.product', string='Product')
-    thick = fields.Float(compute="_get_sale_fields", string='Thick')
-    width = fields.Float(compute="_get_sale_fields", string='Width')
-    length = fields.Float(compute="_get_sale_fields", string='Length')
-    grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')        
+    thick = fields.Float(compute="_get_sale_fields", string='Thick', store=True)
+    width = fields.Float(compute="_get_sale_fields", string='Width', store=True)
+    length = fields.Float(compute="_get_sale_fields", string='Length', store=True)
+    grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade', store=True)
     date_start = fields.Date('Start Period')
     date_end = fields.Date('End Period')
 
