@@ -350,19 +350,17 @@
                                             <field name="container_id" 
                                                 readonly="1" string="No."/>
                                             <field name="partner_id" readonly="1"/>
-                                            <field name="sale_id" readonly="1"/>
-                                            <field name="product_id" readonly="1" invisible="1"/>
-                                            <field name="thick"/>
-                                            <field name="width"/>
-                                            <field name="length"/>
+                                            <field name="po_number" readonly="1"/>
+                                            <field name="product_id" readonly="1" />
+                                            <field name="thick" readonly="1" invisible="1"/>
+                                            <field name="width" readonly="1" invisible="1"/>
+                                            <field name="length" readonly="1" invisible="1"/>
                                             <field name="glue_id" invisible="1"/>
                                             <field name="grade_id" invisible="1"/>
-                                            <field name="total_qty" readonly="1"/>
-                                            <field name="total_vol"/>
-                                            <!-- <field name="outstanding_order_pcs" readonly="1"/>
-                                            <field name="outstanding_order_vol"/> -->
-                                            <field name="container_qty" required="1"/>
-                                            <field name="container_vol"/>                   
+                                            <!-- <field name="total_qty" readonly="1"/>
+                                            <field name="total_vol"/>                    -->
+                                            <field name="container_qty" string="PCS"/>
+                                            <field name="container_vol" string="M3"/>
                                             <field name="jumlah_container"/>
                                             <field name="subtotal_qty"/>
                                             <field name="subtotal_vol"/>
@@ -371,34 +369,28 @@
                                         </tree>
                                         <form>
                                             <group>
+                                                <field name="product_id"/>
+                                            </group>
+                                            <group>
                                                 <group>
                                                     <field name="partner_id"/>
                                                     <field name="sale_id"/>
-                                                    <field name="product_id"/>
-                                                    <field name="grade_id"/>                            
-                                                </group>
-                                                <group>
-                                                    <field name="thick"/>
-                                                    <field name="width"/>
-                                                    <field name="length"/>
-                                                    <field name="glue_id"/>
-                                                </group>
+                                                </group>                                        
                                             </group>                                            
                                             <group>
                                                 <group>
-                                                    <field name="total_qty" readonly="1"/>
-                                                    <field name="total_vol"/>
-                                                    <!-- <field name="outstanding_order_pcs" readonly="1"/>
-                                                    <field name="outstanding_order_vol"/> -->
-                                                    <field name="container_qty" required="1"/>
-                                                    <field name="container_vol"/>
+                                                    <!-- <field name="total_qty" readonly="1"/>
+                                                    <field name="total_vol"/>   -->
+                                                    <field name="container_qty" required="1" 
+                                                        string="PCS"/>
+                                                    <field name="container_vol" string="M3"/>
+                                                    <field name="jumlah_container"/>
                                                 </group>
                                                 <group>
-                                                    <field name="jumlah_container"/>
                                                     <field name="subtotal_qty"/>
                                                     <field name="subtotal_vol"/>
-                                                    <field name="outstanding_rpb_pcs"/>
-                                                    <field name="outstanding_rpb_vol"/>
+                                                    <!-- <field name="outstanding_rpb_pcs"/>
+                                                    <field name="outstanding_rpb_vol"/> -->
                                                 </group>
                                             </group>
                                             <group>
