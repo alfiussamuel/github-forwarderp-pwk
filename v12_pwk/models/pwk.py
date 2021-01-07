@@ -387,7 +387,8 @@ class PwkRpbLine(models.Model):
                 ('product_tmpl_id.name', '=', line.product_id.name)
             ])
 
-
+            print ("Bom IDS ", bom_ids)
+            print ("Len Bom IDS ", len(bom_ids))
             if bom_ids:
                 if len(bom_ids) >= 1:
                     line.write({'is_detail1': True})
