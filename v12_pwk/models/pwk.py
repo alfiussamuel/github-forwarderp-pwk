@@ -387,6 +387,7 @@ class PwkRpbLine(models.Model):
                 ('product_tmpl_id.name', '=', line.product_id.name)
             ])
 
+            print ("Product Name ", line.product_id.name)
             print ("Bom IDS ", bom_ids)
             print ("Len Bom IDS ", len(bom_ids))
             if bom_ids:
