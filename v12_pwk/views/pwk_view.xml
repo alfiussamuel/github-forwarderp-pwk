@@ -43,10 +43,11 @@
                             <notebook>
                                 <page string="Detail PR">
                                     <group>
-                                        <field name="date_start" class="oe_inline"/>
+                                        <field name="date_start" class="oe_inline" 
+                                            string="Start Period"/>
                                         <label for="date_start"/>
                                         <div>
-                                            <field name="date_end" class="oe_inline"/> | <button name="button_assign" type="object" 
+                                            <field name="date_end" class="oe_inline" string="End Period"/> | <button name="button_assign" type="object" 
                                             string="Assign" class="oe_highlight"/>
                                         </div>
                                     </group>

@@ -77,10 +77,11 @@ class PwkPurchaseRequest(models.Model):
                 for line in res.line_ids:
                     if line.is_selected:
                         line.write({
-                            'quantity_ordered': line.quantity_ordered + res.qty_assign,
+                            'quantity_ordered': line.quantity_ordered + line.qty_assign,
                             'date_start': res.date_start,
                             'date_end': res.date_end,
-                            'is_selected': False
+                            'is_selected': False,
+                            'qty_assign': 0
                         })
 
             res.write({
