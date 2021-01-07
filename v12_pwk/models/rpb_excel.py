@@ -10,25 +10,49 @@ class RpbReportXls(models.AbstractModel):
     _name = 'report.v12_pwk.rpb_report_xls.xlsx'
     _inherit = 'report.report_xlsx.abstract'
 
-    def get_data(self, data):        
+    def get_data_blockboard(self, data):        
         lines = []
         if data.line_ids:
             for line in data.line_ids:
-                vals = {
-                    'partner': line.sale_line_id.order_id.partner_id.name,
-                    'jenis_kayu': line.product_id.jenis_kayu.name,
-                    'order': line.sale_line_id.order_id.po_number,
-                    'tebal': line.thick,
-                    'lebar': line.width,
-                    'panjang': line.length,
-                    'glue': line.glue_id.name,
-                    'grade': line.grade_id.name,
-                    'container': line.container_id.name,
-                    'container_qty': line.container_qty,
-                    'container_vol': line.container_vol,                    
+                if line.product_id.goods_type == "Blockboard":
+                    vals = {
+                        'partner': line.sale_line_id.order_id.partner_id.name,
+                        'jenis_kayu': line.product_id.jenis_kayu.name,
+                        'order': line.sale_line_id.order_id.po_number,
+                        'tebal': line.thick,
+                        'lebar': line.width,
+                        'panjang': line.length,
+                        'glue': line.glue_id.name,
+                        'grade': line.grade_id.name,
+                        'container': line.container_id.name,
+                        'container_qty': line.container_qty,
+                        'container_vol': line.container_vol,                    
                     }
 
-                lines.append(vals)
+                    lines.append(vals)
+
+        return lines
+
+    def get_data_plywood(self, data):        
+        lines = []
+        if data.line_ids:
+            for line in data.line_ids:
+                if line.product_id.goods_type == "Plywood":
+                    vals = {
+                        'partner': line.sale_line_id.order_id.partner_id.name,
+                        'jenis_kayu': line.product_id.jenis_kayu.name,
+                        'order': line.sale_line_id.order_id.po_number,
+                        'tebal': line.thick,
+                        'lebar': line.width,
+                        'panjang': line.length,
+                        'glue': line.glue_id.name,
+                        'grade': line.grade_id.name,
+                        'container': line.container_id.name,
+                        'container_qty': line.container_qty,
+                        'container_vol': line.container_vol,                    
+                    }
+
+                    lines.append(vals)
 
         return lines
 
@@ -130,7 +154,31 @@ class RpbReportXls(models.AbstractModel):
 
         row = 7
         number = 1
-        for i in get_data:         
+        sheet.write(row, 0, 'Blockboard', formatHeaderTable)
+        row += 1
+        for i in get_data_blockboard:
+            sheet.write(row, 0, number, formatHeaderDetailCenter)
+            sheet.write(row, 1, i['partner'], formatHeaderDetailCenter)            
+            sheet.write(row, 2, i['jenis_kayu'], formatHeaderDetailCenter)            
+            sheet.write(row, 3, i['order'], formatHeaderDetailCenter)            
+            sheet.write(row, 4, i['tebal'], formatHeaderDetailCenter)
+            sheet.write(row, 5, '', formatHeaderDetailCenter)
+            sheet.write(row, 6, i['lebar'], formatHeaderDetailCenter)
+            sheet.write(row, 7, '', formatHeaderDetailCenter)
+            sheet.write(row, 8, i['panjang'], formatHeaderDetailCenter)
+            sheet.write(row, 9, i['glue'], formatHeaderDetailCenter)
+            sheet.write(row, 10, i['grade'], formatHeaderDetailCenter)
+            sheet.write(row, 11, i['container'], formatHeaderDetailCenter)
+            sheet.write(row, 12, i['container_qty'], formatHeaderDetailCenter)
+            sheet.write(row, 13, i['container_vol'], formatHeaderDetailRightFour)
+            sheet.write(row, 14, i['container_qty'], formatHeaderDetailCenter)
+            sheet.write(row, 15, i['container_vol'], formatHeaderDetailRightFour)            
+            row += 1
+            number += 1
+
+        sheet.write(row, 0, 'Plywood', formatHeaderTable)
+        row += 1
+        for i in get_data_plywood:
             sheet.write(row, 0, number, formatHeaderDetailCenter)
             sheet.write(row, 1, i['partner'], formatHeaderDetailCenter)            
             sheet.write(row, 2, i['jenis_kayu'], formatHeaderDetailCenter)            
