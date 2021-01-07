@@ -352,9 +352,9 @@
                                             <field name="partner_id" readonly="1"/>
                                             <field name="po_number" readonly="1"/>
                                             <field name="product_id" readonly="1" />
-                                            <field name="thick" readonly="1"/>
-                                            <field name="width" readonly="1"/>
-                                            <field name="length" readonly="1"/>
+                                            <field name="thick" readonly="1" invisible="1"/>
+                                            <field name="width" readonly="1" invisible="1"/>
+                                            <field name="length" readonly="1" invisible="1"/>
                                             <field name="glue_id" invisible="1"/>
                                             <field name="grade_id" invisible="1"/>
                                             <!-- <field name="total_qty" readonly="1"/>
