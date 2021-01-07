@@ -97,10 +97,10 @@ class RpbReportXls(models.AbstractModel):
         sheet.set_column(10, 10, 10)
         sheet.set_column(11, 11, 7)
         sheet.set_column(12, 12, 7)
-        sheet.set_column(13, 13, 7)
-        sheet.set_column(14, 14, 7)
-        sheet.set_column(15, 15, 7)
-        sheet.set_column(16, 16, 7)        
+        sheet.set_column(13, 13, 8)
+        sheet.set_column(14, 14, 8)
+        sheet.set_column(15, 15, 8)
+        sheet.set_column(16, 16, 8)
 
         # Data 1
         row = 5
