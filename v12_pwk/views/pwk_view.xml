@@ -46,6 +46,8 @@
                                         <field name="line_ids" nolabel="1">
                                             <tree editable="top">
                                                 <field name="product_id" required="1"/>
+                                                <field name="date_start"/>
+                                                <field name="date_end"/>
                                                 <field name="thick"/>
                                                 <field name="width"/>
                                                 <field name="length"/>

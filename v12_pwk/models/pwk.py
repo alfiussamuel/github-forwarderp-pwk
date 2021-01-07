@@ -16,6 +16,7 @@ from num2words import num2words
 
 class PwkPurchaseRequestLine(models.Model):
     _name = "pwk.purchase.request.line"
+    _order = "grade_id asc,width asc,length asc,thick asc"
 
     reference = fields.Many2one('pwk.purchase.request', string='Reference')    
     product_id = fields.Many2one('product.product', string='Product')
@@ -23,6 +24,8 @@ class PwkPurchaseRequestLine(models.Model):
     width = fields.Float(compute="_get_sale_fields", string='Width')
     length = fields.Float(compute="_get_sale_fields", string='Length')
     grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')        
+    date_start = fields.Date('Start Period')
+    date_end = fields.Date('End Period')
 
     quantity = fields.Float(string='Quantity')
     volume = fields.Float(compute="_get_volume", string='Volume')
