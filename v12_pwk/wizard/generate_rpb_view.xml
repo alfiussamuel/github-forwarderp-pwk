@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <odoo>
 	<data>
+		
 		<record id="pwk_generate_rpb_wizard_form" model="ir.ui.view">
 			<field name="name">Select Order RPB</field>
 			<field name="model">pwk.generate.rpb.wizard</field>

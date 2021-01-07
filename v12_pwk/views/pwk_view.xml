@@ -1,6 +1,6 @@
 <odoo>
-    <data>                              
-        
+    <data>                                          
+
         <!-- Purchase Request-->        
         <record id="pwk_purchase_request_tree" model="ir.ui.view">
             <field name="name">Purchase Request</field>
