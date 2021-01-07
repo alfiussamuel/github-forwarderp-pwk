@@ -392,7 +392,7 @@ class PwkRpbLine(models.Model):
                 if len(bom_ids) >= 1:
                     line.write({'is_detail1': True})
                     for bom_line in bom_ids[0].bom_line_ids:                        
-                        self.env['pwk.rpm.line.detail1'].create({
+                        self.env['pwk.rpb.line.detail1'].create({
                             'reference': line.id,
                             'product_id': bom_line.product_id.id,
                             'thick': bom_line.product_id.tebal,
@@ -404,7 +404,7 @@ class PwkRpbLine(models.Model):
                 if len(bom_ids) >= 2:
                     line.write({'is_detail2': True})
                     for bom_line in bom_ids[1].bom_line_ids:
-                        self.env['pwk.rpm.line.detail2'].create({
+                        self.env['pwk.rpb.line.detail2'].create({
                             'reference': line.id,
                             'product_id': bom_line.product_id.id,
                             'thick': bom_line.product_id.tebal,
@@ -416,7 +416,7 @@ class PwkRpbLine(models.Model):
                 if len(bom_ids) >= 3:
                     line.write({'is_detail3': True})                    
                     for bom_line in bom_ids[2].bom_line_ids:
-                        self.env['pwk.rpm.line.detail3'].create({
+                        self.env['pwk.rpb.line.detail3'].create({
                             'reference': line.id,
                             'product_id': bom_line.product_id.id,
                             'thick': bom_line.product_id.tebal,
@@ -428,7 +428,7 @@ class PwkRpbLine(models.Model):
                 if len(bom_ids) >= 4:
                     line.write({'is_detail4': True})                    
                     for bom_line in bom_ids[3].bom_line_ids:
-                        self.env['pwk.rpm.line.detail4'].create({
+                        self.env['pwk.rpb.line.detail4'].create({
                             'reference': line.id,
                             'product_id': bom_line.product_id.id,
                             'thick': bom_line.product_id.tebal,
@@ -440,7 +440,7 @@ class PwkRpbLine(models.Model):
                 if len(bom_ids) >= 5:
                     line.write({'is_detail5': True})                    
                     for bom_line in bom_ids[4].bom_line_ids:
-                        self.env['pwk.rpm.line.detail5'].create({
+                        self.env['pwk.rpb.line.detail5'].create({
                             'reference': line.id,
                             'product_id': bom_line.product_id.id,
                             'thick': bom_line.product_id.tebal,
