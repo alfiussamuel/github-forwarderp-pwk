@@ -14,7 +14,7 @@ import re
 from num2words import num2words
 
 
-class PwkPurchaseRequestLine(models.Model):    
+class PwkPurchaseRequestLine(models.Model):
     _name = "pwk.purchase.request.line"
 
     reference = fields.Many2one('pwk.purchase.request', string='Reference')    
