@@ -155,7 +155,7 @@ class RpbReportXls(models.AbstractModel):
 
         row = 7
         number = 1
-        sheet.merge_range(row, 0, row, 1 'Blockboard', formatHeaderTable)
+        sheet.merge_range(row, 0, row, 1, 'Blockboard', formatHeaderTable)
         row += 1
         for i in get_data_blockboard:
             sheet.write(row, 0, number, formatHeaderDetailCenter)
@@ -177,7 +177,7 @@ class RpbReportXls(models.AbstractModel):
             row += 1
             number += 1
 
-        sheet.merge_range(row, 0, row, 1 'Plywood', formatHeaderTable)
+        sheet.merge_range(row, 0, row, 1, 'Plywood', formatHeaderTable)
         row += 1
         for i in get_data_plywood:
             sheet.write(row, 0, number, formatHeaderDetailCenter)
