@@ -13,12 +13,12 @@ import math
 import re    
 from num2words import num2words
 
-
 class PwkPurchaseRequestLine(models.Model):
     _name = "pwk.purchase.request.line"
     _order = "grade_id asc,width asc,length asc,thick asc"
 
     reference = fields.Many2one('pwk.purchase.request', string='Reference')    
+    is_selected = fields.Boolean('.')
     product_id = fields.Many2one('product.product', string='Product')
     thick = fields.Float(compute="_get_sale_fields", string='Thick', store=True)
     width = fields.Float(compute="_get_sale_fields", string='Width', store=True)
@@ -27,7 +27,8 @@ class PwkPurchaseRequestLine(models.Model):
     date_start = fields.Date('Start Period')
     date_end = fields.Date('End Period')
 
-    quantity = fields.Float(string='Quantity')
+    quantity = fields.Float(string='Requested Qty')
+    quantity_ordered = fields.Float(string='Ordered Qty')
     volume = fields.Float(compute="_get_volume", string='Volume')
     product_uom_id = fields.Many2one("uom.uom", string='UoM')
     truck = fields.Char(string='Truck')    
@@ -51,6 +52,9 @@ class PwkPurchaseRequest(models.Model):
 
     pr_type = fields.Selection([('Bahan Baku','Bahan Baku'),('Bahan Penolong','Bahan Penolong')], string='Jenis PR')
     name = fields.Char('Nomor PR')
+    date_start = fields.Date('Start Period')
+    date_end = fields.Date('End Period')
+    qty_assign = fields.Integer('Quantity')
     date = fields.Date('Tanggal PR')    
     product_type = fields.Selection([
         ('Produksi','Produksi'),
@@ -64,6 +68,24 @@ class PwkPurchaseRequest(models.Model):
         ('Cancelled','Cancelled')]
         , string="Status", default="Draft")
     line_ids = fields.One2many('pwk.purchase.request.line', 'reference', string='Lines')    
+
+    @api.multi
+    def button_assign(self):
+        for res in self:
+            if res.line_ids:
+                for line in res.line_ids:
+                    if line.is_selected:
+                        line.write({
+                            'quantity_ordered': line.quantity_ordered + res.qty_assign,
+                            'is_selected': False
+                        })
+
+            res.write({
+                'date_start': False,
+                'date_end': False,
+                'qty_assign': 0
+            })
+
 
     @api.multi
     def button_draft(self):
