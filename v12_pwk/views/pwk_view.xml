@@ -319,7 +319,10 @@
                     <header>
                         <field name="state" widget="statusbar" readonly="1"/>
                         <button name="%(action_pwk_generate_rpb)d" type="action" 
-                            string="Select Order" class="oe_highlight"/>                        
+                            string="Select Order" class="oe_highlight"/>
+                        <button name="action_create_pr" string="Create Purchase Request" 
+                            type="object" class="oe_highlight"
+                            attrs="{'invisible':[('is_pr', '=', True)]}"/>
                     </header>
                     <label for="name" class="oe_edit_only" />
                     <h1>
@@ -333,6 +336,10 @@
                         </div>
                         <field name="target" class="oe_inline"/>
                         <field name="actual"/>
+                        <field name="is_pr"
+                            attrs="{'invisible':[('is_pr', '=', False)]}"/>
+                        <field name="pr_id"
+                            attrs="{'invisible':[('is_pr', '=', False)]}"/>
                     </group>
                     <group>
                         <notebook>

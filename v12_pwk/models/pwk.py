@@ -490,6 +490,58 @@ class PwkRpb(models.Model):
     rpm_ids = fields.One2many('pwk.rpm', 'rpb_id', string='RPM', ondelete="cascade")
     target = fields.Float('Target ( M3 )', digits=dp.get_precision('FourDecimal'))    
     actual = fields.Float(compute="_get_actual", string='Aktual ( M3 )', digits=dp.get_precision('FourDecimal'))
+    is_pr = fields.Boolean('Purchase Request')
+    pr_id = fields.Many2one('pwk.purchase.request', string='Purchase Request')
+
+    @api.multi
+    def action_create_pr(self):
+        for res in self:
+            product_list = []
+
+            if res.line_ids:
+                request_id = self.env['pwk.purchase.request'].create({
+                    'date': fields.Date.today(),
+                })
+
+                for line in res.line_ids:                    
+                    if line.is_detail1 and line.is_selected_detail1:
+                        bom_ids = line.detail_ids_1
+                    elif line.is_detail2 and line.is_selected_detail2:
+                        bom_ids = line.detail_ids_2
+                    elif line.is_detail3 and line.is_selected_detail3:
+                        bom_ids = line.detail_ids_3
+                    elif line.is_detail4 and line.is_selected_detail4:
+                        bom_ids = line.detail_ids_4
+                    elif line.is_detail5 and line.is_selected_detail5:
+                        bom_ids = line.detail_ids_5
+
+                    for bom in bom_ids:
+                        if bom.quantity > bom.available_qty:
+                            if bom.product_id.id not in product_list:
+                                product_list.append(bom.product_id.id)
+
+                                self.env['pwk.purchase.request.line'].create({
+                                    'reference': request_id.id,
+                                    'product_id': bom.product_id.id,                    
+                                    'quantity': bom.quantity - bom.available_qty,
+                                })
+
+                            else:
+                                current_line_ids = self.env['pwk.purchase.request.line'].search([
+                                    ('reference', '=', request_id.id),
+                                    ('product_id', '=', bom.product_id.id),
+                                ])
+
+                                if current_line_ids:
+                                    current_line_ids[0].write({
+                                        'quantity': current_line_ids[0].quantity + (bom.quantity - bom.available_qty)
+                                    })
+
+            return res.write({
+                'pr_id': request_id.id,
+                'is_pr': True,
+                # 'state': 'Purchase Request'
+            })
 
     @api.depends('line_ids.total_volume')
     def _get_actual(self):
@@ -818,9 +870,9 @@ class PwkRpm(models.Model):
 
     name = fields.Char('Nomor RPM')
     date_start = fields.Date('Periode')
-    date_end = fields.Date('Periode')
-    is_pr = fields.Boolean('Purchase Request')
+    date_end = fields.Date('Periode')    
     rpb_id = fields.Many2one('pwk.rpb', string='RPB')    
+    is_pr = fields.Boolean('Purchase Request')
     pr_id = fields.Many2one('pwk.purchase.request', string='Purchase Request')
     state = fields.Selection([('Draft','Draft'),('Purchase Request','Purchase Request')], string="Status", default="Draft")
     line_ids = fields.One2many('pwk.rpm.line', 'reference', string='Lines', ondelete="cascade")
