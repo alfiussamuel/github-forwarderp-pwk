@@ -57,7 +57,8 @@ class RpbReportXls(models.AbstractModel):
         return lines
 
     def generate_xlsx_report(self, workbook, data, lines):        
-        get_data = self.get_data(lines)        
+        get_data_blockboard = self.get_data_blockboard(lines)
+        get_data_plywood = self.get_data_plywood(lines)
         alamat = ' Jl. Raya Krangan - Pringsurat, Karanglo, Kupen, Kec. Pringsurat, Kabupaten Temanggung, Jawa Tengah 56272'
 
         sheet = workbook.add_worksheet('Sheet 1')
