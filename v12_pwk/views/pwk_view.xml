@@ -43,31 +43,27 @@
                             <notebook>
                                 <page string="Detail PR">
                                     <group>
-                                        <label for="date_start"/>
-                                        <div>
-                                            <field name="date_start" class="oe_inline"/> | <field name="date_end" class="oe_inline"/>
-                                        </div>
-                                        <label for="qty_assign"/>
-                                        <div>
-                                            <field name="qty_assign" class="oe_inline"/> | 
-                                            <button name="button_assign" type="object" 
-                                                string="Assign" class="oe_highlight"/>
-                                        </div>
+                                        <field name="date_start" class="oe_inline"/>
+                                        <field name="date_end" class="oe_inline"/>
+                                        <field name="date_start" class="oe_inline"/>
+                                        <button name="button_assign" type="object" 
+                                            string="Assign" class="oe_highlight"/>
                                     </group>
                                     <group>
                                         <field name="line_ids" nolabel="1">
                                             <tree editable="top">
                                                 <field name="is_selected"/>
+                                                <field name="quantity_ordered" required="1"/>
                                                 <field name="product_id" required="1"/>
                                                 <field name="date_start"/>
                                                 <field name="date_end"/>
-                                                <field name="thick"/>
-                                                <field name="width"/>
-                                                <field name="length"/>
-                                                <field name="grade_id"/>
+                                                <field name="thick" invisible="1"/>
+                                                <field name="width" invisible="1"/>
+                                                <field name="length" invisible="1"/>
+                                                <field name="grade_id" invisible="1"/>
                                                 <field name="product_uom_id"/>
                                                 <field name="quantity" required="1"/>
-                                                <field name="quantity_ordered" required="1"/>
+                                                <field name="quantity_remaining" required="1"/>
                                                 <field name="volume"/>
                                                 <field name="truck"/>
                                             </tree>
