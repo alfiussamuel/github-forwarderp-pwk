@@ -424,6 +424,7 @@
                                                                 <field name="thick"/>
                                                                 <field name="width"/>
                                                                 <field name="length"/>
+                                                                <field name="ply"/>
                                                                 <field name="quantity"/>
                                                                 <field name="available_qty"/>
                                                             </tree>
@@ -440,6 +441,7 @@
                                                                 <field name="thick"/>
                                                                 <field name="width"/>
                                                                 <field name="length"/>
+                                                                <field name="ply"/>
                                                                 <field name="quantity"/>
                                                                 <field name="available_qty"/>
                                                             </tree>
@@ -456,6 +458,7 @@
                                                                 <field name="thick"/>
                                                                 <field name="width"/>
                                                                 <field name="length"/>
+                                                                <field name="ply"/>
                                                                 <field name="quantity"/>
                                                                 <field name="available_qty"/>
                                                             </tree>
@@ -472,6 +475,7 @@
                                                                 <field name="thick"/>
                                                                 <field name="width"/>
                                                                 <field name="length"/>
+                                                                <field name="ply"/>
                                                                 <field name="quantity"/>
                                                                 <field name="available_qty"/>
                                                             </tree>
@@ -488,6 +492,7 @@
                                                                 <field name="thick"/>
                                                                 <field name="width"/>
                                                                 <field name="length"/>
+                                                                <field name="ply"/>
                                                                 <field name="quantity"/>
                                                                 <field name="available_qty"/>
                                                             </tree>

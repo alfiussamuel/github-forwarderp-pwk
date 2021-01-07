@@ -187,6 +187,7 @@ class PwkRpbLineDetail1(models.Model):
     thick = fields.Float(string='Thick')
     width = fields.Float(string='Width')
     length = fields.Float(string='Length')
+    ply = fields.Float(string='Ply')
     quantity = fields.Float(string='Quantity')
     available_qty = fields.Float(compute="_get_available_qty", string="Qty Available")
     
@@ -204,6 +205,7 @@ class PwkRpbLineDetail2(models.Model):
     thick = fields.Float(string='Thick')
     width = fields.Float(string='Width')
     length = fields.Float(string='Length')
+    ply = fields.Float(string='Ply')
     quantity = fields.Float(string='Quantity')
     available_qty = fields.Float(compute="_get_available_qty", string="Qty Available")
     
@@ -221,6 +223,7 @@ class PwkRpbLineDetail3(models.Model):
     thick = fields.Float(string='Thick')
     width = fields.Float(string='Width')
     length = fields.Float(string='Length')
+    ply = fields.Float(string='Ply')
     quantity = fields.Float(string='Quantity')
     available_qty = fields.Float(compute="_get_available_qty", string="Qty Available")
     
@@ -238,6 +241,7 @@ class PwkRpbLineDetail4(models.Model):
     thick = fields.Float(string='Thick')
     width = fields.Float(string='Width')
     length = fields.Float(string='Length')
+    ply = fields.Float(string='Ply')
     quantity = fields.Float(string='Quantity')
     available_qty = fields.Float(compute="_get_available_qty", string="Qty Available")
     
@@ -255,6 +259,7 @@ class PwkRpbLineDetail5(models.Model):
     thick = fields.Float(string='Thick')
     width = fields.Float(string='Width')
     length = fields.Float(string='Length')
+    ply = fields.Float(string='Ply')
     quantity = fields.Float(string='Quantity')
     available_qty = fields.Float(compute="_get_available_qty", string="Qty Available")
     
@@ -413,6 +418,7 @@ class PwkRpbLine(models.Model):
                             'thick': bom_line.product_id.tebal,
                             'width': bom_line.product_id.lebar,
                             'length': bom_line.product_id.panjang,
+                            'ply': bom_line.product_qty,
                             'quantity': bom_line.product_qty * line.total_qty_spare
                         })
 
@@ -425,6 +431,7 @@ class PwkRpbLine(models.Model):
                             'thick': bom_line.product_id.tebal,
                             'width': bom_line.product_id.lebar,
                             'length': bom_line.product_id.panjang,
+                            'ply': bom_line.product_qty,
                             'quantity': bom_line.product_qty * line.total_qty_spare
                         })
                     
@@ -437,6 +444,7 @@ class PwkRpbLine(models.Model):
                             'thick': bom_line.product_id.tebal,
                             'width': bom_line.product_id.lebar,
                             'length': bom_line.product_id.panjang,
+                            'ply': bom_line.product_qty,
                             'quantity': bom_line.product_qty * line.total_qty_spare
                         })
 
@@ -449,6 +457,7 @@ class PwkRpbLine(models.Model):
                             'thick': bom_line.product_id.tebal,
                             'width': bom_line.product_id.lebar,
                             'length': bom_line.product_id.panjang,
+                            'ply': bom_line.product_qty,
                             'quantity': bom_line.product_qty * line.total_qty_spare
                         })
 
@@ -461,6 +470,7 @@ class PwkRpbLine(models.Model):
                             'thick': bom_line.product_id.tebal,
                             'width': bom_line.product_id.lebar,
                             'length': bom_line.product_id.panjang,
+                            'ply': bom_line.product_qty,
                             'quantity': bom_line.product_qty * line.total_qty_spare
                         })
 
