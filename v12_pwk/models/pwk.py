@@ -266,7 +266,7 @@ class PwkRpbLineDetail5(models.Model):
 
 class PwkRpbLine(models.Model):    
     _name = "pwk.rpb.line"
-    _order = 'thick asc,width asc,length asc'
+    _order = 'width asc,length asc,thick asc'
 
     reference = fields.Many2one('pwk.rpb', string='Reference')
     container_id = fields.Many2one('pwk.rpb.container', string='Container')
