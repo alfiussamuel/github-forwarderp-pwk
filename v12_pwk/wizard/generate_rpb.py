@@ -41,12 +41,12 @@ class PwkGenerateRpbWizard(models.TransientModel):
 
     	if self.line_ids:
             for container in self.line_ids:
-                existing_container = self.env['pwk.rpb.container'].search({
-                    'name': container.no_container.
-                })
+                existing_container = self.env['pwk.rpb.container'].search([
+                    ('name', '=', container.no_container)
+                ])
 
                 if existing_container:
-                    raise UserError(_('Nomor Container sudah digunakan'))
+                    raise UserError(_('Nomor Container sudah'))
 
                 container_id = self.env['pwk.rpb.container'].create({
                     'reference': rpb_id.id,
