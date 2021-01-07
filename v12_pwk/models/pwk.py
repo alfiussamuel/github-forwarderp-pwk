@@ -52,8 +52,8 @@ class PwkPurchaseRequest(models.Model):
 
     pr_type = fields.Selection([('Bahan Baku','Bahan Baku'),('Bahan Penolong','Bahan Penolong')], string='Jenis PR')
     name = fields.Char('Nomor PR')
-    date_start = fields.Date('Start Period')
-    date_end = fields.Date('End Period')
+    date_start = fields.Date('Period')
+    date_end = fields.Date('Period')
     qty_assign = fields.Integer('Quantity')
     date = fields.Date('Tanggal PR')    
     product_type = fields.Selection([
@@ -77,6 +77,8 @@ class PwkPurchaseRequest(models.Model):
                     if line.is_selected:
                         line.write({
                             'quantity_ordered': line.quantity_ordered + res.qty_assign,
+                            'date_start': res.date_start,
+                            'date_end': res.date_end,
                             'is_selected': False
                         })
 
