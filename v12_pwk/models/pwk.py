@@ -319,13 +319,13 @@ class PwkRpbLine(models.Model):
     is_selected_detail4 = fields.Boolean('Bill of Material 4')
     is_selected_detail5 = fields.Boolean('Bill of Material 5')    
 
-    @api.depends('total_qty', 'spare_qty')
+    @api.depends('container_qty', 'spare_qty')
     def _get_total_qty_spare(self):
         for res in self:
             if res.spare_qty == 0:
-                res.total_qty_spare = res.total_qty
+                res.total_qty_spare = res.container_qty
             else:
-                res.total_qty_spare = res.total_qty + round((res.total_qty * res.spare_qty / 100))
+                res.total_qty_spare = res.container_qty + round((res.container_qty * res.spare_qty / 100))
 
     @api.depends('container_qty', 'jumlah_container')
     def _get_subtotal_qty(self):
