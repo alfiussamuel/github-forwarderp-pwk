@@ -86,6 +86,7 @@ class RpbReportXls(models.AbstractModel):
         # Set Column Width
         sheet.set_column(0, 0, 5)
         sheet.set_column(1, 1, 35)
+        sheet.set_column(1, 1, 15)
         sheet.set_column(2, 2, 8)
         sheet.set_column(3, 3, 22)
         sheet.set_column(4, 4, 7)
@@ -113,12 +114,12 @@ class RpbReportXls(models.AbstractModel):
         sheet.merge_range(row, 2, row+1, 2, 'Product', formatHeaderTable)
         sheet.merge_range(row, 3, row+1, 3, 'F/B', formatHeaderTable)
         sheet.merge_range(row, 4, row+1, 4, 'NO ORDER', formatHeaderTable)
-        sheet.merge_range(row, 5, row, 8, 'Size (mm)', formatHeaderTable)
+        sheet.merge_range(row, 5, row, 9, 'Size (mm)', formatHeaderTable)
         sheet.merge_range(row, 10, row+1, 10, 'Glue Type', formatHeaderTable)
         sheet.merge_range(row, 11, row+1, 11, 'Grade', formatHeaderTable)
         sheet.merge_range(row, 12, row+1, 12, 'CONT', formatHeaderTable)
-        sheet.merge_range(row, 13, row, 13, 'Isi Per Cont (m3)', formatHeaderTable)
-        sheet.merge_range(row, 15, row, 15, 'Total Volume (m3)', formatHeaderTable)
+        sheet.merge_range(row, 13, row, 14, 'Isi Per Cont (m3)', formatHeaderTable)
+        sheet.merge_range(row, 15, row, 16, 'Total Volume (m3)', formatHeaderTable)
 
         # Merge 3 and 4
         sheet.write(row+1, 5, 'T', formatHeaderTable)
