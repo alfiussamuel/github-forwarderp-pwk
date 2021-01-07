@@ -132,7 +132,7 @@ class RpbReportXls(models.AbstractModel):
 
         row = 7
         number = 1        
-        for i in get_data_blockboard:
+        for i in get_data:
             sheet.write(row, 0, number, formatHeaderDetailCenter)
             sheet.write(row, 1, i['partner'], formatHeaderDetailCenter)
             sheet.write(row, 1, i['goods_type'], formatHeaderDetailCenter)
