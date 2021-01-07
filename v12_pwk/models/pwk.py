@@ -368,7 +368,7 @@ class PwkRpbLine(models.Model):
                 res.total_qty = res.sale_line_id.product_uom_qty
                 res.total_volume = res.sale_line_id.volume
                 res.job_order_status = res.sale_line_id.order_id.job_order_status
-                res.po_number = res.sale_line_id.po_number
+                res.po_number = res.sale_line_id.order_id.po_number
 
     @api.multi
     def button_reload_bom(self):
