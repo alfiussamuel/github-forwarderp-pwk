@@ -904,7 +904,7 @@ class PwkRpm(models.Model):
 
                     for bom in bom_ids:
                         self.env['pwk.rpm.line.detail1'].create({
-                            'reference': line.id,
+                            'reference': rpm_line_id.id,
                             'product_id': bom.product_id.id,
                             'thick': bom.thick,
                             'width': bom.width,
