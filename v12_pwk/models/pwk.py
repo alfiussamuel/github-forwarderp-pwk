@@ -321,7 +321,7 @@ class PwkRpbLine(models.Model):
     def _get_total_qty_spare(self):
         for res in self:
             res.total_qty_spare = res.total_qty + round((res.total_qty * res.spare_qty / 100))
-            
+
     @api.depends('container_qty', 'jumlah_container')
     def _get_subtotal_qty(self):
         for res in self:
@@ -457,6 +457,9 @@ class PwkRpbLine(models.Model):
                             'length': bom_line.product_id.panjang,
                             'quantity': bom_line.product_qty * line.total_qty_spare
                         })
+
+                if len(bom_ids) == 1:
+                    line.write({'is_selected_detail1': True})
 
 class PwkRpb(models.Model):    
     _name = "pwk.rpb"
