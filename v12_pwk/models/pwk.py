@@ -322,7 +322,10 @@ class PwkRpbLine(models.Model):
     @api.depends('total_qty', 'spare_qty')
     def _get_total_qty_spare(self):
         for res in self:
-            res.total_qty_spare = res.total_qty + round((res.total_qty * res.spare_qty / 100))
+            if res.spare_qty == 0:
+                res.total_qty_spare = res.total_qty
+            else:
+                res.total_qty_spare = res.total_qty + round((res.total_qty * res.spare_qty / 100))
 
     @api.depends('container_qty', 'jumlah_container')
     def _get_subtotal_qty(self):
