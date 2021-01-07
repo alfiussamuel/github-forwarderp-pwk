@@ -176,13 +176,14 @@
                                                         <field name="remaining_qty" readonly="1"/>
                                                         <field name="total_qty" class="oe_inline"/>
                                                         <field name="spare_qty" class="oe_inline"/>
-                                                        <label for="total_qty_spare"/>
+                                                        <field name="total_qty_spare"/>
+                                                        <!-- <label for="total_qty_spare"/>
                                                         <div>
                                                             <field name="total_qty_spare"/>
                                                                |   <button name="button_reload_bom" 
                                                                 string="Reload BoM" type="object" 
                                                                 class="oe_highlight"/>
-                                                        </div>
+                                                        </div> -->
                                                     </group>
                                                     <group>
                                                         <field name="remaining_volume"/>
@@ -401,9 +402,14 @@
                                                 <field name="is_detail5" invisible="1"/>
                                             </group>
                                             <group>
-                                                <button name="button_reload_bom" 
-                                                    string="Reload BoM" type="object" 
-                                                    class="oe_highlight"/>
+                                                <field name="spare_qty" class="oe_inline"/>
+                                                <label for="total_qty_spare"/>
+                                                <div>
+                                                    <field name="total_qty_spare"/>
+                                                       |   <button name="button_reload_bom" 
+                                                        string="Reload BoM" type="object" 
+                                                        class="oe_highlight"/>
+                                                </div>
                                             </group>
                                             <group>
                                                 <notebook>

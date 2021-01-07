@@ -283,6 +283,8 @@ class PwkRpbLine(models.Model):
     job_order_status = fields.Char(compute="_get_sale_fields", string='Job Order Status')
 
     total_qty = fields.Float(string='Order PCS', digits=dp.get_precision('TwoDecimal'))
+    spare_qty = fields.Float('Qty Spare (%)', digits=dp.get_precision('ZeroDecimal'))  
+    total_qty_spare = fields.Float(compute="_get_total_qty_spare", string='Qty Spare')
     total_vol = fields.Float(compute="_get_volume", string='Order M3', digits=dp.get_precision('FourDecimal'))
 
     container_qty = fields.Float('Cont Pcs', digits=dp.get_precision('TwoDecimal'))
@@ -315,6 +317,11 @@ class PwkRpbLine(models.Model):
     is_selected_detail4 = fields.Boolean('Bill of Material 4')
     is_selected_detail5 = fields.Boolean('Bill of Material 5')    
 
+    @api.depends('total_qty', 'spare_qty')
+    def _get_total_qty_spare(self):
+        for res in self:
+            res.total_qty_spare = res.total_qty + round((res.total_qty * res.spare_qty / 100))
+            
     @api.depends('container_qty', 'jumlah_container')
     def _get_subtotal_qty(self):
         for res in self:
