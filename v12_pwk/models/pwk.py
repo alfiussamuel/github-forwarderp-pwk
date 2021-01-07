@@ -891,6 +891,27 @@ class PwkRpm(models.Model):
                         'remaining_qty': line.outstanding_rpb_pcs
                     })
 
+                    if line.is_selected_detail1:
+                        bom_ids = line.detail_ids_1
+                    elif line.is_selected_detail2:
+                        bom_ids = line.detail_ids_2
+                    elif line.is_selected_detail3:
+                        bom_ids = line.detail_ids_3
+                    elif line.is_selected_detail4:
+                        bom_ids = line.detail_ids_4
+                    elif line.is_selected_detail5:
+                        bom_ids = line.detail_ids_5
+
+                    for bom in bom_ids:
+                        self.env['pwk.rpm.line.detail1'].create({
+                            'reference': line.id,
+                            'product_id': bom.product_id.id,
+                            'thick': bom.thick,
+                            'width': bom.width,
+                            'length': bom.length,
+                            'quantity': bom.quantity
+                        })
+
             return True    
 
     @api.multi
