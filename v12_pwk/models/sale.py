@@ -127,6 +127,7 @@ class SaleOrderLine(models.Model):
     stempel_position = fields.Selection([('Edge','Edge'),('Back','Back'),('Edge and Back','Edge and Back')], string="Position", default="Edge")
     name = fields.Text(string='Description', required=True, default=_get_default_name)
 
+    sale_po_number = fields.Date(related='order_id.po_number', string='PO Number')
     sale_date_order = fields.Date(related='order_id.date_order', string='Date Order')
     sale_partner_id = fields.Many2one(related='order_id.partner_id', comodel_name='res.partner', string='Customer')    
     outstanding_order_pcs = fields.Float(compute="_get_outstanding_order_pcs", string="Outstanding Order")

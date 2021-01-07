@@ -16,7 +16,7 @@
                         <field name="qty_delivered"/>
                         <field name="qty_invoiced" invisible="1"/>
                         <field name="qty_to_invoice" invisible="1"/>
-                        <field name="po_number"/>
+                        <field name="sale_po_number"/>
                         <field name="product_uom" string="Unit of Measure" groups="uom.group_uom"/>
                         <field name="price_subtotal" sum="Total" widget="monetary"/>
                     </tree>
