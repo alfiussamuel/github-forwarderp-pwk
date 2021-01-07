@@ -26,7 +26,7 @@ class PwkPurchaseRequestLine(models.Model):
 
     quantity = fields.Float(string='Quantity')
     volume = fields.Float(compute="_get_volume", string='Volume')
-    product_uom_id = fields.Float(compute="_get_sale_fields", string='UoM')
+    product_uom_id = fields.Many2one(compute="_get_sale_fields", comodel_name="product.uom", string='UoM')
     truck = fields.Char(string='Truck')    
 
     @api.depends('quantity')
