@@ -21,7 +21,7 @@
                 <form>
                     <header>
                         <field name="state" widget="statusbar" readonly="1"/>     
-                        <button name="button_draft" string="Set to Draft" 
+                        <button name="button_draft" string="Cancel" 
                             states="Department Approved,Purchasing Approved" type="object"/>
                         <button name="button_approve1" string="Approve Department" 
                             states="Draft" type="object" class="oe_highlight"/>

@@ -57,14 +57,15 @@ class PwkPurchaseRequest(models.Model):
     state = fields.Selection([
         ('Draft','Draft'),
         ('Department Approved','Department Approved'),
-        ('Purchasing Approved','Purchasing Approved')]
+        ('Purchasing Approved','Purchasing Approved'),
+        ('Cancelled','Cancelled')]
         , string="Status", default="Draft")
     line_ids = fields.One2many('pwk.purchase.request.line', 'reference', string='Lines')    
 
     @api.multi
     def button_draft(self):
         for res in self:
-            res.state = "Draft"
+            res.state = "Draft"    
 
     @api.multi
     def button_approve1(self):
