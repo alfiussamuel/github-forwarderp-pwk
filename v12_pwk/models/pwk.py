@@ -28,8 +28,8 @@ class PwkPurchaseRequestLine(models.Model):
     date_end = fields.Date('End Period')
 
     quantity = fields.Float(string='Requested Qty')
-    quantity_ordered = fields.Float(string='Ordered Qty')
-    quantity_remaining = fields.Float(string='Remaining Qty')
+    quantity_ordered = fields.Float(string='Qty')
+    quantity_remaining = fields.Float(string='Ordered Qty')
     volume = fields.Float(compute="_get_volume", string='Volume')
     product_uom_id = fields.Many2one("uom.uom", string='UoM')
     truck = fields.Char(string='Truck')    
