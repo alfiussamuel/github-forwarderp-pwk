@@ -71,6 +71,7 @@ class RpbReportXls(models.AbstractModel):
         formatHeaderLeft = workbook.add_format({'font_size': 14, 'valign':'vcenter', 'align': 'left', 'bold': True, 'text_wrap': True})
         formatHeaderRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'left', 'num_format': '#,##0'})
         formatHeaderTable = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'bold': True, 'bg_color':'#4ead2f', 'color':'white', 'text_wrap': True})
+        formatHeaderTablePlain = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'bold': True, 'text_wrap': True})
         formatHeaderTableRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'bold': True, 'bg_color':'#3eaec2', 'text_wrap': True, 'num_format': '#,##0'})
         formatHeaderTableCenterWhite = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'center', 'bold': True, 'text_wrap': True, 'num_format': '#,##0'})
         formatHeaderDetailCenter = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True})
@@ -155,7 +156,7 @@ class RpbReportXls(models.AbstractModel):
 
         row = 7
         number = 1
-        sheet.merge_range(row, 0, row, 1, 'Blockboard', formatHeaderTable)
+        sheet.merge_range(row, 0, row, 1, 'Blockboard', formatHeaderTablePlain)
         row += 1
         for i in get_data_blockboard:
             sheet.write(row, 0, number, formatHeaderDetailCenter)
@@ -177,7 +178,7 @@ class RpbReportXls(models.AbstractModel):
             row += 1
             number += 1
 
-        sheet.merge_range(row, 0, row, 1, 'Plywood', formatHeaderTable)
+        sheet.merge_range(row, 0, row, 1, 'Plywood', formatHeaderTablePlain)
         row += 1
         for i in get_data_plywood:
             sheet.write(row, 0, number, formatHeaderDetailCenter)
