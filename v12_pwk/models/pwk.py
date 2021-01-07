@@ -912,6 +912,8 @@ class PwkRpm(models.Model):
                             'quantity': bom.quantity
                         })
 
+                    rpm_line_id.write({'is_selected_detail1': True})
+
             return True    
 
     @api.multi
