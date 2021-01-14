@@ -41,8 +41,8 @@ class PurchaseOrderLine(models.Model):
         for res in self:
             if res.diameter > 0:
                 res.volume_real = res.product_qty * res.diameter * res.diameter * res.order_id.panjang * 0.785 / 1000000
-            else:
-                res.volume_real = res.product_qty * res.product_id.panjang * res.product_id.lebar * res.product_id.tebal / 1000000000
+            # else:
+            #     res.volume_real = res.product_qty * res.product_id.panjang * res.product_id.lebar * res.product_id.tebal / 1000000000
 
             res.volume_surat_jalan = res.qty_surat_jalan * res.diameter * res.diameter * res.order_id.panjang * 0.785 / 1000000
             res.volume_afkir = res.qty_afkir * res.diameter * res.diameter * res.order_id.panjang * 0.785 / 1000000    
