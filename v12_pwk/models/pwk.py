@@ -50,8 +50,6 @@ class PwkPurchaseRequestLine(models.Model):
     product_uom_id = fields.Many2one("uom.uom", string='UoM')
     truck = fields.Char(string='Truck')    
 
-    line_ids = fields.One2many('pwk.purchase.request.line.detail', 'reference', string='Lines')
-
     @api.depends('quantity')
     def _get_volume(self):
         for res in self:
@@ -87,6 +85,7 @@ class PwkPurchaseRequest(models.Model):
         ('Cancelled','Cancelled')]
         , string="Status", default="Draft")
     line_ids = fields.One2many('pwk.purchase.request.line', 'reference', string='Lines')    
+    date_ids = fields.One2many('pwk.purchase.request.date', 'reference', string='Dates')
 
     @api.multi
     def button_assign(self):
@@ -94,11 +93,23 @@ class PwkPurchaseRequest(models.Model):
             if res.line_ids:
                 for line in res.line_ids:
                     if line.is_selected and ((line.quantity_remaining + line.quantity_ordered) <= line.quantity):
-                        self.env['pwk.purchase.request.line.detail'].create({
-                            'reference': line.id,
-                            'quantity': line.quantity_ordered,
-                            'date_start': res.date_start,
-                            'date_end': res.date_end,                            
+                        current_date_id = self.env['pwk.purchase.request.date'].search([
+                            ('reference', '=', res.id)
+                            ('date_start', '=', res.date_start),
+                            ('date_end', '=', res.date_end)
+                        ])
+
+                        if not current_date_id:
+                            current_date_id = self.env['pwk.purchase.request.date'].create({
+                                'reference': res.id,
+                                'date_start': res.date_start,
+                                'date_end': res.date_end,
+                            })
+
+                        self.env['pwk.purchase.request.date.line'].create({
+                            'reference': current_date_id.id,
+                            'product_id': line.product_id.id,
+                            'quantity': line.quantity_ordered
                         })
 
                         line.write({
