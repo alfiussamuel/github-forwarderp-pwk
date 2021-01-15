@@ -94,26 +94,13 @@
                                                 <field name="date_start"/>
                                                 <field name="date_end"/>
                                                 <field name="product_id"/>
+                                                <field name="thick"/>
+                                                <field name="width"/>
+                                                <field name="length"/>
+                                                <field name="grade_id"/>
                                                 <field name="quantity"/>
                                                 <field name="volume"/>
-                                            </tree>
-                                            <form>
-                                                <group>
-                                                    <notebook>
-                                                        <page string="Detail">
-                                                            <field name="line_ids" nolabel="1">
-                                                                <tree>
-                                                                    <field name="date_start"/>
-                                                                    <field name="date_end"/>
-                                                                    <field name="product_id"/>
-                                                                    <field name="quantity"/>
-                                                                    <field name="volume"/>
-                                                                </tree>
-                                                            </field>
-                                                        </page>
-                                                    </notebook>
-                                                </group>
-                                            </form>
+                                            </tree>                                            
                                         </field>
                                     </group>
                                 </page>
