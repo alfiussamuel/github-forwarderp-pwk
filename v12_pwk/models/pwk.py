@@ -96,6 +96,7 @@ class PwkPurchaseRequestDate(models.Model):
     reference = fields.Many2one('pwk.purchase.request', string='Reference')            
     date_start = fields.Date('Start Period')
     date_end = fields.Date('End Period')    
+    line_ids = fields.One2many('pwk.purchase.request.date.line', 'reference', string='Lines')    
 
 class PwkPurchaseRequest(models.Model):    
     _name = "pwk.purchase.request"
