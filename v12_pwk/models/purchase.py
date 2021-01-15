@@ -23,7 +23,7 @@ class PurchaseOrderLine(models.Model):
     volume_surat_jalan = fields.Float(compute="_get_volume_ukur", string='Volume Surat Jalan', digits=dp.get_precision('FourDecimal'))
     qty_afkir = fields.Float('Qty Afkir')
     volume_afkir = fields.Float(compute="_get_volume_ukur", string='Volume Afkir', digits=dp.get_precision('FourDecimal'))
-    volume_real = fields.Float(compute="_get_volume_ukur", string='Volume', digits=dp.get_precision('FourDecimal'))
+    volume_real = fields.Float(string='Volume', digits=dp.get_precision('FourDecimal'))
     diameter = fields.Float('Diameter')
     panjang = fields.Float('Panjang')
     actual_size = fields.Float('Actual Size')
