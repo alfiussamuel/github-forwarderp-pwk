@@ -3,6 +3,7 @@ pwk_purchase_request_employee,pwk_purchase_request_employee,v12_pwk.model_pwk_pu
 pwk_purchase_request_line_employee,pwk_purchase_request_line_employee,v12_pwk.model_pwk_purchase_request_line,base.group_user,1,1,1,1
 pwk_purchase_request_line_detail_employee,pwk_purchase_request_line_detail_employee,v12_pwk.model_pwk_purchase_request_line_detail,base.group_user,1,1,1,1
 pwk_purchase_request_date_employee,pwk_purchase_request_date_employee,v12_pwk.model_pwk_purchase_request_date,base.group_user,1,1,1,1
+pwk_purchase_request_date_line_employee,pwk_purchase_request_date_line_employee,v12_pwk.model_pwk_purchase_request_date_line,base.group_user,1,1,1,1
 ,,,,,,,
 pwk_jenis_kayu_employee,pwk_jenis_kayu_employee,v12_pwk.model_pwk_jenis_kayu,base.group_user,1,1,1,1
 pwk_jenis_core_employee,pwk_jenis_core_employee,v12_pwk.model_pwk_jenis_core,base.group_user,1,1,1,1
