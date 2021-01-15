@@ -122,7 +122,7 @@ class PwkPurchaseRequest(models.Model):
                 for line in res.line_ids:
                     if line.is_selected and ((line.quantity_remaining + line.quantity_ordered) <= line.quantity):
                         current_date_id = self.env['pwk.purchase.request.date'].search([
-                            ('reference', '=', res.id)
+                            ('reference', '=', res.id),
                             ('date_start', '=', res.date_start),
                             ('date_end', '=', res.date_end)
                         ])
