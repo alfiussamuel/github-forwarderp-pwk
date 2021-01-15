@@ -73,8 +73,8 @@ class PwkPurchaseRequestDateLine(models.Model):
     width = fields.Float(compute="_get_sale_fields", string='Width', store=True)
     length = fields.Float(compute="_get_sale_fields", string='Length', store=True)
     grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade', store=True)
-    quantity = fields.Float(string='Requested PCS')
-    volume = fields.Float(compute="_get_volume", string='Requested M3')        
+    quantity = fields.Float(string='PCS')
+    volume = fields.Float(compute="_get_volume", string='M3')
 
     @api.depends('quantity')
     def _get_volume(self):
