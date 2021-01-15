@@ -93,7 +93,7 @@ class PwkPurchaseRequest(models.Model):
         for res in self:
             if res.line_ids:
                 for line in res.line_ids:
-                    if line.is_selected and ((line.quantity_remaining + line.quantity_ordered) <= line.quantity_remaining):
+                    if line.is_selected and ((line.quantity_remaining + line.quantity_ordered) <= line.quantity):
                         self.env['pwk.purchase.request.line.detail'].create({
                             'quantity': line.quantity_ordered,
                             'date_start': res.date_start,
