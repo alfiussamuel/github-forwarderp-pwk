@@ -13,6 +13,20 @@ import math
 import re    
 from num2words import num2words
 
+class PwkPurchaseRequestLineDetail(models.Model):
+    _name = "pwk.purchase.request.line.detail"
+
+    reference = fields.Many2one('pwk.purchase.request.line', string='Reference')
+    date_start = fields.Date('Start Period')
+    date_end = fields.Date('End Period')
+    quantity = fields.Float(string='PCS')
+    volume = fields.Float(compute="_get_volume", string='M3')    
+
+    @api.depends('quantity')
+    def _get_volume(self):
+        for res in self:
+            res.volume = res.quantity * res.reference.thick * res.reference.width * res.reference.length / 1000000000
+
 class PwkPurchaseRequestLine(models.Model):
     _name = "pwk.purchase.request.line"
     _order = "grade_id asc,width asc,length asc,thick asc"
@@ -27,12 +41,16 @@ class PwkPurchaseRequestLine(models.Model):
     date_start = fields.Date('Start Period')
     date_end = fields.Date('End Period')
 
-    quantity = fields.Float(string='Requested Qty')
-    quantity_ordered = fields.Float(string='Qty')
-    quantity_remaining = fields.Float(string='Ordered Qty')
-    volume = fields.Float(compute="_get_volume", string='Volume')
+    quantity_ordered = fields.Float(string='PCS')    
+
+    quantity = fields.Float(string='Requested PCS')
+    volume = fields.Float(compute="_get_volume", string='Requested M3')    
+    quantity_remaining = fields.Float(string='Ordered PCS')
+    volume_remaining = fields.Float(compute="_get_volume", string='Ordered M3')
     product_uom_id = fields.Many2one("uom.uom", string='UoM')
     truck = fields.Char(string='Truck')    
+
+    line_ids = fields.One2many('pwk.purchase.request.line.detail', 'reference', string='Lines')
 
     @api.depends('quantity')
     def _get_volume(self):
@@ -75,11 +93,15 @@ class PwkPurchaseRequest(models.Model):
         for res in self:
             if res.line_ids:
                 for line in res.line_ids:
-                    if line.is_selected:
+                    if line.is_selected and ((line.quantity_remaining + line.quantity_ordered) <= line.quantity_remaining):
+                        self.env['pwk.purchase.request.line.detail'].create({
+                            'quantity': line.quantity_ordered,
+                            'date_start': res.date_start,
+                            'date_end': res.date_end,                            
+                        })
+
                         line.write({
                             'quantity_remaining': line.quantity_remaining + line.quantity_ordered,
-                            'date_start': res.date_start,
-                            'date_end': res.date_end,
                             'is_selected': False,
                             'quantity_ordered': 0
                         })
