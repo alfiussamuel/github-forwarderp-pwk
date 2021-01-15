@@ -90,17 +90,35 @@
                                 <page string="Weekly Details">
                                     <group>
                                         <field name="date_ids" nolabel="1" readonly="1">
-                                            <tree editable="top">
+                                            <tree>
                                                 <field name="date_start"/>
                                                 <field name="date_end"/>
-                                                <field name="product_id"/>
-                                                <field name="thick"/>
-                                                <field name="width"/>
-                                                <field name="length"/>
-                                                <field name="grade_id"/>
-                                                <field name="quantity"/>
-                                                <field name="volume"/>
-                                            </tree>                                            
+                                            </tree>
+                                            <form>
+                                                <group>
+                                                    <field name="date_start"/>
+                                                    <field name="date_end"/>
+                                                </group>
+                                                <group>
+                                                    <notebook>
+                                                        <page string="Detail Product">
+                                                            <group>
+                                                                <field name="line_ids" nolabel="1">
+                                                                    <tree editable="top">
+                                                                        <field name="product_id"/>
+                                                                        <field name="thick"/>
+                                                                        <field name="width"/>
+                                                                        <field name="length"/>
+                                                                        <field name="grade_id"/>
+                                                                        <field name="quantity"/>
+                                                                        <field name="volume"/>
+                                                                    </tree>
+                                                                </field>
+                                                            </group>
+                                                        </page>
+                                                    </notebook>
+                                                </group>
+                                            </form>
                                         </field>
                                     </group>
                                 </page>

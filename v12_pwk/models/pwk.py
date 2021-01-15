@@ -64,17 +64,15 @@ class PwkPurchaseRequestLine(models.Model):
                 res.length = res.product_id.panjang
                 res.grade_id = res.product_id.grade.id
 
-class PwkPurchaseRequestDate(models.Model):
-    _name = "pwk.purchase.request.date"
+class PwkPurchaseRequestDateLine(models.Model):
+    _name = "pwk.purchase.request.date.line"
 
-    reference = fields.Many2one('pwk.purchase.request', string='Reference')        
+    reference = fields.Many2one('pwk.purchase.request.date', string='Reference')        
     product_id = fields.Many2one('product.product', string='Product')
     thick = fields.Float(compute="_get_sale_fields", string='Thick', store=True)
     width = fields.Float(compute="_get_sale_fields", string='Width', store=True)
     length = fields.Float(compute="_get_sale_fields", string='Length', store=True)
     grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade', store=True)
-    date_start = fields.Date('Start Period')
-    date_end = fields.Date('End Period')
     quantity = fields.Float(string='Requested PCS')
     volume = fields.Float(compute="_get_volume", string='Requested M3')        
 
@@ -91,6 +89,13 @@ class PwkPurchaseRequestDate(models.Model):
                 res.width = res.product_id.lebar
                 res.length = res.product_id.panjang
                 res.grade_id = res.product_id.grade.id
+
+class PwkPurchaseRequestDate(models.Model):
+    _name = "pwk.purchase.request.date"
+
+    reference = fields.Many2one('pwk.purchase.request', string='Reference')            
+    date_start = fields.Date('Start Period')
+    date_end = fields.Date('End Period')    
 
 class PwkPurchaseRequest(models.Model):    
     _name = "pwk.purchase.request"
