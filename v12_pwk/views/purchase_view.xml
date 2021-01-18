@@ -142,7 +142,8 @@
                             <field name="invoice_thick"/>
                             <field name="invoice_width"/>
                             <field name="invoice_length"/>
-                            <field name="product_qty" string="Qty"/>
+                            <field name="product_qty" string="PCS"/>
+                            <field name="volume_real" string="M3"/>
                             <field name="qty_received" attrs="{'column_invisible': [('parent.state', 'not in', ('purchase', 'done'))]}"/>
                             <field name="qty_invoiced" attrs="{'column_invisible': [('parent.state', 'not in', ('purchase', 'done'))]}"/>
                             <field name="product_uom" groups="uom.group_uom" attrs="{'readonly': [('state', 'in', ('purchase', 'done', 'cancel'))]}" force_save="1" string="UoM"/>
