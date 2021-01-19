@@ -1984,10 +1984,10 @@ class AccountInvoice(models.Model):
         self.amount_total_signed = self.amount_total * sign
         self.amount_untaxed_signed = amount_untaxed_signed * sign
 
+    is_saldo_awal = fields.Boolean('Saldo Awal')
+    original_number = fields.Char('Original No.')
     number_packing_list = fields.Char(compute="_get_packing_list_no", string="Packing List No.")
-
     dpp_amount = fields.Float(compute="_get_dpp_amount", string="DPP Amount")
-
     attn = fields.Char("Attn")
     objek_penghasilan = fields.Char("Objek Pajak")
     bukti_potong = fields.Char("No. Bukti Potong")
