@@ -47,7 +47,7 @@ class PurchaseOrderLine(models.Model):
             res.volume_surat_jalan = res.qty_surat_jalan * res.diameter * res.diameter * res.order_id.panjang * 0.785 / 1000000
             res.volume_afkir = res.qty_afkir * res.diameter * res.diameter * res.order_id.panjang * 0.785 / 1000000    
 
-    @api.depends('product_qty', 'price_unit', 'taxes_id', 'order_id.purchase_type', 'order_id.is_changed')
+    @api.depends('product_qty', 'price_unit', 'taxes_id', 'order_id.purchase_type', 'is_changed')
     def _compute_amount(self):
         for line in self:
             print("masukkk0")
