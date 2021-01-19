@@ -330,6 +330,12 @@
             parent="purchase.menu_procurement_management"
             groups="v12_pwk.group_purchase_order_bahan_penolong"
             sequence="10"/>
+
+        <menuitem id="menu_purchase_product_product" 
+            action="account.product_product_action_sellable"
+            parent="purchase.menu_procurement_management"
+            groups="base.group_user"
+            sequence="100"/>
             
 		<menuitem id="menu_rotary"
         	sequence="4"
