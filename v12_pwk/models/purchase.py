@@ -79,13 +79,23 @@ class PurchaseOrderLine(models.Model):
                 'partner': self.order_id.partner_id,
             }
         else:
-            return {
-                'price_unit': self.price_unit,
-                'currency_id': self.order_id.currency_id,
-                'product_qty': self.volume_real,
-                'product': self.product_id,
-                'partner': self.order_id.partner_id,
-            }
+            if self.order_id.formula_type == "PCS":
+                return {
+                    'price_unit': self.price_unit,
+                    'currency_id': self.order_id.currency_id,
+                    'product_qty': self.product_qty,
+                    'product': self.product_id,
+                    'partner': self.order_id.partner_id,
+                }
+
+            elif self.order_id.formula_type == "Volume":
+                return {
+                    'price_unit': self.price_unit,
+                    'currency_id': self.order_id.currency_id,
+                    'product_qty': self.volume_real,
+                    'product': self.product_id,
+                    'partner': self.order_id.partner_id,
+                }
 
     # @api.onchange('invoice_width','invoice_length','invoice_thick','order_id.formula_type','diameter','panjang','order_id.purchase_type')
     # def _onchange_volume(self):
