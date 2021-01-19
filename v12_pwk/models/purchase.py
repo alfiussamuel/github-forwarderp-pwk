@@ -50,6 +50,7 @@ class PurchaseOrderLine(models.Model):
     @api.depends('product_qty', 'price_unit', 'taxes_id', 'order_id.purchase_type', 'order_id.is_changed')
     def _compute_amount(self):
         for line in self:
+            print("masukkk0")
             vals = line._prepare_compute_all_values()
             taxes = line.taxes_id.compute_all(
                 vals['price_unit'],
@@ -79,7 +80,9 @@ class PurchaseOrderLine(models.Model):
                 'partner': self.order_id.partner_id,
             }
         else:
+            print("masukkk")
             if self.order_id.formula_type == "PCS":
+                print("masukkk2")
                 return {
                     'price_unit': self.price_unit,
                     'currency_id': self.order_id.currency_id,
@@ -89,6 +92,7 @@ class PurchaseOrderLine(models.Model):
                 }
 
             elif self.order_id.formula_type == "Volume":
+                print("masukkk3")
                 return {
                     'price_unit': self.price_unit,
                     'currency_id': self.order_id.currency_id,
