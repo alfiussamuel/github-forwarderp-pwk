@@ -259,49 +259,12 @@ class PwkPurchaseRequest(models.Model):
                                     raise UserError(_('Quantity PR melebihi Quantity yang di Request'))
                 
             else:
-                raise UserError(_('Periode PR belum diisi'))
-
-            
-
-            elif res.formula_type == "M3":
-                line_ids = res.volume_ids
-
-            if line_ids:
-                for line in line_ids:
-                    
-                        if line.quantity_ordered > 0 or line.volume_ordered > 0:
-                            if ((line.quantity_remaining + line.quantity_ordered) <= line.quantity):
-                                current_date_id = self.env['pwk.purchase.request.date'].search([
-                                    ('reference', '=', res.id),
-                                    ('date_start', '=', res.date_start),
-                                    ('date_end', '=', res.date_end)
-                                ])
-
-                                if not current_date_id:
-                                    current_date_id = self.env['pwk.purchase.request.date'].create({
-                                        'reference': res.id,
-                                        'date_start': res.date_start,
-                                        'date_end': res.date_end,
-                                    })
-
-                                self.env['pwk.purchase.request.date.line'].create({
-                                    'reference': current_date_id.id,
-                                    'product_id': line.product_id.id,
-                                    'quantity': line.quantity_ordered
-                                })
-
-                                line.write({                                
-                                    'is_selected': False,
-                                    'quantity_ordered': 0
-                                })
-
-                            else:
-                                raise UserError(_('Quantity PR melebihi Quantity yang di Request'))
-
-                res.write({
-                    'date_start': False,
-                    'date_end': False,
-                })
+                raise UserError(_('Periode PR belum diisi'))          
+                
+            res.write({
+                'date_start': False,
+                'date_end': False,
+            })
 
 
     @api.multi
