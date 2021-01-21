@@ -405,9 +405,7 @@
                 <search string="Search Rencana Produksi Bulanan">
                     <group expand="0" string="Group By">
                         <filter string="Container" name="container_id" domain="[]" 
-                            context="{'group_by':'container_id'}"/>
-                        <filter string="Buyer" name="partner_id" domain="[]" 
-                            context="{'group_by':'partner_id'}"/>
+                            context="{'group_by':'container_id'}"/>                        
                     </group>
                </search>
             </field>
