@@ -151,12 +151,14 @@ class PwkPurchaseRequest(models.Model):
                             ])
 
                             if not current_date_id:
+                                print ("masuk 3")
                                 current_date_id = self.env['pwk.purchase.request.date'].create({
                                     'reference': res.id,
                                     'date_start': res.date_start,
                                     'date_end': res.date_end,
                                 })
 
+                            print ("Current Date ", current_date_id)
                             self.env['pwk.purchase.request.date.line'].create({
                                 'reference': current_date_id.id,
                                 'product_id': line.product_id.id,
