@@ -442,7 +442,22 @@ class PwkRpbLine(models.Model):
     is_selected_detail4 = fields.Boolean('Bill of Material 4')
     is_selected_detail5 = fields.Boolean('Bill of Material 5')
 
-    rpb_line_count = fields.Integer(string='# of Invoices', compute='_get_invoiced', readonly=True)    
+    rpb_line_count = fields.Integer(string='# of Lines', compute='_get_count')
+
+    @api.multi
+    def action_view_lines(self):
+        action = self.env.ref('v12_pwk.pwk_rpb_line_tree').read()[0]
+        if len(self.line_ids) > 1:
+            action['domain'] = [('reference', '=', self.id)]
+        else:
+            action = {'type': 'ir.actions.act_window_close'}
+        return action
+
+    @api.multi
+    def _get_count(self):
+        for res in self:
+            if res.line_ids:
+                res.rpb_line_count = len(res.line_ids)
 
     @api.depends('container_qty', 'spare_qty')
     def _get_total_qty_spare(self):
