@@ -514,7 +514,7 @@
                                     <field name="line_ids" nolabel="1">
                                         <tree create="false">
                                             <field name="container_id" 
-                                                readonly="1" string="No."/>
+                                                readonly="1" string="No." count="Jumlah"/>
                                             <field name="partner_id" readonly="1"/>
                                             <field name="po_number" readonly="1"/>
                                             <field name="product_id" readonly="1" />
