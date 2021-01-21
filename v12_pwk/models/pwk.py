@@ -195,7 +195,7 @@ class PwkPurchaseRequest(models.Model):
             if res.line_ids:
                 for line in res.line_ids:
                     if res.date_start and res.date_end:
-                        if line.quantity_ordered > 0:
+                        if line.quantity_ordered > 0 or line.volume_ordered > 0:
                             if ((line.quantity_remaining + line.quantity_ordered) <= line.quantity):
                                 current_date_id = self.env['pwk.purchase.request.date'].search([
                                     ('reference', '=', res.id),
@@ -226,11 +226,10 @@ class PwkPurchaseRequest(models.Model):
                     else:
                         raise UserError(_('Periode PR belum diisi'))
 
-            res.write({
-                'date_start': False,
-                'date_end': False,
-                'qty_assign': 0
-            })
+                res.write({
+                    'date_start': False,
+                    'date_end': False,
+                })
 
 
     @api.multi
