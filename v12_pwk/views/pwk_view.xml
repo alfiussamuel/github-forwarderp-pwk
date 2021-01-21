@@ -82,7 +82,7 @@
                                             <field name="product_uom_id"/>
                                             <field name="quantity" required="1"/>
                                             <field name="volume"/>
-                                            <field name="quantity_remaining" readonly="1"/>
+                                            <field name="quantity_remaining"/>
                                             <field name="volume_remaining"/>
                                             <field name="truck" invisible="1"/>
                                         </tree>
