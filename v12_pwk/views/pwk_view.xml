@@ -72,8 +72,8 @@
                                     </group>
                                     <field name="line_ids" nolabel="1">
                                         <tree editable="top">
-                                            <field name="is_selected"/>
-                                            <field name="quantity_ordered" required="1"/>
+                                            <field name="quantity_ordered" required="1" 
+                                                string="PCS PR"/>
                                             <field name="product_id" required="1"/>         
                                             <field name="thick" invisible="1"/>
                                             <field name="width" invisible="1"/>
