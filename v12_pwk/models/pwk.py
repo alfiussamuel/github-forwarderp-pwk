@@ -788,7 +788,7 @@ class PwkRpb(models.Model):
                                     'reference': request_veneer.id,
                                     'product_id': bom.product_id.id,
                                     'product_uom_id': bom.product_id.uom_po_id.id,
-                                    'volume': (bom.quantity - bom.available_qty) * bom.product_id.thick * bom.product_id.width * bom.product_id.length / 1000000000,
+                                    'volume': (bom.quantity - bom.available_qty) * line.thick * line.width * line.length / 1000000000,
                                 })
 
                             else:                                
@@ -872,7 +872,7 @@ class PwkRpb(models.Model):
                                     'reference': request_faceback.id,
                                     'product_id': bom.product_id.id,
                                     'product_uom_id': bom.product_id.uom_po_id.id,
-                                    'volume': (bom.quantity - bom.available_qty) * bom.product_id.thick * bom.product_id.width * bom.product_id.length / 1000000000,
+                                    'volume': (bom.quantity - bom.available_qty) * line.thick * line.width * line.length / 1000000000,
                                 })
 
                             else:                                
