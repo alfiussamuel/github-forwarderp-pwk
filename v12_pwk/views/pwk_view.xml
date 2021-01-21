@@ -398,6 +398,21 @@
             </field>
         </record>
 
+        <record id="pwk_rpb_line_filter" model="ir.ui.view">
+            <field name="name">pwk.rpb.line.filter</field>
+            <field name="model">pwk.rpb.line</field>
+            <field name="arch" type="xml">
+                <search string="Search Rencana Produksi Bulanan">
+                    <group expand="0" string="Group By">
+                        <filter string="Container" name="container_id" domain="[]" 
+                            context="{'group_by':'container_id'}"/>
+                        <filter string="Buyer" name="partner_id" domain="[]" 
+                            context="{'group_by':'partner_id'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+
         <record id="pwk_rpb_form" model="ir.ui.view">
             <field name="name">Rencana Produksi Bulanan</field>
             <field name="model">pwk.rpb</field>
