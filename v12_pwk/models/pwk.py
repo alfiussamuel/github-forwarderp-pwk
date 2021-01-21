@@ -13,59 +13,6 @@ import math
 import re    
 from num2words import num2words
 
-class PwkPurchaseRequestBarecore(models.Model):
-    _name = "pwk.purchase.request.barecore"
-    _order = "grade_id asc,width asc,length asc,thick asc"
-
-    reference = fields.Many2one('pwk.purchase.request', string='Reference')        
-    product_id = fields.Many2one('product.product', string='Product')
-    thick = fields.Float(compute="_get_sale_fields", string='Thick', store=True)
-    width = fields.Float(compute="_get_sale_fields", string='Width', store=True)
-    length = fields.Float(compute="_get_sale_fields", string='Length', store=True)
-    grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade', store=True)
-    date_start = fields.Date('Start Period')
-    date_end = fields.Date('End Period')
-
-    quantity_ordered = fields.Float(string='PCS')
-
-    quantity = fields.Float(string='Requested PCS')
-    quantity_pr = fields.Float(string='PCS')
-
-    volume = fields.Float(compute="_get_volume", string='Requested M3', digits=dp.get_precision('FourDecimal'))
-    volume_pr = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal'))
-    
-    quantity_remaining = fields.Float(compute="_get_remaining", string='Ordered PCS')
-    volume_remaining = fields.Float(compute="_get_volume", string='Ordered M3', digits=dp.get_precision('FourDecimal'))
-    
-    product_uom_id = fields.Many2one("uom.uom", string='UoM')
-    truck = fields.Char(string='Truck')    
-
-    @api.multi
-    def _get_remaining(self):
-        for res in self:
-            quantity_remaining = 0
-            if res.reference.date_ids and res.reference.date_ids.line_ids:
-                for line in res.reference.date_ids.line_ids:
-                    if line.product_id == res.product_id:
-                        quantity_remaining += line.quantity
-
-            res.quantity_remaining = quantity_remaining
-
-    @api.depends('quantity')
-    def _get_volume(self):
-        for res in self:
-            res.volume = res.quantity * res.thick * res.width * res.length / 1000000000    
-            res.volume_pr = res.quantity_pr * res.thick * res.width * res.length / 1000000000    
-
-    @api.depends('product_id')
-    def _get_sale_fields(self):
-        for res in self:
-            if res.product_id:
-                res.thick = res.product_id.tebal
-                res.width = res.product_id.lebar
-                res.length = res.product_id.panjang
-                res.grade_id = res.product_id.grade.id
-
 class PwkPurchaseRequestLine(models.Model):
     _name = "pwk.purchase.request.line"
     _order = "grade_id asc,width asc,length asc,thick asc"
@@ -179,9 +126,6 @@ class PwkPurchaseRequest(models.Model):
         ('Cancelled','Cancelled')]
         , string="Status", default="Draft")
     line_ids = fields.One2many('pwk.purchase.request.line', 'reference', string='Lines')
-    faceback_ids = fields.One2many('pwk.purchase.request.faceback', 'reference', string='Faceback')
-    barecore_ids = fields.One2many('pwk.purchase.request.barecore', 'reference', string='Barecore')
-    mdf_ids = fields.One2many('pwk.purchase.request.mdf', 'reference', string='Barecore')
     date_ids = fields.One2many('pwk.purchase.request.date', 'reference', string='Dates')
 
     @api.multi
