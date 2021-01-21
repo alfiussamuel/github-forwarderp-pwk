@@ -47,7 +47,7 @@ class PwkPurchaseRequestLine(models.Model):
     quantity_pr = fields.Float(string='PCS')
     volume = fields.Float(compute="_get_volume", string='Requested M3')    
     volume_pr = fields.Float(compute="_get_volume", string='M3')
-    quantity_remaining = fields.Float(compute="_get_remaining", string='Ordered PCS')
+    quantity_remaining = fields.Float(string='Ordered PCS')
     volume_remaining = fields.Float(compute="_get_volume", string='Ordered M3')
     product_uom_id = fields.Many2one("uom.uom", string='UoM')
     truck = fields.Char(string='Truck')    
@@ -141,7 +141,9 @@ class PwkPurchaseRequest(models.Model):
             if res.line_ids:
                 for line in res.line_ids:
                     if line.quantity_ordered > 0:
+                        print ("masuk 1")
                         if ((line.quantity_remaining + line.quantity_ordered) <= line.quantity):
+                            print ("masuk 2")
                             current_date_id = self.env['pwk.purchase.request.date'].search([
                                 ('reference', '=', res.id),
                                 ('date_start', '=', res.date_start),
