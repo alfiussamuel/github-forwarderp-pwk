@@ -2,6 +2,24 @@
     <data>                                          
 
         <!-- Purchase Request-->        
+        <record id="pwk_purchase_request_line_tree" model="ir.ui.view">
+            <field name="name">Purchase Request Lines</field>
+            <field name="model">pwk.purchase.request.line</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="product_id" required="1"/>         
+                    <field name="thick" invisible="1"/>
+                    <field name="width" invisible="1"/>
+                    <field name="length" invisible="1"/>
+                    <field name="grade_id" invisible="1"/>
+                    <field name="product_uom_id"/>
+                    <field name="quantity" required="1"/>
+                    <field name="volume"/>
+                    <field name="quantity_remaining" required="1"/>
+                </tree>
+            </field>
+        </record>
+
         <record id="pwk_purchase_request_tree" model="ir.ui.view">
             <field name="name">Purchase Request</field>
             <field name="model">pwk.purchase.request</field>
