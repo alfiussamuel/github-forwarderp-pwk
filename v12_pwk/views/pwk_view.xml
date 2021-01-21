@@ -109,40 +109,38 @@
                                     </group>
                                 </page>
                                 <page string="Weekly Details">
-                                    <group>
-                                        <field name="date_ids" nolabel="1">
-                                            <tree>
+                                    <field name="date_ids" nolabel="1">
+                                        <tree>
+                                            <field name="date_start" class="oe_inline"/>
+                                            <field name="date_end" class="oe_inline"/>
+                                        </tree>
+                                        <form>
+                                            <group>
                                                 <field name="date_start"/>
                                                 <field name="date_end"/>
-                                            </tree>
-                                            <form>
-                                                <group>
-                                                    <field name="date_start"/>
-                                                    <field name="date_end"/>
-                                                </group>
-                                                <group>
-                                                    <notebook>
-                                                        <page string="Detail Product">
-                                                            <group>
-                                                                <field name="line_ids" nolabel="1" 
-                                                                    domain="[('reference','=',parent.id)]">
-                                                                    <tree editable="top">
-                                                                        <field name="product_id"/>
-                                                                        <field name="thick"/>
-                                                                        <field name="width"/>
-                                                                        <field name="length"/>
-                                                                        <field name="grade_id"/>
-                                                                        <field name="quantity"/>
-                                                                        <field name="volume"/>
-                                                                    </tree>
-                                                                </field>
-                                                            </group>
-                                                        </page>
-                                                    </notebook>
-                                                </group>
-                                            </form>
-                                        </field>
-                                    </group>
+                                            </group>
+                                            <group>
+                                                <notebook>
+                                                    <page string="Detail Product">
+                                                        <group>
+                                                            <field name="line_ids" nolabel="1" 
+                                                                domain="[('reference','=',parent.id)]">
+                                                                <tree editable="top">
+                                                                    <field name="product_id"/>
+                                                                    <field name="thick"/>
+                                                                    <field name="width"/>
+                                                                    <field name="length"/>
+                                                                    <field name="grade_id"/>
+                                                                    <field name="quantity"/>
+                                                                    <field name="volume"/>
+                                                                </tree>
+                                                            </field>
+                                                        </group>
+                                                    </page>
+                                                </notebook>
+                                            </group>
+                                        </form>
+                                    </field>
                                 </page>
                             </notebook>
                         </group>
