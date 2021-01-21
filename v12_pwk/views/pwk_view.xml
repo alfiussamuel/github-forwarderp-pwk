@@ -73,7 +73,7 @@
                                     <field name="line_ids" nolabel="1">
                                         <tree editable="top">
                                             <field name="quantity_ordered" required="1" 
-                                                string="PCS PR"/>
+                                                string="Quantity PR"/>
                                             <field name="product_id" required="1"/>         
                                             <field name="thick" invisible="1"/>
                                             <field name="width" invisible="1"/>
