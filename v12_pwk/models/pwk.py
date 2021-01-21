@@ -703,6 +703,24 @@ class PwkRpb(models.Model):
                 res.rpb_line_count = len(res.line_ids)
 
     @api.multi
+    def action_cancel(self):
+        for res in self:
+            res.pr_veneer_id.button_draft()
+            res.pr_barecore_id.button_draft()
+            res.pr_faceback_id.button_draft()
+            res.pr_mdf_id.button_draft()
+
+            res.pr_veneer_id.unlink()
+            res.pr_barecore_id.unlink()
+            res.pr_faceback_id.unlink()
+            res.pr_mdf_id.unlink()
+
+            res.write({
+                'is_pr': False,
+                'state': 'Draft',
+            })
+
+    @api.multi
     def action_create_pr(self):
         for res in self:
             product_list = []

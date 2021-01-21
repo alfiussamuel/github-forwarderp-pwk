@@ -467,6 +467,8 @@
                         <button name="action_create_pr" string="Create Purchase Request" 
                             type="object" class="oe_highlight"
                             attrs="{'invisible':[('is_pr', '=', True)]}"/>
+                        <button name="action_cancel" string="Cancel Purchase Request" 
+                            type="object" attrs="{'invisible':[('is_pr', '=', False)]}"/>
                     </header>
 
                     <div class="oe_button_box" name="button_box">
