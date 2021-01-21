@@ -411,6 +411,18 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="pwk_rpb_pivot">
+            <field name="name">pwk.rpb.pivot</field>
+            <field name="model">pwk.rpb.line</field>
+            <field name="arch" type="xml">
+                <pivot string="Detail RPB">
+                    <field name="container_id"/>
+                    <field name="container_qty" type="measure"/>
+                    <field name="container_vol" type="measure"/>                    
+                </pivot>
+            </field>
+        </record>
+
         <record id="pwk_rpb_form" model="ir.ui.view">
             <field name="name">Rencana Produksi Bulanan</field>
             <field name="model">pwk.rpb</field>
