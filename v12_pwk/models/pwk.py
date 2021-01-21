@@ -44,7 +44,9 @@ class PwkPurchaseRequestLine(models.Model):
     quantity_ordered = fields.Float(string='PCS')    
 
     quantity = fields.Float(string='Requested PCS')
+    quantity_pr = fields.Float(string='PCS')
     volume = fields.Float(compute="_get_volume", string='Requested M3')    
+    volume_pr = fields.Float(compute="_get_volume", string='M3')
     quantity_remaining = fields.Float(compute="_get_remaining", string='Ordered PCS')
     volume_remaining = fields.Float(compute="_get_volume", string='Ordered M3')
     product_uom_id = fields.Many2one("uom.uom", string='UoM')
@@ -57,7 +59,7 @@ class PwkPurchaseRequestLine(models.Model):
             if res.reference.date_ids and res.reference.date_ids.line_ids:
                 for line in res.reference.date_ids.line_ids:
                     if line.product_id == res.product_id.id:
-                        qty_ordered += line.quantity
+                        qty_ordered += line.quantity_pr
 
             res.quantity_remaining = qty_ordered
 
@@ -65,6 +67,7 @@ class PwkPurchaseRequestLine(models.Model):
     def _get_volume(self):
         for res in self:
             res.volume = res.quantity * res.thick * res.width * res.length / 1000000000    
+            res.volume_pr = res.quantity_pr * res.thick * res.width * res.length / 1000000000    
 
     @api.depends('product_id')
     def _get_sale_fields(self):
