@@ -74,15 +74,13 @@
                                         <tree editable="top">
                                             <field name="quantity_ordered" required="1" 
                                                 string="Quantity PR"/>
-                                            <field name="product_id" required="1"/>         
-                                            <field name="thick" invisible="1"/>
-                                            <field name="width" invisible="1"/>
-                                            <field name="length" invisible="1"/>
-                                            <field name="grade_id" invisible="1"/>
+                                            <field name="product_id" required="1"/>
                                             <field name="product_uom_id"/>
-                                            <field name="quantity" required="1"/>
+                                            <field name="quantity"/>
                                             <field name="volume"/>
-                                            <field name="quantity_remaining" readonly="1"/>
+                                            <field name="quantity_pr"/>
+                                            <field name="volume_pr"/>
+                                            <field name="quantity_remaining"/>
                                             <field name="volume_remaining"/>
                                             <field name="truck" invisible="1"/>
                                         </tree>
@@ -379,6 +377,7 @@
                         readonly="1" string="No."/>
                     <field name="partner_id" readonly="1"/>
                     <field name="po_number" readonly="1"/>
+                    <field name="marking" readonly="1"/>
                     <field name="product_id" readonly="1" />
                     <field name="thick" readonly="1" invisible="1"/>
                     <field name="width" readonly="1" invisible="1"/>
