@@ -428,8 +428,7 @@
                                         </tree>
                                         <form>
                                             <group>
-                                                <field name="container_id" 
-                                                readonly="1" string="No."/>
+                                                <field name="container_id" string="No."/>
                                                 <field name="product_id"/>
                                             </group>
                                             <group>
