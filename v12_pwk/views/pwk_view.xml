@@ -387,13 +387,13 @@
                     <field name="grade_id" invisible="1"/>
                     <!-- <field name="total_qty" readonly="1"/>
                     <field name="total_vol"/>                    -->
-                    <field name="container_qty" string="PCS"/>
-                    <field name="container_vol" string="M3"/>
-                    <field name="jumlah_container"/>
-                    <field name="subtotal_qty"/>
-                    <field name="subtotal_vol"/>
-                    <field name="outstanding_rpb_pcs"/>
-                    <field name="outstanding_rpb_vol"/>
+                    <field name="container_qty" string="PCS" sum="Total"/>
+                    <field name="container_vol" string="M3" sum="Total"/>
+                    <field name="jumlah_container" sum="Total"/>
+                    <field name="subtotal_qty" sum="Total"/>
+                    <field name="subtotal_vol" sum="Total"/>
+                    <field name="outstanding_rpb_pcs" sum="Total"/>
+                    <field name="outstanding_rpb_vol" sum="Total"/>
                 </tree>
             </field>
         </record>
