@@ -4,7 +4,7 @@ from openerp import models, api
 import time
 from dateutil.parser import parse
 from odoo.exceptions import UserError
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 class PwkGenerateRpbWizardLine(models.TransientModel):
     _name = 'pwk.generate.rpb.wizard.line'
@@ -43,6 +43,7 @@ class PwkGenerateRpbWizard(models.TransientModel):
             for container in self.line_ids:
                 existing_container = self.env['pwk.rpb.container'].search([
                     ('name', '=', container.no_container)
+                    ('reference', '=', self.id)
                 ])
 
                 if existing_container:
