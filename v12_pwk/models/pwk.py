@@ -120,6 +120,7 @@ class PwkPurchaseRequestLine(models.Model):
     date_end = fields.Date('End Period')
 
     quantity_ordered = fields.Float(string='PCS', digits=dp.get_precision('ZeroDecimal'))
+    volume_ordered = fields.Float(string='M3', digits=dp.get_precision('FourDecimal'))
 
     quantity = fields.Float(string='Requested PCS', digits=dp.get_precision('ZeroDecimal'))
     volume = fields.Float(compute="_get_volume", string='Requested M3', digits=dp.get_precision('FourDecimal'))
