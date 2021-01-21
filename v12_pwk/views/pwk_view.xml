@@ -120,8 +120,7 @@
                                             <group>
                                                 <notebook>
                                                     <page string="Detail Product">
-                                                        <field name="line_ids" nolabel="1" 
-                                                            domain="[('reference','=',parent.id)]">
+                                                        <field name="line_ids" nolabel="1">
                                                             <tree editable="top">
                                                                 <field name="product_id"/>
                                                                 <field name="quantity" 
