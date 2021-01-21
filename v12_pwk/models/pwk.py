@@ -47,10 +47,21 @@ class PwkPurchaseRequestLine(models.Model):
     quantity_pr = fields.Float(string='PCS')
     volume = fields.Float(compute="_get_volume", string='Requested M3')    
     volume_pr = fields.Float(compute="_get_volume", string='M3')
-    quantity_remaining = fields.Float(string='Ordered PCS')
+    quantity_remaining = fields.Float(compute="_get_remaining", string='Ordered PCS')
     volume_remaining = fields.Float(compute="_get_volume", string='Ordered M3')
     product_uom_id = fields.Many2one("uom.uom", string='UoM')
     truck = fields.Char(string='Truck')    
+
+    @api.multi
+    def _get_remaining(self):
+        for res in self:
+            quantity_remaining = 0
+            if res.reference.date_ids and res.reference.date_ids.line_ids:
+                for line in res.reference.date_ids.line_ids:
+                    if line.product_id == res.product_id:
+                        quantity_remaining += line.quantity
+
+            res.quantity_remaining = quantity_remaining
 
     @api.depends('quantity')
     def _get_volume(self):
@@ -154,8 +165,7 @@ class PwkPurchaseRequest(models.Model):
                                 'quantity': line.quantity_ordered
                             })
 
-                            line.write({
-                                'quantity_remaining': line.quantity_remaining + line.quantity_ordered,
+                            line.write({                                
                                 'is_selected': False,
                                 'quantity_ordered': 0
                             })
