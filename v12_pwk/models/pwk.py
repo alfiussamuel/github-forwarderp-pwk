@@ -730,7 +730,7 @@ class PwkRpb(models.Model):
                 request_veneer = self.env['pwk.purchase.request'].create({
                     'date': fields.Date.today(),
                     'pr_type': 'Bahan Baku',
-                    'satuan': 'Volume',
+                    'formula_type': 'M3',
                 })
 
                 for line in res.line_ids:                    
@@ -772,7 +772,7 @@ class PwkRpb(models.Model):
                 request_barecore = self.env['pwk.purchase.request'].create({
                     'date': fields.Date.today(),
                     'pr_type': 'Bahan Baku',
-                    'satuan': 'Volume',
+                    'formula_type': 'PCS',
                 })
 
                 for line in res.line_ids:                    
@@ -814,7 +814,7 @@ class PwkRpb(models.Model):
                 request_faceback = self.env['pwk.purchase.request'].create({
                     'date': fields.Date.today(),
                     'pr_type': 'Bahan Baku',
-                    'satuan': 'Volume',
+                    'formula_type': 'M3',
                 })
 
                 for line in res.line_ids:                    
@@ -852,11 +852,11 @@ class PwkRpb(models.Model):
                                         'quantity': current_line_ids[0].quantity + (bom.quantity - bom.available_qty)
                                     })
 
-                # PR Faceback
+                # PR MDF
                 request_mdf = self.env['pwk.purchase.request'].create({
                     'date': fields.Date.today(),
                     'pr_type': 'Bahan Baku',
-                    'satuan': 'Volume',
+                    'formula_type': 'PCS',
                 })
 
                 for line in res.line_ids:                    
