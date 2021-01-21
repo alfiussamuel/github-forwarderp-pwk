@@ -412,17 +412,17 @@ class PwkRpbLine(models.Model):
     total_qty_spare = fields.Float(compute="_get_total_qty_spare", string='Qty Spare')
     total_vol = fields.Float(compute="_get_volume", string='Order M3', digits=dp.get_precision('FourDecimal'))
 
-    container_qty = fields.Float('Cont Pcs', digits=dp.get_precision('TwoDecimal'))
-    container_vol = fields.Float(compute="_get_volume", string='Cont M3', digits=dp.get_precision('FourDecimal'))
+    container_qty = fields.Float('Cont Pcs', digits=dp.get_precision('TwoDecimal'), store=True)
+    container_vol = fields.Float(compute="_get_volume", string='Cont M3', digits=dp.get_precision('FourDecimal'), store=True)
     
-    subtotal_qty = fields.Float(compute="_get_subtotal_qty", string='Total RPB PCS', digits=dp.get_precision('TwoDecimal'))
-    subtotal_vol = fields.Float(compute="_get_volume", string='Total RPB M3', digits=dp.get_precision('FourDecimal'))
+    subtotal_qty = fields.Float(compute="_get_subtotal_qty", string='Total RPB PCS', digits=dp.get_precision('TwoDecimal'), store=True)
+    subtotal_vol = fields.Float(compute="_get_volume", string='Total RPB M3', digits=dp.get_precision('FourDecimal'), store=True)
     
-    outstanding_rpb_pcs = fields.Float(compute="_get_outstanding_rpb", string='Sisa RPB PCS', digits=dp.get_precision('TwoDecimal'))
-    outstanding_rpb_vol = fields.Float(compute="_get_volume", string='Sisa RPB M3', digits=dp.get_precision('FourDecimal'))
+    outstanding_rpb_pcs = fields.Float(compute="_get_outstanding_rpb", string='Sisa RPB PCS', digits=dp.get_precision('TwoDecimal'), store=True)
+    outstanding_rpb_vol = fields.Float(compute="_get_volume", string='Sisa RPB M3', digits=dp.get_precision('FourDecimal'), store=True)
     
-    outstanding_order_pcs = fields.Float(string='Sisa Order PCS', digits=dp.get_precision('TwoDecimal'))
-    outstanding_order_vol = fields.Float(compute="_get_volume", string='Sisa Order M3', digits=dp.get_precision('FourDecimal'))
+    outstanding_order_pcs = fields.Float(string='Sisa Order PCS', digits=dp.get_precision('TwoDecimal'), store=True)
+    outstanding_order_vol = fields.Float(compute="_get_volume", string='Sisa Order M3', digits=dp.get_precision('FourDecimal'), store=True)
 
     detail_ids_1 = fields.One2many('pwk.rpb.line.detail1', 'reference', string='Lines', ondelete="cascade")
     detail_ids_2 = fields.One2many('pwk.rpb.line.detail2', 'reference', string='Lines', ondelete="cascade")
