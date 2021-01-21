@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle 
+ -->
+<odoo>
+	<data>
+		<template id="stock_ledger_template">
+		         <t t-call="web.html_container">
+				<t t-foreach="get_warehouse_id" t-as="warehouse_id">
+					<t t-call="dev_stock_ledger.external_layout_stock_ledger">
+						<div class="page" style="font-size:12px;color:#000">
+						<style>
+							.header_table{
+								width:100%;
+							}
+							.header_table th{
+								padding:5px;
+								text-align:center;
+								border:1px solid black;
+								background:#c8cace;
+							}
+							.header_table td{
+								padding:5px;
+								text-align:center;
+								border:1px solid black;
+							}
+							.my_table{
+								width:100%;
+							}
+							.my_table th{
+								padding:3px;
+								border-bottom:1px solid #000;
+							}
+							.my_table td{
+								padding:3px;
+								border-bottom:1px solid #efefef;
+							}
+						</style>
+						<div class="col-12 text-center">
+							<h3>STOCK LEDGER</h3><br/>
+						</div>
+						<div class="row">
+							<t t-set="in_qty" t-value="0" />
+							<t t-set="out_qty" t-value="0" />
+							<t t-foreach="get_lines" t-as="line">
+								<t t-foreach="line.get('values')" t-as="val">
+									<t t-if="val.get('in_qty')">
+										<t t-set="in_qty" t-value="in_qty+val.get('in_qty')" />
+									</t>
+									<t t-if="val.get('out_qty')">
+										<t t-set="out_qty" t-value="out_qty+val.get('out_qty')" />
+									</t>
+								</t>
+							</t>
+
+							<table class="header_table">
+								<thead>
+									<tr>
+										<th style="width:20%"> Warehouse </th>
+										<th style="width:20%"> Location </th>
+										<th style="width:20%"> Date </th>
+										<th style="width:20%"> In Qty </th>
+										<th style="width:20%"> Out Qty </th>
+									</tr>
+								</thead>
+								<tbody class="sale_tbody">
+									<tr>
+										<td> <span t-esc="warehouse_id.name"/></td>
+										<td> <span t-esc="get_wizard_data.location_id.name"/></td>
+										<td>
+											<span t-esc="get_formate_date(get_wizard_data.start_date)"/>
+											To
+											<span t-esc="get_formate_date(get_wizard_data.end_date)"/>
+										</td>
+										<td> <span t-esc="in_qty"/> </td>
+										<td> <span t-esc="out_qty"/> </td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="row mt16 mb16"/>
+						<div class="row">
+							<table class="my_table">
+								<thead>
+									<tr>
+										<th  class="text-center" style="background:#d6d6d6;width:10%"> Date </th>
+										<th class="text-center" style="background:#d6d6d6;width:10%"> Origin </th>
+										<th style="background:#d6d6d6;width:25%"> Product </th>
+										<th class="text-right" style="background:#d6d6d6;width:05%"> Qty </th>
+										<th class="text-center" style="background:#bcbcbc;width:10%"> Date </th>
+										<th class="text-center" style="background:#bcbcbc;width:10%"> Origin </th>
+										<th style="background:#bcbcbc;width:25%"> Product </th>
+										<th class="text-right" style="background:#bcbcbc;width:05%"> Qty </th>
+									</tr>
+								</thead>
+								<tbody >
+									<t t-foreach="get_lines" t-as="line">
+										<t t-foreach="line.get('values')" t-as="val">
+											<tr style="page-break-inside: avoid">
+												<td class="text-center"> <span t-esc="val.get('in_date')"/></td>
+												<td class="text-center"> <span t-esc="val.get('in_origin')"/> </td>
+												<td> <span t-esc="val.get('in_product')"/></td>
+												<td class="text-right">
+													<t t-if="val.get('in_qty')">
+														<span t-esc="'%.2f'%(val.get('in_qty'))"/>
+													</t>
+												</td>
+												<td class="text-center"> <span t-esc="val.get('out_date')"/></td>
+												<td class="text-center"> <span t-esc="val.get('out_origin')"/> </td>
+												<td> <span t-esc="val.get('out_product')"/> </td>
+												<td class="text-right">
+													<t t-if="val.get('out_qty')">
+														<span t-esc="'%.2f'%(val.get('out_qty'))"/>
+													</t>
+												</td>
+											</tr>
+										</t>
+									</t>
+								</tbody>
+							</table>
+						</div>
+						</div>
+					</t>
+				</t>
+				</t>
+		</template>
+	</data>
+</odoo>
+
