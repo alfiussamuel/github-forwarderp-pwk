@@ -66,7 +66,7 @@ class PwkGenerateRpbWizard(models.TransientModel):
                             'container_qty': line.product_uom_qty
                             })
 
-                        self.env['pwk.rpb.line'].create({
+                        rpb_line = self.env['pwk.rpb.line'].create({
                             'reference': rpb_id.id,
                             'container_id': container_id.id,
                             'jumlah_container': container_id.jumlah_container,
@@ -76,3 +76,5 @@ class PwkGenerateRpbWizard(models.TransientModel):
                             'container_qty': line.product_uom_qty,
                             'outstanding_order_pcs': line.outstanding_order_pcs
                             })
+
+                        rpb_line.button_reload_bom()
