@@ -116,6 +116,7 @@ class PwkPurchaseRequest(models.Model):
     _name = "pwk.purchase.request"
 
     pr_type = fields.Selection([('Bahan Baku','Bahan Baku'),('Bahan Penolong','Bahan Penolong')], string='Jenis PR')
+    date_id = fields.Many2one('pwk.purchase.request.date', string="Weekly PR")
     name = fields.Char('Nomor PR')
     date_start = fields.Date('Period')
     date_end = fields.Date('Period')

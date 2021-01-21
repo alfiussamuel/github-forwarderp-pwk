@@ -61,12 +61,19 @@
                         <group>
                             <notebook>
                                 <page string="Detail PR">
-                                    <group>
-                                        <field name="date_start" class="oe_inline" 
-                                            string="Start Period"/>
+                                    <group attrs="{'invisible':[('date_ids', '!=', False)]}">
+                                        <field name="date_start" 
+                                            class="oe_inline" string="Start Period"/>
                                         <label for="date_start"/>
                                         <div>
                                             <field name="date_end" class="oe_inline" string="End Period"/> | <button name="button_assign" type="object" 
+                                            string="Assign" class="oe_highlight"/>
+                                        </div>
+                                    </group>
+                                    <group attrs="{'invisible':[('date_ids', '=', False)]}">
+                                        <label for="date_id"/>
+                                        <div>
+                                            <field name="date_id" class="oe_inline" string="End Period" domain="[('reference','=','id')]"/> | <button name="button_assign" type="object" 
                                             string="Assign" class="oe_highlight"/>
                                         </div>
                                     </group>
