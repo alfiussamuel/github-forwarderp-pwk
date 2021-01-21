@@ -207,7 +207,6 @@
                             <field name="name" readonly="1"/>
                         </h1>
                         <group>
-                            <group>
                             <label for="date_start"/>
                             <div>
                                 <field name="date_start" class="oe_inline" required="1"/> - 
