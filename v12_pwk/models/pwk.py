@@ -629,7 +629,7 @@ class PwkRpb(models.Model):
         action = self.env.ref('v12_pwk.pwk_rpb_line_tree').read()
         if len(self.line_ids) > 1:
             print ("masuk 1")
-            action['domain'] = [('reference', '=', self.id)]
+            # action['domain'] = [('reference', '=', self.id)]
         else:
             print ("masuk 2")
             action = {'type': 'ir.actions.act_window_close'}
