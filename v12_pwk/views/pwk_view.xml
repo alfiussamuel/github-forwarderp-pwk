@@ -71,10 +71,11 @@
                                             <field name="formula_type" class="oe_inline"/> | <button name="button_assign" type="object" 
                                             string="Assign" class="oe_highlight"/>
                                     </group>
-                                    <field name="line_ids" nolabel="1">
+                                    <field name="line_ids" nolabel="1"
+                                        attrs="{'invisible':[('formula_type', '!=', 'PCS')]}">
                                         <tree editable="top">
                                             <field name="quantity_ordered" required="1" 
-                                                string="Quantity PR"/>
+                                                string="Quantity PR"/>                        
                                             <field name="product_id" required="1"/>
                                             <field name="product_uom_id"/>
                                             <field name="quantity"/>
@@ -83,7 +84,39 @@
                                             <field name="volume_pr"/>
                                             <field name="quantity_remaining"/>
                                             <field name="volume_remaining"/>
-                                            <field name="truck" invisible="1"/>
+                                        </tree>
+                                        <form>                                                
+                                            <group>
+                                                <group>
+                                                    <field name="product_id"/>
+                                                    <field name="thick"/>
+                                                    <field name="width"/>
+                                                    <field name="length"/>
+                                                    <field name="grade_id"/>
+                                                    <field name="product_uom_id"/>
+                                                </group>
+                                                <group>   
+                                                    <field name="quantity"/>
+                                                    <field name="volume"/>
+                                                    <field name="quantity_remaining" required="1"/>
+                                                    <field name="truck" invisible="1"/>
+                                                </group>
+                                            </group>
+                                        </form>
+                                    </field>
+                                    <field name="volume_ids" nolabel="1"
+                                        attrs="{'invisible':[('formula_type', '!=', 'M3')]}">
+                                        <tree editable="top">
+                                            <field name="quantity_ordered" required="1" 
+                                                string="Quantity PR"/>                        
+                                            <field name="product_id" required="1"/>
+                                            <field name="product_uom_id"/>
+                                            <field name="quantity"/>
+                                            <field name="volume"/>
+                                            <field name="quantity_pr"/>
+                                            <field name="volume_pr"/>
+                                            <field name="quantity_remaining"/>
+                                            <field name="volume_remaining"/>
                                         </tree>
                                         <form>                                                
                                             <group>

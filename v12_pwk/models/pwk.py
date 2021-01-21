@@ -48,6 +48,62 @@ class PwkPurchaseRequestDate(models.Model):
     date_end = fields.Date('End Period')    
     line_ids = fields.One2many('pwk.purchase.request.date.line', 'reference', string='Lines')
 
+class PwkPurchaseRequestVolume(models.Model):
+    _name = "pwk.purchase.request.volume"
+    _order = "grade_id asc,width asc,length asc,thick asc"
+
+    reference = fields.Many2one('pwk.purchase.request', string='Reference')    
+    product_id = fields.Many2one('product.product', string='Product')
+    thick = fields.Float(compute="_get_sale_fields", string='Thick', store=True)
+    width = fields.Float(compute="_get_sale_fields", string='Width', store=True)
+    length = fields.Float(compute="_get_sale_fields", string='Length', store=True)
+    grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade', store=True)
+    date_start = fields.Date('Start Period')
+    date_end = fields.Date('End Period')
+
+    volume_ordered = fields.Float(string='Volume PR', digits=dp.get_precision('FourDecimal'))
+
+    quantity = fields.Float(string='Requested PCS', digits=dp.get_precision('ZeroDecimal'))
+    volume = fields.Float(compute="_get_volume", string='Requested M3', digits=dp.get_precision('FourDecimal'))
+    
+    quantity_pr = fields.Float(compute="_get_quantity", string='PCS', digits=dp.get_precision('ZeroDecimal'))
+    volume_pr = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal'))
+    
+    quantity_remaining = fields.Float(compute="_get_quantity", string='Ordered PCS', digits=dp.get_precision('ZeroDecimal'))
+    volume_remaining = fields.Float(compute="_get_volume", string='Ordered M3', digits=dp.get_precision('FourDecimal'))
+    
+    product_uom_id = fields.Many2one("uom.uom", string='UoM')
+    truck = fields.Char(string='Truck')    
+
+    @api.multi
+    def _get_quantity(self):
+        for res in self:            
+            res.quantity = res.volume / res.thick / res.width / res.length * 1000000000    
+            res.quantity_pr = res.volume_pr / res.thick / res.width / res.length * 1000000000    
+            res.quantity_remaining = res.volume_remaining / res.thick / res.width / res.length * 1000000000    
+
+    @api.depends('quantity')
+    def _get_volume(self):
+        for res in self:
+            volume_remaining = 0
+            volume_pr = 0
+
+            if res.reference.date_ids and res.reference.date_ids.line_ids:
+                for line in res.reference.date_ids.line_ids:
+                    if line.product_id == res.product_id:
+                        volume_pr += line.volume
+
+            res.volume_pr = volume_pr
+            res.volume_remaining = res.volume - volume_pr        
+
+    @api.depends('product_id')
+    def _get_sale_fields(self):
+        for res in self:
+            if res.product_id:
+                res.thick = res.product_id.tebal
+                res.width = res.product_id.lebar
+                res.length = res.product_id.panjang
+                res.grade_id = res.product_id.grade.id
 
 class PwkPurchaseRequestLine(models.Model):
     _name = "pwk.purchase.request.line"
@@ -63,15 +119,15 @@ class PwkPurchaseRequestLine(models.Model):
     date_start = fields.Date('Start Period')
     date_end = fields.Date('End Period')
 
-    quantity_ordered = fields.Float(string='PCS')
+    quantity_ordered = fields.Float(string='PCS', digits=dp.get_precision('ZeroDecimal'))
 
-    quantity = fields.Float(string='Requested PCS')    
+    quantity = fields.Float(string='Requested PCS', digits=dp.get_precision('ZeroDecimal'))
     volume = fields.Float(compute="_get_volume", string='Requested M3', digits=dp.get_precision('FourDecimal'))
     
-    quantity_pr = fields.Float(compute="_get_quantity", string='PCS')
+    quantity_pr = fields.Float(compute="_get_quantity", string='PCS', digits=dp.get_precision('ZeroDecimal'))
     volume_pr = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal'))
     
-    quantity_remaining = fields.Float(compute="_get_quantity", string='Ordered PCS')
+    quantity_remaining = fields.Float(compute="_get_quantity", string='Ordered PCS', digits=dp.get_precision('ZeroDecimal'))
     volume_remaining = fields.Float(compute="_get_volume", string='Ordered M3', digits=dp.get_precision('FourDecimal'))
     
     product_uom_id = fields.Many2one("uom.uom", string='UoM')
@@ -96,6 +152,7 @@ class PwkPurchaseRequestLine(models.Model):
         for res in self:
             res.volume = res.quantity * res.thick * res.width * res.length / 1000000000    
             res.volume_pr = res.quantity_pr * res.thick * res.width * res.length / 1000000000    
+            res.volume_remaining = res.quantity_remaining * res.thick * res.width * res.length / 1000000000    
 
     @api.depends('product_id')
     def _get_sale_fields(self):
@@ -129,6 +186,7 @@ class PwkPurchaseRequest(models.Model):
         ('Cancelled','Cancelled')]
         , string="Status", default="Draft")
     line_ids = fields.One2many('pwk.purchase.request.line', 'reference', string='Lines')
+    volume_ids = fields.One2many('pwk.purchase.request.volume', 'reference', string='Lines')
     date_ids = fields.One2many('pwk.purchase.request.date', 'reference', string='Dates')
 
     @api.multi
