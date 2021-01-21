@@ -63,8 +63,8 @@ class PwkPurchaseRequestVolume(models.Model):
 
     volume_ordered = fields.Float(string='Volume PR', digits=dp.get_precision('FourDecimal'))
 
-    quantity = fields.Float(string='Requested PCS', digits=dp.get_precision('ZeroDecimal'))
-    volume = fields.Float(compute="_get_volume", string='Requested M3', digits=dp.get_precision('FourDecimal'))
+    quantity = fields.Float(compute="_get_quantity", string='Requested PCS', digits=dp.get_precision('ZeroDecimal'))
+    volume = fields.Float(string='Requested M3', digits=dp.get_precision('FourDecimal'))
     
     quantity_pr = fields.Float(compute="_get_quantity", string='PCS', digits=dp.get_precision('ZeroDecimal'))
     volume_pr = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal'))
@@ -260,7 +260,7 @@ class PwkPurchaseRequest(models.Model):
                 
             else:
                 raise UserError(_('Periode PR belum diisi'))          
-                
+
             res.write({
                 'date_start': False,
                 'date_end': False,
@@ -788,7 +788,7 @@ class PwkRpb(models.Model):
                                     'reference': request_veneer.id,
                                     'product_id': bom.product_id.id,
                                     'product_uom_id': bom.product_id.uom_po_id.id,
-                                    'quantity': bom.quantity - bom.available_qty,
+                                    'volume': (bom.quantity - bom.available_qty) * bom.product_id.thick * bom.product_id.width * bom.product_id.length / 1000000000,
                                 })
 
                             else:                                
@@ -872,7 +872,7 @@ class PwkRpb(models.Model):
                                     'reference': request_faceback.id,
                                     'product_id': bom.product_id.id,
                                     'product_uom_id': bom.product_id.uom_po_id.id,
-                                    'quantity': bom.quantity - bom.available_qty,
+                                    'volume': (bom.quantity - bom.available_qty) * bom.product_id.thick * bom.product_id.width * bom.product_id.length / 1000000000,
                                 })
 
                             else:                                
