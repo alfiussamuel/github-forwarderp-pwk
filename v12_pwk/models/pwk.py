@@ -660,11 +660,14 @@ class PwkRpb(models.Model):
                                         'quantity': current_line_ids[0].quantity + (bom.quantity - bom.available_qty)
                                     })
 
-            return res.write({
-                'pr_id': request_id.id,
-                'is_pr': True,
-                # 'state': 'Purchase Request'
-            })
+
+                res.write({
+                    'pr_id': request_id.id,
+                    'is_pr': True,
+                    # 'state': 'Purchase Request'
+                })
+
+        return True
 
     @api.depends('line_ids.total_volume')
     def _get_actual(self):

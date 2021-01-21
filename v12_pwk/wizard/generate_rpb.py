@@ -42,7 +42,7 @@ class PwkGenerateRpbWizard(models.TransientModel):
     	if self.line_ids:
             for container in self.line_ids:
                 existing_container = self.env['pwk.rpb.container'].search([
-                    ('name', '=', container.no_container)
+                    ('name', '=', container.no_container),
                     ('reference', '=', self.id)
                 ])
 
