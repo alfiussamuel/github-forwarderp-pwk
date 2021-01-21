@@ -70,6 +70,7 @@
                                         <div>
                                             <field name="formula_type" class="oe_inline"/> | <button name="button_assign" type="object" 
                                             string="Assign" class="oe_highlight"/>
+                                        </div>
                                     </group>
                                     <field name="line_ids" nolabel="1"
                                         attrs="{'invisible':[('formula_type', '!=', 'PCS')]}">
