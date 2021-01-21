@@ -93,7 +93,7 @@
                                 </page>
                                 <page string="Weekly Details">
                                     <group>
-                                        <field name="date_ids" nolabel="1" readonly="1">
+                                        <field name="date_ids" nolabel="1">
                                             <tree>
                                                 <field name="date_start"/>
                                                 <field name="date_end"/>
