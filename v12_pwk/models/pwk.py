@@ -733,8 +733,20 @@ class PwkRpb(models.Model):
                                     'quantity': bom.quantity - bom.available_qty,
                                 })
 
+                                self.env['pwk.purchase.request.volume'].create({
+                                    'reference': request_id.id,
+                                    'product_id': bom.product_id.id,
+                                    'product_uom_id': bom.product_id.uom_po_id.id,
+                                    'quantity': bom.quantity - bom.available_qty,
+                                })
+
                             else:
                                 current_line_ids = self.env['pwk.purchase.request.line'].search([
+                                    ('reference', '=', request_id.id),
+                                    ('product_id', '=', bom.product_id.id),
+                                ])
+
+                                current_line_ids = self.env['pwk.purchase.request.volume'].search([
                                     ('reference', '=', request_id.id),
                                     ('product_id', '=', bom.product_id.id),
                                 ])
