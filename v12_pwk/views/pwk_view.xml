@@ -463,12 +463,11 @@
                     <header>
                         <field name="state" widget="statusbar" readonly="1"/>
                         <button name="%(action_pwk_generate_rpb)d" type="action" 
-                            string="Select Order" class="oe_highlight"/>
+                            string="Select Order" class="oe_highlight" states="Draft"/>
                         <button name="action_create_pr" string="Create Purchase Request" 
-                            type="object" class="oe_highlight"
-                            attrs="{'invisible':[('is_pr', '=', True)]}"/>
+                            type="object" class="oe_highlight" states="Draft"/>
                         <button name="action_cancel" string="Cancel Purchase Request" 
-                            type="object" attrs="{'invisible':[('is_pr', '=', False)]}"/>
+                            type="object" states="Purchase Request"/>
                     </header>
 
                     <div class="oe_button_box" name="button_box">

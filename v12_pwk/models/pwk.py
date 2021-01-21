@@ -669,7 +669,7 @@ class PwkRpb(models.Model):
 
     date_start = fields.Date('Periode')
     date_end = fields.Date('Periode')
-    state = fields.Selection([('Draft','Draft'),('Progress','Progress'),('Done','Done')], string="Status", default="Draft")
+    state = fields.Selection([('Draft','Draft'),('Purchase Request','Purchase Request')], string="Status", default="Draft")
     line_ids = fields.One2many('pwk.rpb.line', 'reference', string='Lines', ondelete="cascade")
     container_ids = fields.One2many('pwk.rpb.container', 'reference', string='Container', ondelete="cascade")
     rpm_ids = fields.One2many('pwk.rpm', 'rpb_id', string='RPM', ondelete="cascade")
