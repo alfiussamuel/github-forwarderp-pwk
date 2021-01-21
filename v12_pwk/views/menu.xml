@@ -181,6 +181,12 @@
 			<field name="view_mode">tree,form</field>			
 		</record>
 
+		<record id="action_pwk_rpb_line" model="ir.actions.act_window">
+			<field name="name">Rencana Produksi Bulanan Detail</field>
+			<field name="res_model">pwk.rpb.line</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
 		<record id="action_pwk_rpb" model="ir.actions.act_window">
 			<field name="name">Rencana Produksi Bulanan</field>
 			<field name="res_model">pwk.rpb</field>

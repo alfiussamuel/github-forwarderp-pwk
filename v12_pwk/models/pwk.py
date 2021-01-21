@@ -627,7 +627,7 @@ class PwkRpb(models.Model):
     @api.multi
     def action_view_lines(self):
         # action = self.env.ref('v12_pwk.pwk_rpb_line_tree').read()[0]
-        action = self.env.ref('account.action_invoice_tree1').read()[0]
+        action = self.env.ref('account.action_pwk_rpb_line').read()[0]
         ids = []
         for res in self:
             if res.line_ids:
