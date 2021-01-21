@@ -61,7 +61,7 @@
                         <group>
                             <notebook>
                                 <page string="Detail PR">
-                                    <group attrs="{'invisible':[('date_ids', '!=', False)]}">
+                                    <group>
                                         <field name="date_start" 
                                             class="oe_inline" string="Start Period"/>
                                         <label for="date_start"/>
