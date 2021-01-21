@@ -676,7 +676,10 @@ class PwkRpb(models.Model):
     target = fields.Float('Target ( M3 )', digits=dp.get_precision('FourDecimal'))    
     actual = fields.Float(compute="_get_actual", string='Aktual ( M3 )', digits=dp.get_precision('FourDecimal'))
     is_pr = fields.Boolean('Purchase Request')
-    pr_id = fields.Many2one('pwk.purchase.request', string='Purchase Request')
+    pr_veneer_id = fields.Many2one('pwk.purchase.request', string='PR Veneer Core')
+    pr_barecore_id = fields.Many2one('pwk.purchase.request', string='PR Barecore')
+    pr_faceback_id = fields.Many2one('pwk.purchase.request', string='PR Veneer FB')
+    pr_mdf_id = fields.Many2one('pwk.purchase.request', string='PR MDF')
     rpb_line_count = fields.Integer(string='# of Lines', compute='_get_count')
 
     @api.multi
@@ -705,8 +708,53 @@ class PwkRpb(models.Model):
             product_list = []
 
             if res.line_ids:
-                request_id = self.env['pwk.purchase.request'].create({
+                # PR Veneer
+                request_veneer = self.env['pwk.purchase.request'].create({
                     'date': fields.Date.today(),
+                    'pr_type': 'Bahan Baku',
+                    'satuan': 'Volume',
+                })
+
+                for line in res.line_ids:                    
+                    if line.is_detail1 and line.is_selected_detail1:
+                        bom_ids = line.detail_ids_1
+                    elif line.is_detail2 and line.is_selected_detail2:
+                        bom_ids = line.detail_ids_2
+                    elif line.is_detail3 and line.is_selected_detail3:
+                        bom_ids = line.detail_ids_3
+                    elif line.is_detail4 and line.is_selected_detail4:
+                        bom_ids = line.detail_ids_4
+                    elif line.is_detail5 and line.is_selected_detail5:
+                        bom_ids = line.detail_ids_5
+
+                    for bom in bom_ids:
+                        if bom.quantity > bom.available_qty:
+                            if bom.product_id.id not in product_list:
+                                product_list.append(bom.product_id.id)
+                            
+                                self.env['pwk.purchase.request.volume'].create({
+                                    'reference': request_veneer.id,
+                                    'product_id': bom.product_id.id,
+                                    'product_uom_id': bom.product_id.uom_po_id.id,
+                                    'quantity': bom.quantity - bom.available_qty,
+                                })
+
+                            else:                                
+                                current_line_ids = self.env['pwk.purchase.request.volume'].search([
+                                    ('reference', '=', request_veneer.id),
+                                    ('product_id', '=', bom.product_id.id),
+                                ])
+
+                                if current_line_ids:
+                                    current_line_ids[0].write({
+                                        'quantity': current_line_ids[0].quantity + (bom.quantity - bom.available_qty)
+                                    })
+
+                # PR Barecore
+                request_barecore = self.env['pwk.purchase.request'].create({
+                    'date': fields.Date.today(),
+                    'pr_type': 'Bahan Baku',
+                    'satuan': 'Volume',
                 })
 
                 for line in res.line_ids:                    
@@ -727,27 +775,98 @@ class PwkRpb(models.Model):
                                 product_list.append(bom.product_id.id)
 
                                 self.env['pwk.purchase.request.line'].create({
-                                    'reference': request_id.id,
+                                    'reference': request_barecore.id,
                                     'product_id': bom.product_id.id,
                                     'product_uom_id': bom.product_id.uom_po_id.id,
                                     'quantity': bom.quantity - bom.available_qty,
-                                })
-
-                                self.env['pwk.purchase.request.volume'].create({
-                                    'reference': request_id.id,
-                                    'product_id': bom.product_id.id,
-                                    'product_uom_id': bom.product_id.uom_po_id.id,
-                                    'quantity': bom.quantity - bom.available_qty,
-                                })
-
+                                })                            
                             else:
                                 current_line_ids = self.env['pwk.purchase.request.line'].search([
-                                    ('reference', '=', request_id.id),
+                                    ('reference', '=', request_barecore.id),
                                     ('product_id', '=', bom.product_id.id),
                                 ])
 
+                                if current_line_ids:
+                                    current_line_ids[0].write({
+                                        'quantity': current_line_ids[0].quantity + (bom.quantity - bom.available_qty)
+                                    })
+
+
+                # PR Faceback
+                request_faceback = self.env['pwk.purchase.request'].create({
+                    'date': fields.Date.today(),
+                    'pr_type': 'Bahan Baku',
+                    'satuan': 'Volume',
+                })
+
+                for line in res.line_ids:                    
+                    if line.is_detail1 and line.is_selected_detail1:
+                        bom_ids = line.detail_ids_1
+                    elif line.is_detail2 and line.is_selected_detail2:
+                        bom_ids = line.detail_ids_2
+                    elif line.is_detail3 and line.is_selected_detail3:
+                        bom_ids = line.detail_ids_3
+                    elif line.is_detail4 and line.is_selected_detail4:
+                        bom_ids = line.detail_ids_4
+                    elif line.is_detail5 and line.is_selected_detail5:
+                        bom_ids = line.detail_ids_5
+
+                    for bom in bom_ids:
+                        if bom.quantity > bom.available_qty:
+                            if bom.product_id.id not in product_list:
+                                product_list.append(bom.product_id.id)
+                            
+                                self.env['pwk.purchase.request.volume'].create({
+                                    'reference': faceback.id,
+                                    'product_id': bom.product_id.id,
+                                    'product_uom_id': bom.product_id.uom_po_id.id,
+                                    'quantity': bom.quantity - bom.available_qty,
+                                })
+
+                            else:                                
                                 current_line_ids = self.env['pwk.purchase.request.volume'].search([
-                                    ('reference', '=', request_id.id),
+                                    ('reference', '=', faceback.id),
+                                    ('product_id', '=', bom.product_id.id),
+                                ])
+
+                                if current_line_ids:
+                                    current_line_ids[0].write({
+                                        'quantity': current_line_ids[0].quantity + (bom.quantity - bom.available_qty)
+                                    })
+
+                # PR Faceback
+                request_mdf = self.env['pwk.purchase.request'].create({
+                    'date': fields.Date.today(),
+                    'pr_type': 'Bahan Baku',
+                    'satuan': 'Volume',
+                })
+
+                for line in res.line_ids:                    
+                    if line.is_detail1 and line.is_selected_detail1:
+                        bom_ids = line.detail_ids_1
+                    elif line.is_detail2 and line.is_selected_detail2:
+                        bom_ids = line.detail_ids_2
+                    elif line.is_detail3 and line.is_selected_detail3:
+                        bom_ids = line.detail_ids_3
+                    elif line.is_detail4 and line.is_selected_detail4:
+                        bom_ids = line.detail_ids_4
+                    elif line.is_detail5 and line.is_selected_detail5:
+                        bom_ids = line.detail_ids_5
+
+                    for bom in bom_ids:
+                        if bom.quantity > bom.available_qty:
+                            if bom.product_id.id not in product_list:
+                                product_list.append(bom.product_id.id)
+
+                                self.env['pwk.purchase.request.line'].create({
+                                    'reference': request_mdf.id,
+                                    'product_id': bom.product_id.id,
+                                    'product_uom_id': bom.product_id.uom_po_id.id,
+                                    'quantity': bom.quantity - bom.available_qty,
+                                })                            
+                            else:
+                                current_line_ids = self.env['pwk.purchase.request.line'].search([
+                                    ('reference', '=', request_mdf.id),
                                     ('product_id', '=', bom.product_id.id),
                                 ])
 
@@ -758,9 +877,12 @@ class PwkRpb(models.Model):
 
 
                 res.write({
-                    'pr_id': request_id.id,
+                    'pr_veneer_id': request_veneer.id,                    
+                    'pr_barecore_id': request_barecore.id,
+                    'pr_faceback_id': request_faceback.id,
+                    'pr_mdf_id': request_mdf.id,
                     'is_pr': True,
-                    # 'state': 'Purchase Request'
+                    'state': 'Purchase Request'
                 })
 
         return True

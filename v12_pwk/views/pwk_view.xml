@@ -207,14 +207,13 @@
                             <field name="name" readonly="1"/>
                         </h1>
                         <group>
+                            <group>
                             <label for="date_start"/>
                             <div>
                                 <field name="date_start" class="oe_inline" required="1"/> - 
                                 <field name="date_end" class="oe_inline" required="1"/>
                             </div>
-                            <field name="rpb_id" class="oe_inline"/>
-                            <field name="pr_id" readonly="1"
-                                attrs="{'invisible':[('state', '!=', 'Purchase Request')]}"/>
+                            <field name="rpb_id" class="oe_inline"/>                            
                         </group>
                         <group>
                             <notebook>
@@ -486,17 +485,27 @@
                         <field name="name" readonly="1"/>
                     </h1>
                     <group>
-                        <label for="date_start"/>
-                        <div>
-                            <field name="date_start" class="oe_inline" required="1"/> - 
-                            <field name="date_end" class="oe_inline" required="1"/>
-                        </div>
-                        <field name="target" class="oe_inline"/>
-                        <field name="actual"/>
-                        <field name="is_pr"
-                            attrs="{'invisible':[('is_pr', '=', False)]}"/>
-                        <field name="pr_id"
-                            attrs="{'invisible':[('is_pr', '=', False)]}"/>
+                        <group>
+                            <label for="date_start"/>
+                            <div>
+                                <field name="date_start" class="oe_inline" required="1"/> - 
+                                <field name="date_end" class="oe_inline" required="1"/>
+                            </div>
+                            <field name="target" class="oe_inline"/>
+                            <field name="actual"/>
+                            <field name="is_pr"
+                                attrs="{'invisible':[('is_pr', '=', False)]}"/>
+                        </group>
+                        <group>
+                            <field name="pr_veneer_id" readonly="1"
+                                attrs="{'invisible':[('state', '!=', 'Purchase Request')]}"/>
+                            <field name="pr_barecore_id" readonly="1"
+                                attrs="{'invisible':[('state', '!=', 'Purchase Request')]}"/>
+                            <field name="pr_faceback_id" readonly="1"
+                                attrs="{'invisible':[('state', '!=', 'Purchase Request')]}"/>
+                            <field name="pr_mdf_id" readonly="1"
+                                attrs="{'invisible':[('state', '!=', 'Purchase Request')]}"/> 
+                        </group>
                     </group>
                     <group>
                         <notebook>
