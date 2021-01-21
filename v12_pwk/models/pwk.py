@@ -727,7 +727,7 @@ class PwkRpb(models.Model):
                     ids.append(line.id)
 
         print("IDS ", ids)
-        # action['domain'] = [('id', 'in', ids)]
+        action['domain'] = [('id', 'in', ids)]
         return action
 
     @api.multi
