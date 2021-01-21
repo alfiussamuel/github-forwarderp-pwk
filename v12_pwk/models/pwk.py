@@ -835,7 +835,7 @@ class PwkRpb(models.Model):
                                 product_list.append(bom.product_id.id)
                             
                                 self.env['pwk.purchase.request.volume'].create({
-                                    'reference': faceback.id,
+                                    'reference': request_faceback.id,
                                     'product_id': bom.product_id.id,
                                     'product_uom_id': bom.product_id.uom_po_id.id,
                                     'quantity': bom.quantity - bom.available_qty,
@@ -843,7 +843,7 @@ class PwkRpb(models.Model):
 
                             else:                                
                                 current_line_ids = self.env['pwk.purchase.request.volume'].search([
-                                    ('reference', '=', faceback.id),
+                                    ('reference', '=', request_faceback.id),
                                     ('product_id', '=', bom.product_id.id),
                                 ])
 
