@@ -8,7 +8,10 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
-                    <field name="date"/>                    
+                    <field name="date"/>
+                    <field name="pr_type" required="1"/>
+                    <field name="product_type"
+                        attrs="{'invisible':[('pr_type', '!=', 'Bahan Penolong')]}"/>
                     <field name="state"/>
                 </tree>
             </field>
@@ -63,9 +66,9 @@
                                                 <field name="grade_id" invisible="1"/>
                                                 <field name="product_uom_id"/>
                                                 <field name="quantity" required="1"/>
-                                                <field name="quantity_remaining" required="1"/>
                                                 <field name="volume"/>
-                                                <field name="truck"/>
+                                                <field name="quantity_remaining" required="1"/>
+                                                <field name="truck" invisible="1"/>
                                             </tree>
                                             <form>                                                
                                                 <group>
@@ -80,7 +83,8 @@
                                                     <group>   
                                                         <field name="quantity"/>
                                                         <field name="volume"/>
-                                                        <field name="truck"/>
+                                                        <field name="quantity_remaining" required="1"/>
+                                                        <field name="truck" invisible="1"/>
                                                     </group>
                                                 </group>
                                             </form>
