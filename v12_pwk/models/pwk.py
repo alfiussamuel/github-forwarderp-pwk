@@ -626,7 +626,7 @@ class PwkRpb(models.Model):
 
     @api.multi
     def action_view_lines(self):
-        action = self.env.ref('v12_pwk.pwk_rpb_line_tree').read()
+        action = self.env.ref('v12_pwk.pwk_rpb_line_tree').read()[0]
         if len(self.line_ids) > 1:
             print ("masuk 1")
             # action['domain'] = [('reference', '=', self.id)]
