@@ -45,10 +45,21 @@ class PwkPurchaseRequestLine(models.Model):
 
     quantity = fields.Float(string='Requested PCS')
     volume = fields.Float(compute="_get_volume", string='Requested M3')    
-    quantity_remaining = fields.Float(string='Ordered PCS')
+    quantity_remaining = fields.Float(compute="_get_remaining", string='Ordered PCS')
     volume_remaining = fields.Float(compute="_get_volume", string='Ordered M3')
     product_uom_id = fields.Many2one("uom.uom", string='UoM')
     truck = fields.Char(string='Truck')    
+
+    @api.multi
+    def _get_remaining(self):
+        for res in self:
+            qty_ordered = 0
+            if res.reference.date_ids and res.reference.date_ids.line_ids:
+                for line in res.reference.date_ids.line_ids:
+                    if line.product_id == res.product_id.id:
+                        qty_ordered += line.quantity
+
+            res.quantity_remaining = qty_ordered
 
     @api.depends('quantity')
     def _get_volume(self):
@@ -88,7 +99,7 @@ class PwkPurchaseRequestDateLine(models.Model):
                 res.thick = res.product_id.tebal
                 res.width = res.product_id.lebar
                 res.length = res.product_id.panjang
-                res.grade_id = res.product_id.grade.id
+                res.grade_id = res.product_id.grade.id    
 
 class PwkPurchaseRequestDate(models.Model):
     _name = "pwk.purchase.request.date"
