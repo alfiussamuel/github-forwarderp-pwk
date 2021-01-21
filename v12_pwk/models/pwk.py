@@ -66,11 +66,11 @@ class PwkPurchaseRequestVolume(models.Model):
     quantity = fields.Float(compute="_get_quantity", string='Requested PCS', digits=dp.get_precision('ZeroDecimal'))
     volume = fields.Float(string='Requested M3', digits=dp.get_precision('FourDecimal'))
     
-    quantity_pr = fields.Float(compute="_get_quantity", string='PCS', digits=dp.get_precision('ZeroDecimal'))
-    volume_pr = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal'))
+    quantity_pr = fields.Float(compute="_get_quantity", string='Assigned PCS', digits=dp.get_precision('ZeroDecimal'))
+    volume_pr = fields.Float(compute="_get_volume", string='Assigned M3', digits=dp.get_precision('FourDecimal'))
     
-    quantity_remaining = fields.Float(compute="_get_quantity", string='Ordered PCS', digits=dp.get_precision('ZeroDecimal'))
-    volume_remaining = fields.Float(compute="_get_volume", string='Ordered M3', digits=dp.get_precision('FourDecimal'))
+    quantity_remaining = fields.Float(compute="_get_quantity", string='Remaining PCS', digits=dp.get_precision('ZeroDecimal'))
+    volume_remaining = fields.Float(compute="_get_volume", string='Remaining M3', digits=dp.get_precision('FourDecimal'))
     
     product_uom_id = fields.Many2one("uom.uom", string='UoM')
     truck = fields.Char(string='Truck')    
@@ -125,11 +125,11 @@ class PwkPurchaseRequestLine(models.Model):
     quantity = fields.Float(string='Requested PCS', digits=dp.get_precision('ZeroDecimal'))
     volume = fields.Float(compute="_get_volume", string='Requested M3', digits=dp.get_precision('FourDecimal'))
     
-    quantity_pr = fields.Float(compute="_get_quantity", string='PCS', digits=dp.get_precision('ZeroDecimal'))
-    volume_pr = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal'))
+    quantity_pr = fields.Float(compute="_get_quantity", string='Assigned PCS', digits=dp.get_precision('ZeroDecimal'))
+    volume_pr = fields.Float(compute="_get_volume", string='Assigned M3', digits=dp.get_precision('FourDecimal'))
     
-    quantity_remaining = fields.Float(compute="_get_quantity", string='Ordered PCS', digits=dp.get_precision('ZeroDecimal'))
-    volume_remaining = fields.Float(compute="_get_volume", string='Ordered M3', digits=dp.get_precision('FourDecimal'))
+    quantity_remaining = fields.Float(compute="_get_quantity", string='Remaining PCS', digits=dp.get_precision('ZeroDecimal'))
+    volume_remaining = fields.Float(compute="_get_volume", string='Remaining M3', digits=dp.get_precision('FourDecimal'))
     
     product_uom_id = fields.Many2one("uom.uom", string='UoM')
     truck = fields.Char(string='Truck')    
