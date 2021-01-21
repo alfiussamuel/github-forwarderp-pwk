@@ -440,7 +440,9 @@ class PwkRpbLine(models.Model):
     is_selected_detail2 = fields.Boolean('Bill of Material 2')
     is_selected_detail3 = fields.Boolean('Bill of Material 3')
     is_selected_detail4 = fields.Boolean('Bill of Material 4')
-    is_selected_detail5 = fields.Boolean('Bill of Material 5')    
+    is_selected_detail5 = fields.Boolean('Bill of Material 5')
+
+    rpb_line_count = fields.Integer(string='# of Invoices', compute='_get_invoiced', readonly=True)    
 
     @api.depends('container_qty', 'spare_qty')
     def _get_total_qty_spare(self):

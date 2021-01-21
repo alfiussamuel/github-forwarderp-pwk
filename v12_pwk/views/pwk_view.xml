@@ -411,6 +411,17 @@
                             type="object" class="oe_highlight"
                             attrs="{'invisible':[('is_pr', '=', True)]}"/>
                     </header>
+
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_rpb_line"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-pencil-square-o"
+                            attrs="{'invisible': [('rpb_line_count', '=', 0)]}">
+                            <field name="rpb_line_count" widget="statinfo" string="Detail RPB"/>
+                        </button>
+                    </div>
+
                     <label for="name" class="oe_edit_only" />
                     <h1>
                         <field name="name" readonly="1"/>
