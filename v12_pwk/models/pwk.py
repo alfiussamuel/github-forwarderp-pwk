@@ -96,7 +96,8 @@ class PwkPurchaseRequestDate(models.Model):
     reference = fields.Many2one('pwk.purchase.request', string='Reference')            
     date_start = fields.Date('Start Period')
     date_end = fields.Date('End Period')    
-    line_ids = fields.Many2many('pwk.purchase.request.line', relation='purchase_request_date_line')
+    line_ids = fields.Many2many('pwk.purchase.request.line', relation='purchase_request_date_line', 
+        domain="[('reference','=',reference)]")
     # line_total_ids = fields.Many2many('account.report.standard.ledger.line', relation='table_standard_report_line_total')
 
 class PwkPurchaseRequest(models.Model):    
