@@ -61,7 +61,7 @@
                         <group>
                             <notebook>
                                 <page string="Detail PR">
-                                    <!-- <group>
+                                    <group>
                                         <field name="date_start" class="oe_inline" 
                                             string="Start Period"/>
                                         <label for="date_start"/>
@@ -69,11 +69,11 @@
                                             <field name="date_end" class="oe_inline" string="End Period"/> | <button name="button_assign" type="object" 
                                             string="Assign" class="oe_highlight"/>
                                         </div>
-                                    </group> -->
+                                    </group>
                                     <field name="line_ids" nolabel="1">
                                         <tree editable="top">
-                                            <!-- <field name="is_selected"/>
-                                            <field name="quantity_ordered" required="1"/> -->
+                                            <field name="is_selected"/>
+                                            <field name="quantity_ordered" required="1"/>
                                             <field name="product_id" required="1"/>         
                                             <field name="thick" invisible="1"/>
                                             <field name="width" invisible="1"/>
@@ -127,8 +127,8 @@
                                                                 <field name="quantity" 
                                                                     string="Requested PCS"/>
                                                                 <field name="volume" string="M3"/>
-                                                                <field name="quantity_pr" string="PCS"/>
-                                                                <field name="volume_pr" string="PCS"/>
+                                                                <field name="quantity_pr"/>
+                                                                <field name="volume_pr"/>
                                                             </tree>
                                                         </field>
                                                     </page>
