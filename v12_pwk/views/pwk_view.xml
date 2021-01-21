@@ -126,8 +126,6 @@
                                                                 <field name="quantity" 
                                                                     string="Requested PCS"/>
                                                                 <field name="volume" string="M3"/>
-                                                                <field name="quantity_pr"/>
-                                                                <field name="volume_pr"/>
                                                             </tree>
                                                         </field>
                                                     </page>
