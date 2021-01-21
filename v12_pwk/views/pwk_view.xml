@@ -75,8 +75,10 @@
                                     <field name="line_ids" nolabel="1"
                                         attrs="{'invisible':[('formula_type', '!=', 'PCS')]}">
                                         <tree editable="top">
-                                            <field name="quantity_ordered" required="1" 
-                                                string="Quantity PR"/>                        
+                                            <field name="quantity_ordered" string="Pcs PR"
+                                                attrs="{'invisible':[('formula_type', '!=', 'PCS')]}"/>
+                                            <field name="volume_ordered" string="Vol PR"
+                                                attrs="{'invisible':[('formula_type', '!=', 'M3')]}"/>
                                             <field name="product_id" required="1"/>
                                             <field name="product_uom_id"/>
                                             <field name="quantity"/>
