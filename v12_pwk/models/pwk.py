@@ -52,17 +52,6 @@ class PwkPurchaseRequestLine(models.Model):
     product_uom_id = fields.Many2one("uom.uom", string='UoM')
     truck = fields.Char(string='Truck')    
 
-    @api.multi
-    def _get_remaining(self):
-        for res in self:
-            qty_ordered = 0
-            if res.reference.date_ids and res.reference.date_ids.line_ids:
-                for line in res.reference.date_ids.line_ids:
-                    if line.product_id == res.product_id.id:
-                        qty_ordered += line.quantity_pr
-
-            res.quantity_remaining = qty_ordered
-
     @api.depends('quantity')
     def _get_volume(self):
         for res in self:
