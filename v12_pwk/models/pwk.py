@@ -632,7 +632,9 @@ class PwkRpb(models.Model):
             if res.line_ids:
                 for line in res.line_ids:
                     ids.append(line.id)
-        action['domain'] = [('id', 'in', ids)]
+
+        print("IDS ", ids)
+        # action['domain'] = [('id', 'in', ids)]
         return action
 
     @api.multi
