@@ -1,5 +1,19 @@
 <odoo>
-    <data>                                          
+    <data>                                   
+
+        <!-- Bom -->
+        <record id="mrp_bom_line_tree" model="ir.ui.view">
+            <field name="name">mrp.bom.line.tree</field>
+            <field name="model">mrp.bom.line</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="product_id"/>
+                    <field name="bom_id"/>
+                    <field name="product_uom_id"/>
+                    <field name="product_qty"/>
+                </tree>
+            </field>
+        </record>
 
         <!-- Purchase Request-->        
         <record id="pwk_purchase_request_filter" model="ir.ui.view">
@@ -13,10 +27,8 @@
                     <field name="product_type"/>
                     <field name="state"/>
                     <group expand="0" string="Group By">
-                        <filter string="Month" name="date" 
-                            domain="[]" context="{'group_by':'date:month'}"/>
                         <filter string="Date" name="date" 
-                            domain="[]" context="{'group_by':'date:day'}"/>
+                            domain="[]" context="{'group_by':'date'}"/>
                         <filter string="PR Type" name="pr_type" 
                             domain="[]" context="{'group_by':'pr_type'}"/>
                         <filter string="PR Product Type" name="product_type" 
@@ -85,7 +97,7 @@
                         <group>
                             <notebook>
                                 <page string="Detail PR">
-                                    <group>
+                                    <group attrs="{'invisible':[('pr_type', '!=', 'Bahan Baku')]}">
                                         <label for="date_start"/>
                                         <div>
                                             <field name="date_start" class="oe_inline"/> - <field name="date_end" class="oe_inline"/>

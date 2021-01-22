@@ -2876,7 +2876,13 @@ class ProductProduct(models.Model):
     service_to_purchase = fields.Boolean('Service to Purchase')
     jenis_kayu = fields.Many2one('pwk.jenis.kayu', 'Jenis Kayu (FB)')
     jenis_core = fields.Many2one('pwk.jenis.core', 'Jenis Core')
-    goods_type = fields.Selection([('Plywood','Plywood'),('Blockboard','Blockboard')], string="Goods Type")
+    goods_type = fields.Selection([
+        ('Plywood','Plywood'),
+        ('Blockboard','Blockboard'),
+        ('Barecore','Barecore'),
+        ('Faceback','Faceback'),
+        ('Veneer Core','Veneer Core')]
+        , string="Goods Type")
     tebal = fields.Float('Tebal')
     lebar = fields.Float('Lebar')
     panjang = fields.Float('Panjang')
