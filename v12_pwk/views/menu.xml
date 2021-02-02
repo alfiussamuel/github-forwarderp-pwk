@@ -1,6 +1,15 @@
 <odoo>
 	<data>
 
+		<!-- Bom -->
+		<record id="mrp_bom_line_action" model="ir.actions.act_window">
+            <field name="name">BoM Lines</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mrp.bom.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form</field>
+        </record>
+
 		<!-- All Purchase Order -->
         <record id="purchase.purchase_form_action" model="ir.actions.act_window">
             <field name="name">All Purchase Orders</field>
@@ -415,6 +424,12 @@
 					action="mrp.mrp_bom_form_action"
 		        	parent="menu_production_master" 
 		        	sequence="1"/>
+
+		       	<menuitem id="menu_production_master_bom_line" 
+					name="BoM Lines" 
+					action="mrp_bom_line_action"
+		        	parent="menu_production_master" 
+		        	sequence="2"/>
 
         	<menuitem id="menu_production_rencana"
 	        	sequence="1"

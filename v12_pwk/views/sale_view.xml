@@ -538,6 +538,7 @@
                                     <div attrs="{'invisible': [('parent.state', 'not in', ['sale', 'done'])]}">
                                         <field name="qty_invoiced" attrs="{'invisible': [('parent.state', 'not in', ['sale', 'done'])]}"/>
                                     </div>
+                                    <field name="volume"/>
                                     <field name="price_unit"/>
                                     <label for="discount" groups="sale.group_discount_per_so_line"/>
                                     <div name="discount" groups="sale.group_discount_per_so_line">

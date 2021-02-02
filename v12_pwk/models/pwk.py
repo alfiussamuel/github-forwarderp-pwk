@@ -50,13 +50,14 @@ class PwkPurchaseRequestDate(models.Model):
 
 class PwkPurchaseRequestVolume(models.Model):
     _name = "pwk.purchase.request.volume"
-    _order = "grade_id asc,width asc,length asc,thick asc"
+    _order = "jenis_kayu asc, thick asc,width asc,length asc"
 
     reference = fields.Many2one('pwk.purchase.request', string='Reference')    
     product_id = fields.Many2one('product.product', string='Product')
     thick = fields.Float(compute="_get_sale_fields", string='Thick', store=True)
     width = fields.Float(compute="_get_sale_fields", string='Width', store=True)
     length = fields.Float(compute="_get_sale_fields", string='Length', store=True)
+    jenis_kayu = fields.Char(compute="_get_sale_fields", string='Jenis Kayu', store=True)
     grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade', store=True)
     date_start = fields.Date('Start Period')
     date_end = fields.Date('End Period')
@@ -82,7 +83,7 @@ class PwkPurchaseRequestVolume(models.Model):
             res.quantity_pr = res.volume_pr / res.thick / res.width / res.length * 1000000000    
             res.quantity_remaining = res.volume_remaining / res.thick / res.width / res.length * 1000000000    
 
-    @api.depends('quantity')
+    @api.multi
     def _get_volume(self):
         for res in self:
             volume_remaining = 0
@@ -91,7 +92,7 @@ class PwkPurchaseRequestVolume(models.Model):
             if res.reference.date_ids and res.reference.date_ids.line_ids:
                 for line in res.reference.date_ids.line_ids:
                     if line.product_id == res.product_id:
-                        volume_pr += line.volume
+                        volume_pr += line.quantity
 
             res.volume_pr = volume_pr
             res.volume_remaining = res.volume - volume_pr        
@@ -104,10 +105,11 @@ class PwkPurchaseRequestVolume(models.Model):
                 res.width = res.product_id.lebar
                 res.length = res.product_id.panjang
                 res.grade_id = res.product_id.grade.id
+                res.jenis_kayu = res.product_id.jenis_kayu.name
 
 class PwkPurchaseRequestLine(models.Model):
     _name = "pwk.purchase.request.line"
-    _order = "grade_id asc,width asc,length asc,thick asc"
+    _order = "jenis_kayu asc, thick asc,width asc,length asc"
 
     reference = fields.Many2one('pwk.purchase.request', string='Reference')    
     is_selected = fields.Boolean('.')
@@ -115,6 +117,7 @@ class PwkPurchaseRequestLine(models.Model):
     thick = fields.Float(compute="_get_sale_fields", string='Thick', store=True)
     width = fields.Float(compute="_get_sale_fields", string='Width', store=True)
     length = fields.Float(compute="_get_sale_fields", string='Length', store=True)
+    jenis_kayu = fields.Char(compute="_get_sale_fields", string='Jenis Kayu', store=True)
     grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade', store=True)
     date_start = fields.Date('Start Period')
     date_end = fields.Date('End Period')
@@ -163,6 +166,7 @@ class PwkPurchaseRequestLine(models.Model):
                 res.width = res.product_id.lebar
                 res.length = res.product_id.panjang
                 res.grade_id = res.product_id.grade.id
+                res.jenis_kayu = res.product_id.jenis_kayu.name
 
 class PwkPurchaseRequest(models.Model):    
     _name = "pwk.purchase.request"
@@ -198,7 +202,7 @@ class PwkPurchaseRequest(models.Model):
                     if res.line_ids:
                         for line in res.line_ids:                        
                             if line.quantity_ordered > 0:
-                                if ((line.quantity_remaining + line.quantity_ordered) <= line.quantity):
+                                if (line.quantity <= line.quantity_remaining):
                                     current_date_id = self.env['pwk.purchase.request.date'].search([
                                         ('reference', '=', res.id),
                                         ('date_start', '=', res.date_start),
@@ -230,7 +234,7 @@ class PwkPurchaseRequest(models.Model):
                     if res.volume_ids:
                         for line in res.volume_ids:                        
                             if line.volume_ordered > 0:
-                                if ((line.quantity_remaining + line.volume_ordered) <= line.quantity):
+                                if (line.volume <= line.volume_remaining):
                                     current_date_id = self.env['pwk.purchase.request.date'].search([
                                         ('reference', '=', res.id),
                                         ('date_start', '=', res.date_start),
@@ -530,6 +534,16 @@ class PwkRpbLine(models.Model):
     is_selected_detail4 = fields.Boolean('Bill of Material 4')
     is_selected_detail5 = fields.Boolean('Bill of Material 5')
 
+    bom_status = fields.Char(compute="_get_bom_status", string='BoM Status', store=True)
+
+    @api.depends('is_selected_detail1','is_selected_detail2','is_selected_detail3','is_selected_detail4','is_selected_detail5')
+    def _get_bom_status(self):
+        for res in self:
+            if res.is_selected_detail1 or res.is_selected_detail2 or res.is_selected_detail3 or res.is_selected_detail4 or res.is_selected_detail5:
+                res.bom_status = "Ready"
+            else:
+                res.bom_status = "Not Ready"
+
     @api.depends('container_qty', 'spare_qty')
     def _get_total_qty_spare(self):
         for res in self:
@@ -737,6 +751,17 @@ class PwkRpb(models.Model):
                 res.rpb_line_count = len(res.line_ids)
 
     @api.multi
+    def button_reload_all_bom(self):
+        for res in self:
+            if res.line_ids:
+                for line in res.line_ids:
+                    line.button_reload_bom()
+
+            # if res.volume_ids:                
+            #     for vol in res.volume_ids:
+            #         vol.button_reload_bom()
+
+    @api.multi
     def action_cancel(self):
         for res in self:
             res.pr_veneer_id.button_draft()
@@ -760,14 +785,16 @@ class PwkRpb(models.Model):
             product_list = []
 
             if res.line_ids:
+
                 # PR Veneer
+                product_list = []
                 request_veneer = self.env['pwk.purchase.request'].create({
                     'date': fields.Date.today(),
                     'pr_type': 'Bahan Baku',
                     'formula_type': 'M3',
                 })
 
-                for line in res.line_ids:                    
+                for line in res.line_ids:
                     if line.is_detail1 and line.is_selected_detail1:
                         bom_ids = line.detail_ids_1
                     elif line.is_detail2 and line.is_selected_detail2:
@@ -780,29 +807,31 @@ class PwkRpb(models.Model):
                         bom_ids = line.detail_ids_5
 
                     for bom in bom_ids:
-                        if bom.quantity > bom.available_qty:
-                            if bom.product_id.id not in product_list:
-                                product_list.append(bom.product_id.id)
-                            
-                                self.env['pwk.purchase.request.volume'].create({
-                                    'reference': request_veneer.id,
-                                    'product_id': bom.product_id.id,
-                                    'product_uom_id': bom.product_id.uom_po_id.id,
-                                    'volume': (bom.quantity - bom.available_qty) * line.thick * line.width * line.length / 1000000000,
-                                })
-
-                            else:                                
-                                current_line_ids = self.env['pwk.purchase.request.volume'].search([
-                                    ('reference', '=', request_veneer.id),
-                                    ('product_id', '=', bom.product_id.id),
-                                ])
-
-                                if current_line_ids:
-                                    current_line_ids[0].write({
-                                        'quantity': current_line_ids[0].quantity + (bom.quantity - bom.available_qty)
+                        if not bom.product_id.goods_type and bom.product_id.jenis_kayu.name != "MDF":
+                            if bom.quantity > bom.available_qty:
+                                if bom.product_id.id not in product_list:
+                                    product_list.append(bom.product_id.id)
+                                
+                                    self.env['pwk.purchase.request.volume'].create({
+                                        'reference': request_veneer.id,
+                                        'product_id': bom.product_id.id,
+                                        'product_uom_id': bom.product_id.uom_po_id.id,
+                                        'volume': 1.1 * ((bom.quantity - bom.available_qty) * line.thick * line.width * line.length / 1000000000)
                                     })
 
+                                else:                                
+                                    current_line_ids = self.env['pwk.purchase.request.volume'].search([
+                                        ('reference', '=', request_veneer.id),
+                                        ('product_id', '=', bom.product_id.id),
+                                    ])
+
+                                    if current_line_ids:
+                                        current_line_ids[0].write({
+                                            'quantity': current_line_ids[0].quantity + (1.1 * ((bom.quantity - bom.available_qty)))
+                                        })
+
                 # PR Barecore
+                product_list = []
                 request_barecore = self.env['pwk.purchase.request'].create({
                     'date': fields.Date.today(),
                     'pr_type': 'Bahan Baku',
@@ -822,29 +851,31 @@ class PwkRpb(models.Model):
                         bom_ids = line.detail_ids_5
 
                     for bom in bom_ids:
-                        if bom.quantity > bom.available_qty:
-                            if bom.product_id.id not in product_list:
-                                product_list.append(bom.product_id.id)
+                        if bom.product_id.goods_type == "Barecore":
+                            if bom.quantity > bom.available_qty:
+                                if bom.product_id.id not in product_list:
+                                    product_list.append(bom.product_id.id)
 
-                                self.env['pwk.purchase.request.line'].create({
-                                    'reference': request_barecore.id,
-                                    'product_id': bom.product_id.id,
-                                    'product_uom_id': bom.product_id.uom_po_id.id,
-                                    'quantity': bom.quantity - bom.available_qty,
-                                })                            
-                            else:
-                                current_line_ids = self.env['pwk.purchase.request.line'].search([
-                                    ('reference', '=', request_barecore.id),
-                                    ('product_id', '=', bom.product_id.id),
-                                ])
+                                    self.env['pwk.purchase.request.line'].create({
+                                        'reference': request_barecore.id,
+                                        'product_id': bom.product_id.id,
+                                        'product_uom_id': bom.product_id.uom_po_id.id,
+                                        'quantity': 1.05 * (bom.quantity - bom.available_qty)
+                                    })                            
+                                else:
+                                    current_line_ids = self.env['pwk.purchase.request.line'].search([
+                                        ('reference', '=', request_barecore.id),
+                                        ('product_id', '=', bom.product_id.id),
+                                    ])
 
-                                if current_line_ids:
-                                    current_line_ids[0].write({
-                                        'quantity': current_line_ids[0].quantity + (bom.quantity - bom.available_qty)
-                                    })
+                                    if current_line_ids:
+                                        current_line_ids[0].write({
+                                            'quantity': current_line_ids[0].quantity + (1.05 * ((bom.quantity - bom.available_qty)))
+                                        })
 
 
                 # PR Faceback
+                product_list = []
                 request_faceback = self.env['pwk.purchase.request'].create({
                     'date': fields.Date.today(),
                     'pr_type': 'Bahan Baku',
@@ -864,29 +895,31 @@ class PwkRpb(models.Model):
                         bom_ids = line.detail_ids_5
 
                     for bom in bom_ids:
-                        if bom.quantity > bom.available_qty:
-                            if bom.product_id.id not in product_list:
-                                product_list.append(bom.product_id.id)
-                            
-                                self.env['pwk.purchase.request.volume'].create({
-                                    'reference': request_faceback.id,
-                                    'product_id': bom.product_id.id,
-                                    'product_uom_id': bom.product_id.uom_po_id.id,
-                                    'volume': (bom.quantity - bom.available_qty) * line.thick * line.width * line.length / 1000000000,
-                                })
-
-                            else:                                
-                                current_line_ids = self.env['pwk.purchase.request.volume'].search([
-                                    ('reference', '=', request_faceback.id),
-                                    ('product_id', '=', bom.product_id.id),
-                                ])
-
-                                if current_line_ids:
-                                    current_line_ids[0].write({
-                                        'quantity': current_line_ids[0].quantity + (bom.quantity - bom.available_qty)
+                        if bom.product_id.goods_type == "Faceback":
+                            if bom.quantity > bom.available_qty:
+                                if bom.product_id.id not in product_list:
+                                    product_list.append(bom.product_id.id)
+                                
+                                    self.env['pwk.purchase.request.volume'].create({
+                                        'reference': request_faceback.id,
+                                        'product_id': bom.product_id.id,
+                                        'product_uom_id': bom.product_id.uom_po_id.id,
+                                        'volume': 1.05 * ((bom.quantity - bom.available_qty) * line.thick * line.width * line.length / 1000000000)
                                     })
 
+                                else:                                
+                                    current_line_ids = self.env['pwk.purchase.request.volume'].search([
+                                        ('reference', '=', request_faceback.id),
+                                        ('product_id', '=', bom.product_id.id),
+                                    ])
+
+                                    if current_line_ids:
+                                        current_line_ids[0].write({
+                                            'quantity': current_line_ids[0].quantity + (1.05 * ((bom.quantity - bom.available_qty)))
+                                        })
+
                 # PR MDF
+                product_list = []
                 request_mdf = self.env['pwk.purchase.request'].create({
                     'date': fields.Date.today(),
                     'pr_type': 'Bahan Baku',
@@ -906,26 +939,28 @@ class PwkRpb(models.Model):
                         bom_ids = line.detail_ids_5
 
                     for bom in bom_ids:
-                        if bom.quantity > bom.available_qty:
-                            if bom.product_id.id not in product_list:
-                                product_list.append(bom.product_id.id)
+                        if bom.product_id.jenis_kayu.name == "MDF":
+                            print ("Masuk MDF")
+                            if bom.quantity > bom.available_qty:
+                                if bom.product_id.id not in product_list:
+                                    product_list.append(bom.product_id.id)
 
-                                self.env['pwk.purchase.request.line'].create({
-                                    'reference': request_mdf.id,
-                                    'product_id': bom.product_id.id,
-                                    'product_uom_id': bom.product_id.uom_po_id.id,
-                                    'quantity': bom.quantity - bom.available_qty,
-                                })                            
-                            else:
-                                current_line_ids = self.env['pwk.purchase.request.line'].search([
-                                    ('reference', '=', request_mdf.id),
-                                    ('product_id', '=', bom.product_id.id),
-                                ])
+                                    self.env['pwk.purchase.request.line'].create({
+                                        'reference': request_mdf.id,
+                                        'product_id': bom.product_id.id,
+                                        'product_uom_id': bom.product_id.uom_po_id.id,
+                                        'quantity': 1.05 * (bom.quantity - bom.available_qty)
+                                    })                            
+                                else:
+                                    current_line_ids = self.env['pwk.purchase.request.line'].search([
+                                        ('reference', '=', request_mdf.id),
+                                        ('product_id', '=', bom.product_id.id),
+                                    ])
 
-                                if current_line_ids:
-                                    current_line_ids[0].write({
-                                        'quantity': current_line_ids[0].quantity + (bom.quantity - bom.available_qty)
-                                    })
+                                    if current_line_ids:
+                                        current_line_ids[0].write({
+                                            'quantity': current_line_ids[0].quantity + (1.05 * ((bom.quantity - bom.available_qty)))
+                                        })
 
 
                 res.write({
@@ -945,7 +980,7 @@ class PwkRpb(models.Model):
             actual = 0
             if res.line_ids:
                 for line in res.line_ids:
-                    actual += line.container_vol
+                    actual += line.subtotal_vol
             res.actual = actual
 
     @api.multi
@@ -2876,7 +2911,13 @@ class ProductProduct(models.Model):
     service_to_purchase = fields.Boolean('Service to Purchase')
     jenis_kayu = fields.Many2one('pwk.jenis.kayu', 'Jenis Kayu (FB)')
     jenis_core = fields.Many2one('pwk.jenis.core', 'Jenis Core')
-    goods_type = fields.Selection([('Plywood','Plywood'),('Blockboard','Blockboard')], string="Goods Type")
+    goods_type = fields.Selection([
+        ('Plywood','Plywood'),
+        ('Blockboard','Blockboard'),
+        ('Barecore','Barecore'),
+        ('Faceback','Faceback'),
+        ('MDF','MDF')]
+        , string="Goods Type")
     tebal = fields.Float('Tebal')
     lebar = fields.Float('Lebar')
     panjang = fields.Float('Panjang')
