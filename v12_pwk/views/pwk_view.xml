@@ -1317,6 +1317,7 @@
                             <group class="oe_subtotal_footer oe_right">
                                 <field name="amount_untaxed"/>
                                 <field name="amount_tax"/>
+                                <field name="global_discount"/>
                                 <field name="amount_total" class="oe_subtotal_footer_separator"/>
                                 <field name="payments_widget" colspan="2" nolabel="1" widget="payment"/>
                                 <field name="residual" class="oe_subtotal_footer_separator" attrs="{'invisible': [('state', '=', 'draft')]}"/>
@@ -1688,6 +1689,7 @@
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml">
                 <field name="partner_id" position="before">
+                    <field name="manual_number"/>
                     <field name="number_packing_list"/>
                 </field>
                 <field name="partner_id" position="after">
