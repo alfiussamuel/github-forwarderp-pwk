@@ -2303,7 +2303,7 @@ class AccountInvoice(models.Model):
         self.amount_total_signed = self.amount_total * sign
         self.amount_untaxed_signed = amount_untaxed_signed * sign
 
-    global_discount = fields.Float('Discount')
+    global_discount = fields.Monetary('Discount')
     manual_number = fields.Char('Manual No.')
 
     is_saldo_awal = fields.Boolean('Saldo Awal')
