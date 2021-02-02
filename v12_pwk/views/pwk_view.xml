@@ -1638,6 +1638,9 @@
             <field name="model">account.invoice</field>            
             <field name="inherit_id" ref="account.invoice_supplier_form"/>
             <field name="arch" type="xml">
+                <field name="amount_tax" position="after">
+                    <field name="global_discount"/>
+                </field>
                 <field name="reference" position="after">
                     <field name="dpp_amount"/>                    
                 </field>
