@@ -1696,6 +1696,7 @@
                 </field>
                 <field name="partner_id" position="before">
                     <field name="manual_number"/>
+                    <field name="manual_packing_list"/>
                     <field name="number_packing_list"/>
                 </field>
                 <field name="partner_id" position="after">

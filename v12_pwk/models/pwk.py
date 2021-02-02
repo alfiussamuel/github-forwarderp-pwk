@@ -2305,6 +2305,7 @@ class AccountInvoice(models.Model):
 
     global_discount = fields.Monetary('Discount')
     manual_number = fields.Char('Manual No.')
+    manual_packing_list = fields.Char('Manual PL No.')
 
     is_saldo_awal = fields.Boolean('Saldo Awal')
     original_number = fields.Char('Original No.')
