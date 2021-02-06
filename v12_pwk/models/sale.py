@@ -142,11 +142,13 @@ class SaleOrderLine(models.Model):
     crate_strapping_id = fields.Many2one('pwk.strapping', 'Crate Strapping')
 
     auto_volume = fields.Float(compute="_get_volume_qty", string='Volume', digits=dp.get_precision('FourDecimal'))
+    volume = fields.Float(compute="_get_volume_qty", string='Volume', digits=dp.get_precision('FourDecimal'))
 
     @api.multi
     def _get_volume_qty(self):
         for res in self:                        
             res.auto_volume = ((res.product_uom_qty * res.width * res.length * res.thick)) / 1000000000
+            res.volume = res.auto_volume
 
     @api.depends('container_ids.qty')
     def _get_total_crate_qty(self):
