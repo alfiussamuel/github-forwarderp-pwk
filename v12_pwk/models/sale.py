@@ -121,7 +121,6 @@ class SaleOrderLine(models.Model):
     thick = fields.Float(compute="_get_size", string='Thick', digits=dp.get_precision('OneDecimal'))
     width = fields.Float(compute="_get_size", string='Width', digits=dp.get_precision('ZeroDecimal'))
     length = fields.Float(compute="_get_size", string='Length', digits=dp.get_precision('ZeroDecimal'))
-    volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))
     volume_qty = fields.Float('Qty (Volume)', digits=dp.get_precision('FourDecimal'))
     container_ids = fields.One2many('sale.order.line.container', 'reference', 'Container')
     stempel_id = fields.Many2one('pwk.stempel', 'Stempel')
@@ -141,6 +140,13 @@ class SaleOrderLine(models.Model):
     crate_position_id = fields.Many2one('pwk.position', 'Crate Position')
     crate_pallet_id = fields.Many2one('pwk.pallet', 'Crate Pallet')
     crate_strapping_id = fields.Many2one('pwk.strapping', 'Crate Strapping')
+
+    volume = fields.Float(compute="_get_volume_qty", string='Volume', digits=dp.get_precision('FourDecimal'))
+
+    @api.depends('width','length','thick','product_uom_qty')
+    def _get_volume_qty(self):
+        for res in self:                        
+            res.volume = ((res.product_uom_qty * res.width * res.length * res.thick)) / 1000000000
 
     @api.depends('container_ids.qty')
     def _get_total_crate_qty(self):
@@ -183,11 +189,6 @@ class SaleOrderLine(models.Model):
             res.thick = thick
             res.width = width
             res.length = length
-
-    @api.depends('width','length','thick','product_uom_qty')
-    def _get_volume(self):
-        for res in self:                        
-            res.volume = ((res.product_uom_qty * res.width * res.length * res.thick)) / 1000000000
 
     @api.onchange('product_uom_qty', 'product_uom', 'route_id')
     def _onchange_product_id_check_availability(self):
