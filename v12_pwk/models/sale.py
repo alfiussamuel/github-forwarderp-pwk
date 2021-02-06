@@ -122,7 +122,7 @@ class SaleOrderLine(models.Model):
     width = fields.Float(compute="_get_size", string='Width', digits=dp.get_precision('ZeroDecimal'))
     length = fields.Float(compute="_get_size", string='Length', digits=dp.get_precision('ZeroDecimal'))
     volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))
-    volume_qty = fields.Float('Qty (Volume)')
+    volume_qty = fields.Float('Qty (Volume)', digits=dp.get_precision('FourDecimal'))
     container_ids = fields.One2many('sale.order.line.container', 'reference', 'Container')
     stempel_id = fields.Many2one('pwk.stempel', 'Stempel')
     sticker_id = fields.Many2one('pwk.sticker', 'Sticker')

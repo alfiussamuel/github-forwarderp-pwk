@@ -634,7 +634,6 @@
                             <field name="sequence" widget="handle" />
                             <!-- We do not display the type because we don't want the user to be bothered with that information if he has no section or note. -->
                             <field name="display_type" invisible="1"/>
-
                             <field name="product_updatable" invisible="1"/>
                             <field
                                 name="product_id"
@@ -659,10 +658,11 @@
                             <!-- <field name="stempel_position" string="Posisi Stempel"/> -->
                             <field name="sticker_id"/>
                             <field name="marking"/>
-                            <field name="thick"/>
-                            <field name="width"/>
-                            <field name="length"/>
+                            <field name="thick" invisible="1"/>
+                            <field name="width" invisible="1"/>
+                            <field name="length" invisible="1"/>
                             <field name="volume"/>
+                            <field name="volume_qty"/>
                             <field
                                 name="product_uom_qty"
                                 string="Qty"
@@ -673,7 +673,7 @@
                                     'uom': product_uom,
                                     'company_id': parent.company_id
                                 }"/>
-                            <field name="outstanding_order_pcs"/>
+                            <field name="outstanding_order_pcs" invisible="1"/>
                             <field
                                 name="qty_delivered" invisible="1"
                                 attrs="{
