@@ -144,7 +144,7 @@ class SaleOrderLine(models.Model):
     auto_volume = fields.Float(compute="_get_volume_qty", string='Volume', digits=dp.get_precision('FourDecimal'))
     volume = fields.Float(compute="_get_volume_qty", string='Volume', digits=dp.get_precision('FourDecimal'))
 
-    @api.multi
+    @api.depends('thick','width','length','product_uom_qty')
     def _get_volume_qty(self):
         for res in self:                        
             res.auto_volume = ((res.product_uom_qty * res.width * res.length * res.thick)) / 1000000000
