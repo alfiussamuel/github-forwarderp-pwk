@@ -18,6 +18,7 @@ class PwkRpmContainerLine(models.Model):
     _name = "pwk.rpm.container.line"
 
     reference = fields.Many2one('pwk.rpm.container', string='Reference')
+    rpm_line_id = fields.Many2one('pwk.rpm.line', string="RPM Line")
     sale_id = fields.Many2one('sale.order', 'No. Order')
     sale_line_id = fields.Many2one('sale.order.line', 'No. Order Line')
     partner_id = fields.Many2one(compute="_get_sale_fields", comodel_name='res.partner', string='Buyer')

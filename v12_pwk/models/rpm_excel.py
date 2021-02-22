@@ -135,56 +135,59 @@ class RpmReportXls(models.AbstractModel):
         
         row = 7
         number = 1        
-        for i in get_data:
-            rpm_line_obj = self.env['pwk.rpm.line'].browse(i['id'])
-            total_bom = rpm_line_obj.total_bom
-            total_tebal = rpm_line_obj.total_tebal
-            merge_range = total_bom - 1
+        
+        if lines.container_ids:
+            for container in lines.container_ids:
+                merge_range = container.total_product - 1
 
-            sheet.merge_range(row, 0, row + merge_range, 0, number, formatHeaderDetailCenter)
-            sheet.merge_range(row, 1, row + merge_range, 1, i['po_number'], formatHeaderDetailCenter)
-            sheet.merge_range(row, 2, row + merge_range, 2, i['partner_id'], formatHeaderDetailCenter)
-            sheet.merge_range(row, 3, row + merge_range, 3, i['product_id'], formatHeaderDetailCenter)            
-            sheet.merge_range(row, 4, row + merge_range, 4, i['glue_id'], formatHeaderDetailCenter)            
-            sheet.merge_range(row, 5, row + merge_range, 5, i['grade_id'], formatHeaderDetailCenter)
-            sheet.merge_range(row, 6, row + merge_range, 6, i['tebal'], formatHeaderDetailCenter)
-            sheet.merge_range(row, 7, row + merge_range, 7, i['lebar'], formatHeaderDetailCenter)
-            sheet.merge_range(row, 8, row + merge_range, 8, i['panjang'], formatHeaderDetailCenter)
-            sheet.merge_range(row, 9, row + merge_range, 9, i['total_qty'], formatHeaderDetailCenter)
-            sheet.merge_range(row, 10, row + merge_range, 10, i['total_volume'], formatHeaderDetailCenter)
-            sheet.merge_range(row, 16, row + merge_range, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
-            sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
-            sheet.merge_range(row, 18, row + merge_range, 18, (rpm_line_obj.notes or ''), formatHeaderDetailLeft)
+                for container_line in container.line_ids:
+                    rpm_line = container_line.rpm_line_id    
+                    merge_range_bom = rpm_line.total_bom - 1
 
-            if rpm_line_obj:
-                if rpm_line_obj.is_selected_detail1 and rpm_line_obj.detail_ids_1:
-                    detail_ids = rpm_line_obj.detail_ids_1
-                elif rpm_line_obj.is_selected_detail2 and rpm_line_obj.detail_ids_2:
-                    detail_ids = rpm_line_obj.detail_ids_2
-                elif rpm_line_obj.is_selected_detail3 and rpm_line_obj.detail_ids_3:
-                    detail_ids = rpm_line_obj.detail_ids_3
-                elif rpm_line_obj.is_selected_detail4 and rpm_line_obj.detail_ids_4:
-                    detail_ids = rpm_line_obj.detail_ids_4
-                elif rpm_line_obj.is_selected_detail5 and rpm_line_obj.detail_ids_5:
-                    detail_ids = rpm_line_obj.detail_ids_5
+                    sheet.merge_range(row, 0, row + merge_range, 0, number, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 1, row + merge_range, 1, rpm_line.po_number, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 2, row + merge_range, 2, rpm_line.partner_id.name, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 3, row + merge_range, 3, rpm_line.product_id.goods_type, formatHeaderDetailCenter)            
+                    sheet.merge_range(row, 4, row + merge_range_bom, 4, rpm_line.glue.name, formatHeaderDetailCenter)            
+                    sheet.merge_range(row, 5, row + merge_range_bom, 5, rpm_line.grade.name, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 6, row + merge_range_bom, 6, rpm_line.tebal, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 7, row + merge_range_bom, 7, rpm_line.lebar, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 8, row + merge_range_bom, 8, rpm_line.panjang, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 9, row + merge_range_bom, 9, rpm_line.total_qty, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 10, row + merge_range_bom, 10, rpm_line.total_volume, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 16, row + merge_range_bom, 16, rpm_line.total_tebal, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 17, row + merge_range_bom, 17, rpm_line.percent_tebal, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 18, row + merge_range_bom, 18, (rpm_line.notes or ''), formatHeaderDetailLeft)
 
-                if detail_ids:
-                    for bom_line in detail_ids:
-                        bom_label = ''
-                        if bom_line.product_id.goods_type == 'Faceback':
-                            bom_label = 'F/B ' + bom_line.product_id.jenis_kayu.name
-                        elif bom_line.product_id.goods_type == 'Barecore':
-                            bom_label = 'BC ' + bom_line.product_id.grade.name
+                    if rpm_line:
+                        if rpm_line.is_selected_detail1 and rpm_line.detail_ids_1:
+                            detail_ids = rpm_line.detail_ids_1
+                        elif rpm_line.is_selected_detail2 and rpm_line.detail_ids_2:
+                            detail_ids = rpm_line.detail_ids_2
+                        elif rpm_line.is_selected_detail3 and rpm_line.detail_ids_3:
+                            detail_ids = rpm_line.detail_ids_3
+                        elif rpm_line.is_selected_detail4 and rpm_line.detail_ids_4:
+                            detail_ids = rpm_line.detail_ids_4
+                        elif rpm_line.is_selected_detail5 and rpm_line.detail_ids_5:
+                            detail_ids = rpm_line.detail_ids_5
+
+                        if detail_ids:
+                            for bom_line in detail_ids:
+                                bom_label = ''
+                                if bom_line.product_id.goods_type == 'Faceback':
+                                    bom_label = 'F/B ' + bom_line.product_id.jenis_kayu.name
+                                elif bom_line.product_id.goods_type == 'Barecore':
+                                    bom_label = 'BC ' + bom_line.product_id.grade.name
+                                else:
+                                    bom_label = bom_line.product_id.grade.name
+
+                                sheet.write(row, 11, bom_label, formatHeaderDetailCenter)
+                                sheet.write(row, 12, bom_line.product_id.tebal, formatHeaderDetailCenter)
+                                sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
+                                sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
+                                sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
+                                row += 1
                         else:
-                            bom_label = bom_line.product_id.grade.name
+                            row += 1
 
-                        sheet.write(row, 11, bom_label, formatHeaderDetailCenter)
-                        sheet.write(row, 12, bom_line.product_id.tebal, formatHeaderDetailCenter)
-                        sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
-                        sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
-                        sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
-                        row += 1
-            else:
-                row += 1
-
-            number += 1
+                        number += 1

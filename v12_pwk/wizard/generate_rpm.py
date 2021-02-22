@@ -52,8 +52,10 @@ class PwkGenerateRpmWizard(models.TransientModel):
                         'reference': rpm_container_id.id,
                         'sale_id': line.sale_id.id,
                         'sale_line_id': line.sale_line_id.id,
-                        'container_qty': line.total_qty
+                        'container_qty': line.total_qty,
+                        'rpm_line_id': rpm_line_id.id
                         })
+
 
                     # Fill Bill of Material from RPB
                     if line.is_detail1 and line.is_selected_detail1:
