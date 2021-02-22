@@ -161,8 +161,52 @@ class RpmReportXls(models.AbstractModel):
                         sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
                         sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
                         sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
-                        sheet.merge_range(row, 16, row + merge_range, 16, bom_line.total_tebal, formatHeaderDetailCenter)
-                        sheet.merge_range(row, 17, row + merge_range, 17, bom_line.percent_tebal, formatHeaderDetailCenter)
+                        sheet.merge_range(row, 16, row + merge_range, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
+                        sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
+                        row += 1
+
+                elif rpm_line_obj.is_selected_detail2 and rpm_line_obj.detail_ids_2:
+                    for bom_line in rpm_line_obj.detail_ids_2:
+                        sheet.write(row, 11, bom_line.product_id.grade.name, formatHeaderDetailCenter)
+                        sheet.write(row, 12, bom_line.product_id.tebal, formatHeaderDetailCenter)
+                        sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
+                        sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
+                        sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
+                        sheet.merge_range(row, 16, row + merge_range, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
+                        sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
+                        row += 1
+
+                elif rpm_line_obj.is_selected_detail3 and rpm_line_obj.detail_ids_3:
+                    for bom_line in rpm_line_obj.detail_ids_3:
+                        sheet.write(row, 11, bom_line.product_id.grade.name, formatHeaderDetailCenter)
+                        sheet.write(row, 12, bom_line.product_id.tebal, formatHeaderDetailCenter)
+                        sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
+                        sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
+                        sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
+                        sheet.merge_range(row, 16, row + merge_range, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
+                        sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
+                        row += 1
+
+                elif rpm_line_obj.is_selected_detail4 and rpm_line_obj.detail_ids_4:
+                    for bom_line in rpm_line_obj.detail_ids_4:
+                        sheet.write(row, 11, bom_line.product_id.grade.name, formatHeaderDetailCenter)
+                        sheet.write(row, 12, bom_line.product_id.tebal, formatHeaderDetailCenter)
+                        sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
+                        sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
+                        sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
+                        sheet.merge_range(row, 16, row + merge_range, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
+                        sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
+                        row += 1
+
+                elif rpm_line_obj.is_selected_detail5 and rpm_line_obj.detail_ids_5:
+                    for bom_line in rpm_line_obj.detail_ids_5:
+                        sheet.write(row, 11, bom_line.product_id.grade.name, formatHeaderDetailCenter)
+                        sheet.write(row, 12, bom_line.product_id.tebal, formatHeaderDetailCenter)
+                        sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
+                        sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
+                        sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
+                        sheet.merge_range(row, 16, row + merge_range, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
+                        sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
                         row += 1
             else:
                 row += 1
