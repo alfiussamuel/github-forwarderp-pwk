@@ -138,6 +138,7 @@ class RpmReportXls(models.AbstractModel):
         
         if lines.container_ids:
             for container in lines.container_ids:
+                merge_range = 0
 
                 for container_line in container.line_ids:
                     merge_range += container_line.rpm_line_id.total_bom
