@@ -14,21 +14,13 @@ class RpmReportXls(models.AbstractModel):
         lines = []
         if data.line_ids:
             for line in data.line_ids:
-                bom_label = ''
-                if line.product_id.goods_type == 'Faceback':
-                    bom_label = 'F/B ' + line.product_id.jenis_kayu.name
-                elif line.product_id.goods_type == 'Barecore':
-                    bom_label = 'BC ' + line.product_id.grade.name
-                else:
-                    bom_label = line.product_id.grade.name
-
                 vals = {
                     'id': line.id,
                     'partner_id': line.partner_id.name,
                     'po_number': line.po_number,
                     'product_id': line.product_id.goods_type,
                     'glue_id': line.glue_id.name,
-                    'grade_id': bom_label,
+                    'grade_id': line.product_id.grade.name,
                     'tebal': line.thick,
                     'lebar': line.width,
                     'panjang': line.length,
@@ -178,7 +170,15 @@ class RpmReportXls(models.AbstractModel):
 
                 if detail_ids:
                     for bom_line in detail_ids:
-                        sheet.write(row, 11, bom_line.product_id.grade.name, formatHeaderDetailCenter)
+                        bom_label = ''
+                        if bom_line.product_id.goods_type == 'Faceback':
+                            bom_label = 'F/B ' + line.product_id.jenis_kayu.name
+                        elif bom_line.product_id.goods_type == 'Barecore':
+                            bom_label = 'BC ' + line.product_id.grade.name
+                        else:
+                            bom_label = line.product_id.grade.name
+                            
+                        sheet.write(row, 11, bom_line.bom_label, formatHeaderDetailCenter)
                         sheet.write(row, 12, bom_line.product_id.tebal, formatHeaderDetailCenter)
                         sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
                         sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
