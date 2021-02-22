@@ -148,7 +148,9 @@ class RpmReportXls(models.AbstractModel):
             if rpm_line_obj:
                 if rpm_line_obj.is_selected_detail1 and rpm_line_obj.detail_ids_1:
                     for bom_line in rpm_line_obj.detail_ids_1:
-                        sheet.write(row, 11, bom_line.product_id.name, formatHeaderDetailCenter)
+                        sheet.write(row, 11, bom_line.product_id.grade_id.name, formatHeaderDetailCenter)
+                        sheet.write(row, 12, bom_line.product_id.tebal, formatHeaderDetailCenter)
+                        sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
                         row += 1
             else:
                 row += 1
