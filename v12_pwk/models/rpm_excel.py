@@ -177,8 +177,8 @@ class RpmReportXls(models.AbstractModel):
                             bom_label = 'BC ' + bom_line.product_id.grade.name
                         else:
                             bom_label = bom_line.product_id.grade.name
-                            
-                        sheet.write(row, 11, bom_line.bom_label, formatHeaderDetailCenter)
+
+                        sheet.write(row, 11, bom_label, formatHeaderDetailCenter)
                         sheet.write(row, 12, bom_line.product_id.tebal, formatHeaderDetailCenter)
                         sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
                         sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
