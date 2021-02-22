@@ -37,7 +37,7 @@ class PwkGenerateRpmWizard(models.TransientModel):
 
                 if rpm_line_id:
                     if line.is_detail1:
-                        for bom in list_detail:
+                        for bom in line.detail_ids_1:
                             self.env['pwk.rpm.line.detail1'].create({
                                 'reference': rpm_line_id.id,
                                 'product_id': bom.product_id.id,
@@ -51,7 +51,7 @@ class PwkGenerateRpmWizard(models.TransientModel):
                             rpm_line_id.write({'is_detail1': True})
 
                     elif line.is_detail2:
-                        for bom in list_detail2:
+                        for bom in line.detail_ids_2:
                             self.env['pwk.rpm.line.detail2'].create({
                                 'reference': rpm_line_id.id,
                                 'product_id': bom.product_id.id,
@@ -65,7 +65,7 @@ class PwkGenerateRpmWizard(models.TransientModel):
                             rpm_line_id.write({'is_detail2': True})
 
                     elif line.is_detail3:
-                        for bom in list_detail3:
+                        for bom in line.detail_ids_3:
                             self.env['pwk.rpm.line.detail3'].create({
                                 'reference': rpm_line_id.id,
                                 'product_id': bom.product_id.id,
@@ -79,7 +79,7 @@ class PwkGenerateRpmWizard(models.TransientModel):
                             rpm_line_id.write({'is_detail3': True})
 
                     elif line.is_detail4:
-                        for bom in list_detail4:
+                        for bom in line.detail_ids_4:
                             self.env['pwk.rpm.line.detail4'].create({
                                 'reference': rpm_line_id.id,
                                 'product_id': bom.product_id.id,
@@ -93,7 +93,7 @@ class PwkGenerateRpmWizard(models.TransientModel):
                             rpm_line_id.write({'is_detail4': True})
 
                     elif line.is_detail5:
-                        for bom in list_detail5:
+                        for bom in line.detail_ids_5:
                             self.env['pwk.rpm.line.detail5'].create({
                                 'reference': rpm_line_id.id,
                                 'product_id': bom.product_id.id,
