@@ -174,10 +174,7 @@ class RpmReportXls(models.AbstractModel):
                         sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
                         sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
                         sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
-                        if bom_line.notes:
-                            sheet.write(row, 18, '', formatHeaderDetailCenter)
-                        else:
-                            sheet.write(row, 18, bom_line.notes, formatHeaderDetailCenter)
+                        sheet.write(row, 18, (bom_line.notes or ''), formatHeaderDetailCenter)
                         row += 1
             else:
                 row += 1
