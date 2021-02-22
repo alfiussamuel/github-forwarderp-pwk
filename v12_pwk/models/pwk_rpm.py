@@ -157,6 +157,8 @@ class PwkRpmLine(models.Model):
     total_tebal = fields.Integer(compute="_get_total_bom", string="Tebal BoM")
     percent_tebal = fields.Integer(compute="_get_total_bom", string="RC / Barang Jadi")
 
+    notes = fields.Text('Notes')
+
     @api.depends('detail_ids_1', 'detail_ids_2', 'detail_ids_3', 'detail_ids_4', 'detail_ids_5',
         'is_selected_detail1', 'is_selected_detail2', 'is_selected_detail3', 'is_selected_detail4', 'is_selected_detail5',
         'is_detail1', 'is_detail2', 'is_detail3', 'is_detail4', 'is_detail5')

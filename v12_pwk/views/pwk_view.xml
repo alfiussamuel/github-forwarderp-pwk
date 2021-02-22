@@ -349,7 +349,6 @@
                                                                     <field name="length"/>
                                                                     <field name="quantity"/>
                                                                     <field name="available_qty"/>
-                                                                    <field name="notes"/>
                                                                 </tree>
                                                             </field>         
 
@@ -366,7 +365,6 @@
                                                                     <field name="length"/>
                                                                     <field name="quantity"/>
                                                                     <field name="available_qty"/>
-                                                                    <field name="notes"/>
                                                                 </tree>
                                                             </field>
 
@@ -383,7 +381,6 @@
                                                                     <field name="length"/>
                                                                     <field name="quantity"/>
                                                                     <field name="available_qty"/>
-                                                                    <field name="notes"/>
                                                                 </tree>
                                                             </field>
 
@@ -400,7 +397,6 @@
                                                                     <field name="length"/>
                                                                     <field name="quantity"/>
                                                                     <field name="available_qty"/>
-                                                                    <field name="notes"/>
                                                                 </tree>
                                                             </field>
 
@@ -417,12 +413,14 @@
                                                                     <field name="length"/>
                                                                     <field name="quantity"/>
                                                                     <field name="available_qty"/>
-                                                                    <field name="notes"/>
                                                                 </tree>
                                                             </field>
 
                                                         </page>
                                                     </notebook>
+                                                </group>
+                                                <group string="Notes">
+                                                    <field name="notes" nolabel="1"/>
                                                 </group>
                                             </form>
                                         </field>

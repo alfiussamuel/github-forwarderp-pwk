@@ -18,7 +18,7 @@ class RpmReportXls(models.AbstractModel):
                     'id': line.id,
                     'partner_id': line.partner_id.name,
                     'po_number': line.po_number,
-                    'product_id': line.product_id.name,
+                    'product_id': line.product_id.goods_type,
                     'glue_id': line.glue_id.name,
                     'grade_id': line.grade_id.name,
                     'tebal': line.thick,
