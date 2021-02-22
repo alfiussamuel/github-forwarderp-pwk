@@ -38,30 +38,38 @@ class PwkGenerateRpmWizard(models.TransientModel):
                 if rpm_line_id:
                     model_detail = ''
                     list_detail = ''
+                    command = ''
 
                     if line.is_detail1:
                         print("masuk 1")
                         model_detail = self.env['pwk.rpm.line.detail1']
                         list_detail = line.detail_ids_1
+                        command = 'is_detail1'
                     elif line.is_detail2:
                         print("masuk 2")
                         model_detail = self.env['pwk.rpm.line.detail2']
                         list_detail = line.detail_ids_2
+                        command = 'is_detail2'
                     elif line.is_detail3:
                         print("masuk 3")
                         model_detail = self.env['pwk.rpm.line.detail3']
                         list_detail = line.detail_ids_3
+                        command = 'is_detail3'
                     elif line.is_detail4:
                         print("masuk 4")
                         model_detail = self.env['pwk.rpm.line.detail4']
                         list_detail = line.detail_ids_4
+                        command = 'is_detail4'
                     elif line.is_detail5:
                         print("masuk 5")
                         model_detail = self.env['pwk.rpm.line.detail5']
                         list_detail = line.detail_ids_5
+                        command = 'is_detail5'
 
                     if model_detail and list_detail:
+                        print ("masuk 6")
                         for bom in list_detail:
+                            print ("masuk 7")
                             model_detail.create({
                                 'reference': rpm_line_id.id,
                                 'product_id': bom.product_id.id,
@@ -71,5 +79,7 @@ class PwkGenerateRpmWizard(models.TransientModel):
                                 'ply': bom.ply,
                                 'quantity': bom.quantity,
                             })
+
+                        rpm_line_id.write({command: True})
 
 
