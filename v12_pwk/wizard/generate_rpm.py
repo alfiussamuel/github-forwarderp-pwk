@@ -66,20 +66,19 @@ class PwkGenerateRpmWizard(models.TransientModel):
                         list_detail = line.detail_ids_5
                         command = 'is_detail5'
 
-                    if model_detail and list_detail:
-                        print ("masuk 6")
-                        for bom in list_detail:
-                            print ("masuk 7")
-                            model_detail.create({
-                                'reference': rpm_line_id.id,
-                                'product_id': bom.product_id.id,
-                                'thick': bom.thick,
-                                'width': bom.width,
-                                'length': bom.length,
-                                'ply': bom.ply,
-                                'quantity': bom.quantity,
-                            })
+                    print ("masuk 6")
+                    for bom in list_detail:
+                        print ("masuk 7")
+                        model_detail.create({
+                            'reference': rpm_line_id.id,
+                            'product_id': bom.product_id.id,
+                            'thick': bom.thick,
+                            'width': bom.width,
+                            'length': bom.length,
+                            'ply': bom.ply,
+                            'quantity': bom.quantity,
+                        })
 
-                        rpm_line_id.write({command: True})
+                    rpm_line_id.write({command: True})
 
 
