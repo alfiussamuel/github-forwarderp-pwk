@@ -341,6 +341,7 @@ class SaleOrder(models.Model):
         ('cancel', 'Cancelled'),
         ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', track_sequence=3, default='draft')
     total_volume = fields.Float(compute="_get_total", string="Total Volume", digits=dp.get_precision('FourDecimal'))
+    total_volume_qty = fields.Float(compute="_get_total", string="Total Volume", digits=dp.get_precision('FourDecimal'))
     total_qty = fields.Float(compute="_get_total", string="Total Qty", digits=dp.get_precision('TwoDecimal'))
     formula_type = fields.Selection([('Volume','Volume'),('PCS','PCS')], string="Price Formula", default="PCS")
     number_contract = fields.Char(compute="_get_contract_no", string="Sales Contract No.")
@@ -430,14 +431,17 @@ class SaleOrder(models.Model):
         for res in self:
             total_qty = 0
             total_volume = 0
+            total_volume_qty = 0
 
             if res.order_line:                
                 for line in res.order_line:                    
                     total_qty += line.product_uom_qty
                     total_volume += line.volume
+                    total_volume_qty = line.volume_qty
             
             res.total_qty = total_qty
             res.total_volume = total_volume
+            res.total_volume_qty = total_volume_qty
                     
     def terbilang(self, satuan):
         huruf = ["","Satu","Dua","Tiga","Empat","Lima","Enam","Tujuh","Delapan","Sembilan","Sepuluh","Sebelas"]
