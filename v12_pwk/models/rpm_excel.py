@@ -92,21 +92,21 @@ class RpmReportXls(models.AbstractModel):
         sheet.set_column(6, 6, 4)
         sheet.set_column(7, 7, 4)
         sheet.set_column(8, 8, 4)
-        sheet.set_column(9, 9, 10)
-        sheet.set_column(10, 10, 10)
-        sheet.set_column(11, 11, 7)
-        sheet.set_column(12, 12, 7)
-        sheet.set_column(13, 13, 7)
+        sheet.set_column(9, 9, 8)
+        sheet.set_column(10, 10, 8)
+        sheet.set_column(11, 11, 8)
+        sheet.set_column(12, 12, 8)
+        sheet.set_column(13, 13, 8)
         sheet.set_column(14, 14, 5)
         sheet.set_column(15, 15, 5)
         sheet.set_column(16, 16, 12)
         sheet.set_column(17, 17, 10)
-        sheet.set_column(18, 18, 30)
+        sheet.set_column(18, 18, 35)
         
         # Data 1
-        row = 5
+        row = 4
 
-        sheet.merge_range(row-3, 0, row-3, 15, 'RENCANA PRODUKSI MINGGUAN', formatHeaderCenter)
+        sheet.merge_range(row-3, 0, row-3, 18, 'RENCANA PRODUKSI MINGGUAN', formatHeaderCenter)
 
         # merge 1 - 4 
         sheet.merge_range(row, 0, row+1, 0, 'No', formatHeaderTable)
