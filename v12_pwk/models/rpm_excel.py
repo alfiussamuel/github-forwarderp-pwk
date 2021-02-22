@@ -15,6 +15,7 @@ class RpmReportXls(models.AbstractModel):
         if data.line_ids:
             for line in data.line_ids:
                 vals = {
+                    'id': line.id,
                     'partner_id': line.partner_id.name,
                     'po_number': line.po_number,
                     'product_id': line.product_id.name,
@@ -27,7 +28,7 @@ class RpmReportXls(models.AbstractModel):
 
                 lines.append(vals)
 
-        return lines   
+        return lines
 
     def generate_xlsx_report(self, workbook, data, lines):        
         get_data = self.get_data(lines)
@@ -96,7 +97,7 @@ class RpmReportXls(models.AbstractModel):
         sheet.set_column(13, 13, 7)
         sheet.set_column(14, 14, 5)
         sheet.set_column(15, 15, 5)
-        sheet.set_column(16, 16, 10)
+        sheet.set_column(16, 16, 12)
         sheet.set_column(17, 17, 10)
         sheet.set_column(18, 18, 20)
         
@@ -116,7 +117,7 @@ class RpmReportXls(models.AbstractModel):
         sheet.merge_range(row, 9, row, 10, 'Order', formatHeaderTable)
         sheet.merge_range(row, 11, row, 13, 'Bahan Baku', formatHeaderTable)
         sheet.merge_range(row, 14, row+1, 15, 'Kebutuhan', formatHeaderTable)
-        sheet.merge_range(row, 16, row+1, 16, 'TOTAL BOM', formatHeaderTable)
+        sheet.merge_range(row, 16, row+1, 16, 'Total BOM', formatHeaderTable)
         sheet.write(row, 17, 'RC', formatHeaderTable)
         sheet.merge_range(row, 18, row+1, 18, 'Spesifikasi Product', formatHeaderTable)
 
@@ -142,5 +143,14 @@ class RpmReportXls(models.AbstractModel):
             sheet.write(row, 6, i['tebal'], formatHeaderDetailCenter)
             sheet.write(row, 7, i['lebar'], formatHeaderDetailCenter)
             sheet.write(row, 8, i['panjang'], formatHeaderDetailCenter)
-            row += 1
+
+            rpm_line_obj = self.env['pwk.rpm.line'].browse(i['id'])
+            if rpm_line_obj:
+                if rpm_line_obj.is_selected_detail1 and rpm_line_obj.detail_ids_1:
+                    for bom_line in rpm_line_obj.detail_ids_1:
+                        sheet.write(row, 11, bom_line.product_id.name, formatHeaderDetailCenter)
+                        row += 1
+            else:
+                row += 1
+
             number += 1
