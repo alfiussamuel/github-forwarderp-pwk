@@ -675,7 +675,7 @@
                                 widget="many2many_tags"
                                 invisible="1"
                                 options="{'color_field': 'color'}"/>
-                            <field name="container"/>
+                            <field name="container" class="oe_inline"/>
                             <field
                                 name="price_unit"
                                 attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"/>
