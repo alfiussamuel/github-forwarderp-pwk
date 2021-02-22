@@ -83,12 +83,22 @@ class RpmReportXls(models.AbstractModel):
         sheet.set_column(0, 0, 3)
         sheet.set_column(1, 1, 10)
         sheet.set_column(2, 2, 15)
-        sheet.set_column(3, 3, 30)
+        sheet.set_column(3, 3, 38)
         sheet.set_column(4, 4, 10)
         sheet.set_column(5, 5, 10)
         sheet.set_column(6, 6, 4)
         sheet.set_column(7, 7, 4)
         sheet.set_column(8, 8, 4)
+        sheet.set_column(8, 8, 10)
+        sheet.set_column(8, 8, 4)
+        sheet.set_column(8, 8, 4)
+        sheet.set_column(8, 8, 4)
+        sheet.set_column(8, 8, 4)
+        sheet.set_column(8, 8, 4)
+        sheet.set_column(8, 8, 4)
+        sheet.set_column(8, 8, 4)
+        sheet.set_column(8, 8, 10)
+        sheet.set_column(8, 8, 20)
         
         # Data 1
         row = 5
