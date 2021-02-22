@@ -162,7 +162,7 @@ class RpmReportXls(models.AbstractModel):
                         sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
                         sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
                         sheet.write(row, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
-                        sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
+                        sheet.write(row, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
                         row += 1
 
                 elif rpm_line_obj.is_selected_detail2 and rpm_line_obj.detail_ids_2:
@@ -173,7 +173,7 @@ class RpmReportXls(models.AbstractModel):
                         sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
                         sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
                         sheet.write(row, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
-                        sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
+                        sheet.write(row, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
                         row += 1
 
                 elif rpm_line_obj.is_selected_detail3 and rpm_line_obj.detail_ids_3:
@@ -184,7 +184,7 @@ class RpmReportXls(models.AbstractModel):
                         sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
                         sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
                         sheet.write(row, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
-                        sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
+                        sheet.write(row, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
                         row += 1
 
                 elif rpm_line_obj.is_selected_detail4 and rpm_line_obj.detail_ids_4:
@@ -195,7 +195,7 @@ class RpmReportXls(models.AbstractModel):
                         sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
                         sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
                         sheet.write(row, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
-                        sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
+                        sheet.write(row, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
                         row += 1
 
                 elif rpm_line_obj.is_selected_detail5 and rpm_line_obj.detail_ids_5:
@@ -206,7 +206,7 @@ class RpmReportXls(models.AbstractModel):
                         sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
                         sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
                         sheet.write(row, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
-                        sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
+                        sheet.write(row, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
                         row += 1
             else:
                 row += 1
