@@ -138,9 +138,12 @@ class RpmReportXls(models.AbstractModel):
         
         if lines.container_ids:
             for container in lines.container_ids:
+
+                for container_line in container.line_ids:
+                    merge_range += container_line.rpm_line_id.total_bom
+
                 print ("container ", container.name)
-                merge_range = int(container.total_product - 1)
-                print ("merge range ", container.name)
+                print ("merge range ", merge_range)
 
                 for container_line in container.line_ids:
                     print ("container line ", container_line.rpm_line_id.product_id.name)
