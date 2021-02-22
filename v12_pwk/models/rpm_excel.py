@@ -24,6 +24,8 @@ class RpmReportXls(models.AbstractModel):
                     'tebal': line.thick,
                     'lebar': line.width,
                     'panjang': line.length,
+                    'total_qty': line.total_qty,
+                    'total_volume': line.total_volume
                 }
 
                 lines.append(vals)
