@@ -135,13 +135,13 @@
                             <field name="account_analytic_id" context="{'default_partner_id':parent.partner_id}" groups="analytic.group_analytic_accounting" invisible="1"/>
                             <field name="analytic_tag_ids" groups="analytic.group_analytic_tags" widget="many2many_tags" options="{'color_field': 'color'}" invisible="1"/>
                             <field name="diameter"/>
-                            <field name="actual_size"/>
-                            <field name="actual_thick"/>
-                            <field name="actual_width"/>
-                            <field name="actual_length"/>
-                            <field name="invoice_thick"/>
-                            <field name="invoice_width"/>
-                            <field name="invoice_length"/>
+                            <field name="actual_size" invisible="1"/>
+                            <field name="actual_thick" invisible="1"/>
+                            <field name="actual_width" invisible="1"/>
+                            <field name="actual_length" invisible="1"/>
+                            <field name="invoice_thick" invisible="1"/>
+                            <field name="invoice_width" invisible="1"/>
+                            <field name="invoice_length" invisible="1"/>
                             <field name="product_qty" string="PCS"/>
                             <field name="volume_real" string="M3"/>
                             <field name="qty_received" attrs="{'column_invisible': [('parent.state', 'not in', ('purchase', 'done'))]}"/>
