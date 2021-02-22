@@ -81,23 +81,15 @@ class RpmReportXls(models.AbstractModel):
         
         # Set Column Width
         sheet.set_column(0, 0, 3)
-        sheet.set_column(1, 1, 22)
-        sheet.set_column(2, 2, 10)
+        sheet.set_column(1, 1, 20)
+        sheet.set_column(2, 2, 33)
         sheet.set_column(3, 3, 8)
         sheet.set_column(4, 4, 10)
-        sheet.set_column(5, 5, 4)
-        sheet.set_column(6, 6, 1)
+        sheet.set_column(5, 5, 10)
+        sheet.set_column(6, 6, 4)
         sheet.set_column(7, 7, 4)
-        sheet.set_column(8, 8, 1)
-        sheet.set_column(9, 9, 4)
-        sheet.set_column(10, 10, 10)
-        sheet.set_column(11, 11, 7)
-        sheet.set_column(12, 12, 7)
-        sheet.set_column(13, 13, 8)
-        sheet.set_column(14, 14, 8)
-        sheet.set_column(15, 15, 8)
-        sheet.set_column(16, 16, 8)
-
+        sheet.set_column(8, 8, 4)
+        
         # Data 1
         row = 5
 
@@ -128,6 +120,6 @@ class RpmReportXls(models.AbstractModel):
             sheet.write(row, 5, i['grade_id'], formatHeaderDetailCenter)
             sheet.write(row, 6, i['tebal'], formatHeaderDetailCenter)
             sheet.write(row, 7, i['lebar'], formatHeaderDetailCenter)
-            sheet.write(row, 9, i['panjang'], formatHeaderDetailCenter)
+            sheet.write(row, 8, i['panjang'], formatHeaderDetailCenter)
             row += 1
             number += 1
