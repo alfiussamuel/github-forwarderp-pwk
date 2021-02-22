@@ -40,18 +40,23 @@ class PwkGenerateRpmWizard(models.TransientModel):
                     list_detail = ''
 
                     if line.is_detail1:
+                        print("masuk 1")
                         model_detail = self.env['pwk.rpm.line.detail1']
                         list_detail = line.detail_ids_1
                     elif line.is_detail2:
+                        print("masuk 2")
                         model_detail = self.env['pwk.rpm.line.detail2']
                         list_detail = line.detail_ids_2
                     elif line.is_detail3:
+                        print("masuk 3")
                         model_detail = self.env['pwk.rpm.line.detail3']
                         list_detail = line.detail_ids_3
                     elif line.is_detail4:
+                        print("masuk 4")
                         model_detail = self.env['pwk.rpm.line.detail4']
                         list_detail = line.detail_ids_4
                     elif line.is_detail5:
+                        print("masuk 5")
                         model_detail = self.env['pwk.rpm.line.detail5']
                         list_detail = line.detail_ids_5
 
