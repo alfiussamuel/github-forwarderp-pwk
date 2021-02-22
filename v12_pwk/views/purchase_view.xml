@@ -97,7 +97,7 @@
                     <field name="teknis_pembayaran" class="oe_inline" placeholder="Teknis Pembayaran ..."/>
                     <field name="payment_to" class="oe_inline" placeholder="Pembayaran Ke ..."/>
                 </field>
-                <field name="date_planned" position="before">
+                <field name="partner_id" position="before">
                     <field name="purchase_type" readonly="1"/>
                     <field name="export_local"/>
                 </field>
