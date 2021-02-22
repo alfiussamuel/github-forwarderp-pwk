@@ -431,9 +431,11 @@ class PwkRpb(models.Model):
     @api.depends('line_ids')
     def _get_total_container(self):
         for res in self:
+            total = 0
             if res.line_ids:
                 for line in res.line_ids:
-                    
+                    total += 1
+            res.total_container = total
 
     @api.multi
     def action_view_lines(self):
