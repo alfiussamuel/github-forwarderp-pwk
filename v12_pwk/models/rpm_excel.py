@@ -134,23 +134,33 @@ class RpmReportXls(models.AbstractModel):
         row = 7
         number = 1        
         for i in get_data:
-            sheet.write(row, 0, number, formatHeaderDetailCenter)
-            sheet.write(row, 1, i['po_number'], formatHeaderDetailCenter)
-            sheet.write(row, 2, i['partner_id'], formatHeaderDetailCenter)
-            sheet.write(row, 3, i['product_id'], formatHeaderDetailCenter)            
-            sheet.write(row, 4, i['glue_id'], formatHeaderDetailCenter)            
-            sheet.write(row, 5, i['grade_id'], formatHeaderDetailCenter)
-            sheet.write(row, 6, i['tebal'], formatHeaderDetailCenter)
-            sheet.write(row, 7, i['lebar'], formatHeaderDetailCenter)
-            sheet.write(row, 8, i['panjang'], formatHeaderDetailCenter)
-
             rpm_line_obj = self.env['pwk.rpm.line'].browse(i['id'])
+            total_bom = rpm_line_obj.total_bom
+            total_tebal = rpm_line_obj.total_tebal
+            merge_range = total_bom - 1
+
+            sheet.write(row, 0, number, formatHeaderDetailCenter)
+            sheet.merge_range(row, 1, row + merge_range, 1, i['po_number'], formatHeaderDetailCenter)
+            sheet.merge_range(row, 2, row + merge_range, 2, i['partner_id'], formatHeaderDetailCenter)
+            sheet.merge_range(row, 3, row + merge_range, 3, i['product_id'], formatHeaderDetailCenter)            
+            sheet.merge_range(row, 4, row + merge_range, 4, i['glue_id'], formatHeaderDetailCenter)            
+            sheet.merge_range(row, 5, row + merge_range, 5, i['grade_id'], formatHeaderDetailCenter)
+            sheet.merge_range(row, 6, row + merge_range, 6, i['tebal'], formatHeaderDetailCenter)
+            sheet.merge_range(row, 7, row + merge_range, 7, i['lebar'], formatHeaderDetailCenter)
+            sheet.merge_range(row, 8, row + merge_range, 8, i['panjang'], formatHeaderDetailCenter)
+            sheet.merge_range(row, 9, row + merge_range, 9, i['total_qty'], formatHeaderDetailCenter)
+            sheet.merge_range(row, 10, row + merge_range, 10, i['total_volume'], formatHeaderDetailCenter)
+
             if rpm_line_obj:
                 if rpm_line_obj.is_selected_detail1 and rpm_line_obj.detail_ids_1:
                     for bom_line in rpm_line_obj.detail_ids_1:
                         sheet.write(row, 11, bom_line.product_id.grade.name, formatHeaderDetailCenter)
                         sheet.write(row, 12, bom_line.product_id.tebal, formatHeaderDetailCenter)
                         sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
+                        sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
+                        sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
+                        sheet.merge_range(row, 16, row + merge_range, 16, bom_line.total_tebal, formatHeaderDetailCenter)
+                        sheet.merge_range(row, 17, row + merge_range, 17, bom_line.percent_tebal, formatHeaderDetailCenter)
                         row += 1
             else:
                 row += 1

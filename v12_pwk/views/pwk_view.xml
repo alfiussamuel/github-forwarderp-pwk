@@ -284,10 +284,11 @@
                                                 <field name="length" invisible="1"/>
                                                 <field name="glue_id" invisible="1"/>
                                                 <field name="grade_id" invisible="1"/>
-                                                <!-- <field name="remaining_qty"/>
-                                                <field name="remaining_volume"/> -->
                                                 <field name="total_qty"/>
                                                 <field name="total_volume"/>
+                                                <field name="total_bom"/>
+                                                <field name="total_tebal"/>
+                                                <field name="percent_tebal"/>
                                             </tree>
                                             <form>
                                                 <group>

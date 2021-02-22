@@ -146,7 +146,49 @@ class PwkRpmLine(models.Model):
     is_selected_detail2 = fields.Boolean('Bill of Material 2')
     is_selected_detail3 = fields.Boolean('Bill of Material 3')
     is_selected_detail4 = fields.Boolean('Bill of Material 4')
-    is_selected_detail5 = fields.Boolean('Bill of Material 5')    
+    is_selected_detail5 = fields.Boolean('Bill of Material 5')
+
+    total_bom = fields.Integer(compute="_get_total_bom", string="Jumlah BoM")
+    total_tebal = fields.Integer(compute="_get_total_bom", string="Tebal BoM")
+    percent_tebal = fields.Integer(compute="_get_total_bom", string="RC / Barang Jadi")
+
+    @api.depends('detail_ids_1', 'detail_ids_2', 'detail_ids_3', 'detail_ids_4', 'detail_ids_5',
+        'is_selected_detail1', 'is_selected_detail2', 'is_selected_detail3', 'is_selected_detail4', 'is_selected_detail5',
+        'is_detail1', 'is_detail2', 'is_detail3', 'is_detail4', 'is_detail5')
+    def _get_total_bom(self):
+        for res in self:
+            total_bom = 0
+            total_tebal = 0
+
+            if res.is_selected_detail1:
+                for bom in detail_ids_1:
+                    total_bom += 1
+                    total_tebal += bom.product_id.tebal
+
+            elif res.is_selected_detail2:
+                for bom in detail_ids_2:
+                    total_bom += 1
+                    total_tebal += bom.product_id.tebal
+
+            elif res.is_selected_detail3:
+                for bom in detail_ids_3:
+                    total_bom += 1
+                    total_tebal += bom.product_id.tebal
+
+            elif res.is_selected_detail4:
+                for bom in detail_ids_4:
+                    total_bom += 1
+                    total_tebal += bom.product_id.tebal
+
+            elif res.is_selected_detail5:
+                for bom in detail_ids_5:
+                    total_bom += 1
+                    total_tebal += bom.product_id.tebal
+
+            res.total_bom = total_bom
+            res.total_tebal = total_tebal
+            res.percent_tebal = total_tebal / res.thick * 100
+
 
     @api.depends('total_qty', 'spare_qty')
     def _get_total_qty_spare(self):
