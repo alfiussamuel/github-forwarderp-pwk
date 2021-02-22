@@ -661,8 +661,8 @@
                             <field name="thick" invisible="1"/>
                             <field name="width" invisible="1"/>
                             <field name="length" invisible="1"/>
-                            <field name="volume"/>
-                            <field name="volume_qty"/>
+                            <field name="volume" sum="Total"/>
+                            <field name="volume_qty" sum="Total"/>
                             <field
                                 name="product_uom_qty"
                                 string="Qty"
@@ -672,7 +672,7 @@
                                     'pricelist': parent.pricelist_id,
                                     'uom': product_uom,
                                     'company_id': parent.company_id
-                                }"/>
+                                }" sum="Total"/>
                             <field name="outstanding_order_pcs" invisible="1"/>
                             <field
                                 name="qty_delivered" invisible="1"
