@@ -116,7 +116,7 @@ class RpmReportXls(models.AbstractModel):
         sheet.write(row+1, 8, 'P', formatHeaderTable)
         sheet.write(row+1, 9, 'Pcs', formatHeaderTable)
         sheet.write(row+1, 10, 'M3', formatHeaderTable)
-        sheet.merge_range(row+1, 11, row+1, 12 'BOM', formatHeaderTable)
+        sheet.merge_range(row+1, 11, row+1, 12, 'BOM', formatHeaderTable)
         sheet.write(row+1, 13, 'Ply', formatHeaderTable)
         
         row = 7
