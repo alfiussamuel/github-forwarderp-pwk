@@ -36,49 +36,72 @@ class PwkGenerateRpmWizard(models.TransientModel):
                 })
 
                 if rpm_line_id:
-                    model_detail = ''
-                    list_detail = ''
-                    command = ''
-
                     if line.is_detail1:
-                        print("masuk 1")
-                        model_detail = self.env['pwk.rpm.line.detail1']
-                        list_detail = line.detail_ids_1
-                        command = 'is_detail1'
+                        for bom in list_detail:
+                            self.env['pwk.rpm.line.detail1'].create({
+                                'reference': rpm_line_id.id,
+                                'product_id': bom.product_id.id,
+                                'thick': bom.thick,
+                                'width': bom.width,
+                                'length': bom.length,
+                                'ply': bom.ply,
+                                'quantity': bom.quantity,
+                            })
+
+                            rpm_line_id.write({'is_detail1': True})
+
                     elif line.is_detail2:
-                        print("masuk 2")
-                        model_detail = self.env['pwk.rpm.line.detail2']
-                        list_detail = line.detail_ids_2
-                        command = 'is_detail2'
+                        for bom in list_detail2:
+                            self.env['pwk.rpm.line.detail2'].create({
+                                'reference': rpm_line_id.id,
+                                'product_id': bom.product_id.id,
+                                'thick': bom.thick,
+                                'width': bom.width,
+                                'length': bom.length,
+                                'ply': bom.ply,
+                                'quantity': bom.quantity,
+                            })
+
+                            rpm_line_id.write({'is_detail2': True})
+
                     elif line.is_detail3:
-                        print("masuk 3")
-                        model_detail = self.env['pwk.rpm.line.detail3']
-                        list_detail = line.detail_ids_3
-                        command = 'is_detail3'
+                        for bom in list_detail3:
+                            self.env['pwk.rpm.line.detail3'].create({
+                                'reference': rpm_line_id.id,
+                                'product_id': bom.product_id.id,
+                                'thick': bom.thick,
+                                'width': bom.width,
+                                'length': bom.length,
+                                'ply': bom.ply,
+                                'quantity': bom.quantity,
+                            })
+
+                            rpm_line_id.write({'is_detail3': True})
+
                     elif line.is_detail4:
-                        print("masuk 4")
-                        model_detail = self.env['pwk.rpm.line.detail4']
-                        list_detail = line.detail_ids_4
-                        command = 'is_detail4'
+                        for bom in list_detail4:
+                            self.env['pwk.rpm.line.detail4'].create({
+                                'reference': rpm_line_id.id,
+                                'product_id': bom.product_id.id,
+                                'thick': bom.thick,
+                                'width': bom.width,
+                                'length': bom.length,
+                                'ply': bom.ply,
+                                'quantity': bom.quantity,
+                            })
+
+                            rpm_line_id.write({'is_detail4': True})
+
                     elif line.is_detail5:
-                        print("masuk 5")
-                        model_detail = self.env['pwk.rpm.line.detail5']
-                        list_detail = line.detail_ids_5
-                        command = 'is_detail5'
+                        for bom in list_detail5:
+                            self.env['pwk.rpm.line.detail5'].create({
+                                'reference': rpm_line_id.id,
+                                'product_id': bom.product_id.id,
+                                'thick': bom.thick,
+                                'width': bom.width,
+                                'length': bom.length,
+                                'ply': bom.ply,
+                                'quantity': bom.quantity,
+                            })
 
-                    print ("masuk 6")
-                    for bom in list_detail:
-                        print ("masuk 7")
-                        model_detail.create({
-                            'reference': rpm_line_id.id,
-                            'product_id': bom.product_id.id,
-                            'thick': bom.thick,
-                            'width': bom.width,
-                            'length': bom.length,
-                            'ply': bom.ply,
-                            'quantity': bom.quantity,
-                        })
-
-                    rpm_line_id.write({command: True})
-
-
+                            rpm_line_id.write({'is_detail5': True})
