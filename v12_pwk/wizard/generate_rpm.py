@@ -24,7 +24,7 @@ class PwkGenerateRpmWizard(models.TransientModel):
     	rpm_id = self.env['pwk.rpm'].search([('id', '=', active_id)])
 
     	if self.rpb_line_ids:
-            for line in self.line_ids:
+            for line in self.rpb_line_ids:
                 self.env['pwk.rpm.line'].create({
                     'reference': rpm_id.id,
                     'rpb_line_id': line.id,
