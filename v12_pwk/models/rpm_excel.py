@@ -138,11 +138,15 @@ class RpmReportXls(models.AbstractModel):
         
         if lines.container_ids:
             for container in lines.container_ids:
+                print ("container ", container.name)
                 merge_range = int(container.total_product - 1)
+                print ("merge range ", container.name)
 
                 for container_line in container.line_ids:
-                    rpm_line = container_line.rpm_line_id    
+                    print ("container line ", container_line.rpm_line_id.product_id.name)
+                    rpm_line = container_line.rpm_line_id
                     merge_range_bom = int(rpm_line.total_bom - 1)
+                    print ("merge range bom ", container.name)
 
                     sheet.merge_range(row, 0, row + merge_range, 0, number, formatHeaderDetailCenter)
                     sheet.merge_range(row, 1, row + merge_range, 1, rpm_line.po_number, formatHeaderDetailCenter)
@@ -159,35 +163,32 @@ class RpmReportXls(models.AbstractModel):
                     sheet.merge_range(row, 17, row + merge_range_bom, 17, rpm_line.percent_tebal, formatHeaderDetailCenter)
                     sheet.merge_range(row, 18, row + merge_range_bom, 18, (rpm_line.notes or ''), formatHeaderDetailLeft)
 
-                    if rpm_line:
-                        if rpm_line.is_selected_detail1 and rpm_line.detail_ids_1:
-                            detail_ids = rpm_line.detail_ids_1
-                        elif rpm_line.is_selected_detail2 and rpm_line.detail_ids_2:
-                            detail_ids = rpm_line.detail_ids_2
-                        elif rpm_line.is_selected_detail3 and rpm_line.detail_ids_3:
-                            detail_ids = rpm_line.detail_ids_3
-                        elif rpm_line.is_selected_detail4 and rpm_line.detail_ids_4:
-                            detail_ids = rpm_line.detail_ids_4
-                        elif rpm_line.is_selected_detail5 and rpm_line.detail_ids_5:
-                            detail_ids = rpm_line.detail_ids_5
+                    if rpm_line.is_selected_detail1 and rpm_line.detail_ids_1:
+                        detail_ids = rpm_line.detail_ids_1
+                    elif rpm_line.is_selected_detail2 and rpm_line.detail_ids_2:
+                        detail_ids = rpm_line.detail_ids_2
+                    elif rpm_line.is_selected_detail3 and rpm_line.detail_ids_3:
+                        detail_ids = rpm_line.detail_ids_3
+                    elif rpm_line.is_selected_detail4 and rpm_line.detail_ids_4:
+                        detail_ids = rpm_line.detail_ids_4
+                    elif rpm_line.is_selected_detail5 and rpm_line.detail_ids_5:
+                        detail_ids = rpm_line.detail_ids_5
 
-                        if detail_ids:
-                            for bom_line in detail_ids:
-                                bom_label = ''
-                                if bom_line.product_id.goods_type == 'Faceback':
-                                    bom_label = 'F/B ' + bom_line.product_id.jenis_kayu.name
-                                elif bom_line.product_id.goods_type == 'Barecore':
-                                    bom_label = 'BC ' + bom_line.product_id.grade.name
-                                else:
-                                    bom_label = bom_line.product_id.grade.name
+                    if detail_ids:
+                        for bom_line in detail_ids:
+                            bom_label = ''
+                            if bom_line.product_id.goods_type == 'Faceback':
+                                bom_label = 'F/B ' + bom_line.product_id.jenis_kayu.name
+                            elif bom_line.product_id.goods_type == 'Barecore':
+                                bom_label = 'BC ' + bom_line.product_id.grade.name
+                            else:
+                                bom_label = bom_line.product_id.grade.name
 
-                                sheet.write(row, 11, bom_label, formatHeaderDetailCenter)
-                                sheet.write(row, 12, bom_line.product_id.tebal, formatHeaderDetailCenter)
-                                sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
-                                sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
-                                sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
-                                row += 1
-                        else:
+                            sheet.write(row, 11, bom_label, formatHeaderDetailCenter)
+                            sheet.write(row, 12, bom_line.product_id.tebal, formatHeaderDetailCenter)
+                            sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
+                            sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
+                            sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
                             row += 1
 
-                        number += 1
+                    number += 1
