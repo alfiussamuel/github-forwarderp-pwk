@@ -229,6 +229,14 @@
             </field>
         </record>
 
+        <report
+            id="report_rpm"
+            model="pwk.rpm"
+            string="Rencana Produksi Mingguan"
+            report_type="xlsx"
+            name="v12_pwk.rpm_report_xls.xlsx"
+            file="v12_pwk.rpm_report_xls.xlsx"/>
+
         <record id="pwk_rpm_form" model="ir.ui.view">
             <field name="name">Rencana Produksi Mingguan</field>
             <field name="model">pwk.rpm</field>
