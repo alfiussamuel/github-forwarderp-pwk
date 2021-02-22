@@ -36,6 +36,26 @@ class PwkGenerateRpmWizard(models.TransientModel):
                 })
 
                 if rpm_line_id:
+                    # Check existing RPM Container and Fill Container
+                    rpm_container_id = self.env['pwk.rpm.container'].search([
+                        ('name', '=', line.container_id.name),
+                        ('reference', '=', rpm_id.id)
+                    ])
+
+                    if not rpm_container_id:
+                        rpm_container_id = self.env['pwk.rpm.container'].create({
+                            'reference': rpm_id.id,
+                            'name': line.container_id.name,
+                            })
+
+                    self.env['pwk.rpm.container.line'].create({
+                        'reference': rpm_container_id.id,
+                        'sale_id': line.sale_id.id,
+                        'sale_line_id': line.sale_line_id.id,
+                        'container_qty': line.total_qty
+                        })
+
+                    # Fill Bill of Material from RPB
                     if line.is_detail1 and line.is_selected_detail1:
                         for bom in line.detail_ids_1:
                             self.env['pwk.rpm.line.detail1'].create({
@@ -51,25 +71,6 @@ class PwkGenerateRpmWizard(models.TransientModel):
                             rpm_line_id.write({
                                 'is_detail1': True,
                                 'is_selected_detail1': True,
-                            })
-
-                        # Check existing RPM Container
-                        rpm_container_id = self.env['pwk.rpm.container'].search([
-                            ('name', '=', line.container_id.name),
-                            ('reference', '=', rpm_id.id)
-                        ])
-
-                        if not rpm_container_id:
-                            rpm_container_id = self.env['pwk.rpm.container'].create({
-                                'reference': rpm_id.id,
-                                'name': line.container_id.name,
-                                })
-
-                        self.env['pwk.rpm.container.line'].create({
-                            'reference': rpm_container_id.id,
-                            'sale_id': line.sale_id.id,
-                            'sale_line_id': line.sale_line_id.id,
-                            'container_qty': line.total_qty
                             })
 
                     elif line.is_detail2 and line.is_selected_detail2:
