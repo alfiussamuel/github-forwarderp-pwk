@@ -142,6 +142,7 @@ class RpmReportXls(models.AbstractModel):
 
                 for container_line in container.line_ids:
                     merge_range += container_line.rpm_line_id.total_bom
+                    print ("Merge Range add ", merge_range)
 
                 print ("container ", container.name)
                 print ("merge range ", merge_range)
