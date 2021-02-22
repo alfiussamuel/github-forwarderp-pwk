@@ -425,7 +425,59 @@
                                             </form>
                                         </field>
                                     </group>
-                                </page>                                
+                                </page>
+                                <page string="RPM by Container">
+                                    <field name="container_ids" nolabel="1">
+                                        <tree>
+                                            <field name="name"/>
+                                            <field name="total_product"/>
+                                            <field name="total_product_qty"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="name" readonly="1"/>
+                                                <field name="total_product"/>
+                                                <field name="total_product_qty"/>
+                                            </group>
+                                            <group>
+                                                <field name="line_ids" nolabel="1">
+                                                    <tree editable="top">
+                                                        <field name="partner_id" readonly="1"/>
+                                                        <field name="sale_id" readonly="1"/>
+                                                        <field name="product_id" readonly="1"/>
+                                                        <field name="thick" readonly="1" invisible="1"/>
+                                                        <field name="width" readonly="1" invisible="1"/>
+                                                        <field name="length" readonly="1" invisible="1"/>
+                                                        <field name="glue_id" readonly="1" invisible="1"/>
+                                                        <field name="grade_id" readonly="1" invisible="1"/>
+                                                        <field name="container_qty" required="1"/>
+                                                        <field name="container_vol"/>
+                                                    </tree>
+                                                    <form>
+                                                        <group>
+                                                            <field name="partner_id"/>
+                                                            <field name="sale_id"/>
+                                                        </group>
+                                                        <group>
+                                                            <group>
+                                                                <field name="product_id"/>
+                                                                <field name="thick"/>
+                                                                <field name="width"/>
+                                                                <field name="length"/>
+                                                            </group>
+                                                            <group>
+                                                                <field name="glue_id"/>
+                                                                <field name="grade_id"/>
+                                                                <field name="container_qty"/>
+                                                                <field name="container_vol"/>
+                                                            </group>
+                                                        </group>
+                                                    </form>
+                                                </field>
+                                            </group>
+                                        </form> 
+                                    </field>
+                                </page>
                             </notebook>
                         </group>
                     </sheet>

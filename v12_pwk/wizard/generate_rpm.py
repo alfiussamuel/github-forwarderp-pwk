@@ -53,6 +53,25 @@ class PwkGenerateRpmWizard(models.TransientModel):
                                 'is_selected_detail1': True,
                             })
 
+                            # Check existing RPM Container
+                            rpm_container_id = self.env['pwk.rpm.container'].search([
+                                ('name', '=', line.container_id.name),
+                                ('reference', '=', rpm_id.id)
+                            ])
+
+                            if not rpm_container_id:
+                                rpm_container_id = self.env['pwk.rpm.container'].create({
+                                    'reference': rpm_id.id,
+                                    'name': line.container_id.name,
+                                    })
+
+                            self.env['pwk.rpm.container.line'].create({
+                                'reference': rpm_container_id.id,
+                                'sale_id': line.order_id.id,
+                                'sale_line_id': line.id,
+                                'container_qty': line.total_qty
+                                })
+
                     elif line.is_detail2 and line.is_selected_detail2:
                         for bom in line.detail_ids_2:
                             self.env['pwk.rpm.line.detail2'].create({

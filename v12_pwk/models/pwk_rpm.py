@@ -14,6 +14,69 @@ import re
 from num2words import num2words
 
 
+class PwkRpmContainerLine(models.Model):    
+    _name = "pwk.rpm.container.line"
+
+    reference = fields.Many2one('pwk.rpm.container', string='Reference')
+    sale_id = fields.Many2one('sale.order', 'No. Order')
+    sale_line_id = fields.Many2one('sale.order.line', 'No. Order Line')
+    partner_id = fields.Many2one(compute="_get_sale_fields", comodel_name='res.partner', string='Buyer')
+    product_id = fields.Many2one(compute="_get_sale_fields", comodel_name='product.product', string='Product')
+    thick = fields.Float(compute="_get_sale_fields", string='Thick')
+    width = fields.Float(compute="_get_sale_fields", string='Width')
+    length = fields.Float(compute="_get_sale_fields", string='Length')
+    glue_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.glue', string='Glue')
+    grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')        
+    total_volume = fields.Float(compute="_get_sale_fields", string='Total Volume', digits=dp.get_precision('FourDecimal'))
+    job_order_status = fields.Char(compute="_get_sale_fields", string='Job Order Status')
+    container_qty = fields.Float('Quantity', digits=dp.get_precision('TwoDecimal'))
+    container_vol = fields.Float(compute="_get_container_vol", string='Cont Vol')
+
+    @api.depends('container_qty', 'remaining_qty')
+    def _get_container_vol(self):
+        for res in self:
+            if res.container_qty:
+                res.container_vol = res.container_qty * res.thick * res.width * res.length / 1000000000
+
+    @api.depends('sale_line_id')
+    def _get_sale_fields(self):
+        for res in self:
+            if res.sale_line_id:
+                res.partner_id = res.sale_line_id.order_id.partner_id.id
+                res.product_id = res.sale_line_id.product_id.id
+                res.thick = res.sale_line_id.thick
+                res.width = res.sale_line_id.width
+                res.length = res.sale_line_id.length
+                res.glue_id = res.sale_line_id.product_id.glue.id
+                res.grade_id = res.sale_line_id.product_id.grade.id
+                res.total_qty = res.sale_line_id.product_uom_qty
+                res.total_volume = res.sale_line_id.volume
+                res.job_order_status = res.sale_line_id.order_id.job_order_status
+
+class PwkRpmContainer(models.Model):    
+    _name = "pwk.rpm.container"
+
+    reference = fields.Many2one('pwk.rpm', string='Reference')
+    name = fields.Char('Container No.')
+    line_ids = fields.One2many('pwk.rpm.container.line', 'reference', string='Lines', ondelete="cascade")
+    total_product = fields.Float(compute="_get_qty", string='Jumlah Product', digits=dp.get_precision('TwoDecimal'))
+    total_product_qty = fields.Float(compute="_get_qty", string='Jumlah Qty Product', digits=dp.get_precision('TwoDecimal'))
+
+    @api.depends('line_ids')
+    def _get_qty(self):
+        for res in self:
+            total_qty = 0
+            total_product = 0
+            total_product_qty = 0
+
+            if res.line_ids:
+                for line in res.line_ids:
+                    total_product += 1
+                    total_product_qty + line.container_qty
+
+            res.total_product = total_product
+            res.total_product_qty = total_product_qty
+
 class PwkRpmLineDetail1(models.Model):    
     _name = "pwk.rpm.line.detail1"
 
@@ -336,6 +399,7 @@ class PwkRpm(models.Model):
     pr_id = fields.Many2one('pwk.purchase.request', string='Purchase Request')
     state = fields.Selection([('Draft','Draft'),('Purchase Request','Purchase Request')], string="Status", default="Draft")
     line_ids = fields.One2many('pwk.rpm.line', 'reference', string='Lines', ondelete="cascade")
+    container_ids = fields.One2many('pwk.rpm.container', 'reference', string='Container', ondelete="cascade")
 
     @api.multi
     def action_create_pr(self):
