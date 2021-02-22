@@ -26,7 +26,7 @@ class PwkGenerateRpmWizard(models.TransientModel):
         if self.rpb_id:
             rpm_id.write({
                 'rpb_id': self.rpb_id.id
-            })
+                })
 
     	if self.rpb_line_ids:
             for line in self.rpb_line_ids:
