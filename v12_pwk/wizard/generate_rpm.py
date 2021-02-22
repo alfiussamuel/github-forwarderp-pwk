@@ -22,6 +22,8 @@ class PwkGenerateRpmWizard(models.TransientModel):
     	context = dict(self._context or {})
     	active_id = context.get('active_id', False)
     	rpm_id = self.env['pwk.rpm'].search([('id', '=', active_id)])
+        model_detail = ''
+        list_detail = ''
 
     	if self.rpb_line_ids:
             rpm_id.write({'rpb_id': self.rpb_id.id})
