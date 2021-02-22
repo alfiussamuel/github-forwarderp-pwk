@@ -107,7 +107,7 @@ class RpmReportXls(models.AbstractModel):
         sheet.merge_range(row, 11, row, 13, 'Bahan Baku', formatHeaderTable)
         sheet.merge_range(row, 14, row+1, 15, 'Kebutuhan', formatHeaderTable)
         sheet.merge_range(row, 16, row+1, 16, 'TOTAL BOM', formatHeaderTable)
-        sheet.merge_range(row, 17, row, 17, 'RC', formatHeaderTable)
+        sheet.write(row, 17, 'RC', formatHeaderTable)
         sheet.merge_range(row, 18, row+1, 18, 'Spesifikasi Product', formatHeaderTable)
 
         # Merge 3 and 4
@@ -118,6 +118,7 @@ class RpmReportXls(models.AbstractModel):
         sheet.write(row+1, 10, 'M3', formatHeaderTable)
         sheet.merge_range(row+1, 11, row+1, 12, 'BOM', formatHeaderTable)
         sheet.write(row+1, 13, 'Ply', formatHeaderTable)
+        sheet.write(row+1, 17, 'Barang Jadi', formatHeaderTable)
         
         row = 7
         number = 1        
