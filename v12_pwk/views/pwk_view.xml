@@ -269,7 +269,8 @@
                                                 <field name="product_id"/>
                                                 <field name="rpb_id"/>
                                                 <field name="partner_id"/>
-                                                <field name="sale_id"/>
+                                                <field name="po_number"/>
+                                                <field name="destination_id"/>
                                                 <field name="thick" invisible="1"/>
                                                 <field name="width" invisible="1"/>
                                                 <field name="length" invisible="1"/>
