@@ -25,6 +25,7 @@ class PwkRpmLineDetail1(models.Model):
     quantity = fields.Float(string='Quantity')
     ply = fields.Float(string='Ply')
     available_qty = fields.Float(compute="_get_available_qty", string="Qty Available")
+    notes = fields.Text('Notes')
     
     @api.depends('product_id')
     def _get_available_qty(self):
@@ -43,6 +44,7 @@ class PwkRpmLineDetail2(models.Model):
     quantity = fields.Float(string='Quantity')
     ply = fields.Float(string='Ply')
     available_qty = fields.Float(compute="_get_available_qty", string="Qty Available")
+    notes = fields.Text('Notes')
     
     @api.depends('product_id')
     def _get_available_qty(self):
@@ -61,6 +63,7 @@ class PwkRpmLineDetail3(models.Model):
     quantity = fields.Float(string='Quantity')
     ply = fields.Float(string='Ply')
     available_qty = fields.Float(compute="_get_available_qty", string="Qty Available")
+    notes = fields.Text('Notes')
     
     @api.depends('product_id')
     def _get_available_qty(self):
@@ -79,6 +82,7 @@ class PwkRpmLineDetail4(models.Model):
     quantity = fields.Float(string='Quantity')
     ply = fields.Float(string='Ply')
     available_qty = fields.Float(compute="_get_available_qty", string="Qty Available")
+    notes = fields.Text('Notes')
     
     @api.depends('product_id')
     def _get_available_qty(self):
@@ -97,6 +101,7 @@ class PwkRpmLineDetail5(models.Model):
     quantity = fields.Float(string='Quantity')
     ply = fields.Float(string='Ply')
     available_qty = fields.Float(compute="_get_available_qty", string="Qty Available")
+    notes = fields.Text('Notes')
     
     @api.depends('product_id')
     def _get_available_qty(self):
