@@ -254,7 +254,7 @@
                                 <field name="date_start" class="oe_inline" required="1"/> - 
                                 <field name="date_end" class="oe_inline" required="1"/>
                             </div>
-                            <!-- <field name="rpb_id" class="oe_inline"/>                             -->
+                            <field name="rpb_id" class="oe_inline" readonly="1"/>                            
                         </group>
                         <group>
                             <notebook>
