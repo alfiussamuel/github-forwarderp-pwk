@@ -67,8 +67,8 @@ class PwkGenerateRpmWizard(models.TransientModel):
 
                             self.env['pwk.rpm.container.line'].create({
                                 'reference': rpm_container_id.id,
-                                'sale_id': line.order_id.id,
-                                'sale_line_id': line.id,
+                                'sale_id': line.sale_id.id,
+                                'sale_line_id': line.sale_line_id.id,
                                 'container_qty': line.total_qty
                                 })
 
