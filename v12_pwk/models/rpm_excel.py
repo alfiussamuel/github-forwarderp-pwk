@@ -163,6 +163,7 @@ class RpmReportXls(models.AbstractModel):
                     sheet.merge_range(row, 17, row + merge_range_bom, 17, rpm_line.percent_tebal, formatHeaderDetailCenter)
                     sheet.merge_range(row, 18, row + merge_range_bom, 18, (rpm_line.notes or ''), formatHeaderDetailLeft)
 
+                    detail_ids = ''
                     if rpm_line.is_selected_detail1 and rpm_line.detail_ids_1:
                         detail_ids = rpm_line.detail_ids_1
                     elif rpm_line.is_selected_detail2 and rpm_line.detail_ids_2:
