@@ -18,7 +18,8 @@
 						<notebook>
 							<page string="RPB Detail">
 								<group>
-									<field name="rpb_line_ids" nolabel="1">
+									<field name="rpb_line_ids" nolabel="1"
+										domain="[('reference', '=', rpb_id)]">
 										<tree editable="top">
 											<field name="container_id" string="No."/>
 						                    <field name="partner_id" readonly="1"/>
