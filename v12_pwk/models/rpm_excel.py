@@ -14,13 +14,21 @@ class RpmReportXls(models.AbstractModel):
         lines = []
         if data.line_ids:
             for line in data.line_ids:
+                bom_label = ''
+                if line.product_id.goods_type == 'Faceback':
+                    bom_label = 'F/B ' + line.product_id.jenis_kayu.name
+                elif line.product_id.goods_type == 'Barecore':
+                    bom_label = 'BC ' + line.product_id.grade.name
+                else:
+                    bom_label = line.product_id.grade.name
+
                 vals = {
                     'id': line.id,
                     'partner_id': line.partner_id.name,
                     'po_number': line.po_number,
                     'product_id': line.product_id.goods_type,
                     'glue_id': line.glue_id.name,
-                    'grade_id': line.grade_id.name,
+                    'grade_id': bom_label,
                     'tebal': line.thick,
                     'lebar': line.width,
                     'panjang': line.length,
@@ -85,8 +93,8 @@ class RpmReportXls(models.AbstractModel):
         # Set Column Width
         sheet.set_column(0, 0, 3)
         sheet.set_column(1, 1, 10)
-        sheet.set_column(2, 2, 15)
-        sheet.set_column(3, 3, 20)
+        sheet.set_column(2, 2, 18)
+        sheet.set_column(3, 3, 15)
         sheet.set_column(4, 4, 10)
         sheet.set_column(5, 5, 10)
         sheet.set_column(6, 6, 4)
@@ -154,6 +162,7 @@ class RpmReportXls(models.AbstractModel):
             sheet.merge_range(row, 10, row + merge_range, 10, i['total_volume'], formatHeaderDetailCenter)
             sheet.merge_range(row, 16, row + merge_range, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
             sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
+            sheet.merge_range(row, 18, row + merge_range, 18, rpm_line_obj.notes, formatHeaderDetailLeft)
 
             if rpm_line_obj:
                 if rpm_line_obj.is_selected_detail1 and rpm_line_obj.detail_ids_1:
@@ -174,7 +183,6 @@ class RpmReportXls(models.AbstractModel):
                         sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
                         sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
                         sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
-                        sheet.write(row, 18, (bom_line.notes or ''), formatHeaderDetailCenter)
                         row += 1
             else:
                 row += 1
