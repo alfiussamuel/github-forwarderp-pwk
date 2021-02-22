@@ -426,8 +426,6 @@
                             string="Preview" invisible="1"/>
                         <button name="action_quotation_send" type="object" 
                             string="Send PRO-FORMA Invoice" groups="sale.group_proforma_sales" context="{'proforma': True}" invisible="1"/>
-                        <!-- <button name="print_quotation" string="Print" type="object" 
-                            states="sent,sale" class="o_sale_print"/> -->
                         <button name="action_quotation_send" string="Send by Email" 
                             type="object" states="sent,sale" invisible="1"/>
                         <button name="action_cancel" states="draft,sent,sale" 
@@ -440,34 +438,7 @@
                             states="done" groups="sales_team.group_sale_manager" invisible="1"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,Sales Contract,sale,cancel"/>
                     </header>
-                </header>       
-                <!-- <xpath expr="//page[1]" position="after">
-                    <page string="Stempel">
-                        <field name="stempel_ids" nolabel="1">
-                            <tree editable="bottom">
-                                <field name="stempel_id"
-                                    options="{'no_create': True}"/>
-                                <field name="position"/>
-                            </tree>
-                        </field>
-                    </page>
-                    <page string="Sticker">
-                        <field name="sticker_ids" nolabel="1">
-                            <tree editable="bottom">
-                                <field name="sticker_id"
-                                    options="{'no_create': True}"/>
-                            </tree>
-                        </field>
-                    </page>
-                    <page string="Marking">
-                        <field name="marking_ids" nolabel="1">
-                            <tree editable="bottom">
-                                <field name="marking_id"
-                                    options="{'no_create': True}"/>
-                            </tree>
-                        </field>
-                    </page>
-                </xpath>     -->     
+                </header>          
                 <field name="validity_date" position="before">
                     <field name="is_logo"/>
                     <field name="certificate_id"                                
@@ -546,7 +517,8 @@
                                     <label for="discount" groups="sale.group_discount_per_so_line"/>
                                     <div name="discount" groups="sale.group_discount_per_so_line">
                                         <field name="discount" class="oe_inline"/> %%
-                                    </div>                                    
+                                    </div>
+                                    <field name="container"/>
                                     <field name="sequence" invisible="1"/>
                                 </group>                                
                                 <group attrs="{'invisible': [('display_type', '!=', False)]}">
@@ -703,6 +675,7 @@
                                 widget="many2many_tags"
                                 invisible="1"
                                 options="{'color_field': 'color'}"/>
+                            <field name="container"/>
                             <field
                                 name="price_unit"
                                 attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"/>

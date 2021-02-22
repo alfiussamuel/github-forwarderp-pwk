@@ -112,6 +112,7 @@ class SaleOrderLine(models.Model):
         # return "Apasih"
         return self.product_id.name
     
+    container = fields.Integer('Jumlah Container')
     is_changed = fields.Boolean('Changed')
     is_qty_volume = fields.Boolean('Qty Volume')
     marking = fields.Char('No. Marking')
