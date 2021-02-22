@@ -86,7 +86,7 @@ class RpmReportXls(models.AbstractModel):
         sheet.set_column(0, 0, 3)
         sheet.set_column(1, 1, 10)
         sheet.set_column(2, 2, 15)
-        sheet.set_column(3, 3, 38)
+        sheet.set_column(3, 3, 20)
         sheet.set_column(4, 4, 10)
         sheet.set_column(5, 5, 10)
         sheet.set_column(6, 6, 4)
@@ -101,7 +101,7 @@ class RpmReportXls(models.AbstractModel):
         sheet.set_column(15, 15, 5)
         sheet.set_column(16, 16, 12)
         sheet.set_column(17, 17, 10)
-        sheet.set_column(18, 18, 20)
+        sheet.set_column(18, 18, 30)
         
         # Data 1
         row = 5
@@ -174,7 +174,10 @@ class RpmReportXls(models.AbstractModel):
                         sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
                         sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
                         sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
-                        sheet.write(row, 18, bom_line.notes, formatHeaderDetailCenter)
+                        if bom_line.notes:
+                            sheet.write(row, 18, '', formatHeaderDetailCenter)
+                        else:
+                            sheet.write(row, 18, bom_line.notes, formatHeaderDetailCenter)
                         row += 1
             else:
                 row += 1
