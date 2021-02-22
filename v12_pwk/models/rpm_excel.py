@@ -141,7 +141,7 @@ class RpmReportXls(models.AbstractModel):
             total_tebal = rpm_line_obj.total_tebal
             merge_range = total_bom - 1
 
-            sheet.write(row, 0, number, formatHeaderDetailCenter)
+            sheet.merge_range(row, row + merge_range,  0, number, formatHeaderDetailCenter)
             sheet.merge_range(row, 1, row + merge_range, 1, i['po_number'], formatHeaderDetailCenter)
             sheet.merge_range(row, 2, row + merge_range, 2, i['partner_id'], formatHeaderDetailCenter)
             sheet.merge_range(row, 3, row + merge_range, 3, i['product_id'], formatHeaderDetailCenter)            
@@ -161,7 +161,7 @@ class RpmReportXls(models.AbstractModel):
                         sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
                         sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
                         sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
-                        sheet.merge_range(row, 16, row + merge_range, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
+                        sheet.write(row, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
                         sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
                         row += 1
 
