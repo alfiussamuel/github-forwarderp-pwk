@@ -81,9 +81,9 @@ class RpmReportXls(models.AbstractModel):
         
         # Set Column Width
         sheet.set_column(0, 0, 3)
-        sheet.set_column(1, 1, 20)
-        sheet.set_column(2, 2, 33)
-        sheet.set_column(3, 3, 8)
+        sheet.set_column(1, 1, 10)
+        sheet.set_column(2, 2, 15)
+        sheet.set_column(3, 3, 30)
         sheet.set_column(4, 4, 10)
         sheet.set_column(5, 5, 10)
         sheet.set_column(6, 6, 4)
@@ -103,11 +103,21 @@ class RpmReportXls(models.AbstractModel):
         sheet.merge_range(row, 4, row+1, 4, 'Glue Type', formatHeaderTable)
         sheet.merge_range(row, 5, row+1, 5, 'Grade', formatHeaderTable)
         sheet.merge_range(row, 6, row, 8, 'Size (mm)', formatHeaderTable)
+        sheet.merge_range(row, 9, row, 10, 'Order', formatHeaderTable)
+        sheet.merge_range(row, 11, row, 13, 'Bahan Baku', formatHeaderTable)
+        sheet.merge_range(row, 14, row+1, 15, 'Kebutuhan', formatHeaderTable)
+        sheet.merge_range(row, 16, row+1, 16, 'TOTAL BOM', formatHeaderTable)
+        sheet.merge_range(row, 17, row, 17, 'RC', formatHeaderTable)
+        sheet.merge_range(row, 18, row+1, 18, 'Spesifikasi Product', formatHeaderTable)
 
         # Merge 3 and 4
         sheet.write(row+1, 6, 'T', formatHeaderTable)
         sheet.write(row+1, 7, 'L', formatHeaderTable)
         sheet.write(row+1, 8, 'P', formatHeaderTable)
+        sheet.write(row+1, 9, 'Pcs', formatHeaderTable)
+        sheet.write(row+1, 10, 'M3', formatHeaderTable)
+        sheet.merge_range(row+1, 11, row+1, 12 'BOM', formatHeaderTable)
+        sheet.write(row+1, 13, 'Ply', formatHeaderTable)
         
         row = 7
         number = 1        
