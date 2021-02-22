@@ -151,7 +151,7 @@ class RpmReportXls(models.AbstractModel):
                     print ("container line ", container_line.rpm_line_id.product_id.name)
                     rpm_line = container_line.rpm_line_id
                     merge_range_bom = int(rpm_line.total_bom - 1)
-                    print ("merge range bom ", container.name)
+                    print ("merge range bom ", merge_range_bom)
 
                     sheet.merge_range(row, 0, row + merge_range, 0, number, formatHeaderDetailCenter)
                     sheet.merge_range(row, 1, row + merge_range, 1, rpm_line.po_number, formatHeaderDetailCenter)
