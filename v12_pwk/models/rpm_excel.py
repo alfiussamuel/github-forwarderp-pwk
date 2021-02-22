@@ -152,7 +152,7 @@ class RpmReportXls(models.AbstractModel):
             sheet.merge_range(row, 8, row + merge_range, 8, i['panjang'], formatHeaderDetailCenter)
             sheet.merge_range(row, 9, row + merge_range, 9, i['total_qty'], formatHeaderDetailCenter)
             sheet.merge_range(row, 10, row + merge_range, 10, i['total_volume'], formatHeaderDetailCenter)
-            sheet.merge_range(row, 16, rpm_line_obj.total_tebal, row + merge_range, 16, formatHeaderDetailCenter)
+            sheet.merge_range(row, 16, row + merge_range, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
             sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
 
             if rpm_line_obj:
