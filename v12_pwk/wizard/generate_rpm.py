@@ -22,13 +22,14 @@ class PwkGenerateRpmWizard(models.TransientModel):
     	context = dict(self._context or {})
     	active_id = context.get('active_id', False)
     	rpm_id = self.env['pwk.rpm'].search([('id', '=', active_id)])
-        
+
     	if self.rpb_line_ids:
             rpm_id.write({'rpb_id': self.rpb_id.id})
             for line in self.rpb_line_ids:
                 self.env['pwk.rpm.line'].create({
                     'reference': rpm_id.id,
                     'rpb_line_id': line.id,
+                    'rpb_id': line.reference.id,
                     'sale_line_id': line.sale_line_id.id,
                     'sale_id': line.sale_line_id.order_id.id,
                     'total_qty': line.subtotal_qty
