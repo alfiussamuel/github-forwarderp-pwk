@@ -32,7 +32,7 @@ class PwkRpmContainerLine(models.Model):
     container_qty = fields.Float('Quantity', digits=dp.get_precision('TwoDecimal'))
     container_vol = fields.Float(compute="_get_container_vol", string='Cont Vol')
 
-    @api.depends('container_qty', 'remaining_qty')
+    @api.depends('container_qty')
     def _get_container_vol(self):
         for res in self:
             if res.container_qty:
