@@ -107,6 +107,7 @@ class PwkRpmLine(models.Model):
     sale_line_id = fields.Many2one('sale.order.line', 'No. Order Line')
     rpb_line_id = fields.Many2one('pwk.rpb.line', 'RPB Line')
     rpb_id = fields.Many2one('pwk.rpb', 'RPB')
+    po_number = fields.Char(compute="_get_sale_fields", string='PO No.')
     partner_id = fields.Many2one(compute="_get_sale_fields", comodel_name='res.partner', string='Buyer')
     product_id = fields.Many2one(compute="_get_sale_fields", comodel_name='product.product', string='Product')
     thick = fields.Float(compute="_get_sale_fields", string='Thick')
@@ -163,6 +164,7 @@ class PwkRpmLine(models.Model):
                 res.length = res.sale_line_id.length
                 res.glue_id = res.sale_line_id.product_id.glue.id
                 res.grade_id = res.sale_line_id.product_id.grade.id
+                res.po_number = res.sale_line_id.order_id.po_number
 
     @api.multi
     def button_reload_bom(self):
