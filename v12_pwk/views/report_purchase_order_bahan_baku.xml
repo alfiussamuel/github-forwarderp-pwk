@@ -416,7 +416,7 @@
         							<t t-set="i" t-value="i+1"/> 
 		                        </td>
 		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
-	    							<span t-field="l.product_id.jenis_kayu_id.name"/>
+	    							<span t-field="l.product_id.jenis_kayu.name"/>
 		                        </td>		                  
 		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">		
 		                            <span t-field="l.product_id.grade_id.name"/>

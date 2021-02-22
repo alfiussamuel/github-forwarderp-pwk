@@ -417,6 +417,7 @@ class PwkRpb(models.Model):
     state = fields.Selection([('Draft','Draft'),('Purchase Request','Purchase Request')], string="Status", default="Draft")
     line_ids = fields.One2many('pwk.rpb.line', 'reference', string='Lines', ondelete="cascade")
     container_ids = fields.One2many('pwk.rpb.container', 'reference', string='Container', ondelete="cascade")
+    total_container = fields.Integer(compute="_get_total_container", string='Total Container')
     rpm_ids = fields.One2many('pwk.rpm', 'rpb_id', string='RPM', ondelete="cascade")
     target = fields.Float('Target ( M3 )', digits=dp.get_precision('FourDecimal'))    
     actual = fields.Float(compute="_get_actual", string='Aktual ( M3 )', digits=dp.get_precision('FourDecimal'))
@@ -427,9 +428,15 @@ class PwkRpb(models.Model):
     pr_mdf_id = fields.Many2one('pwk.purchase.request', string='PR MDF')
     rpb_line_count = fields.Integer(string='# of Lines', compute='_get_count')
 
+    @api.depends('line_ids')
+    def _get_total_container(self):
+        for res in self:
+            if res.line_ids:
+                for line in res.line_ids:
+                    
+
     @api.multi
     def action_view_lines(self):
-        # action = self.env.ref('v12_pwk.pwk_rpb_line_tree').read()[0]
         action = self.env.ref('v12_pwk.action_pwk_rpb_line').read()[0]
         ids = []
         for res in self:

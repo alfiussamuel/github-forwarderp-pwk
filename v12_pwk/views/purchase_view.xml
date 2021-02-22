@@ -7,8 +7,8 @@
             <field name="inherit_id" ref="purchase.purchase_order_tree"/>
             <field name="arch" type="xml">
                 <field name="date_order" position="before">
-                    <field name="purchase_type" readonly="1"/>
-                    <field name="export_local"/>
+                    <field name="purchase_type"/>
+                    <field name="export_local" invisible="1"/>
                 </field>
             </field>
         </record>
@@ -237,7 +237,7 @@
             <field name="model">purchase.order</field>
             <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
             <field name="arch" type="xml">
-                <field name="partner_id" position="after">
+                <field name="date_planned" position="before">
                     <field name="purchase_type"/>
                     <field name="export_local"/>
                 </field>
