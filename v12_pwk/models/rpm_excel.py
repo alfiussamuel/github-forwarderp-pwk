@@ -81,8 +81,6 @@ class RpmReportXls(models.AbstractModel):
         formatHeaderDetailCenter.set_text_wrap()
         formatHeaderDetailRight.set_text_wrap()
         formatHeaderDetailLeft.set_text_wrap()
-
-        formatHeaderDetailLeft.set_indent(0.5)
         
         # Set Column Width
         sheet.set_column(0, 0, 3)
@@ -156,7 +154,7 @@ class RpmReportXls(models.AbstractModel):
             sheet.merge_range(row, 10, row + merge_range, 10, i['total_volume'], formatHeaderDetailCenter)
             sheet.merge_range(row, 16, row + merge_range, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
             sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
-            sheet.merge_range(row, 18, row + merge_range, 18, rpm_line_obj.notes, formatHeaderDetailLeft)
+            sheet.merge_range(row, 18, row + merge_range, 18, (rpm_line_obj.notes or ''), formatHeaderDetailLeft)
 
             if rpm_line_obj:
                 if rpm_line_obj.is_selected_detail1 and rpm_line_obj.detail_ids_1:

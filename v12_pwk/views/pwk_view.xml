@@ -286,7 +286,7 @@
                                                 <field name="grade_id" invisible="1"/>
                                                 <field name="total_qty"/>
                                                 <field name="total_volume"/>
-                                                <field name="total_bom"/>
+                                                <field name="total_bom" invisible="1"/>
                                                 <field name="total_tebal"/>
                                                 <field name="percent_tebal"/>
                                             </tree>
