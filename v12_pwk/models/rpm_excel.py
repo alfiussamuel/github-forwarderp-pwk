@@ -138,11 +138,11 @@ class RpmReportXls(models.AbstractModel):
         
         if lines.container_ids:
             for container in lines.container_ids:
-                merge_range = container.total_product - 1
+                merge_range = int(container.total_product - 1)
 
                 for container_line in container.line_ids:
                     rpm_line = container_line.rpm_line_id    
-                    merge_range_bom = rpm_line.total_bom - 1
+                    merge_range_bom = int(rpm_line.total_bom - 1)
 
                     sheet.merge_range(row, 0, row + merge_range, 0, number, formatHeaderDetailCenter)
                     sheet.merge_range(row, 1, row + merge_range, 1, rpm_line.po_number, formatHeaderDetailCenter)
