@@ -417,7 +417,7 @@
 		                        	</strong>
 		                        </td>
 		                    </tr>
-		                    <tr>
+		                    <!-- <tr>
 		                    	<td style="text-align:center;border:0px;font-size:10px;padding:4px;">	
 									
 		                        </td>		                        		
@@ -437,7 +437,7 @@
 		                        		<span t-esc="'{0:,.0f}'.format(o.amount_untaxed)"/>
 		                        	</strong>
 		                        </td>
-		                    </tr>
+		                    </tr> -->
 		                    <tr>
 		                    	<td style="text-align:center;border:0px;font-size:10px;padding:4px;">									
 		                        </td>		                        		
@@ -559,12 +559,12 @@
 	        <field name="page_height">0</field>
 	        <field name="page_width">0</field>
 	        <field name="orientation">Portrait</field>
-	        <field name="margin_top">68</field>
+	        <field name="margin_top">72</field>
 	        <field name="margin_bottom">50</field>
 	        <field name="margin_left">5</field>
 	        <field name="margin_right">5</field>
 	        <field name="header_line" eval="False"/>
-	        <field name="header_spacing">64</field>
+	        <field name="header_spacing">68</field>
 	        <field name="dpi">80</field>
 	        <field name="sequence">3</field>
 	    </record>
