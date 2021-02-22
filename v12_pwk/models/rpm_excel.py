@@ -152,6 +152,8 @@ class RpmReportXls(models.AbstractModel):
             sheet.merge_range(row, 8, row + merge_range, 8, i['panjang'], formatHeaderDetailCenter)
             sheet.merge_range(row, 9, row + merge_range, 9, i['total_qty'], formatHeaderDetailCenter)
             sheet.merge_range(row, 10, row + merge_range, 10, i['total_volume'], formatHeaderDetailCenter)
+            sheet.merge_range(row, 16, rpm_line_obj.total_tebal, row + merge_range, 16, formatHeaderDetailCenter)
+            sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
 
             if rpm_line_obj:
                 if rpm_line_obj.is_selected_detail1 and rpm_line_obj.detail_ids_1:
@@ -161,8 +163,6 @@ class RpmReportXls(models.AbstractModel):
                         sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
                         sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
                         sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
-                        sheet.write(row, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
-                        sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
                         row += 1
 
                 elif rpm_line_obj.is_selected_detail2 and rpm_line_obj.detail_ids_2:
@@ -172,8 +172,6 @@ class RpmReportXls(models.AbstractModel):
                         sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
                         sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
                         sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
-                        sheet.write(row, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
-                        sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
                         row += 1
 
                 elif rpm_line_obj.is_selected_detail3 and rpm_line_obj.detail_ids_3:
@@ -183,8 +181,6 @@ class RpmReportXls(models.AbstractModel):
                         sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
                         sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
                         sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
-                        sheet.write(row, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
-                        sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
                         row += 1
 
                 elif rpm_line_obj.is_selected_detail4 and rpm_line_obj.detail_ids_4:
@@ -194,8 +190,6 @@ class RpmReportXls(models.AbstractModel):
                         sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
                         sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
                         sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
-                        sheet.write(row, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
-                        sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
                         row += 1
 
                 elif rpm_line_obj.is_selected_detail5 and rpm_line_obj.detail_ids_5:
@@ -205,8 +199,6 @@ class RpmReportXls(models.AbstractModel):
                         sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
                         sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
                         sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
-                        sheet.write(row, 16, rpm_line_obj.total_tebal, formatHeaderDetailCenter)
-                        sheet.merge_range(row, 17, row + merge_range, 17, rpm_line_obj.percent_tebal, formatHeaderDetailCenter)
                         row += 1
             else:
                 row += 1
