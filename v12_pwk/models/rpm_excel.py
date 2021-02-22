@@ -82,7 +82,7 @@ class RpmReportXls(models.AbstractModel):
         formatHeaderDetailRight.set_text_wrap()
         formatHeaderDetailLeft.set_text_wrap()
 
-        formatHeaderDetailLeft.set_paddings(3)
+        formatHeaderDetailLeft.set_margins(3)
         
         # Set Column Width
         sheet.set_column(0, 0, 3)
