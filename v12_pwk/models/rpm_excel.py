@@ -172,11 +172,11 @@ class RpmReportXls(models.AbstractModel):
                     for bom_line in detail_ids:
                         bom_label = ''
                         if bom_line.product_id.goods_type == 'Faceback':
-                            bom_label = 'F/B ' + line.product_id.jenis_kayu.name
+                            bom_label = 'F/B ' + bom_line.product_id.jenis_kayu.name
                         elif bom_line.product_id.goods_type == 'Barecore':
-                            bom_label = 'BC ' + line.product_id.grade.name
+                            bom_label = 'BC ' + bom_line.product_id.grade.name
                         else:
-                            bom_label = line.product_id.grade.name
+                            bom_label = bom_line.product_id.grade.name
                             
                         sheet.write(row, 11, bom_line.bom_label, formatHeaderDetailCenter)
                         sheet.write(row, 12, bom_line.product_id.tebal, formatHeaderDetailCenter)
