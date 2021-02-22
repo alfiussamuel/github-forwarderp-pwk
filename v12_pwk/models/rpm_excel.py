@@ -104,9 +104,9 @@ class RpmReportXls(models.AbstractModel):
         sheet.set_column(18, 18, 35)
         
         # Data 1
-        row = 4
+        row = 5
 
-        sheet.merge_range(row-3, 0, row-3, 18, 'RENCANA PRODUKSI MINGGUAN', formatHeaderCenter)
+        sheet.merge_range(row-3, 0, row-2, 18, 'RENCANA PRODUKSI MINGGUAN', formatHeaderCenter)
 
         # merge 1 - 4 
         sheet.merge_range(row, 0, row+1, 0, 'No', formatHeaderTable)
