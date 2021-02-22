@@ -35,36 +35,36 @@ class PwkGenerateRpmWizard(models.TransientModel):
                     'total_qty': line.subtotal_qty
                 })
 
-            if rpm_line_id:
-                model_detail = ''
-                list_detail = ''
+                if rpm_line_id:
+                    model_detail = ''
+                    list_detail = ''
 
-                if rpm_line_id.is_detail1:
-                    model_detail = self.env['pwk.rpm.line.detail1']
-                    list_detail = rpm_line_id.detail_ids_1
-                elif rpm_line_id.is_detail2:
-                    model_detail = self.env['pwk.rpm.line.detail2']
-                    list_detail = rpm_line_id.detail_ids_2
-                elif rpm_line_id.is_detail3:
-                    model_detail = self.env['pwk.rpm.line.detail3']
-                    list_detail = rpm_line_id.detail_ids_3
-                elif rpm_line_id.is_detail4:
-                    model_detail = self.env['pwk.rpm.line.detail4']
-                    list_detail = rpm_line_id.detail_ids_4
-                elif rpm_line_id.is_detail5:
-                    model_detail = self.env['pwk.rpm.line.detail5']
-                    list_detail = rpm_line_id.detail_ids_5
+                    if line.is_detail1:
+                        model_detail = self.env['pwk.rpm.line.detail1']
+                        list_detail = line.detail_ids_1
+                    elif line.is_detail2:
+                        model_detail = self.env['pwk.rpm.line.detail2']
+                        list_detail = line.detail_ids_2
+                    elif line.is_detail3:
+                        model_detail = self.env['pwk.rpm.line.detail3']
+                        list_detail = line.detail_ids_3
+                    elif line.is_detail4:
+                        model_detail = self.env['pwk.rpm.line.detail4']
+                        list_detail = line.detail_ids_4
+                    elif line.is_detail5:
+                        model_detail = self.env['pwk.rpm.line.detail5']
+                        list_detail = line.detail_ids_5
 
-                if model_detail and list_detail:
-                    for bom in list_detail:
-                        model_detail.create({
-                            'reference': rpm_line_id.id,
-                            'product_id': bom.product_id.id,
-                            'thick': bom.thick,
-                            'width': bom.width,
-                            'length': bom.length,
-                            'ply': bom.ply,
-                            'quantity': bom.quantity,
-                        })
+                    if model_detail and list_detail:
+                        for bom in list_detail:
+                            model_detail.create({
+                                'reference': rpm_line_id.id,
+                                'product_id': bom.product_id.id,
+                                'thick': bom.thick,
+                                'width': bom.width,
+                                'length': bom.length,
+                                'ply': bom.ply,
+                                'quantity': bom.quantity,
+                            })
 
 
