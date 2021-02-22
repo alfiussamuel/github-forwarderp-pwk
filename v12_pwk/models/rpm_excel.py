@@ -110,28 +110,29 @@ class RpmReportXls(models.AbstractModel):
 
         # merge 1 - 4 
         sheet.merge_range(row, 0, row+1, 0, 'No', formatHeaderTable)
-        sheet.merge_range(row, 1, row+1, 1, 'No. SO', formatHeaderTable)
-        sheet.merge_range(row, 2, row+1, 2, 'Buyer', formatHeaderTable)
-        sheet.merge_range(row, 3, row+1, 3, 'Product', formatHeaderTable)
-        sheet.merge_range(row, 4, row+1, 4, 'Glue Type', formatHeaderTable)
-        sheet.merge_range(row, 5, row+1, 5, 'Grade', formatHeaderTable)
-        sheet.merge_range(row, 6, row, 8, 'Size (mm)', formatHeaderTable)
-        sheet.merge_range(row, 9, row, 10, 'Order', formatHeaderTable)
-        sheet.merge_range(row, 11, row, 13, 'Bahan Baku', formatHeaderTable)
-        sheet.merge_range(row, 14, row+1, 15, 'Kebutuhan', formatHeaderTable)
-        sheet.merge_range(row, 16, row+1, 16, 'Total BOM', formatHeaderTable)
-        sheet.write(row, 17, 'RC', formatHeaderTable)
-        sheet.merge_range(row, 18, row+1, 18, 'Spesifikasi Product', formatHeaderTable)
+        sheet.merge_range(row, 1, row+1, 1, 'Cont', formatHeaderTable)
+        sheet.merge_range(row, 2, row+1, 2, 'No. SO', formatHeaderTable)
+        sheet.merge_range(row, 3, row+1, 3, 'Buyer', formatHeaderTable)
+        sheet.merge_range(row, 4, row+1, 5, 'Product', formatHeaderTable)
+        sheet.merge_range(row, 5, row+1, 6, 'Glue Type', formatHeaderTable)
+        sheet.merge_range(row, 6, row+1, 7, 'Grade', formatHeaderTable)
+        sheet.merge_range(row, 7, row, 9, 'Size (mm)', formatHeaderTable)
+        sheet.merge_range(row, 10, row, 11, 'Order', formatHeaderTable)
+        sheet.merge_range(row, 12, row, 14, 'Bahan Baku', formatHeaderTable)
+        sheet.merge_range(row, 15, row+1, 16, 'Kebutuhan', formatHeaderTable)
+        sheet.merge_range(row, 17, row+1, 17, 'Total BOM', formatHeaderTable)
+        sheet.write(row, 18, 'RC', formatHeaderTable)
+        sheet.merge_range(row, 19, row+1, 19, 'Spesifikasi Product', formatHeaderTable)
 
         # Merge 3 and 4
-        sheet.write(row+1, 6, 'T', formatHeaderTable)
-        sheet.write(row+1, 7, 'L', formatHeaderTable)
-        sheet.write(row+1, 8, 'P', formatHeaderTable)
-        sheet.write(row+1, 9, 'Pcs', formatHeaderTable)
-        sheet.write(row+1, 10, 'M3', formatHeaderTable)
-        sheet.merge_range(row+1, 11, row+1, 12, 'BOM', formatHeaderTable)
-        sheet.write(row+1, 13, 'Ply', formatHeaderTable)
-        sheet.write(row+1, 17, 'Barang Jadi', formatHeaderTable)
+        sheet.write(row+1, 7, 'T', formatHeaderTable)
+        sheet.write(row+1, 8, 'L', formatHeaderTable)
+        sheet.write(row+1, 9, 'P', formatHeaderTable)
+        sheet.write(row+1, 10, 'Pcs', formatHeaderTable)
+        sheet.write(row+1, 11, 'M3', formatHeaderTable)
+        sheet.merge_range(row+1, 12, row+1, 13, 'BOM', formatHeaderTable)
+        sheet.write(row+1, 14, 'Ply', formatHeaderTable)
+        sheet.write(row+1, 18, 'Barang Jadi', formatHeaderTable)
         
         row = 7
         number = 1        
@@ -141,34 +142,34 @@ class RpmReportXls(models.AbstractModel):
                 merge_range = 0
 
                 for container_line in container.line_ids:
-                    merge_range += container_line.rpm_line_id.total_bom - 1
+                    merge_range += container_line.rpm_line_id.total_bom
                     print ("Merge Range add ", merge_range)
 
                 print ("container ", container.name)
                 print ("merge range ", merge_range)
 
-                # Merge by Container
-                sheet.merge_range(row, 0, row + merge_range, 0, number, formatHeaderDetailCenter)
-                sheet.merge_range(row, 1, row + merge_range, 1, rpm_line.po_number, formatHeaderDetailCenter)
-                sheet.merge_range(row, 2, row + merge_range, 2, rpm_line.partner_id.name, formatHeaderDetailCenter)
-                sheet.merge_range(row, 3, row + merge_range, 3, rpm_line.product_id.goods_type, formatHeaderDetailCenter)
+                sheet.merge_range(row, 0, row + merge_range - 1, 0, number, formatHeaderDetailCenter)
+                sheet.merge_range(row, 1, row + merge_range - 1, 1, '1', formatHeaderDetailCenter)
 
                 for container_line in container.line_ids:
                     print ("container line ", container_line.rpm_line_id.product_id.name)
                     rpm_line = container_line.rpm_line_id
                     merge_range_bom = int(rpm_line.total_bom - 1)
                     print ("merge range bom ", merge_range_bom)
-            
-                    sheet.merge_range(row, 4, row + merge_range_bom, 4, rpm_line.product_id.glue.name, formatHeaderDetailCenter)            
-                    sheet.merge_range(row, 5, row + merge_range_bom, 5, rpm_line.product_id.grade.name, formatHeaderDetailCenter)
-                    sheet.merge_range(row, 6, row + merge_range_bom, 6, rpm_line.product_id.tebal, formatHeaderDetailCenter)
-                    sheet.merge_range(row, 7, row + merge_range_bom, 7, rpm_line.product_id.lebar, formatHeaderDetailCenter)
-                    sheet.merge_range(row, 8, row + merge_range_bom, 8, rpm_line.product_id.panjang, formatHeaderDetailCenter)
-                    sheet.merge_range(row, 9, row + merge_range_bom, 9, rpm_line.total_qty, formatHeaderDetailCenter)
-                    sheet.merge_range(row, 10, row + merge_range_bom, 10, rpm_line.total_volume, formatHeaderDetailCenter)
-                    sheet.merge_range(row, 16, row + merge_range_bom, 16, rpm_line.total_tebal, formatHeaderDetailCenter)
-                    sheet.merge_range(row, 17, row + merge_range_bom, 17, rpm_line.percent_tebal, formatHeaderDetailCenter)
-                    sheet.merge_range(row, 18, row + merge_range_bom, 18, (rpm_line.notes or ''), formatHeaderDetailLeft)
+
+                    sheet.merge_range(row, 2, row + merge_range_bom, 2, rpm_line.po_number, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 3, row + merge_range_bom, 3, rpm_line.partner_id.name, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 4, row + merge_range_bom, 4, rpm_line.product_id.goods_type, formatHeaderDetailCenter)            
+                    sheet.merge_range(row, 5, row + merge_range_bom, 5, rpm_line.product_id.glue.name, formatHeaderDetailCenter)            
+                    sheet.merge_range(row, 6, row + merge_range_bom, 6, rpm_line.product_id.grade.name, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 7, row + merge_range_bom, 7, rpm_line.product_id.tebal, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 8, row + merge_range_bom, 8, rpm_line.product_id.lebar, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 9, row + merge_range_bom, 9, rpm_line.product_id.panjang, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 10, row + merge_range_bom, 10, rpm_line.total_qty, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 11, row + merge_range_bom, 11, rpm_line.total_volume, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 17, row + merge_range_bom, 17, rpm_line.total_tebal, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 18, row + merge_range_bom, 18, rpm_line.percent_tebal, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 19, row + merge_range_bom, 19, (rpm_line.notes or ''), formatHeaderDetailLeft)
 
                     detail_ids = ''
                     if rpm_line.is_selected_detail1 and rpm_line.detail_ids_1:
@@ -192,11 +193,11 @@ class RpmReportXls(models.AbstractModel):
                             else:
                                 bom_label = bom_line.product_id.grade.name
 
-                            sheet.write(row, 11, bom_label, formatHeaderDetailCenter)
-                            sheet.write(row, 12, bom_line.product_id.tebal, formatHeaderDetailCenter)
-                            sheet.write(row, 13, bom_line.ply, formatHeaderDetailCenter)
-                            sheet.write(row, 14, bom_line.quantity, formatHeaderDetailCenter)
-                            sheet.write(row, 15, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
+                            sheet.write(row, 12, bom_label, formatHeaderDetailCenter)
+                            sheet.write(row, 13, bom_line.product_id.tebal, formatHeaderDetailCenter)
+                            sheet.write(row, 14, bom_line.ply, formatHeaderDetailCenter)
+                            sheet.write(row, 15, bom_line.quantity, formatHeaderDetailCenter)
+                            sheet.write(row, 16, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
                             row += 1
 
                     number += 1
