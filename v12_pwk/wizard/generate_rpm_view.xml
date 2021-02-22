@@ -12,43 +12,50 @@
 	                    </div>
 	                </group>
 	                <group>
-	                	<field name="date_start" required="1"/>
-	                	<field name="date_end" required="1"/>
+	                	<field name="rpb_id" required="1" class="oe_inline"/>
+	                	<field name="date_start" required="1" class="oe_inline"/>
+	                	<field name="date_end" required="1" class="oe_inline"/>
 	                </group>
 					<group>
 						<notebook>
-							<page string="Detail Product">
+							<page string="RPB Detail">
 								<group>
-									<button name="button_reload" string="Reload" type="object"/>
-								</group>
-								<group>
-									<field name="line_ids" nolabel="1">
+									<field name="rpb_line_ids" nolabel="1"
+										domain="[('reference', '=', 'rpb_id')]">
 										<tree editable="top" create="false">
-											<field name="product_id" readonly="1"/>
-										    <field name="thick" readonly="1"/>
-										    <field name="width" readonly="1"/>
-										    <field name="length" readonly="1"/>
-										    <field name="glue_id" readonly="1"/>
-										    <field name="grade_id" readonly="1"/>
-										    <field name="remaining_qty" readonly="1"/>
-										    <field name="remaining_volume" readonly="1"/>
-										    <field name="total_qty"/>
-										    <field name="total_volume"/>
+											<field name="container_id" string="No."/>
+						                    <field name="partner_id" readonly="1"/>
+						                    <field name="po_number" readonly="1"/>
+						                    <field name="marking" readonly="1"/>
+						                    <field name="product_id" readonly="1"/>
+						                    <field name="container_qty" string="PCS" sum="Total"/>
+						                    <field name="container_vol" string="M3" sum="Total"/>
+						                    <field name="jumlah_container" sum="Total"/>
+						                    <field name="subtotal_qty" sum="Total"/>
+						                    <field name="subtotal_vol" sum="Total"/>
+						                    <field name="outstanding_rpb_pcs" sum="Total"/>
+						                    <field name="outstanding_rpb_vol" sum="Total"/>
 										</tree>
 										<form>
 											<group>
-												<field name="product_id"/>
-											    <field name="thick"/>
-											    <field name="width"/>
-											    <field name="length"/>
-											    <field name="glue_id"/>
-											    <field name="grade_id"/>
+												<field name="product_id" readonly="1"/>
 											</group>
 											<group>
-												<field name="remaining_qty"/>
-											    <field name="remaining_volume"/>
-											    <field name="total_qty"/>
-											    <field name="total_volume"/>
+												<group>
+													<field name="container_id" string="No."/>
+								                    <field name="partner_id" readonly="1"/>
+								                    <field name="po_number" readonly="1"/>
+								                    <field name="marking" readonly="1"/>
+								                    <field name="container_qty" string="PCS" sum="Total"/>
+							                    </group>
+												<group>
+								                    <field name="container_vol" string="M3" sum="Total"/>
+								                    <field name="jumlah_container" sum="Total"/>
+								                    <field name="subtotal_qty" sum="Total"/>
+								                    <field name="subtotal_vol" sum="Total"/>
+								                    <field name="outstanding_rpb_pcs" sum="Total"/>
+								                    <field name="outstanding_rpb_vol" sum="Total"/>
+												</group>
 											</group>
 										</form>
 									</field>
@@ -57,7 +64,7 @@
 						</notebook>				
 					</group>
 					<footer>
-						<button name="button_generate" string="Add Orders to RPB" 
+						<button name="button_generate" string="Add Orders to RPM" 
 							type="object" class="btn-primary"/>
 						<button string="Cancel" class="btn-default" special="cancel"/>
 					</footer>

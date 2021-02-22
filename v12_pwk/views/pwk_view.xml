@@ -236,7 +236,9 @@
                 <form>
                     <header>                        
                         <button name="action_create_pr" string="Create Purchase Request" 
-                            states="Draft" type="object" class="oe_highlight"/>
+                            states="Draft" type="object" class="oe_highlight" invisible="1"/>
+                        <button name="%(action_pwk_generate_rpm)d" type="action" 
+                            string="Select RPB" class="oe_highlight" states="Draft"/>
                         <button name="button_cancel" string="Cancel Purchase Request" 
                             states="Purchase Request" type="object"/>
                         <field name="state" widget="statusbar" readonly="1"/>
