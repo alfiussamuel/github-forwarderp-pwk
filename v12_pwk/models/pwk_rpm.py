@@ -161,27 +161,27 @@ class PwkRpmLine(models.Model):
             total_tebal = 0
 
             if res.is_selected_detail1:
-                for bom in detail_ids_1:
+                for bom in res.detail_ids_1:
                     total_bom += 1
                     total_tebal += bom.product_id.tebal
 
             elif res.is_selected_detail2:
-                for bom in detail_ids_2:
+                for bom in res.detail_ids_2:
                     total_bom += 1
                     total_tebal += bom.product_id.tebal
 
             elif res.is_selected_detail3:
-                for bom in detail_ids_3:
+                for bom in res.detail_ids_3:
                     total_bom += 1
                     total_tebal += bom.product_id.tebal
 
             elif res.is_selected_detail4:
-                for bom in detail_ids_4:
+                for bom in res.detail_ids_4:
                     total_bom += 1
                     total_tebal += bom.product_id.tebal
 
             elif res.is_selected_detail5:
-                for bom in detail_ids_5:
+                for bom in res.detail_ids_5:
                     total_bom += 1
                     total_tebal += bom.product_id.tebal
 
