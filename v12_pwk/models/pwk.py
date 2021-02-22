@@ -1452,6 +1452,7 @@ class ProductTemplate(models.Model):
 class ProductProduct(models.Model):
     _inherit = 'product.product'    
 
+    alternate_product_id = fields.Many2one('product.product', string="Alternate Product")
     service_to_purchase = fields.Boolean('Service to Purchase')
     jenis_kayu = fields.Many2one('pwk.jenis.kayu', 'Jenis Kayu (FB)')
     jenis_core = fields.Many2one('pwk.jenis.core', 'Jenis Core')

@@ -2177,6 +2177,7 @@
             <field name="inherit_id" ref="product.product_normal_form_view"/>
             <field name="arch" type="xml">
                 <field name="type" position="after">
+                    <field name="alternate_product_id"/>
                     <field name="commercial_name1"/>
                     <field name="commercial_name2"/>
                     <field name="commercial_name3"/>
