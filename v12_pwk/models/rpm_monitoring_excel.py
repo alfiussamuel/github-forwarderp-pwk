@@ -168,7 +168,7 @@ class RpmMonitoringReportXls(models.AbstractModel):
                     elif rpm_line.product_id.goods_type == "LVL":
                         goods_type = 'LVL'
 
-                    formula = '=' + 'M' + str(row) + ' + N' + str(row) + ' + O' + str(row) + ' + P' + str(row) + ' + Q' + str(row) + ' + R' + str(row)
+                    formula = '=' + 'M' + str(row+1) + ' + N' + str(row+1) + ' + O' + str(row+1) + ' + P' + str(row+1) + ' + Q' + str(row+1) + ' + R' + str(row+1)
                     sheet.write(row, 2, rpm_line.po_number, formatHeaderDetailCenter)
                     sheet.write(row, 3, rpm_line.partner_id.name, formatHeaderDetailCenter)
                     sheet.write(row, 4, goods_type, formatHeaderDetailCenter)            
