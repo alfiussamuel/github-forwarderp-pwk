@@ -275,10 +275,6 @@
                         <group>
                             <notebook>
                                 <page string="Detail RPM">
-                                    <!-- <div>
-                                        <button name="button_reload" string="Reload" 
-                                            type="object" class="oe_highlight"/>
-                                    </div> -->
                                     <group>
                                         <field name="line_ids" nolabel="1">
                                             <tree>
@@ -289,35 +285,11 @@
                                                 <field name="destination_id" readonly="1"/>
                                                 <field name="total_qty" readonly="1"/>
                                                 <field name="total_volume" readonly="1"/>
-                                                <!-- <field name="quantity_date1"/>
-                                                <field name="quantity_date2"/>
-                                                <field name="quantity_date3"/>
-                                                <field name="quantity_date4"/>
-                                                <field name="quantity_date5"/>
-                                                <field name="quantity_date6"/> -->
                                                 <field name="quantity_p1_total"/>
                                                 <field name="quantity_p1_remaining"/>
                                                 <field name="quantity_p2_total"/>
                                                 <field name="quantity_p2_remaining"/>
                                             </tree>
-                                            <!-- <tree>
-                                                <field name="container_no" string="Cont"/>
-                                                <field name="product_id"/>
-                                                <field name="rpb_id" invisible="1"/>
-                                                <field name="partner_id"/>
-                                                <field name="po_number"/>
-                                                <field name="destination_id"/>
-                                                <field name="thick" invisible="1"/>
-                                                <field name="width" invisible="1"/>
-                                                <field name="length" invisible="1"/>
-                                                <field name="glue_id" invisible="1"/>
-                                                <field name="grade_id" invisible="1"/>
-                                                <field name="total_qty"/>
-                                                <field name="total_volume"/>
-                                                <field name="total_bom" invisible="1"/>
-                                                <field name="total_tebal"/>
-                                                <field name="percent_tebal"/>
-                                            </tree> -->
                                             <form>
                                                 <group>
                                                     <field name="product_id"/>
@@ -336,36 +308,7 @@
                                                         <field name="is_detail1" invisible="1"/>
                                                         <field name="is_detail2" invisible="1"/>
                                                     </group>
-                                                </group>
-                                                <group>
-                                                    <group string="Detail P1 (PCS)">
-                                                        <field name="quantity_p1_senin"/>
-                                                        <field name="quantity_p1_selasa"/>
-                                                        <field name="quantity_p1_rabu"/>
-                                                        <field name="quantity_p1_kamis"/>
-                                                        <field name="quantity_p1_jumat"/>
-                                                        <field name="quantity_p1_sabtu"/>
-                                                        <field name="quantity_p1_total"/>
-                                                        <field name="quantity_p1_remaining"/>
-                                                        <field name="is_detail3" invisible="1"/>
-                                                    </group>
-                                                    <group string="Detail P2 (PCS)">
-                                                        <field name="quantity_p2_senin"/>
-                                                        <field name="quantity_p2_selasa"/>
-                                                        <field name="quantity_p2_rabu"/>
-                                                        <field name="quantity_p2_kamis"/>
-                                                        <field name="quantity_p2_jumat"/>
-                                                        <field name="quantity_p2_sabtu"/>
-                                                        <field name="quantity_p2_total"/>
-                                                        <field name="quantity_p2_remaining"/>
-                                                        <field name="is_detail4" invisible="1"/>
-                                                        <field name="is_detail5" invisible="1"/>
-                                                    </group>
-                                                    <!-- <group>
-                                                        <field name="remaining_volume"/>
-                                                        <field name="total_volume"/>   
-                                                    </group> -->
-                                                </group>                             
+                                                </group>                                                                      
                                                 <group>
                                                     <notebook>
                                                         <page string="Bill of Materials">
@@ -448,7 +391,15 @@
                                                                     <field name="available_qty"/>
                                                                 </tree>
                                                             </field>
-
+                                                        </page>
+                                                        <page string="P1 and P2 Pcs">
+                                                            <field name="date_ids" nolabel="1">
+                                                                <tree>
+                                                                    <field name="date" readonly="1"/>
+                                                                    <field name="quantity_p1"/>
+                                                                    <field name="quantity_p2"/>
+                                                                </tree>
+                                                            </field>
                                                         </page>
                                                     </notebook>
                                                 </group>
@@ -459,27 +410,7 @@
                                         </field>
                                     </group>
                                 </page>
-                                <!-- <page string="Monitoring RPM">
-                                    <field name="line_ids" nolabel="1">
-                                        <tree>
-                                            <field name="container_no" string="Cont" readonly="1"/>
-                                            <field name="product_id" readonly="1"/>
-                                            <field name="partner_id" readonly="1"/>
-                                            <field name="po_number" readonly="1"/>
-                                            <field name="destination_id" readonly="1"/>
-                                            <field name="total_qty" readonly="1"/>
-                                            <field name="total_volume" readonly="1"/>
-                                            <field name="quantity_date1"/>
-                                            <field name="quantity_date2"/>
-                                            <field name="quantity_date3"/>
-                                            <field name="quantity_date4"/>
-                                            <field name="quantity_date5"/>
-                                            <field name="quantity_date6"/>
-                                            <field name="quantity_date_total"/>
-                                        </tree>
-                                    </field>
-                                </page> -->
-                                <page string="RPM by Container" invisible="1">
+                                <page string="RPM by Container">
                                     <field name="container_ids" nolabel="1">
                                         <tree>
                                             <field name="name"/>

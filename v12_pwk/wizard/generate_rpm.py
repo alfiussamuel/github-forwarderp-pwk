@@ -37,6 +37,17 @@ class PwkGenerateRpmWizard(models.TransientModel):
                 })
 
                 if rpm_line_id:
+                    # Create Detail Date for P1 and P2
+                    date_start = rpm_id.date_start
+
+                    while date_start <= rpm_id.date_end:
+                        self.env['pwk.rpm.line.date'].create({
+                            'reference': rpm_line_id.id,
+                            'date': date_start
+                        })
+
+                        date_start = date_start + timedelta(days = 1)
+
                     # Check existing RPM Container and Fill Container
                     rpm_container_id = self.env['pwk.rpm.container'].search([
                         ('name', '=', line.container_id.name),
