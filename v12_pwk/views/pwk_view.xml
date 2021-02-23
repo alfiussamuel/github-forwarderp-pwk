@@ -274,7 +274,7 @@
                                     <group>
                                         <field name="line_ids" nolabel="1">
                                             <tree>
-                                                <field name="container_no"/>
+                                                <field name="container_no" string="Cont"/>
                                                 <field name="product_id"/>
                                                 <field name="rpb_id"/>
                                                 <field name="partner_id"/>

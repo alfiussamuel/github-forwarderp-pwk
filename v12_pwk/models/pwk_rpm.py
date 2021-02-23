@@ -66,7 +66,6 @@ class PwkRpmContainer(models.Model):
     @api.depends('line_ids')
     def _get_qty(self):
         for res in self:
-            total_qty = 0
             total_product = 0
             total_product_qty = 0
 
@@ -76,7 +75,7 @@ class PwkRpmContainer(models.Model):
                     total_product_qty + line.container_qty
 
             res.total_product = total_product
-            res.total_product_qty = total_product_qty
+            res.total_product_qty = total_product
 
 class PwkRpmLineDetail1(models.Model):    
     _name = "pwk.rpm.line.detail1"
