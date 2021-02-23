@@ -190,6 +190,7 @@ class PwkRpmLine(models.Model):
     rpb_line_id = fields.Many2one('pwk.rpb.line', 'RPB Line')
     rpb_id = fields.Many2one('pwk.rpb', 'RPB')
     destination_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.destination', string='Destination')
+    marking = fields.Char(compute="_get_sale_fields", string='Marking')
     po_number = fields.Char(compute="_get_sale_fields", string='PO No.')
     partner_id = fields.Many2one(compute="_get_sale_fields", comodel_name='res.partner', string='Buyer')
     product_id = fields.Many2one(compute="_get_sale_fields", comodel_name='product.product', string='Product')
@@ -316,6 +317,7 @@ class PwkRpmLine(models.Model):
                 res.grade_id = res.sale_line_id.product_id.grade.id
                 res.po_number = res.sale_line_id.order_id.po_number
                 res.destination_id = res.sale_line_id.order_id.destination_id
+                res.marking = res.sale_line_id.marking
 
     @api.multi
     def button_reload_bom(self):

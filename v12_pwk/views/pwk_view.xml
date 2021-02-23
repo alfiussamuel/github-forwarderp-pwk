@@ -304,9 +304,10 @@
                                                         <field name="is_detail4" invisible="1"/>
                                                     </group>
                                                     <group>
-                                                        <field name="container_no"/>
-                                                        <field name="partner_id"/>
-                                                        <field name="sale_id" readonly="1"/>
+                                                        <field name="container_no" readonly="1"/>
+                                                        <field name="partner_id" readonly="1"/>
+                                                        <field name="po_number" readonly="1"/>
+                                                        <field name="marking"/>
                                                         <field name="is_detail1" invisible="1"/>
                                                         <field name="is_detail2" invisible="1"/>
                                                         <field name="is_detail5" invisible="1"/>
