@@ -273,6 +273,7 @@
                                 </div>
                                 <field name="rpb_id" class="oe_inline" readonly="1"/>
                                 <field name="working_days"/>
+                                <field name="target_per_hari"/>
                             </group>
                             <group>
                                 <label for="total_blockboard"/>
@@ -288,7 +289,6 @@
                                     <field name="total_lvl" class="oe_inline"/> | <field name="total_lvl_percent" class="oe_inline"/>
                                 </div>
                                 <field name="total_produksi"/>
-                                <field name="target_per_hari"/>
                             </group>
                         </group>
                         <group>
