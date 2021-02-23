@@ -132,14 +132,14 @@ class RpmMonitoringReportXls(models.AbstractModel):
         sheet.write(row+1, 10, 'Pcs', formatHeaderTable)
         sheet.write(row+1, 11, 'M3', formatHeaderTable)
 
-        date = lines.date_start
-        column = 12
+        # date = lines.date_start
+        # column = 12
         
-        # while lines.date_start < lines.date_end:
-        #     sheet.write(row+1, column, '', formatHeaderTable)
-        date = date + timedelta(days = 1)
-        print ("Date ", date)
-            # column += 1
+        # # while lines.date_start < lines.date_end:
+        # #     sheet.write(row+1, column, '', formatHeaderTable)
+        # date = date + timedelta(days = 1)
+        # print ("Date ", date)
+        #     # column += 1
 
         row = 7
         number = 1        
