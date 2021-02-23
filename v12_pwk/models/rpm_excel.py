@@ -84,24 +84,25 @@ class RpmReportXls(models.AbstractModel):
         
         # Set Column Width
         sheet.set_column(0, 0, 3)
-        sheet.set_column(1, 1, 10)
-        sheet.set_column(2, 2, 18)
-        sheet.set_column(3, 3, 15)
-        sheet.set_column(4, 4, 10)
+        sheet.set_column(0, 0, 5)
+        sheet.set_column(2, 2, 10)
+        sheet.set_column(3, 3, 18)
+        sheet.set_column(4, 4, 15)
         sheet.set_column(5, 5, 10)
-        sheet.set_column(6, 6, 4)
+        sheet.set_column(6, 6, 10)
         sheet.set_column(7, 7, 4)
         sheet.set_column(8, 8, 4)
-        sheet.set_column(9, 9, 8)
+        sheet.set_column(9, 9, 4)
         sheet.set_column(10, 10, 8)
         sheet.set_column(11, 11, 8)
         sheet.set_column(12, 12, 8)
         sheet.set_column(13, 13, 8)
-        sheet.set_column(14, 14, 5)
+        sheet.set_column(14, 14, 8)
         sheet.set_column(15, 15, 5)
-        sheet.set_column(16, 16, 12)
-        sheet.set_column(17, 17, 10)
-        sheet.set_column(18, 18, 35)
+        sheet.set_column(16, 16, 5)
+        sheet.set_column(17, 17, 12)
+        sheet.set_column(18, 18, 10)
+        sheet.set_column(19, 19, 35)
         
         # Data 1
         row = 5
@@ -113,9 +114,9 @@ class RpmReportXls(models.AbstractModel):
         sheet.merge_range(row, 1, row+1, 1, 'Cont', formatHeaderTable)
         sheet.merge_range(row, 2, row+1, 2, 'No. SO', formatHeaderTable)
         sheet.merge_range(row, 3, row+1, 3, 'Buyer', formatHeaderTable)
-        sheet.merge_range(row, 4, row+1, 5, 'Product', formatHeaderTable)
-        sheet.merge_range(row, 5, row+1, 6, 'Glue Type', formatHeaderTable)
-        sheet.merge_range(row, 6, row+1, 7, 'Grade', formatHeaderTable)
+        sheet.merge_range(row, 4, row+1, 4, 'Product', formatHeaderTable)
+        sheet.merge_range(row, 5, row+1, 5, 'Glue Type', formatHeaderTable)
+        sheet.merge_range(row, 6, row+1, 6, 'Grade', formatHeaderTable)
         sheet.merge_range(row, 7, row, 9, 'Size (mm)', formatHeaderTable)
         sheet.merge_range(row, 10, row, 11, 'Order', formatHeaderTable)
         sheet.merge_range(row, 12, row, 14, 'Bahan Baku', formatHeaderTable)
@@ -200,4 +201,4 @@ class RpmReportXls(models.AbstractModel):
                             sheet.write(row, 16, bom_line.product_id.uom_id.name, formatHeaderDetailCenter)
                             row += 1
 
-                    number += 1
+                number += 1
