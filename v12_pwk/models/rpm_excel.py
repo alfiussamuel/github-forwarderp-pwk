@@ -196,7 +196,7 @@ class RpmReportXls(models.AbstractModel):
                         for bom_line in detail_ids:
                             bom_label = ''
                             if bom_line.product_id.goods_type == 'Faceback':
-                                bom_label = 'F/B ' + bom_line.product_id.jenis_kayu.name
+                                bom_label = 'F/B ' + bom_line.product_id.jenis_kayu.code
                             elif bom_line.product_id.goods_type == 'Barecore':
                                 bom_label = 'BC ' + bom_line.product_id.grade.name
                             else:
