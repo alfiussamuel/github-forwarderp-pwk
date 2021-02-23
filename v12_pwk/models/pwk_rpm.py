@@ -441,6 +441,9 @@ class PwkRpm(models.Model):
     total_blockboard = fields.Float(compute="_get_total_produksi", string='Total Blockboard', digits=dp.get_precision('FourDecimal'))
     total_plywood = fields.Float(compute="_get_total_produksi", string='Total Plywood', digits=dp.get_precision('FourDecimal'))
     total_lvl = fields.Float(compute="_get_total_produksi", string='Total LVL', digits=dp.get_precision('FourDecimal'))
+    total_blockboard_percent = fields.Float(compute="_get_total_produksi", string='Total Blockboard (%)', digits=dp.get_precision('ZeroDecimal'))
+    total_plywood_percent = fields.Float(compute="_get_total_produksi", string='Total Plywood (%)', digits=dp.get_precision('ZeroDecimal'))
+    total_lvl_percent = fields.Float(compute="_get_total_produksi", string='Total LVL (%)', digits=dp.get_precision('ZeroDecimal'))
     target_per_hari = fields.Float(compute="_get_total_produksi", string='Target / Hari', digits=dp.get_precision('FourDecimal'))
 
     @api.depends('working_days', 'line_ids.total_qty', 'line_ids.product_id')
@@ -464,6 +467,9 @@ class PwkRpm(models.Model):
             res.total_plywood = total_plywood
             res.total_lvl = total_lvl
             res.total_produksi = total_blockboard + total_plywood + total_lvl
+            res.total_blockboard_percent = total_blockboard / res.total_produksi
+            res.total_plywood_percent = total_plywood / res.total_produksi
+            res.total_lvl_percent = total_lvl / res.total_produksi
             res.target_per_hari = res.total_produksi / (res.working_days or 1)
 
     @api.multi

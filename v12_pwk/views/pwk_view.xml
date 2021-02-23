@@ -275,7 +275,10 @@
                                 <field name="working_days"/>
                             </group>
                             <group>
-                                <field name="total_blockboard"/>
+                                <label for="total_blockboard"/>
+                                <div>
+                                    <field name="total_blockboard" class="oe_inline"/> | <field name="total_blockboard_percent" widget="progressbar"/>
+                                </div>
                                 <field name="total_plywood"/>
                                 <field name="total_lvl"/>
                                 <field name="total_produksi"/>
@@ -294,12 +297,12 @@
                                                 <field name="po_number"/>
                                                 <field name="marking"/>
                                                 <field name="destination_id"/>
-                                                <field name="total_qty"/>
-                                                <field name="total_volume"/>
-                                                <field name="quantity_p1_total"/>
-                                                <field name="quantity_p1_remaining"/>
-                                                <field name="quantity_p2_total"/>
-                                                <field name="quantity_p2_remaining"/>
+                                                <field name="total_qty" sum="Total"/>
+                                                <field name="total_volume" sum="Total"/>
+                                                <field name="quantity_p1_total" sum="Total"/>
+                                                <field name="quantity_p1_remaining" sum="Total"/>
+                                                <field name="quantity_p2_total" sum="Total"/>
+                                                <field name="quantity_p2_remaining" sum="Total"/>
                                             </tree>
                                             <form>
                                                 <group>
