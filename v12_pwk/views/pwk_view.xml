@@ -311,7 +311,7 @@
                                                         <field name="is_detail2" invisible="1"/>
                                                         <field name="is_detail5" invisible="1"/>
                                                     </group>
-                                                </group>                                                                      
+                                                </group>
                                                 <group>
                                                     <notebook>
                                                         <page string="Bill of Materials">
@@ -399,13 +399,25 @@
                                                             </group>
                                                         </page>
                                                         <page string="P1 and P2 Pcs">
-                                                            <field name="date_ids" nolabel="1">
-                                                                <tree editable="top">
-                                                                    <field name="date" readonly="1"/>
-                                                                    <field name="quantity_p1"/>
-                                                                    <field name="quantity_p2"/>
-                                                                </tree>
-                                                            </field>
+                                                            <group>
+                                                                <group>
+                                                                    <field name="quantity_p1_total"/>
+                                                                    <field name="quantity_p1_remaining"/>
+                                                                </group>
+                                                                <group>
+                                                                    <field name="quantity_p2_total"/>
+                                                                    <field name="quantity_p2_remaining"/>
+                                                                </group>
+                                                            </group>
+                                                            <group>
+                                                                <field name="date_ids" nolabel="1">
+                                                                    <tree editable="top">
+                                                                        <field name="date" required="1"/>
+                                                                        <field name="quantity_p1"/>
+                                                                        <field name="quantity_p2"/>
+                                                                    </tree>
+                                                                </field>
+                                                            </group>
                                                         </page>
                                                     </notebook>
                                                 </group>
