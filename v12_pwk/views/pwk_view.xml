@@ -445,6 +445,7 @@
                                             <field name="quantity_date4"/>
                                             <field name="quantity_date5"/>
                                             <field name="quantity_date6"/>
+                                            <field name="quantity_date_total"/>
                                         </tree>
                                     </field>
                                 </page>

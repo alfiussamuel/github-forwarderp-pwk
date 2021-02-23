@@ -230,6 +230,12 @@ class PwkRpmLine(models.Model):
     quantity_date4 = fields.Integer('Qty Kamis')
     quantity_date5 = fields.Integer('Qty Jumat')
     quantity_date6 = fields.Integer('Qty Sabtu')
+    quantity_date_total = fields.Integer(compute="_get_total", string='Total')
+
+    @api.depends('quantity_date1', 'quantity_date2', 'quantity_date3', 'quantity_date4', 'quantity_date5', 'quantity_date6')
+    def _get_total(self):
+        for res in self:
+            res.quantity_date_total = res.quantity_date1 + res.quantity_date2 + res.quantity_date3 + res.quantity_date4 + res.quantity_date5 + res.quantity_date6
 
     @api.depends('detail_ids_1', 'detail_ids_2', 'detail_ids_3', 'detail_ids_4', 'detail_ids_5',
         'is_selected_detail1', 'is_selected_detail2', 'is_selected_detail3', 'is_selected_detail4', 'is_selected_detail5',
