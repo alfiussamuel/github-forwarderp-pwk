@@ -102,7 +102,7 @@ class RpmReportXls(models.AbstractModel):
         sheet.set_column(16, 16, 5)
         sheet.set_column(17, 17, 10)
         sheet.set_column(18, 18, 10)
-        sheet.set_column(19, 19, 35)
+        sheet.set_column(19, 19, 45)
 
         # Set default Row height
         sheet.set_default_row(21)
