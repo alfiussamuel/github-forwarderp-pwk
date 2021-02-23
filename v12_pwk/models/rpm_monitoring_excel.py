@@ -95,14 +95,14 @@ class RpmMonitoringReportXls(models.AbstractModel):
         sheet.set_column(9, 9, 4)
         sheet.set_column(10, 10, 8)
         sheet.set_column(11, 11, 8)
-        sheet.set_column(12, 12, 12)
-        sheet.set_column(13, 13, 8)
-        sheet.set_column(14, 14, 8)
-        sheet.set_column(15, 15, 5)
-        sheet.set_column(16, 16, 5)
+        sheet.set_column(12, 12, 10)
+        sheet.set_column(13, 13, 10)
+        sheet.set_column(14, 14, 10)
+        sheet.set_column(15, 15, 10)
+        sheet.set_column(16, 16, 10)
         sheet.set_column(17, 17, 10)
         sheet.set_column(18, 18, 10)
-        sheet.set_column(19, 19, 45)
+        sheet.set_column(19, 19, 10)
 
         # Set default Row height
         sheet.set_default_row(40)
@@ -123,7 +123,7 @@ class RpmMonitoringReportXls(models.AbstractModel):
         sheet.merge_range(row, 6, row+1, 6, 'Grade', formatHeaderTable)
         sheet.merge_range(row, 7, row, 9, 'Size (mm)', formatHeaderTable)
         sheet.merge_range(row, 10, row, 11, 'Order', formatHeaderTable)
-        sheet.merge_range(row, 11, row, 16, 'TANGGAL (P1) & PCS', formatHeaderTable)
+        sheet.merge_range(row, 12, row, 16, 'TANGGAL (P1) & PCS', formatHeaderTable)
 
         # Merge 3 and 4
         sheet.write(row+1, 7, 'T', formatHeaderTable)
@@ -135,7 +135,7 @@ class RpmMonitoringReportXls(models.AbstractModel):
         date_start = lines.date_start
         column = 12
 
-        while date_start < lines.date_end:
+        while date_start <= lines.date_end:
             sheet.write(row+1, column, date_start.day, formatHeaderTable)
             date_start = date_start + timedelta(days = 1)
             column += 1
