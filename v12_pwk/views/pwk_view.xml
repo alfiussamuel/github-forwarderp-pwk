@@ -265,12 +265,22 @@
                             <field name="name" readonly="1"/>
                         </h1>
                         <group>
-                            <label for="date_start"/>
-                            <div>
-                                <field name="date_start" class="oe_inline" required="1"/> - 
-                                <field name="date_end" class="oe_inline" required="1"/>
-                            </div>
-                            <field name="rpb_id" class="oe_inline" readonly="1"/>                            
+                            <group>
+                                <label for="date_start"/>
+                                <div>
+                                    <field name="date_start" class="oe_inline" required="1"/> - 
+                                    <field name="date_end" class="oe_inline" required="1"/>
+                                </div>
+                                <field name="rpb_id" class="oe_inline" readonly="1"/>
+                                <field name="working_days"/>
+                            </group>
+                            <group>
+                                <field name="total_blockboard"/>
+                                <field name="total_plywood"/>
+                                <field name="total_lvl"/>
+                                <field name="total_produksi"/>
+                                <field name="target_per_hari"/>
+                            </group>
                         </group>
                         <group>
                             <notebook>

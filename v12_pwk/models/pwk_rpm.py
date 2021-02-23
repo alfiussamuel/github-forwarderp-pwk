@@ -435,6 +435,37 @@ class PwkRpm(models.Model):
     line_ids = fields.One2many('pwk.rpm.line', 'reference', string='Lines', ondelete="cascade")
     container_ids = fields.One2many('pwk.rpm.container', 'reference', string='Container', ondelete="cascade")
 
+    # Footer
+    working_days = fields.Float('Hari Kerja', digits=dp.get_precision('OneDecimal'))
+    total_produksi = fields.Float(compute="_get_total_produksi", string='Total Produksi', digits=dp.get_precision('FourDecimal'))
+    total_blockboard = fields.Float(compute="_get_total_produksi", string='Total Blockboard', digits=dp.get_precision('FourDecimal'))
+    total_plywood = fields.Float(compute="_get_total_produksi", string='Total Plywood', digits=dp.get_precision('FourDecimal'))
+    total_lvl = fields.Float(compute="_get_total_produksi", string='Total LVL', digits=dp.get_precision('FourDecimal'))
+    target_per_hari = fields.Float(compute="_get_total_produksi", string='Target / Hari', digits=dp.get_precision('FourDecimal'))
+
+    @api.depends('working_days', 'line_ids.total_qty', 'line_ids.product_id')
+    def _get_total_produksi(self):
+        for res in self:
+            total_blockboard = 0
+            total_plywood = 0
+            total_lvl = 0
+            total_produksi = 0
+
+            if res.line_ids:
+                for line in res.line_ids:
+                    if line.product_id.goods_type == "Blockboard":
+                        total_blockboard += line.total_volume
+                    elif line.product_id.goods_type == "Plywood":
+                        total_plywood += line.total_volume
+                    elif line.product_id.goods_type == "LVL":
+                        total_lvl += line.total_volume
+
+            res.total_blockboard = total_blockboard
+            res.total_plywood = total_plywood
+            res.total_lvl = total_lvl
+            res.total_produksi = total_blockboard + total_plywood + total_lvl
+            res.target_per_hari = res.total_produksi / res.working_days
+
     @api.multi
     def action_create_pr(self):
         for res in self:
