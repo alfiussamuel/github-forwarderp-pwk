@@ -86,7 +86,7 @@ class RpmMonitoringReportXls(models.AbstractModel):
         sheet.set_column(0, 0, 4)
         sheet.set_column(1, 1, 5)
         sheet.set_column(2, 2, 8)
-        sheet.set_column(3, 3, 15)
+        sheet.set_column(3, 3, 20)
         sheet.set_column(4, 4, 8)
         sheet.set_column(5, 5, 10)
         sheet.set_column(6, 6, 7)
@@ -109,7 +109,7 @@ class RpmMonitoringReportXls(models.AbstractModel):
         sheet.set_row(6, 16)
         
         # Data 1
-        row = 5
+        row = 3
 
         sheet.merge_range(row-2, 0, row-2, 18, 'RENCANA PRODUKSI MINGGUAN', formatHeaderCenter)
 
