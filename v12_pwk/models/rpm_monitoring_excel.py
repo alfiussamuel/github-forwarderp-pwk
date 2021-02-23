@@ -106,7 +106,7 @@ class RpmMonitoringReportXls(models.AbstractModel):
 
         # Set default Row height
         sheet.set_default_row(40)
-        sheet.set_row(6, 16)
+        sheet.set_row(4, 16)
         
         # Data 1
         row = 3
@@ -141,7 +141,7 @@ class RpmMonitoringReportXls(models.AbstractModel):
             date_start = date_start + timedelta(days = 1)
             column += 1
 
-        row = 7
+        row = 5
         number = 1        
         
         if lines.container_ids:
