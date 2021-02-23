@@ -84,12 +84,12 @@ class RpmReportXls(models.AbstractModel):
         
         # Set Column Width
         sheet.set_column(0, 0, 3)
-        sheet.set_column(0, 0, 5)
-        sheet.set_column(2, 2, 10)
-        sheet.set_column(3, 3, 18)
+        sheet.set_column(0, 0, 3)
+        sheet.set_column(2, 2, 8)
+        sheet.set_column(3, 3, 10)
         sheet.set_column(4, 4, 15)
-        sheet.set_column(5, 5, 10)
-        sheet.set_column(6, 6, 10)
+        sheet.set_column(5, 5, 8)
+        sheet.set_column(6, 6, 8)
         sheet.set_column(7, 7, 4)
         sheet.set_column(8, 8, 4)
         sheet.set_column(9, 9, 4)
@@ -100,7 +100,7 @@ class RpmReportXls(models.AbstractModel):
         sheet.set_column(14, 14, 8)
         sheet.set_column(15, 15, 5)
         sheet.set_column(16, 16, 5)
-        sheet.set_column(17, 17, 12)
+        sheet.set_column(17, 17, 10)
         sheet.set_column(18, 18, 10)
         sheet.set_column(19, 19, 35)
         

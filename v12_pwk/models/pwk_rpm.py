@@ -177,6 +177,7 @@ class PwkRpmLine(models.Model):
     _name = "pwk.rpm.line"
 
     reference = fields.Many2one('pwk.rpm', string='Reference')
+    container_no = fields.Char('Container')
     sale_id = fields.Many2one('sale.order', 'No. Order')
     sale_line_id = fields.Many2one('sale.order.line', 'No. Order Line')
     rpb_line_id = fields.Many2one('pwk.rpb.line', 'RPB Line')
