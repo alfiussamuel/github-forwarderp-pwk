@@ -464,7 +464,7 @@ class PwkRpm(models.Model):
             res.total_plywood = total_plywood
             res.total_lvl = total_lvl
             res.total_produksi = total_blockboard + total_plywood + total_lvl
-            res.target_per_hari = res.total_produksi / res.working_days
+            res.target_per_hari = res.total_produksi / (res.working_days or 1)
 
     @api.multi
     def action_create_pr(self):
