@@ -2160,6 +2160,7 @@
                         <field name="commercial_name1" invisible="1"/>
                         <field name="commercial_name2" invisible="1"/>
                         <field name="commercial_name3" invisible="1"/>
+                        <field name="goods_type"/>
                         <field name="jenis_kayu"/>
                         <field name="jenis_core"/>
                         <field name="tebal"/>
