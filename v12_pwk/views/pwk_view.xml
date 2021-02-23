@@ -337,16 +337,27 @@
                                                         <field name="is_detail2" invisible="1"/>
                                                     </group>
                                                 </group>
-                                                <group string="TANGGAL (P1) and PCS">
-                                                    <group>
-                                                        <field name="quantity_date1"/>
-                                                        <field name="quantity_date2"/>
-                                                        <field name="quantity_date3"/>
+                                                <group>
+                                                    <group string="Detail P1 (PCS)">
+                                                        <field name="quantity_p1_senin"/>
+                                                        <field name="quantity_p1_selasa"/>
+                                                        <field name="quantity_p1_rabu"/>
+                                                        <field name="quantity_p1_kamis"/>
+                                                        <field name="quantity_p1_jumat"/>
+                                                        <field name="quantity_p1_sabtu"/>
+                                                        <field name="quantity_p1_total"/>
+                                                        <field name="quantity_p1_remaining"/>
                                                         <field name="is_detail3" invisible="1"/>
                                                     </group>
-                                                    <group>
-                                                        <field name="quantity_date4"/>
-                                                        <field name="quantity_date5"/>
+                                                    <group string="Detail P2 (PCS)">
+                                                        <field name="quantity_p2_senin"/>
+                                                        <field name="quantity_p2_selasa"/>
+                                                        <field name="quantity_p2_rabu"/>
+                                                        <field name="quantity_p2_kamis"/>
+                                                        <field name="quantity_p2_jumat"/>
+                                                        <field name="quantity_p2_sabtu"/>
+                                                        <field name="quantity_p2_total"/>
+                                                        <field name="quantity_p2_remaining"/>
                                                         <field name="is_detail4" invisible="1"/>
                                                         <field name="is_detail5" invisible="1"/>
                                                     </group>
