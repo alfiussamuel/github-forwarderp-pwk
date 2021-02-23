@@ -168,6 +168,7 @@ class RpmMonitoringReportXls(models.AbstractModel):
                     elif rpm_line.product_id.goods_type == "LVL":
                         goods_type = 'LVL'
 
+                    formula = '=' + str(row) + '12+' + str(row) + '13+' + str(row) + '14+' + str(row) + '15+' + str(row) + '16+' + str(row) + '17'
                     sheet.write(row, 2, rpm_line.po_number, formatHeaderDetailCenter)
                     sheet.write(row, 3, rpm_line.partner_id.name, formatHeaderDetailCenter)
                     sheet.write(row, 4, goods_type, formatHeaderDetailCenter)            
@@ -184,7 +185,7 @@ class RpmMonitoringReportXls(models.AbstractModel):
                     sheet.write(row, 15, '', formatHeaderDetailCenterNumber)
                     sheet.write(row, 16, '', formatHeaderDetailCenterNumber)
                     sheet.write(row, 17, '', formatHeaderDetailCenterNumber)
-                    sheet.write(row, 18, '', formatHeaderDetailCenterNumber)
+                    sheet.write_formula(row, 18, formula, formatHeaderDetailCenterNumber)
                     row += 1
 
                 number += 1
