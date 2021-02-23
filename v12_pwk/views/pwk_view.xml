@@ -400,7 +400,7 @@
                                                         </page>
                                                         <page string="P1 and P2 Pcs">
                                                             <field name="date_ids" nolabel="1">
-                                                                <tree>
+                                                                <tree editable="top">
                                                                     <field name="date" readonly="1"/>
                                                                     <field name="quantity_p1"/>
                                                                     <field name="quantity_p2"/>
