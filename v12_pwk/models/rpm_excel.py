@@ -200,7 +200,7 @@ class RpmReportXls(models.AbstractModel):
                             elif bom_line.product_id.goods_type == 'Barecore':
                                 bom_label = 'BC ' + bom_line.product_id.grade.name
                             else:
-                                bom_label = bom_line.product_id.grade.name
+                                bom_label = bom_line.product_id.grade.name + ' ' + bom_line.product_id.jenis_kayu.code
 
                             if bom_line.product_id.goods_type == 'Faceback':
                                 formatHeaderDetailCenterColor = workbook.add_format({'font_size': 9, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'bg_color':bom_line.product_id.jenis_kayu.color})

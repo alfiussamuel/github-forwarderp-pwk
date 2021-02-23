@@ -313,6 +313,7 @@ class PwkJenisKayu(models.Model):
 
     name = fields.Char("Jenis Kayu")
     color = fields.Char("Color")
+    code = fields.Char('Code')
 
 class PwkJenisCore(models.Model):
     _name = "pwk.jenis.core"

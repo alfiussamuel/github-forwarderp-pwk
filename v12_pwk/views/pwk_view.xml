@@ -2274,6 +2274,7 @@
                 <tree string="Jenis Kayu" editable="top">
                     <field name="name" required="1"/>
                     <field name="color"/>
+                    <field name="code"/>
                 </tree>
             </field>
         </record>
