@@ -123,7 +123,7 @@ class RpmMonitoringReportXls(models.AbstractModel):
         sheet.merge_range(row, 6, row+1, 6, 'Grade', formatHeaderTable)
         sheet.merge_range(row, 7, row, 9, 'Size (mm)', formatHeaderTable)
         sheet.merge_range(row, 10, row, 11, 'Order', formatHeaderTable)
-        sheet.merge_range(row, 11 row, 16, 'TANGGAL (P1) and PCS', formatHeaderTable)
+        sheet.merge_range(row, 11, row, 16, 'TANGGAL (P1) & PCS', formatHeaderTable)
 
         # Merge 3 and 4
         sheet.write(row+1, 7, 'T', formatHeaderTable)
