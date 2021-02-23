@@ -277,7 +277,7 @@
                             <group>
                                 <label for="total_blockboard"/>
                                 <div>
-                                    <field name="total_blockboard" class="oe_inline"/> | <field name="total_blockboard_percent" widget="progressbar"/>
+                                    <field name="total_blockboard" class="oe_inline"/> | <field name="total_blockboard_percent" widget="progressbar" class="oe_inline"/>
                                 </div>
                                 <field name="total_plywood"/>
                                 <field name="total_lvl"/>
