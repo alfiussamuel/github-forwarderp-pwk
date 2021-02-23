@@ -134,9 +134,11 @@ class RpmMonitoringReportXls(models.AbstractModel):
         
         date_start = lines.date_start
         column = 12
+        print (date_start.day)
+        print (date_start.day())
 
         while date_start < lines.date_end:
-            sheet.write(row+1, column, (datetime.strptime(date_start, '%Y-%m-%d')).day(), formatHeaderTable)
+            sheet.write(row+1, column, (datetime.strptime(date_start, '%Y-%m-%d')).day, formatHeaderTable)
             date_start = date_start + timedelta(days = 1)
             column += 1
 
