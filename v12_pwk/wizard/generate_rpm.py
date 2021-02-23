@@ -1,5 +1,5 @@
 # coding: utf-8
-from datetime import datetime
+from datetime import datetime, timedelta
 from openerp import models, api
 import time
 from dateutil.parser import parse
