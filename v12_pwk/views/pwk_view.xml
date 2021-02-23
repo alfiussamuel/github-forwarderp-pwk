@@ -318,8 +318,8 @@
                                                         <field name="is_detail2" invisible="1"/>
                                                     </group>
                                                 </group>
-                                                <group>
-                                                    <group string="Quantity P1 per days">
+                                                <group string="TANGGAL (P1) and PCS">
+                                                    <group>
                                                         <field name="quantity_date1"/>
                                                         <field name="quantity_date2"/>
                                                         <field name="quantity_date3"/>
