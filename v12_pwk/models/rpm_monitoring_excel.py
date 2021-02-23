@@ -183,12 +183,12 @@ class RpmMonitoringReportXls(models.AbstractModel):
                     sheet.write(row, 9, rpm_line.product_id.panjang, formatHeaderDetailCenter)
                     sheet.write(row, 10, rpm_line.total_qty, formatHeaderDetailCenter)
                     sheet.write(row, 11, rpm_line.total_volume, formatHeaderDetailCenter)
-                    sheet.write(row, 12, '', formatHeaderDetailCenterNumber)
-                    sheet.write(row, 13, '', formatHeaderDetailCenterNumber)
-                    sheet.write(row, 14, '', formatHeaderDetailCenterNumber)
-                    sheet.write(row, 15, '', formatHeaderDetailCenterNumber)
-                    sheet.write(row, 16, '', formatHeaderDetailCenterNumber)
-                    sheet.write(row, 17, '', formatHeaderDetailCenterNumber)
+                    sheet.write(row, 12, rpm_line.quantity_date1, formatHeaderDetailCenterNumber)
+                    sheet.write(row, 13, rpm_line.quantity_date2, formatHeaderDetailCenterNumber)
+                    sheet.write(row, 14, rpm_line.quantity_date3, formatHeaderDetailCenterNumber)
+                    sheet.write(row, 15, rpm_line.quantity_date4, formatHeaderDetailCenterNumber)
+                    sheet.write(row, 16, rpm_line.quantity_date5, formatHeaderDetailCenterNumber)
+                    sheet.write(row, 17, rpm_line.quantity_date6, formatHeaderDetailCenterNumber)
                     sheet.write_formula(row, 18, formula, formatHeaderDetailCenterNumber)
                     row += 1
 

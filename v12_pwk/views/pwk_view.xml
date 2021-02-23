@@ -301,28 +301,7 @@
                                             </tree>
                                             <form>
                                                 <group>
-                                                    <group>
-                                                        <field name="container_no"/>
-                                                        <field name="partner_id"/>
-                                                        <field name="sale_id" readonly="1"/>
-                                                        <field name="is_detail1" invisible="1"/>
-                                                        <field name="is_detail2" invisible="1"/>
-                                                    </group>
-                                                    <group>
-                                                        <field name="product_id"/>
-                                                        <field name="is_detail3" invisible="1"/>
-                                                        <field name="is_detail4" invisible="1"/>
-                                                        <field name="is_detail5" invisible="1"/>
-                                                    </group>
-                                                    <group>
-                                                        <field name="thick"/>
-                                                        <field name="width"/>
-                                                        <field name="length"/>
-                                                    </group>
-                                                    <group>
-                                                        <field name="glue_id"/>
-                                                        <field name="grade_id"/>
-                                                    </group>
+                                                    <field name="product_id"/>
                                                 </group>
                                                 <group>
                                                     <group>
@@ -330,18 +309,32 @@
                                                         <field name="total_qty" class="oe_inline"/>
                                                         <field name="spare_qty" class="oe_inline"/>
                                                         <field name="total_qty_spare"/>
-                                                        <!-- <label for="total_qty_spare"/>
-                                                        <div>
-                                                            <field name="total_qty_spare"/>
-                                                               |   <button name="button_reload_bom" 
-                                                                string="Reload BoM" type="object" 
-                                                                class="oe_highlight"/>
-                                                        </div> -->
                                                     </group>
                                                     <group>
+                                                        <field name="container_no"/>
+                                                        <field name="partner_id"/>
+                                                        <field name="sale_id" readonly="1"/>
+                                                        <field name="is_detail1" invisible="1"/>
+                                                        <field name="is_detail2" invisible="1"/>
+                                                    </group>
+                                                </group>
+                                                <group>
+                                                    <group string="Quantity P1 per days">
+                                                        <fieldn name="quantity_date1"/>
+                                                        <fieldn name="quantity_date2"/>
+                                                        <fieldn name="quantity_date3"/>
+                                                        <fieldn name="quantity_date4"/>
+                                                        <fieldn name="quantity_date5"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="is_detail3" invisible="1"/>
+                                                        <field name="is_detail4" invisible="1"/>
+                                                        <field name="is_detail5" invisible="1"/>
+                                                    </group>
+                                                    <!-- <group>
                                                         <field name="remaining_volume"/>
                                                         <field name="total_volume"/>   
-                                                    </group>
+                                                    </group> -->
                                                 </group>                             
                                                 <group>
                                                     <notebook>

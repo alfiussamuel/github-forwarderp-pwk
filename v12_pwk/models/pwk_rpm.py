@@ -223,6 +223,14 @@ class PwkRpmLine(models.Model):
 
     notes = fields.Text('Notes')
 
+    # Quantity per Date
+    quantity_date1 = fields.Integer('Qty Senin')
+    quantity_date2 = fields.Integer('Qty Selasa')
+    quantity_date3 = fields.Integer('Qty Rabu')
+    quantity_date4 = fields.Integer('Qty Kamis')
+    quantity_date5 = fields.Integer('Qty Jumat')
+    quantity_date6 = fields.Integer('Qty Sabtu')
+
     @api.depends('detail_ids_1', 'detail_ids_2', 'detail_ids_3', 'detail_ids_4', 'detail_ids_5',
         'is_selected_detail1', 'is_selected_detail2', 'is_selected_detail3', 'is_selected_detail4', 'is_selected_detail5',
         'is_detail1', 'is_detail2', 'is_detail3', 'is_detail4', 'is_detail5')
