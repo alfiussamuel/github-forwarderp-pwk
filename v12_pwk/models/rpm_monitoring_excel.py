@@ -152,10 +152,10 @@ class RpmMonitoringReportXls(models.AbstractModel):
                     merge_range += 1
 
                 # Group by Container
-                if merge_range > 0:
+                if merge_range > 1:
                     sheet.merge_range(row, 0, row + merge_range - 1, 0, number, formatHeaderDetailCenter)
                     sheet.merge_range(row, 1, row + merge_range - 1, 1, '1', formatHeaderDetailCenter)
-                else:
+                elif merge_range == 1:
                     sheet.write(row, 0, number, formatHeaderDetailCenter)
                     sheet.write(row, 1, '1', formatHeaderDetailCenter)
 
