@@ -394,6 +394,9 @@
                                                                     <field name="available_qty"/>
                                                                 </tree>
                                                             </field>
+                                                            <group string="Notes">
+                                                                <field name="notes" nolabel="1"/>
+                                                            </group>
                                                         </page>
                                                         <page string="P1 and P2 Pcs">
                                                             <field name="date_ids" nolabel="1">
@@ -405,9 +408,6 @@
                                                             </field>
                                                         </page>
                                                     </notebook>
-                                                </group>
-                                                <group string="Notes">
-                                                    <field name="notes" nolabel="1"/>
                                                 </group>
                                             </form>
                                         </field>

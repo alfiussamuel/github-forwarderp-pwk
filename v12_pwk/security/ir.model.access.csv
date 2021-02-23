@@ -110,7 +110,7 @@ pwk_rpm_line_detail4_employee,pwk_rpm_line_detail4_employee,v12_pwk.model_pwk_rp
 pwk_rpm_line_detail5_employee,pwk_rpm_line_detail5_employee,v12_pwk.model_pwk_rpm_line_detail5,base.group_user,1,1,1,1
 pwk_rpm_container_employee,pwk_rpm_container_employee,v12_pwk.model_pwk_rpm_container,base.group_user,1,1,1,1
 pwk_rpm_container_line_employee,pwk_rpm_container_line_employee,v12_pwk.model_pwk_rpm_container_line,base.group_user,1,1,1,1
-
+pwk_rpm_line_date_employee,pwk_rpm_line_date_employee,v12_pwk.model_pwk_rpm_line_date,base.group_user,1,1,1,1
 ,,,,,,,
 sale_order_line_container_employee,sale_order_line_container_employee,v12_pwk.model_sale_order_line_container,base.group_user,1,1,1,1
 ,,,,,,,
