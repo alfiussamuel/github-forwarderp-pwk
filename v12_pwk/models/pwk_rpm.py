@@ -223,19 +223,34 @@ class PwkRpmLine(models.Model):
 
     notes = fields.Text('Notes')
 
-    # Quantity per Date
-    quantity_date1 = fields.Integer('Qty Senin')
-    quantity_date2 = fields.Integer('Qty Selasa')
-    quantity_date3 = fields.Integer('Qty Rabu')
-    quantity_date4 = fields.Integer('Qty Kamis')
-    quantity_date5 = fields.Integer('Qty Jumat')
-    quantity_date6 = fields.Integer('Qty Sabtu')
-    quantity_date_total = fields.Integer(compute="_get_total", string='Total')
+    # Quantity P1 per Date
+    quantity_p1_senin = fields.Integer('Qty P1 Senin')
+    quantity_p1_selasa = fields.Integer('Qty P1 Selasa')
+    quantity_p1_rabu = fields.Integer('Qty P1 Rabu')
+    quantity_p1_kamis = fields.Integer('Qty P1 Kamis')
+    quantity_p1_jumat = fields.Integer('Qty P1 Jumat')
+    quantity_p1_sabtu = fields.Integer('Qty P1 Sabtu')
+    quantity_p1_total = fields.Integer(compute="_get_total", string='Total P1')
+    quantity_p1_remaining = fields.Integer(compute="_get_total", string="Sisa P1")
 
-    @api.depends('quantity_date1', 'quantity_date2', 'quantity_date3', 'quantity_date4', 'quantity_date5', 'quantity_date6')
+    # Quantity P2 per Date
+    quantity_p2_senin = fields.Integer('Qty P2 Senin')
+    quantity_p2_selasa = fields.Integer('Qty P2 Selasa')
+    quantity_p2_rabu = fields.Integer('Qty P2 Rabu')
+    quantity_p2_kamis = fields.Integer('Qty P2 Kamis')
+    quantity_p2_jumat = fields.Integer('Qty P2 Jumat')
+    quantity_p2_sabtu = fields.Integer('Qty P2 Sabtu')
+    quantity_p2_total = fields.Integer(compute="_get_total", string='Total P2')
+    quantity_p2_remaining = fields.Integer(compute="_get_total", string='Sisa P2')
+
+    @api.depends('quantity_p1_senin', 'quantity_p1_selasa', 'quantity_p1_rabu', 'quantity_p1_kamis', 'quantity_p1_jumat', 'quantity_p1_sabtu',
+        'quantity_p2_senin', 'quantity_p2_selasa', 'quantity_p2_rabu', 'quantity_p2_kamis', 'quantity_p2_jumat', 'quantity_p2_sabtu')
     def _get_total(self):
         for res in self:
-            res.quantity_date_total = res.quantity_date1 + res.quantity_date2 + res.quantity_date3 + res.quantity_date4 + res.quantity_date5 + res.quantity_date6
+            res.quantity_p1_total = res.quantity_p1_senin + res.quantity_p1_selasa + res.quantity_p1_rabu + res.quantity_p1_kamis + res.quantity_p1_jumat + res.quantity_p1_sabtu
+            res.quantity_p2_total = res.quantity_p2_senin + res.quantity_p2_selasa + res.quantity_p2_rabu + res.quantity_p2_kamis + res.quantity_p2_jumat + res.quantity_p2_sabtu
+            res.quantity_p1_remaining = res.total_qty - res.quantity_p1_total
+            res.quantity_p2_remaining = res.total_qty - res.quantity_p2_total
 
     @api.depends('detail_ids_1', 'detail_ids_2', 'detail_ids_3', 'detail_ids_4', 'detail_ids_5',
         'is_selected_detail1', 'is_selected_detail2', 'is_selected_detail3', 'is_selected_detail4', 'is_selected_detail5',

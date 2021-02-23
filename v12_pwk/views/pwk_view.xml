@@ -282,6 +282,25 @@
                                     <group>
                                         <field name="line_ids" nolabel="1">
                                             <tree>
+                                                <field name="container_no" string="Cont" readonly="1"/>
+                                                <field name="product_id" readonly="1"/>
+                                                <field name="partner_id" readonly="1"/>
+                                                <field name="po_number" readonly="1"/>
+                                                <field name="destination_id" readonly="1"/>
+                                                <field name="total_qty" readonly="1"/>
+                                                <field name="total_volume" readonly="1"/>
+                                                <!-- <field name="quantity_date1"/>
+                                                <field name="quantity_date2"/>
+                                                <field name="quantity_date3"/>
+                                                <field name="quantity_date4"/>
+                                                <field name="quantity_date5"/>
+                                                <field name="quantity_date6"/> -->
+                                                <field name="quantity_p1_total"/>
+                                                <field name="quantity_p1_remaining"/>
+                                                <field name="quantity_p2_total"/>
+                                                <field name="quantity_p2_remaining"/>
+                                            </tree>
+                                            <!-- <tree>
                                                 <field name="container_no" string="Cont"/>
                                                 <field name="product_id"/>
                                                 <field name="rpb_id" invisible="1"/>
@@ -298,7 +317,7 @@
                                                 <field name="total_bom" invisible="1"/>
                                                 <field name="total_tebal"/>
                                                 <field name="percent_tebal"/>
-                                            </tree>
+                                            </tree> -->
                                             <form>
                                                 <group>
                                                     <field name="product_id"/>
@@ -429,9 +448,9 @@
                                         </field>
                                     </group>
                                 </page>
-                                <page string="Monitoring RPM">
+                                <!-- <page string="Monitoring RPM">
                                     <field name="line_ids" nolabel="1">
-                                        <tree editable="top" create="false">
+                                        <tree>
                                             <field name="container_no" string="Cont" readonly="1"/>
                                             <field name="product_id" readonly="1"/>
                                             <field name="partner_id" readonly="1"/>
@@ -448,7 +467,7 @@
                                             <field name="quantity_date_total"/>
                                         </tree>
                                     </field>
-                                </page>
+                                </page> -->
                                 <page string="RPM by Container" invisible="1">
                                     <field name="container_ids" nolabel="1">
                                         <tree>
