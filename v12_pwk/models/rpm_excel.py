@@ -203,6 +203,7 @@ class RpmReportXls(models.AbstractModel):
                                 bom_label = bom_line.product_id.grade.name
 
                             if bom_line.product_id.goods_type == 'Faceback':
+                                formatHeaderDetailCenterColor = workbook.add_format({'font_size': 9, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'bg_color':bom_line.product_id.jenis_kayu.color})
                                 sheet.write(row, 12, bom_label, formatHeaderDetailCenterColor)
                             else:
                                 sheet.write(row, 12, bom_label, formatHeaderDetailCenter)
