@@ -50,6 +50,7 @@ class RpmReportXls(models.AbstractModel):
         formatHeaderTableRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'bold': True, 'bg_color':'#3eaec2', 'text_wrap': True, 'num_format': '#,##0'})
         formatHeaderTableCenterWhite = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'center', 'bold': True, 'text_wrap': True, 'num_format': '#,##0'})
         formatHeaderDetailCenter = workbook.add_format({'font_size': 9, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True})
+        formatHeaderDetailCenterColor = workbook.add_format({'font_size': 9, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'bg_color':'#3eaec2'})
         formatHeaderDetailCenterNumber = workbook.add_format({'font_size': 9, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'num_format': '#,##0'})
         formatHeaderDetailCenterNumberFour = workbook.add_format({'font_size': 9, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'num_format': '#,##4'})
         formatHeaderDetailLeft = workbook.add_format({'font_size': 9, 'valign':'vcenter', 'align': 'left'})
@@ -84,7 +85,7 @@ class RpmReportXls(models.AbstractModel):
         
         # Set Column Width
         sheet.set_column(0, 0, 3)
-        sheet.set_column(1, 1, 3)
+        sheet.set_column(1, 1, 5)
         sheet.set_column(2, 2, 8)
         sheet.set_column(3, 3, 10)
         sheet.set_column(4, 4, 10)
@@ -194,7 +195,10 @@ class RpmReportXls(models.AbstractModel):
                             else:
                                 bom_label = bom_line.product_id.grade.name
 
-                            sheet.write(row, 12, bom_label, formatHeaderDetailCenter)
+                            if bom_line.product_id.goods_type == 'Faceback':
+                                sheet.write(row, 12, bom_label, formatHeaderDetailCenterColor)
+                            else:
+                                sheet.write(row, 12, bom_label, formatHeaderDetailCenter)
                             sheet.write(row, 13, bom_line.product_id.tebal, formatHeaderDetailCenter)
                             sheet.write(row, 14, bom_line.ply, formatHeaderDetailCenter)
                             sheet.write(row, 15, bom_line.quantity, formatHeaderDetailCenter)
