@@ -83,11 +83,11 @@ class RpmMonitoringReportXls(models.AbstractModel):
         # formatHeaderDetailLeft.set_text_wrap()
         
         # Set Column Width
-        sheet.set_column(0, 0, 3)
+        sheet.set_column(0, 0, 4)
         sheet.set_column(1, 1, 5)
         sheet.set_column(2, 2, 8)
-        sheet.set_column(3, 3, 10)
-        sheet.set_column(4, 4, 7)
+        sheet.set_column(3, 3, 15)
+        sheet.set_column(4, 4, 8)
         sheet.set_column(5, 5, 10)
         sheet.set_column(6, 6, 7)
         sheet.set_column(7, 7, 4)
@@ -106,12 +106,12 @@ class RpmMonitoringReportXls(models.AbstractModel):
 
         # Set default Row height
         sheet.set_default_row(40)
-        sheet.set_row(6, 20)
+        sheet.set_row(6, 16)
         
         # Data 1
         row = 5
 
-        sheet.merge_range(row-3, 0, row-2, 18, 'RENCANA PRODUKSI MINGGUAN', formatHeaderCenter)
+        sheet.merge_range(row-2, 0, row-2, 18, 'RENCANA PRODUKSI MINGGUAN', formatHeaderCenter)
 
         # merge 1 - 4 
         sheet.merge_range(row, 0, row+1, 0, 'No', formatHeaderTable)
