@@ -22,8 +22,9 @@
                         <field name="order_id"/>
                         <field name="sale_po_number"/>
                         <field name="order_partner_id"/>
+                        <field name="sale_destination_id"/>
                         <field name="marking"/>
-                        <field name="name"/>
+                        <field name="product_id"/>
                         <field name="salesman_id" invisible="1"/>
                         <field name="product_uom_qty" string="Qty"/>
                         <field name="qty_delivered"/>
@@ -31,7 +32,7 @@
                         <field name="qty_to_invoice" invisible="1"/>
                         <field name="product_uom" string="Unit of Measure" groups="uom.group_uom"
                             invisible="1"/>
-                        <field name="price_subtotal" sum="Total" widget="monetary"/>
+                        <field name="price_subtotal" sum="Total" widget="monetary" invisible="1"/>
                     </tree>
                 </tree>
             </field>
