@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import datetime
-from datetime import datetime
+from datetime import datetime, timedelta
 import pytz
 from odoo import models
 
@@ -132,6 +132,14 @@ class RpmMonitoringReportXls(models.AbstractModel):
         sheet.write(row+1, 10, 'Pcs', formatHeaderTable)
         sheet.write(row+1, 11, 'M3', formatHeaderTable)    
         
+        date_start = lines.date_start
+        column = 12
+
+        while date_start < lines.date_end:
+            sheet.write(row+1, column, date_start.day(), formatHeaderTable)
+            date_start = date_start + timedelta(days = 1)
+            column += 1
+
         row = 7
         number = 1        
         
