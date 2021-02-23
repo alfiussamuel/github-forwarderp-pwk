@@ -123,7 +123,8 @@ class RpmMonitoringReportXls(models.AbstractModel):
         sheet.merge_range(row, 6, row+1, 6, 'Grade', formatHeaderTable)
         sheet.merge_range(row, 7, row, 9, 'Size (mm)', formatHeaderTable)
         sheet.merge_range(row, 10, row, 11, 'Order', formatHeaderTable)
-        sheet.merge_range(row, 12, row, 16, 'TANGGAL (P1) & PCS', formatHeaderTable)
+        sheet.merge_range(row, 12, row, 17, 'TANGGAL (P1) & PCS', formatHeaderTable)
+        sheet.merge_range(row, 18, row+1, 18, 'Jumlah', formatHeaderTable)
 
         # Merge 3 and 4
         sheet.write(row+1, 7, 'T', formatHeaderTable)
@@ -177,6 +178,13 @@ class RpmMonitoringReportXls(models.AbstractModel):
                     sheet.write(row, 9, rpm_line.product_id.panjang, formatHeaderDetailCenter)
                     sheet.write(row, 10, rpm_line.total_qty, formatHeaderDetailCenter)
                     sheet.write(row, 11, rpm_line.total_volume, formatHeaderDetailCenter)
+                    sheet.write(row, 12, '', formatHeaderDetailCenterNumber)
+                    sheet.write(row, 13, '', formatHeaderDetailCenterNumber)
+                    sheet.write(row, 14, '', formatHeaderDetailCenterNumber)
+                    sheet.write(row, 15, '', formatHeaderDetailCenterNumber)
+                    sheet.write(row, 16, '', formatHeaderDetailCenterNumber)
+                    sheet.write(row, 17, '', formatHeaderDetailCenterNumber)
+                    sheet.write(row, 18, '', formatHeaderDetailCenterNumber)
                     row += 1
 
                 number += 1
