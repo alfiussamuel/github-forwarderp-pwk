@@ -1,6 +1,15 @@
 <odoo>
 	<data>
 
+		<!-- Sales Order Lines -->
+		<record id="sale_order_line_action" model="ir.actions.act_window">
+            <field name="name">Sales Order Lines</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
 		<!-- Bom -->
 		<record id="mrp_bom_line_action" model="ir.actions.act_window">
             <field name="name">BoM Lines</field>
@@ -454,6 +463,12 @@
 		            parent="v12_pwk.menu_production_rencana"
 		            groups="base.group_user"
 		            sequence="2"/>
+
+		        <menuitem id="menu_production_sale_order_line" 
+		            action="v12_pwk.sale_order_line_action"
+		            parent="v12_pwk.menu_production_rencana"
+		            groups="base.group_user"
+		            sequence="3"/>
 
         	<menuitem id="menu_production_mutasi"
 	        	sequence="2"
