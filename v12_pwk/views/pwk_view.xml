@@ -323,11 +323,11 @@
                                                         <field name="quantity_date1"/>
                                                         <field name="quantity_date2"/>
                                                         <field name="quantity_date3"/>
-                                                        <field name="quantity_date4"/>
-                                                        <field name="quantity_date5"/>
+                                                        <field name="is_detail3" invisible="1"/>
                                                     </group>
                                                     <group>
-                                                        <field name="is_detail3" invisible="1"/>
+                                                        <field name="quantity_date4"/>
+                                                        <field name="quantity_date5"/>
                                                         <field name="is_detail4" invisible="1"/>
                                                         <field name="is_detail5" invisible="1"/>
                                                     </group>
