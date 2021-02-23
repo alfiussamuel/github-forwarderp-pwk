@@ -6,8 +6,8 @@ import pytz
 from odoo import models
 
 
-class RpmReportXls(models.AbstractModel):
-    _name = 'report.v12_pwk.rpm_report_xls.xlsx'
+class RpmMonitoringReportXls(models.AbstractModel):
+    _name = 'report.v12_pwk.rpm_monitoring_report_xls.xlsx'
     _inherit = 'report.report_xlsx.abstract'
 
     def get_data(self, data):        
