@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import datetime
-from datetime import datetime
+from datetime import datetime, timedelta
 import pytz
 from odoo import models
 
@@ -105,7 +105,8 @@ class RpmMonitoringReportXls(models.AbstractModel):
         sheet.set_column(19, 19, 45)
 
         # Set default Row height
-        sheet.set_default_row(30)
+        sheet.set_default_row(40)
+        sheet.set_row(6, 20)
         
         # Data 1
         row = 5
@@ -122,14 +123,22 @@ class RpmMonitoringReportXls(models.AbstractModel):
         sheet.merge_range(row, 6, row+1, 6, 'Grade', formatHeaderTable)
         sheet.merge_range(row, 7, row, 9, 'Size (mm)', formatHeaderTable)
         sheet.merge_range(row, 10, row, 11, 'Order', formatHeaderTable)
+        sheet.merge_range(row, 12 row, 17, 'TANGGAL (P1) & PCS', formatHeaderTable)
 
         # Merge 3 and 4
         sheet.write(row+1, 7, 'T', formatHeaderTable)
         sheet.write(row+1, 8, 'L', formatHeaderTable)
         sheet.write(row+1, 9, 'P', formatHeaderTable)
         sheet.write(row+1, 10, 'Pcs', formatHeaderTable)
-        sheet.write(row+1, 11, 'M3', formatHeaderTable)    
-        
+        sheet.write(row+1, 11, 'M3', formatHeaderTable)
+
+        date = lines.date_start
+        column = 12
+        while lines.date_start < lines.date_end:
+            sheet.write(row+1, column, '', formatHeaderTable)
+            date += timedelta(1)
+            column += 1
+
         row = 7
         number = 1        
         
