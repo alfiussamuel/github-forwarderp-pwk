@@ -167,5 +167,6 @@ class RpmMonitoringReportXls(models.AbstractModel):
                     sheet.write(row, 9, rpm_line.product_id.panjang, formatHeaderDetailCenter)
                     sheet.write(row, 10, rpm_line.total_qty, formatHeaderDetailCenter)
                     sheet.write(row, 11, rpm_line.total_volume, formatHeaderDetailCenter)
+                    row += 1
 
                 number += 1
