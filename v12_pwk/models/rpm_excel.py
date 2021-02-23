@@ -53,7 +53,7 @@ class RpmReportXls(models.AbstractModel):
         formatHeaderDetailCenterColor = workbook.add_format({'font_size': 9, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'bg_color':'#3eaec2'})
         formatHeaderDetailCenterNumber = workbook.add_format({'font_size': 9, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'num_format': '#,##0'})
         formatHeaderDetailCenterNumberFour = workbook.add_format({'font_size': 9, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'num_format': '#,##4'})
-        formatHeaderDetailLeft = workbook.add_format({'font_size': 9, 'valign':'vcenter', 'align': 'left'})
+        formatHeaderDetailLeft = workbook.add_format({'font_size': 9, 'valign':'vcenter', 'align': 'left', 'text_wrap': True})
         formatHeaderDetailRight = workbook.add_format({'font_size': 9, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0'})
         formatHeaderDetailRightFour = workbook.add_format({'font_size': 9, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0.0000'})
         format11 = workbook.add_format({'font_size': 12, 'align': 'center', 'bold': True})
@@ -75,13 +75,12 @@ class RpmReportXls(models.AbstractModel):
         formatHeaderDetailCenterNumberFour.set_border(1)
         formatHeaderDetailRight.set_border(1)
         formatHeaderDetailRightFour.set_border(1)
-        formatHeaderDetailLeft.set_border(1)
 
         formatHeaderTable.set_text_wrap()
         formatHeaderTableRight.set_text_wrap()
         formatHeaderDetailCenter.set_text_wrap()
         formatHeaderDetailRight.set_text_wrap()
-        formatHeaderDetailLeft.set_text_wrap()
+        # formatHeaderDetailLeft.set_text_wrap()
         
         # Set Column Width
         sheet.set_column(0, 0, 3)
