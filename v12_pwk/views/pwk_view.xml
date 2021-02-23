@@ -320,11 +320,11 @@
                                                 </group>
                                                 <group>
                                                     <group string="Quantity P1 per days">
-                                                        <fieldn name="quantity_date1"/>
-                                                        <fieldn name="quantity_date2"/>
-                                                        <fieldn name="quantity_date3"/>
-                                                        <fieldn name="quantity_date4"/>
-                                                        <fieldn name="quantity_date5"/>
+                                                        <field name="quantity_date1"/>
+                                                        <field name="quantity_date2"/>
+                                                        <field name="quantity_date3"/>
+                                                        <field name="quantity_date4"/>
+                                                        <field name="quantity_date5"/>
                                                     </group>
                                                     <group>
                                                         <field name="is_detail3" invisible="1"/>
