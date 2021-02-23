@@ -138,7 +138,7 @@ class RpmMonitoringReportXls(models.AbstractModel):
                 merge_range = 0
 
                 for container_line in container.line_ids:
-                    merge_range += container_line.rpm_line_id.total_bom
+                    merge_range += 1
 
                 # Group by Container
                 sheet.merge_range(row, 0, row + merge_range - 1, 0, number, formatHeaderDetailCenter)
@@ -147,8 +147,7 @@ class RpmMonitoringReportXls(models.AbstractModel):
                 # Details each Container
                 for container_line in container.line_ids:
                     rpm_line = container_line.rpm_line_id
-                    merge_range_bom = int(rpm_line.total_bom - 1)
-
+                    
                     # Get Goods Type
                     goods_type = ''
                     if rpm_line.product_id.goods_type == "Blockboard":
@@ -158,15 +157,15 @@ class RpmMonitoringReportXls(models.AbstractModel):
                     elif rpm_line.product_id.goods_type == "LVL":
                         goods_type = 'LVL'
 
-                    sheet.merge_range(row, 2, row + merge_range_bom, 2, rpm_line.po_number, formatHeaderDetailCenter)
-                    sheet.merge_range(row, 3, row + merge_range_bom, 3, rpm_line.partner_id.name, formatHeaderDetailCenter)
-                    sheet.merge_range(row, 4, row + merge_range_bom, 4, goods_type, formatHeaderDetailCenter)            
-                    sheet.merge_range(row, 5, row + merge_range_bom, 5, rpm_line.product_id.glue.name, formatHeaderDetailCenter)            
-                    sheet.merge_range(row, 6, row + merge_range_bom, 6, rpm_line.product_id.grade.name, formatHeaderDetailCenter)
-                    sheet.merge_range(row, 7, row + merge_range_bom, 7, rpm_line.product_id.tebal, formatHeaderDetailCenter)
-                    sheet.merge_range(row, 8, row + merge_range_bom, 8, rpm_line.product_id.lebar, formatHeaderDetailCenter)
-                    sheet.merge_range(row, 9, row + merge_range_bom, 9, rpm_line.product_id.panjang, formatHeaderDetailCenter)
-                    sheet.merge_range(row, 10, row + merge_range_bom, 10, rpm_line.total_qty, formatHeaderDetailCenter)
-                    sheet.merge_range(row, 11, row + merge_range_bom, 11, rpm_line.total_volume, formatHeaderDetailCenter)
+                    sheet.write(row, 2, rpm_line.po_number, formatHeaderDetailCenter)
+                    sheet.write(row, 3, rpm_line.partner_id.name, formatHeaderDetailCenter)
+                    sheet.write(row, 4, goods_type, formatHeaderDetailCenter)            
+                    sheet.write(row, 5, rpm_line.product_id.glue.name, formatHeaderDetailCenter)            
+                    sheet.write(row, 6, rpm_line.product_id.grade.name, formatHeaderDetailCenter)
+                    sheet.write(row, 7, rpm_line.product_id.tebal, formatHeaderDetailCenter)
+                    sheet.write(row, 8, rpm_line.product_id.lebar, formatHeaderDetailCenter)
+                    sheet.write(row, 9, rpm_line.product_id.panjang, formatHeaderDetailCenter)
+                    sheet.write(row, 10, rpm_line.total_qty, formatHeaderDetailCenter)
+                    sheet.write(row, 11, rpm_line.total_volume, formatHeaderDetailCenter)
 
                 number += 1
