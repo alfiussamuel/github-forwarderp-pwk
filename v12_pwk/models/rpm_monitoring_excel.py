@@ -147,7 +147,7 @@ class RpmMonitoringReportXls(models.AbstractModel):
                 # Details each Container
                 for container_line in container.line_ids:
                     rpm_line = container_line.rpm_line_id
-                    
+
                     # Get Goods Type
                     goods_type = ''
                     if rpm_line.product_id.goods_type == "Blockboard":
