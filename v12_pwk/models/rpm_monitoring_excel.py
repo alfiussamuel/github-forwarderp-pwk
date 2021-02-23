@@ -152,8 +152,12 @@ class RpmMonitoringReportXls(models.AbstractModel):
                     merge_range += 1
 
                 # Group by Container
-                sheet.merge_range(row, 0, row + merge_range - 1, 0, number, formatHeaderDetailCenter)
-                sheet.merge_range(row, 1, row + merge_range - 1, 1, '1', formatHeaderDetailCenter)
+                if merge_range > 0:
+                    sheet.merge_range(row, 0, row + merge_range - 1, 0, number, formatHeaderDetailCenter)
+                    sheet.merge_range(row, 1, row + merge_range - 1, 1, '1', formatHeaderDetailCenter)
+                else:
+                    sheet.write(row, 0, number, formatHeaderDetailCenter)
+                    sheet.write(row, 1, '1', formatHeaderDetailCenter)
 
                 # Details each Container
                 for container_line in container.line_ids:
