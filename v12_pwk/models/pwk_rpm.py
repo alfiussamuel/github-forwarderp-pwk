@@ -409,7 +409,7 @@ class PwkRpmLine(models.Model):
 
 class PwkRpmBahanBaku(models.Model):    
     _name = "pwk.rpm.bahan.baku"
-    _order = 'product_id desc,jenis_kayu_id asc'
+    _order = 'goods_type desc,jenis_kayu_id asc'
 
     reference = fields.Many2one('pwk.rpm', 'Reference')
     product_id = fields.Many2one('product.product', string='Product')
@@ -429,6 +429,7 @@ class PwkRpmBahanBaku(models.Model):
     glue_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.glue', string='Glue')
     grade_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.grade', string='Grade')
     jenis_kayu_id = fields.Many2one('pwk.jenis.kayu', related='product_id.jenis_kayu', string='Jenis Kayu', store=True)
+    goods_type = fields.Many2one('pwk.jenis.kayu', related='product_id.goods_type', string='Goods Type', store=True)
 
     notes = fields.Text('Notes')
 
