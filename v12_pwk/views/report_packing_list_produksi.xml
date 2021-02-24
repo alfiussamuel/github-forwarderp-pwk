@@ -269,15 +269,15 @@
 							</tr>
 							<tr>
 								<td colspan="2" 
-									style="text-align:right;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
+									style="text-align:right;border:1px solid black;font-size:10px;padding:4px;background-color:#d7e8f7;">
 	    							 <strong>TOTAL</strong>
 		                        </td>
-		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
+		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:4px;background-color:#d7e8f7;">
 	    							 <strong><span t-esc="'{0:,.4f}'.format(o.total_volume)"/></strong>
 		                        </td>
-		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
+		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:4px;background-color:#d7e8f7;">
 		                        </td>
-		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
+		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:4px;background-color:#d7e8f7;">
 		                        </td>
 							</tr>
 						</tbody>
