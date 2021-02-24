@@ -96,7 +96,7 @@
 							<strong>:</strong>
 						</td>
 						<td width="20%" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
-							<strong><span t-field="o.date" t-options='{"format": "dd mmmm yyyy"}'/></strong>
+							<strong><span t-field="o.date" t-options='{"format": "dd MMMM yyyy"}'/></strong>
 						</td>
 					</tr>
 					<tr>
