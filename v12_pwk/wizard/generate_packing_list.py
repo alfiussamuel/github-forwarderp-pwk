@@ -48,20 +48,31 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                         bom_list = rpb_line_ids[0].detail_ids_4
                     elif rpb_line_ids[0].is_selected_detail5 and rpb_line_ids[0].detail_ids_5:
                         bom_list = rpb_line_ids[0].detail_ids_5
+
+                    for bom_line in bom_list:                        
+                        self.env['pwk.packing.list.line.bom'].create({
+                            'reference': line.id,
+                            'product_id': bom_line.product_id.id,
+                            'thick': bom_line.product_id.tebal,
+                            'width': bom_line.product_id.lebar,
+                            'length': bom_line.product_id.panjang,
+                            'quantity': bom_line.product_qty * line.product_uom_qty,
+                            'ply': bom_line.ply,
+                            'notes': bom_line.notes
+                        })
+                        
                 else:
                     bom_list = self.env['mrp.bom'].search([
                         ('product_tmpl_id.name', '=', line.product_id.name)
                     ])
 
-                for bom_line in bom_list:                        
-                    self.env['pwk.packing.list.line.bom'].create({
-                        'reference': line.id,
-                        'product_id': bom_line.product_id.id,
-                        'thick': bom_line.product_id.tebal,
-                        'width': bom_line.product_id.lebar,
-                        'length': bom_line.product_id.panjang,
-                        'quantity': bom_line.product_qty * line.total_qty_spare,
-                        'ply': bom_line.ply,
-                        'notes': bom_line.notes
-                    })
+                    for bom_line in bom_list:                        
+                        self.env['pwk.packing.list.line.bom'].create({
+                            'reference': line.id,
+                            'product_id': bom_line.product_id.id,
+                            'thick': bom_line.product_id.tebal,
+                            'width': bom_line.product_id.lebar,
+                            'length': bom_line.product_id.panjang,
+                            'quantity': bom_line.product_qty * line.product_uom_qty,
+                        }
 
