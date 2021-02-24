@@ -14,10 +14,18 @@
                         <h1>
                             <field name="name" readonly="1"/>
                         </h1>
-                        <group>                            
-                            <field name="date" required="1"/>
-                            <field name="partner_id" required="1"
-                                options="{'no_create': True}"/>
+                        <group>                      
+                            <group>      
+                                <field name="date" required="1" class="oe_inline"/>
+                                <field name="sale_id" required="1"/>
+                                <field name="partner_id"/>
+                                <field name="destination_id"/>
+                            </group>
+                            <group>
+                                <field name="is_logo"/>
+                                <field name="certificate_id"                                
+                                    options="{'no_create': True}"/>
+                            </group>
                         </group>
                         <group>
                             <notebook>

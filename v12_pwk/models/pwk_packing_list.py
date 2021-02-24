@@ -48,10 +48,14 @@ class PwkPackingList(models.Model):
     _name = "pwk.packing.list"
 
     name = fields.Char('Nomor Packing List')
+    date = fields.Date('Date', default=fields.Date.today())
     certificate_id = fields.Many2one('pwk.certificate', 'Certificate')
     is_logo = fields.Boolean('Show Legal Logo', default=True)
-    partner_id = fields.Many2one('res.partner', 'Nama Penerima', domain="[('customer','=',True)]")
-    date = fields.Date('Date')
+    
+    sale_id = fields.Many2one('sale.order', 'Sales Order')
+    partner_id = fields.Many2one(related='sale_id.partner_id', comodel_name='res.partner', string='Nama Penerima')
+    destination_id = fields.Many2one(related='sale_id.destination_id', comodel_name='pwk.destination', string='Destination')
+
     line_ids = fields.One2many('pwk.packing.list.line', 'reference', string='Lines')
     state = fields.Selection([('Draft','Draft'),('Done','Done')], string="Status", default="Draft")
 
