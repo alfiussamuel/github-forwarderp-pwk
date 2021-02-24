@@ -426,8 +426,8 @@ class PwkRpmBahanBaku(models.Model):
     thick = fields.Float(compute="_get_fields", string='Thick', digits=dp.get_precision('OneDecimal'), store=True)
     width = fields.Float(compute="_get_fields", string='Width', digits=dp.get_precision('ZeroDecimal'), store=True)
     length = fields.Float(compute="_get_fields", string='Length', digits=dp.get_precision('ZeroDecimal'), store=True)
-    glue_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.glue', string='Glue')
-    grade_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.grade', string='Grade')
+    glue_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.glue', string='Glue', store=True)
+    grade_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.grade', string='Grade', store=True)
     jenis_kayu_id = fields.Many2one('pwk.jenis.kayu', related='product_id.jenis_kayu', string='Jenis Kayu', store=True)
     goods_type = fields.Selection(related='product_id.goods_type', string='Goods Type', store=True)
 
