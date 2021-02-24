@@ -67,7 +67,7 @@
 							border-right:0px;
 							border-top:0px;
 							border-bottom:0px;">
-							<strong>Packing List Produksi</strong>							
+							<strong>SALES ORDER</strong>							
 						</td>									
 					</tr>
 				</table>
@@ -75,36 +75,85 @@
 				<table class="table table-condensed" style="margin-top:0px;">					
 					<tr>
 						<td width="14%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
-							<strong>BENEFICIARY :</strong>							
+							<strong>Sales Order No.</strong>							
 						</td>
 						<td width="3%" style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
+							<strong>:</strong>
 						</td>
 						<td width="30%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
-							
+							<span t-field="o.name"/>
 						</td>
 						<td width="10%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
-							<strong>DATE</strong>
+							
 						</td>
 						<td width="40%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
-							<strong><span t-field="o.date"/></strong>
+							<strong>Buyer :</strong>
 						</td>
 					</tr>
 					<tr>
 						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
-							<strong>PT. PRIMA WANA KREASI WOOD INDUSTRY</strong>							
+							<strong>Sales Order Date</strong>							
 						</td>
 						<td style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
+							<strong>:</strong>
+						</td>
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+							<span t-field="o.date_order" t-options='{"format": "dd-MMMM-yyyy"}'/>
+						</td>						
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+							
+						</td>
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+							Mr. / Mrs. <span t-field="o.attn"/>
+						</td>
+					</tr>								
+					<tr>
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+							<strong>PO Buyer No.</strong>	
+						</td>
+						<td style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
+							<strong>:</strong>
+						</td>
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+							<span t-field="o.po_number"/>
+						</td>
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+							
+						</td>
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+							<span t-field="o.partner_id.name"/>	
+						</td>						
+					</tr>					
+					<tr>
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">									
+						</td>
+						<td style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
+							
+						</td>
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+							
+						</td>
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+							
+						</td>
+						<td rowspan="2" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+							<span t-field="o.partner_id.street"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+											
+						</td>
+						<td style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
+							
+						</td>
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+							
 						</td>
 						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							
 						</td>						
-						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
-							BUYER
-						</td>
-						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
-							<span t-field="o.partner_id.name"/>
-						</td>
-					</tr>											
+					</tr>					
 				</table>
 
 	        </div>
@@ -119,7 +168,7 @@
 
 	    </template>
 
-		<!-- Header for Sales Order -->
+		<!-- Header for Packing List -->
     	<template id="external_layout_packing_list_produksi">
 	        <t t-if="not o" t-set="o" t-value="doc"/>
 	        <t t-if="not company">
@@ -139,14 +188,314 @@
 	    </template>	  
 
         <template id="report_packing_list_produksi_document">
-            <t t-call="v12_pwk.external_layout_standard_packing_list_produksi">
+            <t t-call="v12_pwk.external_layout_packing_list_produksi">
                 <t t-set="o" t-value="o.with_context(lang=lang)" />
                 <t t-set="address">
                     <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
                     <div t-if="o.partner_id.vat" class="mt16"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.partner_id.vat"/></div>
                 </t>
                 <div class="page">                    					
-					
+					<table class="table table-condensed" style="margin-top:10px;">
+		                <thead>
+		                    <tr>
+		                        <th width="4%" rowspan="2"
+		                        	style="text-align:center;font-size:10px;border:1px solid black;background-color:#4ead2f;color:white;padding:2px;vertical-align:middle;">		                        	
+									<strong>NO.</strong>
+		                        </th>
+		                        <th width="30%" rowspan="2"
+		                        	style="text-align:center;font-size:10px;border:1px solid black;background-color:#4ead2f;color:white;padding:2px;vertical-align:middle;">
+									<strong>PRODUCT NAME</strong>
+		                        </th>
+		                        <th width="10%" rowspan="2"
+		                        	style="text-align:center;font-size:10px;border:1px solid black;background-color:#4ead2f;color:white;padding:2px;vertical-align:middle;">
+									<strong>MARKING</strong>
+		                        </th>
+		                        <th width="12%" colspan="3"
+		                        	style="text-align:center;font-size:10px;border:1px solid black;background-color:#4ead2f;color:white;padding:2px;vertical-align:middle;">
+									<strong>SIZE ( MM )</strong>
+		                        </th>
+		                        <th width="7%" rowspan="2"
+		                        	style="text-align:center;font-size:10px;border:1px solid black;background-color:#4ead2f;color:white;padding:2px;vertical-align:middle;">
+									<strong>PCS</strong>
+		                        </th>
+		                        <th width="10%" rowspan="2"
+		                        	style="text-align:center;font-size:10px;border:1px solid black;background-color:#4ead2f;color:white;padding:2px;vertical-align:middle;">
+									<strong>VOL ( M<sup>3</sup> )</strong>
+		                        </th>
+		                        <th width="12%" rowspan="2"
+		                        	style="text-align:center;font-size:10px;border:1px solid black;background-color:#4ead2f;color:white;padding:2px;vertical-align:middle;">
+									<t t-if="o.formula_type == 'PCS'">
+										<strong>PRICE / PCS</strong>
+									</t>
+									<t t-if="o.formula_type == 'Volume'">
+										<strong>PRICE / VOL</strong>
+									</t>
+		                        </th>
+		                        <th width="15%" rowspan="2"
+		                        	style="text-align:center;font-size:10px;border:1px solid black;background-color:#4ead2f;color:white;padding:2px;vertical-align:middle;">
+									<strong>AMOUNT <span t-field="o.currency_id.name"/></strong>
+		                        </th>
+		                    </tr>
+		                    <tr>
+			                    <th width="12%" colspan="3"
+			                    	style="text-align:center;font-size:10px;border:1px solid black;background-color:#4ead2f;color:white;padding:2px;vertical-align:middle;">
+									<strong>T x W x L</strong>
+		                        </th>
+		                    </tr>
+		                </thead>
+		                <tbody class="invoice_tbody">
+		                	<t t-set="i" t-value="1" />
+		                    <tr t-foreach="o.order_line" t-as="l">		                        
+		                    	<td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
+	    							<span t-esc="i"/> 
+        							<t t-set="i" t-value="i+1"/> 
+		                        </td>
+		                        <td style="text-align:left;border:1px solid black;font-size:10px;padding:2px;">
+	    							<span t-field="l.product_id.name"/>
+		                        </td>
+		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
+		                            <span t-field="l.marking"/>
+		                        </td>
+		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
+		                            <span t-esc="'{0:,.0f}'.format(l.thick)"/>
+		                        </td>
+		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
+		                            <span t-esc="'{0:,.0f}'.format(l.width)"/>
+		                        </td>
+		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
+		                            <span t-esc="'{0:,.0f}'.format(l.length)"/>
+		                        </td>
+		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
+		                            <span t-esc="'{0:,.0f}'.format(l.product_uom_qty)"/>
+		                        </td>
+		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
+		                            <t t-if="l.is_qty_volume">
+		                            	<span t-field="l.volume_qty"/>
+		                            </t>
+		                            <t t-if="not l.is_qty_volume">
+		                            	<span t-field="l.volume"/>
+		                            </t>
+		                        </td>
+		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
+		                            <span t-esc="'{0:,.0f}'.format(l.price_unit)"/>
+		                        </td>
+		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
+		                            <span t-esc="'{0:,.0f}'.format(l.price_total)"/>
+		                        </td>
+		                    </tr>
+		                    <tr>
+		                    	<td colspan="6" style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
+		                    		<strong>TOTAL AMOUNT</strong>
+		                        </td>		                        		
+		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
+		                        	<span t-esc="'{0:,.0f}'.format(o.total_qty)"/>
+		                        </td>		                        
+		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
+		                        	<t t-if="o.contract_type == 'Waste Rotary'">
+		                            	<span t-esc="'{0:,.4f}'.format(o.total_volume_qty)"/>
+		                            </t>
+		                            <t t-if="o.contract_type == 'Waste Pabrik PPN'">
+		                            	<span t-esc="'{0:,.4f}'.format(o.total_volume_qty)"/>
+		                            </t>
+		                            <t t-if="o.contract_type == 'Waste Pabrik Non-PPN'">
+		                            	<span t-esc="'{0:,.4f}'.format(o.total_volume_qty)"/>
+		                            </t>
+		                            <t t-if="o.contract_type == 'Lokal'">
+		                            	<span t-esc="'{0:,.4f}'.format(o.total_volume)"/>
+		                            </t>
+		                            <t t-if="o.contract_type == 'Export'">
+		                            	<span t-esc="'{0:,.4f}'.format(o.total_volume)"/>
+		                            </t>
+		                        </td>
+		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
+		                        	
+		                        </td>
+		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
+		                        	<span t-esc="'{0:,.0f}'.format(o.amount_total)"/>
+		                        </td>
+		                    </tr>		                    
+		                </tbody>
+		            </table>
+
+		  			<table class="table table-condensed" style="margin-top:0px;">
+						<tr>
+							<td width="25%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								Destination
+							</td>
+							<td width="3%" style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
+								<strong>:</strong>
+							</td>
+							<td width="70%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								<span t-field="o.destination_id.name"/>
+							</td>						
+						</tr>
+						<tr>
+							<td width="25%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								Port of Loading
+							</td>
+							<td width="3%" style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
+								<strong>:</strong>
+							</td>
+							<td width="70%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								<span t-field="o.port_loading.name"/>
+							</td>						
+						</tr>
+						<tr>
+							<td width="25%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								Port Discharge
+							</td>
+							<td width="3%" style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
+								<strong>:</strong>
+							</td>
+							<td width="70%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								<span t-field="o.port_discharge.name"/>
+							</td>						
+						</tr>						
+						<tr>
+							<td width="25%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								Payment Term
+							</td>
+							<td width="3%" style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
+								<strong>:</strong>
+							</td>
+							<td width="70%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								<span t-field="o.payment_term_id.name"/>
+							</td>						
+						</tr>
+						<tr>
+							<td width="25%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								Method of Payment
+							</td>
+							<td width="3%" style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
+								<strong>:</strong>
+							</td>
+							<td width="70%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								<span t-field="o.method_payment_id.name"/>
+							</td>						
+						</tr>
+						<tr>
+							<td width="25%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								Shipment Terms
+							</td>
+							<td width="3%" style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
+								<strong>:</strong>
+							</td>
+							<td width="70%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								<span t-field="o.incoterm_id.name"/>
+							</td>						
+						</tr>
+						<tr>
+							<td width="25%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								Est. Shipment Date
+							</td>
+							<td width="3%" style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
+								<strong>:</strong>
+							</td>
+							<td width="70%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								<span t-field="o.delivery_date"/>
+							</td>						
+						</tr>
+						<tr>
+							<td width="25%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								Measurement Content ( MC )
+							</td>
+							<td width="3%" style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
+								<strong>:</strong>
+							</td>
+							<td width="70%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								<span t-field="o.mc_id.name"/>
+							</td>						
+						</tr>
+						<tr>
+							<td width="25%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								Discrepancy
+							</td>
+							<td width="3%" style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
+								<strong>:</strong>
+							</td>
+							<td width="70%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								<span t-field="o.discrepancy_id.name"/>
+							</td>						
+						</tr>
+						<tr>
+							<td width="25%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								Thickness
+							</td>
+							<td width="3%" style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
+								<strong>:</strong>
+							</td>
+							<td width="70%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								<span t-field="o.thickness"/>
+							</td>						
+						</tr>
+						<tr>
+							<td width="25%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								Marking
+							</td>
+							<td width="3%" style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
+								<strong>:</strong>
+							</td>
+							<td width="70%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								<span t-field="o.marking"/>
+							</td>						
+						</tr>
+						<tr>
+							<td width="25%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								Notes :
+							</td>
+							<td width="3%" style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
+								
+							</td>
+							<td width="70%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								
+							</td>						
+						</tr>
+						<tr>
+							<td colspan="3" width="25%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								<span t-field="o.note"/>
+							</td>							
+						</tr>
+					</table>
+					<div class="footer text-center">
+						<table class="table table-condensed" style="margin-top:30px;">
+							<tr>
+								<td width="65%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+									<span t-field="o.office_selection"/>, <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%B-%Y')"/>
+								</td>						
+								<td width="35%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+									
+								</td>						
+							</tr>
+							<tr>
+								<td width="65%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+									Seller : 
+								</td>						
+								<td width="35%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+									Buyer : 
+								</td>						
+							</tr>
+							<tr>
+								<td width="65%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+									PT. Prima Wana Kreasi Wood Industry
+								</td>						
+								<td width="35%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+									<span t-field="o.partner_id.name"/>
+								</td>						
+							</tr>
+							<tr height="80px">
+								<td width="65%" colspan="2" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								</td>						
+							</tr>
+							<tr>
+								<td width="65%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+									<span t-field="o.nama_terang"/>
+								</td>						
+								<td width="35%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+									<span t-field="o.attn"/>
+								</td>						
+							</tr>
+						</table>
+					</div>
                 </div>
             </t>
         </template>        
@@ -160,7 +509,7 @@
             </t>
         </template>
 
-        <!-- New Report Packing List Produksi -->
+        <!-- New Report Packing List -->
     	<record id="paperformat_packing_list_produksi" model="report.paperformat">
 	        <field name="name">Packing List Produksi</field>
 	        <field name="default" eval="True"/>
@@ -181,11 +530,11 @@
     	<report
             id="packing_list_produksi"
             model="pwk.packing.list"
-            string="Packing List Produksi"
+            string="Packing List"
             report_type="qweb-pdf"
             name="v12_pwk.report_packing_list_produksi"
-            file="v12_pwk.report_packing_list_produksi"            
-            print_report_name="'Packing List Produksi - %s' % object.name"
+            file="v12_pwk.report_packing_list_produksi"
+            print_report_name="'Packing List - %s' % object.name"
             groups="base.group_user"
             paperformat="v12_pwk.paperformat_packing_list_produksi"
             menu="False"
