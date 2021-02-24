@@ -104,7 +104,7 @@ class PwkPackingList(models.Model):
                 res.destination_id = res.line_ids[0].sale_id.destination_id.id
                 res.payment_term_id = res.line_ids[0].sale_id.payment_term_id.id
                 res.marking = res.line_ids[0].sale_id.marking
-                res.po_number = res.line_ids[0].po_number
+                res.po_number = res.line_ids[0].sale_id.po_number
 
     def get_sequence(self, name=False, obj=False, year_month=False, context=None):
         sequence_id = self.env['ir.sequence'].search([
