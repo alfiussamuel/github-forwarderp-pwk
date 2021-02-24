@@ -121,7 +121,7 @@
 							<strong>:</strong>
 						</td>
 						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
-							<strong><span t-field="o.partner_id.name"/></strong>
+							<strong><span t-field="o.po_number"/></strong>
 						</td>
 					</tr>
 					<tr>
@@ -137,7 +137,7 @@
 							<strong>:</strong>
 						</td>
 						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
-							<strong><span t-field="o.partner_id.name"/></strong>
+							<strong><span t-field="o.marking"/></strong>
 						</td>
 					</tr>
 					<tr>
@@ -167,7 +167,7 @@
 							<strong>:</strong>
 						</td>
 						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
-							<strong><span t-field="o.destination_id.name"/></strong>
+							<strong><span t-field="o.payment_term_id.name"/></strong>
 						</td>
 					</tr>
 				</table>

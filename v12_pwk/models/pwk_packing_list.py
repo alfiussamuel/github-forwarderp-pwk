@@ -77,6 +77,9 @@ class PwkPackingList(models.Model):
     
     partner_id = fields.Many2one(compute="_get_fields", comodel_name='res.partner', string='Buyer')
     destination_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.destination', string='Destination')
+    payment_term_id = fields.Many2one(compute="_get_fields", comodel_name='account.payment.term', string='Payment Terms')
+    marking = fields.Char(compute="_get_fields", string='Marking')
+    po_number = fields.Char(compute="_get_fields", string='Contract')
 
     line_ids = fields.One2many('pwk.packing.list.line', 'reference', string='Lines')
     state = fields.Selection([('Draft','Draft'),('Done','Done')], string="Status", default="Draft")
@@ -99,6 +102,9 @@ class PwkPackingList(models.Model):
             if res.line_ids:
                 res.partner_id = res.line_ids[0].sale_id.partner_id.id
                 res.destination_id = res.line_ids[0].sale_id.destination_id.id
+                res.payment_term_id = res.line_ids[0].sale_id.payment_term_id.id
+                res.marking = res.line_ids[0].sale_id.marking
+                res.po_number = res.line_ids[0].po_number
 
     def get_sequence(self, name=False, obj=False, year_month=False, context=None):
         sequence_id = self.env['ir.sequence'].search([
