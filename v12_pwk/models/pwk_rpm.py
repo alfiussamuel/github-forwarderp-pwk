@@ -412,11 +412,16 @@ class PwkRpmBahanBaku(models.Model):
 
     reference = fields.Many2one('pwk.rpm', 'Reference')
     product_id = fields.Many2one('product.product', string='Product')
+    
     quantity_available = fields.Float(compute="_get_fields", string='All Stock', digits=dp.get_precision('ZeroDecimal'))
     quantity_needed = fields.Float(compute="_get_fields", string='+/- Quantity', digits=dp.get_precision('ZeroDecimal'))
+    quantity_spare = fields.Float(compute="_get_fields", string='+/- Quantity Spare', digits=dp.get_precision('ZeroDecimal'))
     quantity = fields.Float('Quantity', digits=dp.get_precision('ZeroDecimal'))
+
     volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))
     volume_needed = fields.Float(compute="_get_volume", string='+/- Volume', digits=dp.get_precision('FourDecimal'))
+    volume_spare = fields.Float(compute="_get_volume", string='+/- Volume Spare', digits=dp.get_precision('FourDecimal'))
+    
     thick = fields.Float(compute="_get_fields", string='Thick', digits=dp.get_precision('OneDecimal'))
     width = fields.Float(compute="_get_fields", string='Width', digits=dp.get_precision('ZeroDecimal'))
     length = fields.Float(compute="_get_fields", string='Length', digits=dp.get_precision('ZeroDecimal'))
@@ -428,6 +433,7 @@ class PwkRpmBahanBaku(models.Model):
         for res in self:
             res.volume = res.quantity * res.thick * res.width * res.length / 1000000000
             res.volume_needed = res.quantity_needed * res.thick * res.width * res.length / 1000000000
+            res.volume_spare = res.quantity_spare * res.thick * res.width * res.length / 1000000000
 
     @api.depends('product_id')
     def _get_fields(self):
@@ -440,6 +446,7 @@ class PwkRpmBahanBaku(models.Model):
                 res.grade_id = res.product_id.grade.id
                 res.quantity_available = res.product_id.qty_available
                 res.quantity_needed = res.quantity_available - res.quantity
+                res.quantity_spare = res.quantity_needed + (res.quantity_needed * 0.1)
 
 class PwkRpm(models.Model):    
     _name = "pwk.rpm"

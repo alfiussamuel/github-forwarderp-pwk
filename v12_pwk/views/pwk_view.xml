@@ -507,6 +507,8 @@
                                             <field name="volume"/>
                                             <field name="quantity_needed"/>
                                             <field name="volume_needed"/>
+                                            <field name="quantity_spare"/>
+                                            <field name="volume_spare"/>
                                         </tree>
                                     </field>
                                 </page>
