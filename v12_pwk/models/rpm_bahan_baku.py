@@ -58,6 +58,9 @@ class RpmBahanBakuReportXls(models.AbstractModel):
         formatHeaderDetailLeft = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'left', 'text_wrap': True})
         formatHeaderDetailRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0'})
         formatHeaderDetailRightFour = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0.0000'})
+        formatHeaderDetailRightBold = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0', 'bold': True})
+        formatHeaderDetailRightFourBold = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0.0000', 'bold': True})
+
         format11 = workbook.add_format({'font_size': 12, 'align': 'center', 'bold': True})
         format21 = workbook.add_format({'font_size': 10, 'align': 'center', 'bold': True})
         format3 = workbook.add_format({'bottom': True, 'top': True, 'font_size': 12})
@@ -77,6 +80,8 @@ class RpmBahanBakuReportXls(models.AbstractModel):
         formatHeaderDetailCenterNumberFour.set_border(1)
         formatHeaderDetailRight.set_border(1)
         formatHeaderDetailRightFour.set_border(1)
+        formatHeaderDetailRightBold.set_border(1)
+        formatHeaderDetailRightFourBold.set_border(1)
 
         formatHeaderTable.set_text_wrap()
         formatHeaderTableRight.set_text_wrap()
@@ -169,14 +174,14 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                     sheet.write(row, 3, bahan_baku.product_id.lebar, formatHeaderDetailCenter)            
                     sheet.write(row, 4, bahan_baku.product_id.panjang, formatHeaderDetailCenter)
                     sheet.write(row, 5, bahan_baku.product_id.grade.name, formatHeaderDetailCenter)
-                    sheet.write(row, 6, bahan_baku.quantity_available, formatHeaderDetailCenter)
-                    sheet.write(row, 7, bahan_baku.quantity, formatHeaderDetailCenter)
-                    sheet.write(row, 8, bahan_baku.volume, formatHeaderDetailCenterNumberFour)
-                    sheet.write(row, 9, bahan_baku.quantity_needed, formatHeaderDetailCenter)
-                    sheet.write(row, 10, bahan_baku.volume_needed, formatHeaderDetailCenterNumberFour)
-                    sheet.write(row, 11, bahan_baku.quantity_spare, formatHeaderDetailCenterNumber)
-                    sheet.write(row, 12, bahan_baku.volume_spare, formatHeaderDetailCenterNumberFour)
-                    sheet.write(row, 13, (bahan_baku.notes or ''), formatHeaderDetailCenterNumber)
+                    sheet.write(row, 6, bahan_baku.quantity_available, formatHeaderDetailRight)
+                    sheet.write(row, 7, bahan_baku.quantity, formatHeaderDetailRight)
+                    sheet.write(row, 8, bahan_baku.volume, formatHeaderDetailRightFour)
+                    sheet.write(row, 9, bahan_baku.quantity_needed, formatHeaderDetailRight)
+                    sheet.write(row, 10, bahan_baku.volume_needed, formatHeaderDetailRightFour)
+                    sheet.write(row, 11, bahan_baku.quantity_spare, formatHeaderDetailRight)
+                    sheet.write(row, 12, bahan_baku.volume_spare, formatHeaderDetailRightFour)
+                    sheet.write(row, 13, (bahan_baku.notes or ''), formatHeaderDetailLeft)
                     row += 1
 
                     total_qty_stock_veneer += bahan_baku.quantity_available
@@ -187,14 +192,14 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                     total_qty_spare_veneer += bahan_baku.quantity_spare
                     total_volume_spare_veneer += bahan_baku.volume_spare
 
-                sheet.merge_range(row, 0, row, 5, 'TOTAL ', formatHeaderDetailRight)
-                sheet.write(row, 6, total_qty_stock_veneer, formatHeaderDetailRight)
-                sheet.write(row, 7, total_qty_veneer, formatHeaderDetailRight)
-                sheet.write(row, 8, total_volume_veneer, formatHeaderDetailRight)
-                sheet.write(row, 9, total_qty_needed_veneer, formatHeaderDetailRight)
-                sheet.write(row, 10, total_volume_needed_veneer, formatHeaderDetailRight)
-                sheet.write(row, 11, total_qty_spare_veneer, formatHeaderDetailRight)
-                sheet.write(row, 12, total_volume_spare_veneer, formatHeaderDetailRight)
+                sheet.merge_range(row, 0, row, 5, 'TOTAL ', formatHeaderDetailRightBold)
+                sheet.write(row, 6, total_qty_stock_veneer, formatHeaderDetailRightBold)
+                sheet.write(row, 7, total_qty_veneer, formatHeaderDetailRightBold)
+                sheet.write(row, 8, total_volume_veneer, formatHeaderDetailRightFourBold)
+                sheet.write(row, 9, total_qty_needed_veneer, formatHeaderDetailRightBold)
+                sheet.write(row, 10, total_volume_needed_veneer, formatHeaderDetailRightFourBold)
+                sheet.write(row, 11, total_qty_spare_veneer, formatHeaderDetailRightBold)
+                sheet.write(row, 12, total_volume_spare_veneer, formatHeaderDetailRightFourBold)
 
             if faceback_ids:
                 row += 1
@@ -205,14 +210,14 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                     sheet.write(row, 3, bahan_baku.product_id.lebar, formatHeaderDetailCenter)            
                     sheet.write(row, 4, bahan_baku.product_id.panjang, formatHeaderDetailCenter)
                     sheet.write(row, 5, bahan_baku.product_id.grade.name, formatHeaderDetailCenter)
-                    sheet.write(row, 6, bahan_baku.quantity_available, formatHeaderDetailCenter)
-                    sheet.write(row, 7, bahan_baku.quantity, formatHeaderDetailCenter)
-                    sheet.write(row, 8, bahan_baku.volume, formatHeaderDetailCenterNumberFour)
-                    sheet.write(row, 9, bahan_baku.quantity_needed, formatHeaderDetailCenter)
-                    sheet.write(row, 10, bahan_baku.volume_needed, formatHeaderDetailCenterNumberFour)
-                    sheet.write(row, 11, bahan_baku.quantity_spare, formatHeaderDetailCenterNumber)
-                    sheet.write(row, 12, bahan_baku.volume_spare, formatHeaderDetailCenterNumberFour)
-                    sheet.write(row, 13, (bahan_baku.notes or ''), formatHeaderDetailCenterNumber)
+                    sheet.write(row, 6, bahan_baku.quantity_available, formatHeaderDetailRight)
+                    sheet.write(row, 7, bahan_baku.quantity, formatHeaderDetailRight)
+                    sheet.write(row, 8, bahan_baku.volume, formatHeaderDetailRightFour)
+                    sheet.write(row, 9, bahan_baku.quantity_needed, formatHeaderDetailRight)
+                    sheet.write(row, 10, bahan_baku.volume_needed, formatHeaderDetailRightFour)
+                    sheet.write(row, 11, bahan_baku.quantity_spare, formatHeaderDetailRight)
+                    sheet.write(row, 12, bahan_baku.volume_spare, formatHeaderDetailRightFour)
+                    sheet.write(row, 13, (bahan_baku.notes or ''), formatHeaderDetailLeft)
                     row += 1  
 
                     total_qty_stock_faceback += bahan_baku.quantity_available
@@ -223,14 +228,14 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                     total_qty_spare_faceback += bahan_baku.quantity_spare
                     total_volume_spare_faceback += bahan_baku.volume_spare
 
-                sheet.merge_range(row, 0, row, 5, 'TOTAL ', formatHeaderDetailRight)
-                sheet.write(row, 6, total_qty_stock_faceback, formatHeaderDetailRight)
-                sheet.write(row, 7, total_qty_faceback, formatHeaderDetailRight)
-                sheet.write(row, 8, total_volume_faceback, formatHeaderDetailRight)
-                sheet.write(row, 9, total_qty_needed_faceback, formatHeaderDetailRight)
-                sheet.write(row, 10, total_volume_needed_faceback, formatHeaderDetailRight)
-                sheet.write(row, 11, total_qty_spare_faceback, formatHeaderDetailRight)
-                sheet.write(row, 12, total_volume_spare_faceback, formatHeaderDetailRight)
+                sheet.merge_range(row, 0, row, 5, 'TOTAL ', formatHeaderDetailRightBold)
+                sheet.write(row, 6, total_qty_stock_faceback, formatHeaderDetailRightBold)
+                sheet.write(row, 7, total_qty_faceback, formatHeaderDetailRightBold)
+                sheet.write(row, 8, total_volume_faceback, formatHeaderDetailRightFourBold)
+                sheet.write(row, 9, total_qty_needed_faceback, formatHeaderDetailRightBold)
+                sheet.write(row, 10, total_volume_needed_faceback, formatHeaderDetailRightFourBold)
+                sheet.write(row, 11, total_qty_spare_faceback, formatHeaderDetailRightBold)
+                sheet.write(row, 12, total_volume_spare_faceback, formatHeaderDetailRightFourBold)
 
             if mdf_ids:
                 row += 1
@@ -241,14 +246,14 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                     sheet.write(row, 3, bahan_baku.product_id.lebar, formatHeaderDetailCenter)            
                     sheet.write(row, 4, bahan_baku.product_id.panjang, formatHeaderDetailCenter)
                     sheet.write(row, 5, bahan_baku.product_id.grade.name, formatHeaderDetailCenter)
-                    sheet.write(row, 6, bahan_baku.quantity_available, formatHeaderDetailCenter)
-                    sheet.write(row, 7, bahan_baku.quantity, formatHeaderDetailCenter)
-                    sheet.write(row, 8, bahan_baku.volume, formatHeaderDetailCenterNumberFour)
-                    sheet.write(row, 9, bahan_baku.quantity_needed, formatHeaderDetailCenter)
-                    sheet.write(row, 10, bahan_baku.volume_needed, formatHeaderDetailCenterNumberFour)
-                    sheet.write(row, 11, bahan_baku.quantity_spare, formatHeaderDetailCenterNumber)
-                    sheet.write(row, 12, bahan_baku.volume_spare, formatHeaderDetailCenterNumberFour)
-                    sheet.write(row, 13, (bahan_baku.notes or ''), formatHeaderDetailCenterNumber)
+                    sheet.write(row, 6, bahan_baku.quantity_available, formatHeaderDetailRight)
+                    sheet.write(row, 7, bahan_baku.quantity, formatHeaderDetailRight)
+                    sheet.write(row, 8, bahan_baku.volume, formatHeaderDetailRightFour)
+                    sheet.write(row, 9, bahan_baku.quantity_needed, formatHeaderDetailRight)
+                    sheet.write(row, 10, bahan_baku.volume_needed, formatHeaderDetailRightFour)
+                    sheet.write(row, 11, bahan_baku.quantity_spare, formatHeaderDetailRight)
+                    sheet.write(row, 12, bahan_baku.volume_spare, formatHeaderDetailRightFour)
+                    sheet.write(row, 13, (bahan_baku.notes or ''), formatHeaderDetailLeft)
                     row += 1  
 
                     total_qty_stock_mdf += bahan_baku.quantity_available
@@ -259,14 +264,14 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                     total_qty_spare_mdf += bahan_baku.quantity_spare
                     total_volume_spare_mdf += bahan_baku.volume_spare
 
-                sheet.merge_range(row, 0, row, 5, 'TOTAL ', formatHeaderDetailRight)
-                sheet.write(row, 6, total_qty_stock_mdf, formatHeaderDetailRight)
-                sheet.write(row, 7, total_qty_mdf, formatHeaderDetailRight)
-                sheet.write(row, 8, total_volume_mdf, formatHeaderDetailRight)
-                sheet.write(row, 9, total_qty_needed_mdf, formatHeaderDetailRight)
-                sheet.write(row, 10, total_volume_needed_mdf, formatHeaderDetailRight)
-                sheet.write(row, 11, total_qty_spare_mdf, formatHeaderDetailRight)
-                sheet.write(row, 12, total_volume_spare_mdf, formatHeaderDetailRight)
+                sheet.merge_range(row, 0, row, 5, 'TOTAL ', formatHeaderDetailRightBold)
+                sheet.write(row, 6, total_qty_stock_mdf, formatHeaderDetailRightBold)
+                sheet.write(row, 7, total_qty_mdf, formatHeaderDetailRightBold)
+                sheet.write(row, 8, total_volume_mdf, formatHeaderDetailRightFourBold)
+                sheet.write(row, 9, total_qty_needed_mdf, formatHeaderDetailRightBold)
+                sheet.write(row, 10, total_volume_needed_mdf, formatHeaderDetailRightFourBold)
+                sheet.write(row, 11, total_qty_spare_mdf, formatHeaderDetailRightBold)
+                sheet.write(row, 12, total_volume_spare_mdf, formatHeaderDetailRightFourBold)
 
             if barecore_ids:
                 row += 1
@@ -277,14 +282,14 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                     sheet.write(row, 3, bahan_baku.product_id.lebar, formatHeaderDetailCenter)            
                     sheet.write(row, 4, bahan_baku.product_id.panjang, formatHeaderDetailCenter)
                     sheet.write(row, 5, bahan_baku.product_id.grade.name, formatHeaderDetailCenter)
-                    sheet.write(row, 6, bahan_baku.quantity_available, formatHeaderDetailCenter)
-                    sheet.write(row, 7, bahan_baku.quantity, formatHeaderDetailCenter)
-                    sheet.write(row, 8, bahan_baku.volume, formatHeaderDetailCenterNumberFour)
-                    sheet.write(row, 9, bahan_baku.quantity_needed, formatHeaderDetailCenter)
-                    sheet.write(row, 10, bahan_baku.volume_needed, formatHeaderDetailCenterNumberFour)
-                    sheet.write(row, 11, bahan_baku.quantity_spare, formatHeaderDetailCenterNumber)
-                    sheet.write(row, 12, bahan_baku.volume_spare, formatHeaderDetailCenterNumberFour)
-                    sheet.write(row, 13, (bahan_baku.notes or ''), formatHeaderDetailCenterNumber)
+                    sheet.write(row, 6, bahan_baku.quantity_available, formatHeaderDetailRight)
+                    sheet.write(row, 7, bahan_baku.quantity, formatHeaderDetailRight)
+                    sheet.write(row, 8, bahan_baku.volume, formatHeaderDetailRightFour)
+                    sheet.write(row, 9, bahan_baku.quantity_needed, formatHeaderDetailRight)
+                    sheet.write(row, 10, bahan_baku.volume_needed, formatHeaderDetailRightFour)
+                    sheet.write(row, 11, bahan_baku.quantity_spare, formatHeaderDetailRight)
+                    sheet.write(row, 12, bahan_baku.volume_spare, formatHeaderDetailRightFour)
+                    sheet.write(row, 13, (bahan_baku.notes or ''), formatHeaderDetailLeft)
                     row += 1  
 
                     total_qty_stock_barecore += bahan_baku.quantity_available
@@ -295,11 +300,11 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                     total_qty_spare_barecore += bahan_baku.quantity_spare
                     total_volume_spare_barecore += bahan_baku.volume_spare
 
-                sheet.merge_range(row, 0, row, 5, 'TOTAL ', formatHeaderDetailRight)
-                sheet.write(row, 6, total_qty_stock_barecore, formatHeaderDetailRight)
-                sheet.write(row, 7, total_qty_barecore, formatHeaderDetailRight)
-                sheet.write(row, 8, total_volume_barecore, formatHeaderDetailRight)
-                sheet.write(row, 9, total_qty_needed_barecore, formatHeaderDetailRight)
-                sheet.write(row, 10, total_volume_needed_barecore, formatHeaderDetailRight)
-                sheet.write(row, 11, total_qty_spare_barecore, formatHeaderDetailRight)
-                sheet.write(row, 12, total_volume_spare_barecore, formatHeaderDetailRight)
+                sheet.merge_range(row, 0, row, 5, 'TOTAL ', formatHeaderDetailRightBold)
+                sheet.write(row, 6, total_qty_stock_barecore, formatHeaderDetailRightBold)
+                sheet.write(row, 7, total_qty_barecore, formatHeaderDetailRightBold)
+                sheet.write(row, 8, total_volume_barecore, formatHeaderDetailRightFourBold)
+                sheet.write(row, 9, total_qty_needed_barecore, formatHeaderDetailRightBold)
+                sheet.write(row, 10, total_volume_needed_barecore, formatHeaderDetailRightFourBold)
+                sheet.write(row, 11, total_qty_spare_barecore, formatHeaderDetailRightBold)
+                sheet.write(row, 12, total_volume_spare_barecore, formatHeaderDetailRightFourBold)
