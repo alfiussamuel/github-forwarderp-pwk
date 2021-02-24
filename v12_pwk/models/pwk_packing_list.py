@@ -52,7 +52,7 @@ class PwkPackingList(models.Model):
     certificate_id = fields.Many2one('pwk.certificate', 'Certificate')
     is_logo = fields.Boolean('Show Legal Logo', default=True)
     
-    sale_id = fields.Many2one('sale.order', 'Sales Order')
+    sale_id = fields.Many2one('sale.order', 'Sales Order', domain="[('state', '=', 'sale')]")
     partner_id = fields.Many2one(related='sale_id.partner_id', comodel_name='res.partner', string='Nama Penerima')
     destination_id = fields.Many2one(related='sale_id.destination_id', comodel_name='pwk.destination', string='Destination')
 

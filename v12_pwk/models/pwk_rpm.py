@@ -414,7 +414,7 @@ class PwkRpmBahanBaku(models.Model):
     reference = fields.Many2one('pwk.rpm', 'Reference')
     product_id = fields.Many2one('product.product', string='Product')
     
-    quantity_available = fields.Float(compute="_get_fields", string='All Stock', digits=dp.get_precision('ZeroDecimal'))
+    quantity_available = fields.Float(string='All Stock', digits=dp.get_precision('ZeroDecimal'))
     quantity_needed = fields.Float(compute="_get_fields", string='+/- Quantity', digits=dp.get_precision('ZeroDecimal'))
     quantity_spare = fields.Float(compute="_get_fields", string='+/- Quantity Spare', digits=dp.get_precision('ZeroDecimal'))
     quantity = fields.Float('Quantity', digits=dp.get_precision('ZeroDecimal'))
@@ -449,7 +449,7 @@ class PwkRpmBahanBaku(models.Model):
                 res.length = res.product_id.panjang
                 res.glue_id = res.product_id.glue.id
                 res.grade_id = res.product_id.grade.id
-                res.quantity_available = res.product_id.qty_available
+                # res.quantity_available = res.product_id.qty_available
                 res.quantity_needed = res.quantity_available - res.quantity
                 res.quantity_spare = res.quantity_needed + (res.quantity_needed * 0.1)
 
