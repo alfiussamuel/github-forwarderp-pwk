@@ -83,6 +83,7 @@ class RpmBahanBakuReportXls(models.AbstractModel):
         formatHeaderDetailLeft.set_border(1)
         formatHeaderDetailCenterNumber.set_border(1)
         formatHeaderDetailCenterNumberFour.set_border(1)
+        formatHeaderDetailCenterNumberOne.set_border(1)
         formatHeaderDetailRight.set_border(1)
         formatHeaderDetailRightFour.set_border(1)
         formatHeaderDetailRightBold.set_border(1)
@@ -212,7 +213,7 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                 for bahan_baku in faceback_ids:
                     sheet.write(row, 0, bahan_baku.product_id.jenis_kayu.name, formatHeaderDetailCenter)
                     sheet.write(row, 1, bahan_baku.product_id.goods_type, formatHeaderDetailCenter)
-                    sheet.write(row, 2, bahan_baku.product_id.tebal, formatHeaderDetailCenterNumber)            
+                    sheet.write(row, 2, bahan_baku.product_id.tebal, formatHeaderDetailCenterNumberOne)            
                     sheet.write(row, 3, bahan_baku.product_id.lebar, formatHeaderDetailCenter)            
                     sheet.write(row, 4, bahan_baku.product_id.panjang, formatHeaderDetailCenter)
                     sheet.write(row, 5, bahan_baku.product_id.grade.name, formatHeaderDetailCenter)
@@ -249,7 +250,7 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                 for bahan_baku in mdf_ids:
                     sheet.write(row, 0, bahan_baku.product_id.jenis_kayu.name, formatHeaderDetailCenter)
                     sheet.write(row, 1, bahan_baku.product_id.goods_type, formatHeaderDetailCenter)
-                    sheet.write(row, 2, bahan_baku.product_id.tebal, formatHeaderDetailCenterNumber)            
+                    sheet.write(row, 2, bahan_baku.product_id.tebal, formatHeaderDetailCenterNumberOne)            
                     sheet.write(row, 3, bahan_baku.product_id.lebar, formatHeaderDetailCenter)            
                     sheet.write(row, 4, bahan_baku.product_id.panjang, formatHeaderDetailCenter)
                     sheet.write(row, 5, bahan_baku.product_id.grade.name, formatHeaderDetailCenter)
@@ -286,7 +287,7 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                 for bahan_baku in barecore_ids:
                     sheet.write(row, 0, bahan_baku.product_id.jenis_kayu.name, formatHeaderDetailCenter)
                     sheet.write(row, 1, bahan_baku.product_id.goods_type, formatHeaderDetailCenter)
-                    sheet.write(row, 2, bahan_baku.product_id.tebal, formatHeaderDetailCenterNumber)            
+                    sheet.write(row, 2, bahan_baku.product_id.tebal, formatHeaderDetailCenterNumberOne)            
                     sheet.write(row, 3, bahan_baku.product_id.lebar, formatHeaderDetailCenter)            
                     sheet.write(row, 4, bahan_baku.product_id.panjang, formatHeaderDetailCenter)
                     sheet.write(row, 5, bahan_baku.product_id.grade.name, formatHeaderDetailCenter)
