@@ -91,19 +91,19 @@ class RpmBahanBakuReportXls(models.AbstractModel):
         
         # Set Column Width
         sheet.set_column(0, 0, 10)
-        sheet.set_column(1, 1, 20)
+        sheet.set_column(1, 1, 10)
         sheet.set_column(2, 2, 6)
         sheet.set_column(3, 3, 6)
         sheet.set_column(4, 4, 6)
-        sheet.set_column(5, 5, 10)
-        sheet.set_column(6, 6, 10)
-        sheet.set_column(7, 7, 10)
-        sheet.set_column(8, 8, 10)
-        sheet.set_column(9, 9, 10)
-        sheet.set_column(10, 10, 10)
-        sheet.set_column(11, 11, 10)
-        sheet.set_column(12, 12, 10)
-        sheet.set_column(13, 13, 30)
+        sheet.set_column(5, 5, 12)
+        sheet.set_column(6, 6, 12)
+        sheet.set_column(7, 7, 12)
+        sheet.set_column(8, 8, 12)
+        sheet.set_column(9, 9, 12)
+        sheet.set_column(10, 10, 12)
+        sheet.set_column(11, 11, 12)
+        sheet.set_column(12, 12, 12)
+        sheet.set_column(13, 13, 40)
         
         # Set default Row height
         # sheet.set_default_row(40)
@@ -200,6 +200,7 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                 sheet.write(row, 10, total_volume_needed_veneer, formatHeaderDetailRightFourBold)
                 sheet.write(row, 11, total_qty_spare_veneer, formatHeaderDetailRightBold)
                 sheet.write(row, 12, total_volume_spare_veneer, formatHeaderDetailRightFourBold)
+                sheet.write(row, 13, '', formatHeaderDetailRightFourBold)
 
             if faceback_ids:
                 row += 1
@@ -236,6 +237,7 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                 sheet.write(row, 10, total_volume_needed_faceback, formatHeaderDetailRightFourBold)
                 sheet.write(row, 11, total_qty_spare_faceback, formatHeaderDetailRightBold)
                 sheet.write(row, 12, total_volume_spare_faceback, formatHeaderDetailRightFourBold)
+                sheet.write(row, 13, '', formatHeaderDetailRightFourBold)
 
             if mdf_ids:
                 row += 1
@@ -272,6 +274,7 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                 sheet.write(row, 10, total_volume_needed_mdf, formatHeaderDetailRightFourBold)
                 sheet.write(row, 11, total_qty_spare_mdf, formatHeaderDetailRightBold)
                 sheet.write(row, 12, total_volume_spare_mdf, formatHeaderDetailRightFourBold)
+                sheet.write(row, 13, '', formatHeaderDetailRightFourBold)
 
             if barecore_ids:
                 row += 1
@@ -308,3 +311,4 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                 sheet.write(row, 10, total_volume_needed_barecore, formatHeaderDetailRightFourBold)
                 sheet.write(row, 11, total_qty_spare_barecore, formatHeaderDetailRightBold)
                 sheet.write(row, 12, total_volume_spare_barecore, formatHeaderDetailRightFourBold)
+                sheet.write(row, 13, '', formatHeaderDetailRightFourBold)
