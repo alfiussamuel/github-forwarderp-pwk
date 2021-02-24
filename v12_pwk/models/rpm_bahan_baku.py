@@ -51,13 +51,18 @@ class RpmBahanBakuReportXls(models.AbstractModel):
         formatHeaderTablePlain = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'bold': True, 'text_wrap': True})
         formatHeaderTableRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'bold': True, 'bg_color':'#3eaec2', 'text_wrap': True, 'num_format': '#,##0'})
         formatHeaderTableCenterWhite = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'center', 'bold': True, 'text_wrap': True, 'num_format': '#,##0'})
+        
         formatHeaderDetailCenter = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True})
         formatHeaderDetailCenterColor = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'bg_color':'#3eaec2'})
         formatHeaderDetailCenterNumber = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'num_format': '#,##0'})
         formatHeaderDetailCenterNumberFour = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'num_format': '#,##4'})
+        formatHeaderDetailCenterNumberOne = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'num_format': '#,##1'})
+
         formatHeaderDetailLeft = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'left', 'text_wrap': True})
+        
         formatHeaderDetailRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0'})
         formatHeaderDetailRightFour = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0.0000'})
+        formatHeaderDetailRightOne = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0.0'})
         formatHeaderDetailRightBold = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0', 'bold': True})
         formatHeaderDetailRightFourBold = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0.0000', 'bold': True})
 
@@ -170,7 +175,7 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                 for bahan_baku in veneer_ids:
                     sheet.write(row, 0, bahan_baku.product_id.jenis_kayu.name, formatHeaderDetailCenter)
                     sheet.write(row, 1, bahan_baku.product_id.goods_type, formatHeaderDetailCenter)
-                    sheet.write(row, 2, bahan_baku.product_id.tebal, formatHeaderDetailCenter)            
+                    sheet.write(row, 2, bahan_baku.product_id.tebal, formatHeaderDetailCenterNumberOne)            
                     sheet.write(row, 3, bahan_baku.product_id.lebar, formatHeaderDetailCenter)            
                     sheet.write(row, 4, bahan_baku.product_id.panjang, formatHeaderDetailCenter)
                     sheet.write(row, 5, bahan_baku.product_id.grade.name, formatHeaderDetailCenter)
@@ -207,7 +212,7 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                 for bahan_baku in faceback_ids:
                     sheet.write(row, 0, bahan_baku.product_id.jenis_kayu.name, formatHeaderDetailCenter)
                     sheet.write(row, 1, bahan_baku.product_id.goods_type, formatHeaderDetailCenter)
-                    sheet.write(row, 2, bahan_baku.product_id.tebal, formatHeaderDetailCenter)            
+                    sheet.write(row, 2, bahan_baku.product_id.tebal, formatHeaderDetailCenterNumberOne)            
                     sheet.write(row, 3, bahan_baku.product_id.lebar, formatHeaderDetailCenter)            
                     sheet.write(row, 4, bahan_baku.product_id.panjang, formatHeaderDetailCenter)
                     sheet.write(row, 5, bahan_baku.product_id.grade.name, formatHeaderDetailCenter)
@@ -244,7 +249,7 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                 for bahan_baku in mdf_ids:
                     sheet.write(row, 0, bahan_baku.product_id.jenis_kayu.name, formatHeaderDetailCenter)
                     sheet.write(row, 1, bahan_baku.product_id.goods_type, formatHeaderDetailCenter)
-                    sheet.write(row, 2, bahan_baku.product_id.tebal, formatHeaderDetailCenter)            
+                    sheet.write(row, 2, bahan_baku.product_id.tebal, formatHeaderDetailCenterNumberOne)            
                     sheet.write(row, 3, bahan_baku.product_id.lebar, formatHeaderDetailCenter)            
                     sheet.write(row, 4, bahan_baku.product_id.panjang, formatHeaderDetailCenter)
                     sheet.write(row, 5, bahan_baku.product_id.grade.name, formatHeaderDetailCenter)
@@ -281,7 +286,7 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                 for bahan_baku in barecore_ids:
                     sheet.write(row, 0, bahan_baku.product_id.jenis_kayu.name, formatHeaderDetailCenter)
                     sheet.write(row, 1, bahan_baku.product_id.goods_type, formatHeaderDetailCenter)
-                    sheet.write(row, 2, bahan_baku.product_id.tebal, formatHeaderDetailCenter)            
+                    sheet.write(row, 2, bahan_baku.product_id.tebal, formatHeaderDetailCenterNumberOne)            
                     sheet.write(row, 3, bahan_baku.product_id.lebar, formatHeaderDetailCenter)            
                     sheet.write(row, 4, bahan_baku.product_id.panjang, formatHeaderDetailCenter)
                     sheet.write(row, 5, bahan_baku.product_id.grade.name, formatHeaderDetailCenter)
