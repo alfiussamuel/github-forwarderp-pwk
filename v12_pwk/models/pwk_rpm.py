@@ -411,7 +411,7 @@ class PwkRpmBahanBaku(models.Model):
     _name = "pwk.rpm.bahan.baku"
 
     reference = fields.Many2one('pwk.rpm', 'Reference')
-    product_id = fields.Many2one(compute="_get_sale_fields", comodel_name='product.product', string='Product')
+    product_id = fields.Many2one('product.product', string='Product')
     quantity = fields.Float('Quantity', digits=dp.get_precision('ZeroDecimal'))
     volume = fields.Float('Volume', digits=dp.get_precision('FourDecimal'))
     thick = fields.Float(compute="_get_fields", string='Thick', digits=dp.get_precision('OneDecimal'))
