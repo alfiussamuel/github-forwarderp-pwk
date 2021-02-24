@@ -53,6 +53,7 @@ class PwkPackingList(models.Model):
     partner_id = fields.Many2one('res.partner', 'Nama Penerima', domain="[('customer','=',True)]")
     date = fields.Date('Date')
     line_ids = fields.One2many('pwk.packing.list.line', 'reference', string='Lines')
+    state = fields.Selection([('Draft','Draft'),('Done','Done')], string="Status", default="Draft")
 
     def get_sequence(self, name=False, obj=False, year_month=False, context=None):
         sequence_id = self.env['ir.sequence'].search([
