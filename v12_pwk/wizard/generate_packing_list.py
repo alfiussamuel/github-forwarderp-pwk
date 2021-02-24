@@ -21,7 +21,7 @@ class PwkGeneratePackingListWizard(models.TransientModel):
 
     	if self.sale_line_ids:
             for line in self.sale_line_ids:
-                self.env['pwk.packing.list.line'].create({
+                packing_list_line_id = self.env['pwk.packing.list.line'].create({
                     'reference': packing_list_id.id,
                     'product_id': line.product_id.id,
                     'quantity': line.product_uom_qty,
@@ -30,3 +30,31 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                     'crate_number': line.crate_number,
                     'crate_qty_each': line.crate_qty_each
                 })
+
+                rpb_line_ids = self.env['pwk.rpb.line'].search([
+                    ('sale_line_id', '=', line.id),
+                ])
+
+                if rpb_line_ids[0].is_selected_detail1 and rpb_line_ids[0].detail_ids_1:
+                    bom_list = rpb_line_ids[0].detail_ids_1
+                elif rpb_line_ids[0].is_selected_detail2 and rpb_line_ids[0].detail_ids_2:
+                    bom_list = rpb_line_ids[0].detail_ids_2
+                elif rpb_line_ids[0].is_selected_detail3 and rpb_line_ids[0].detail_ids_3:
+                    bom_list = rpb_line_ids[0].detail_ids_3
+                elif rpb_line_ids[0].is_selected_detail4 and rpb_line_ids[0].detail_ids_4:
+                    bom_list = rpb_line_ids[0].detail_ids_4
+                elif rpb_line_ids[0].is_selected_detail5 and rpb_line_ids[0].detail_ids_5:
+                    bom_list = rpb_line_ids[0].detail_ids_5
+
+                for bom_line in bom_list:                        
+                    self.env['pwk.packing.line.bom'].create({
+                        'reference': line.id,
+                        'product_id': bom_line.product_id.id,
+                        'thick': bom_line.product_id.tebal,
+                        'width': bom_line.product_id.lebar,
+                        'length': bom_line.product_id.panjang,
+                        'quantity': bom_line.product_qty * line.total_qty_spare,
+                        'ply': bom_line.ply,
+                        'notes': bom_line.notes
+                    })
+

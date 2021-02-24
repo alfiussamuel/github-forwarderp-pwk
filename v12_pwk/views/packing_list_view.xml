@@ -56,6 +56,17 @@
                                                     <field name="volume"/>
                                                 </group>
                                             </group>
+                                            <group>
+                                                <field name="bom_ids" nolabel="1">
+                                                    <tree editable="top">
+                                                        <field name="product_id"/>
+                                                        <field name="thick"/>
+                                                        <field name="width"/>
+                                                        <field name="length"/>
+                                                        <field name="quantity"/>
+                                                    </tree>
+                                                </field>
+                                            </group>
                                         </form>
                                     </field>
                                 </page>

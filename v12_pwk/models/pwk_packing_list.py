@@ -14,6 +14,18 @@ import re
 from num2words import num2words
 
 
+class PwkPackingListLineBom(models.Model):    
+    _name = "pwk.packing.list.line.bom"
+
+    reference = fields.Many2one('pwk.packing.list.line', string='Reference')
+    product_id = fields.Many2one('product.product', string='Product')
+    thick = fields.Float(string='Thick', digits=dp.get_precision('OneDecimal'))
+    width = fields.Float(string='Width', digits=dp.get_precision('ZeroDecimal'))
+    length = fields.Float(string='Length', digits=dp.get_precision('ZeroDecimal'))
+    quantity = fields.Float(string='Quantity', digits=dp.get_precision('ZeroDecimal'))
+    ply = fields.Float(string='Ply', digits=dp.get_precision('ZeroDecimal'))
+
+
 class PwkPackingListLine(models.Model):    
     _name = "pwk.packing.list.line"
 
@@ -33,6 +45,9 @@ class PwkPackingListLine(models.Model):
     
     quantity = fields.Float('Quantity', digits=dp.get_precision('TwoDecimal'))
     volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))
+
+    bom_ids = fields.One2many('pwk.packing.list.line.bom', 'reference', string='Lines')
+
 
     @api.depends('quantity')
     def _get_volume(self):
