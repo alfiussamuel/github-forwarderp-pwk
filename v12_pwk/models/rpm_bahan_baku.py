@@ -85,30 +85,24 @@ class RpmBahanBakuReportXls(models.AbstractModel):
         # formatHeaderDetailLeft.set_text_wrap()
         
         # Set Column Width
-        sheet.set_column(0, 0, 4)
-        sheet.set_column(1, 1, 5)
-        sheet.set_column(2, 2, 8)
-        sheet.set_column(3, 3, 25)
-        sheet.set_column(4, 4, 8)
+        sheet.set_column(0, 0, 10)
+        sheet.set_column(1, 1, 20)
+        sheet.set_column(2, 2, 6)
+        sheet.set_column(3, 3, 6)
+        sheet.set_column(4, 4, 6)
         sheet.set_column(5, 5, 10)
-        sheet.set_column(6, 6, 7)
-        sheet.set_column(7, 7, 6)
-        sheet.set_column(8, 8, 6)
-        sheet.set_column(9, 9, 6)
-        sheet.set_column(10, 10, 8)
-        sheet.set_column(11, 11, 8)
+        sheet.set_column(6, 6, 10)
+        sheet.set_column(7, 7, 10)
+        sheet.set_column(8, 8, 10)
+        sheet.set_column(9, 9, 10)
+        sheet.set_column(10, 10, 10)
+        sheet.set_column(11, 11, 10)
         sheet.set_column(12, 12, 10)
         sheet.set_column(13, 13, 10)
-        sheet.set_column(14, 14, 10)
-        sheet.set_column(15, 15, 10)
-        sheet.set_column(16, 16, 10)
-        sheet.set_column(17, 17, 10)
-        sheet.set_column(18, 18, 10)
-        sheet.set_column(19, 19, 10)
-
+        
         # Set default Row height
-        sheet.set_default_row(40)
-        sheet.set_row(4, 16)
+        # sheet.set_default_row(40)
+        # sheet.set_row(4, 16)
         
         # Data 1
         row = 3
