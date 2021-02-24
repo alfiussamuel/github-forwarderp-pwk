@@ -36,6 +36,8 @@
                                     <field name="line_ids" nolabel="1">
                                         <tree editable="top">
                                             <field name="product_id" required="1"/>
+                                            <field name="crate_number" sum="Total"/>
+                                            <field name="crate_qty_each" sum="Total"/>
                                             <field name="quantity" sum="Total"/>
                                             <field name="volume" sum="Total"/>
                                         </tree>
@@ -45,8 +47,14 @@
                                                     options="{'no_create': True}"/>
                                             </group>
                                             <group>
-                                                <field name="quantity"/>
-                                                <field name="volume"/>
+                                                <group>
+                                                    <field name="crate_number"/>
+                                                    <field name="crate_qty_each"/>
+                                                </group>
+                                                <group>
+                                                    <field name="quantity"/>
+                                                    <field name="volume"/>
+                                                </group>
                                             </group>
                                         </form>
                                     </field>

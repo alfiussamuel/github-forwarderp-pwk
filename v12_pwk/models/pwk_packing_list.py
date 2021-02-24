@@ -18,14 +18,21 @@ class PwkPackingListLine(models.Model):
     _name = "pwk.packing.list.line"
 
     reference = fields.Many2one('pwk.packing.list', string='Reference')
+    sale_id = fields.Many2one('sale.order', 'No. Order')
+    sale_line_id = fields.Many2one('sale.order.line', 'No. Order Line')
+
+    crate_number = fields.Integer('Crate Number')
+    crate_qty_each = fields.Integer('Crate Qty each')
+
     product_id = fields.Many2one('product.product', string='Product')
     thick = fields.Float(compute="_get_fields", string='Thick', digits=dp.get_precision('OneDecimal'))
     width = fields.Float(compute="_get_fields", string='Width', digits=dp.get_precision('ZeroDecimal'))
     length = fields.Float(compute="_get_fields", string='Length', digits=dp.get_precision('ZeroDecimal'))
     glue_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.glue', string='Glue')
     grade_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.grade', string='Grade')
+    
     quantity = fields.Float('Quantity', digits=dp.get_precision('TwoDecimal'))
-    volume = fields.Float(compute="_get_volume", string='Cont Vol')
+    volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))
 
     @api.depends('quantity')
     def _get_volume(self):
@@ -52,11 +59,18 @@ class PwkPackingList(models.Model):
     certificate_id = fields.Many2one('pwk.certificate', 'Certificate')
     is_logo = fields.Boolean('Show Legal Logo', default=True)
     
-    partner_id = fields.Many2one('res.partner', string='Buyer')
-    destination_id = fields.Many2one('pwk.destination', string='Destination')
+    partner_id = fields.Many2one(compute="_get_fields", comodel_name='res.partner', string='Buyer')
+    destination_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.destination', string='Destination')
 
     line_ids = fields.One2many('pwk.packing.list.line', 'reference', string='Lines')
     state = fields.Selection([('Draft','Draft'),('Done','Done')], string="Status", default="Draft")
+
+    @api.depends('line_ids.sale_line_id')
+    def _get_fields(self):
+        for res in self:
+            if res.line_ids:
+                res.partner_id = res.line_ids[0].sale_id.partner_id.id
+                res.destination_id = res.line_ids[0].sale_id.destination_id.id
 
     def get_sequence(self, name=False, obj=False, year_month=False, context=None):
         sequence_id = self.env['ir.sequence'].search([

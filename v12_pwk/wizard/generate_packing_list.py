@@ -24,5 +24,9 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                 self.env['pwk.packing.list.line'].create({
                     'reference': packing_list_id.id,
                     'product_id': line.product_id.id,
-                    'quantity': line.product_uom_qty
+                    'quantity': line.product_uom_qty,
+                    'sale_line_id': line.id,
+                    'sale_id': line.order_id.id,
+                    'crate_number': line.crate_number,
+                    'crate_qty_each': line.crate_qty_each
                 })
