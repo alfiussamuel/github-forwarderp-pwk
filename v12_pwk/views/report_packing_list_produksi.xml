@@ -252,8 +252,8 @@
 						</thead>
 						<tbody class="invoice_tbody">
 							<tr t-foreach="o.line_ids" t-as="l">
-								<td style="text-align:center;border:1px solid black;font-size:13px;padding:2px;">
-	    							 
+								<td style="text-align:center;border:1px solid black;font-size:13px;padding:4px;">
+	    							 <strong>01-15</strong>
 		                        </td>
 		                        <td style="text-align:left;border:1px solid black;font-size:13px;padding:4px;">
 	    							<strong>
