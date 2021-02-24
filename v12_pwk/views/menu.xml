@@ -5,7 +5,7 @@
 		<record id="pwk_packing_list_action" model="ir.actions.act_window">
             <field name="name">Packing List</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">packing.list</field>
+            <field name="res_model">pwk.packing.list</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
