@@ -42,6 +42,7 @@ class PwkPackingListLine(models.Model):
     length = fields.Float(compute="_get_fields", string='Length', digits=dp.get_precision('ZeroDecimal'))
     glue_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.glue', string='Glue')
     grade_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.grade', string='Grade')
+    marking = fields.Char(related='sale_line_id.marking', string='Marking')
     
     quantity = fields.Float('Quantity', digits=dp.get_precision('TwoDecimal'))
     volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))

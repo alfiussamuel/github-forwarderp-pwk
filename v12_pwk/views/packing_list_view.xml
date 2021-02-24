@@ -36,6 +36,7 @@
                                     <field name="line_ids" nolabel="1">
                                         <tree editable="top">
                                             <field name="product_id" required="1"/>
+                                            <field name="marking"/>
                                             <field name="crate_number" sum="Total"/>
                                             <field name="crate_qty_each" sum="Total"/>
                                             <field name="quantity" sum="Total"/>
