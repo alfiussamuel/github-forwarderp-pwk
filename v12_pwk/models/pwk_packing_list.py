@@ -75,11 +75,11 @@ class PwkPackingList(models.Model):
     certificate_id = fields.Many2one('pwk.certificate', 'Certificate')
     is_logo = fields.Boolean('Show Legal Logo', default=True)
     
-    partner_id = fields.Many2one(compute="_get_fields", comodel_name='res.partner', string='Buyer')
-    destination_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.destination', string='Destination')
-    payment_term_id = fields.Many2one(compute="_get_fields", comodel_name='account.payment.term', string='Payment Terms')
-    marking = fields.Char(compute="_get_fields", string='Marking')
-    po_number = fields.Char(compute="_get_fields", string='Contract')
+    partner_id = fields.Many2one(compute="_get_fields", comodel_name='res.partner', string='Buyer', store=True)
+    destination_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.destination', string='Destination', store=True)
+    payment_term_id = fields.Many2one(compute="_get_fields", comodel_name='account.payment.term', string='Payment Terms', store=True)
+    marking = fields.Char(compute="_get_fields", string='Marking', store=True)
+    po_number = fields.Char(compute="_get_fields", string='Contract', store=True)
 
     line_ids = fields.One2many('pwk.packing.list.line', 'reference', string='Lines')
     state = fields.Selection([('Draft','Draft'),('Done','Done')], string="Status", default="Draft")
