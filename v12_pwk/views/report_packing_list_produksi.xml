@@ -236,15 +236,15 @@
 	                        	</th>
 	                        </tr>
 							<tr>
-								<th width="10%"
+								<th width="12%"
 	                        		style="text-align:center;font-size:13px;border:1px solid black;background-color:#d7e8f7;padding:2px;vertical-align:middle;">	
 									<strong>VOLUME</strong>							
 								</th>
-								<th width="10%"
+								<th width="12%"
 	                        		style="text-align:center;font-size:13px;border:1px solid black;background-color:#d7e8f7;padding:2px;vertical-align:middle;">
 									<strong>MARKING</strong>
 								</th>
-								<th width="30%"
+								<th width="26%"
 	                        		style="text-align:center;font-size:13px;border:1px solid black;background-color:#d7e8f7;padding:2px;vertical-align:middle;">
 									<strong>COMPOSITION</strong>
 								</th>
@@ -268,7 +268,7 @@
 		                        </td>
 		                        <td style="text-align:right;border:1px solid black;font-size:13px;padding:4px;">
 		                            <strong>
-		                            	<span t-esc="'{0:,.4f}'.format(l.volume)"/> <sub>m3</sub>
+		                            	<span t-esc="'{0:,.4f}'.format(l.volume)"/> m<sup>3</sup>
 		                            </strong>
 		                        </td>
 		                        <td style="text-align:center;border:1px solid black;font-size:13px;padding:4px;">
@@ -290,7 +290,7 @@
 	    							 <strong>TOTAL</strong>
 		                        </td>
 		                        <td style="text-align:right;border:1px solid black;font-size:13px;padding:4px;background-color:#d7e8f7;">
-	    							 <strong><span t-esc="'{0:,.4f}'.format(o.total_volume)"/> m<sub>3</sub></strong>
+	    							 <strong><span t-esc="'{0:,.4f}'.format(o.total_volume)"/> m<sup>3</sup></strong>
 		                        </td>
 		                        <td style="text-align:right;border:1px solid black;font-size:13px;padding:4px;background-color:#d7e8f7;">
 		                        </td>
