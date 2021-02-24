@@ -122,16 +122,16 @@ class RpmBahanBakuReportXls(models.AbstractModel):
         sheet.merge_range(row + 1, 9, row + 1, 10, 'Bahan Baku', formatHeaderTable)
 
         # Row 3
-        sheet.merge_range(row, 0, row + 2, 0, 'Jenis Kayu', formatHeaderTable)
-        sheet.merge_range(row, 1, row + 2, 1, 'Item', formatHeaderTable)
-        sheet.merge_range(row, 2, row + 2, 2, 'T', formatHeaderTable)
-        sheet.merge_range(row, 3, row + 2, 3, 'L', formatHeaderTable)
-        sheet.merge_range(row, 4, row + 2, 4, 'P', formatHeaderTable)
-        sheet.merge_range(row, 5, row + 2, 5, 'Grade', formatHeaderTable)
-        sheet.merge_range(row, 7, row + 2, 7, 'Pcs', formatHeaderTable)
-        sheet.merge_range(row, 8, row + 2, 8, 'M3', formatHeaderTable)
-        sheet.merge_range(row, 9, row + 2, 9, 'Pcs', formatHeaderTable)
-        sheet.merge_range(row, 10, row + 2, 10, 'M3', formatHeaderTable)
+        sheet.merge_range(row + 2, 0, row + 2, 0, 'Jenis Kayu', formatHeaderTable)
+        sheet.merge_range(row + 2, 1, row + 2, 1, 'Item', formatHeaderTable)
+        sheet.merge_range(row + 2, 2, row + 2, 2, 'T', formatHeaderTable)
+        sheet.merge_range(row + 2, 3, row + 2, 3, 'L', formatHeaderTable)
+        sheet.merge_range(row + 2, 4, row + 2, 4, 'P', formatHeaderTable)
+        sheet.merge_range(row + 2, 5, row + 2, 5, 'Grade', formatHeaderTable)
+        sheet.merge_range(row + 2, 7, row + 2, 7, 'Pcs', formatHeaderTable)
+        sheet.merge_range(row + 2, 8, row + 2, 8, 'M3', formatHeaderTable)
+        sheet.merge_range(row + 2, 9, row + 2, 9, 'Pcs', formatHeaderTable)
+        sheet.merge_range(row + 2, 10, row + 2, 10, 'M3', formatHeaderTable)
 
         row = 6        
         
