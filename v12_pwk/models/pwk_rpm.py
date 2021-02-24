@@ -407,6 +407,34 @@ class PwkRpmLine(models.Model):
                             'quantity': bom_line.product_qty * line.total_qty_spare
                         })
 
+class PwkRpmBahanBaku(models.Model):    
+    _name = "pwk.rpm.bahan.baku"
+
+    reference = fields.Many2one('pwk.rpm', 'Reference')
+    product_id = fields.Many2one(compute="_get_sale_fields", comodel_name='product.product', string='Product')
+    quantity = fields.Float('Quantity', digits=dp.get_precision('ZeroDecimal'))
+    volume = fields.Float('Volume', digits=dp.get_precision('FourDecimal'))
+    thick = fields.Float(compute="_get_fields", string='Thick', digits=dp.get_precision('OneDecimal'))
+    width = fields.Float(compute="_get_fields", string='Width', digits=dp.get_precision('ZeroDecimal'))
+    length = fields.Float(compute="_get_fields", string='Length', digits=dp.get_precision('ZeroDecimal'))
+    glue_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.glue', string='Glue')
+    grade_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.grade', string='Grade')
+
+    @api.depends('quantity')
+    def _get_volume(self):
+        for res in self:
+            res.volume = res.quantity * res.thick * res.width * res.length / 1000000000
+
+    @api.depends('product_id')
+    def _get_fields(self):
+        for res in self:
+            if res.product_id:
+                res.thick = res.product_id.tebal
+                res.width = res.product_id.lebar
+                res.length = res.product_id.panjang
+                res.glue_id = res.product_id.glue.id
+                res.grade_id = res.product_id.grade.id
+
 class PwkRpm(models.Model):    
     _name = "pwk.rpm"
 
@@ -434,6 +462,7 @@ class PwkRpm(models.Model):
     state = fields.Selection([('Draft','Draft'),('Purchase Request','Purchase Request')], string="Status", default="Draft")
     line_ids = fields.One2many('pwk.rpm.line', 'reference', string='Lines', ondelete="cascade")
     container_ids = fields.One2many('pwk.rpm.container', 'reference', string='Container', ondelete="cascade")
+    bahan_baku_ids = fields.One2many('pwk.rpm.bahan.baku', 'reference', string='Bahan Baku', ondelete="cascade")
 
     # Footer
     working_days = fields.Float('Hari Kerja', digits=dp.get_precision('OneDecimal'))
@@ -471,6 +500,42 @@ class PwkRpm(models.Model):
             res.total_plywood_percent = total_plywood / res.total_produksi * 100
             res.total_lvl_percent = total_lvl / res.total_produksi * 100
             res.target_per_hari = res.total_produksi / (res.working_days or 1)
+
+    @api.multi
+    def action_create_bahan_baku(self):
+        for res in self:
+            bom_list = ''
+
+            if res.line_ids:
+                for line in res.line_ids:
+                    if line.is_selected_detail1 and line.detail_ids_1:
+                        bom_list = line.detail_ids_1
+                    elif line.is_selected_detail2 and line.detail_ids_2:
+                        bom_list = line.detail_ids_2
+                    elif line.is_selected_detail3 and line.detail_ids_3:
+                        bom_list = line.detail_ids_3
+                    elif line.is_selected_detail4 and line.detail_ids_4:
+                        bom_list = line.detail_ids_4
+                    elif line.is_selected_detail5 and line.detail_ids_5:
+                        bom_list = line.detail_ids_5
+
+                    for bom in bom_list:
+                        current_product_ids = self.env['pwk.rpm.bahan.baku'].search([
+                            ('reference', '=', res.id),
+                            ('product_id', '=', bom.product_id.id)
+                        ])
+
+                        if not current_product_ids:
+                            self.env['pwk.rpm.bahan.baku'].create({
+                                'reference': res.id,
+                                'product_id': line.product_id.id,
+                                'quantity': line.total_qty
+                            })
+
+                        elif current_product_ids:
+                            current_product_ids[0].write({
+                                'quantity': current_product_ids[0].quantity
+                            })
 
     @api.multi
     def action_create_pr(self):
