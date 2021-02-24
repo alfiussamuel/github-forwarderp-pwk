@@ -14,7 +14,8 @@
     'data': [             
              'security/ir_rule.xml',             
              'wizard/generate_rpb_view.xml',
-             'wizard/generate_rpm_view.xml',             
+             'wizard/generate_rpm_view.xml',   
+             'wizard/generate_packing_list',          
              'views/pwk_view.xml',
              'views/packing_list_view.xml',
              'views/menu.xml',

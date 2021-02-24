@@ -8,3 +8,4 @@ from . import stuffing_report_wizard
 from . import log_report_wizard
 from . import generate_rpb
 from . import generate_rpm
+from . import generate_packing_list

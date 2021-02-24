@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+		
+		<record id="pwk_generate_rpb_wizard_form" model="ir.ui.view">
+			<field name="name">Select Order RPB</field>
+			<field name="model">pwk.generate.rpb.wizard</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>
+						<div>
+	                        Silahkan memilih Order yang akan di Produksi di dalam Rencana Produksi Bulanan
+	                    </div>
+	                </group>
+					<group>
+						<field name="line_ids" nolabel="1">
+							<tree>							
+								<field name="no_container"/>
+								<field name="jumlah_container"/>
+								<field name="total_product"/>
+							</tree>
+							<form>
+								<group>
+									<field name="no_container" required="1"/>
+									<field name="jumlah_container"/>
+									<field name="total_product"/>
+								</group>
+								<group>
+									<field name="sale_line_ids" nolabel="1"
+										domain="[('order_id.state','=','sale')]">
+										<tree>
+											<field name="sale_po_number"/>
+											<field name="sale_date_order"/>
+											<field name="sale_partner_id"/>
+											<field name="product_id"/>
+											<field name="product_uom_qty"/>
+											<field name="volume"/>
+											<field name="state" invisible="1"/>
+										</tree>
+									</field>
+								</group>
+							</form>
+						</field>						
+					</group>
+					<footer>
+						<button name="button_generate" string="Add Orders to RPB" 
+							type="object" class="btn-primary"/>
+						<button string="Cancel" class="btn-default" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_pwk_generate_rpb" model="ir.actions.act_window">
+            <field name="name">Select Order RPB</field>
+            <field name="res_model">pwk.generate.rpb.wizard</field>
+            <field name="view_type">form</field>
+           	<field name="view_mode">tree,form</field>
+           	<field name="view_id" ref="pwk_generate_rpb_wizard_form"/>
+           	<field name="target">new</field>
+        </record>
+
+
+	</data>
+</odoo>

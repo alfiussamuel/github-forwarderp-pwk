@@ -7,6 +7,8 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
+                        <button name="%(action_generate_packing_list)d" type="action" 
+                            string="Select Sales Order" class="oe_highlight" states="Draft"/>
                         <field name="state" widget="statusbar" readonly="1"/>
                     </header>
                     <sheet>
@@ -17,13 +19,14 @@
                         <group>                      
                             <group>      
                                 <field name="date" required="1" class="oe_inline"/>
-                                <field name="sale_id" required="1"/>
-                                <field name="partner_id"/>
-                                <field name="destination_id"/>
+                                <field name="partner_id"
+                                    options="{'no_create': True}"/>
+                                <field name="destination_id"
+                                    options="{'no_create': True}"/>
                             </group>
                             <group>
                                 <field name="is_logo"/>
-                                <field name="certificate_id"                                
+                                <field name="certificate_id"
                                     options="{'no_create': True}"/>
                             </group>
                         </group>
