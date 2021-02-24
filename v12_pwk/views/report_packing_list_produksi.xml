@@ -172,6 +172,37 @@
 					</tr>
 				</table>
 
+				<table class="table table-condensed" style="margin-top:20px;">					
+					<tr>
+						<td rowspan="2" width="10%" 
+							style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+							<strong>NO.</strong>							
+						</td>
+						<td rowspan="2" width="30%" 
+							style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+							<strong>DESCRIPTION</strong>
+						</td>
+						<td colspan="3" width="15%" 
+							style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+							<strong>REMARKS</strong>
+						</td>
+					</tr>
+					<tr>
+						<td width="10%" 
+							style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+							<strong>VOLUME</strong>							
+						</td>
+						<td width="30%" 
+							style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+							<strong>MARKING</strong>
+						</td>
+						<td width="15%" 
+							style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+							<strong>COMPOSITION</strong>
+						</td>
+					</tr>
+				</table>
+
 	        </div>
 
 	        <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">	
