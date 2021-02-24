@@ -138,7 +138,7 @@ class RpmBahanBakuReportXls(models.AbstractModel):
         if lines.bahan_baku_ids:
             for bahan_baku in lines.bahan_baku_ids:
                 sheet.write(row, 0, bahan_baku.product_id.jenis_kayu.name, formatHeaderDetailCenter)
-                sheet.write(row, 1, bahan_baku.product_id.name, formatHeaderDetailCenter)
+                sheet.write(row, 1, bahan_baku.product_id.goods_type, formatHeaderDetailCenter)
                 sheet.write(row, 2, bahan_baku.product_id.tebal, formatHeaderDetailCenter)            
                 sheet.write(row, 3, bahan_baku.product_id.lebar, formatHeaderDetailCenter)            
                 sheet.write(row, 4, bahan_baku.product_id.panjang, formatHeaderDetailCenter)
