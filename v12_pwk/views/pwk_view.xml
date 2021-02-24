@@ -499,7 +499,7 @@
                                     </field>
                                 </page>
                                 <page string="Kebutuhan Bahan Baku">
-                                    <field name="bahan_baku_ids" readonly="1" nolabel="1">
+                                    <field name="bahan_baku_ids" nolabel="1">
                                         <tree editable="top">
                                             <field name="product_id" readonly="1"/>
                                             <field name="quantity_available" readonly="1"/>
