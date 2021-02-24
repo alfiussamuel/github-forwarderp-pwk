@@ -24,13 +24,16 @@
                                 <field name="partner_id"/>
                                 <field name="destination_id"/>
                                 <field name="po_number"/>
-                            </group>
-                            <group>
                                 <field name="marking"/>
                                 <field name="payment_term_id"/>
+                            </group>
+                            <group>
                                 <field name="is_logo"/>
                                 <field name="certificate_id"
                                     options="{'no_create': True}"/>
+                                <field name="tanggal_selesai"/>
+                                <field name="tanggal_emisi"/>
+                                <field name="tanggal_terakhir"/>
                             </group>
                         </group>
                         <group>

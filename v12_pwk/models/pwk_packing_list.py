@@ -84,6 +84,10 @@ class PwkPackingList(models.Model):
     line_ids = fields.One2many('pwk.packing.list.line', 'reference', string='Lines')
     state = fields.Selection([('Draft','Draft'),('Done','Done')], string="Status", default="Draft")
 
+    tanggal_selesai = fields.Date('Target Produksi')
+    tanggal_emisi = fields.Date('Hasil Uji Emisi')
+    tanggal_terakhir = fields.Date('Produksi P1/P2')
+
     total_volume = fields.Float(compute="_get_total_volume", string="Total Volume")
 
     @api.depends('line_ids.volume')
