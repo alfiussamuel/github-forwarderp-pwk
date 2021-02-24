@@ -429,6 +429,8 @@ class PwkRpmBahanBaku(models.Model):
     glue_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.glue', string='Glue')
     grade_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.grade', string='Grade')
 
+    notes = fields.Text('Notes')
+
     @api.depends('quantity')
     def _get_volume(self):
         for res in self:

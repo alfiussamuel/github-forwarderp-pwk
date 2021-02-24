@@ -501,14 +501,15 @@
                                 <page string="Kebutuhan Bahan Baku">
                                     <field name="bahan_baku_ids" readonly="1" nolabel="1">
                                         <tree editable="top">
-                                            <field name="product_id"/>
-                                            <field name="quantity_available"/>
-                                            <field name="quantity"/>
-                                            <field name="volume"/>
-                                            <field name="quantity_needed"/>
-                                            <field name="volume_needed"/>
-                                            <field name="quantity_spare"/>
-                                            <field name="volume_spare"/>
+                                            <field name="product_id" readonly="1"/>
+                                            <field name="quantity_available" readonly="1"/>
+                                            <field name="quantity" readonly="1"/>
+                                            <field name="volume" readonly="1"/>
+                                            <field name="quantity_needed" readonly="1"/>
+                                            <field name="volume_needed" readonly="1"/>
+                                            <field name="quantity_spare" readonly="1"/>
+                                            <field name="volume_spare" readonly="1"/>
+                                            <field name="notes"/>
                                         </tree>
                                     </field>
                                 </page>
