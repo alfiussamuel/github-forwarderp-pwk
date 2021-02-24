@@ -31,3 +31,4 @@ from . import log_report_excel
 from . import rpb_excel
 from . import rpm_excel
 from . import rpm_monitoring_excel
+from . import rpm_bahan_baku

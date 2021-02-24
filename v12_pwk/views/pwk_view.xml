@@ -238,12 +238,12 @@
             file="v12_pwk.rpm_report_xls.xlsx"/>
 
         <report
-            id="report_rpm_monitoring"
+            id="report_rpm_bahan_baku"
             model="pwk.rpm"
-            string="Monitoring RPM"
+            string="Kebutuhan Bahan Baku"
             report_type="xlsx"
-            name="v12_pwk.rpm_monitoring_report_xls.xlsx"
-            file="v12_pwk.rpm_monitoring_report_xls.xlsx"/>
+            name="v12_pwk.rpm_bahan_baku_report_xls.xlsx"
+            file="v12_pwk.rpm_bahan_baku_report_xls.xlsx"/>
 
         <record id="pwk_rpm_form" model="ir.ui.view">
             <field name="name">Rencana Produksi Mingguan</field>
