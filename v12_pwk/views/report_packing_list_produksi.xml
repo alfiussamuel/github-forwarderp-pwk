@@ -86,7 +86,7 @@
 						<td width="50%" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
 							<strong>BENEFICIARY</strong>							
 						</td>
-						<td width="10%" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td width="5%" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							
 						</td>
 						<td width="15%" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
@@ -263,7 +263,7 @@
 		    							<br/>
 		    							Grade : <span t-field="l.product_id.grade.name"/> Glue : <span t-field="l.product_id.glue.name"/>
 		    							<br/>
-		    							Quantity : <span t-esc="'{0:,.0f}'.format(l.quantity)"/> Pcs (<span t-field="l.crate_number"/> x <span t-field="l.crate_qty_each"/>)
+		    							Quantity : <span t-esc="'{0:,.0f}'.format(l.quantity)"/> Pcs (<span t-field="l.crate_number"/> x @<span t-field="l.crate_qty_each"/>)
 		    						</strong>
 		                        </td>
 		                        <td style="text-align:right;border:1px solid black;font-size:13px;padding:4px;">
