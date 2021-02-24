@@ -222,7 +222,7 @@
 					<table class="table table-condensed" style="margin-top:20px;margin-bottom:0px;">
 						<thead>					
 							<tr>
-								<th rowspan="2" width="5%"
+								<th rowspan="2" width="8%"
 	                        		style="text-align:center;font-size:12px;border:1px solid black;background-color:#d7e8f7;padding:2px;vertical-align:middle;">
 	                        		<strong>NO.</strong>
 	                        	</th>
@@ -374,18 +374,18 @@
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
-								border-bottom:1px solid black;">
+								border-bottom:0px;">
     							Dwi Rakasiwi
 	                        </td>
 	                        <td style="text-align:center;font-size:12px;padding:4px;
-	                        	border-bottom:1px solid black;
+	                        	border-bottom:0px;
 								border-top:0px;
 								border-right:0px;
 								border-left:0px;">
 	                        	Parwoto
 	                        </td>
 	                        <td style="text-align:center;font-size:12px;padding:4px;
-	                        	border-bottom:1px solid black;
+	                        	border-bottom:0px;
 								border-top:0px;
 								border-right:0px;
 								border-left:0px;">
@@ -395,33 +395,33 @@
 	                        	border-right:1px solid black;
 								border-top:0px;
 								border-left:0px;
-								border-bottom:1px solid black;">
+								border-bottom:0px;">
 	                        	Andrew T
 	                        </td>
 						</tr>
 						<tr>
-							<td style="text-align:center;font-size:12px;padding:4px;
+							<td style="text-align:center;font-size:12px;padding:1px;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:1px solid black;">
     							PPIC
 	                        </td>
-	                        <td style="text-align:center;font-size:12px;padding:4px;
+	                        <td style="text-align:center;font-size:12px;padding:1px;
 	                        	border-bottom:1px solid black;
 								border-top:0px;
 								border-right:0px;
 								border-left:0px;">
 	                        	KA. Produksi
 	                        </td>
-	                        <td style="text-align:center;font-size:12px;padding:4px;
+	                        <td style="text-align:center;font-size:12px;padding:1px;
 	                        	border-bottom:1px solid black;
 								border-top:0px;
 								border-right:0px;
 								border-left:0px;">
 	                        	KA. RnD
 	                        </td>
-	                        <td style="text-align:center;font-size:12px;padding:4px;
+	                        <td style="text-align:center;font-size:12px;padding:1px;
 	                        	border-right:1px solid black;
 								border-top:0px;
 								border-left:0px;
@@ -442,7 +442,7 @@
 	                        </td>
 						</tr>
 						<tr>
-							<td width="20%"
+							<td width="25%"
 								style="text-align:left;font-size:12px;padding:4px;background-color:#d7e8f7;
 								border-left:1px solid black;
 								border-top:0px;
@@ -454,7 +454,7 @@
 								style="text-align:right;border:0px;font-size:12px;padding:4px;background-color:#d7e8f7;">
     							<strong>:</strong>
 	                        </td>
-	                        <td width="80%"
+	                        <td width="75%"
 								style="text-align:left;font-size:12px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
