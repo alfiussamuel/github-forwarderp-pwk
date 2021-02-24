@@ -1,0 +1,51 @@
+<odoo>
+    <data>                                   
+
+        <record id="pwk_packing_list_form" model="ir.ui.view">
+            <field name="name">Packing List</field>
+            <field name="model">pwk.packing.list</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <label for="name" class="oe_edit_only" />
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                        <group>                            
+                            <field name="date" required="1"/>
+                            <field name="partner_id" required="1"
+                                options="{'no_create': True}"/>
+                        </group>
+                        <group>
+                            <notebook>
+                                <page string="Detail Packing List">
+                                    <field name="line_ids" nolabel="1">
+                                        <tree editable="top">
+                                            <field name="product_id" required="1"/>
+                                            <field name="quantity" sum="Total"/>
+                                            <field name="volume" sum="Total"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="product_id"
+                                                    options="{'no_create': True}"/>
+                                            </group>
+                                            <group>
+                                                <field name="quantity"/>
+                                                <field name="volume"/>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>
