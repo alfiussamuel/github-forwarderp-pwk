@@ -44,11 +44,15 @@ class PwkPackingListLine(models.Model):
     grade_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.grade', string='Grade')
     marking = fields.Char(related='sale_line_id.marking', string='Marking')
     
-    quantity = fields.Float('Quantity', digits=dp.get_precision('TwoDecimal'))
+    quantity = fields.Float(compute="_get_quantity", string='Quantity', digits=dp.get_precision('TwoDecimal'))
     volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))
 
     bom_ids = fields.One2many('pwk.packing.list.line.detail', 'reference', string='Lines')
 
+    @api.depends('crate_number','crate_qty_each')
+    def _get_quantity(self):
+        for res in self:
+            res.quantity = res.crate_number * res.crate_qty_each
 
     @api.depends('quantity')
     def _get_volume(self):
@@ -87,8 +91,11 @@ class PwkPackingList(models.Model):
     tanggal_selesai = fields.Date('Target Produksi')
     tanggal_emisi = fields.Date('Hasil Uji Emisi')
     tanggal_terakhir = fields.Date('Produksi P1/P2')
+    tanggal_pengambilan = fields.Date('Tgl Pengambilan')
 
     total_volume = fields.Float(compute="_get_total_volume", string="Total Volume")
+    notes_quantity = fields.Char('Notes Quantity')
+    notes = fields.Text('Notes')
 
     @api.depends('line_ids.volume')
     def _get_total_volume(self):
