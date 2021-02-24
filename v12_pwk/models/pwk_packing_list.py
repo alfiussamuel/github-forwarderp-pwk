@@ -81,6 +81,18 @@ class PwkPackingList(models.Model):
     line_ids = fields.One2many('pwk.packing.list.line', 'reference', string='Lines')
     state = fields.Selection([('Draft','Draft'),('Done','Done')], string="Status", default="Draft")
 
+    total_volume = fields.Float(compute="_get_total_volume", string="Total Volume")
+
+    @api.depends('line_ids.volume')
+    def _get_total_volume(self):
+        for res in self:
+            total_volume = 0
+            if res.line_ids:
+                for line in res.line_ids:
+                    total_volume += line.volume
+
+            res.total_volume = total_volume
+
     @api.depends('line_ids.sale_line_id')
     def _get_fields(self):
         for res in self:

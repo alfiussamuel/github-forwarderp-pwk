@@ -246,20 +246,33 @@
 								<td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
 	    							 
 		                        </td>
-		                        <td style="text-align:left;border:1px solid black;font-size:10px;padding:2px;">
-	    							<span t-field="l.product_id.goods_type"/><br/>
-	    							Size : <span t-field="l.product_id.tebal"/> mm x <span t-field="l.product_id.lebar"/> mm x <span t-field="l.product_id.panjang"/> mm <br/>
+		                        <td style="text-align:left;border:1px solid black;font-size:10px;padding:4px;">
+	    							<span t-field="l.product_id.goods_type"/>
+	    							<br/>
+	    							Size : <span t-esc="'{0:,.1f}'.format(l.product_id.tebal)"/> mm x <span t-esc="'{0:,.0f}'.format(l.product_id.lebar)"/> mm x <span t-esc="'{0:,.0f}'.format(l.product_id.panjang)"/> mm 
+	    							<br/>
 	    							Grade : <span t-field="l.product_id.grade.name"/> Glue : <span t-field="l.product_id.glue.name"/>
+	    							<br/>
 	    							Quantity : <span t-field="l.quantity"/> Pcs (<span t-field="l.crate_number"/> x <span t-field="l.crate_qty_each"/>)
 		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
+		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:4px;">
 		                            <span t-esc="'{0:,.4f}'.format(l.volume)"/>
 		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
+		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:4px;">
 		                            <span t-field="l.marking"/>
 		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
+		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:4px;">
 		                            
+		                        </td>
+							</tr>
+							<tr>
+								<td colspan="2" 
+									style="text-align:right;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
+	    							 <strong>TOTAL</strong>
+		                        </td>
+		                        <td colspan="2" 
+		                        	style="text-align:right;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
+	    							 <strong><span t-esc="'{0:,.4f}'.format(o.total_volume)"/></strong>
 		                        </td>
 							</tr>
 						</tbody>
