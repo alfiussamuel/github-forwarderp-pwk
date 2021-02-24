@@ -413,7 +413,7 @@ class PwkRpmBahanBaku(models.Model):
     reference = fields.Many2one('pwk.rpm', 'Reference')
     product_id = fields.Many2one('product.product', string='Product')
     quantity = fields.Float('Quantity', digits=dp.get_precision('ZeroDecimal'))
-    volume = fields.Float('Volume', digits=dp.get_precision('FourDecimal'))
+    volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))
     thick = fields.Float(compute="_get_fields", string='Thick', digits=dp.get_precision('OneDecimal'))
     width = fields.Float(compute="_get_fields", string='Width', digits=dp.get_precision('ZeroDecimal'))
     length = fields.Float(compute="_get_fields", string='Length', digits=dp.get_precision('ZeroDecimal'))
@@ -506,6 +506,10 @@ class PwkRpm(models.Model):
         for res in self:
             bom_list = ''
 
+            if res.bahan_baku_ids:
+                for bahanbaku in res.bahan_baku_ids:
+                    bahanbaku.unlink()
+
             if res.line_ids:
                 for line in res.line_ids:
                     if line.is_selected_detail1 and line.detail_ids_1:
@@ -529,7 +533,7 @@ class PwkRpm(models.Model):
                             self.env['pwk.rpm.bahan.baku'].create({
                                 'reference': res.id,
                                 'product_id': line.product_id.id,
-                                'quantity': line.total_qty
+                                'quantity': line.total_qty,
                             })
 
                         elif current_product_ids:
