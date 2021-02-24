@@ -433,7 +433,7 @@ class PwkRpmBahanBaku(models.Model):
         for res in self:
             res.volume = res.quantity * res.thick * res.width * res.length / 1000000000
             res.volume_needed = res.quantity_needed * res.thick * res.width * res.length / 1000000000
-            res.volume_spare = res.quantity_spare * res.thick * res.width * res.length / 1000000000
+            res.volume_spare = abs(res.quantity_spare * res.thick * res.width * res.length / 1000000000)
 
     @api.depends('product_id')
     def _get_fields(self):
@@ -446,7 +446,7 @@ class PwkRpmBahanBaku(models.Model):
                 res.grade_id = res.product_id.grade.id
                 res.quantity_available = res.product_id.qty_available
                 res.quantity_needed = res.quantity_available - res.quantity
-                res.quantity_spare = res.quantity_needed + (res.quantity_needed * 0.1)
+                res.quantity_spare = abs(res.quantity_needed + (res.quantity_needed * 0.1))
 
 class PwkRpm(models.Model):    
     _name = "pwk.rpm"
