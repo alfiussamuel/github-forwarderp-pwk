@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button name="%(action_generate_packing_list)d" type="action" 
+                        <button name="%(action_pwk_generate_packing_list)d" type="action" 
                             string="Select Sales Order" class="oe_highlight" states="Draft"/>
                         <field name="state" widget="statusbar" readonly="1"/>
                     </header>
