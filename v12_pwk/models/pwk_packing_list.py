@@ -52,7 +52,7 @@ class PwkPackingList(models.Model):
     certificate_id = fields.Many2one('pwk.certificate', 'Certificate')
     is_logo = fields.Boolean('Show Legal Logo', default=True)
     
-    partner_id = fields.Many2one('res.partner', string='Nama Penerima')
+    partner_id = fields.Many2one('res.partner', string='Buyer')
     destination_id = fields.Many2one('pwk.destination', string='Destination')
 
     line_ids = fields.One2many('pwk.packing.list.line', 'reference', string='Lines')
