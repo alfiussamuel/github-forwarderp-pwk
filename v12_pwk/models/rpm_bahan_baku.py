@@ -56,7 +56,7 @@ class RpmBahanBakuReportXls(models.AbstractModel):
         formatHeaderDetailCenterColor = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'bg_color':'#3eaec2'})
         formatHeaderDetailCenterNumber = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'num_format': '#,##0'})
         formatHeaderDetailCenterNumberFour = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'num_format': '#,##4'})
-        formatHeaderDetailCenterNumberOne = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'num_format': '#,##1'})
+        formatHeaderDetailCenterNumberOne = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'num_format': '#,##0.0'})
 
         formatHeaderDetailLeft = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'left', 'text_wrap': True})
         
@@ -175,7 +175,7 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                 for bahan_baku in veneer_ids:
                     sheet.write(row, 0, bahan_baku.product_id.jenis_kayu.name, formatHeaderDetailCenter)
                     sheet.write(row, 1, bahan_baku.product_id.goods_type, formatHeaderDetailCenter)
-                    sheet.write(row, 2, bahan_baku.product_id.tebal, formatHeaderDetailCenterNumber)            
+                    sheet.write(row, 2, bahan_baku.product_id.tebal, formatHeaderDetailCenterNumberOne)            
                     sheet.write(row, 3, bahan_baku.product_id.lebar, formatHeaderDetailCenter)            
                     sheet.write(row, 4, bahan_baku.product_id.panjang, formatHeaderDetailCenter)
                     sheet.write(row, 5, bahan_baku.product_id.grade.name, formatHeaderDetailCenter)
