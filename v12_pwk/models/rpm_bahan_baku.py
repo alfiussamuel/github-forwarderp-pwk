@@ -176,6 +176,7 @@ class RpmBahanBakuReportXls(models.AbstractModel):
 
             if faceback_ids:
                 sheet.merge_range(row, 0, row, 13, 'TOTAL', formatHeaderDetailCenter)
+                row += 1
                 for bahan_baku in faceback_ids:
                     sheet.write(row, 0, bahan_baku.product_id.jenis_kayu.name, formatHeaderDetailCenter)
                     sheet.write(row, 1, bahan_baku.product_id.goods_type, formatHeaderDetailCenter)
@@ -195,6 +196,7 @@ class RpmBahanBakuReportXls(models.AbstractModel):
 
             if mdf_ids:
                 sheet.merge_range(row, 0, row, 13, 'TOTAL', formatHeaderDetailCenter)
+                row += 1
                 for bahan_baku in mdf_ids:
                     sheet.write(row, 0, bahan_baku.product_id.jenis_kayu.name, formatHeaderDetailCenter)
                     sheet.write(row, 1, bahan_baku.product_id.goods_type, formatHeaderDetailCenter)
@@ -214,6 +216,7 @@ class RpmBahanBakuReportXls(models.AbstractModel):
 
             if barecore_ids:
                 sheet.merge_range(row, 0, row, 13, 'TOTAL', formatHeaderDetailCenter)
+                row += 1
                 for bahan_baku in barecore_ids:
                     sheet.write(row, 0, bahan_baku.product_id.jenis_kayu.name, formatHeaderDetailCenter)
                     sheet.write(row, 1, bahan_baku.product_id.goods_type, formatHeaderDetailCenter)
