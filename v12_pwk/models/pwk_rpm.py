@@ -532,13 +532,13 @@ class PwkRpm(models.Model):
                         if not current_product_ids:
                             self.env['pwk.rpm.bahan.baku'].create({
                                 'reference': res.id,
-                                'product_id': line.product_id.id,
-                                'quantity': line.total_qty,
+                                'product_id': bom.product_id.id,
+                                'quantity': bom.quantity,
                             })
 
                         elif current_product_ids:
                             current_product_ids[0].write({
-                                'quantity': current_product_ids[0].quantity
+                                'quantity': current_product_ids[0].quantity + bom.quantity
                             })
 
     @api.multi
