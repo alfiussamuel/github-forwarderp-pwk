@@ -409,7 +409,7 @@ class PwkRpmLine(models.Model):
 
 class PwkRpmBahanBaku(models.Model):    
     _name = "pwk.rpm.bahan.baku"
-    _order = 'width asc,length asc,thick asc'
+    _order = 'product_id asc,width asc,length asc,thick asc'
 
     reference = fields.Many2one('pwk.rpm', 'Reference')
     product_id = fields.Many2one('product.product', string='Product')
@@ -423,9 +423,9 @@ class PwkRpmBahanBaku(models.Model):
     volume_needed = fields.Float(compute="_get_volume", string='+/- Volume', digits=dp.get_precision('FourDecimal'))
     volume_spare = fields.Float(compute="_get_volume", string='+/- Volume Spare', digits=dp.get_precision('FourDecimal'))
     
-    thick = fields.Float(compute="_get_fields", string='Thick', digits=dp.get_precision('OneDecimal'))
-    width = fields.Float(compute="_get_fields", string='Width', digits=dp.get_precision('ZeroDecimal'))
-    length = fields.Float(compute="_get_fields", string='Length', digits=dp.get_precision('ZeroDecimal'))
+    thick = fields.Float(compute="_get_fields", string='Thick', digits=dp.get_precision('OneDecimal'), store=True)
+    width = fields.Float(compute="_get_fields", string='Width', digits=dp.get_precision('ZeroDecimal'), store=True)
+    length = fields.Float(compute="_get_fields", string='Length', digits=dp.get_precision('ZeroDecimal'), store=True)
     glue_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.glue', string='Glue')
     grade_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.grade', string='Grade')
 

@@ -98,7 +98,7 @@ class RpmBahanBakuReportXls(models.AbstractModel):
         sheet.set_column(10, 10, 10)
         sheet.set_column(11, 11, 10)
         sheet.set_column(12, 12, 10)
-        sheet.set_column(13, 13, 10)
+        sheet.set_column(13, 13, 30)
         
         # Set default Row height
         # sheet.set_default_row(40)
@@ -150,5 +150,5 @@ class RpmBahanBakuReportXls(models.AbstractModel):
                 sheet.write(row, 10, bahan_baku.volume_needed, formatHeaderDetailCenterNumber)
                 sheet.write(row, 11, bahan_baku.quantity_spare, formatHeaderDetailCenterNumber)
                 sheet.write(row, 12, bahan_baku.volume_spare, formatHeaderDetailCenterNumber)
-                sheet.write(row, 13, bahan_baku.notes, formatHeaderDetailCenterNumber)
+                sheet.write(row, 13, (bahan_baku.notes or ''), formatHeaderDetailCenterNumber)
                 row += 1    
