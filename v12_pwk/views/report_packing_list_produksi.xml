@@ -247,7 +247,10 @@
 	    							 
 		                        </td>
 		                        <td style="text-align:left;border:1px solid black;font-size:10px;padding:2px;">
-	    							<span t-field="l.product_id.name"/>
+	    							<span t-field="l.product_id.goods_type"/><br/>
+	    							Size : <span t-field="l.product_id.thick"/> mm x <span t-field="l.product_id.width"/> mm x <span t-field="l.product_id.length"/> mm <br/>
+	    							Grade : <span t-field="l.product_id.grade.name"/> Glue : <span t-field="l.product_id.glue.name"/>
+	    							Quantity : <span t-field="l.quantity"/> Pcs (<span t-field="l.crate_number"/> x <span t-field="o.crate_qty_each"/>)
 		                        </td>
 		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
 		                            <span t-esc="'{0:,.4f}'.format(l.volume)"/>
