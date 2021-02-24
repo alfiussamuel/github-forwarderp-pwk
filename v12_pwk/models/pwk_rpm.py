@@ -409,7 +409,7 @@ class PwkRpmLine(models.Model):
 
 class PwkRpmBahanBaku(models.Model):    
     _name = "pwk.rpm.bahan.baku"
-    _order = 'product_id asc,width asc,length asc,thick asc'
+    _order = 'product_id desc,thick desc,width desc,length desc'
 
     reference = fields.Many2one('pwk.rpm', 'Reference')
     product_id = fields.Many2one('product.product', string='Product')
