@@ -59,7 +59,7 @@
              'views/report_account_move.xml',
              'views/report_account_payment.xml',
              'views/report_sale_order.xml',
-             'views/report_packing_list_produksi.xml',
+             'views/report_packing_list.xml',
              'views/report_lampiran_sale_order.xml',
              'views/report_sale_contract.xml',
              'views/report_purchase_order_jasa.xml',
