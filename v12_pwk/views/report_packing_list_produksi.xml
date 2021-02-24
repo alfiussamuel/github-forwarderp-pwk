@@ -394,49 +394,81 @@
 					<table class="table table-condensed" style="margin-top:0px;">
 						<tr>
 							<td colspan="3" 
-								style="text-align:right;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
-    							 <strong>Notes</strong>
+								style="text-align:left;font-size:10px;padding:4px;background-color:#4ead2f;color:white;
+								border-left:1px solid black;
+								border-top:1px solid black;
+								border-right:1px solid black;
+								border-bottom:0px;">
+    							<strong>Notes</strong>
 	                        </td>
 						</tr>
 						<tr>
 							<td colspan="3" width="30%"
-								style="text-align:left;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
-    							 <strong>Target Penyelesaian Produksi</strong>
+								style="text-align:left;font-size:10px;padding:4px;background-color:#4ead2f;color:white;
+								border-left:1px solid black;
+								border-top:0px;
+								border-right:0px;
+								border-bottom:0px;">">
+    							<strong>Target Penyelesaian Produksi</strong>
 	                        </td>
 	                        <td colspan="3" width="5%"
-								style="text-align:right;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
-    							 <strong>:</strong>
+								style="text-align:right;border:0px;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
+    							<strong>:</strong>
 	                        </td>
 	                        <td colspan="3" width="70%"
-								style="text-align:left;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
-    							 <strong><span t-field="o.tanggal_selesai"/></strong>
+								style="text-align:left;font-size:10px;padding:4px;background-color:#4ead2f;color:white;
+								border-left:0px;
+								border-top:0px;
+								border-right:1px solid black;
+								border-bottom:0px;">">
+    							<strong><span t-field="o.tanggal_selesai"/></strong>
 	                        </td>
 						</tr>
 						<tr>
 							<td colspan="3"
-								style="text-align:left;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
-    							 <strong>Hasil Uji Emisi</strong>
+								style="text-align:left;font-size:10px;padding:4px;background-color:#4ead2f;color:white;
+								border-left:1px solid black;
+								border-top:0px;
+								border-right:0px;
+								border-bottom:0px;">">
+    							<strong>Hasil Uji Emisi</strong>
 	                        </td>
 	                        <td colspan="3"
-								style="text-align:right;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
-    							 <strong>:</strong>
+								style="text-align:right;border:0px;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
+    							<strong>:</strong>
 	                        </td>
 	                        <td colspan="3"
-								style="text-align:left;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
-    							 <strong><span t-field="o.tanggal_emisi"/></strong>
+								style="text-align:left;font-size:10px;padding:4px;background-color:#4ead2f;color:white;
+								border-right:1px solid black;
+								border-top:0px;
+								border-left:0px;
+								border-bottom:0px;">">
+    							<strong><span t-field="o.tanggal_emisi"/></strong>
 	                        </td>
 						</tr>
 						<tr>
 							<td colspan="3"
-								style="text-align:left;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
-    							 <strong>Produksi P1 / P2 terakhir</strong>
+								style="text-align:left;font-size:10px;padding:4px;background-color:#4ead2f;color:white;
+								border-left:1px solid black;
+								border-top:0px;
+								border-right:0px;
+								border-bottom:1px solid black;">">
+    							<strong>Produksi P1 / P2 terakhir</strong>
 	                        </td>
 	                        <td colspan="3"
-								style="text-align:right;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
-    							 <strong>:</strong>
+								style="text-align:right;font-size:10px;padding:4px;background-color:#4ead2f;color:white;
+								border-left:0px;
+								border-top:0px;
+								border-right:0px;
+								border-bottom:1px solid black;">">
+    							<strong>:</strong>
 	                        </td>
 	                        <td colspan="3"
-								style="text-align:left;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
+								style="text-align:left;font-size:10px;padding:4px;background-color:#4ead2f;color:white;
+								border-left:0px;
+								border-top:0px;
+								border-right:1px solid black;
+								border-bottom:1px solid black;">">
     							 <strong><span t-field="o.tanggal_terakhir"/></strong>
 	                        </td>
 						</tr>
