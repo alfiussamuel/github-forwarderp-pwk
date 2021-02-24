@@ -286,7 +286,7 @@
 					<table class="table table-condensed" style="margin-top:0px;">
 						<tr>
 							<td width="25%" 
-								style="text-align:center;font-size:10px;padding:2px;
+								style="text-align:center;font-size:10px;padding:4px;
 								border-top:1px solid black;
 								border-left:1px solid black;
 								border-right:0px;
@@ -294,29 +294,29 @@
     							Temanggung, <span t-field="o.date"/>
 	                        </td>
 	                        <td width="25%" 
-								style="text-align:center;font-size:10px;padding:2px;
+								style="text-align:center;font-size:10px;padding:4px;
 								border-top:1px solid black;
 								border-left:0px;
 								border-right:0px;
 								border-bottom:0px;">
 	                        </td>
 	                        <td width="25%" 
-								style="text-align:center;font-size:10px;padding:2px;
+								style="text-align:center;font-size:10px;padding:4px;
 								border-top:1px solid black;
 								border-left:0px;
 								border-right:0px;
 								border-bottom:0px;">
 	                        </td>
 	                        <td width="25%" 
-								style="text-align:center;font-size:10px;padding:2px;
+								style="text-align:center;font-size:10px;padding:4px;
 								border-top:1px solid black;
 								border-left:0px;
-								border-right:0px;
+								border-right:1px solid black;
 								border-bottom:0px;">
 	                        </td>
 						</tr>
 						<tr>
-							<td style="text-align:center;font-size:10px;padding:2px;
+							<td style="text-align:center;font-size:10px;padding:4px;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
@@ -324,14 +324,14 @@
     							Dibuat Oleh,
 	                        </td>
 	                        <td colspan="2" 
-	                        	style="text-align:center;font-size:10px;padding:2px;
+	                        	style="text-align:center;font-size:10px;padding:4px;
 	                        	border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
 	                        	Mengetahui,
 	                        </td>
-	                        <td style="text-align:center;font-size:10px;padding:2px;
+	                        <td style="text-align:center;font-size:10px;padding:4px;
 	                        	border-left:0px;
 								border-top:0px;
 								border-right:1px solid black;
@@ -340,20 +340,20 @@
 	                        </td>
 						</tr>
 						<tr height="80px">
-							<td style="text-align:center;font-size:10px;padding:2px;
+							<td style="text-align:center;font-size:10px;padding:4px;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
 	                        </td>
 	                        <td colspan="2" 
-	                        	style="text-align:center;font-size:10px;padding:2px;
+	                        	style="text-align:center;font-size:10px;padding:4px;
 	                        	border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
 	                        </td>
-	                        <td style="text-align:center;font-size:10px;padding:2px;
+	                        <td style="text-align:center;font-size:10px;padding:4px;
 	                        	border-left:0px;
 								border-top:0px;
 								border-right:1px solid black;
@@ -361,33 +361,83 @@
 	                        </td>
 						</tr>
 						<tr>
-							<td style="text-align:center;font-size:10px;padding:2px;
+							<td style="text-align:center;font-size:10px;padding:4px;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:1px solid black;">
     							Dwi Rakasiwi
 	                        </td>
-	                        <td style="text-align:center;font-size:10px;padding:2px;
+	                        <td style="text-align:center;font-size:10px;padding:4px;
 	                        	border-bottom:1px solid black;
 								border-top:0px;
 								border-right:0px;
 								border-left:0px;">
 	                        	Parwoto
 	                        </td>
-	                        <td style="text-align:center;font-size:10px;padding:2px;
+	                        <td style="text-align:center;font-size:10px;padding:4px;
 	                        	border-bottom:1px solid black;
 								border-top:0px;
 								border-right:0px;
 								border-left:0px;">
 	                        	Supangat
 	                        </td>
-	                        <td style="text-align:center;font-size:10px;padding:2px;
+	                        <td style="text-align:center;font-size:10px;padding:4px;
 	                        	border-right:1px solid black;
 								border-top:0px;
 								border-left:0px;
-								border-bottom:0px;">
+								border-bottom:1px solid black;">
 	                        	Andrew T
+	                        </td>
+						</tr>
+					</table>
+					<table class="table table-condensed" style="margin-top:0px;">
+						<tr>
+							<td colspan="3" 
+								style="text-align:right;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
+    							 <strong>Notes</strong>
+	                        </td>
+						</tr>
+						<tr>
+							<td colspan="3" width="30%"
+								style="text-align:left;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
+    							 <strong>Target Penyelesaian Produksi</strong>
+	                        </td>
+	                        <td colspan="3" width="5%"
+								style="text-align:right;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
+    							 <strong>:</strong>
+	                        </td>
+	                        <td colspan="3" width="70%"
+								style="text-align:left;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
+    							 <strong><span t-field="o.tanggal_selesai"/></strong>
+	                        </td>
+						</tr>
+						<tr>
+							<td colspan="3"
+								style="text-align:left;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
+    							 <strong>Hasil Uji Emisi</strong>
+	                        </td>
+	                        <td colspan="3"
+								style="text-align:right;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
+    							 <strong>:</strong>
+	                        </td>
+	                        <td colspan="3"
+								style="text-align:left;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
+    							 <strong><span t-field="o.tanggal_emisi"/></strong>
+	                        </td>
+						</tr>
+						<tr>
+							<td colspan="3"
+								style="text-align:left;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
+    							 <strong>Produksi P1 / P2 terakhir</strong>
+	                        </td>
+	                        <td colspan="3"
+								style="text-align:right;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
+    							 <strong>:</strong>
+	                        </td>
+	                        <td colspan="3"
+								style="text-align:left;border:1px solid black;font-size:10px;padding:4px;background-color:#4ead2f;color:white;">
+    							 <strong><span t-field="o.tanggal_terakhir"/></strong>
 	                        </td>
 						</tr>
 					</table>
