@@ -439,6 +439,7 @@ class PwkRpmBahanBaku(models.Model):
                 res.glue_id = res.product_id.glue.id
                 res.grade_id = res.product_id.grade.id
                 res.quantity_available = res.product_id.qty_available
+                res.quantity_needed = res.quantity_available - res.quantity
 
 class PwkRpm(models.Model):    
     _name = "pwk.rpm"
