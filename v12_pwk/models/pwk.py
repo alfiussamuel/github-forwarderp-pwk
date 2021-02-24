@@ -1463,7 +1463,8 @@ class ProductProduct(models.Model):
         ('Blockboard','Blockboard'),
         ('Barecore','Barecore'),
         ('Faceback','Faceback'),
-        ('MDF','MDF')]
+        ('MDF','MDF'),
+        ('Veneer','Veneer')]
         , string="Goods Type")
     tebal = fields.Float('Tebal')
     lebar = fields.Float('Lebar')
