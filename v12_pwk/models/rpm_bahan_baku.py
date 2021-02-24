@@ -110,45 +110,45 @@ class RpmBahanBakuReportXls(models.AbstractModel):
         sheet.merge_range(row-2, 0, row - 2, 18, 'KEBUTUHAN BAHAN BAKU', formatHeaderCenter)
 
         # merge 1 - 3
-        sheet.merge_range(row, 0, row + 1, 5, 'DESCRIPTION', formatHeaderTable)
-        sheet.merge_range(row, 6, row + 2, 6, 'All Stock', formatHeaderTable)
-        sheet.merge_range(row, 7, row, 10, 'Kebutuhan Jan 21', formatHeaderTable)
-        sheet.merge_range(row, 11, row + 2, 11, '+/- Bahan Baku (Pcs)', formatHeaderTable)
-        sheet.merge_range(row, 12, row + 2, 12, '+/- Bahan Baku (M3)', formatHeaderTable)
-        sheet.merge_range(row, 13, row + 2, 13, 'Ket', formatHeaderTable)
+        sheet.merge_range(3, 0, 4, 5, 'DESCRIPTION', formatHeaderTable)
+        sheet.merge_range(3, 6, 5, 6, 'All Stock', formatHeaderTable)
+        sheet.merge_range(3, 7, 3, 10, 'Kebutuhan Jan 21', formatHeaderTable)
+        sheet.merge_range(3, 11, 5, 11, '+/- Bahan Baku (Pcs)', formatHeaderTable)
+        sheet.merge_range(3, 12, 5, 12, '+/- Bahan Baku (M3)', formatHeaderTable)
+        sheet.merge_range(3, 13, 5, 13, 'Ket', formatHeaderTable)
 
         # Row 2
-        sheet.merge_range(row + 1, 7, row + 1, 8, 'Order', formatHeaderTable)
-        sheet.merge_range(row + 1, 9, row + 1, 10, 'Bahan Baku', formatHeaderTable)
+        sheet.merge_range(4, 7, 4, 8, 'Order', formatHeaderTable)
+        sheet.merge_range(4, 9, 4, 10, 'Bahan Baku', formatHeaderTable)
 
         # Row 3
-        sheet.merge_range(row + 3, 0, row + 3, 0, 'Jenis Kayu', formatHeaderTable)
-        sheet.merge_range(row + 3, 1, row + 3, 1, 'Item', formatHeaderTable)
-        sheet.merge_range(row + 3, 2, row + 3, 2, 'T', formatHeaderTable)
-        sheet.merge_range(row + 3, 3, row + 3, 3, 'L', formatHeaderTable)
-        sheet.merge_range(row + 3, 4, row + 3, 4, 'P', formatHeaderTable)
-        sheet.merge_range(row + 3, 5, row + 3, 5, 'Grade', formatHeaderTable)
-        sheet.merge_range(row + 3, 7, row + 3, 7, 'Pcs', formatHeaderTable)
-        sheet.merge_range(row + 3, 8, row + 3, 8, 'M3', formatHeaderTable)
-        sheet.merge_range(row + 3, 9, row + 3, 9, 'Pcs', formatHeaderTable)
-        sheet.merge_range(row + 3, 10, row + 3, 10, 'M3', formatHeaderTable)
+        sheet.merge_range(5, 0, 5, 0, 'Jenis Kayu', formatHeaderTable)
+        sheet.merge_range(5, 1, 5, 1, 'Item', formatHeaderTable)
+        sheet.merge_range(5, 2, 5, 2, 'T', formatHeaderTable)
+        sheet.merge_range(5, 3, 5, 3, 'L', formatHeaderTable)
+        sheet.merge_range(5, 4, 5, 4, 'P', formatHeaderTable)
+        sheet.merge_range(5, 5, 5, 5, 'Grade', formatHeaderTable)
+        sheet.merge_range(5, 7, 5, 7, 'Pcs', formatHeaderTable)
+        sheet.merge_range(5, 8, 5, 8, 'M3', formatHeaderTable)
+        sheet.merge_range(5, 9, 5, 9, 'Pcs', formatHeaderTable)
+        sheet.merge_range(5, 10, 5, 10, 'M3', formatHeaderTable)
 
         row = 6
         
-        if lines.bahan_baku_ids:
-            for bahan_baku in lines.bahan_baku_ids:
-                sheet.write(row, 0, bahan_baku.product_id.jenis_kayu.name, formatHeaderDetailCenter)
-                sheet.write(row, 1, bahan_baku.product_id.name, formatHeaderDetailCenter)
-                sheet.write(row, 2, bahan_baku.product_id.tebal, formatHeaderDetailCenter)            
-                sheet.write(row, 3, bahan_baku.product_id.lebar, formatHeaderDetailCenter)            
-                sheet.write(row, 4, bahan_baku.product_id.panjang, formatHeaderDetailCenter)
-                sheet.write(row, 5, bahan_baku.product_id.grade.name, formatHeaderDetailCenter)
-                sheet.write(row, 6, bahan_baku.quantity_available, formatHeaderDetailCenter)
-                sheet.write(row, 7, bahan_baku.quantity, formatHeaderDetailCenter)
-                sheet.write(row, 8, bahan_baku.volume, formatHeaderDetailCenter)
-                sheet.write(row, 9, bahan_baku.quantity_needed, formatHeaderDetailCenter)
-                sheet.write(row, 10, bahan_baku.volume_needed, formatHeaderDetailCenterNumber)
-                sheet.write(row, 11, bahan_baku.quantity_spare, formatHeaderDetailCenterNumber)
-                sheet.write(row, 12, bahan_baku.volume_spare, formatHeaderDetailCenterNumber)
-                sheet.write(row, 13, bahan_baku.notes, formatHeaderDetailCenterNumber)
-                row += 1    
+        # if lines.bahan_baku_ids:
+        #     for bahan_baku in lines.bahan_baku_ids:
+        #         sheet.write(row, 0, bahan_baku.product_id.jenis_kayu.name, formatHeaderDetailCenter)
+        #         sheet.write(row, 1, bahan_baku.product_id.name, formatHeaderDetailCenter)
+        #         sheet.write(row, 2, bahan_baku.product_id.tebal, formatHeaderDetailCenter)            
+        #         sheet.write(row, 3, bahan_baku.product_id.lebar, formatHeaderDetailCenter)            
+        #         sheet.write(row, 4, bahan_baku.product_id.panjang, formatHeaderDetailCenter)
+        #         sheet.write(row, 5, bahan_baku.product_id.grade.name, formatHeaderDetailCenter)
+        #         sheet.write(row, 6, bahan_baku.quantity_available, formatHeaderDetailCenter)
+        #         sheet.write(row, 7, bahan_baku.quantity, formatHeaderDetailCenter)
+        #         sheet.write(row, 8, bahan_baku.volume, formatHeaderDetailCenter)
+        #         sheet.write(row, 9, bahan_baku.quantity_needed, formatHeaderDetailCenter)
+        #         sheet.write(row, 10, bahan_baku.volume_needed, formatHeaderDetailCenterNumber)
+        #         sheet.write(row, 11, bahan_baku.quantity_spare, formatHeaderDetailCenterNumber)
+        #         sheet.write(row, 12, bahan_baku.volume_spare, formatHeaderDetailCenterNumber)
+        #         sheet.write(row, 13, bahan_baku.notes, formatHeaderDetailCenterNumber)
+        #         row += 1    
