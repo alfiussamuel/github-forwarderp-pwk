@@ -268,7 +268,7 @@
 		                        </td>
 		                        <td style="text-align:right;border:1px solid black;font-size:13px;padding:4px;">
 		                            <strong>
-		                            	<span t-esc="'{0:,.4f}'.format(l.volume)"/> <sub>m3</sub>
+		                            	<span t-esc="'{0:,.4f}'.format(l.volume)"/> m3</sub>
 		                            </strong>
 		                        </td>
 		                        <td style="text-align:center;border:1px solid black;font-size:13px;padding:4px;">
@@ -290,7 +290,7 @@
 	    							 <strong>TOTAL</strong>
 		                        </td>
 		                        <td style="text-align:right;border:1px solid black;font-size:13px;padding:4px;background-color:#d7e8f7;">
-	    							 <strong><span t-esc="'{0:,.4f}'.format(o.total_volume)"/> <sub>m3</sub></strong>
+	    							 <strong><span t-esc="'{0:,.4f}'.format(o.total_volume)"/> m<sub>3</sub></strong>
 		                        </td>
 		                        <td style="text-align:right;border:1px solid black;font-size:13px;padding:4px;background-color:#d7e8f7;">
 		                        </td>
