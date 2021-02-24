@@ -257,7 +257,7 @@
 		                        </td>
 		                        <td style="text-align:left;border:1px solid black;font-size:13px;padding:4px;">
 	    							<strong>
-		    							<span t-field="l.product_id.goods_type"/>
+		    							<span t-field="l.product_id.goods_type"/> <span t-field="l.product_id.jenis_kayu.name"/>
 		    							<br/>
 		    							Size : <span t-esc="'{0:,.1f}'.format(l.product_id.tebal)"/> mm x <span t-esc="'{0:,.0f}'.format(l.product_id.lebar)"/> mm x <span t-esc="'{0:,.0f}'.format(l.product_id.panjang)"/> mm 
 		    							<br/>
