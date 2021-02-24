@@ -50,7 +50,7 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                         bom_list = rpb_line_ids[0].detail_ids_5
 
                     for bom_line in bom_list:                        
-                        self.env['pwk.packing.list.line.bom'].create({
+                        self.env['pwk.packing.list.line.detail'].create({
                             'reference': line.id,
                             'product_id': bom_line.product_id.id,
                             'thick': bom_line.product_id.tebal,
@@ -67,7 +67,7 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                     ])
 
                     for bom_line in bom_list:                        
-                        self.env['pwk.packing.list.line.bom'].create({
+                        self.env['pwk.packing.list.line.detail'].create({
                             'reference': line.id,
                             'product_id': bom_line.product_id.id,
                             'thick': bom_line.product_id.tebal,

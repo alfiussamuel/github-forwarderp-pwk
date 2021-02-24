@@ -14,8 +14,8 @@ import re
 from num2words import num2words
 
 
-class PwkPackingListLineBom(models.Model):    
-    _name = "pwk.packing.list.line.bom"
+class PwkPackingListLineDetail(models.Model):    
+    _name = "pwk.packing.list.line.detail"
 
     reference = fields.Many2one('pwk.packing.list.line', string='Reference')
     product_id = fields.Many2one('product.product', string='Product')
@@ -46,7 +46,7 @@ class PwkPackingListLine(models.Model):
     quantity = fields.Float('Quantity', digits=dp.get_precision('TwoDecimal'))
     volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))
 
-    bom_ids = fields.One2many('pwk.packing.list.line.bom', 'reference', string='Lines')
+    bom_ids = fields.One2many('pwk.packing.list.line.detail', 'reference', string='Lines')
 
 
     @api.depends('quantity')
