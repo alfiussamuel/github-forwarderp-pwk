@@ -61,17 +61,17 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                             'notes': bom_line.notes
                         })
 
-                else:
-                    bom_list = self.env['mrp.bom'].search([
-                        ('product_tmpl_id.name', '=', line.product_id.name)
-                    ])
+                # else:
+                #     bom_list = self.env['mrp.bom'].search([
+                #         ('product_tmpl_id.name', '=', line.product_id.name)
+                #     ])
 
-                    for bom_line in bom_list:                        
-                        self.env['pwk.packing.list.line.bom'].create({
-                            'reference': line.id,
-                            'product_id': bom_line.product_id.id,
-                            'thick': bom_line.product_id.tebal,
-                            'width': bom_line.product_id.lebar,
-                            'length': bom_line.product_id.panjang,
-                            'quantity': bom_line.product_qty * line.product_uom_qty,
-                        })
+                #     for bom_line in bom_list:                        
+                #         self.env['pwk.packing.list.line.bom'].create({
+                #             'reference': line.id,
+                #             'product_id': bom_line.product_id.id,
+                #             'thick': bom_line.product_id.tebal,
+                #             'width': bom_line.product_id.lebar,
+                #             'length': bom_line.product_id.panjang,
+                #             'quantity': bom_line.product_qty * line.product_uom_qty,
+                #         })
