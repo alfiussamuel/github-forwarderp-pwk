@@ -502,8 +502,11 @@
                                     <field name="bahan_baku_ids" readonly="1" nolabel="1">
                                         <tree editable="top">
                                             <field name="product_id"/>
+                                            <field name="quantity_available"/>
                                             <field name="quantity"/>
                                             <field name="volume"/>
+                                            <field name="quantity_needed"/>
+                                            <field name="volume_needed"/>
                                         </tree>
                                     </field>
                                 </page>
