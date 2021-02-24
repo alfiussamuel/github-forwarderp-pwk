@@ -262,9 +262,9 @@
 		                            <span t-field="l.marking"/>
 		                        </td>
 		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:4px;">
-		                            <tr t-foreach="l.bom_ids" t-as="bom">
+		                            <t t-foreach="l.bom_ids" t-as="bom">
 		                            	<span t-field="bom.product_id.name"/> x <span t-field="bom.ply"/> Ply <br/>
-		                            </tr>
+		                            </t>
 		                        </td>
 							</tr>
 							<tr>
