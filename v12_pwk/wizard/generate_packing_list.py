@@ -60,7 +60,7 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                             'ply': bom_line.ply,
                             'notes': bom_line.notes
                         })
-                        
+
                 else:
                     bom_list = self.env['mrp.bom'].search([
                         ('product_tmpl_id.name', '=', line.product_id.name)
@@ -75,4 +75,3 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                             'length': bom_line.product_id.panjang,
                             'quantity': bom_line.product_qty * line.product_uom_qty,
                         }
-
