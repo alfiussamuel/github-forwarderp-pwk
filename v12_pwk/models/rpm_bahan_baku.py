@@ -115,7 +115,7 @@ class RpmBahanBakuReportXls(models.AbstractModel):
         sheet.merge_range(row, 7, row, 10, 'Kebutuhan Jan 21', formatHeaderTable)
         sheet.merge_range(row, 11, row + 2, 11, '+/- Bahan Baku (Pcs)', formatHeaderTable)
         sheet.merge_range(row, 12, row + 2, 12, '+/- Bahan Baku (M3)', formatHeaderTable)
-        sheet.merge_range(row, 13, row + 1, 13, 'Ket', formatHeaderTable)
+        sheet.merge_range(row, 13, row + 2, 13, 'Ket', formatHeaderTable)
 
         # Row 2
         sheet.merge_range(row + 1, 7, row + 1, 8, 'Order', formatHeaderTable)
