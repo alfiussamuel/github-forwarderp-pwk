@@ -303,10 +303,10 @@
 					<table class="table table-condensed" style="margin-top:0px;margin-bottom:0px;">
 						<tr>
 							<td width="100%" colspan="4"
-								style="text-align:center;font-size:13px;padding:4px;
+								style="text-align:left;font-size:13px;padding:4px;
 								border-top:1px solid black;
 								border-left:1px solid black;
-								border-right:0px;
+								border-right:1px solid black;
 								border-bottom:0px;">
     							<strong>Temanggung, <span t-field="o.date" t-options='{"format": "dd MMMM yyyy"}'/></strong>
 	                        </td>
