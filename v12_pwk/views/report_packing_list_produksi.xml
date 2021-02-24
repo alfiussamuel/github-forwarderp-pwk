@@ -210,7 +210,7 @@
                     <div t-if="o.partner_id.vat" class="mt16"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.partner_id.vat"/></div>
                 </t>
                 <div class="page">                    					
-					<table class="table table-condensed" style="margin-top:20px;">
+					<table class="table table-condensed" style="margin-top:20px;margin-bottom:0px;">
 						<thead>					
 							<tr>
 								<th rowspan="2" width="5%"
@@ -284,58 +284,112 @@
 					</table>
 
 					<table class="table table-condensed" style="margin-top:0px;">
-						<tbody class="invoice_tbody">
-							<tr>
-								<td width="25%" 
-									style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-	    							Temanggung, <span t-field="o.date"/>
-		                        </td>
-		                        <td width="25%" 
-									style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                        </td>
-		                        <td width="25%" 
-									style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                        </td>
-		                        <td width="25%" 
-									style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                        </td>
-							</tr>
-							<tr>
-								<td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-	    							Dibuat Oleh,
-		                        </td>
-		                        <td colspan="2" 
-		                        	style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                        	Mengetahui,
-		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                        	Menyetujui,
-		                        </td>
-							</tr>
-							<tr height="80px">
-								<td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                        </td>
-		                        <td colspan="2" 
-		                        	style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                        </td>
-							</tr>
-							<tr>
-								<td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-	    							Dwi Rakasiwi
-		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                        	Parwoto
-		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                        	Supangat
-		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                        	Andrew T
-		                        </td>
-							</tr>
-						</tbody>
+						<tr>
+							<td width="25%" 
+								style="text-align:center;font-size:10px;padding:2px;
+								border-top:1px solid black;
+								border-left:1px solid black;
+								border-right:0px;
+								border-bottom:0px;">
+    							Temanggung, <span t-field="o.date"/>
+	                        </td>
+	                        <td width="25%" 
+								style="text-align:center;font-size:10px;padding:2px;
+								border-top:1px solid black;
+								border-left:0px;
+								border-right:0px;
+								border-bottom:0px;">
+	                        </td>
+	                        <td width="25%" 
+								style="text-align:center;font-size:10px;padding:2px;
+								border-top:1px solid black;
+								border-left:0px;
+								border-right:0px;
+								border-bottom:0px;">
+	                        </td>
+	                        <td width="25%" 
+								style="text-align:center;font-size:10px;padding:2px;
+								border-top:1px solid black;
+								border-left:0px;
+								border-right:0px;
+								border-bottom:0px;">
+	                        </td>
+						</tr>
+						<tr>
+							<td style="text-align:center;font-size:10px;padding:2px;
+								border-left:1px solid black;
+								border-top:0px;
+								border-right:0px;
+								border-bottom:0px;">
+    							Dibuat Oleh,
+	                        </td>
+	                        <td colspan="2" 
+	                        	style="text-align:center;font-size:10px;padding:2px;
+	                        	border-left:0px;
+								border-top:0px;
+								border-right:0px;
+								border-bottom:0px;">
+	                        	Mengetahui,
+	                        </td>
+	                        <td style="text-align:center;font-size:10px;padding:2px;
+	                        	border-left:0px;
+								border-top:0px;
+								border-right:1px solid black;
+								border-bottom:0px;">
+	                        	Menyetujui,
+	                        </td>
+						</tr>
+						<tr height="80px">
+							<td style="text-align:center;font-size:10px;padding:2px;
+								border-left:1px solid black;
+								border-top:0px;
+								border-right:0px;
+								border-bottom:0px;">
+	                        </td>
+	                        <td colspan="2" 
+	                        	style="text-align:center;font-size:10px;padding:2px;
+	                        	border-left:0px;
+								border-top:0px;
+								border-right:0px;
+								border-bottom:0px;">
+	                        </td>
+	                        <td style="text-align:center;font-size:10px;padding:2px;
+	                        	border-left:0px;
+								border-top:0px;
+								border-right:1px solid black;
+								border-bottom:0px;">
+	                        </td>
+						</tr>
+						<tr>
+							<td style="text-align:center;font-size:10px;padding:2px;
+								border-left:1px solid black;
+								border-top:0px;
+								border-right:0px;
+								border-bottom:1px solid black;">
+    							Dwi Rakasiwi
+	                        </td>
+	                        <td style="text-align:center;font-size:10px;padding:2px;
+	                        	border-bottom:1px solid black;
+								border-top:0px;
+								border-right:0px;
+								border-left:0px;">
+	                        	Parwoto
+	                        </td>
+	                        <td style="text-align:center;font-size:10px;padding:2px;
+	                        	border-bottom:1px solid black;
+								border-top:0px;
+								border-right:0px;
+								border-left:0px;">
+	                        	Supangat
+	                        </td>
+	                        <td style="text-align:center;font-size:10px;padding:2px;
+	                        	border-right:1px solid black;
+								border-top:0px;
+								border-left:0px;
+								border-bottom:0px;">
+	                        	Andrew T
+	                        </td>
+						</tr>
 					</table>
                 </div>
             </t>
