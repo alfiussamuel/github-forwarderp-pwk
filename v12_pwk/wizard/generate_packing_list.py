@@ -20,6 +20,8 @@ class PwkGeneratePackingListWizard(models.TransientModel):
     	packing_list_id = self.env['pwk.packing.list'].search([('id', '=', active_id)])
 
     	if self.sale_line_ids:
+            bom_list = ''
+
             for line in self.sale_line_ids:
                 packing_list_line_id = self.env['pwk.packing.list.line'].create({
                     'reference': packing_list_id.id,
@@ -35,16 +37,21 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                     ('sale_line_id', '=', line.id),
                 ])
 
-                if rpb_line_ids[0].is_selected_detail1 and rpb_line_ids[0].detail_ids_1:
-                    bom_list = rpb_line_ids[0].detail_ids_1
-                elif rpb_line_ids[0].is_selected_detail2 and rpb_line_ids[0].detail_ids_2:
-                    bom_list = rpb_line_ids[0].detail_ids_2
-                elif rpb_line_ids[0].is_selected_detail3 and rpb_line_ids[0].detail_ids_3:
-                    bom_list = rpb_line_ids[0].detail_ids_3
-                elif rpb_line_ids[0].is_selected_detail4 and rpb_line_ids[0].detail_ids_4:
-                    bom_list = rpb_line_ids[0].detail_ids_4
-                elif rpb_line_ids[0].is_selected_detail5 and rpb_line_ids[0].detail_ids_5:
-                    bom_list = rpb_line_ids[0].detail_ids_5
+                if rpb_line_ids:
+                    if rpb_line_ids[0].is_selected_detail1 and rpb_line_ids[0].detail_ids_1:
+                        bom_list = rpb_line_ids[0].detail_ids_1
+                    elif rpb_line_ids[0].is_selected_detail2 and rpb_line_ids[0].detail_ids_2:
+                        bom_list = rpb_line_ids[0].detail_ids_2
+                    elif rpb_line_ids[0].is_selected_detail3 and rpb_line_ids[0].detail_ids_3:
+                        bom_list = rpb_line_ids[0].detail_ids_3
+                    elif rpb_line_ids[0].is_selected_detail4 and rpb_line_ids[0].detail_ids_4:
+                        bom_list = rpb_line_ids[0].detail_ids_4
+                    elif rpb_line_ids[0].is_selected_detail5 and rpb_line_ids[0].detail_ids_5:
+                        bom_list = rpb_line_ids[0].detail_ids_5
+                else:
+                    bom_list = self.env['mrp.bom'].search([
+                        ('product_tmpl_id.name', '=', line.product_id.name)
+                    ])
 
                 for bom_line in bom_list:                        
                     self.env['pwk.packing.line.bom'].create({
