@@ -109,3 +109,7 @@ class PwkPackingList(models.Model):
         year_month = ''
         vals['name'] = self.get_sequence('Packing List', 'pwk.packing.list', '%s' % year_month)
         return super(PwkPackingList, self).create(vals)
+
+    @api.multi
+    def print_packing_list_produksi(self):                
+        return self.env.ref('v12_pwk.packing_list_produksi').report_action(self)
