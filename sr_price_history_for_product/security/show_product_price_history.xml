@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_purchase_history_view" model="res.groups">
+        <field name="category_id" ref="base.module_category_usability"/>
+        <field name="name">Show Product Price History</field>
+    </record>
+</odoo>

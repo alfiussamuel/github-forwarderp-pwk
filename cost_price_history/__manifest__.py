@@ -5,12 +5,12 @@
     'name': 'Product Cost Price History',
     'version': '12.0',
     'category': 'Purchases',
-    'author':'Aurium Technologies',
+    'author': 'Business Solution Consulting',
     'description': """
       Add a products cost price history list and graph view
     """,
     'website': 'http://auriumtechnologies.com',
-    'depends': ['purchase'],
+    'depends': ['purchase','abs_hide_sale_cost_price'],
     'data': [
         'views/product_price_history_view.xml', 
     ],
