@@ -30,8 +30,8 @@
 					</field>
 				</page>
 				
-				<page string="Product Purchase Price History">
-					<field name="purchase_price_history_ids" nolabel="1" mode="tree,kanban">
+				<page string="Product Purchase Price History" groups="sr_price_history_for_product.group_purchase_history_view">
+					<field name="purchase_price_history_ids" nolabel="1" mode="tree,kanban" >
 						<tree>
 							
 							<!--<field name="product_tmpl_id"/>

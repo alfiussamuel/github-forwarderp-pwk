@@ -21,7 +21,7 @@
 
 {
     'name': "Hide Sale and Cost Price of the Product",
-    'author': 'Ascetic Business Solution',
+    'author': "Business Solution Consulting",
     'category': 'Sales',
     'summary': """Hide Sale and Cost Price of the Product""",
     'license': 'AGPL-3',

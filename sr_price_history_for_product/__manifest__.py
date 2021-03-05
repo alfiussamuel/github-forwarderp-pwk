@@ -39,10 +39,11 @@
     product wise sale history
     
     """,
-    'author': "Sitaram",
+    'author': "Business Solution Consulting",
     'website':"http://www.sitaramsolutions.in",
     'depends': ['base', 'sale_management', 'purchase'],
     'data': [
+        'security/show_product_price_history.xml',
         'security/ir.model.access.csv',
         'views/inherited_product.xml',
         'views/inherited_res_config_setting.xml',
