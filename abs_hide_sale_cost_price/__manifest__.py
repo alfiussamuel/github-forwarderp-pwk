@@ -26,8 +26,7 @@
     'summary': """Hide Sale and Cost Price of the Product""",
     'license': 'AGPL-3',
     'website': 'http://www.asceticbs.com',
-    'description': """
-""",
+    'description': "",
     'version': '1.0',
     'depends': ['base','sale_management'],
     'data': ['security/show_sale_cost_price_fields.xml','views/view_sale_cost_price_product.xml'
@@ -35,5 +34,5 @@
     'images': ['static/description/banner.png'],
     'installable': True,
     'application': True,
-    'auto_install': False,
+    'auto_install': False
 }

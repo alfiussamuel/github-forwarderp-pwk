@@ -97,6 +97,9 @@ class PwkPackingList(models.Model):
     notes_quantity = fields.Char('Notes Quantity')
     notes = fields.Text('Notes')
 
+    is_picking = fields.Boolean('Picking created')
+    picking_id = fields.Many2one('stock.picking', 'Delivery Order')
+
     @api.depends('line_ids.volume')
     def _get_total_volume(self):
         for res in self:
@@ -142,3 +145,21 @@ class PwkPackingList(models.Model):
     @api.multi
     def print_packing_list_produksi(self):                
         return self.env.ref('v12_pwk.packing_list_produksi').report_action(self)
+
+    # @api.multi
+    # def action_create_picking(self):
+    #     for res in self:
+    #         picking_id = self.env['stock.picking'].create({
+
+    #         })
+
+    #         for line in res.line_ids:
+    #             self.env['stock.move'].create({
+    #                 'product_id': line.product_id.id,
+
+    #             })
+
+    #         res.write({
+    #             'is_picking': True,
+    #             'picking_id': picking_id.id
+    #         })

@@ -58,23 +58,27 @@ class PwkGenerateRpbWizard(models.TransientModel):
 
                 if container.sale_line_ids:
                     for line in container.sale_line_ids:
-                        self.env['pwk.rpb.container.line'].create({
-                            'reference': container_id.id,
-                            'sale_id': line.order_id.id,
-                            'sale_line_id': line.id,
-                            'total_qty': line.product_uom_qty,
-                            'container_qty': line.product_uom_qty
-                            })
+                        container = line.container
 
-                        rpb_line = self.env['pwk.rpb.line'].create({
-                            'reference': rpb_id.id,
-                            'container_id': container_id.id,
-                            'jumlah_container': container_id.jumlah_container,
-                            'sale_id': line.order_id.id,
-                            'sale_line_id': line.id,
-                            'total_qty': line.product_uom_qty,
-                            'container_qty': line.product_uom_qty,
-                            'outstanding_order_pcs': line.outstanding_order_pcs
-                            })
+                        while container > 0:
+                            self.env['pwk.rpb.container.line'].create({
+                                'reference': container_id.id,
+                                'sale_id': line.order_id.id,
+                                'sale_line_id': line.id,
+                                'total_qty': line.product_uom_qty / line.container,
+                                'container_qty': line.product_uom_qty / line.container
+                                })
 
-                        rpb_line.button_reload_bom()
+                            rpb_line = self.env['pwk.rpb.line'].create({
+                                'reference': rpb_id.id,
+                                'container_id': container_id.id,
+                                'jumlah_container': 1,
+                                'sale_id': line.order_id.id,
+                                'sale_line_id': line.id,
+                                'total_qty': line.product_uom_qty / line.container,
+                                'container_qty': line.product_uom_qty / line.container,
+                                'outstanding_order_pcs': line.outstanding_order_pcs
+                                })
+
+                            rpb_line.button_reload_bom()
+                            container -= 1
