@@ -11,10 +11,6 @@
                             string="Select Sales Order" class="oe_highlight" states="Draft"/>
                         <button name="print_packing_list_produksi" string="Print"
                             type="object" class="oe_highlight"/>
-                        <button name="action_create_picking" string="Create Delivery Order"
-                            type="object" class="oe_highlight"
-                            attrs="{'invisible':[('is_picking', '=', True)]}"
-                            />
                         <field name="state" widget="statusbar" readonly="1"/>
                     </header>
                     <sheet>
