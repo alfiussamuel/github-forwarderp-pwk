@@ -2,7 +2,7 @@
     <data>                                   
 
         <record id="pwk_packing_list_form" model="ir.ui.view">
-            <field name="name">Packing List</field>
+            <field name="name">Packing List Produksi</field>
             <field name="model">pwk.packing.list</field>
             <field name="arch" type="xml">
                 <form>
