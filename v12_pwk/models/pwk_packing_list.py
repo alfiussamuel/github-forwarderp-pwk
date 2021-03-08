@@ -108,7 +108,7 @@ class PwkPackingList(models.Model):
     notes_quantity = fields.Char('Notes Quantity')
     notes = fields.Text('Notes')
 
-    qty_muatan = fields.Char('Qty Myuatan')
+    qty_muatan = fields.Char('Qty Muatan')
 
     is_picking = fields.Boolean('Picking created')
     picking_id = fields.Many2one('stock.picking', 'Delivery Order')
