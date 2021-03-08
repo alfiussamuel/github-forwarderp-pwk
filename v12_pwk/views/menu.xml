@@ -12,10 +12,11 @@
 
 		<!-- Sales Order Lines -->
 		<record id="sale_order_line_action" model="ir.actions.act_window">
-            <field name="name">Sales Order Lines</field>
+            <field name="name">Outstanding Sales</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">sale.order.line</field>
             <field name="view_type">form</field>
+            <field name="domain">[('outstanding_order_pcs','>',0)]</field>
             <field name="view_mode">tree,form</field>
         </record>
 

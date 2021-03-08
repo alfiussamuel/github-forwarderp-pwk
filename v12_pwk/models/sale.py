@@ -162,7 +162,7 @@ class SaleOrderLine(models.Model):
 
             res.total_crate_qty = total_crate_qty
 
-    @api.depends('product_uom_qty')
+    @api.depends('product_uom_qty', 'product_id')
     def _get_outstanding_order_pcs(self):
         for res in self:
             outstanding_order_pcs = res.product_uom_qty

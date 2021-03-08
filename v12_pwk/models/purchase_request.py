@@ -182,7 +182,8 @@ class PwkPurchaseRequest(models.Model):
     product_type = fields.Selection([
         ('Produksi','Produksi'),
         ('Mekanik','Mekanik'),
-        ('Elektrik','Elektrik')]
+        ('Elektrik','Elektrik'),
+        ('Jasa','Jasa')]
         , string="Tipe", default="Produksi")
     state = fields.Selection([
         ('Draft','Draft'),
@@ -312,6 +313,8 @@ class PwkPurchaseRequest(models.Model):
             product_type = "MK."
         elif vals.get('product_type') == "Elektrik":
             product_type = "EL."
+        elif vals.get('product_type') == "Jasa":
+            product_type = "JS."
 
         vals['name'] = self.get_sequence('Purchase Request', 'pwk.purchase.request', '%s' % product_type)
         # vals['name'] = self.get_sequence('Rencana Produksi Bulanan', 'pwk.rpb', '%s' % year_month)
