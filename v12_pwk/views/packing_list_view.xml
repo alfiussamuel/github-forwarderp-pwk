@@ -5,17 +5,21 @@
             <field name="name">Packing List Produksi</field>
             <field name="model">pwk.packing.list</field>
             <field name="arch" type="xml">
-                <field name="name"/>
-                <field name="date"/>
-                <field name="partner_id"/>
-                <field name="destination_id"/>
-                <field name="po_number"/>
-                <field name="marking"/>
-                <field name="payment_term_id"/>
-                <field name="tanggal_selesai"/>
-                <field name="tanggal_emisi"/>
-                <field name="tanggal_terakhir"/>
-                <field name="tanggal_pengambilan"/>
+                <tree>
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="partner_id"/>
+                    <field name="destination_id"/>
+                    <field name="po_number"/>
+                    <field name="marking"/>
+                    <field name="payment_term_id"/>
+                    <field name="tanggal_selesai"/>
+                    <field name="tanggal_emisi"/>
+                    <field name="tanggal_p1"/>
+                    <field name="tanggal_p2"/>
+                    <field name="tanggal_pengambilan"/>
+                    <field name="tanggal_pengiriman"/>
+                </tree>
             </field>
         </record>
 
@@ -42,17 +46,27 @@
                                 <field name="partner_id"/>
                                 <field name="destination_id"/>
                                 <field name="po_number"/>
-                                <field name="marking"/>
-                                <field name="payment_term_id"/>
+                                <field name="qty_muatan"/>
                             </group>
                             <group>
+                                <field name="marking"/>
+                                <field name="payment_term_id"/>
                                 <field name="is_logo"/>
                                 <field name="certificate_id"
                                     options="{'no_create': True}"/>
+
+                            </group>
+                        </group>
+                        <group>
+                            <group>
                                 <field name="tanggal_selesai"/>
                                 <field name="tanggal_emisi"/>
-                                <field name="tanggal_terakhir"/>
+                                <field name="tanggal_p1"/>
+                            </group>
+                            <group>
                                 <field name="tanggal_pengambilan"/>
+                                <field name="tanggal_pengiriman"/>
+                                <field name="tanggal_p2"/>
                             </group>
                         </group>
                         <group>

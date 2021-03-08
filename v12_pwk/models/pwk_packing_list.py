@@ -97,14 +97,18 @@ class PwkPackingList(models.Model):
     group_ids = fields.One2many('pwk.packing.list.group', 'reference', string='Groups')
     state = fields.Selection([('Draft','Draft'),('Done','Done')], string="Status", default="Draft")
 
-    tanggal_selesai = fields.Date('Target Produksi')
+    tanggal_selesai = fields.Date('Penyelesaian Produksi')
     tanggal_emisi = fields.Date('Hasil Uji Emisi')
-    tanggal_terakhir = fields.Date('Produksi P1/P2')
-    tanggal_pengambilan = fields.Date('Tgl Pengambilan')
+    tanggal_p1 = fields.Date('Prod P1 Terakhir')
+    tanggal_p2 = fields.Date('Prod P2 Terakhir')
+    tanggal_pengambilan = fields.Date('Rencana Pengambilan')
+    tanggal_pengiriman = fields.Date('Rencana Pengiriman')
 
     total_volume = fields.Float(compute="_get_total_volume", string="Total Volume")
     notes_quantity = fields.Char('Notes Quantity')
     notes = fields.Text('Notes')
+
+    qty_muatan = fields.Char('Qty Myuatan')
 
     is_picking = fields.Boolean('Picking created')
     picking_id = fields.Many2one('stock.picking', 'Delivery Order')
