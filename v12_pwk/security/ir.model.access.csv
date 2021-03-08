@@ -131,4 +131,5 @@ pwk_packing_employee,pwk_packing_employee,v12_pwk.model_pwk_packing,base.group_u
 
 pwk_packing_list_employee,pwk_packing_list_employee,v12_pwk.model_pwk_packing_list,base.group_user,1,1,1,1
 pwk_packing_list_line_employee,pwk_packing_list_line_employee,v12_pwk.model_pwk_packing_list_line,base.group_user,1,1,1,1
+pwk_packing_list_group_employee,pwk_packing_list_group_employee,v12_pwk.model_pwk_packing_list_group,base.group_user,1,1,1,1
 pwk_packing_list_line_detail_employee,pwk_packing_list_line_detail_employee,v12_pwk.model_pwk_packing_list_line_detail,base.group_user,1,1,1,1
