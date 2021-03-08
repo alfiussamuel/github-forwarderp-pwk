@@ -83,7 +83,7 @@
 			
 				<table class="table table-condensed" style="margin-top:0px;">					
 					<tr>
-						<td width="50%" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+						<td width="40%" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
 							<strong>BENEFICIARY</strong>							
 						</td>
 						<td width="5%" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
@@ -268,11 +268,23 @@
 			    							<span t-field="group.product_id.goods_type"/> <span t-field="group.jenis_kayu_id.name"/>
 			    						</strong>
 			                        </td>
-			                        <td style="text-align:center;border:1px solid black;font-size:13px;padding:4px;">
+			                        <td style="text-align:center;font-size:13px;padding:4px;
+			                        	border-top:1px solid black;
+										border-bottom:0px;
+										border-left:1px solid black;
+										border-right:1px solid black;">
 			                        </td>
-			                        <td style="text-align:center;border:1px solid black;font-size:13px;padding:4px;">
+			                        <td style="text-align:center;font-size:13px;padding:4px;
+			                        	border-top:1px solid black;
+										border-bottom:0px;
+										border-left:1px solid black;
+										border-right:1px solid black;">
 			                        </td>
-			                        <td style="text-align:center;border:1px solid black;font-size:13px;padding:4px;">
+			                        <td style="text-align:center;font-size:13px;padding:4px;
+			                        	border-top:1px solid black;
+										border-bottom:0px;
+										border-left:1px solid black;
+										border-right:1px solid black;">
 			                        </td>
 			                    </tr>
 		                        <tr t-foreach="o.line_ids" t-as="l">
