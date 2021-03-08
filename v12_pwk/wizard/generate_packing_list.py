@@ -40,7 +40,7 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                 ])
 
                 if not existing_group_id:
-                    self.env['pwk.packing.list.group'].craete({
+                    self.env['pwk.packing.list.group'].create({
                         'reference': packing_list_id.id,
                         'product_id': line.product_id.id,
                         'jenis_kayu_id': line.product_id.jenis_kayu.id
