@@ -5,6 +5,24 @@
             <field name="name">Packing List Produksi</field>
             <field name="model">pwk.packing.list</field>
             <field name="arch" type="xml">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="partner_id"/>
+                <field name="destination_id"/>
+                <field name="po_number"/>
+                <field name="marking"/>
+                <field name="payment_term_id"/>
+                <field name="tanggal_selesai"/>
+                <field name="tanggal_emisi"/>
+                <field name="tanggal_terakhir"/>
+                <field name="tanggal_pengambilan"/>
+            </field>
+        </record>
+
+        <record id="pwk_packing_list_form" model="ir.ui.view">
+            <field name="name">Packing List Produksi</field>
+            <field name="model">pwk.packing.list</field>
+            <field name="arch" type="xml">
                 <form>
                     <header>
                         <button name="%(action_pwk_generate_packing_list)d" type="action" 
@@ -74,6 +92,22 @@
                                                         <field name="quantity"/>
                                                     </tree>
                                                 </field>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </page>
+                                <page string="Group Packing List">
+                                    <field name="group_ids" nolabel="1">
+                                        <tree editable="top">
+                                            <field name="product_id" required="1"/>
+                                            <field name="jenis_kayu_id"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="product_id"
+                                                    options="{'no_create': True}"/>
+                                                <field name="jenis_kayu_id"
+                                                    options="{'no_create': True}"/>
                                             </group>
                                         </form>
                                     </field>

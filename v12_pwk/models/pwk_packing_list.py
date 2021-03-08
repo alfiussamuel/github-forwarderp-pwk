@@ -69,7 +69,15 @@ class PwkPackingListLine(models.Model):
                 res.length = res.product_id.panjang
                 res.glue_id = res.product_id.glue.id
                 res.grade_id = res.product_id.grade.id
-                
+
+
+class PwkPackingListGroup(models.Model):    
+    _name = "pwk.packing.list.group"
+
+    reference = fields.Many2one('pwk.packing.list', string='Reference')
+    product_id = fields.Many2one('product.product', string='Product')
+    jenis_kayu_id = fields.Many2one('pwk.jenis.kayu', string='Jenis Kayu')
+    
 
 class PwkPackingList(models.Model):    
     _name = "pwk.packing.list"
@@ -86,6 +94,7 @@ class PwkPackingList(models.Model):
     po_number = fields.Char(compute="_get_fields", string='Contract')
 
     line_ids = fields.One2many('pwk.packing.list.line', 'reference', string='Lines')
+    group_ids = fields.One2many('pwk.packing.list.group', 'reference', string='Groups')
     state = fields.Selection([('Draft','Draft'),('Done','Done')], string="Status", default="Draft")
 
     tanggal_selesai = fields.Date('Target Produksi')

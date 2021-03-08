@@ -32,6 +32,20 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                     'crate_qty_each': line.crate_qty_each
                 })
 
+                # Create Groups for Printing
+                existing_group_id = self.env['pwk.packing.list.group'].search([
+                    ('reference', '=', packing_list_id.id),
+                    ('product_id', '=', line.product_id.id),
+                    ('jenis_kayu_id', '=', line.product_id.jenis_kayu.id)
+                ])
+
+                if not existing_group_id:
+                    self.env['pwk.packing.list.group'].craete({
+                        'reference': packing_list_id.id,
+                        'product_id': line.product_id.id,
+                        'jenis_kayu_id': line.product_id.jenis_kayu.id
+                    })
+
                 rpb_line_ids = self.env['pwk.rpb.line'].search([
                     ('sale_line_id', '=', line.id),
                 ])
