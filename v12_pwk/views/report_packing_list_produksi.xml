@@ -255,7 +255,7 @@
 								<tr>
 									<td style="text-align:left;border:1px solid black;font-size:13px;padding:4px;">
 		    							<strong>
-			    							<span t-field="group.product_id.goods_type"/> <span t-field=".product_id.jenis_kayu.name"/>
+			    							<span t-field="group.product_id.goods_type"/> <span t-field="group.jenis_kayu_id.name"/>
 			    						</strong>
 			                        </td>
 			                    </tr>
