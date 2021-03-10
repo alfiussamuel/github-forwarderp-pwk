@@ -85,7 +85,7 @@ class PwkPackingListLine(models.Model):
             if res.bom_ids:
                 for bom in res.bom_ids:
                     if bom_name_list:
-                        bom_name_list = '\n' + bom_name_list + bom.product_id.name
+                        bom_name_list = bom_name_list + '\n' + bom.product_id.name
                     else:
                         bom_name_list = bom_name_list + bom.product_id.name
 
