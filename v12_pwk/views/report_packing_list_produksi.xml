@@ -855,13 +855,13 @@
 								style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
-								border-right:1px solid black;
+								border-right:0px;
 								border-bottom:0px;">
     							<strong><span t-field="o.tanggal_selesai" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
 	                        <td width="10%"
 	                        	style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
-								border-left:1px solid black;
+								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;"/>
@@ -904,12 +904,12 @@
 	                        <td style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
-								border-right:1px solid black;
+								border-right:0px;
 								border-bottom:0px;">
     							 <strong><span t-field="o.tanggal_p1" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
 	                        <td style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
-								border-left:1px solid black;
+								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;"/>
@@ -947,21 +947,21 @@
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
-								border-bottom:0px;">
+								border-bottom:1px solid black;">
     							<strong>:</strong>
 	                        </td>
 	                        <td style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
-								border-bottom:0px;">
+								border-bottom:1px solid black;">
     							 <strong><span t-field="o.tanggal_pengambilan" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
 	                        <td style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
-								border-left:1px solid black;
+								border-left:0px;
 								border-top:0px;
 								border-right:0px;
-								border-bottom:0px;"/>
+								border-bottom:1px solid black;"/>
 							<td style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
