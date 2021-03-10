@@ -49,7 +49,8 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                     container_end = container_start + 1
                     container_no += 1
 
-                container_start_end = str(container_start) + ' - ' + str(container_end)  
+                container_start_end = str(container_start) + ' - ' + str(container_end)
+                packing_list_line_id.write({'container_start_end': container_start_end})
 
                 # Create Groups for Printing
                 existing_group_id = self.env['pwk.packing.list.group'].search([
