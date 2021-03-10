@@ -76,7 +76,7 @@ class PwkPackingListLine(models.Model):
     bom_ids = fields.One2many('pwk.packing.list.line.detail', 'reference', string='Lines')
     container_ids = fields.One2many('pwk.packing.list.line.container', 'reference', string='Container')
 
-    bom_name_list = fields.Char(compute="_get_bom_name_list", string="BoM Name List")
+    bom_name_list = fields.Text(compute="_get_bom_name_list", string="BoM Name List")
 
     @api.multi
     def _get_bom_name_list(self):
