@@ -181,7 +181,7 @@
 					</tr>
 					<tr>
 						<td colspan="5" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
-							<strong><span t-field="o.qty_muatan"/></strong>		
+							<strong>Quantity : <span t-field="o.qty_muatan"/></strong>		
 						</td>
 					</tr>
 				</table>
