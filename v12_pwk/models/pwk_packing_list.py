@@ -61,7 +61,7 @@ class PwkPackingListLine(models.Model):
     end_container_no = fields.Integer(compute="_get_container_sequence", string='End Container No.')
 
     product_id = fields.Many2one('product.product', string='Product')
-    product_name = fields.Char(related='product_id.name', string='Product Name')
+    product_name = fields.Char(related='product_id.product_tmpl_id.name', string='Product Name', store=True)
     thick = fields.Float(compute="_get_fields", string='Thick', digits=dp.get_precision('OneDecimal'))
     width = fields.Float(compute="_get_fields", string='Width', digits=dp.get_precision('ZeroDecimal'))
     length = fields.Float(compute="_get_fields", string='Length', digits=dp.get_precision('ZeroDecimal'))
