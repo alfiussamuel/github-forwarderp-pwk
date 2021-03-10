@@ -609,7 +609,7 @@
 								border-left:0px;
 								border-top:0px;
 								border-right:1px solid black;
-								border-bottom:1px solid black;">
+								border-bottom:0px;">
     							 <strong><span t-field="o.tanggal_pengambilan" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
 						</tr>
