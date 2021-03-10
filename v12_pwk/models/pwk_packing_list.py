@@ -50,9 +50,9 @@ class PwkPackingListLine(models.Model):
     reference_destination_id = fields.Many2one(related="reference.destination_id", comodel_name='pwk.destination', string='Destination')
     reference_po_number = fields.Char(related="reference.po_number", string='Contract')
     reference_marking = fields.Char(related="reference.marking", string='Marking')
-    reference_tanggal_selesai = fields.Char(related="reference.tanggal_selesai", string='Penyelesaian Produksi')
-    reference_tanggal_emisi = fields.Char(related="reference.tanggal_emisi", string='Hasil Uji Emisi')
-    reference_tanggal_stuffing = fields.Char(related="reference.tanggal_stuffing", string='Tgl Stuffing')
+    reference_tanggal_selesai = fields.Date(related="reference.tanggal_selesai", string='Penyelesaian Produksi')
+    reference_tanggal_emisi = fields.Date(related="reference.tanggal_emisi", string='Hasil Uji Emisi')
+    reference_tanggal_stuffing = fields.Date(related="reference.tanggal_stuffing", string='Tgl Stuffing')
 
     crate_number = fields.Integer('Crate Number')
     crate_qty_each = fields.Integer('Crate Qty each')
