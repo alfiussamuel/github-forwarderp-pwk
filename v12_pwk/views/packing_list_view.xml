@@ -159,8 +159,8 @@
                                             <group>
                                                 <field name="product_id"
                                                     options="{'no_create': True}"/>
-                                                <field name="container_start_end"/>
-                                                <field name="bom_name_list"/>
+                                                <!-- <field name="container_start_end"/> -->
+                                                <!-- <field name="bom_name_list"/> -->
                                             </group>
                                             <group>
                                                 <group>
@@ -201,7 +201,7 @@
                                         </form>
                                     </field>
                                 </page>
-                                <page string="Group Packing List">
+                                <page string="Group Packing List" invisible="1">
                                     <field name="group_ids" nolabel="1">
                                         <tree editable="top">
                                             <field name="product_id" required="1"/>
