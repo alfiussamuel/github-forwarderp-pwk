@@ -459,7 +459,7 @@
 													padding-right:4px;">
 						                            <t t-foreach="l.bom_ids" t-as="bom">
 						                            	<strong>
-						                            		<span t-field="bom.product_id.grade"/> <span t-field="bom.product_id.jenis_kayu.name"/> <span t-field="bom.product_id.tebal"/> x <span t-field="bom.ply"/> Ply <br/>
+						                            		<span t-field="bom.product_id.grade"/> <span t-field="bom.product_id.jenis_kayu.name"/> <span t-field="bom.product_id.tebal"/> x <span t-field="bom.ply"/> Ply
 						                            	</strong>
 						                            </t>
 						                        </td>
