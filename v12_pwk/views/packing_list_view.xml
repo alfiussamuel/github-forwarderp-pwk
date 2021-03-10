@@ -49,13 +49,12 @@
                         </group>
                         <group>
                             <group>
-                                <field name="crate_number"/>
-                                <field name="crate_qty_each"/>
-                                <field name="partner_id"/>
-                                <field name="destination_id"/>
+                                <field name="reference_partner_id"/>
+                                <field name="reference_destination_id"/>
+                                <field name="reference_po_number"/>
                             </group>
                             <group>
-                                <field name="po_number"/>
+                                
                                 <field name="quantity"/>
                                 <field name="volume"/>
                             </group>
