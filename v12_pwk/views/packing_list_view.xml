@@ -25,9 +25,12 @@
                 <tree>
                     <field name="reference"/>
                     <field name="product_id"/>
+                    <field name="partner_id"/>
+                    <field name="destination_id"/>
+                    <field name="po_number"/>
                     <field name="marking"/>
-                    <field name="crate_number" sum="Total"/>
-                    <field name="crate_qty_each" sum="Total"/>
+                    <!-- <field name="crate_number" sum="Total"/>
+                    <field name="crate_qty_each" sum="Total"/> -->
                     <field name="quantity" sum="Total"/>
                     <field name="volume" sum="Total"/>
                 </tree>
@@ -48,12 +51,13 @@
                             <group>
                                 <field name="crate_number"/>
                                 <field name="crate_qty_each"/>
-                                <field name="sale_id"/>
+                                <field name="partner_id"/>
+                                <field name="destination_id"/>
                             </group>
                             <group>
+                                <field name="po_number"/>
                                 <field name="quantity"/>
                                 <field name="volume"/>
-                                <field name="sale_line_id"/>
                             </group>
                         </group>
                         <notebook>

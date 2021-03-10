@@ -45,6 +45,10 @@ class PwkPackingListLine(models.Model):
     sale_id = fields.Many2one('sale.order', 'No. Order')
     sale_line_id = fields.Many2one('sale.order.line', 'No. Order Line')
 
+    reference_partner_id = fields.Many2one(related="reference.partner_id", comodel_name='res.partner', string='Buyer')
+    reference_destination_id = fields.Many2one(related="reference.destination_id", comodel_name='pwk.destination', string='Destination')
+    reference_po_number = fields.Char(related="reference.po_number", string='Contract')
+
     crate_number = fields.Integer('Crate Number')
     crate_qty_each = fields.Integer('Crate Qty each')
 
