@@ -430,7 +430,7 @@
 													padding-top:0px;
 													padding-bottom:0px;
 													padding-left:4px;
-													padding-right:4px;"/>
+													padding-right:4px;">
 						                            <strong>
 						                            	<span t-esc="'{0:,.4f}'.format(l.volume)"/> m<sup>3</sup>
 						                            </strong>
