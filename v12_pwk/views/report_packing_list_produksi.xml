@@ -433,7 +433,7 @@
 						                            	<span t-field="l.marking"/>
 						                            </strong>
 						                        </td>
-						                        <td rowspan="5" style="text-align:left;font-size:11px;
+						                        <td rowspan="4" style="text-align:left;font-size:11px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -651,7 +651,7 @@
 									border-right:1px solid black;">
 		                        </td>
 							</tr>
-							<tr>
+							<!-- <tr>
 								<td style="text-align:right;font-size:13px;padding:4px;
 									border-top:0px;
 									border-bottom:1px solid black;
@@ -677,7 +677,7 @@
 									border-left:1px solid black;
 									border-right:1px solid black;">
 		                        </td>
-							</tr>
+							</tr> -->
 							<tr>
 								<td colspan="10" 
 									style="text-align:right;border:1px solid black;font-size:12px;padding:4px;background-color:#d7e8f7;">
