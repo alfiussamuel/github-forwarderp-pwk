@@ -25,6 +25,7 @@ class PwkGeneratePackingListWizard(models.TransientModel):
 
             for line in self.sale_line_ids:
                 container_start = container_no
+                container_end = container_no
 
                 print ("Container Start 1 ", container_start)
 
@@ -48,7 +49,7 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                         'number': container.number,
                     })
 
-                    container_end = container_start + 1
+                    container_end += 1
                     container_no += 1
 
                     print ("Container Start 2 ", container_start)
