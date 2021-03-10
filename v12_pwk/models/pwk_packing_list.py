@@ -128,6 +128,8 @@ class PwkPackingList(models.Model):
     certificate_id = fields.Many2one('pwk.certificate', 'Certificate')
     is_logo = fields.Boolean('Show Legal Logo', default=True)
     
+    product_name_list = fields.Char(compute="_get_product_name_list", string="Product Name List")
+
     partner_id = fields.Many2one(compute="_get_fields", comodel_name='res.partner', string='Buyer')
     destination_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.destination', string='Destination')
     payment_term_id = fields.Many2one(compute="_get_fields", comodel_name='account.payment.term', string='Payment Terms')
@@ -154,6 +156,19 @@ class PwkPackingList(models.Model):
 
     is_picking = fields.Boolean('Picking created')
     picking_id = fields.Many2one('stock.picking', 'Delivery Order')
+
+    @api.depends('line_ids.product_id')
+    def _get_product_name_list(self):
+        for res in self:
+            product_name_list = ''
+            if res.line_ids:
+                for line in res.line_ids:
+                    if product_name_list:
+                        product_name_list += (', ' + line.product_id.name)
+                    else:
+                        product_name_list += line.product_id.name
+
+            res.product_name_list = product_name_list
 
     @api.depends('line_ids.volume')
     def _get_total_volume(self):
