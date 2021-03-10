@@ -26,6 +26,8 @@ class PwkGeneratePackingListWizard(models.TransientModel):
             for line in self.sale_line_ids:
                 container_start = container_no
 
+                print ("Container Start 1 ", container_start)
+
                 packing_list_line_id = self.env['pwk.packing.list.line'].create({
                     'reference': packing_list_id.id,
                     'product_id': line.product_id.id,
@@ -45,6 +47,10 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                         'qty': container.qty,
                         'number': container.number,
                     })
+
+                    print ("Container Start 1 ", container_start)
+                    print ("Container End ", container_end)
+                    print ("Container No ", container_no)
 
                     container_end = container_start + 1
                     container_no += 1
