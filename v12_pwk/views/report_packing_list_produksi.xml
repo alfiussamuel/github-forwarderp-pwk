@@ -839,19 +839,19 @@
 	                        </td>
 						</tr>
 						<tr>
-							<td width="25%"
+							<td width="20%"
 								style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
-    							<strong>Target Penyelesaian Produksi</strong>
+    							<strong>Penyelesaian Produksi</strong>
 	                        </td>
 	                        <td width="5%"
 								style="text-align:right;border:0px;font-size:13px;padding:5px;background-color:#d7e8f7;">
     							<strong>:</strong>
 	                        </td>
-	                        <td width="15%"
+	                        <td width="20%"
 								style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
@@ -865,7 +865,7 @@
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;"/>
-	                        <td width="25%" 
+	                        <td width="20%" 
 	                        	style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
 								border-left:1px solid black;
 								border-top:0px;
@@ -877,7 +877,7 @@
 	                        	style="text-align:right;border:0px;font-size:13px;padding:4px;background-color:#d7e8f7;">
     							<strong>:</strong>
 	                        </td>
-	                        <td width="15%"
+	                        <td width="20%"
 	                        	style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
 								border-right:1px solid black;
 								border-top:0px;
