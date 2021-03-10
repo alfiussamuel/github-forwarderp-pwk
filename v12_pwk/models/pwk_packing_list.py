@@ -90,6 +90,8 @@ class PwkPackingListLine(models.Model):
                     else:
                         bom_name_list = bom_name_list + bom.product_id.name
 
+            res.bom_name_list = bom_name_list
+
     @api.multi
     @api.depends('product_id')
     def name_get(self):
