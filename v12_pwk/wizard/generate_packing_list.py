@@ -48,12 +48,12 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                         'number': container.number,
                     })
 
-                    print ("Container Start 1 ", container_start)
-                    print ("Container End ", container_end)
-                    print ("Container No ", container_no)
-
                     container_end = container_start + 1
                     container_no += 1
+
+                    print ("Container Start 2 ", container_start)
+                    print ("Container End ", container_end)
+                    print ("Container No ", container_no)
 
                 container_start_end = str(container_start) + ' - ' + str(container_end)
                 packing_list_line_id.write({'container_start_end': container_start_end})
