@@ -76,6 +76,20 @@ class PwkPackingListLine(models.Model):
     bom_ids = fields.One2many('pwk.packing.list.line.detail', 'reference', string='Lines')
     container_ids = fields.One2many('pwk.packing.list.line.container', 'reference', string='Container')
 
+    bom_name_list = fields.Char(compute="_get_bom_name_list", string="BoM Name List")
+
+    @api.depends('bom_ids.product_id')
+    def _get_bom_name_list(self):
+        for res in self:
+            bom_name_list = ''
+
+            if res.bom_ids:
+                for bom in res.bom_ids:
+                    if bom_name_list:
+                        bom_name_list = '\n' + bom_name_list + bom.product_id.name
+                    else:
+                        bom_name_list = bom_name_list + bom.product_id.name
+
     @api.multi
     @api.depends('product_id')
     def name_get(self):
