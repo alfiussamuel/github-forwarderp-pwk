@@ -448,7 +448,7 @@
 						                            	<span t-field="l.marking"/>
 						                            </strong>
 						                        </td>
-						                        <td rowspan="3" style="text-align:left;font-size:12px;
+						                        <td rowspan="4" style="text-align:left;font-size:12px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -459,7 +459,7 @@
 													padding-right:4px;">
 						                            <t t-foreach="l.bom_ids" t-as="bom">
 						                            	<strong>
-						                            		<span t-field="bom.product_id.grade"/> <span t-field="bom.product_id.jenis_kayu.name"/> <span t-field="bom.product_id.tebal"/> x <span t-field="bom.ply"/> Ply
+						                            		<span t-field="bom.product_id.grade"/> <span t-field="bom.product_id.jenis_kayu.name"/> <span t-field="bom.product_id.tebal"/> x <span t-field="bom.ply"/> Ply <br/>
 						                            	</strong>
 						                            </t>
 						                        </td>
@@ -510,16 +510,6 @@
 													padding-right:4px;">
 						                        </td>
 						                        <td style="text-align:center;font-size:12px;
-						                        	border-top:0px;
-													border-bottom:0px;
-													border-left:1px solid black;
-													border-right:1px solid black;
-													padding-top:0px;
-													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
-						                        </td>
-						                        <td style="text-align:left;font-size:12px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -586,16 +576,6 @@
 														padding-left:4px;
 														padding-right:4px;">
 							                        </td>
-							                        <td style="text-align:left;font-size:12px;
-							                        	border-top:0px;
-														border-bottom:0px;
-														border-left:1px solid black;
-														border-right:1px solid black;
-														padding-top:0px;
-														padding-bottom:4px;
-														padding-left:4px;
-														padding-right:4px;">
-							                        </td>
 							                    </t>
 							                </tr>
 						                </t>
@@ -628,12 +608,6 @@
 									border-left:1px solid black;
 									border-right:1px solid black;">
 		                        </td>
-		                        <td style="text-align:right;font-size:13px;padding:4px;
-		                        	border-top:0px;
-									border-bottom:1px solid black;
-									border-left:1px solid black;
-									border-right:1px solid black;">
-		                        </td>
 							</tr>
 							<tr>
 								<td colspan="10" 
@@ -642,8 +616,6 @@
 		                        </td>
 		                        <td style="text-align:right;border:1px solid black;font-size:13px;padding:4px;background-color:#d7e8f7;">
 	    							 <strong><span t-esc="'{0:,.4f}'.format(o.total_volume)"/> m<sup>3</sup></strong>
-		                        </td>
-		                        <td style="text-align:right;border:1px solid black;font-size:13px;padding:4px;background-color:#d7e8f7;">
 		                        </td>
 		                        <td style="text-align:right;border:1px solid black;font-size:13px;padding:4px;background-color:#d7e8f7;">
 		                        </td>
