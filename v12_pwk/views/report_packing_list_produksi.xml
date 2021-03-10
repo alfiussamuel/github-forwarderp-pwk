@@ -454,7 +454,7 @@
 													border-left:1px solid black;
 													border-right:1px solid black;
 													padding-top:0px;
-													padding-bottom:0px;
+													padding-bottom:4px;
 													padding-left:4px;
 													padding-right:4px;">
 						                            <t t-foreach="l.bom_ids" t-as="bom">
