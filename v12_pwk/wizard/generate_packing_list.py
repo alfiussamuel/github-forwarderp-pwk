@@ -63,6 +63,8 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                     container_start_end = str(container_start) + ' - ' + '0' + str(container_end)
                 elif container_start < 10 and container_end > 10:
                     container_start_end = '0' + str(container_start) + ' - ' + str(container_end)
+                elif container_start > 10 and container_end > 10:
+                    container_start_end = str(container_start) + ' - ' + str(container_end)
 
                 packing_list_line_id.write({'container_start_end': container_start_end})
 
