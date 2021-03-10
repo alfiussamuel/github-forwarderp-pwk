@@ -12,13 +12,8 @@
                     <field name="destination_id"/>
                     <field name="po_number"/>
                     <field name="marking"/>
-                    <field name="payment_term_id"/>
                     <field name="tanggal_selesai"/>
                     <field name="tanggal_emisi"/>
-                    <field name="tanggal_p1"/>
-                    <field name="tanggal_p2"/>
-                    <field name="tanggal_pengambilan"/>
-                    <field name="tanggal_pengiriman"/>
                 </tree>
             </field>
         </record>
