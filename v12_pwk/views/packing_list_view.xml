@@ -12,7 +12,8 @@
                     <field name="destination_id"/>
                     <field name="po_number"/>
                     <field name="marking"/>
-                    <field name="line_ids" widget="many2many_tags"/>
+                    <field name="product_name_list"/>
+                    <!-- <field name="line_ids" widget="many2many_tags"/> -->
                     <field name="tanggal_selesai"/>
                     <field name="tanggal_emisi"/>
                 </tree>
@@ -126,7 +127,6 @@
                                 <field name="is_logo"/>
                                 <field name="certificate_id"
                                     options="{'no_create': True}"/>
-                                <field name="product_name_list"/>
                             </group>
                         </group>
                         <group string="Other Information">
