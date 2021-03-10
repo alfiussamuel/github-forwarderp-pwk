@@ -26,6 +26,7 @@ class PwkGeneratePackingListWizard(models.TransientModel):
             for line in self.sale_line_ids:
                 container_start = container_no
                 container_end = container_no - 1
+                container_start_end = ''
 
                 print ("Container Start 1 ", container_start)
 
@@ -56,7 +57,13 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                     print ("Container End ", container_end)
                     print ("Container No ", container_no)
 
-                container_start_end = str(container_start) + ' - ' + str(container_end)
+                if container_start < 10 and container_end < 10:
+                    container_start_end = '0' + str(container_start) + ' - ' + '0' + str(container_end)
+                elif container_start > 10 and container_end < 10:
+                    container_start_end = str(container_start) + ' - ' + '0' + str(container_end)
+                elif container_start < 10 and container_end > 10:
+                    container_start_end = '0' + str(container_start) + ' - ' + str(container_end)
+
                 packing_list_line_id.write({'container_start_end': container_start_end})
 
                 # Create Groups for Printing
@@ -73,9 +80,7 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                         'jenis_kayu_id': line.product_id.jenis_kayu.id
                     })
 
-                rpb_line_ids = self.env['pwk.rpb.line'].search([
-                    ('sale_line_id', '=', line.id),
-                ])
+                rpb_line_ids = self.env['pwk.rpb.line'].search([('sale_line_id', '=', line.id)])
 
                 if rpb_line_ids:
                     print ("RPB Line IDS")
