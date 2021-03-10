@@ -60,6 +60,7 @@ class PwkPackingListLine(models.Model):
     volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))
 
     bom_ids = fields.One2many('pwk.packing.list.line.detail', 'reference', string='Lines')
+    container_ids = fields.One2many('pwk.packing.list.line.container', 'reference', string='Container')
 
     @api.depends('crate_number','crate_qty_each')
     def _get_quantity(self):
