@@ -71,7 +71,7 @@
 						</td>									
 					</tr>
 					<tr>													
-						<td width="100%" style="font-size:14px; text-align:center;padding:1px;
+						<td width="100%" style="font-size:18px; text-align:center;padding:1px;
 							border-left:0px;
 							border-right:0px;
 							border-top:0px;
@@ -83,89 +83,89 @@
 			
 				<table class="table table-condensed" style="margin-top:0px;">					
 					<tr>
-						<td width="40%" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+						<td width="40%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
 							<strong>BENEFICIARY</strong>							
 						</td>
-						<td width="5%" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td width="5%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							
 						</td>
-						<td width="15%" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td width="15%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							<strong>DATE</strong>
 						</td>
-						<td width="2%" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td width="2%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							<strong>:</strong>
 						</td>
-						<td width="20%" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td width="20%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							<strong><span t-field="o.date" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 						</td>
 					</tr>
 					<tr>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
 							<strong>PT PRIMA WANA KREASI WOOD INDUSTRY</strong>							
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							<strong>BUYER</strong>
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							<strong>:</strong>
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							<strong><span t-field="o.partner_id.name"/></strong>
 						</td>
 					</tr>
 					<tr>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
 							<strong>JL. BANGKA RAYA NO. 29A, PELA MAMPANG</strong>							
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							<strong>CONTRACT</strong>
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							<strong>:</strong>
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							<strong><span t-field="o.po_number"/></strong>
 						</td>
 					</tr>
 					<tr>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
 							<strong>JAKARTA SELATAN 12720, INDONESIA</strong>							
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							<strong>DESTINATION</strong>
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							<strong>:</strong>
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							<strong><span t-field="o.destination_id.name"/></strong>
 						</td>
 					</tr>
 					<tr>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							<strong>PAYMENT TERMS</strong>
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							<strong>:</strong>
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							<strong><span t-field="o.payment_term_id.name"/></strong>
 						</td>
 					</tr>
 					<tr>
-						<td colspan="5" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td colspan="5" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							<strong>Quantity : <span t-field="o.qty_muatan"/></strong>		
 						</td>
 					</tr>
@@ -625,26 +625,26 @@
 						        </t>        
 							</t>
 							<!-- <tr>
-								<td style="text-align:right;font-size:13px;padding:4px;
+								<td style="text-align:right;font-size:11px;padding:4px;
 									border-top:0px;
 									border-bottom:0px;
 									border-left:1px solid black;
 									border-right:1px solid black;">
 		                        </td>
 		                        <td colspan="9" 
-		                        	style="text-align:right;font-size:13px;padding:4px;
+		                        	style="text-align:right;font-size:11px;padding:4px;
 		                        	border-top:0px;
 									border-bottom:0px;
 									border-left:1px solid black;
 									border-right:1px solid black;">
 		                        </td>
-		                        <td style="text-align:right;font-size:13px;padding:4px;
+		                        <td style="text-align:right;font-size:11px;padding:4px;
 		                        	border-top:0px;
 									border-bottom:0px;
 									border-left:1px solid black;
 									border-right:1px solid black;">
 		                        </td>
-		                        <td style="text-align:right;font-size:13px;padding:4px;
+		                        <td style="text-align:right;font-size:11px;padding:4px;
 		                        	border-top:0px;
 									border-bottom:0px;
 									border-left:1px solid black;
@@ -652,26 +652,26 @@
 		                        </td>
 							</tr> -->
 							<!-- <tr>
-								<td style="text-align:right;font-size:13px;padding:4px;
+								<td style="text-align:right;font-size:11px;padding:4px;
 									border-top:0px;
 									border-bottom:1px solid black;
 									border-left:1px solid black;
 									border-right:1px solid black;">
 		                        </td>
 		                        <td colspan="9" 
-		                        	style="text-align:right;font-size:13px;padding:4px;
+		                        	style="text-align:right;font-size:11px;padding:4px;
 		                        	border-top:0px;
 									border-bottom:1px solid black;
 									border-left:1px solid black;
 									border-right:1px solid black;">
 		                        </td>
-		                        <td style="text-align:right;font-size:13px;padding:4px;
+		                        <td style="text-align:right;font-size:11px;padding:4px;
 		                        	border-top:0px;
 									border-bottom:1px solid black;
 									border-left:1px solid black;
 									border-right:1px solid black;">
 		                        </td>
-		                        <td style="text-align:right;font-size:13px;padding:4px;
+		                        <td style="text-align:right;font-size:11px;padding:4px;
 		                        	border-top:0px;
 									border-bottom:1px solid black;
 									border-left:1px solid black;
@@ -697,7 +697,7 @@
 					<table class="table table-condensed" style="margin-top:0px;margin-bottom:0px;">
 						<tr>
 							<td width="100%" colspan="4"
-								style="text-align:left;font-size:13px;padding:7px;
+								style="text-align:left;font-size:11px;padding:7px;
 								border-top:1px solid black;
 								border-left:1px solid black;
 								border-right:1px solid black;
@@ -706,7 +706,7 @@
 	                        </td>
 						</tr>
 						<tr>
-							<td style="text-align:center;font-size:13px;padding:4px;
+							<td style="text-align:center;font-size:11px;padding:4px;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
@@ -714,14 +714,14 @@
     							<strong>Dibuat Oleh,</strong>
 	                        </td>
 	                        <td colspan="2" 
-	                        	style="text-align:center;font-size:13px;padding:4px;
+	                        	style="text-align:center;font-size:11px;padding:4px;
 	                        	border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
 	                        	<strong>Mengetahui,</strong>
 	                        </td>
-	                        <td style="text-align:center;font-size:13px;padding:4px;
+	                        <td style="text-align:center;font-size:11px;padding:4px;
 	                        	border-left:0px;
 								border-top:0px;
 								border-right:1px solid black;
@@ -730,20 +730,20 @@
 	                        </td>
 						</tr>
 						<tr height="70px">
-							<td style="text-align:center;font-size:13px;padding:4px;
+							<td style="text-align:center;font-size:11px;padding:4px;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
 	                        </td>
 	                        <td colspan="2" 
-	                        	style="text-align:center;font-size:13px;padding:4px;
+	                        	style="text-align:center;font-size:11px;padding:4px;
 	                        	border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
 	                        </td>
-	                        <td style="text-align:center;font-size:13px;padding:4px;
+	                        <td style="text-align:center;font-size:11px;padding:4px;
 	                        	border-left:0px;
 								border-top:0px;
 								border-right:1px solid black;
@@ -751,28 +751,28 @@
 	                        </td>
 						</tr>
 						<tr>
-							<td style="text-align:center;font-size:13px;padding:1px;
+							<td style="text-align:center;font-size:11px;padding:1px;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
     							<strong>Dwi Rakasiwi</strong>
 	                        </td>
-	                        <td style="text-align:center;font-size:13px;padding:1px;
+	                        <td style="text-align:center;font-size:11px;padding:1px;
 	                        	border-bottom:0px;
 								border-top:0px;
 								border-right:0px;
 								border-left:0px;">
 	                        	<strong>Parwoto</strong>
 	                        </td>
-	                        <td style="text-align:center;font-size:13px;padding:1px;
+	                        <td style="text-align:center;font-size:11px;padding:1px;
 	                        	border-bottom:0px;
 								border-top:0px;
 								border-right:0px;
 								border-left:0px;">
 	                        	<strong>Supangat</strong>
 	                        </td>
-	                        <td style="text-align:center;font-size:13px;padding:1px;
+	                        <td style="text-align:center;font-size:11px;padding:1px;
 	                        	border-right:1px solid black;
 								border-top:0px;
 								border-left:0px;
@@ -781,7 +781,7 @@
 	                        </td>
 						</tr>
 						<tr>
-							<td style="text-align:center;font-size:13px;
+							<td style="text-align:center;font-size:11px;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
@@ -792,7 +792,7 @@
 								padding-right:5px;">
     							<strong>PPIC</strong>
 	                        </td>
-	                        <td style="text-align:center;font-size:13px;
+	                        <td style="text-align:center;font-size:11px;
 	                        	border-bottom:1px solid black;
 								border-top:0px;
 								border-right:0px;
@@ -803,7 +803,7 @@
 								padding-right:5px;">
 	                        	<strong>KA. Produksi</strong>
 	                        </td>
-	                        <td style="text-align:center;font-size:13px;
+	                        <td style="text-align:center;font-size:11px;
 	                        	border-bottom:1px solid black;
 								border-top:0px;
 								border-right:0px;
@@ -814,7 +814,7 @@
 								padding-right:5px;">
 	                        	<strong>KA. RnD</strong>
 	                        </td>
-	                        <td style="text-align:center;font-size:13px;
+	                        <td style="text-align:center;font-size:11px;
 	                        	border-right:1px solid black;
 								border-top:0px;
 								border-left:0px;
@@ -830,7 +830,7 @@
 					<table class="table table-condensed" style="margin-top:0px;">
 						<tr>
 							<td colspan="7" width="100%" 
-								style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+								style="text-align:left;font-size:11px;padding:4px;background-color:#d7e8f7;
 								border-left:1px solid black;
 								border-top:1px solid black;
 								border-right:1px solid black;
@@ -840,7 +840,7 @@
 						</tr>
 						<tr>
 							<td width="20%"
-								style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+								style="text-align:left;font-size:11px;padding:4px;background-color:#d7e8f7;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
@@ -848,11 +848,11 @@
     							<strong>Penyelesaian Produksi</strong>
 	                        </td>
 	                        <td width="5%"
-								style="text-align:right;border:0px;font-size:13px;padding:4px;background-color:#d7e8f7;">
+								style="text-align:right;border:0px;font-size:11px;padding:4px;background-color:#d7e8f7;">
     							<strong>:</strong>
 	                        </td>
 	                        <td width="20%"
-								style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+								style="text-align:left;font-size:11px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
@@ -860,13 +860,13 @@
     							<strong><span t-field="o.tanggal_selesai" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
 	                        <td width="10%"
-	                        	style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        	style="text-align:left;font-size:11px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;"/>
 	                        <td width="20%" 
-	                        	style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        	style="text-align:left;font-size:11px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
@@ -874,11 +874,11 @@
     							<strong>Hasil Uji Emisi</strong>
 	                        </td>
 	                        <td width="5%" 
-	                        	style="text-align:right;border:0px;font-size:13px;padding:4px;background-color:#d7e8f7;">
+	                        	style="text-align:right;border:0px;font-size:11px;padding:4px;background-color:#d7e8f7;">
     							<strong>:</strong>
 	                        </td>
 	                        <td width="20%"
-	                        	style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        	style="text-align:left;font-size:11px;padding:4px;background-color:#d7e8f7;
 								border-right:1px solid black;
 								border-top:0px;
 								border-left:0px;
@@ -887,47 +887,47 @@
 	                        </td>
 						</tr>
 						<tr>
-							<td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+							<td style="text-align:left;font-size:11px;padding:4px;background-color:#d7e8f7;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
     							<strong>Produksi P1 terakhir</strong>
 	                        </td>
-	                        <td style="text-align:right;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:right;font-size:11px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
     							<strong>:</strong>
 	                        </td>
-	                        <td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:11px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
     							 <strong><span t-field="o.tanggal_p1" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
-	                        <td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:11px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;"/>
-	                        <td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:11px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
     							<strong>Produksi P2 terakhir</strong>
 	                        </td>
-	                        <td style="text-align:right;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:right;font-size:11px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
     							<strong>:</strong>
 	                        </td>
-	                        <td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:11px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:1px solid black;
@@ -936,47 +936,47 @@
 	                        </td>
 						</tr>
 						<tr>
-							<td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+							<td style="text-align:left;font-size:11px;padding:4px;background-color:#d7e8f7;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:1px solid black;">
     							<strong>Rencana Pengambilan</strong>
 	                        </td>
-	                        <td style="text-align:right;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:right;font-size:11px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:1px solid black;">
     							<strong>:</strong>
 	                        </td>
-	                        <td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:11px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:1px solid black;">
     							 <strong><span t-field="o.tanggal_pengambilan" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
-	                        <td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:11px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:1px solid black;"/>
-							<td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+							<td style="text-align:left;font-size:11px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:1px solid black;">
     							<strong>Rencana Pengiriman</strong>
 	                        </td>
-	                        <td style="text-align:right;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:right;font-size:11px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:1px solid black;">
     							<strong>:</strong>
 	                        </td>
-	                        <td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:11px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:1px solid black;
