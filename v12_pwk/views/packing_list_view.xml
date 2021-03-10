@@ -25,9 +25,9 @@
                 <tree>
                     <field name="reference"/>
                     <field name="product_id"/>
-                    <field name="partner_id"/>
-                    <field name="destination_id"/>
-                    <field name="po_number"/>
+                    <field name="reference_partner_id"/>
+                    <field name="reference_destination_id"/>
+                    <field name="reference_po_number"/>
                     <field name="marking"/>
                     <!-- <field name="crate_number" sum="Total"/>
                     <field name="crate_qty_each" sum="Total"/> -->
