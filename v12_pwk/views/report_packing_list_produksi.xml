@@ -179,6 +179,11 @@
 							<strong><span t-field="o.payment_term_id.name"/></strong>
 						</td>
 					</tr>
+					<tr>
+						<td colspan="5" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+							<strong><span t-field="o.qty_muatan"/></strong>		
+						</td>
+					</tr>
 				</table>
 	        </div>
 
@@ -226,7 +231,7 @@
 	                        		style="text-align:center;font-size:13px;border:1px solid black;background-color:#d7e8f7;padding:2px;vertical-align:middle;">
 	                        		<strong>NO.</strong>
 	                        	</th>
-	                        	<th rowspan="2" width="35%"
+	                        	<th rowspan="2" colspan="9" width="35%"
 	                        		style="text-align:center;font-size:13px;border:1px solid black;background-color:#d7e8f7;padding:2px;vertical-align:middle;">
 	                        		<strong>DESCRIPTION</strong>
 	                        	</th>
@@ -259,7 +264,7 @@
 										border-left:1px solid black;
 										border-right:1px solid black;">
 			                        </td>
-									<td style="text-align:left;font-size:13px;padding:4px;
+									<td colspan="9" style="text-align:left;font-size:13px;padding:4px;
 										border-top:1px solid black;
 										border-bottom:0px;
 										border-left:1px solid black;
@@ -302,6 +307,85 @@
 												border-bottom:1px solid black;
 												border-left:1px solid black;
 												border-right:1px solid black;">
+				    							<strong>Size</strong>
+					                        </td>
+					                        <td style="text-align:left;font-size:13px;padding:4px;
+					                        	border-top:0px;
+												border-bottom:1px solid black;
+												border-left:1px solid black;
+												border-right:1px solid black;">
+				    							<strong>
+					    							: <span t-esc="'{0:,.1f}'.format(l.product_id.tebal)"/>
+					    						</strong>
+					                        </td>
+					                        <td style="text-align:left;font-size:13px;padding:4px;
+					                        	border-top:0px;
+												border-bottom:1px solid black;
+												border-left:1px solid black;
+												border-right:1px solid black;">
+				    							<strong>
+					    							mm
+					    						</strong>
+					                        </td>
+					                        <td style="text-align:left;font-size:13px;padding:4px;
+					                        	border-top:0px;
+												border-bottom:1px solid black;
+												border-left:1px solid black;
+												border-right:1px solid black;">
+				    							<strong>
+					    							x
+					    						</strong>
+					                        </td>
+					                        <td style="text-align:left;font-size:13px;padding:4px;
+					                        	border-top:0px;
+												border-bottom:1px solid black;
+												border-left:1px solid black;
+												border-right:1px solid black;">
+				    							<strong>
+					    							<span t-esc="'{0:,.1f}'.format(l.product_id.tebal)"/>
+					    						</strong>
+					                        </td>
+					                        <td style="text-align:left;font-size:13px;padding:4px;
+					                        	border-top:0px;
+												border-bottom:1px solid black;
+												border-left:1px solid black;
+												border-right:1px solid black;">
+				    							<strong>
+					    							mm
+					    						</strong>
+					                        </td>
+					                        <td style="text-align:left;font-size:13px;padding:4px;
+					                        	border-top:0px;
+												border-bottom:1px solid black;
+												border-left:1px solid black;
+												border-right:1px solid black;">
+				    							<strong>
+					    							x
+					    						</strong>
+					                        </td>
+					                        <td style="text-align:left;font-size:13px;padding:4px;
+					                        	border-top:0px;
+												border-bottom:1px solid black;
+												border-left:1px solid black;
+												border-right:1px solid black;">
+				    							<strong>
+					    							<span t-esc="'{0:,.1f}'.format(l.product_id.tebal)"/>
+					    						</strong>
+					                        </td>
+					                        <td style="text-align:left;font-size:13px;padding:4px;
+					                        	border-top:0px;
+												border-bottom:1px solid black;
+												border-left:1px solid black;
+												border-right:1px solid black;">
+				    							<strong>
+					    							mm
+					    						</strong>
+					                        </td>
+					                        <!-- <td style="text-align:left;font-size:13px;padding:4px;
+					                        	border-top:0px;
+												border-bottom:1px solid black;
+												border-left:1px solid black;
+												border-right:1px solid black;">
 				    							<strong>
 					    							Size : <span t-esc="'{0:,.1f}'.format(l.product_id.tebal)"/> mm x <span t-esc="'{0:,.0f}'.format(l.product_id.lebar)"/> mm x <span t-esc="'{0:,.0f}'.format(l.product_id.panjang)"/> mm 
 					    							<br/>
@@ -310,6 +394,19 @@
 					    							Quantity : <span t-esc="'{0:,.0f}'.format(l.quantity)"/> Pcs (<span t-field="l.crate_number"/> x @<span t-field="l.crate_qty_each"/>)
 					    						</strong>
 					                        </td>
+					                        <td style="text-align:left;font-size:13px;padding:4px;
+					                        	border-top:0px;
+												border-bottom:1px solid black;
+												border-left:1px solid black;
+												border-right:1px solid black;">
+				    							<strong>
+					    							Size : <span t-esc="'{0:,.1f}'.format(l.product_id.tebal)"/> mm x <span t-esc="'{0:,.0f}'.format(l.product_id.lebar)"/> mm x <span t-esc="'{0:,.0f}'.format(l.product_id.panjang)"/> mm 
+					    							<br/>
+					    							Grade : <span t-field="l.product_id.grade.name"/> Glue : <span t-field="l.product_id.glue.name"/>
+					    							<br/>
+					    							Quantity : <span t-esc="'{0:,.0f}'.format(l.quantity)"/> Pcs (<span t-field="l.crate_number"/> x @<span t-field="l.crate_qty_each"/>)
+					    						</strong>
+					                        </td> -->
 					                        <td style="text-align:right;font-size:13px;padding:4px;
 					                        	border-top:0px;
 												border-bottom:1px solid black;
@@ -344,7 +441,7 @@
 								</tr>
 							</t>
 							<tr>
-								<td colspan="2" 
+								<td colspan="10" 
 									style="text-align:right;border:1px solid black;font-size:13px;padding:4px;background-color:#d7e8f7;">
 	    							 <strong>TOTAL </strong>
 		                        </td>
@@ -595,7 +692,7 @@
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
-								border-bottom:1px solid black;">
+								border-bottom:0px;">
     							<strong>Rencana Pengambilan</strong>
 	                        </td>
 	                        <td style="text-align:right;font-size:13px;padding:5px;background-color:#d7e8f7;
