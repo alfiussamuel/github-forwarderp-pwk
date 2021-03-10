@@ -48,6 +48,9 @@ class PwkPackingListLine(models.Model):
     crate_number = fields.Integer('Crate Number')
     crate_qty_each = fields.Integer('Crate Qty each')
 
+    start_container_no = fields.Integer(compute="_get_container_sequence", string='Start Container No.')
+    end_container_no = fields.Integer(compute="_get_container_sequence", string='End Container No.')
+
     product_id = fields.Many2one('product.product', string='Product')
     thick = fields.Float(compute="_get_fields", string='Thick', digits=dp.get_precision('OneDecimal'))
     width = fields.Float(compute="_get_fields", string='Width', digits=dp.get_precision('ZeroDecimal'))
@@ -61,6 +64,12 @@ class PwkPackingListLine(models.Model):
 
     bom_ids = fields.One2many('pwk.packing.list.line.detail', 'reference', string='Lines')
     container_ids = fields.One2many('pwk.packing.list.line.container', 'reference', string='Container')
+
+    @api.depends('crate_number', 'crate_qty_each')
+    def _get_container_sequence(self):
+        for res in self:
+            res.start_container_no = 0
+            res.end_container_no = 0
 
     @api.depends('crate_number','crate_qty_each')
     def _get_quantity(self):
