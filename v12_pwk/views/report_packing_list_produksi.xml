@@ -296,11 +296,15 @@
 		                        	<t t-if="l.product_id.goods_type == group.product_id.goods_type">
 		                        		<tr>
 			                        		<t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name">
-												<td style="text-align:center;font-size:13px;padding:4px;
+												<td style="text-align:center;font-size:13px;
 													border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
-													border-right:1px solid black;">
+													border-right:1px solid black;
+													padding-top:4px;
+													padding-bottom:0px;
+													padding-left:4px;
+													padding-right:4px;">
 					    							 <strong>01-15</strong>
 						                        </td>
 						                        <td style="text-align:left;font-size:13px;
@@ -418,29 +422,41 @@
 						    							mm
 						    						</strong>
 						                        </td>
-						                        <td style="text-align:right;font-size:13px;padding:4px;
+						                        <td style="text-align:right;font-size:13px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
-													border-right:1px solid black;">
+													border-right:1px solid black;
+													padding-top:0px;
+													padding-bottom:0px;
+													padding-left:4px;
+													padding-right:4px;"/>
 						                            <strong>
 						                            	<span t-esc="'{0:,.4f}'.format(l.volume)"/> m<sup>3</sup>
 						                            </strong>
 						                        </td>
-						                        <td style="text-align:center;font-size:13px;padding:4px;
+						                        <td style="text-align:center;font-size:13px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
-													border-right:1px solid black;">
+													border-right:1px solid black;
+													padding-top:0px;
+													padding-bottom:0px;
+													padding-left:4px;
+													padding-right:4px;">
 						                            <strong>
 						                            	<span t-field="l.marking"/>
 						                            </strong>
 						                        </td>
-						                        <td style="text-align:left;font-size:13px;padding:4px;
+						                        <td style="text-align:left;font-size:13px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
-													border-right:1px solid black;">
+													border-right:1px solid black;
+													padding-top:0px;
+													padding-bottom:0px;
+													padding-left:4px;
+													padding-right:4px;">
 						                            <t t-foreach="l.bom_ids" t-as="bom">
 						                            	<strong>
 						                            		<span t-field="bom.product_id.grade"/> <span t-field="bom.product_id.jenis_kayu.name"/> <span t-field="bom.product_id.tebal"/> x <span t-field="bom.ply"/> Ply <br/>
@@ -451,11 +467,15 @@
 						                </tr>
 						                <tr>
 			                        		<t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name">
-												<td style="text-align:center;font-size:13px;padding:4px;
+												<td style="text-align:center;font-size:13px;
 													border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
-													border-right:1px solid black;">
+													border-right:1px solid black;
+													padding-top:0px;
+													padding-bottom:0px;
+													padding-left:4px;
+													padding-right:4px;">">
 						                        </td>
 						                        <td style="text-align:left;font-size:13px;
 						                        	border-top:0px;
@@ -485,29 +505,45 @@
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
-													border-right:1px solid black;">
+													border-right:1px solid black;
+													padding-top:0px;
+													padding-bottom:0px;
+													padding-left:4px;
+													padding-right:4px;">">
 						                        </td>
-						                        <td style="text-align:center;font-size:13px;padding:4px;
+						                        <td style="text-align:center;font-size:13px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
-													border-right:1px solid black;">
+													border-right:1px solid black;
+													padding-top:0px;
+													padding-bottom:0px;
+													padding-left:4px;
+													padding-right:4px;">">
 						                        </td>
-						                        <td style="text-align:left;font-size:13px;padding:4px;
+						                        <td style="text-align:left;font-size:13px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
-													border-right:1px solid black;">
+													border-right:1px solid black;
+													padding-top:0px;
+													padding-bottom:0px;
+													padding-left:4px;
+													padding-right:4px;">">
 						                        </td>
 						                    </t>
 						                </tr>
 						                <tr>
 			                        		<t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name">
-												<td style="text-align:center;font-size:13px;padding:4px;
+												<td style="text-align:center;font-size:13px;
 													border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
-													border-right:1px solid black;">
+													border-right:1px solid black;
+													padding-top:0px;
+													padding-bottom:0px;
+													padding-left:4px;
+													padding-right:4px;">
 						                        </td>
 						                        <td style="text-align:left;font-size:13px;
 						                        	border-top:0px;
@@ -515,7 +551,7 @@
 													border-left:1px solid black;
 													border-right:0px;
 													padding-top:0px;
-													padding-bottom:0px;
+													padding-bottom:4px;
 													padding-left:4px;
 													padding-right:4px;">
 					    							<strong>Qty</strong>
@@ -526,30 +562,42 @@
 													border-left:0px;
 													border-right:1px solid black;
 													padding-top:0px;
-													padding-bottom:0px;
+													padding-bottom:4px;
 													padding-left:4px;
 													padding-right:4px;">
 					    							<strong>
 						    							: <span t-esc="'{0:,.0f}'.format(l.quantity)"/> Pcs (<span t-field="l.crate_number"/> x @<span t-field="l.crate_qty_each"/>)
 						    						</strong>
 						                        </td>
-						                        <td style="text-align:right;font-size:13px;padding:4px;
+						                        <td style="text-align:right;font-size:13px;
 						                        	border-top:0px;
 													border-bottom:1px solid black;
 													border-left:1px solid black;
-													border-right:1px solid black;">
+													border-right:1px solid black;
+													padding-top:0px;
+													padding-bottom:4px;
+													padding-left:4px;
+													padding-right:4px;">">
 						                        </td>
-						                        <td style="text-align:center;font-size:13px;padding:4px;
+						                        <td style="text-align:center;font-size:13px;
 						                        	border-top:0px;
 													border-bottom:1px solid black;
 													border-left:1px solid black;
-													border-right:1px solid black;">
+													border-right:1px solid black;
+													padding-top:0px;
+													padding-bottom:4px;
+													padding-left:4px;
+													padding-right:4px;">">
 						                        </td>
-						                        <td style="text-align:left;font-size:13px;padding:4px;
+						                        <td style="text-align:left;font-size:13px;
 						                        	border-top:0px;
 													border-bottom:1px solid black;
 													border-left:1px solid black;
-													border-right:1px solid black;">
+													border-right:1px solid black;
+													padding-top:0px;
+													padding-bottom:4px;
+													padding-left:4px;
+													padding-right:4px;">">
 						                        </td>
 						                    </t>
 						                </tr>
