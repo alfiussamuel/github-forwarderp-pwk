@@ -87,7 +87,7 @@ class PwkPackingListLine(models.Model):
                     if bom_name_list:
                         bom_name_list = bom_name_list + '\n' + (bom.product_id.grade.name + ' ' + bom.product_id.jenis_kayu.name + ' ' + bom.product_id.tebal + ' ' + bom.ply) Ply
                     else:
-                        bom_name_list = bom_name_list + (bom.product_id.grade.name + ' ' + bom.product_id.jenis_kayu.name + ' ' + bom.product_id.tebal + ' ' + bom.ply) Ply
+                        bom_name_list = bom_name_list + (bom.product_id.grade.name + ' ' + bom.product_id.jenis_kayu.name + ' ' + bom.product_id.tebal + ' ' + bom.ply) + 'Ply'
 
             res.bom_name_list = bom_name_list
 
