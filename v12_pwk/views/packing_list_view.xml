@@ -18,6 +18,22 @@
             </field>
         </record>
 
+        <record id="pwk_packing_list_line_tree" model="ir.ui.view">
+            <field name="name">Packing List Detail</field>
+            <field name="model">pwk.packing.list.line</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="product_id"/>
+                    <field name="marking"/>
+                    <field name="crate_number" sum="Total"/>
+                    <field name="crate_qty_each" sum="Total"/>
+                    <field name="quantity" sum="Total"/>
+                    <field name="volume" sum="Total"/>
+                </tree>
+            </field>
+        </record>
+
         <record id="pwk_packing_list_form" model="ir.ui.view">
             <field name="name">Packing List Produksi</field>
             <field name="model">pwk.packing.list</field>

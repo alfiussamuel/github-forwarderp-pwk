@@ -10,6 +10,15 @@
             <field name="view_mode">tree,form</field>
         </record>
 
+        <!-- Packing List Line -->
+		<record id="pwk_packing_list_line_action" model="ir.actions.act_window">
+            <field name="name">Packing List Detail</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pwk.packing.list.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
 		<!-- Sales Order Lines -->
 		<record id="sale_order_line_action" model="ir.actions.act_window">
             <field name="name">Outstanding Sales</field>
@@ -485,6 +494,12 @@
 		            parent="v12_pwk.menu_production_rencana"
 		            groups="base.group_user"
 		            sequence="4"/>
+
+		        <menuitem id="menu_production_packing_list_line" 
+		            action="v12_pwk.pwk_packing_list_line_action"
+		            parent="v12_pwk.menu_production_rencana"
+		            groups="base.group_user"
+		            sequence="5"/>
 
         	<menuitem id="menu_production_mutasi"
 	        	sequence="2"
