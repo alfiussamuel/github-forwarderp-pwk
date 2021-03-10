@@ -78,7 +78,7 @@ class PwkPackingListLine(models.Model):
 
     bom_name_list = fields.Char(compute="_get_bom_name_list", string="BoM Name List")
 
-    @api.depends('bom_ids.product_id')
+    @api.multi
     def _get_bom_name_list(self):
         for res in self:
             bom_name_list = ''
