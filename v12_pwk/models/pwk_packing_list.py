@@ -82,7 +82,6 @@ class PwkPackingListLine(models.Model):
     def _get_bom_name_list(self):
         for res in self:
             bom_name_list = ''
-
             if res.bom_ids:
                 for bom in res.bom_ids:
                     if bom_name_list:
