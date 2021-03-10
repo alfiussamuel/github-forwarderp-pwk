@@ -227,11 +227,11 @@
 					<table class="table table-condensed" style="margin-top:20px;margin-bottom:0px;">
 						<thead>					
 							<tr>
-								<th rowspan="2" width="8%"
+								<th rowspan="2" width="7%"
 	                        		style="text-align:center;font-size:13px;border:1px solid black;background-color:#d7e8f7;padding:2px;vertical-align:middle;">
 	                        		<strong>NO.</strong>
 	                        	</th>
-	                        	<th rowspan="2" colspan="9" width="40%"
+	                        	<th rowspan="2" colspan="9" width="42%"
 	                        		style="text-align:center;font-size:13px;border:1px solid black;background-color:#d7e8f7;padding:2px;vertical-align:middle;">
 	                        		<strong>DESCRIPTION</strong>
 	                        	</th>
@@ -298,16 +298,16 @@
 			                        		<t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name">
 												<td style="text-align:center;font-size:13px;padding:4px;
 													border-top:0px;
-													border-bottom:1px solid black;
+													border-bottom:0px;
 													border-left:1px solid black;
 													border-right:1px solid black;">
 					    							 <strong>01-15</strong>
 						                        </td>
 						                        <td style="text-align:left;font-size:13px;padding:4px;
 						                        	border-top:0px;
-													border-bottom:1px solid black;
+													border-bottom:0px;
 													border-left:1px solid black;
-													border-right:1px solid black;">
+													border-right:0px;">
 					    							<strong>Size</strong>
 						                        </td>
 						                        <td style="text-align:left;font-size:13px;padding:4px;
@@ -430,8 +430,8 @@
 						                        </td>
 						                        <td colspan="8" style="text-align:left;font-size:13px;padding:4px;
 						                        	border-top:0px;
-													border-bottom:1px solid black;
-													border-left:1px solid black;
+													border-bottom:0px;
+													border-left:0px;
 													border-right:1px solid black;">
 					    							<strong>
 						    							: <span t-field="l.product_id.grade.name"/>  Glue : <span t-field="l.product_id.glue.name"/>
