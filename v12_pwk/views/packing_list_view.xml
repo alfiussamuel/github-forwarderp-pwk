@@ -147,7 +147,7 @@
                             <notebook>
                                 <page string="Detail Packing List">
                                     <field name="line_ids" nolabel="1">
-                                        <tree editable="top">
+                                        <tree>
                                             <field name="product_id" required="1"/>
                                             <field name="marking"/>
                                             <field name="crate_number" sum="Total"/>
