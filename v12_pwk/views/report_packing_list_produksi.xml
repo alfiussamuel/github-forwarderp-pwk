@@ -465,8 +465,8 @@
 						                        </td>
 						                    </t>
 						                </tr>
-						                <tr>
-			                        		<t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name">
+						                <t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name">
+						                	<tr>			                        		
 												<td style="text-align:center;font-size:12px;
 													border-top:0px;
 													border-bottom:0px;
@@ -531,8 +531,8 @@
 													padding-left:4px;
 													padding-right:4px;">
 						                        </td>
-						                    </t>
-						                </tr>
+						                    </tr>
+						                </t>
 						                <!-- <tr>
 			                        		<t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name">
 												<td style="text-align:center;font-size:12px;
