@@ -448,7 +448,7 @@
 						                            	<span t-field="l.marking"/>
 						                            </strong>
 						                        </td>
-						                        <td style="text-align:left;font-size:12px;
+						                        <td rowspan="3" style="text-align:left;font-size:12px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
