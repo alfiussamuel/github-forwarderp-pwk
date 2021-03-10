@@ -137,21 +137,21 @@ class PwkPackingList(models.Model):
         sequence_id = self.env['ir.sequence'].search([
             ('name', '=', name),
             ('code', '=', obj),
-            ('suffix', '=', '.' + year_month + '.PL.PWK')
+            ('suffix', '=', year_month)
         ])
         if not sequence_id :
             sequence_id = self.env['ir.sequence'].sudo().create({
                 'name': name,
                 'code': obj,
                 'implementation': 'no_gap',
-                'suffix': '.' + year_month + '.PL.PWK',
+                'suffix': year_month,
                 'padding': 3
             })
         return sequence_id.next_by_id()
 
     @api.model
     def create(self, vals):
-        year_month = ''
+        year_month = '/PPIC-PWK/%(month)s/%(year)s/'
         vals['name'] = self.get_sequence('Packing List', 'pwk.packing.list', '%s' % year_month)
         return super(PwkPackingList, self).create(vals)
 
