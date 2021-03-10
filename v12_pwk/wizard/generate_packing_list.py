@@ -32,6 +32,17 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                     'crate_qty_each': line.crate_qty_each
                 })
 
+                # Create Container Detail for each Packing List Line
+                for container in line.container_ids:
+                    self.env['pwk.packing.list.line.container'].create({
+                        'reference': packing_list_line_id.id,
+                        'position_id': container.position_id.id,
+                        'pallet_id': container.pallet_id.id,
+                        'strapping_id': container.strapping_id.id,    
+                        'qty': container.qty,
+                        'number': container.number,
+                    })
+
                 # Create Groups for Printing
                 existing_group_id = self.env['pwk.packing.list.group'].search([
                     ('reference', '=', packing_list_id.id),

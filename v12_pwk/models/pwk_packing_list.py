@@ -14,6 +14,18 @@ import re
 from num2words import num2words
 
 
+class PwkPackingListLineContainer(models.Model):    
+    _name = "pwk.packing.list.line.container"
+
+    reference = fields.Many2one('pwk.packing.list.line', 'Reference')
+    position_id = fields.Many2one('pwk.position', 'Position')
+    pallet_id = fields.Many2one('pwk.pallet', 'Pallet')
+    strapping_id = fields.Many2one('pwk.strapping', 'Strapping')    
+    total_crates = fields.Float('Total Crates', default=1)
+    qty = fields.Float('Quantity / Crate')
+    number = fields.Char('Number')   
+
+
 class PwkPackingListLineDetail(models.Model):    
     _name = "pwk.packing.list.line.detail"
 
