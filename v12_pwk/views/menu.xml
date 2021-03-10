@@ -12,7 +12,7 @@
 
         <!-- Packing List Line -->
 		<record id="pwk_packing_list_line_action" model="ir.actions.act_window">
-            <field name="name">Packing List Detail</field>
+            <field name="name">Rekap Packing List Produksi</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">pwk.packing.list.line</field>
             <field name="view_type">form</field>

@@ -23,7 +23,7 @@ class PwkPackingListLineContainer(models.Model):
     strapping_id = fields.Many2one('pwk.strapping', 'Strapping')    
     total_crates = fields.Float('Total Crates', default=1)
     qty = fields.Float('Quantity / Crate')
-    number = fields.Char('Number')   
+    number = fields.Char('Number')
 
 
 class PwkPackingListLineDetail(models.Model):    
@@ -54,6 +54,7 @@ class PwkPackingListLine(models.Model):
     reference_tanggal_emisi = fields.Date(related="reference.tanggal_emisi", string='Hasil Uji Emisi')
     reference_tanggal_stuffing = fields.Date(related="reference.tanggal_stuffing", string='Tgl Stuffing')
 
+    container_start_end = fields.Char('Container Start End')
     crate_number = fields.Integer('Crate Number')
     crate_qty_each = fields.Integer('Crate Qty each')
 

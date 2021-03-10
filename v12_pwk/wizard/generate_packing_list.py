@@ -21,8 +21,11 @@ class PwkGeneratePackingListWizard(models.TransientModel):
 
     	if self.sale_line_ids:
             bom_list = ''
+            container_no = 1
 
             for line in self.sale_line_ids:
+                container_start = container_no
+
                 packing_list_line_id = self.env['pwk.packing.list.line'].create({
                     'reference': packing_list_id.id,
                     'product_id': line.product_id.id,
@@ -42,6 +45,11 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                         'qty': container.qty,
                         'number': container.number,
                     })
+
+                    container_end = container_start + 1
+                    container_no += 1
+
+                container_start_end = str(container_start) + ' - ' + str(container_end)  
 
                 # Create Groups for Printing
                 existing_group_id = self.env['pwk.packing.list.group'].search([
