@@ -31,6 +31,7 @@ class PwkPackingListLineDetail(models.Model):
 
     reference = fields.Many2one('pwk.packing.list.line', string='Reference')
     product_id = fields.Many2one('product.product', string='Product')
+    product_name = fields.Char(related='product_id.name', string='Product Name')
     thick = fields.Float(string='Thick', digits=dp.get_precision('OneDecimal'))
     width = fields.Float(string='Width', digits=dp.get_precision('ZeroDecimal'))
     length = fields.Float(string='Length', digits=dp.get_precision('ZeroDecimal'))
