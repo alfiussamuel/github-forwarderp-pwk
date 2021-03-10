@@ -62,17 +62,24 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                 ])
 
                 if rpb_line_ids:
+                    print ("RPB Line IDS")
                     if rpb_line_ids[0].is_selected_detail1 and rpb_line_ids[0].detail_ids_1:
+                        print ("RPB Line IDS 1")
                         bom_list = rpb_line_ids[0].detail_ids_1
                     elif rpb_line_ids[0].is_selected_detail2 and rpb_line_ids[0].detail_ids_2:
+                        print ("RPB Line IDS 2")
                         bom_list = rpb_line_ids[0].detail_ids_2
                     elif rpb_line_ids[0].is_selected_detail3 and rpb_line_ids[0].detail_ids_3:
+                        print ("RPB Line IDS 3")
                         bom_list = rpb_line_ids[0].detail_ids_3
                     elif rpb_line_ids[0].is_selected_detail4 and rpb_line_ids[0].detail_ids_4:
+                        print ("RPB Line IDS 4")
                         bom_list = rpb_line_ids[0].detail_ids_4
                     elif rpb_line_ids[0].is_selected_detail5 and rpb_line_ids[0].detail_ids_5:
+                        print ("RPB Line IDS 5")
                         bom_list = rpb_line_ids[0].detail_ids_5
 
+                    print ("Bom List ", bom_list)
                     for bom_line in bom_list:                        
                         self.env['pwk.packing.list.line.detail'].create({
                             'reference': packing_list_line_id.id,
@@ -86,10 +93,12 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                         })
 
                 else:
+                    print ("Not RPB Line IDS")
                     bom_list = self.env['mrp.bom'].search([
                         ('product_tmpl_id.name', '=', line.product_id.name)
                     ])
 
+                    print ("Master BoM ", bom_list)
                     for bom_line in bom_list.bom_line_ids:                        
                         self.env['pwk.packing.list.line.detail'].create({
                             'reference': packing_list_line_id.id,
