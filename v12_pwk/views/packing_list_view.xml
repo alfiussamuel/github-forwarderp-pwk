@@ -6,8 +6,8 @@
             <field name="model">pwk.packing.list</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="name"/>
                     <field name="date"/>
+                    <field name="name"/>
                     <field name="partner_id"/>
                     <field name="destination_id"/>
                     <field name="po_number"/>
@@ -16,6 +16,7 @@
                     <field name="line_ids" widget="many2many_tags"/>
                     <field name="tanggal_selesai"/>
                     <field name="tanggal_emisi"/>
+                    <field name="tanggal_stuffing"/>
                 </tree>
             </field>
         </record>
@@ -25,9 +26,9 @@
             <field name="model">pwk.packing.list.line</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="name"/>
-                    <field name="reference" string="Packing List No."/>
+                    <field name="name" invisible="1"/>
                     <field name="reference_date"/>
+                    <field name="reference" string="Packing List No."/>
                     <field name="reference_partner_id"/>
                     <field name="reference_destination_id"/>
                     <field name="reference_po_number"/>
