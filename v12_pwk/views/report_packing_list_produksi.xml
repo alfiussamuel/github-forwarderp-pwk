@@ -465,74 +465,74 @@
 						                        </td>
 						                    </t>
 						                </tr>
-						                <t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name">
-						                	<tr>			                        		
-												<td style="text-align:center;font-size:12px;
-													border-top:0px;
-													border-bottom:0px;
-													border-left:1px solid black;
-													border-right:1px solid black;
-													padding-top:0px;
-													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
-						                        </td>
-						                        <td style="text-align:left;font-size:12px;
-						                        	border-top:0px;
-													border-bottom:0px;
-													border-left:1px solid black;
-													border-right:0px;
-													padding-top:0px;
-													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
-					    							<strong>Grade</strong>
-						                        </td>
-						                        <td colspan="8" style="text-align:left;font-size:12px;
-						                        	border-top:0px;
-													border-bottom:0px;
-													border-left:0px;
-													border-right:1px solid black;
-													padding-top:0px;
-													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
-					    							<strong>
-						    							: <span t-field="l.product_id.grade.name"/> | Glue : <span t-field="l.product_id.glue.name"/>
-						    						</strong>
-						                        </td>
-						                        <td style="text-align:right;font-size:12px;
-						                        	border-top:0px;
-													border-bottom:0px;
-													border-left:1px solid black;
-													border-right:1px solid black;
-													padding-top:0px;
-													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
-						                        </td>
-						                        <td style="text-align:center;font-size:12px;
-						                        	border-top:0px;
-													border-bottom:0px;
-													border-left:1px solid black;
-													border-right:1px solid black;
-													padding-top:0px;
-													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
-						                        </td>
-						                        <td style="text-align:left;font-size:12px;
-						                        	border-top:0px;
-													border-bottom:0px;
-													border-left:1px solid black;
-													border-right:1px solid black;
-													padding-top:0px;
-													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
-						                        </td>
-						                    </tr>
-						                </t>
+						                <!-- <t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name"> -->
+					                	<tr>			                        		
+											<td style="text-align:center;font-size:12px;
+												border-top:0px;
+												border-bottom:0px;
+												border-left:1px solid black;
+												border-right:1px solid black;
+												padding-top:0px;
+												padding-bottom:0px;
+												padding-left:4px;
+												padding-right:4px;">
+					                        </td>
+					                        <td style="text-align:left;font-size:12px;
+					                        	border-top:0px;
+												border-bottom:0px;
+												border-left:1px solid black;
+												border-right:0px;
+												padding-top:0px;
+												padding-bottom:0px;
+												padding-left:4px;
+												padding-right:4px;">
+				    							<strong>Grade</strong>
+					                        </td>
+					                        <td colspan="8" style="text-align:left;font-size:12px;
+					                        	border-top:0px;
+												border-bottom:0px;
+												border-left:0px;
+												border-right:1px solid black;
+												padding-top:0px;
+												padding-bottom:0px;
+												padding-left:4px;
+												padding-right:4px;">
+				    							<strong>
+					    							: <span t-field="l.product_id.grade.name"/> | Glue : <span t-field="l.product_id.glue.name"/>
+					    						</strong>
+					                        </td>
+					                        <td style="text-align:right;font-size:12px;
+					                        	border-top:0px;
+												border-bottom:0px;
+												border-left:1px solid black;
+												border-right:1px solid black;
+												padding-top:0px;
+												padding-bottom:0px;
+												padding-left:4px;
+												padding-right:4px;">
+					                        </td>
+					                        <td style="text-align:center;font-size:12px;
+					                        	border-top:0px;
+												border-bottom:0px;
+												border-left:1px solid black;
+												border-right:1px solid black;
+												padding-top:0px;
+												padding-bottom:0px;
+												padding-left:4px;
+												padding-right:4px;">
+					                        </td>
+					                        <td style="text-align:left;font-size:12px;
+					                        	border-top:0px;
+												border-bottom:0px;
+												border-left:1px solid black;
+												border-right:1px solid black;
+												padding-top:0px;
+												padding-bottom:0px;
+												padding-left:4px;
+												padding-right:4px;">
+					                        </td>
+					                    </tr>
+						                <!-- </t> -->
 						                <!-- <tr>
 			                        		<t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name">
 												<td style="text-align:center;font-size:12px;
