@@ -12,6 +12,7 @@
                     <field name="destination_id"/>
                     <field name="po_number"/>
                     <field name="marking"/>
+                    <field name="line_ids"/>
                     <field name="tanggal_selesai"/>
                     <field name="tanggal_emisi"/>
                 </tree>
@@ -23,16 +24,18 @@
             <field name="model">pwk.packing.list.line</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="reference"/>
-                    <field name="product_id"/>
+                    <field name="reference" string="Packing List No."/>
+                    <field name="reference_date"/>
                     <field name="reference_partner_id"/>
                     <field name="reference_destination_id"/>
                     <field name="reference_po_number"/>
-                    <field name="marking"/>
-                    <!-- <field name="crate_number" sum="Total"/>
-                    <field name="crate_qty_each" sum="Total"/> -->
+                    <field name="reference_marking"/>
+                    <field name="product_id"/>
                     <field name="quantity" sum="Total"/>
                     <field name="volume" sum="Total"/>
+                    <field name="reference_tanggal_selesai"/>
+                    <field name="reference_tanggal_emisi"/>
+                    <field name="reference_tanggal_stuffing"/>
                 </tree>
             </field>
         </record>
@@ -52,11 +55,14 @@
                                 <field name="reference_partner_id"/>
                                 <field name="reference_destination_id"/>
                                 <field name="reference_po_number"/>
+                                <field name="reference_marking"/>
                             </group>
                             <group>
-                                
                                 <field name="quantity"/>
                                 <field name="volume"/>
+                                <field name="reference_tanggal_selesai"/>
+                                <field name="reference_tanggal_emisi"/>
+                                <field name="reference_tanggal_stuffing"/>
                             </group>
                         </group>
                         <notebook>
@@ -132,6 +138,7 @@
                                 <field name="tanggal_selesai"/>
                                 <field name="tanggal_pengambilan"/>
                                 <field name="tanggal_pengiriman"/>
+                                <field name="tanggal_stuffing"/>
                             </group>
                         </group>
                         <group>
