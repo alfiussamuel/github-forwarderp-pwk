@@ -298,7 +298,7 @@
 			                        		<t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name">
 												<td style="text-align:center;font-size:13px;
 													border-top:0px;
-													border-bottom:1px solid black;
+													border-bottom:0px;
 													border-left:1px solid black;
 													border-right:1px solid black;
 													padding-top:4px;
@@ -537,7 +537,7 @@
 			                        		<t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name">
 												<td style="text-align:center;font-size:13px;
 													border-top:0px;
-													border-bottom:0px;
+													border-bottom:1px solid black;
 													border-left:1px solid black;
 													border-right:1px solid black;
 													padding-top:0px;
