@@ -839,7 +839,7 @@
 	                        </td>
 						</tr>
 						<tr>
-							<td width="30%"
+							<td width="25%"
 								style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
 								border-left:1px solid black;
 								border-top:0px;
@@ -851,7 +851,7 @@
 								style="text-align:right;border:0px;font-size:13px;padding:5px;background-color:#d7e8f7;">
     							<strong>:</strong>
 	                        </td>
-	                        <td width="70%"
+	                        <td width="15%"
 								style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
@@ -859,19 +859,26 @@
 								border-bottom:0px;">
     							<strong><span t-field="o.tanggal_selesai" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
-						</tr>
-						<tr>
-							<td style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
+	                        <td width="10%"
+	                        	style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
+								border-left:1px solid black;
+								border-top:0px;
+								border-right:0px;
+								border-bottom:0px;"/>
+	                        <td width="25%" 
+	                        	style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
     							<strong>Hasil Uji Emisi</strong>
 	                        </td>
-	                        <td style="text-align:right;border:0px;font-size:13px;padding:4px;background-color:#d7e8f7;">
+	                        <td width="5%" 
+	                        	style="text-align:right;border:0px;font-size:13px;padding:4px;background-color:#d7e8f7;">
     							<strong>:</strong>
 	                        </td>
-	                        <td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td width="15%"
+	                        	style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
 								border-right:1px solid black;
 								border-top:0px;
 								border-left:0px;
@@ -901,9 +908,12 @@
 								border-bottom:0px;">
     							 <strong><span t-field="o.tanggal_p1" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
-						</tr>
-						<tr>
-							<td style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
+								border-left:1px solid black;
+								border-top:0px;
+								border-right:0px;
+								border-bottom:0px;"/>
+	                        <td style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
@@ -947,8 +957,11 @@
 								border-bottom:0px;">
     							 <strong><span t-field="o.tanggal_pengambilan" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
-						</tr>
-						<tr>
+	                        <td style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
+								border-left:1px solid black;
+								border-top:0px;
+								border-right:0px;
+								border-bottom:0px;"/>
 							<td style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
 								border-left:1px solid black;
 								border-top:0px;
