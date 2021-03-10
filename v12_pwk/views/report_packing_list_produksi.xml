@@ -498,7 +498,7 @@
 													padding-left:4px;
 													padding-right:4px;">
 					    							<strong>
-						    							: <span t-field="l.product_id.grade.name"/>  Glue : <span t-field="l.product_id.glue.name"/>
+						    							: <span t-field="l.product_id.grade.name"/> | Glue : <span t-field="l.product_id.glue.name"/>
 						    						</strong>
 						                        </td>
 						                        <td style="text-align:right;font-size:13px;
@@ -863,7 +863,7 @@
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
-								border-bottom:1px solid black;">
+								border-bottom:0px;">
     							<strong>:</strong>
 	                        </td>
 	                        <td style="text-align:left;font-size:13px;padding:5px;background-color:#d7e8f7;
