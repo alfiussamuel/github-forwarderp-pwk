@@ -1235,7 +1235,7 @@
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
-								border-bottom:1px solid blackx;">
+								border-bottom:1px solid black;">
     							<strong><span t-field="o.tanggal_p1" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
 	                        <td style="text-align:left;font-size:11px;padding:2px;background-color:#d7e8f7;
