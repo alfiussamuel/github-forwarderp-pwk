@@ -171,8 +171,8 @@
                                                 </group>
                                                 <group>
                                                     <field name="sale_line_id"/>
-                                                    <field name="quantity"/>
-                                                    <field name="volume"/>
+                                                    <field name="revision_quantity"/>
+                                                    <field name="revision_volume"/>
                                                 </group>
                                             </group>
                                             <notebook>
