@@ -179,7 +179,16 @@ class PwkPackingListLine(models.Model):
             smaller_ids = self.env['pwk.packing.list.line'].search([
                 ('id', '<', res.id),
                 ('reference', '=', res.reference.id)
+            ], order='id desc')
+
+            print ("Smaller IDS desc ", smaller_ids)
+
+            smaller_ids = self.env['pwk.packing.list.line'].search([
+                ('id', '<', res.id),
+                ('reference', '=', res.reference.id)
             ], order='id asc')
+
+            print ("Smaller IDS asc ", smaller_ids)
 
             if smaller_ids:
                 container_no = smaller_ids[0].crate_number + smaller_ids[0].revision_crate_number + 1
