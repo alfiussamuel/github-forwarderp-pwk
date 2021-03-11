@@ -1178,7 +1178,7 @@
 								border-top:1px solid black;
 								border-right:1px solid black;
 								border-bottom:0px;">
-    							<strong>Notes :</strong>
+    							<strong>Notes : <span t-field="o.revision_notes"/></strong>
 	                        </td>
 						</tr>
 						<tr>
