@@ -79,6 +79,7 @@ class PwkPackingListLine(models.Model):
     reference_tanggal_emisi = fields.Date(related="reference.tanggal_emisi", string='Hasil Uji Emisi')
     reference_tanggal_stuffing = fields.Date(related="reference.tanggal_stuffing", string='Tgl Stuffing')
 
+    container_end = fields.Char(compute="_get_container_sequence", string='Container End')
     container_start_end = fields.Char(compute="_get_container_sequence", string='Container Start End')
     container_start_end_revision = fields.Char(compute="_get_container_sequence", string='Container Start End Rev')
     crate_number = fields.Integer('Crate Number')
@@ -191,9 +192,10 @@ class PwkPackingListLine(models.Model):
             # print ("Smaller IDS asc ", smaller_ids)
 
             if smaller_ids:
-                container_no = smaller_ids[0].crate_number + smaller_ids[0].revision_crate_number + 1
+                container_no = smaller_ids[0].container_end + smaller_ids[0].revision_crate_number + 1
                 print ("ID ", smaller_ids[0].id)
                 print ("Product ", smaller_ids[0].product_id.name)
+                print ("Container End ", smaller_ids[0].container_end)
                 print ("Container No. ", container_no)
             
             container_start = container_no
@@ -229,6 +231,8 @@ class PwkPackingListLine(models.Model):
 
             print ("Container ", container_start_end)
             print ("Container Rev ", container_start_end_revision)
+
+            res.container_end = container_end - res.revision_crate_number
             res.container_start_end = container_start_end
             res.container_start_end_revision = container_start_end_revision
 
