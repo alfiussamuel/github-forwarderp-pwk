@@ -204,11 +204,11 @@
                                             <group>
                                                 <field name="revision_ids" nolabel="1">
                                                     <tree editable="top">
-                                                        <field name="name" required="1"/>
-                                                        <field name="date" required="1"/>
+                                                        <field name="sequence" widget="handle"/>
                                                         <field name="product_id" required="1"/>
                                                         <field name="quantity" required="1"/>
                                                         <field name="volume" required="1"/>
+                                                        <field name="notes" required="1"/>
                                                     </tree>
                                                 </field>
                                             </group>

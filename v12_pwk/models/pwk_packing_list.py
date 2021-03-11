@@ -29,7 +29,7 @@ class PwkPackingListLineContainer(models.Model):
 class PwkPackingListLineRevision(models.Model):    
     _name = "pwk.packing.list.line.revision"
 
-    name = fields.Char('Revision Name')
+    sequence = fields.Integer('Sequence')
     notes = fields.Text('Revision Notes')
     date = fields.Date('Revision Date')
     reference = fields.Many2one('pwk.packing.list.line', string='Reference')
