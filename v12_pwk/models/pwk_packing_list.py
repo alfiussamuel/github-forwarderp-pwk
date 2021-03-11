@@ -290,8 +290,9 @@ class PwkPackingList(models.Model):
 
     @api.model
     def create(self, vals):
-        month = vals['date'].month
-        year = vals['date'].year
+        date = datetime.strptime(vals.get('date'), '%Y-%m-%d')
+        month = date.month
+        year = date.year
         romawi = ''
         print ("Month ", month)
 
