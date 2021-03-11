@@ -1235,7 +1235,7 @@
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
-								border-bottom:0p1px solid blackx;">
+								border-bottom:1px solid blackx;">
     							<strong><span t-field="o.tanggal_p1" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
 	                        <td style="text-align:left;font-size:11px;padding:2px;background-color:#d7e8f7;
@@ -1250,7 +1250,11 @@
 								border-bottom:1px solid black;">
     							<strong>Produksi P2 terakhir</strong>
 	                        </td>
-	                        <td style="text-align:right;border:0px;font-size:11px;padding:2px;background-color:#d7e8f7;">
+	                        <td style="text-align:right;font-size:11px;padding:2px;background-color:#d7e8f7;
+	                        	border-left:0px;
+								border-top:0px;
+								border-right:0px;
+								border-bottom:1px solid black;">
     							<strong>:</strong>
 	                        </td>
 	                        <td style="text-align:left;font-size:11px;padding:2px;background-color:#d7e8f7;
