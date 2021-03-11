@@ -34,7 +34,7 @@ class PwkPackingListLineRevision(models.Model):
     date = fields.Date('Revision Date')
     reference = fields.Many2one('pwk.packing.list.line', string='Reference')
     product_id = fields.Many2one('product.product', string='Product')
-    crate_number = fields.Integer('Crate Number')
+    crate_number = fields.Integer('Total Crate')
     quantity = fields.Float(string='Quantity', digits=dp.get_precision('TwoDecimal'))
     volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))
 
