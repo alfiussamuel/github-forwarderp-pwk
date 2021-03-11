@@ -232,20 +232,37 @@ class PwkPackingList(models.Model):
     def print_packing_list_produksi(self):                
         return self.env.ref('v12_pwk.packing_list_produksi').report_action(self)
 
-    # @api.multi
-    # def action_create_picking(self):
-    #     for res in self:
-    #         picking_id = self.env['stock.picking'].create({
+    @api.multi
+    def action_create_picking(self):
+        for res in self:
+            source_location_ids = self.env['stock.location'].search([('name', '=', 'GBJ')])
+            if not source_location_ids:
+                raise UserError(_('Lokasi Gudang Barang Jadi tidak ditemukan'))
 
-    #         })
+            destination_location_ids = self.env['stock.location'].search([('name', '=', 'Customers')])
+            if not destination_location_ids:
+                raise UserError(_('Lokasi Customer tidak ditemukan'))
 
-    #         for line in res.line_ids:
-    #             self.env['stock.move'].create({
-    #                 'product_id': line.product_id.id,
+            picking_type_ids = self.env['stock.picking.type'].search([('name', '=', 'Delivery Orders PWK')])
+            if not picking_type_ids:
+                raise UserError(_('Operation Types tidak ditemukan'))
 
-    #             })
+            picking_id = self.env['stock.picking'].create({
+                'partner_id': res.partner_id.id,
+                'location_id': source_location_ids[0].id,
+                'location_dest_id': destination_location_ids[0].id,
+                'picking_type_id': picking_type_ids[0].id,
+                'scheduled_date': fields.Date.today(),
+                'origin': res.name
+            })
 
-    #         res.write({
-    #             'is_picking': True,
-    #             'picking_id': picking_id.id
-    #         })
+            # for line in res.line_ids:
+            #     self.env['stock.move'].create({
+            #         'product_id': line.product_id.id,
+
+            #     })
+
+            # res.write({
+            #     'is_picking': True,
+            #     'picking_id': picking_id.id
+            # })
