@@ -170,6 +170,7 @@
                                                     <field name="volume"/>
                                                 </group>
                                                 <group>
+                                                    <field name="sale_id"/>
                                                     <field name="reference_po_number"/>
                                                     <field name="revision_quantity"/>
                                                     <field name="revision_volume"/>
