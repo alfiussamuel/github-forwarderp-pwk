@@ -121,8 +121,10 @@ class PwkPackingListLine(models.Model):
         for res in self:
             revision_product_id = False
             revision_quantity = 0
+            revision_quantity_only = 0
             revision_volume = 0
             revision_crate_number = 0
+            revision_crate_number_original = 0
 
             if res.revision_ids:
                 for revision in res.revision_ids:
