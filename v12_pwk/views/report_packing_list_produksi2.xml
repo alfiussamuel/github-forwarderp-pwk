@@ -485,7 +485,7 @@
 						    							: <span t-field="l.product_id.grade.name"/>
 						    						</strong>
 						                        </td>
-						                        <td colspan="7" style="text-align:right;font-size:11px;
+						                        <td colspan="7" style="text-align:left;font-size:11px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -828,7 +828,7 @@
 							    							: <span t-field="l.revision_product_id.grade.name"/>
 							    						</strong>
 							                        </td>
-							                        <td colspan="7" style="text-align:right;font-size:11px;
+							                        <td colspan="7" style="text-align:left;font-size:11px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:1px solid black;
