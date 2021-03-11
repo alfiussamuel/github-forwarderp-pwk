@@ -2,7 +2,7 @@
 <openerp>
     <data>
 
-        <template id="external_layout_standard_packing_list_produksi">
+        <template id="external_layout_standard_packing_list_produksi2">
 	        <div class="header">		           
 	          	<table class="table table-condensed">
 					<tr>
@@ -83,89 +83,89 @@
 			
 				<table class="table table-condensed" style="margin-top:0px;">					
 					<tr>
-						<td width="40%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">		
+						<td width="40%" style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">		
 							<strong>BENEFICIARY</strong>							
 						</td>
-						<td width="5%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td width="5%" style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							
 						</td>
-						<td width="15%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td width="15%" style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>DATE</strong>
 						</td>
-						<td width="2%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td width="2%" style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>:</strong>
 						</td>
-						<td width="20%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td width="20%" style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong><span t-field="o.date" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 						</td>
 					</tr>
 					<tr>
-						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">		
+						<td style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">		
 							<strong>PT PRIMA WANA KREASI WOOD INDUSTRY</strong>							
 						</td>
-						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							
 						</td>
-						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>BUYER</strong>
 						</td>
-						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>:</strong>
 						</td>
-						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong><span t-field="o.partner_id.name"/></strong>
 						</td>
 					</tr>
 					<tr>
-						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">		
+						<td style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">		
 							<strong>JL. BANGKA RAYA NO. 29A, PELA MAMPANG</strong>							
 						</td>
-						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							
 						</td>
-						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>CONTRACT</strong>
 						</td>
-						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>:</strong>
 						</td>
-						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong><span t-field="o.po_number"/></strong>
 						</td>
 					</tr>
 					<tr>
-						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">		
+						<td style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">		
 							<strong>JAKARTA SELATAN 12720, INDONESIA</strong>							
 						</td>
-						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 						</td>
-						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>DESTINATION</strong>
 						</td>
-						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>:</strong>
 						</td>
-						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong><span t-field="o.destination_id.name"/></strong>
 						</td>
 					</tr>
 					<tr>
-						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">		
+						<td style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">		
 						</td>
-						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 						</td>
-						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>PAYMENT TERMS</strong>
 						</td>
-						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>:</strong>
 						</td>
-						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
+						<td style="font-size:11px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong><span t-field="o.payment_term_id.name"/></strong>
 						</td>
 					</tr>
 					<tr>
-						<td colspan="5" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td colspan="5" style="font-size:10px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 							<strong>Quantity : <span t-field="o.qty_muatan"/></strong>		
 						</td>
 					</tr>
@@ -183,7 +183,7 @@
 	    </template>
 
 		<!-- Header for Packing List -->
-    	<template id="external_layout_packing_list_produksi">
+    	<template id="external_layout_packing_list_produksi2">
 	        <t t-if="not o" t-set="o" t-value="doc"/>
 	        <t t-if="not company">
 	            <!-- Multicompany -->
@@ -198,11 +198,11 @@
 	            </t>
 	        </t>
 	        <!-- <t t-if="company.external_report_layout_id" t-call="{{company.external_report_layout_id.key}}"><t t-raw="0"/></t> -->
-	        <t t-call="v12_pwk.external_layout_standard_packing_list_produksi"><t t-raw="0"/></t>
+	        <t t-call="v12_pwk.external_layout_standard_packing_list_produksi2"><t t-raw="0"/></t>
 	    </template>	  
 
-        <template id="report_packing_list_produksi_document">
-            <t t-call="v12_pwk.external_layout_packing_list_produksi">
+        <template id="report_packing_list_produksi2_document">
+            <t t-call="v12_pwk.external_layout_packing_list_produksi2">
                 <t t-set="o" t-value="o.with_context(lang=lang)" />
                 <t t-set="address">
                     <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
@@ -213,29 +213,29 @@
 						<thead>					
 							<tr>
 								<th rowspan="2" width="7%"
-	                        		style="text-align:center;font-size:12px;border:1px solid black;background-color:#d7e8f7;padding:2px;vertical-align:middle;">
+	                        		style="text-align:center;font-size:11px;border:1px solid black;background-color:#d7e8f7;padding:2px;vertical-align:middle;">
 	                        		<strong>NO.</strong>
 	                        	</th>
 	                        	<th rowspan="2" colspan="9" width="42%"
-	                        		style="text-align:center;font-size:12px;border:1px solid black;background-color:#d7e8f7;padding:2px;vertical-align:middle;">
+	                        		style="text-align:center;font-size:11px;border:1px solid black;background-color:#d7e8f7;padding:2px;vertical-align:middle;">
 	                        		<strong>DESCRIPTION</strong>
 	                        	</th>
 	                        	<th colspan="3" width="51%"
-	                        		style="text-align:center;font-size:12px;border:1px solid black;background-color:#d7e8f7;padding:2px;vertical-align:middle;">
+	                        		style="text-align:center;font-size:11px;border:1px solid black;background-color:#d7e8f7;padding:2px;vertical-align:middle;">
 									<strong>REMARKS</strong>
 	                        	</th>
 	                        </tr>
 							<tr>
 								<th width="12%"
-	                        		style="text-align:center;font-size:12px;border:1px solid black;background-color:#d7e8f7;padding:2px;vertical-align:middle;">	
+	                        		style="text-align:center;font-size:11px;border:1px solid black;background-color:#d7e8f7;padding:2px;vertical-align:middle;">	
 									<strong>VOLUME</strong>							
 								</th>
 								<th width="10%"
-	                        		style="text-align:center;font-size:12px;border:1px solid black;background-color:#d7e8f7;padding:2px;vertical-align:middle;">
+	                        		style="text-align:center;font-size:11px;border:1px solid black;background-color:#d7e8f7;padding:2px;vertical-align:middle;">
 									<strong>MARKING</strong>
 								</th>
 								<th width="29%"
-	                        		style="text-align:center;font-size:12px;border:1px solid black;background-color:#d7e8f7;padding:2px;vertical-align:middle;">
+	                        		style="text-align:center;font-size:11px;border:1px solid black;background-color:#d7e8f7;padding:2px;vertical-align:middle;">
 									<strong>COMPOSITION</strong>
 								</th>
 							</tr>
@@ -243,13 +243,13 @@
 						<tbody class="invoice_tbody">
 							<t t-foreach="o.group_ids" t-as="group">
 								<tr>
-									<td style="text-align:center;font-size:11px;padding:4px;
+									<td style="text-align:center;font-size:10px;padding:4px;
 										border-bottom:0px;
 										border-top:1px solid black;
 										border-left:1px solid black;
 										border-right:1px solid black;">
 			                        </td>
-									<td colspan="9" style="text-align:left;font-size:13px;padding:4px;
+									<td colspan="9" style="text-align:left;font-size:10px;padding:4px;
 										border-top:1px solid black;
 										border-bottom:0px;
 										border-left:1px solid black;
@@ -258,19 +258,19 @@
 			    							<span t-field="group.product_id.goods_type"/> <span t-field="group.jenis_kayu_id.name"/>
 			    						</strong>
 			                        </td>
-			                        <td style="text-align:center;font-size:11px;padding:4px;
+			                        <td style="text-align:center;font-size:10px;padding:4px;
 			                        	border-top:1px solid black;
 										border-bottom:0px;
 										border-left:1px solid black;
 										border-right:1px solid black;">
 			                        </td>
-			                        <td style="text-align:center;font-size:11px;padding:4px;
+			                        <td style="text-align:center;font-size:10px;padding:4px;
 			                        	border-top:1px solid black;
 										border-bottom:0px;
 										border-left:1px solid black;
 										border-right:1px solid black;">
 			                        </td>
-			                        <td style="text-align:center;font-size:11px;padding:4px;
+			                        <td style="text-align:center;font-size:10px;padding:4px;
 			                        	border-top:1px solid black;
 										border-bottom:0px;
 										border-left:1px solid black;
@@ -281,7 +281,7 @@
 		                        	<t t-if="l.product_id.goods_type == group.product_id.goods_type">
 		                        		<t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name">
 		                        			<tr>
-												<td style="text-align:center;font-size:11px;
+												<td style="text-align:center;font-size:10px;
 													border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -292,7 +292,7 @@
 													padding-right:4px;">
 					    							 <strong><span t-field="l.container_start_end"/></strong>
 						                        </td>
-						                        <td style="text-align:left;font-size:11px;
+						                        <td style="text-align:left;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -303,7 +303,7 @@
 													padding-right:4px;">
 					    							<strong>Size</strong>
 						                        </td>
-						                        <td style="text-align:left;font-size:11px;
+						                        <td style="text-align:left;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:0px;
@@ -316,7 +316,7 @@
 						    							: <span t-esc="'{0:,.1f}'.format(l.product_id.tebal)"/>
 						    						</strong>
 						                        </td>
-						                        <td style="text-align:left;font-size:11px;
+						                        <td style="text-align:left;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:0px;
@@ -329,7 +329,7 @@
 						    							mm
 						    						</strong>
 						                        </td>
-						                        <td style="text-align:left;font-size:11px;
+						                        <td style="text-align:left;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:0px;
@@ -342,7 +342,7 @@
 						    							x
 						    						</strong>
 						                        </td>
-						                        <td style="text-align:left;font-size:11px;
+						                        <td style="text-align:left;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:0px;
@@ -355,7 +355,7 @@
 						    							<span t-esc="'{0:,.0f}'.format(l.product_id.lebar)"/>
 						    						</strong>
 						                        </td>
-						                        <td style="text-align:left;font-size:11px;
+						                        <td style="text-align:left;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:0px;
@@ -368,7 +368,7 @@
 						    							mm
 						    						</strong>
 						                        </td>
-						                        <td style="text-align:left;font-size:11px;
+						                        <td style="text-align:left;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:0px;
@@ -381,7 +381,7 @@
 						    							x
 						    						</strong>
 						                        </td>
-						                        <td style="text-align:left;font-size:11px;
+						                        <td style="text-align:left;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:0px;
@@ -394,7 +394,7 @@
 						    							<span t-esc="'{0:,.0f}'.format(l.product_id.panjang)"/>
 						    						</strong>
 						                        </td>
-						                        <td style="text-align:left;font-size:11px;
+						                        <td style="text-align:left;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:0px;
@@ -407,7 +407,7 @@
 						    							mm
 						    						</strong>
 						                        </td>
-						                        <td style="text-align:center;font-size:11px;
+						                        <td style="text-align:center;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -420,7 +420,7 @@
 						                            	<span t-esc="'{0:,.4f}'.format(l.revision_volume_original)"/> m<sup>3</sup>
 						                            </strong>
 						                        </td>
-						                        <td style="text-align:center;font-size:11px;
+						                        <td style="text-align:center;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -433,7 +433,7 @@
 						                            	<span t-field="l.marking"/>
 						                            </strong>
 						                        </td>
-						                        <td rowspan="4" style="text-align:left;font-size:11px;
+						                        <td rowspan="4" style="text-align:left;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -451,7 +451,7 @@
 						                        </td>
 						                    </tr>
 						                    <tr>			                        		
-												<td style="text-align:center;font-size:11px;
+												<td style="text-align:center;font-size:10px;
 													border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -461,7 +461,7 @@
 													padding-left:4px;
 													padding-right:4px;">
 						                        </td>
-						                        <td style="text-align:left;font-size:11px;
+						                        <td style="text-align:left;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -472,7 +472,7 @@
 													padding-right:4px;">
 					    							<strong>Grade</strong>
 						                        </td>
-						                        <td colspan="8" style="text-align:left;font-size:11px;
+						                        <td colspan="8" style="text-align:left;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:0px;
@@ -485,7 +485,7 @@
 						    							: <span t-field="l.product_id.grade.name"/>
 						    						</strong>
 						                        </td>
-						                        <td style="text-align:right;font-size:11px;
+						                        <td style="text-align:right;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -495,7 +495,7 @@
 													padding-left:4px;
 													padding-right:4px;">
 						                        </td>
-						                        <td style="text-align:center;font-size:11px;
+						                        <td style="text-align:center;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -507,7 +507,7 @@
 						                        </td>
 						                    </tr>
 						                    <tr>			                        		
-												<td style="text-align:center;font-size:11px;
+												<td style="text-align:center;font-size:10px;
 													border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -517,7 +517,7 @@
 													padding-left:4px;
 													padding-right:4px;">
 						                        </td>
-						                        <td style="text-align:left;font-size:11px;
+						                        <td style="text-align:left;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -528,7 +528,7 @@
 													padding-right:4px;">
 					    							<strong>Glue</strong>
 						                        </td>
-						                        <td colspan="8" style="text-align:left;font-size:11px;
+						                        <td colspan="8" style="text-align:left;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:0px;
@@ -541,7 +541,7 @@
 						    							: <span t-field="l.product_id.glue.name"/>
 						    						</strong>
 						                        </td>
-						                        <td style="text-align:right;font-size:11px;
+						                        <td style="text-align:right;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -551,7 +551,7 @@
 													padding-left:4px;
 													padding-right:4px;">
 						                        </td>
-						                        <td style="text-align:center;font-size:11px;
+						                        <td style="text-align:center;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -564,7 +564,7 @@
 						                    </tr>
 							                <tr>
 				                        		<t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name">
-													<td style="text-align:center;font-size:11px;
+													<td style="text-align:center;font-size:10px;
 														border-top:0px;
 														border-bottom:0px;
 														border-left:1px solid black;
@@ -574,7 +574,7 @@
 														padding-left:4px;
 														padding-right:4px;">
 							                        </td>
-							                        <td style="text-align:left;font-size:11px;
+							                        <td style="text-align:left;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:1px solid black;
@@ -585,7 +585,7 @@
 														padding-right:4px;">
 						    							<strong>Qty</strong>
 							                        </td>
-							                        <td colspan="8" style="text-align:left;font-size:11px;
+							                        <td colspan="8" style="text-align:left;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:0px;
@@ -598,7 +598,7 @@
 							    							: <span t-esc="'{0:,.0f}'.format(l.revision_quantity_original)"/> Pcs (<span t-field="l.revision_crate_number_original"/> x @<span t-field="l.crate_qty_each"/>)
 							    						</strong>
 							                        </td>
-							                        <td style="text-align:right;font-size:11px;
+							                        <td style="text-align:right;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:1px solid black;
@@ -608,7 +608,7 @@
 														padding-left:4px;
 														padding-right:4px;">
 							                        </td>
-							                        <td style="text-align:center;font-size:11px;
+							                        <td style="text-align:center;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:1px solid black;
@@ -623,7 +623,7 @@
 							                <!-- Revision -->
 							                <t t-if="l.revision_product_id">
 							                	<tr>
-													<td style="text-align:center;font-size:11px;
+													<td style="text-align:center;font-size:10px;
 														border-top:0px;
 														border-bottom:0px;
 														border-left:1px solid black;
@@ -634,7 +634,7 @@
 														padding-right:4px;">
 						    							 <strong><span t-field="l.container_start_end_revision"/></strong>
 							                        </td>
-							                        <td style="text-align:left;font-size:11px;
+							                        <td style="text-align:left;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:1px solid black;
@@ -645,7 +645,7 @@
 														padding-right:4px;">
 						    							<strong>Size</strong>
 							                        </td>
-							                        <td style="text-align:left;font-size:11px;
+							                        <td style="text-align:left;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:0px;
@@ -658,7 +658,7 @@
 							    							: <span t-esc="'{0:,.1f}'.format(l.revision_product_id.tebal)"/>
 							    						</strong>
 							                        </td>
-							                        <td style="text-align:left;font-size:11px;
+							                        <td style="text-align:left;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:0px;
@@ -671,7 +671,7 @@
 							    							mm
 							    						</strong>
 							                        </td>
-							                        <td style="text-align:left;font-size:11px;
+							                        <td style="text-align:left;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:0px;
@@ -684,7 +684,7 @@
 							    							x
 							    						</strong>
 							                        </td>
-							                        <td style="text-align:left;font-size:11px;
+							                        <td style="text-align:left;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:0px;
@@ -697,7 +697,7 @@
 							    							<span t-esc="'{0:,.0f}'.format(l.revision_product_id.lebar)"/>
 							    						</strong>
 							                        </td>
-							                        <td style="text-align:left;font-size:11px;
+							                        <td style="text-align:left;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:0px;
@@ -710,7 +710,7 @@
 							    							mm
 							    						</strong>
 							                        </td>
-							                        <td style="text-align:left;font-size:11px;
+							                        <td style="text-align:left;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:0px;
@@ -723,7 +723,7 @@
 							    							x
 							    						</strong>
 							                        </td>
-							                        <td style="text-align:left;font-size:11px;
+							                        <td style="text-align:left;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:0px;
@@ -736,7 +736,7 @@
 							    							<span t-esc="'{0:,.0f}'.format(l.revision_product_id.panjang)"/>
 							    						</strong>
 							                        </td>
-							                        <td style="text-align:left;font-size:11px;
+							                        <td style="text-align:left;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:0px;
@@ -749,7 +749,7 @@
 							    							mm
 							    						</strong>
 							                        </td>
-							                        <td style="text-align:center;font-size:11px;
+							                        <td style="text-align:center;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:1px solid black;
@@ -762,7 +762,7 @@
 							                            	<span t-esc="'{0:,.4f}'.format(l.revision_volume_only)"/> m<sup>3</sup>
 							                            </strong>
 							                        </td>
-							                        <td style="text-align:center;font-size:11px;
+							                        <td style="text-align:center;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:1px solid black;
@@ -775,7 +775,7 @@
 							                            	<span t-field="l.marking"/>
 							                            </strong>
 							                        </td>
-							                        <td rowspan="4" style="text-align:left;font-size:11px;
+							                        <td rowspan="4" style="text-align:left;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:1px solid black;
@@ -793,7 +793,7 @@
 							                        </td>
 							                    </tr>
 							                    <tr>			                        		
-													<td style="text-align:center;font-size:11px;
+													<td style="text-align:center;font-size:10px;
 														border-top:0px;
 														border-bottom:0px;
 														border-left:1px solid black;
@@ -803,7 +803,7 @@
 														padding-left:4px;
 														padding-right:4px;">
 							                        </td>
-							                        <td style="text-align:left;font-size:11px;
+							                        <td style="text-align:left;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:1px solid black;
@@ -814,7 +814,7 @@
 														padding-right:4px;">
 						    							<strong>Grade</strong>
 							                        </td>
-							                        <td colspan="8" style="text-align:left;font-size:11px;
+							                        <td colspan="8" style="text-align:left;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:0px;
@@ -827,7 +827,7 @@
 							    							: <span t-field="l.revision_product_id.grade.name"/>
 							    						</strong>
 							                        </td>
-							                        <td style="text-align:right;font-size:11px;
+							                        <td style="text-align:right;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:1px solid black;
@@ -837,7 +837,7 @@
 														padding-left:4px;
 														padding-right:4px;">
 							                        </td>
-							                        <td style="text-align:center;font-size:11px;
+							                        <td style="text-align:center;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:1px solid black;
@@ -849,7 +849,7 @@
 							                        </td>
 							                    </tr>
 							                    <tr>			                        		
-													<td style="text-align:center;font-size:11px;
+													<td style="text-align:center;font-size:10px;
 														border-top:0px;
 														border-bottom:0px;
 														border-left:1px solid black;
@@ -859,7 +859,7 @@
 														padding-left:4px;
 														padding-right:4px;">
 							                        </td>
-							                        <td style="text-align:left;font-size:11px;
+							                        <td style="text-align:left;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:1px solid black;
@@ -870,7 +870,7 @@
 														padding-right:4px;">
 						    							<strong>Glue</strong>
 							                        </td>
-							                        <td colspan="8" style="text-align:left;font-size:11px;
+							                        <td colspan="8" style="text-align:left;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:0px;
@@ -883,7 +883,7 @@
 							    							: <span t-field="l.revision_product_id.glue.name"/>
 							    						</strong>
 							                        </td>
-							                        <td style="text-align:right;font-size:11px;
+							                        <td style="text-align:right;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:1px solid black;
@@ -893,7 +893,7 @@
 														padding-left:4px;
 														padding-right:4px;">
 							                        </td>
-							                        <td style="text-align:center;font-size:11px;
+							                        <td style="text-align:center;font-size:10px;
 							                        	border-top:0px;
 														border-bottom:0px;
 														border-left:1px solid black;
@@ -906,7 +906,7 @@
 							                    </tr>
 								                <tr>
 					                        		<t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name">
-														<td style="text-align:center;font-size:11px;
+														<td style="text-align:center;font-size:10px;
 															border-top:0px;
 															border-bottom:0px;
 															border-left:1px solid black;
@@ -916,7 +916,7 @@
 															padding-left:4px;
 															padding-right:4px;">
 								                        </td>
-								                        <td style="text-align:left;font-size:11px;
+								                        <td style="text-align:left;font-size:10px;
 								                        	border-top:0px;
 															border-bottom:0px;
 															border-left:1px solid black;
@@ -927,7 +927,7 @@
 															padding-right:4px;">
 							    							<strong>Qty</strong>
 								                        </td>
-								                        <td colspan="8" style="text-align:left;font-size:11px;
+								                        <td colspan="8" style="text-align:left;font-size:10px;
 								                        	border-top:0px;
 															border-bottom:0px;
 															border-left:0px;
@@ -940,7 +940,7 @@
 								    							: <span t-esc="'{0:,.0f}'.format(l.revision_quantity_only)"/> Pcs (<span t-field="l.revision_crate_number"/> x @<span t-field="l.crate_qty_each"/>)
 								    						</strong>
 								                        </td>
-								                        <td style="text-align:right;font-size:11px;
+								                        <td style="text-align:right;font-size:10px;
 								                        	border-top:0px;
 															border-bottom:0px;
 															border-left:1px solid black;
@@ -950,7 +950,7 @@
 															padding-left:4px;
 															padding-right:4px;">
 								                        </td>
-								                        <td style="text-align:center;font-size:11px;
+								                        <td style="text-align:center;font-size:10px;
 								                        	border-top:0px;
 															border-bottom:0px;
 															border-left:1px solid black;
@@ -968,26 +968,26 @@
 						        </t>        
 							</t>
 							<!-- <tr>
-								<td style="text-align:right;font-size:13px;padding:4px;
+								<td style="text-align:right;font-size:10px;padding:4px;
 									border-top:0px;
 									border-bottom:0px;
 									border-left:1px solid black;
 									border-right:1px solid black;">
 		                        </td>
 		                        <td colspan="9" 
-		                        	style="text-align:right;font-size:13px;padding:4px;
+		                        	style="text-align:right;font-size:10px;padding:4px;
 		                        	border-top:0px;
 									border-bottom:0px;
 									border-left:1px solid black;
 									border-right:1px solid black;">
 		                        </td>
-		                        <td style="text-align:right;font-size:13px;padding:4px;
+		                        <td style="text-align:right;font-size:10px;padding:4px;
 		                        	border-top:0px;
 									border-bottom:0px;
 									border-left:1px solid black;
 									border-right:1px solid black;">
 		                        </td>
-		                        <td style="text-align:right;font-size:13px;padding:4px;
+		                        <td style="text-align:right;font-size:10px;padding:4px;
 		                        	border-top:0px;
 									border-bottom:0px;
 									border-left:1px solid black;
@@ -995,26 +995,26 @@
 		                        </td>
 							</tr> -->
 							<!-- <tr>
-								<td style="text-align:right;font-size:13px;padding:4px;
+								<td style="text-align:right;font-size:10px;padding:4px;
 									border-top:0px;
 									border-bottom:1px solid black;
 									border-left:1px solid black;
 									border-right:1px solid black;">
 		                        </td>
 		                        <td colspan="9" 
-		                        	style="text-align:right;font-size:13px;padding:4px;
+		                        	style="text-align:right;font-size:10px;padding:4px;
 		                        	border-top:0px;
 									border-bottom:1px solid black;
 									border-left:1px solid black;
 									border-right:1px solid black;">
 		                        </td>
-		                        <td style="text-align:right;font-size:13px;padding:4px;
+		                        <td style="text-align:right;font-size:10px;padding:4px;
 		                        	border-top:0px;
 									border-bottom:1px solid black;
 									border-left:1px solid black;
 									border-right:1px solid black;">
 		                        </td>
-		                        <td style="text-align:right;font-size:13px;padding:4px;
+		                        <td style="text-align:right;font-size:10px;padding:4px;
 		                        	border-top:0px;
 									border-bottom:1px solid black;
 									border-left:1px solid black;
@@ -1023,15 +1023,15 @@
 							</tr> -->
 							<tr>
 								<td colspan="10" 
-									style="text-align:right;border:1px solid black;font-size:12px;padding:4px;background-color:#d7e8f7;">
+									style="text-align:right;border:1px solid black;font-size:11px;padding:4px;background-color:#d7e8f7;">
 	    							 <strong>TOTAL </strong>
 		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:12px;padding:4px;background-color:#d7e8f7;">
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;background-color:#d7e8f7;">
 	    							 <strong><span t-esc="'{0:,.4f}'.format(o.total_volume)"/> m<sup>3</sup></strong>
 		                        </td>
-		                        <td style="text-align:right;border:1px solid black;font-size:12px;padding:4px;background-color:#d7e8f7;">
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;background-color:#d7e8f7;">
 		                        </td>
-		                        <td style="text-align:right;border:1px solid black;font-size:12px;padding:4px;background-color:#d7e8f7;">
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;background-color:#d7e8f7;">
 		                        </td>
 							</tr>
 						</tbody>
@@ -1040,7 +1040,7 @@
 					<table class="table table-condensed" style="margin-top:0px;margin-bottom:0px;">
 						<tr>
 							<td width="100%" colspan="4"
-								style="text-align:left;font-size:13px;padding:7px;
+								style="text-align:left;font-size:10px;padding:7px;
 								border-top:1px solid black;
 								border-left:1px solid black;
 								border-right:1px solid black;
@@ -1049,7 +1049,7 @@
 	                        </td>
 						</tr>
 						<tr>
-							<td style="text-align:center;font-size:13px;padding:4px;
+							<td style="text-align:center;font-size:10px;padding:4px;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
@@ -1057,14 +1057,14 @@
     							<strong>Dibuat Oleh,</strong>
 	                        </td>
 	                        <td colspan="2" 
-	                        	style="text-align:center;font-size:13px;padding:4px;
+	                        	style="text-align:center;font-size:10px;padding:4px;
 	                        	border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
 	                        	<strong>Mengetahui,</strong>
 	                        </td>
-	                        <td style="text-align:center;font-size:13px;padding:4px;
+	                        <td style="text-align:center;font-size:10px;padding:4px;
 	                        	border-left:0px;
 								border-top:0px;
 								border-right:1px solid black;
@@ -1073,20 +1073,20 @@
 	                        </td>
 						</tr>
 						<tr height="70px">
-							<td style="text-align:center;font-size:13px;padding:4px;
+							<td style="text-align:center;font-size:10px;padding:4px;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
 	                        </td>
 	                        <td colspan="2" 
-	                        	style="text-align:center;font-size:13px;padding:4px;
+	                        	style="text-align:center;font-size:10px;padding:4px;
 	                        	border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
 	                        </td>
-	                        <td style="text-align:center;font-size:13px;padding:4px;
+	                        <td style="text-align:center;font-size:10px;padding:4px;
 	                        	border-left:0px;
 								border-top:0px;
 								border-right:1px solid black;
@@ -1094,28 +1094,28 @@
 	                        </td>
 						</tr>
 						<tr>
-							<td style="text-align:center;font-size:13px;padding:1px;
+							<td style="text-align:center;font-size:10px;padding:1px;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
     							<strong>Dwi Rakasiwi</strong>
 	                        </td>
-	                        <td style="text-align:center;font-size:13px;padding:1px;
+	                        <td style="text-align:center;font-size:10px;padding:1px;
 	                        	border-bottom:0px;
 								border-top:0px;
 								border-right:0px;
 								border-left:0px;">
 	                        	<strong>Parwoto</strong>
 	                        </td>
-	                        <td style="text-align:center;font-size:13px;padding:1px;
+	                        <td style="text-align:center;font-size:10px;padding:1px;
 	                        	border-bottom:0px;
 								border-top:0px;
 								border-right:0px;
 								border-left:0px;">
 	                        	<strong>Supangat</strong>
 	                        </td>
-	                        <td style="text-align:center;font-size:13px;padding:1px;
+	                        <td style="text-align:center;font-size:10px;padding:1px;
 	                        	border-right:1px solid black;
 								border-top:0px;
 								border-left:0px;
@@ -1124,7 +1124,7 @@
 	                        </td>
 						</tr>
 						<tr>
-							<td style="text-align:center;font-size:13px;
+							<td style="text-align:center;font-size:10px;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
@@ -1135,7 +1135,7 @@
 								padding-right:5px;">
     							<strong>PPIC</strong>
 	                        </td>
-	                        <td style="text-align:center;font-size:13px;
+	                        <td style="text-align:center;font-size:10px;
 	                        	border-bottom:1px solid black;
 								border-top:0px;
 								border-right:0px;
@@ -1146,7 +1146,7 @@
 								padding-right:5px;">
 	                        	<strong>KA. Produksi</strong>
 	                        </td>
-	                        <td style="text-align:center;font-size:13px;
+	                        <td style="text-align:center;font-size:10px;
 	                        	border-bottom:1px solid black;
 								border-top:0px;
 								border-right:0px;
@@ -1157,7 +1157,7 @@
 								padding-right:5px;">
 	                        	<strong>KA. RnD</strong>
 	                        </td>
-	                        <td style="text-align:center;font-size:13px;
+	                        <td style="text-align:center;font-size:10px;
 	                        	border-right:1px solid black;
 								border-top:0px;
 								border-left:0px;
@@ -1173,7 +1173,7 @@
 					<table class="table table-condensed" style="margin-top:0px;">
 						<tr>
 							<td colspan="7" width="100%" 
-								style="text-align:left;font-size:13px;padding:4px;background-color:#f7ffa5;
+								style="text-align:left;font-size:10px;padding:4px;background-color:#f7ffa5;
 								border-left:1px solid black;
 								border-top:1px solid black;
 								border-right:1px solid black;
@@ -1183,7 +1183,7 @@
 						</tr>
 						<tr>
 							<td width="20%"
-								style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+								style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
@@ -1191,11 +1191,11 @@
     							<strong>Penyelesaian Produksi</strong>
 	                        </td>
 	                        <td width="5%"
-								style="text-align:right;border:0px;font-size:13px;padding:4px;background-color:#d7e8f7;">
+								style="text-align:right;border:0px;font-size:10px;padding:4px;background-color:#d7e8f7;">
     							<strong>:</strong>
 	                        </td>
 	                        <td width="20%"
-								style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+								style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
@@ -1203,13 +1203,13 @@
     							<strong><span t-field="o.tanggal_selesai" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
 	                        <td width="10%"
-	                        	style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        	style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;"/>
 	                        <td width="20%" 
-	                        	style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        	style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
@@ -1217,11 +1217,11 @@
     							<strong>Hasil Uji Emisi</strong>
 	                        </td>
 	                        <td width="5%" 
-	                        	style="text-align:right;border:0px;font-size:13px;padding:4px;background-color:#d7e8f7;">
+	                        	style="text-align:right;border:0px;font-size:10px;padding:4px;background-color:#d7e8f7;">
     							<strong>:</strong>
 	                        </td>
 	                        <td width="20%"
-	                        	style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        	style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
 								border-right:1px solid black;
 								border-top:0px;
 								border-left:0px;
@@ -1230,47 +1230,47 @@
 	                        </td>
 						</tr>
 						<tr>
-							<td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+							<td style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
     							<strong>Produksi P1 terakhir</strong>
 	                        </td>
-	                        <td style="text-align:right;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:right;font-size:10px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
     							<strong>:</strong>
 	                        </td>
-	                        <td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
     							 <strong><span t-field="o.tanggal_p1" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
-	                        <td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;"/>
-	                        <td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
     							<strong>Produksi P2 terakhir</strong>
 	                        </td>
-	                        <td style="text-align:right;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:right;font-size:10px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
     							<strong>:</strong>
 	                        </td>
-	                        <td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:1px solid black;
@@ -1279,47 +1279,47 @@
 	                        </td>
 						</tr>
 						<tr>
-							<td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+							<td style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:1px solid black;">
     							<strong>Rencana Pengambilan</strong>
 	                        </td>
-	                        <td style="text-align:right;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:right;font-size:10px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:1px solid black;">
     							<strong>:</strong>
 	                        </td>
-	                        <td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:1px solid black;">
     							 <strong><span t-field="o.tanggal_pengambilan" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
-	                        <td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:1px solid black;"/>
-							<td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+							<td style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:1px solid black;">
     							<strong>Rencana Pengiriman</strong>
 	                        </td>
-	                        <td style="text-align:right;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:right;font-size:10px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:1px solid black;">
     							<strong>:</strong>
 	                        </td>
-	                        <td style="text-align:left;font-size:13px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:1px solid black;
@@ -1332,18 +1332,18 @@
             </t>
         </template>        
 
-        <template id="report_packing_list_produksi">
+        <template id="report_packing_list_produksi2">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
                     <t t-set="lang" t-value="o.partner_id.lang"/>
-                    <t t-call="v12_pwk.report_packing_list_produksi_document" t-lang="lang"/>
+                    <t t-call="v12_pwk.report_packing_list_produksi2_document" t-lang="lang"/>
                 </t>
             </t>
         </template>
 
         <!-- New Report Packing List -->
-    	<record id="paperformat_packing_list_produksi" model="report.paperformat">
-	        <field name="name">Packing List Produksi</field>
+    	<record id="paperformat_packing_list_produksi2" model="report.paperformat">
+	        <field name="name">Packing List Produksi 2</field>
 	        <field name="default" eval="True"/>
 	        <field name="format">A4</field>
 	        <field name="page_height">0</field>
@@ -1360,15 +1360,15 @@
 	    </record>
 
     	<report
-            id="packing_list_produksi"
+            id="packing_list_produksi2"
             model="pwk.packing.list"
-            string="Packing List"
+            string="Packing List 2"
             report_type="qweb-pdf"
-            name="v12_pwk.report_packing_list_produksi"
-            file="v12_pwk.report_packing_list_produksi"
+            name="v12_pwk.report_packing_list_produksi2"
+            file="v12_pwk.report_packing_list_produksi2"
             print_report_name="'Packing List - %s' % object.name"
             groups="base.group_user"
-            paperformat="v12_pwk.paperformat_packing_list_produksi"
+            paperformat="v12_pwk.paperformat_packing_list_produksi2"
             menu="False"
         />
 

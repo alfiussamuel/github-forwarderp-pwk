@@ -50,6 +50,7 @@
              'views/report_packing_list_export.xml',
              'views/report_packing_list_waste.xml',
              'views/report_packing_list_produksi.xml',
+             'views/report_packing_list_produksi2.xml',
              'views/report_invoice_export.xml',
              'views/report_invoice_local.xml',
              'views/report_invoice_waste.xml',
