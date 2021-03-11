@@ -193,13 +193,13 @@ class PwkPackingListLine(models.Model):
             if (container_end + 1) < 10 and (container_end + res.revision_crate_number + 1) < 10:
                 print ("Revision crate 1")
                 container_start_end_revision = '0' + str(container_end + 1) + ' - ' + '0' + str(container_end + res.revision_crate_number + 1)
-            elif (container_end + 1) > 10 and res.revision_crate_number < 10:
+            elif (container_end + 1) > 10 and (container_end + res.revision_crate_number + 1) < 10:
                 print ("Revision crate 2")
                 container_start_end_revision = str(container_end + 1) + ' - ' + '0' + str(container_end + res.revision_crate_number + 1)
-            elif (container_end + 1) < 10 and res.revision_crate_number > 10:
+            elif (container_end + 1) < 10 and (container_end + res.revision_crate_number + 1) > 10:
                 print ("Revision crate 3")
                 container_start_end_revision = '0' + (container_end + 1) + ' - ' + str(container_end + res.revision_crate_number + 1)
-            elif (container_end + 1) > 10 and res.revision_crate_number > 10:
+            elif (container_end + 1) > 10 and (container_end + res.revision_crate_number + 1) > 10:
                 print ("Revision crate 4")
                 container_start_end_revision = (container_end + 1) + ' - ' + str(container_end + res.revision_crate_number + 1)
 
