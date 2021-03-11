@@ -197,21 +197,21 @@
                                                         </tree>
                                                     </field>
                                                 </page>
+                                                <page string="Revision">
+                                                    <group>
+                                                        <button name="action_create_revision" string="Revision" type="object"/>
+                                                    </group>
+                                                    <field name="revision_ids" nolabel="1">
+                                                        <tree editable="top">
+                                                            <field name="sequence" widget="handle"/>
+                                                            <field name="product_id" required="1"/>
+                                                            <field name="quantity" required="1"/>
+                                                            <field name="volume" required="1"/>
+                                                            <field name="notes" required="1"/>
+                                                        </tree>
+                                                    </field>
+                                                </page>
                                             </notebook>
-                                            <group>
-                                                <button name="action_create_revision" string="Revision" type="object"/>
-                                            </group>
-                                            <group>
-                                                <field name="revision_ids" nolabel="1">
-                                                    <tree editable="top">
-                                                        <field name="sequence" widget="handle"/>
-                                                        <field name="product_id" required="1"/>
-                                                        <field name="quantity" required="1"/>
-                                                        <field name="volume" required="1"/>
-                                                        <field name="notes" required="1"/>
-                                                    </tree>
-                                                </field>
-                                            </group>
                                         </form>
                                     </field>
                                 </page>
