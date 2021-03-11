@@ -106,6 +106,7 @@
                         <button name="%(action_pwk_generate_packing_list)d" type="action" 
                             string="Select Sales Order" class="oe_highlight" states="Draft"/>
                         <button name="print_packing_list_produksi" string="Print" type="object"/>
+                        <button name="print_packing_list_produksi2" string="Print2" type="object"/>
                         <button name="action_create_picking" string="Create Delivery Order" type="object"/>
                         <field name="state" widget="statusbar" readonly="1"/>
                     </header>

@@ -419,6 +419,10 @@ class PwkPackingList(models.Model):
         return self.env.ref('v12_pwk.packing_list_produksi').report_action(self)
 
     @api.multi
+    def print_packing_list_produksi2(self):                
+        return self.env.ref('v12_pwk.packing_list_produksi2').report_action(self)
+
+    @api.multi
     def action_create_picking(self):
         for res in self:
             source_location_ids = self.env['stock.location'].search([('name', '=', 'GBJ')])
