@@ -26,6 +26,51 @@ class PwkPackingListLineContainer(models.Model):
     number = fields.Char('Number')
 
 
+class PwkPackingListLineRevision(models.Model):    
+    _name = "pwk.packing.list.line.revision"
+
+    name = fields.Char('Revision Name')
+    notes = fields.Text('Revision Notes')
+    date = fields.Date('Revision Date')
+
+    reference = fields.Many2one('pwk.packing.list.line', string='Reference')
+    sale_id = fields.Many2one('sale.order', 'No. Order')
+    sale_line_id = fields.Many2one('sale.order.line', 'No. Order Line')
+
+    reference_date = fields.Date(related="reference.date", string='Packing List Date')
+    reference_partner_id = fields.Many2one(related="reference.partner_id", comodel_name='res.partner', string='Buyer')
+    reference_destination_id = fields.Many2one(related="reference.destination_id", comodel_name='pwk.destination', string='Destination')
+    reference_po_number = fields.Char(related="reference.po_number", string='Contract')
+    reference_marking = fields.Char(related="reference.marking", string='Marking')
+    reference_tanggal_selesai = fields.Date(related="reference.tanggal_selesai", string='Penyelesaian Produksi')
+    reference_tanggal_emisi = fields.Date(related="reference.tanggal_emisi", string='Hasil Uji Emisi')
+    reference_tanggal_stuffing = fields.Date(related="reference.tanggal_stuffing", string='Tgl Stuffing')
+
+    container_start_end = fields.Char('Container Start End')
+    crate_number = fields.Integer('Crate Number')
+    crate_qty_each = fields.Integer('Crate Qty each')
+
+    start_container_no = fields.Integer(compute="_get_container_sequence", string='Start Container No.')
+    end_container_no = fields.Integer(compute="_get_container_sequence", string='End Container No.')
+
+    name = fields.Char('Name')
+    product_id = fields.Many2one('product.product', string='Product')
+    thick = fields.Float(compute="_get_fields", string='Thick', digits=dp.get_precision('OneDecimal'))
+    width = fields.Float(compute="_get_fields", string='Width', digits=dp.get_precision('ZeroDecimal'))
+    length = fields.Float(compute="_get_fields", string='Length', digits=dp.get_precision('ZeroDecimal'))
+    glue_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.glue', string='Glue')
+    grade_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.grade', string='Grade')
+    marking = fields.Char(related='sale_line_id.marking', string='Marking')
+    
+    quantity = fields.Float(compute="_get_quantity", string='Quantity', digits=dp.get_precision('TwoDecimal'))
+    volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))
+
+    bom_ids = fields.One2many('pwk.packing.list.line.revision.detail', 'reference', string='Lines')
+    container_ids = fields.One2many('pwk.packing.list.line.revision.container', 'reference', string='Container')
+
+    bom_name_list = fields.Text(compute="_get_bom_name_list", string="BoM Name List")
+
+
 class PwkPackingListLineDetail(models.Model):    
     _name = "pwk.packing.list.line.detail"
 
@@ -75,6 +120,7 @@ class PwkPackingListLine(models.Model):
 
     bom_ids = fields.One2many('pwk.packing.list.line.detail', 'reference', string='Lines')
     container_ids = fields.One2many('pwk.packing.list.line.container', 'reference', string='Container')
+    revision_ids = fields.One2many('pwk.packing.list.line.revision', 'reference', string='Revision')
 
     bom_name_list = fields.Text(compute="_get_bom_name_list", string="BoM Name List")
 
@@ -127,6 +173,23 @@ class PwkPackingListLine(models.Model):
                 res.glue_id = res.product_id.glue.id
                 res.grade_id = res.product_id.grade.id
 
+    @api.multi
+    def action_create_revision(self):
+        for res in self:
+            self.env['pwk.packing.list.line.revision'].create({
+                'date' : fields.Date.today(),
+                'reference': res.id,
+                'sale_id': res.sale_id.id,
+                'sale_line_id': res.sale_line_id.id,
+                'container_start_end': res.container_start_end,
+                'crate_number': res.crate_number,
+                'crate_qty_each': res.crate_qty_each,
+                'product_id': res.product_id.id,
+                'quantity': res.quantity,
+                'volume': res.volume,
+            })
+
+            
 
 class PwkPackingListGroup(models.Model):    
     _name = "pwk.packing.list.group"
@@ -256,13 +319,12 @@ class PwkPackingList(models.Model):
                 'origin': res.name
             })
 
-            # for line in res.line_ids:
-            #     self.env['stock.move'].create({
-            #         'product_id': line.product_id.id,
+            for line in res.line_ids:
+                self.env['stock.move'].create({
+                    'product_id': line.product_id.id,
+                })
 
-            #     })
-
-            # res.write({
-            #     'is_picking': True,
-            #     'picking_id': picking_id.id
-            # })
+            res.write({
+                'is_picking': True,
+                'picking_id': picking_id.id
+            })

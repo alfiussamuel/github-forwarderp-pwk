@@ -198,6 +198,19 @@
                                                     </field>
                                                 </page>
                                             </notebook>
+                                            <group>
+                                                <button name="action_create_revision" string="Revision" type="object"/>
+                                                <field name="revision_ids" nolabel="1">
+                                                    <tree editable="top">
+                                                        <field name="product_id" required="1"/>
+                                                        <field name="marking" readonly="1"/>
+                                                        <field name="crate_number" sum="Total"/>
+                                                        <field name="crate_qty_each" sum="Total"/>
+                                                        <field name="quantity" sum="Total"/>
+                                                        <field name="volume" sum="Total"/>
+                                                    </tree>
+                                                </field>
+                                            </group>
                                         </form>
                                     </field>
                                 </page>
