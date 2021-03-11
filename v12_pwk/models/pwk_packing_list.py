@@ -97,6 +97,28 @@ class PwkPackingListLine(models.Model):
 
     bom_name_list = fields.Text(compute="_get_bom_name_list", string="BoM Name List")
 
+    # Revision Fields
+    revision_product_id = fields.Many2one(compute="_get_revision_fields", comodel_name='product.product', string='Rev Product')
+    revision_quantity = fields.Float(compute="_get_revision_fields", string="Rev Quantity", digits=dp.get_precision('TwoDecimal'))
+    revision_volume = fields.Float(compute="_get_revision_fields", string="Rev Volume", digits=dp.get_precision('FourDecimal'))
+
+    @api.depends('revision_ids.product_id', 'revision_ids.quantity', 'revision_ids.volume', 'product_id', 'quantity', 'volume')
+    def _get_revision_fields(self):
+        for res in self:
+            revision_product_id = res.product_id.id
+            revision_quantity = res.quantity
+            revision_volume = res.volume
+
+            if res.revision_ids:
+                for revision in res.revision_ids:
+                    revision_product_id = revision.product_id.id
+                    revision_quantity = revision.quantity
+                    revision_volume = revision.volume
+
+            res.revision_product_id = revision_product_id
+            res.revision_quantity = revision_quantity
+            res.revision_volume = revision_volume
+
     @api.multi
     def _get_bom_name_list(self):
         for res in self:
