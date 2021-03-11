@@ -167,11 +167,12 @@
                                                     <field name="crate_number"/>
                                                     <field name="crate_qty_each"/>
                                                     <field name="quantity"/>
+                                                    <field name="volume"/>
                                                 </group>
                                                 <group>
                                                     <field name="sale_id"/>
                                                     <field name="reference_po_number"/>
-                                                    <field name="volume"/>
+                                                    <field name="marking"/>
                                                     <field name="revision_quantity" invisible="1"/>
                                                     <field name="revision_volume" invisible="1"/>
                                                 </group>
