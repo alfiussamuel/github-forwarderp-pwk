@@ -153,11 +153,34 @@ class PwkPackingListLine(models.Model):
             result.append((res.id, name))
         return result
 
-    @api.depends('crate_number', 'crate_qty_each')
+    @api.depends('crate_number')
     def _get_container_sequence(self):
         for res in self:
-            res.start_container_no = 0
-            res.end_container_no = 0
+            container_no = 1
+
+            smaller_ids = self.env['pwk.packing.list.line'].search([
+                ('id', '<', res.id),
+                ('reference', '<', res.reference.id)
+            ], order=id desc)
+
+            if smaller_ids:
+                container_no = smaller_ids[0].crate_number + 1
+            
+            container_start = container_no
+            container_end = container_no + res.crate_number - 1
+            container_no += res.crate_number
+            container_start_end = ''
+
+            if container_start < 10 and container_end < 10:
+                container_start_end = '0' + str(container_start) + ' - ' + '0' + str(container_end)
+            elif container_start > 10 and container_end < 10:
+                container_start_end = str(container_start) + ' - ' + '0' + str(container_end)
+            elif container_start < 10 and container_end > 10:
+                container_start_end = '0' + str(container_start) + ' - ' + str(container_end)
+            elif container_start > 10 and container_end > 10:
+                container_start_end = str(container_start) + ' - ' + str(container_end)
+
+            res.container_start_end = container_start_end
 
     @api.depends('crate_number','crate_qty_each')
     def _get_quantity(self):
