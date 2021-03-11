@@ -219,7 +219,7 @@
                                         </form>
                                     </field>
                                 </page>
-                                <page string="Group Packing List" invisible="1">
+                                <page string="Group Packing List">
                                     <field name="group_ids" nolabel="1">
                                         <tree editable="top">
                                             <field name="product_id" required="1"/>

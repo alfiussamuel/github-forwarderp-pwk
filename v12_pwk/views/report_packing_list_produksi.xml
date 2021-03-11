@@ -620,6 +620,349 @@
 							                        </td>
 							                    </t>
 							                </tr>
+							                <!-- Revision -->
+							                <t t-if="l.revision_product_id">
+							                	<tr>
+													<td style="text-align:center;font-size:11px;
+														border-top:0px;
+														border-bottom:0px;
+														border-left:1px solid black;
+														border-right:1px solid black;
+														padding-top:4px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+						    							 <strong><span t-field="l.container_start_end"/></strong>
+							                        </td>
+							                        <td style="text-align:left;font-size:11px;
+							                        	border-top:0px;
+														border-bottom:0px;
+														border-left:1px solid black;
+														border-right:0px;
+														padding-top:4px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+						    							<strong>Size</strong>
+							                        </td>
+							                        <td style="text-align:left;font-size:11px;
+							                        	border-top:0px;
+														border-bottom:0px;
+														border-left:0px;
+														border-right:0px;
+														padding-top:4px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+						    							<strong>
+							    							: <span t-esc="'{0:,.1f}'.format(l.revision_product_id.tebal)"/>
+							    						</strong>
+							                        </td>
+							                        <td style="text-align:left;font-size:11px;
+							                        	border-top:0px;
+														border-bottom:0px;
+														border-left:0px;
+														border-right:0px;
+														padding-top:4px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+						    							<strong>
+							    							mm
+							    						</strong>
+							                        </td>
+							                        <td style="text-align:left;font-size:11px;
+							                        	border-top:0px;
+														border-bottom:0px;
+														border-left:0px;
+														border-right:0px;
+														padding-top:4px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+						    							<strong>
+							    							x
+							    						</strong>
+							                        </td>
+							                        <td style="text-align:left;font-size:11px;
+							                        	border-top:0px;
+														border-bottom:0px;
+														border-left:0px;
+														border-right:0px;
+														padding-top:4px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+						    							<strong>
+							    							<span t-esc="'{0:,.0f}'.format(l.revision_product_id.lebar)"/>
+							    						</strong>
+							                        </td>
+							                        <td style="text-align:left;font-size:11px;
+							                        	border-top:0px;
+														border-bottom:0px;
+														border-left:0px;
+														border-right:0px;
+														padding-top:4px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+						    							<strong>
+							    							mm
+							    						</strong>
+							                        </td>
+							                        <td style="text-align:left;font-size:11px;
+							                        	border-top:0px;
+														border-bottom:0px;
+														border-left:0px;
+														border-right:0px;
+														padding-top:4px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+						    							<strong>
+							    							x
+							    						</strong>
+							                        </td>
+							                        <td style="text-align:left;font-size:11px;
+							                        	border-top:0px;
+														border-bottom:0px;
+														border-left:0px;
+														border-right:0px;
+														padding-top:4px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+						    							<strong>
+							    							<span t-esc="'{0:,.0f}'.format(l.revision_product_id.panjang)"/>
+							    						</strong>
+							                        </td>
+							                        <td style="text-align:left;font-size:11px;
+							                        	border-top:0px;
+														border-bottom:0px;
+														border-left:0px;
+														border-right:0px;
+														padding-top:4px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+						    							<strong>
+							    							mm
+							    						</strong>
+							                        </td>
+							                        <td style="text-align:center;font-size:11px;
+							                        	border-top:0px;
+														border-bottom:0px;
+														border-left:1px solid black;
+														border-right:1px solid black;
+														padding-top:4px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+							                            <strong>
+							                            	<span t-esc="'{0:,.4f}'.format(l.volume)"/> m<sup>3</sup>
+							                            </strong>
+							                        </td>
+							                        <td style="text-align:center;font-size:11px;
+							                        	border-top:0px;
+														border-bottom:0px;
+														border-left:1px solid black;
+														border-right:1px solid black;
+														padding-top:4px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+							                            <strong>
+							                            	<span t-field="l.marking"/>
+							                            </strong>
+							                        </td>
+							                        <td rowspan="4" style="text-align:left;font-size:11px;
+							                        	border-top:0px;
+														border-bottom:0px;
+														border-left:1px solid black;
+														border-right:1px solid black;
+														padding-top:4px;
+														padding-bottom:4px;
+														padding-left:4px;
+														padding-right:4px;">
+														<!-- <strong><span t-field="l.bom_name_list"/></strong> -->
+							                            <t t-foreach="l.bom_ids" t-as="bom">
+							                            	<strong>
+							                            		<span t-field="bom.revision_product_id.grade"/> <span t-field="bom.revision_product_id.jenis_kayu.name"/> <span t-field="bom.revision_product_id.tebal"/> x <span t-field="bom.ply"/> Ply <br/>
+							                            	</strong>
+							                            </t>
+							                        </td>
+							                    </tr>
+							                    <tr>			                        		
+													<td style="text-align:center;font-size:11px;
+														border-top:0px;
+														border-bottom:0px;
+														border-left:1px solid black;
+														border-right:1px solid black;
+														padding-top:0px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+							                        </td>
+							                        <td style="text-align:left;font-size:11px;
+							                        	border-top:0px;
+														border-bottom:0px;
+														border-left:1px solid black;
+														border-right:0px;
+														padding-top:0px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+						    							<strong>Grade</strong>
+							                        </td>
+							                        <td colspan="8" style="text-align:left;font-size:11px;
+							                        	border-top:0px;
+														border-bottom:0px;
+														border-left:0px;
+														border-right:1px solid black;
+														padding-top:0px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+						    							<strong>
+							    							: <span t-field="l.revision_product_id.grade.name"/>
+							    						</strong>
+							                        </td>
+							                        <td style="text-align:right;font-size:11px;
+							                        	border-top:0px;
+														border-bottom:0px;
+														border-left:1px solid black;
+														border-right:1px solid black;
+														padding-top:0px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+							                        </td>
+							                        <td style="text-align:center;font-size:11px;
+							                        	border-top:0px;
+														border-bottom:0px;
+														border-left:1px solid black;
+														border-right:1px solid black;
+														padding-top:0px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+							                        </td>
+							                    </tr>
+							                    <tr>			                        		
+													<td style="text-align:center;font-size:11px;
+														border-top:0px;
+														border-bottom:0px;
+														border-left:1px solid black;
+														border-right:1px solid black;
+														padding-top:0px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+							                        </td>
+							                        <td style="text-align:left;font-size:11px;
+							                        	border-top:0px;
+														border-bottom:0px;
+														border-left:1px solid black;
+														border-right:0px;
+														padding-top:0px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+						    							<strong>Glue</strong>
+							                        </td>
+							                        <td colspan="8" style="text-align:left;font-size:11px;
+							                        	border-top:0px;
+														border-bottom:0px;
+														border-left:0px;
+														border-right:1px solid black;
+														padding-top:0px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+						    							<strong>
+							    							: <span t-field="l.revision_product_id.glue.name"/>
+							    						</strong>
+							                        </td>
+							                        <td style="text-align:right;font-size:11px;
+							                        	border-top:0px;
+														border-bottom:0px;
+														border-left:1px solid black;
+														border-right:1px solid black;
+														padding-top:0px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+							                        </td>
+							                        <td style="text-align:center;font-size:11px;
+							                        	border-top:0px;
+														border-bottom:0px;
+														border-left:1px solid black;
+														border-right:1px solid black;
+														padding-top:0px;
+														padding-bottom:0px;
+														padding-left:4px;
+														padding-right:4px;">
+							                        </td>
+							                    </tr>
+								                <tr>
+					                        		<t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name">
+														<td style="text-align:center;font-size:11px;
+															border-top:0px;
+															border-bottom:0px;
+															border-left:1px solid black;
+															border-right:1px solid black;
+															padding-top:0px;
+															padding-bottom:0px;
+															padding-left:4px;
+															padding-right:4px;">
+								                        </td>
+								                        <td style="text-align:left;font-size:11px;
+								                        	border-top:0px;
+															border-bottom:0px;
+															border-left:1px solid black;
+															border-right:0px;
+															padding-top:0px;
+															padding-bottom:4px;
+															padding-left:4px;
+															padding-right:4px;">
+							    							<strong>Qty</strong>
+								                        </td>
+								                        <td colspan="8" style="text-align:left;font-size:11px;
+								                        	border-top:0px;
+															border-bottom:0px;
+															border-left:0px;
+															border-right:1px solid black;
+															padding-top:0px;
+															padding-bottom:4px;
+															padding-left:4px;
+															padding-right:4px;">
+							    							<strong>
+								    							: <span t-esc="'{0:,.0f}'.format(l.quantity)"/> Pcs (<span t-field="l.crate_number"/> x @<span t-field="l.crate_qty_each"/>)
+								    						</strong>
+								                        </td>
+								                        <td style="text-align:right;font-size:11px;
+								                        	border-top:0px;
+															border-bottom:0px;
+															border-left:1px solid black;
+															border-right:1px solid black;
+															padding-top:0px;
+															padding-bottom:4px;
+															padding-left:4px;
+															padding-right:4px;">
+								                        </td>
+								                        <td style="text-align:center;font-size:11px;
+								                        	border-top:0px;
+															border-bottom:0px;
+															border-left:1px solid black;
+															border-right:1px solid black;
+															padding-top:0px;
+															padding-bottom:4px;
+															padding-left:4px;
+															padding-right:4px;">
+								                        </td>
+								                    </t>
+								                </tr>
+							                </t>
 						                </t>
 						            </t>
 						        </t>        
