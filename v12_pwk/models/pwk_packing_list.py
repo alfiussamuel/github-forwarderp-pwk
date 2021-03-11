@@ -178,7 +178,7 @@ class PwkPackingListLine(models.Model):
             container_no += res.crate_number
 
             container_start_end = ''
-            container_start_end_revision ''
+            container_start_end_revision = ''
 
             if container_start < 10 and container_end < 10:
                 container_start_end = '0' + str(container_start) + ' - ' + '0' + str(container_end)
