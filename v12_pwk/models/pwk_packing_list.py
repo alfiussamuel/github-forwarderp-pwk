@@ -252,7 +252,7 @@ class PwkPackingList(models.Model):
                 'location_id': source_location_ids[0].id,
                 'location_dest_id': destination_location_ids[0].id,
                 'picking_type_id': picking_type_ids[0].id,
-                'scheduled_date': fields.Date.today(),
+                'scheduled_date': datetime.now(),
                 'origin': res.name
             })
 
