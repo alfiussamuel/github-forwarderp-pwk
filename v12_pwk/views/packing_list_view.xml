@@ -173,9 +173,10 @@
                                                     <field name="sale_id"/>
                                                     <field name="reference_po_number"/>
                                                     <field name="marking"/>
+                                                    <field name="container_end"/>
                                                     <field name="container_start_end" string="No. Container"/>
-                                                    <field name="container_start_end_revision" invisible="1"/>
-                                                    <field name="revision_crate_number" invisible="1"/>
+                                                    <field name="container_start_end_revision"/>
+                                                    <field name="revision_crate_number"/>
                                                     <field name="revision_quantity" invisible="1"/>
                                                     <field name="revision_volume" invisible="1"/>
                                                 </group>
