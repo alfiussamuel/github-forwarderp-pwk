@@ -320,7 +320,7 @@ class PwkPackingList(models.Model):
             romawi = 'XII'
 
 
-        year_month = '/PPIC-PWK/' + romawi + year
+        year_month = '/PPIC-PWK/' + str(romawi) + '/' + str(year)
         vals['name'] = self.get_sequence('Packing List', 'pwk.packing.list', '%s' % year_month)
         return super(PwkPackingList, self).create(vals)
 
