@@ -433,7 +433,7 @@
 						                            	<span t-field="l.marking"/>
 						                            </strong>
 						                        </td>
-						                        <td rowspan="4" style="text-align:left;font-size:10px;
+						                        <td rowspan="2" style="text-align:left;font-size:10px;
 						                        	border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -1349,12 +1349,12 @@
 	        <field name="page_height">0</field>
 	        <field name="page_width">0</field>
 	        <field name="orientation">Portrait</field>
-	        <field name="margin_top">62</field>
+	        <field name="margin_top">64</field>
 	        <field name="margin_bottom">5</field>
 	        <field name="margin_left">5</field>
 	        <field name="margin_right">5</field>
 	        <field name="header_line" eval="False"/>
-	        <field name="header_spacing">58</field>
+	        <field name="header_spacing">60</field>
 	        <field name="dpi">80</field>
 	        <field name="sequence">3</field>
 	    </record>
