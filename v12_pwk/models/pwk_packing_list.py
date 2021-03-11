@@ -192,16 +192,16 @@ class PwkPackingListLine(models.Model):
             # Revision
             if (container_end + 1) < 10 and res.revision_crate_number < 10:
                 print ("Revision crate 1")
-                container_start_end_revision = '0' + str(container_end + 1) + ' - ' + '0' + str(res.revision_crate_number)
+                container_start_end_revision = '0' + str(res.revision_crate_number) + ' - ' + '0' + str(container_end + 1)
             elif (container_end + 1) > 10 and res.revision_crate_number < 10:
-                print ("Revision crate 1")
-                container_start_end = str(container_end + 1) + ' - ' + '0' + str(res.revision_crate_number)
+                print ("Revision crate 2")
+                container_start_end_revision = str(res.revision_crate_number) + ' - ' + '0' + str(container_end + 1)
             elif (container_end + 1) < 10 and res.revision_crate_number > 10:
-                print ("Revision crate 1")
-                container_start_end = '0' + (container_end + 1) + ' - ' + str(res.revision_crate_number)
+                print ("Revision crate 3")
+                container_start_end_revision = '0' + (res.revision_crate_number) + ' - ' + str(container_end + 1)
             elif (container_end + 1) > 10 and res.revision_crate_number > 10:
-                print ("Revision crate 1")
-                container_start_end = (container_end + 1) + ' - ' + str(res.revision_crate_number)
+                print ("Revision crate 4")
+                container_start_end_revision = (res.revision_crate_number) + ' - ' + str(container_end + 1)
 
             res.container_start_end = container_start_end
             res.container_start_end_revision = container_start_end_revision
