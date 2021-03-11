@@ -108,7 +108,9 @@ class PwkPackingListLine(models.Model):
     # Revision Fields
     revision_product_id = fields.Many2one(compute="_get_revision_fields", comodel_name='product.product', string='Rev Product')
     revision_quantity = fields.Float(compute="_get_revision_fields", string="Rev Quantity", digits=dp.get_precision('TwoDecimal'))
+    revision_quantity_only = fields.Float(compute="_get_revision_fields", string="Quantity", digits=dp.get_precision('TwoDecimal'))
     revision_volume = fields.Float(compute="_get_revision_fields", string="Rev Volume", digits=dp.get_precision('FourDecimal'))
+    revision_volume_only = fields.Float(compute="_get_revision_fields", string="Volume", digits=dp.get_precision('FourDecimal'))
     revision_crate_number = fields.Integer(compute="_get_revision_fields", string="Rev Crate")
 
     @api.depends('revision_ids.product_id', 'revision_ids.quantity', 'revision_ids.volume', 'product_id', 'quantity', 'volume')
@@ -124,6 +126,7 @@ class PwkPackingListLine(models.Model):
                     if revision.product_id.id != res.product_id.id:
                         revision_product_id = revision.product_id.id
                         revision_crate_number = revision.crate_number
+                        revision_quantity_only = revision.quantity
 
                     revision_quantity += revision.quantity
                     revision_volume += revision.volume
@@ -135,6 +138,7 @@ class PwkPackingListLine(models.Model):
 
             res.revision_product_id = revision_product_id
             res.revision_quantity = revision_quantity
+            res.revision_quantity_only = revision_quantity_only
             res.revision_volume = revision_volume
             res.revision_crate_number = revision_crate_number
 
@@ -210,11 +214,12 @@ class PwkPackingListLine(models.Model):
         for res in self:
             res.quantity = res.crate_number * res.crate_qty_each
 
-    @api.depends('quantity')
+    @api.depends('quantity', 'revision_quantity_only')
     def _get_volume(self):
         for res in self:
             if res.quantity:
                 res.volume = res.quantity * res.thick * res.width * res.length / 1000000000
+                res.revision_volume_only = res.revision_quantity_only * res.thick * res.width * res.length / 1000000000
 
     @api.depends('product_id')
     def _get_fields(self):
