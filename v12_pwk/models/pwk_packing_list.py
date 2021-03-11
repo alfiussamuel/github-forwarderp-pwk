@@ -82,7 +82,7 @@ class PwkPackingListLine(models.Model):
     container_end = fields.Integer(compute="_get_container_sequence", string='Container End')
     container_start_end = fields.Char(compute="_get_container_sequence", string='Container Start End')
     container_start_end_revision = fields.Char(compute="_get_container_sequence", string='Container Start End Rev')
-    crate_number = fields.Integer('Crate Number')
+    crate_number = fields.Integer('Total Crate')
     crate_qty_each = fields.Integer('Crate Qty each')
 
     # start_container_no = fields.Integer(compute="_get_container_sequence", string='Start Container No.')
