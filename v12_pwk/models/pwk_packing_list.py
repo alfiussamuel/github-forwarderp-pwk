@@ -111,7 +111,7 @@ class PwkPackingListLine(models.Model):
     @api.depends('revision_ids.product_id', 'revision_ids.quantity', 'revision_ids.volume', 'product_id', 'quantity', 'volume')
     def _get_revision_fields(self):
         for res in self:
-            revision_product_id = ''
+            revision_product_id = False
             revision_quantity = 0
             revision_volume = 0
 
