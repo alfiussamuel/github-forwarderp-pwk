@@ -171,7 +171,7 @@ class PwkPackingListLine(models.Model):
             result.append((res.id, name))
         return result
 
-    @api.depends('crate_number')
+    @api.multi
     def _get_container_sequence(self):
         for res in self:
             container_no = 1
@@ -179,7 +179,7 @@ class PwkPackingListLine(models.Model):
             smaller_ids = self.env['pwk.packing.list.line'].search([
                 ('id', '<', res.id),
                 ('reference', '=', res.reference.id)
-            ])
+            ], order='id desc')
 
             print ("Smaller IDS")
 
