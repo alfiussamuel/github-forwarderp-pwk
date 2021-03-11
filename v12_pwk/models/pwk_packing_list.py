@@ -289,6 +289,9 @@ class PwkPackingList(models.Model):
 
     @api.model
     def create(self, vals):
+        month = vals['date'].month
+        print ("Month ", month)
+        
         year_month = '/PPIC-PWK/%(month)s/%(year)s'
         vals['name'] = self.get_sequence('Packing List', 'pwk.packing.list', '%s' % year_month)
         return super(PwkPackingList, self).create(vals)
