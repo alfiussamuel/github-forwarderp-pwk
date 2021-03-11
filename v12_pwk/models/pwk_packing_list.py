@@ -290,9 +290,37 @@ class PwkPackingList(models.Model):
     @api.model
     def create(self, vals):
         month = vals['date'].month
+        year = vals['date'].year
+        romawi = ''
         print ("Month ", month)
-        
-        year_month = '/PPIC-PWK/%(month)s/%(year)s'
+
+        if month == 1:
+            romawi = 'I'
+        elif month == 2:
+            romawi = 'II'
+        elif month == 3:
+            romawi = 'III'
+        elif month == 4:
+            romawi = 'IV'
+        elif month == 5:
+            romawi = 'V'
+        elif month == 6:
+            romawi = 'VI'
+        elif month == 7:
+            romawi = 'VII'
+        elif month == 8:
+            romawi = 'VIII'
+        elif month == 9:
+            romawi = 'IX'
+        elif month == 10:
+            romawi = 'X'
+        elif month == 11:
+            romawi = 'XI'
+        elif month == 12:
+            romawi = 'XII'
+
+
+        year_month = '/PPIC-PWK/' + romawi + year
         vals['name'] = self.get_sequence('Packing List', 'pwk.packing.list', '%s' % year_month)
         return super(PwkPackingList, self).create(vals)
 
