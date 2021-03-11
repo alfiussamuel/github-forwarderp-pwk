@@ -170,7 +170,7 @@
                                                     <field name="volume"/>
                                                 </group>
                                                 <group>
-                                                    <field name="sale_line_id"/>
+                                                    <field name="reference_po_number"/>
                                                     <field name="revision_quantity"/>
                                                     <field name="revision_volume"/>
                                                 </group>
@@ -209,7 +209,6 @@
                                                             <field name="product_id" required="1"/>
                                                             <field name="quantity" required="1"/>
                                                             <field name="volume" required="1"/>
-                                                            <field name="notes" required="1"/>
                                                         </tree>
                                                     </field>
                                                 </page>
@@ -234,6 +233,9 @@
                                     </field>
                                 </page>
                             </notebook>
+                        </group>
+                        <group string="Revision Notes">
+                            <field name="revision_notes" nolabel="1"/>
                         </group>
                     </sheet>
                 </form>

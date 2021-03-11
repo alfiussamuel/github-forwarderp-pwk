@@ -232,6 +232,7 @@ class PwkPackingList(models.Model):
     total_volume = fields.Float(compute="_get_total_volume", string="Total Volume")
     notes_quantity = fields.Char('Notes Quantity')
     notes = fields.Text('Notes')
+    revision_notes = fields.Text('Revision Notes')
 
     qty_muatan = fields.Char('Qty Muatan')
 
