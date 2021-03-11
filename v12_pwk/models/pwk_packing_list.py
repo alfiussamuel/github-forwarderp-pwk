@@ -181,17 +181,14 @@ class PwkPackingListLine(models.Model):
                 ('reference', '=', res.reference.id)
             ], order='id desc')
 
-            print ("Smaller IDS")
-
             if smaller_ids:
                 container_no = smaller_ids[0].crate_number + res.revision_crate_number + 1
+                print ("Product ", res.product_id.name)
+                print ("Container No. ", container_no)
             
             container_start = container_no
-            print ("Smaller IDS 1")
             container_end = container_no + res.crate_number - 1
-            print ("Smaller IDS 2")
             container_no += res.crate_number
-            print ("Smaller IDS 3")
 
             container_start_end = ''
             container_start_end_revision = ''
