@@ -112,8 +112,8 @@ class PwkPackingListLine(models.Model):
     def _get_revision_fields(self):
         for res in self:
             revision_product_id = res.product_id.id
-            revision_quantity = res.quantity
-            revision_volume = res.volume
+            revision_quantity = 0
+            revision_volume = 0
 
             if res.revision_ids:
                 for revision in res.revision_ids:
@@ -121,6 +121,11 @@ class PwkPackingListLine(models.Model):
                         revision_product_id = revision.product_id.id
                     revision_quantity += revision.quantity
                     revision_volume += revision.volume
+
+            if revision_quantity == 0:
+                revision_quantity = res.quantity
+            if revision_volume == 0:
+                revision_volume = res.volume
 
             res.revision_product_id = revision_product_id
             res.revision_quantity = revision_quantity
