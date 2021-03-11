@@ -179,7 +179,7 @@ class PwkPackingListLine(models.Model):
             smaller_ids = self.env['pwk.packing.list.line'].search([
                 ('id', '<', res.id),
                 ('reference', '=', res.reference.id)
-            ], order='id desc')
+            ])
 
             print ("Smaller IDS")
 
