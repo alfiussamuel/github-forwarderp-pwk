@@ -83,84 +83,84 @@
 			
 				<table class="table table-condensed" style="margin-top:0px;">					
 					<tr>
-						<td width="40%" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+						<td width="40%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">		
 							<strong>BENEFICIARY</strong>							
 						</td>
-						<td width="5%" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td width="5%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							
 						</td>
-						<td width="15%" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td width="15%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>DATE</strong>
 						</td>
-						<td width="2%" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td width="2%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>:</strong>
 						</td>
-						<td width="20%" style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td width="20%" style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong><span t-field="o.date" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 						</td>
 					</tr>
 					<tr>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">		
 							<strong>PT PRIMA WANA KREASI WOOD INDUSTRY</strong>							
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>BUYER</strong>
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>:</strong>
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong><span t-field="o.partner_id.name"/></strong>
 						</td>
 					</tr>
 					<tr>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">		
 							<strong>JL. BANGKA RAYA NO. 29A, PELA MAMPANG</strong>							
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>CONTRACT</strong>
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>:</strong>
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong><span t-field="o.po_number"/></strong>
 						</td>
 					</tr>
 					<tr>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">		
 							<strong>JAKARTA SELATAN 12720, INDONESIA</strong>							
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>DESTINATION</strong>
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>:</strong>
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong><span t-field="o.destination_id.name"/></strong>
 						</td>
 					</tr>
 					<tr>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">		
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>PAYMENT TERMS</strong>
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong>:</strong>
 						</td>
-						<td style="font-size:13px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+						<td style="font-size:12px; text-align:left;padding:0px;border:0px;vertical-align:middle;">
 							<strong><span t-field="o.payment_term_id.name"/></strong>
 						</td>
 					</tr>
