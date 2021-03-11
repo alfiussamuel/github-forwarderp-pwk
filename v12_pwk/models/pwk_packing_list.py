@@ -35,13 +35,19 @@ class PwkPackingListLineRevision(models.Model):
     reference = fields.Many2one('pwk.packing.list.line', string='Reference')
     product_id = fields.Many2one('product.product', string='Product')
     quantity = fields.Float(string='Quantity', digits=dp.get_precision('TwoDecimal'))
-    volume = fields.Float(string='Volume', digits=dp.get_precision('FourDecimal'))
+    volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))
 
     @api.onchange('reference')
     def _onchange_data(self):
         self.product_id = self.reference.product_id.id
         self.quantity = self.reference.quantity
         self.volume = self.reference.volume
+
+    @api.depends('quantity')
+    def _get_volume(self):
+        for res in self:
+            if res.quantity:
+                res.volume = res.quantity * res.product_id.tebal * res.product_id.lebar * res.product_id.panjang / 1000000000
 
 
 class PwkPackingListLineDetail(models.Model):    
