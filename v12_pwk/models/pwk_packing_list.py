@@ -109,9 +109,12 @@ class PwkPackingListLine(models.Model):
     revision_product_id = fields.Many2one(compute="_get_revision_fields", comodel_name='product.product', string='Rev Product')
     revision_quantity = fields.Float(compute="_get_revision_fields", string="Rev Quantity", digits=dp.get_precision('TwoDecimal'))
     revision_quantity_only = fields.Float(compute="_get_revision_fields", string="Quantity", digits=dp.get_precision('TwoDecimal'))
+    revision_quantity_original = fields.Float(compute="_get_revision_fields", string="Quantity", digits=dp.get_precision('TwoDecimal'))
     revision_volume = fields.Float(compute="_get_revision_fields", string="Rev Volume", digits=dp.get_precision('FourDecimal'))
-    revision_volume_only = fields.Float(compute="_get_revision_fields", string="Volume", digits=dp.get_precision('FourDecimal'))
+    revision_volume_only = fields.Float(compute="_get_volume", string="Volume", digits=dp.get_precision('FourDecimal'))
+    revision_volume_original = fields.Float(compute="_get_volume", string="Volume", digits=dp.get_precision('FourDecimal'))
     revision_crate_number = fields.Integer(compute="_get_revision_fields", string="Rev Crate")
+    revision_crate_number_original = fields.Integer(compute="_get_revision_fields", string="Rev Crate")
 
     @api.depends('revision_ids.product_id', 'revision_ids.quantity', 'revision_ids.volume', 'product_id', 'quantity', 'volume')
     def _get_revision_fields(self):
@@ -139,8 +142,10 @@ class PwkPackingListLine(models.Model):
             res.revision_product_id = revision_product_id
             res.revision_quantity = revision_quantity
             res.revision_quantity_only = revision_quantity_only
+            res.revision_quantity_original = res.quantity - revision_quantity_only
             res.revision_volume = revision_volume
             res.revision_crate_number = revision_crate_number
+            res.revision_crate_number_original = res.crate_number - revision_crate_number
 
     @api.multi
     def _get_bom_name_list(self):
@@ -216,12 +221,13 @@ class PwkPackingListLine(models.Model):
         for res in self:
             res.quantity = res.crate_number * res.crate_qty_each
 
-    @api.depends('quantity', 'revision_quantity_only')
+    @api.depends('quantity', 'revision_quantity_only', 'revision_quantity_original')
     def _get_volume(self):
         for res in self:
             if res.quantity:
                 res.volume = res.quantity * res.thick * res.width * res.length / 1000000000
                 res.revision_volume_only = res.revision_quantity_only * res.thick * res.width * res.length / 1000000000
+                res.revision_volume_original = res.revision_quantity_original * res.thick * res.width * res.length / 1000000000
 
     @api.depends('product_id')
     def _get_fields(self):

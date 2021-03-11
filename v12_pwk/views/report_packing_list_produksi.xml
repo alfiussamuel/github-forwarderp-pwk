@@ -417,7 +417,7 @@
 													padding-left:4px;
 													padding-right:4px;">
 						                            <strong>
-						                            	<span t-esc="'{0:,.4f}'.format(l.volume)"/> m<sup>3</sup>
+						                            	<span t-esc="'{0:,.4f}'.format(l.revision_volume_original)"/> m<sup>3</sup>
 						                            </strong>
 						                        </td>
 						                        <td style="text-align:center;font-size:11px;
@@ -595,7 +595,7 @@
 														padding-left:4px;
 														padding-right:4px;">
 						    							<strong>
-							    							: <span t-esc="'{0:,.0f}'.format(l.quantity)"/> Pcs (<span t-field="l.crate_number"/> x @<span t-field="l.crate_qty_each"/>)
+							    							: <span t-esc="'{0:,.0f}'.format(l.revision_quantity_original)"/> Pcs (<span t-field="l.revision_crate_number_original"/> x @<span t-field="l.crate_qty_each"/>)
 							    						</strong>
 							                        </td>
 							                        <td style="text-align:right;font-size:11px;
