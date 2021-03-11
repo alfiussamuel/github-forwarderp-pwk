@@ -190,18 +190,17 @@ class PwkPackingListLine(models.Model):
                 container_start_end = str(container_start) + ' - ' + str(container_end)
 
             # Revision
-            if (container_end + 1) < 10 and (container_end + res.revision_crate_number + 1) < 10:
-                print ("Revision crate 1")
-                container_start_end_revision = '0' + str(container_end + 1) + ' - ' + '0' + str(container_end + res.revision_crate_number + 1)
-            elif (container_end + 1) > 10 and (container_end + res.revision_crate_number + 1) < 10:
-                print ("Revision crate 2")
-                container_start_end_revision = str(container_end + 1) + ' - ' + '0' + str(container_end + res.revision_crate_number + 1)
-            elif (container_end + 1) < 10 and (container_end + res.revision_crate_number + 1) > 10:
-                print ("Revision crate 3")
-                container_start_end_revision = '0' + (container_end + 1) + ' - ' + str(container_end + res.revision_crate_number + 1)
-            elif (container_end + 1) > 10 and (container_end + res.revision_crate_number + 1) > 10:
-                print ("Revision crate 4")
-                container_start_end_revision = (container_end + 1) + ' - ' + str(container_end + res.revision_crate_number + 1)
+            revision_start = str(container_end + 1)
+            revision_end = str(container_end + res.revision_crate_number + 1)
+
+            if revision_start < 10 and revision_end < 10:
+                container_start_end_revision = '0' + revision_start + ' - ' + '0' + revision_end
+            elif revision_start > 10 and revision_end < 10:
+                container_start_end_revision = revision_start + ' - ' + '0' + revision_end
+            elif revision_start < 10 and revision_end > 10:
+                container_start_end_revision = '0' + revision_start + ' - ' + revision_end
+            elif revision_start > 10 and revision_end > 10:
+                container_start_end_revision = revision_start + ' - ' + revision_end
 
             res.container_start_end = container_start_end
             res.container_start_end_revision = container_start_end_revision
