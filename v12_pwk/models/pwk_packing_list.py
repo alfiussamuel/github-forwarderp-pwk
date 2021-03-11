@@ -65,9 +65,6 @@ class PwkPackingListLineRevision(models.Model):
     quantity = fields.Float(compute="_get_quantity", string='Quantity', digits=dp.get_precision('TwoDecimal'))
     volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))
 
-    bom_ids = fields.One2many('pwk.packing.list.line.revision.detail', 'reference', string='Lines')
-    container_ids = fields.One2many('pwk.packing.list.line.revision.container', 'reference', string='Container')
-
     bom_name_list = fields.Text(compute="_get_bom_name_list", string="BoM Name List")
 
 
