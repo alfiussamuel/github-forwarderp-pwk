@@ -79,7 +79,7 @@ class PwkPackingListLine(models.Model):
     reference_tanggal_emisi = fields.Date(related="reference.tanggal_emisi", string='Hasil Uji Emisi')
     reference_tanggal_stuffing = fields.Date(related="reference.tanggal_stuffing", string='Tgl Stuffing')
 
-    container_end = fields.Char(compute="_get_container_sequence", string='Container End')
+    container_end = fields.Integer(compute="_get_container_sequence", string='Container End')
     container_start_end = fields.Char(compute="_get_container_sequence", string='Container Start End')
     container_start_end_revision = fields.Char(compute="_get_container_sequence", string='Container Start End Rev')
     crate_number = fields.Integer('Crate Number')
