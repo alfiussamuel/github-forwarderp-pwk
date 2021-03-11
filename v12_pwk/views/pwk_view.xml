@@ -611,7 +611,7 @@
                             type="object" class="oe_highlight" states="Draft"/>
                         <button name="action_cancel" string="Cancel Purchase Request" 
                             type="object" states="Purchase Request"/>
-                        <button name="button_reload_all_bom" string="Relod All BoM" 
+                        <button name="button_reload_all_bom" string="Reload All BoM" 
                             type="object"/>
                     </header>
 
