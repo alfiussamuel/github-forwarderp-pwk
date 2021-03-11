@@ -195,7 +195,7 @@ class PwkPackingListLine(models.Model):
 
             # Revision
             revision_start = str(container_end)
-            revision_end = str(container_end + res.revision_crate_number + 1)
+            revision_end = str(container_end + res.revision_crate_number)
 
             if int(revision_start) < 10 and int(revision_end) < 10:
                 container_start_end_revision = '0' + revision_start + ' - ' + '0' + revision_end
