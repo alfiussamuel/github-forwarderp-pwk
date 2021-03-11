@@ -187,8 +187,11 @@ class PwkPackingListLine(models.Model):
                 container_no = smaller_ids[0].crate_number + 1
             
             container_start = container_no
+            print ("Smaller IDS 1")
             container_end = container_no + res.crate_number - 1
+            print ("Smaller IDS 2")
             container_no += res.crate_number
+            print ("Smaller IDS 3")
 
             container_start_end = ''
             container_start_end_revision = ''
