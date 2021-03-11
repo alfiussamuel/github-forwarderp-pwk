@@ -62,7 +62,7 @@
 				
 				<table class="table table-condensed" style="margin-top:15px;">
 					<tr>													
-						<td width="100%" style="font-size:18px; text-align:center;padding:1px;
+						<td width="100%" style="font-size:14px; text-align:center;padding:1px;
 							border-left:0px;
 							border-right:0px;
 							border-top:0px;
@@ -71,7 +71,7 @@
 						</td>									
 					</tr>
 					<tr>													
-						<td width="100%" style="font-size:18px; text-align:center;padding:1px;
+						<td width="100%" style="font-size:14px; text-align:center;padding:1px;
 							border-left:0px;
 							border-right:0px;
 							border-top:0px;
@@ -249,7 +249,7 @@
 										border-left:1px solid black;
 										border-right:1px solid black;">
 			                        </td>
-									<td colspan="9" style="text-align:left;font-size:10px;padding:0px;
+									<td colspan="9" style="text-align:left;font-size:10px;padding:2px;
 										border-top:1px solid black;
 										border-bottom:0px;
 										border-left:1px solid black;
@@ -286,10 +286,10 @@
 													border-bottom:0px;
 													border-left:1px solid black;
 													border-right:1px solid black;
-													padding-top:4px;
+													padding-top:2px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 					    							 <strong><span t-field="l.container_start_end"/></strong>
 						                        </td>
 						                        <td style="text-align:left;font-size:10px;
@@ -297,10 +297,10 @@
 													border-bottom:0px;
 													border-left:1px solid black;
 													border-right:0px;
-													padding-top:4px;
+													padding-top:2px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 					    							<strong>Size</strong>
 						                        </td>
 						                        <td style="text-align:left;font-size:10px;
@@ -308,10 +308,10 @@
 													border-bottom:0px;
 													border-left:0px;
 													border-right:0px;
-													padding-top:4px;
+													padding-top:2px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 					    							<strong>
 						    							: <span t-esc="'{0:,.1f}'.format(l.product_id.tebal)"/>
 						    						</strong>
@@ -321,10 +321,10 @@
 													border-bottom:0px;
 													border-left:0px;
 													border-right:0px;
-													padding-top:4px;
+													padding-top:2px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 					    							<strong>
 						    							mm
 						    						</strong>
@@ -334,10 +334,10 @@
 													border-bottom:0px;
 													border-left:0px;
 													border-right:0px;
-													padding-top:4px;
+													padding-top:2px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 					    							<strong>
 						    							x
 						    						</strong>
@@ -347,10 +347,10 @@
 													border-bottom:0px;
 													border-left:0px;
 													border-right:0px;
-													padding-top:4px;
+													padding-top:2px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 					    							<strong>
 						    							<span t-esc="'{0:,.0f}'.format(l.product_id.lebar)"/>
 						    						</strong>
@@ -360,10 +360,10 @@
 													border-bottom:0px;
 													border-left:0px;
 													border-right:0px;
-													padding-top:4px;
+													padding-top:2px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 					    							<strong>
 						    							mm
 						    						</strong>
@@ -373,10 +373,10 @@
 													border-bottom:0px;
 													border-left:0px;
 													border-right:0px;
-													padding-top:4px;
+													padding-top:2px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 					    							<strong>
 						    							x
 						    						</strong>
@@ -386,10 +386,10 @@
 													border-bottom:0px;
 													border-left:0px;
 													border-right:0px;
-													padding-top:4px;
+													padding-top:2px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 					    							<strong>
 						    							<span t-esc="'{0:,.0f}'.format(l.product_id.panjang)"/>
 						    						</strong>
@@ -399,10 +399,10 @@
 													border-bottom:0px;
 													border-left:0px;
 													border-right:0px;
-													padding-top:4px;
+													padding-top:2px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 					    							<strong>
 						    							mm
 						    						</strong>
@@ -412,10 +412,10 @@
 													border-bottom:0px;
 													border-left:1px solid black;
 													border-right:1px solid black;
-													padding-top:4px;
+													padding-top:2px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 						                            <strong>
 						                            	<span t-esc="'{0:,.4f}'.format(l.revision_volume_original)"/> m<sup>3</sup>
 						                            </strong>
@@ -425,10 +425,10 @@
 													border-bottom:0px;
 													border-left:1px solid black;
 													border-right:1px solid black;
-													padding-top:4px;
+													padding-top:2px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 						                            <strong>
 						                            	<span t-field="l.marking"/>
 						                            </strong>
@@ -438,10 +438,10 @@
 													border-bottom:0px;
 													border-left:1px solid black;
 													border-right:1px solid black;
-													padding-top:4px;
-													padding-bottom:4px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-top:2px;
+													padding-bottom:2px;
+													padding-left:2px;
+													padding-right:2px;">
 													<!-- <strong><span t-field="l.bom_name_list"/></strong> -->
 						                            <t t-foreach="l.bom_ids" t-as="bom">
 						                            	<strong>
@@ -458,8 +458,8 @@
 													border-right:1px solid black;
 													padding-top:0px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 						                        </td>
 						                        <td style="text-align:left;font-size:10px;
 						                        	border-top:0px;
@@ -468,8 +468,8 @@
 													border-right:0px;
 													padding-top:0px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 					    							<strong>Grade</strong>
 						                        </td>
 						                        <td colspan="8" style="text-align:left;font-size:10px;
@@ -479,8 +479,8 @@
 													border-right:1px solid black;
 													padding-top:0px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 					    							<strong>
 						    							: <span t-field="l.product_id.grade.name"/>
 						    						</strong>
@@ -492,8 +492,8 @@
 													border-right:1px solid black;
 													padding-top:0px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 						                        </td>
 						                        <td style="text-align:center;font-size:10px;
 						                        	border-top:0px;
@@ -502,8 +502,8 @@
 													border-right:1px solid black;
 													padding-top:0px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 						                        </td>
 						                    </tr>
 						                    <tr>			                        		
@@ -514,8 +514,8 @@
 													border-right:1px solid black;
 													padding-top:0px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 						                        </td>
 						                        <td style="text-align:left;font-size:10px;
 						                        	border-top:0px;
@@ -524,8 +524,8 @@
 													border-right:0px;
 													padding-top:0px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 					    							<strong>Glue</strong>
 						                        </td>
 						                        <td colspan="8" style="text-align:left;font-size:10px;
@@ -535,8 +535,8 @@
 													border-right:1px solid black;
 													padding-top:0px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 					    							<strong>
 						    							: <span t-field="l.product_id.glue.name"/>
 						    						</strong>
@@ -548,8 +548,8 @@
 													border-right:1px solid black;
 													padding-top:0px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 						                        </td>
 						                        <td style="text-align:center;font-size:10px;
 						                        	border-top:0px;
@@ -558,8 +558,8 @@
 													border-right:1px solid black;
 													padding-top:0px;
 													padding-bottom:0px;
-													padding-left:4px;
-													padding-right:4px;">
+													padding-left:2px;
+													padding-right:2px;">
 						                        </td>
 						                    </tr>
 							                <tr>
@@ -571,8 +571,8 @@
 														border-right:1px solid black;
 														padding-top:0px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 							                        </td>
 							                        <td style="text-align:left;font-size:10px;
 							                        	border-top:0px;
@@ -580,9 +580,9 @@
 														border-left:1px solid black;
 														border-right:0px;
 														padding-top:0px;
-														padding-bottom:4px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-bottom:2px;
+														padding-left:2px;
+														padding-right:2px;">
 						    							<strong>Qty</strong>
 							                        </td>
 							                        <td colspan="8" style="text-align:left;font-size:10px;
@@ -591,9 +591,9 @@
 														border-left:0px;
 														border-right:1px solid black;
 														padding-top:0px;
-														padding-bottom:4px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-bottom:2px;
+														padding-left:2px;
+														padding-right:2px;">
 						    							<strong>
 							    							: <span t-esc="'{0:,.0f}'.format(l.revision_quantity_original)"/> Pcs (<span t-field="l.revision_crate_number_original"/> x @<span t-field="l.crate_qty_each"/>)
 							    						</strong>
@@ -604,9 +604,9 @@
 														border-left:1px solid black;
 														border-right:1px solid black;
 														padding-top:0px;
-														padding-bottom:4px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-bottom:2px;
+														padding-left:2px;
+														padding-right:2px;">
 							                        </td>
 							                        <td style="text-align:center;font-size:10px;
 							                        	border-top:0px;
@@ -614,9 +614,9 @@
 														border-left:1px solid black;
 														border-right:1px solid black;
 														padding-top:0px;
-														padding-bottom:4px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-bottom:2px;
+														padding-left:2px;
+														padding-right:2px;">
 							                        </td>
 							                    </t>
 							                </tr>
@@ -628,10 +628,10 @@
 														border-bottom:0px;
 														border-left:1px solid black;
 														border-right:1px solid black;
-														padding-top:4px;
+														padding-top:2px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 						    							 <strong><span t-field="l.container_start_end_revision"/></strong>
 							                        </td>
 							                        <td style="text-align:left;font-size:10px;
@@ -639,10 +639,10 @@
 														border-bottom:0px;
 														border-left:1px solid black;
 														border-right:0px;
-														padding-top:4px;
+														padding-top:2px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 						    							<strong>Size</strong>
 							                        </td>
 							                        <td style="text-align:left;font-size:10px;
@@ -650,10 +650,10 @@
 														border-bottom:0px;
 														border-left:0px;
 														border-right:0px;
-														padding-top:4px;
+														padding-top:2px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 						    							<strong>
 							    							: <span t-esc="'{0:,.1f}'.format(l.revision_product_id.tebal)"/>
 							    						</strong>
@@ -663,10 +663,10 @@
 														border-bottom:0px;
 														border-left:0px;
 														border-right:0px;
-														padding-top:4px;
+														padding-top:2px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 						    							<strong>
 							    							mm
 							    						</strong>
@@ -676,10 +676,10 @@
 														border-bottom:0px;
 														border-left:0px;
 														border-right:0px;
-														padding-top:4px;
+														padding-top:2px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 						    							<strong>
 							    							x
 							    						</strong>
@@ -689,10 +689,10 @@
 														border-bottom:0px;
 														border-left:0px;
 														border-right:0px;
-														padding-top:4px;
+														padding-top:2px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 						    							<strong>
 							    							<span t-esc="'{0:,.0f}'.format(l.revision_product_id.lebar)"/>
 							    						</strong>
@@ -702,10 +702,10 @@
 														border-bottom:0px;
 														border-left:0px;
 														border-right:0px;
-														padding-top:4px;
+														padding-top:2px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 						    							<strong>
 							    							mm
 							    						</strong>
@@ -715,10 +715,10 @@
 														border-bottom:0px;
 														border-left:0px;
 														border-right:0px;
-														padding-top:4px;
+														padding-top:2px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 						    							<strong>
 							    							x
 							    						</strong>
@@ -728,10 +728,10 @@
 														border-bottom:0px;
 														border-left:0px;
 														border-right:0px;
-														padding-top:4px;
+														padding-top:2px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 						    							<strong>
 							    							<span t-esc="'{0:,.0f}'.format(l.revision_product_id.panjang)"/>
 							    						</strong>
@@ -741,10 +741,10 @@
 														border-bottom:0px;
 														border-left:0px;
 														border-right:0px;
-														padding-top:4px;
+														padding-top:2px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 						    							<strong>
 							    							mm
 							    						</strong>
@@ -754,10 +754,10 @@
 														border-bottom:0px;
 														border-left:1px solid black;
 														border-right:1px solid black;
-														padding-top:4px;
+														padding-top:2px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 							                            <strong>
 							                            	<span t-esc="'{0:,.4f}'.format(l.revision_volume_only)"/> m<sup>3</sup>
 							                            </strong>
@@ -767,10 +767,10 @@
 														border-bottom:0px;
 														border-left:1px solid black;
 														border-right:1px solid black;
-														padding-top:4px;
+														padding-top:2px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 							                            <strong>
 							                            	<span t-field="l.marking"/>
 							                            </strong>
@@ -780,10 +780,10 @@
 														border-bottom:0px;
 														border-left:1px solid black;
 														border-right:1px solid black;
-														padding-top:4px;
-														padding-bottom:4px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-top:2px;
+														padding-bottom:2px;
+														padding-left:2px;
+														padding-right:2px;">
 														<!-- <strong><span t-field="l.bom_name_list"/></strong> -->
 							                            <t t-foreach="l.bom_ids" t-as="bom">
 							                            	<strong>
@@ -800,8 +800,8 @@
 														border-right:1px solid black;
 														padding-top:0px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 							                        </td>
 							                        <td style="text-align:left;font-size:10px;
 							                        	border-top:0px;
@@ -810,8 +810,8 @@
 														border-right:0px;
 														padding-top:0px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 						    							<strong>Grade</strong>
 							                        </td>
 							                        <td colspan="8" style="text-align:left;font-size:10px;
@@ -821,8 +821,8 @@
 														border-right:1px solid black;
 														padding-top:0px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 						    							<strong>
 							    							: <span t-field="l.revision_product_id.grade.name"/>
 							    						</strong>
@@ -834,8 +834,8 @@
 														border-right:1px solid black;
 														padding-top:0px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 							                        </td>
 							                        <td style="text-align:center;font-size:10px;
 							                        	border-top:0px;
@@ -844,8 +844,8 @@
 														border-right:1px solid black;
 														padding-top:0px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 							                        </td>
 							                    </tr>
 							                    <tr>			                        		
@@ -856,8 +856,8 @@
 														border-right:1px solid black;
 														padding-top:0px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 							                        </td>
 							                        <td style="text-align:left;font-size:10px;
 							                        	border-top:0px;
@@ -866,8 +866,8 @@
 														border-right:0px;
 														padding-top:0px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 						    							<strong>Glue</strong>
 							                        </td>
 							                        <td colspan="8" style="text-align:left;font-size:10px;
@@ -877,8 +877,8 @@
 														border-right:1px solid black;
 														padding-top:0px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 						    							<strong>
 							    							: <span t-field="l.revision_product_id.glue.name"/>
 							    						</strong>
@@ -890,8 +890,8 @@
 														border-right:1px solid black;
 														padding-top:0px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 							                        </td>
 							                        <td style="text-align:center;font-size:10px;
 							                        	border-top:0px;
@@ -900,8 +900,8 @@
 														border-right:1px solid black;
 														padding-top:0px;
 														padding-bottom:0px;
-														padding-left:4px;
-														padding-right:4px;">
+														padding-left:2px;
+														padding-right:2px;">
 							                        </td>
 							                    </tr>
 								                <tr>
@@ -913,8 +913,8 @@
 															border-right:1px solid black;
 															padding-top:0px;
 															padding-bottom:0px;
-															padding-left:4px;
-															padding-right:4px;">
+															padding-left:2px;
+															padding-right:2px;">
 								                        </td>
 								                        <td style="text-align:left;font-size:10px;
 								                        	border-top:0px;
@@ -922,9 +922,9 @@
 															border-left:1px solid black;
 															border-right:0px;
 															padding-top:0px;
-															padding-bottom:4px;
-															padding-left:4px;
-															padding-right:4px;">
+															padding-bottom:2px;
+															padding-left:2px;
+															padding-right:2px;">
 							    							<strong>Qty</strong>
 								                        </td>
 								                        <td colspan="8" style="text-align:left;font-size:10px;
@@ -933,9 +933,9 @@
 															border-left:0px;
 															border-right:1px solid black;
 															padding-top:0px;
-															padding-bottom:4px;
-															padding-left:4px;
-															padding-right:4px;">
+															padding-bottom:2px;
+															padding-left:2px;
+															padding-right:2px;">
 							    							<strong>
 								    							: <span t-esc="'{0:,.0f}'.format(l.revision_quantity_only)"/> Pcs (<span t-field="l.revision_crate_number"/> x @<span t-field="l.crate_qty_each"/>)
 								    						</strong>
@@ -946,9 +946,9 @@
 															border-left:1px solid black;
 															border-right:1px solid black;
 															padding-top:0px;
-															padding-bottom:4px;
-															padding-left:4px;
-															padding-right:4px;">
+															padding-bottom:2px;
+															padding-left:2px;
+															padding-right:2px;">
 								                        </td>
 								                        <td style="text-align:center;font-size:10px;
 								                        	border-top:0px;
@@ -956,9 +956,9 @@
 															border-left:1px solid black;
 															border-right:1px solid black;
 															padding-top:0px;
-															padding-bottom:4px;
-															padding-left:4px;
-															padding-right:4px;">
+															padding-bottom:2px;
+															padding-left:2px;
+															padding-right:2px;">
 								                        </td>
 								                    </t>
 								                </tr>
