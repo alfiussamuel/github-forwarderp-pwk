@@ -153,8 +153,8 @@
                                             <field name="marking"/>
                                             <field name="crate_number" sum="Total"/>
                                             <field name="crate_qty_each" sum="Total"/>
-                                            <field name="revision_quantity" sum="Total"/>
-                                            <field name="revision_volume" sum="Total"/>
+                                            <field name="revision_quantity" sum="Total" string="Quantity"/>
+                                            <field name="revision_volume" sum="Total" string="Volume"/>
                                         </tree>
                                         <form>
                                             <group>
@@ -167,13 +167,13 @@
                                                     <field name="crate_number"/>
                                                     <field name="crate_qty_each"/>
                                                     <field name="quantity"/>
-                                                    <field name="volume"/>
                                                 </group>
                                                 <group>
                                                     <field name="sale_id"/>
                                                     <field name="reference_po_number"/>
-                                                    <field name="revision_quantity"/>
-                                                    <field name="revision_volume"/>
+                                                    <field name="volume"/>
+                                                    <field name="revision_quantity" invisible="1"/>
+                                                    <field name="revision_volume" invisible="1"/>
                                                 </group>
                                             </group>
                                             <notebook>
