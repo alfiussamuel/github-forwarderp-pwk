@@ -202,7 +202,8 @@
                                                 </page>
                                                 <page string="Revision">
                                                     <group>
-                                                        <button name="action_create_revision" string="Revision" type="object"/>
+                                                        <button name="action_create_revision" string="Revision" 
+                                                            type="object" class="oe_highlight"/>
                                                     </group>
                                                     <field name="revision_ids" nolabel="1">
                                                         <tree editable="top">
