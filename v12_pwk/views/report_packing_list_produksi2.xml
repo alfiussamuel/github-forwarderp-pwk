@@ -1229,6 +1229,54 @@
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
+								border-bottom:0px;">
+    							<strong>Rencana Pengambilan</strong>
+	                        </td>
+	                        <td width="5%"
+								style="text-align:right;border:0px;font-size:11px;padding:2px;background-color:#d7e8f7;">
+    							<strong>:</strong>
+	                        </td>
+	                        <td width="20%"
+								style="text-align:left;font-size:11px;padding:2px;background-color:#d7e8f7;
+								border-left:0px;
+								border-top:0px;
+								border-right:0px;
+								border-bottom:0px;">
+    							<strong><span t-field="o.tanggal_pengambilan" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
+	                        </td>
+	                        <td width="10%"
+	                        	style="text-align:left;font-size:11px;padding:2px;background-color:#d7e8f7;
+								border-left:0px;
+								border-top:0px;
+								border-right:0px;
+								border-bottom:0px;"/>
+	                        <td width="20%" 
+	                        	style="text-align:left;font-size:11px;padding:2px;background-color:#d7e8f7;
+								border-left:0px;
+								border-top:0px;
+								border-right:0px;
+								border-bottom:0px;">
+    							<strong>Rencana Pengiriman</strong>
+	                        </td>
+	                        <td width="5%" 
+	                        	style="text-align:right;border:0px;font-size:11px;padding:2px;background-color:#d7e8f7;">
+    							<strong>:</strong>
+	                        </td>
+	                        <td width="20%"
+	                        	style="text-align:left;font-size:11px;padding:2px;background-color:#d7e8f7;
+								border-right:1px solid black;
+								border-top:0px;
+								border-left:0px;
+								border-bottom:0px;">
+    							<strong><span t-field="o.tanggal_pengiriman" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
+	                        </td>
+						</tr>
+						<!-- <tr>
+							<td width="20%"
+								style="text-align:left;font-size:11px;padding:2px;background-color:#d7e8f7;
+								border-left:1px solid black;
+								border-top:0px;
+								border-right:0px;
 								border-bottom:1px solid black;">
     							<strong>Produksi P1 terakhir</strong>
 	                        </td>
@@ -1274,7 +1322,7 @@
 								border-bottom:1px solid black;">
     							<strong><span t-field="o.tanggal_pengiriman" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
-						</tr>
+						</tr> -->
 						<!-- <tr>
 							<td style="text-align:left;font-size:11px;padding:2px;background-color:#d7e8f7;
 								border-left:1px solid black;
