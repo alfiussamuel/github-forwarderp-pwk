@@ -1220,7 +1220,7 @@
 								border-top:0px;
 								border-left:0px;
 								border-bottom:0px;">
-    							<strong><span t-field="o.Rencana Pengiriman" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
+    							<strong><span t-field="o.tanggal_pengiriman" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
 						</tr>
 						<tr>
