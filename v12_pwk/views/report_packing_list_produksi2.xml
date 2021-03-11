@@ -243,13 +243,13 @@
 						<tbody class="invoice_tbody">
 							<t t-foreach="o.group_ids" t-as="group">
 								<tr>
-									<td style="text-align:center;font-size:10px;padding:4px;
+									<td style="text-align:center;font-size:10px;padding:2px;
 										border-bottom:0px;
 										border-top:1px solid black;
 										border-left:1px solid black;
 										border-right:1px solid black;">
 			                        </td>
-									<td colspan="9" style="text-align:left;font-size:10px;padding:4px;
+									<td colspan="9" style="text-align:left;font-size:10px;padding:2px;
 										border-top:1px solid black;
 										border-bottom:0px;
 										border-left:1px solid black;
@@ -258,19 +258,19 @@
 			    							<span t-field="group.product_id.goods_type"/> <span t-field="group.jenis_kayu_id.name"/>
 			    						</strong>
 			                        </td>
-			                        <td style="text-align:center;font-size:10px;padding:4px;
+			                        <td style="text-align:center;font-size:10px;padding:2px;
 			                        	border-top:1px solid black;
 										border-bottom:0px;
 										border-left:1px solid black;
 										border-right:1px solid black;">
 			                        </td>
-			                        <td style="text-align:center;font-size:10px;padding:4px;
+			                        <td style="text-align:center;font-size:10px;padding:2px;
 			                        	border-top:1px solid black;
 										border-bottom:0px;
 										border-left:1px solid black;
 										border-right:1px solid black;">
 			                        </td>
-			                        <td style="text-align:center;font-size:10px;padding:4px;
+			                        <td style="text-align:center;font-size:10px;padding:2px;
 			                        	border-top:1px solid black;
 										border-bottom:0px;
 										border-left:1px solid black;
@@ -968,26 +968,26 @@
 						        </t>        
 							</t>
 							<!-- <tr>
-								<td style="text-align:right;font-size:10px;padding:4px;
+								<td style="text-align:right;font-size:10px;padding:2px;
 									border-top:0px;
 									border-bottom:0px;
 									border-left:1px solid black;
 									border-right:1px solid black;">
 		                        </td>
 		                        <td colspan="9" 
-		                        	style="text-align:right;font-size:10px;padding:4px;
+		                        	style="text-align:right;font-size:10px;padding:2px;
 		                        	border-top:0px;
 									border-bottom:0px;
 									border-left:1px solid black;
 									border-right:1px solid black;">
 		                        </td>
-		                        <td style="text-align:right;font-size:10px;padding:4px;
+		                        <td style="text-align:right;font-size:10px;padding:2px;
 		                        	border-top:0px;
 									border-bottom:0px;
 									border-left:1px solid black;
 									border-right:1px solid black;">
 		                        </td>
-		                        <td style="text-align:right;font-size:10px;padding:4px;
+		                        <td style="text-align:right;font-size:10px;padding:2px;
 		                        	border-top:0px;
 									border-bottom:0px;
 									border-left:1px solid black;
@@ -995,26 +995,26 @@
 		                        </td>
 							</tr> -->
 							<!-- <tr>
-								<td style="text-align:right;font-size:10px;padding:4px;
+								<td style="text-align:right;font-size:10px;padding:2px;
 									border-top:0px;
 									border-bottom:1px solid black;
 									border-left:1px solid black;
 									border-right:1px solid black;">
 		                        </td>
 		                        <td colspan="9" 
-		                        	style="text-align:right;font-size:10px;padding:4px;
+		                        	style="text-align:right;font-size:10px;padding:2px;
 		                        	border-top:0px;
 									border-bottom:1px solid black;
 									border-left:1px solid black;
 									border-right:1px solid black;">
 		                        </td>
-		                        <td style="text-align:right;font-size:10px;padding:4px;
+		                        <td style="text-align:right;font-size:10px;padding:2px;
 		                        	border-top:0px;
 									border-bottom:1px solid black;
 									border-left:1px solid black;
 									border-right:1px solid black;">
 		                        </td>
-		                        <td style="text-align:right;font-size:10px;padding:4px;
+		                        <td style="text-align:right;font-size:10px;padding:2px;
 		                        	border-top:0px;
 									border-bottom:1px solid black;
 									border-left:1px solid black;
@@ -1023,15 +1023,15 @@
 							</tr> -->
 							<tr>
 								<td colspan="10" 
-									style="text-align:right;border:1px solid black;font-size:11px;padding:4px;background-color:#d7e8f7;">
+									style="text-align:right;border:1px solid black;font-size:11px;padding:2px;background-color:#d7e8f7;">
 	    							 <strong>TOTAL </strong>
 		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:4px;background-color:#d7e8f7;">
+		                        <td style="text-align:center;border:1px solid black;font-size:11px;padding:2px;background-color:#d7e8f7;">
 	    							 <strong><span t-esc="'{0:,.4f}'.format(o.total_volume)"/> m<sup>3</sup></strong>
 		                        </td>
-		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;background-color:#d7e8f7;">
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:2px;background-color:#d7e8f7;">
 		                        </td>
-		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;background-color:#d7e8f7;">
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:2px;background-color:#d7e8f7;">
 		                        </td>
 							</tr>
 						</tbody>
@@ -1049,7 +1049,7 @@
 	                        </td>
 						</tr>
 						<tr>
-							<td style="text-align:center;font-size:10px;padding:4px;
+							<td style="text-align:center;font-size:10px;padding:2px;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
@@ -1057,14 +1057,14 @@
     							<strong>Dibuat Oleh,</strong>
 	                        </td>
 	                        <td colspan="2" 
-	                        	style="text-align:center;font-size:10px;padding:4px;
+	                        	style="text-align:center;font-size:10px;padding:2px;
 	                        	border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
 	                        	<strong>Mengetahui,</strong>
 	                        </td>
-	                        <td style="text-align:center;font-size:10px;padding:4px;
+	                        <td style="text-align:center;font-size:10px;padding:2px;
 	                        	border-left:0px;
 								border-top:0px;
 								border-right:1px solid black;
@@ -1073,20 +1073,20 @@
 	                        </td>
 						</tr>
 						<tr height="70px">
-							<td style="text-align:center;font-size:10px;padding:4px;
+							<td style="text-align:center;font-size:10px;padding:2px;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
 	                        </td>
 	                        <td colspan="2" 
-	                        	style="text-align:center;font-size:10px;padding:4px;
+	                        	style="text-align:center;font-size:10px;padding:2px;
 	                        	border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
 	                        </td>
-	                        <td style="text-align:center;font-size:10px;padding:4px;
+	                        <td style="text-align:center;font-size:10px;padding:2px;
 	                        	border-left:0px;
 								border-top:0px;
 								border-right:1px solid black;
@@ -1173,7 +1173,7 @@
 					<table class="table table-condensed" style="margin-top:0px;">
 						<tr>
 							<td colspan="7" width="100%" 
-								style="text-align:left;font-size:10px;padding:4px;background-color:#f7ffa5;
+								style="text-align:left;font-size:10px;padding:2px;background-color:#f7ffa5;
 								border-left:1px solid black;
 								border-top:1px solid black;
 								border-right:1px solid black;
@@ -1183,7 +1183,7 @@
 						</tr>
 						<tr>
 							<td width="20%"
-								style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
+								style="text-align:left;font-size:10px;padding:2px;background-color:#d7e8f7;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
@@ -1191,11 +1191,11 @@
     							<strong>Penyelesaian Produksi</strong>
 	                        </td>
 	                        <td width="5%"
-								style="text-align:right;border:0px;font-size:10px;padding:4px;background-color:#d7e8f7;">
+								style="text-align:right;border:0px;font-size:10px;padding:2px;background-color:#d7e8f7;">
     							<strong>:</strong>
 	                        </td>
 	                        <td width="20%"
-								style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
+								style="text-align:left;font-size:10px;padding:2px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
@@ -1203,13 +1203,13 @@
     							<strong><span t-field="o.tanggal_selesai" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
 	                        <td width="10%"
-	                        	style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
+	                        	style="text-align:left;font-size:10px;padding:2px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;"/>
 	                        <td width="20%" 
-	                        	style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
+	                        	style="text-align:left;font-size:10px;padding:2px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
@@ -1217,11 +1217,11 @@
     							<strong>Hasil Uji Emisi</strong>
 	                        </td>
 	                        <td width="5%" 
-	                        	style="text-align:right;border:0px;font-size:10px;padding:4px;background-color:#d7e8f7;">
+	                        	style="text-align:right;border:0px;font-size:10px;padding:2px;background-color:#d7e8f7;">
     							<strong>:</strong>
 	                        </td>
 	                        <td width="20%"
-	                        	style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
+	                        	style="text-align:left;font-size:10px;padding:2px;background-color:#d7e8f7;
 								border-right:1px solid black;
 								border-top:0px;
 								border-left:0px;
@@ -1230,47 +1230,47 @@
 	                        </td>
 						</tr>
 						<tr>
-							<td style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
+							<td style="text-align:left;font-size:10px;padding:2px;background-color:#d7e8f7;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
     							<strong>Produksi P1 terakhir</strong>
 	                        </td>
-	                        <td style="text-align:right;font-size:10px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:right;font-size:10px;padding:2px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
     							<strong>:</strong>
 	                        </td>
-	                        <td style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:10px;padding:2px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
     							 <strong><span t-field="o.tanggal_p1" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
-	                        <td style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:10px;padding:2px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;"/>
-	                        <td style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:10px;padding:2px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
     							<strong>Produksi P2 terakhir</strong>
 	                        </td>
-	                        <td style="text-align:right;font-size:10px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:right;font-size:10px;padding:2px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:0px;">
     							<strong>:</strong>
 	                        </td>
-	                        <td style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:10px;padding:2px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:1px solid black;
@@ -1279,47 +1279,47 @@
 	                        </td>
 						</tr>
 						<tr>
-							<td style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
+							<td style="text-align:left;font-size:10px;padding:2px;background-color:#d7e8f7;
 								border-left:1px solid black;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:1px solid black;">
     							<strong>Rencana Pengambilan</strong>
 	                        </td>
-	                        <td style="text-align:right;font-size:10px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:right;font-size:10px;padding:2px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:1px solid black;">
     							<strong>:</strong>
 	                        </td>
-	                        <td style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:10px;padding:2px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:1px solid black;">
     							 <strong><span t-field="o.tanggal_pengambilan" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
-	                        <td style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:10px;padding:2px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:1px solid black;"/>
-							<td style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
+							<td style="text-align:left;font-size:10px;padding:2px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:1px solid black;">
     							<strong>Rencana Pengiriman</strong>
 	                        </td>
-	                        <td style="text-align:right;font-size:10px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:right;font-size:10px;padding:2px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:0px;
 								border-bottom:1px solid black;">
     							<strong>:</strong>
 	                        </td>
-	                        <td style="text-align:left;font-size:10px;padding:4px;background-color:#d7e8f7;
+	                        <td style="text-align:left;font-size:10px;padding:2px;background-color:#d7e8f7;
 								border-left:0px;
 								border-top:0px;
 								border-right:1px solid black;
