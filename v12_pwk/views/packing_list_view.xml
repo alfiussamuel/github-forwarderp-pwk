@@ -200,6 +200,8 @@
                                             </notebook>
                                             <group>
                                                 <button name="action_create_revision" string="Revision" type="object"/>
+                                            </group>
+                                            <group>
                                                 <field name="revision_ids" nolabel="1">
                                                     <tree editable="top">
                                                         <field name="name" required="1"/>
