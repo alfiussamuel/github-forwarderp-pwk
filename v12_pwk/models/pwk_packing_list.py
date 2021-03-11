@@ -34,6 +34,7 @@ class PwkPackingListLineRevision(models.Model):
     date = fields.Date('Revision Date')
     reference = fields.Many2one('pwk.packing.list.line', string='Reference')
     product_id = fields.Many2one('product.product', string='Product')
+    crate_number = fields.Integer('Crate Number')
     quantity = fields.Float(string='Quantity', digits=dp.get_precision('TwoDecimal'))
     volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))
 
@@ -78,12 +79,13 @@ class PwkPackingListLine(models.Model):
     reference_tanggal_emisi = fields.Date(related="reference.tanggal_emisi", string='Hasil Uji Emisi')
     reference_tanggal_stuffing = fields.Date(related="reference.tanggal_stuffing", string='Tgl Stuffing')
 
-    container_start_end = fields.Char('Container Start End')
+    container_start_end = fields.Char(compute="_get_container_sequence", string='Container Start End')
+    container_start_end_revision = fields.Char(compute="_get_container_sequence", string='Container Start End Rev')
     crate_number = fields.Integer('Crate Number')
     crate_qty_each = fields.Integer('Crate Qty each')
 
-    start_container_no = fields.Integer(compute="_get_container_sequence", string='Start Container No.')
-    end_container_no = fields.Integer(compute="_get_container_sequence", string='End Container No.')
+    # start_container_no = fields.Integer(compute="_get_container_sequence", string='Start Container No.')
+    # end_container_no = fields.Integer(compute="_get_container_sequence", string='End Container No.')
 
     name = fields.Char('Name')
     product_id = fields.Many2one('product.product', string='Product')
@@ -107,6 +109,7 @@ class PwkPackingListLine(models.Model):
     revision_product_id = fields.Many2one(compute="_get_revision_fields", comodel_name='product.product', string='Rev Product')
     revision_quantity = fields.Float(compute="_get_revision_fields", string="Rev Quantity", digits=dp.get_precision('TwoDecimal'))
     revision_volume = fields.Float(compute="_get_revision_fields", string="Rev Volume", digits=dp.get_precision('FourDecimal'))
+    revision_crate_number = fields.Integer(compute="_get_revision_fields", string="Rev Crate")
 
     @api.depends('revision_ids.product_id', 'revision_ids.quantity', 'revision_ids.volume', 'product_id', 'quantity', 'volume')
     def _get_revision_fields(self):
@@ -114,11 +117,14 @@ class PwkPackingListLine(models.Model):
             revision_product_id = False
             revision_quantity = 0
             revision_volume = 0
+            revision_crate_number = 0
 
             if res.revision_ids:
                 for revision in res.revision_ids:
                     if revision.product_id.id != res.product_id.id:
                         revision_product_id = revision.product_id.id
+                        revision_crate_number = revision.crate_number
+
                     revision_quantity += revision.quantity
                     revision_volume += revision.volume
 
@@ -130,6 +136,7 @@ class PwkPackingListLine(models.Model):
             res.revision_product_id = revision_product_id
             res.revision_quantity = revision_quantity
             res.revision_volume = revision_volume
+            res.revision_crate_number = revision_crate_number
 
     @api.multi
     def _get_bom_name_list(self):
@@ -169,7 +176,9 @@ class PwkPackingListLine(models.Model):
             container_start = container_no
             container_end = container_no + res.crate_number - 1
             container_no += res.crate_number
+
             container_start_end = ''
+            container_start_end_revision ''
 
             if container_start < 10 and container_end < 10:
                 container_start_end = '0' + str(container_start) + ' - ' + '0' + str(container_end)
@@ -180,7 +189,18 @@ class PwkPackingListLine(models.Model):
             elif container_start > 10 and container_end > 10:
                 container_start_end = str(container_start) + ' - ' + str(container_end)
 
+            # Revision
+            if (container_end + 1) < 10 and res.revision_crate_number < 10:
+                container_start_end_revision = '0' + str(container_end + 1) + ' - ' + '0' + str(res.revision_crate_number)
+            elif (container_end + 1) > 10 and res.revision_crate_number < 10:
+                container_start_end = str(container_end + 1) + ' - ' + '0' + str(res.revision_crate_number)
+            elif (container_end + 1) < 10 and res.revision_crate_number > 10:
+                container_start_end = '0' + (container_end + 1) + ' - ' + str(res.revision_crate_number)
+            elif (container_end + 1) > 10 and res.revision_crate_number > 10:
+                container_start_end = (container_end + 1) + ' - ' + str(res.revision_crate_number)
+
             res.container_start_end = container_start_end
+            res.container_start_end_revision = container_start_end_revision
 
     @api.depends('crate_number','crate_qty_each')
     def _get_quantity(self):
