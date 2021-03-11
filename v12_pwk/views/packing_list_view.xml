@@ -148,7 +148,8 @@
                                 <page string="Detail Packing List">
                                     <field name="line_ids" nolabel="1">
                                         <tree>
-                                            <field name="revision_product_id" required="1"/>
+                                            <field name="product_id"/>
+                                            <field name="revision_product_id"/>
                                             <field name="marking"/>
                                             <field name="crate_number" sum="Total"/>
                                             <field name="crate_qty_each" sum="Total"/>
@@ -160,21 +161,18 @@
                                                 <field name="product_id"
                                                     options="{'no_create': True}"/>
                                                 <field name="revision_product_id"/>
-                                                <!-- <field name="container_start_end"/> -->
-                                                <!-- <field name="bom_name_list"/> -->
                                             </group>
                                             <group>
                                                 <group>
                                                     <field name="crate_number"/>
                                                     <field name="crate_qty_each"/>
-                                                    <field name="sale_id"/>
+                                                    <field name="quantity"/>
+                                                    <field name="volume"/>
                                                 </group>
                                                 <group>
-                                                    <field name="quantity"/>
-                                                    <field name="revision_quantity"/>
-                                                    <field name="volume"/>
-                                                    <field name="revision_volume"/>
                                                     <field name="sale_line_id"/>
+                                                    <field name="quantity"/>
+                                                    <field name="volume"/>
                                                 </group>
                                             </group>
                                             <notebook>

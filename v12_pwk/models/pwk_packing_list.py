@@ -117,9 +117,10 @@ class PwkPackingListLine(models.Model):
 
             if res.revision_ids:
                 for revision in res.revision_ids:
-                    revision_product_id = revision.product_id.id
-                    revision_quantity = revision.quantity
-                    revision_volume = revision.volume
+                    if revision.product_id.id != res.product_id.id:
+                        revision_product_id = revision.product_id.id
+                    revision_quantity += revision.quantity
+                    revision_volume += revision.volume
 
             res.revision_product_id = revision_product_id
             res.revision_quantity = revision_quantity
