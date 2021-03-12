@@ -177,7 +177,7 @@ class PwkRpbLineDetail5(models.Model):
 
 class PwkRpbLine(models.Model):    
     _name = "pwk.rpb.line"
-    _order = 'container_id,width asc,length desc,thick asc'
+    _order = 'container_id,width asc,length asc,thick asc'
 
     reference = fields.Many2one('pwk.rpb', string='Reference')
     is_changed = fields.Boolean('Changed', default=True)
