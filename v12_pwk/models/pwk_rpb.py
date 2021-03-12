@@ -409,6 +409,52 @@ class PwkRpbLine(models.Model):
                 if len(bom_ids) == 1:
                     line.write({'is_selected_detail1': True})
 
+class PwkRpbBahanBaku(models.Model):    
+    _name = "pwk.rpb.bahan.baku"
+    _order = 'goods_type desc,jenis_kayu_id asc,grade_id asc,width desc,thick asc'
+
+    reference = fields.Many2one('pwk.rpb', 'Reference')
+    product_id = fields.Many2one('product.product', string='Product')
+    
+    quantity_available = fields.Float(string='All Stock', digits=dp.get_precision('ZeroDecimal'))
+    quantity_needed = fields.Float(compute="_get_fields", string='+/- Quantity', digits=dp.get_precision('ZeroDecimal'))
+    quantity_spare = fields.Float(compute="_get_fields", string='+/- Quantity Spare', digits=dp.get_precision('ZeroDecimal'))
+    quantity = fields.Float('Quantity', digits=dp.get_precision('ZeroDecimal'))
+
+    volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))
+    volume_needed = fields.Float(compute="_get_volume", string='+/- Volume', digits=dp.get_precision('FourDecimal'))
+    volume_spare = fields.Float(compute="_get_volume", string='+/- Volume Spare', digits=dp.get_precision('FourDecimal'))
+    
+    thick = fields.Float(compute="_get_fields", string='Thick', digits=dp.get_precision('OneDecimal'), store=True)
+    width = fields.Float(compute="_get_fields", string='Width', digits=dp.get_precision('ZeroDecimal'), store=True)
+    length = fields.Float(compute="_get_fields", string='Length', digits=dp.get_precision('ZeroDecimal'), store=True)
+    glue_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.glue', string='Glue', store=True)
+    grade_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.grade', string='Grade', store=True)
+    jenis_kayu_id = fields.Many2one('pwk.jenis.kayu', related='product_id.jenis_kayu', string='Jenis Kayu', store=True)
+    goods_type = fields.Selection(related='product_id.goods_type', string='Goods Type', store=True)
+
+    notes = fields.Text('Notes')
+
+    @api.depends('quantity')
+    def _get_volume(self):
+        for res in self:
+            res.volume = res.quantity * res.thick * res.width * res.length / 1000000000
+            res.volume_needed = res.quantity_needed * res.thick * res.width * res.length / 1000000000
+            res.volume_spare = res.quantity_spare * res.thick * res.width * res.length / 1000000000
+
+    @api.depends('product_id')
+    def _get_fields(self):
+        for res in self:
+            if res.product_id:
+                res.thick = res.product_id.tebal
+                res.width = res.product_id.lebar
+                res.length = res.product_id.panjang
+                res.glue_id = res.product_id.glue.id
+                res.grade_id = res.product_id.grade.id
+                # res.quantity_available = res.product_id.qty_available
+                res.quantity_needed = res.quantity_available - res.quantity
+                res.quantity_spare = res.quantity_needed + (res.quantity_needed * 0.1)
+
 class PwkRpb(models.Model):    
     _name = "pwk.rpb"
 

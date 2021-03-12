@@ -613,6 +613,8 @@
                             type="object"/>
                         <button name="action_change" string="Update" 
                             type="object"/>
+                        <button name="action_create_bahan_baku" string="Kebutuhan Bahan Baku" 
+                            states="Draft" type="object"/>
                     </header>
 
                     <div class="oe_button_box" name="button_box">
@@ -880,6 +882,21 @@
                                         </form>
                                     </field>
                                 </group>
+                            </page>
+                            <page string="Kebutuhan Bahan Baku">
+                                <field name="bahan_baku_ids" nolabel="1">
+                                    <tree editable="top">
+                                        <field name="product_id" readonly="1"/>
+                                        <field name="quantity_available"/>
+                                        <field name="quantity" readonly="1"/>
+                                        <field name="volume" readonly="1"/>
+                                        <field name="quantity_needed" readonly="1"/>
+                                        <field name="volume_needed" readonly="1"/>
+                                        <field name="quantity_spare" readonly="1"/>
+                                        <field name="volume_spare" readonly="1"/>
+                                        <field name="notes"/>
+                                    </tree>
+                                </field>
                             </page>
                             <page string="RPM">
                                 <group>

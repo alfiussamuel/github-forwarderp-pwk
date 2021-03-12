@@ -514,9 +514,9 @@ class PwkRpm(models.Model):
             res.total_plywood = total_plywood
             res.total_lvl = total_lvl
             res.total_produksi = total_blockboard + total_plywood + total_lvl
-            res.total_blockboard_percent = total_blockboard / res.total_produksi * 100
-            res.total_plywood_percent = total_plywood / res.total_produksi * 100
-            res.total_lvl_percent = total_lvl / res.total_produksi * 100
+            res.total_blockboard_percent = total_blockboard / (res.total_produksi or 1) * 100
+            res.total_plywood_percent = total_plywood / (res.total_produksi or 1) * 100
+            res.total_lvl_percent = total_lvl / (res.total_produksi or 1) * 100
             res.target_per_hari = res.total_produksi / (res.working_days or 1)
 
     @api.multi
