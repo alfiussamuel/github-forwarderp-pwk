@@ -271,7 +271,7 @@ class PwkRpbLine(models.Model):
 
             res.outstanding_rpb_pcs = outstanding_rpb_pcs
 
-    @api.depends('container_qty', 'subtotal_qty', 'outstanding_rpb_pcs', 'outstanding_order_pcs', 'total_qty')
+    @api.depends('container_qty', 'subtotal_qty', 'outstanding_rpb_pcs', 'outstanding_order_pcs', 'total_qty', 'is_changed')
     def _get_volume(self):
         for res in self:
             res.container_vol = res.container_qty * res.thick * res.width * res.length / 1000000000
@@ -280,7 +280,7 @@ class PwkRpbLine(models.Model):
             res.outstanding_order_vol = res.outstanding_order_pcs * res.thick * res.width * res.length / 1000000000
             res.total_vol = res.total_qty * res.thick * res.width * res.length / 1000000000
 
-    @api.depends('sale_line_id')
+    @api.depends('sale_line_id', 'is_changed')
     def _get_sale_fields(self):
         for res in self:
             if res.sale_line_id:
