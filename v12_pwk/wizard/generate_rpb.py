@@ -59,6 +59,8 @@ class PwkGenerateRpbWizard(models.TransientModel):
                 if container.sale_line_ids:
                     for line in container.sale_line_ids:
                         container = line.container
+                        if container == 0:
+                            container = 1
 
                         while container > 0:
                             self.env['pwk.rpb.container.line'].create({
