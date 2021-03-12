@@ -84,18 +84,20 @@ class PwkGenerateRpbWizard(models.TransientModel):
                     previous_container = 0
 
                     for line in container.sale_line_ids:
-                        jumlah_container = line.container 
-                        if jumlah_container == 0:
-                            jumlah_container = 1
+                        jumlah_container = line.container
+                        partial_container = (line.qty_rpb / line.product_uom_qty) * line.container
+
+                        if partial_container == 0:
+                            partial_container = 1
 
                         # container_no = int(nomor_container)
-                        while jumlah_container > 0:
+                        while partial_container > 0:
                             print ("Product ", line.product_id.name)
                             print ("Jumlah Container ", jumlah_container)
                             print ("Nomor Container ", nomor_container)
                             print ("Previous Container ", previous_container)
 
-                            if jumlah_container > 1 and (previous_container == 1 or previous_container > 1):
+                            if partial_container > 1 and (previous_container == 1 or previous_container > 1):
                                 print ("Yessss")
                                 nomor_container += 1
 
@@ -126,8 +128,8 @@ class PwkGenerateRpbWizard(models.TransientModel):
                             })
 
                             rpb_line.button_reload_bom()
-                            jumlah_container -= 1
-                            if jumlah_container >= 1:
+                            partial_container -= 1
+                            if partial_container >= 1:
                                 nomor_container += 1
 
                         previous_container = line.container
