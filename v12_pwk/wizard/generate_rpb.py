@@ -65,7 +65,7 @@ class PwkGenerateRpbWizard(models.TransientModel):
     	rpb_id = self.env['pwk.rpb'].search([('id', '=', active_id)])
 
     	if self.line_ids:
-            nomor_container = self.nomor_container
+            nomor_container = self.nomor_container + 1
 
             for container in self.line_ids:
                 existing_container = self.env['pwk.rpb.container'].search([
