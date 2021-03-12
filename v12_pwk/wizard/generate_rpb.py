@@ -67,8 +67,8 @@ class PwkGenerateRpbWizard(models.TransientModel):
                                 'reference': container_id.id,
                                 'sale_id': line.order_id.id,
                                 'sale_line_id': line.id,
-                                'total_qty': line.product_uom_qty / line.container,
-                                'container_qty': line.product_uom_qty / line.container
+                                'total_qty': line.product_uom_qty / (line.container or 1),
+                                'container_qty': line.product_uom_qty / (line.container or 1)
                                 })
 
                             rpb_line = self.env['pwk.rpb.line'].create({
@@ -77,8 +77,8 @@ class PwkGenerateRpbWizard(models.TransientModel):
                                 'jumlah_container': 1,
                                 'sale_id': line.order_id.id,
                                 'sale_line_id': line.id,
-                                'total_qty': line.product_uom_qty / line.container,
-                                'container_qty': line.product_uom_qty / line.container,
+                                'total_qty': line.product_uom_qty / (line.container or 1),
+                                'container_qty': line.product_uom_qty / (line.container or 1),
                                 'outstanding_order_pcs': line.outstanding_order_pcs
                                 })
 
