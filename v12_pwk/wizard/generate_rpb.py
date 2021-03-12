@@ -59,9 +59,9 @@ class PwkGenerateRpbWizard(models.TransientModel):
                         while jumlah_container > 0:
                             container_id = self.env['pwk.rpb.container'].create({
                                 'reference': rpb_id.id,
-                                'no_container': no_container,
+                                'no_container': container_no,
                                 'jumlah_container': container.jumlah_container,
-                                'name': no_container,
+                                'name': container_no,
                             })
 
                             self.env['pwk.rpb.container.line'].create({
