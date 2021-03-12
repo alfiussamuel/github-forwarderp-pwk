@@ -640,6 +640,7 @@
                             <field name="actual"/>
                             <field name="is_pr"
                                 attrs="{'invisible':[('is_pr', '=', False)]}"/>
+                            <field name="working_days"/>
                         </group>
                         <group>
                             <field name="pr_veneer_id" readonly="1"
@@ -672,7 +673,7 @@
                                             <field name="total_vol"/>                    -->
                                             <field name="container_qty" string="PCS" sum="Total"/>
                                             <field name="container_vol" string="M3" sum="Total"/>
-                                            <field name="jumlah_container" sum="Total"/>
+                                            <field name="jumlah_container" sum="Total" invisible="1"/>
                                             <field name="subtotal_qty" sum="Total"/>
                                             <field name="subtotal_vol" sum="Total"/>
                                             <field name="outstanding_rpb_pcs" sum="Total"/>

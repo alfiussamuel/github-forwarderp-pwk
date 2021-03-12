@@ -412,6 +412,7 @@ class PwkRpb(models.Model):
         ('Desember','Desember')
     ], string="Bulan")
 
+    working_days = fields.Float('Hari Kerja', digits=dp.get_precision('OneDecimal'))
     date_start = fields.Date('Periode')
     date_end = fields.Date('Periode')
     state = fields.Selection([('Draft','Draft'),('Purchase Request','Purchase Request')], string="Status", default="Draft")

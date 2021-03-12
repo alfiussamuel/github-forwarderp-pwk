@@ -16,13 +16,13 @@
 						<field name="line_ids" nolabel="1">
 							<tree>							
 								<field name="no_container"/>
-								<field name="jumlah_container"/>
+								<field name="jumlah_container" invisible="1"/>
 								<field name="total_product"/>
 							</tree>
 							<form>
 								<group>
 									<field name="no_container" required="1"/>
-									<field name="jumlah_container"/>
+									<field name="jumlah_container" invisible="1"/>
 									<field name="total_product"/>
 								</group>
 								<group>
