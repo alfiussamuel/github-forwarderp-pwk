@@ -33,6 +33,7 @@ class PwkGenerateRpbWizard(models.TransientModel):
 
     @api.model
     def _default_nomor_container(self):
+        context = dict(self._context or {})
         active_id = context.get('active_id', False)
         rpb_id = self.env['pwk.rpb'].search([('id', '=', active_id)])
 
