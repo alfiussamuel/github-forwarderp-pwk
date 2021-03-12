@@ -86,12 +86,15 @@ class PwkGenerateRpbWizard(models.TransientModel):
                     for line in container.sale_line_ids:
                         jumlah_container = line.container
                         partial_container = jumlah_container
+                        partial_container_fix = jumlah_container
 
                         if line.container > 1:
                             partial_container = (line.qty_rpb / line.product_uom_qty) * line.container
+                            partial_container_fix = partial_container
 
                         if partial_container == 0:
                             partial_container = 1
+                            partial_container_fix = 1
 
                         # container_no = int(nomor_container)
                         while partial_container > 0:
@@ -115,8 +118,8 @@ class PwkGenerateRpbWizard(models.TransientModel):
                                 'reference': container_id.id,
                                 'sale_id': line.order_id.id,
                                 'sale_line_id': line.id,
-                                'total_qty': line.qty_rpb / (((line.qty_rpb / line.product_uom_qty) * line.container) or 1),
-                                'container_qty': line.qty_rpb / (((line.qty_rpb / line.product_uom_qty) * line.container) or 1),
+                                'total_qty': line.qty_rpb / partial_container_fix,
+                                'container_qty': line.qty_rpb / partial_container_fix,
                             })
 
                             rpb_line = self.env['pwk.rpb.line'].create({
@@ -125,8 +128,8 @@ class PwkGenerateRpbWizard(models.TransientModel):
                                 'jumlah_container': 1,
                                 'sale_id': line.order_id.id,
                                 'sale_line_id': line.id,
-                                'total_qty': line.qty_rpb / (((line.qty_rpb / line.product_uom_qty) * line.container) or 1),
-                                'container_qty': line.qty_rpb / (((line.qty_rpb / line.product_uom_qty) * line.container) or 1),
+                                'total_qty': line.qty_rpb / partial_container_fix,
+                                'container_qty': line.qty_rpb / partial_container_fix,
                                 'outstanding_order_pcs': line.outstanding_order_pcs
                             })
 
