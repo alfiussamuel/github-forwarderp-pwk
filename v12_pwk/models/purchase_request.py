@@ -194,6 +194,7 @@ class PwkPurchaseRequest(models.Model):
     line_ids = fields.One2many('pwk.purchase.request.line', 'reference', string='Lines')
     volume_ids = fields.One2many('pwk.purchase.request.volume', 'reference', string='Lines')
     date_ids = fields.One2many('pwk.purchase.request.date', 'reference', string='Dates')
+    notes = fields.Text('Notes')
 
     @api.multi
     def button_assign(self):
