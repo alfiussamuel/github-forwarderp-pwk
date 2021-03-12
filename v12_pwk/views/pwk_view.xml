@@ -613,15 +613,14 @@
                         <field name="state" widget="statusbar" readonly="1"/>
                         <button name="%(action_pwk_generate_rpb)d" type="action" 
                             string="Select Order" class="oe_highlight" states="Draft"/>
-                        <button name="action_create_pr" string="Create Purchase Request" 
+                        <button name="action_create_pr" string="Create PR" 
                             type="object" class="oe_highlight" states="Draft"/>
-                        <button name="action_cancel" string="Cancel Purchase Request" 
+                        <button name="action_cancel" string="Cancel PR" 
                             type="object" states="Purchase Request"/>
-                        <button name="button_reload_all_bom" string="Reload All BoM" 
+                        <button name="button_reload_all_bom" string="Reload BoM" 
                             type="object"/>
-                        <button name="action_change" string="Update" 
-                            type="object"/>
-                        <button name="action_create_bahan_baku" string="Kebutuhan Bahan Baku" 
+                        <button name="action_change" string="Update" type="object" invisible="1"/>
+                        <button name="action_create_bahan_baku" string="Keb. Bahan Baku" 
                             states="Draft" type="object"/>
                     </header>
 
