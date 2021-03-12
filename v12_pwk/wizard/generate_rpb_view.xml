@@ -28,7 +28,7 @@
 								<group>
 									<field name="sale_line_ids" nolabel="1"
 										domain="[('order_id.state','=','sale')]">
-										<tree>
+										<tree editable="top">
 											<field name="sale_po_number"/>
 											<field name="sale_date_order"/>
 											<field name="sale_partner_id"/>
