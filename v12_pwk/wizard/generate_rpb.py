@@ -119,5 +119,5 @@ class PwkGenerateRpbWizard(models.TransientModel):
 
                             rpb_line.button_reload_bom()
                             jumlah_container -= 1
-                            if jumlah_container > 1:
+                            if jumlah_container >= 1:
                                 nomor_container += 1
