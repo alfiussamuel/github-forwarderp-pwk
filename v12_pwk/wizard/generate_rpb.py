@@ -51,12 +51,12 @@ class PwkGenerateRpbWizard(models.TransientModel):
 
                 if container.sale_line_ids:
                     for line in container.sale_line_ids:
-                        container = line.container
+                        jumlah_container = line.container
                         if container == 0:
                             container = 1
 
                         container_no = container.no_container
-                        while container > 0:
+                        while jumlah_container > 0:
                             container_id = self.env['pwk.rpb.container'].create({
                                 'reference': rpb_id.id,
                                 'no_container': no_container,
@@ -84,5 +84,5 @@ class PwkGenerateRpbWizard(models.TransientModel):
                             })
 
                             rpb_line.button_reload_bom()
-                            container -= 1
+                            jumlah_container -= 1
                             container_no += 1
