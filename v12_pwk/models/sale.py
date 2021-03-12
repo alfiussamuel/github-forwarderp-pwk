@@ -87,7 +87,7 @@ class SaleOrderLineContainer(models.Model):
 
 class SaleOrderLine(models.Model):    
     _inherit = "sale.order.line"
-    _order = 'width desc,thick asc'
+    _order = 'thick asc, width desc, length asc'
 
     @api.depends('is_changed','product_uom_qty', 'discount', 'price_unit', 'tax_id', 'volume', 'order_id.formula_type')
     def _compute_amount(self):
@@ -122,9 +122,9 @@ class SaleOrderLine(models.Model):
     marking_id = fields.Many2one('pwk.marking', 'Marking Image')
     actual_size = fields.Float('Actual Size')
     product_uom_qty = fields.Float(string='PCS', digits=dp.get_precision('ZeroDecimal'))
-    thick = fields.Float(compute="_get_size", string='Thick', digits=dp.get_precision('OneDecimal'))
-    width = fields.Float(compute="_get_size", string='Width', digits=dp.get_precision('ZeroDecimal'))
-    length = fields.Float(compute="_get_size", string='Length', digits=dp.get_precision('ZeroDecimal'))
+    thick = fields.Float(compute="_get_size", string='Thick', digits=dp.get_precision('OneDecimal'), store=True)
+    width = fields.Float(compute="_get_size", string='Width', digits=dp.get_precision('ZeroDecimal'), store=True)
+    length = fields.Float(compute="_get_size", string='Length', digits=dp.get_precision('ZeroDecimal'), store=True)
     volume_qty = fields.Float('Qty (Volume)', digits=dp.get_precision('FourDecimal'))
     container_ids = fields.One2many('sale.order.line.container', 'reference', 'Container')
     stempel_id = fields.Many2one('pwk.stempel', 'Stempel')
