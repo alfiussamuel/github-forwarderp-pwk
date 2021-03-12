@@ -432,11 +432,12 @@ class PwkRpb(models.Model):
 
     @api.multi
     def action_change(self):
-        for line in res.line_ids:
-            if line.is_changed:
-                line.write({'is_changed': False})
-            else:
-                line.write({'is_changed': True})
+        for res in self:
+            for line in res.line_ids:
+                if line.is_changed:
+                    line.write({'is_changed': False})
+                else:
+                    line.write({'is_changed': True})
 
     @api.depends('line_ids')
     def _get_total_container(self):
