@@ -446,7 +446,7 @@
                                         </field>
                                     </group>
                                 </page>
-                                <page string="RPM by Container">
+                                <page string="RPM by Container" invisible="1">
                                     <field name="container_ids" nolabel="1">
                                         <tree>
                                             <field name="name"/>
