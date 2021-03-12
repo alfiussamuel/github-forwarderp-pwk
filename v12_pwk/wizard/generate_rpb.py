@@ -85,7 +85,10 @@ class PwkGenerateRpbWizard(models.TransientModel):
 
                     for line in container.sale_line_ids:
                         jumlah_container = line.container
-                        partial_container = (line.qty_rpb / line.product_uom_qty) * line.container
+                        partial_container = jumlah_container
+
+                        if line.container > 1:
+                            partial_container = (line.qty_rpb / line.product_uom_qty) * line.container
 
                         if partial_container == 0:
                             partial_container = 1
