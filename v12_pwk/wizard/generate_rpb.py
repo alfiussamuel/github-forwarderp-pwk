@@ -9,8 +9,12 @@ from odoo import models, fields, api, _
 class PwkGenerateRpbWizardLine(models.TransientModel):
     _name = 'pwk.generate.rpb.wizard.line'
 
+    @api.model
+    def _default_nomor_container(self):
+        return int(self.reference.nomor_container) + 1
+        
     reference = fields.Many2one('pwk.generate.rpb.wizard', 'Reference')
-    no_container = fields.Char('No. Container')
+    no_container = fields.Char('No. Container', default=_default_nomor_container)
     jumlah_container = fields.Integer('Jumlah Container')
     sale_line_ids = fields.Many2many('sale.order.line', 'rpb_wizard_line_sale_line_default_rel',
         'rpb_wizard_line_id', 'sale_line_id', string='Sales Order Lines')
