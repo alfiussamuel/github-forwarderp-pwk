@@ -114,7 +114,7 @@ class SaleOrderLine(models.Model):
         return self.product_id.name
     
     qty_rpb = fields.Float(string='RPB PCS', digits=dp.get_precision('ZeroDecimal'))
-    volume_rpb = fields.Float(compute="_get_volume_qty", string='RPB M3', digits=dp.get_precision('FourDecimal'))
+    volume_rpb = fields.Float(compute="_get_volume_qty", string='RPB M3', digits=dp.get_precision('FourDecimal'), store=True)
     container = fields.Integer('Jumlah Container')
     is_changed = fields.Boolean('Changed')
     is_qty_volume = fields.Boolean('Qty Volume')
@@ -122,9 +122,9 @@ class SaleOrderLine(models.Model):
     marking_id = fields.Many2one('pwk.marking', 'Marking Image')
     actual_size = fields.Float('Actual Size')
     product_uom_qty = fields.Float(string='PCS', digits=dp.get_precision('ZeroDecimal'))
-    thick = fields.Float(compute="_get_size", string='Thick', digits=dp.get_precision('OneDecimal'), store=True)
-    width = fields.Float(compute="_get_size", string='Width', digits=dp.get_precision('ZeroDecimal'), store=True)
-    length = fields.Float(compute="_get_size", string='Length', digits=dp.get_precision('ZeroDecimal'), store=True)
+    thick = fields.Float(related="product_id.tebal", string='Thick', digits=dp.get_precision('OneDecimal'), store=True)
+    width = fields.Float(related="product_id.lebar", string='Width', digits=dp.get_precision('ZeroDecimal'), store=True)
+    length = fields.Float(related="product_id.panjang", string='Length', digits=dp.get_precision('ZeroDecimal'), store=True)
     volume_qty = fields.Float('Qty (Volume)', digits=dp.get_precision('FourDecimal'))
     container_ids = fields.One2many('sale.order.line.container', 'reference', 'Container')
     stempel_id = fields.Many2one('pwk.stempel', 'Stempel')
@@ -146,8 +146,8 @@ class SaleOrderLine(models.Model):
     crate_pallet_id = fields.Many2one('pwk.pallet', 'Crate Pallet')
     crate_strapping_id = fields.Many2one('pwk.strapping', 'Crate Strapping')
 
-    auto_volume = fields.Float(compute="_get_volume_qty", string='Volume', digits=dp.get_precision('FourDecimal'))
-    volume = fields.Float(compute="_get_volume_qty", string='Volume', digits=dp.get_precision('FourDecimal'))
+    auto_volume = fields.Float(compute="_get_volume_qty", string='Volume', digits=dp.get_precision('FourDecimal'), store=True)
+    volume = fields.Float(compute="_get_volume_qty", string='Volume', digits=dp.get_precision('FourDecimal'), store=True)
 
     @api.depends('thick','width','length','product_uom_qty','product_id','is_qty_volume', 'qty_rpb')
     def _get_volume_qty(self):
