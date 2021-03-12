@@ -81,17 +81,22 @@ class PwkGenerateRpbWizard(models.TransientModel):
                     raise UserError(_('Nomor Container sudah terpakai'))
 
                 if container.sale_line_ids:
+                    previous_container = 0
+
                     for line in container.sale_line_ids:
                         jumlah_container = line.container 
-                        if container == 0:
-                            container = 1
+                        if jumlah_container == 0:
+                            jumlah_container = 1
 
                         # container_no = int(nomor_container)
                         while jumlah_container > 0:
                             print ("Product ", line.product_id.name)
                             print ("Jumlah Container ", jumlah_container)
                             print ("Nomor Container ", nomor_container)
-                            if jumlah_container > 1 and nomor_container != self.nomor_container + 1:
+                            print ("Previous Container ", previous_container)
+
+                            if jumlah_container > 1 and previous_container == 1:
+                                print ("Yessss")
                                 nomor_container += 1
 
                             container_id = self.env['pwk.rpb.container'].create({
@@ -124,3 +129,5 @@ class PwkGenerateRpbWizard(models.TransientModel):
                             jumlah_container -= 1
                             if jumlah_container >= 1:
                                 nomor_container += 1
+
+                        previous_container = line.container
