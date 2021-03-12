@@ -529,6 +529,14 @@
             name="v12_pwk.rpb_report_xls.xlsx"
             file="v12_pwk.rpb_report_xls.xlsx"/>
 
+        <report
+            id="report_rpb_bahan_baku"
+            model="pwk.rpb"
+            string="Kebutuhan Bahan Baku"
+            report_type="xlsx"
+            name="v12_pwk.rpb_bahan_baku_report_xls.xlsx"
+            file="v12_pwk.rpb_bahan_baku_report_xls.xlsx"/>
+
         <record id="pwk_rpb_tree" model="ir.ui.view">
             <field name="name">Rencana Produksi Bulanan</field>
             <field name="model">pwk.rpb</field>
