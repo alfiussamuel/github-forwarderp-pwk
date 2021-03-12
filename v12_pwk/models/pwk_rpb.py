@@ -188,7 +188,7 @@ class PwkRpbLine(models.Model):
     sale_line_id = fields.Many2one('sale.order.line', 'No. Order Line')
     partner_id = fields.Many2one(compute="_get_sale_fields", comodel_name='res.partner', string='Buyer')
     product_id = fields.Many2one(compute="_get_sale_fields", comodel_name='product.product', string='Product')
-    po_number = fields.Char(compute="_get_sale_fields", string='PO No.')
+    po_number = fields.Char(compute="_get_sale_fields", string='PO No.', store=True)
     marking = fields.Char(compute="_get_sale_fields", string='Marking')
     thick = fields.Float(compute="_get_sale_fields", string='Thick', store=True)
     width = fields.Float(compute="_get_sale_fields", string='Width', store=True)
