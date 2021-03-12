@@ -177,9 +177,10 @@ class PwkRpbLineDetail5(models.Model):
 
 class PwkRpbLine(models.Model):    
     _name = "pwk.rpb.line"
-    _order = 'container_id,width asc,length asc,thick asc'
+    _order = 'container_id,width asc,length desc,thick asc'
 
     reference = fields.Many2one('pwk.rpb', string='Reference')
+    is_changed = fields.Boolean('Changed', default=True)
     container_id = fields.Many2one('pwk.rpb.container', string='Container')
     jumlah_container = fields.Integer('Jml Container')
     sale_id = fields.Many2one('sale.order', 'No. Order')
@@ -428,6 +429,14 @@ class PwkRpb(models.Model):
     pr_faceback_id = fields.Many2one('pwk.purchase.request', string='PR Veneer FB')
     pr_mdf_id = fields.Many2one('pwk.purchase.request', string='PR MDF')
     rpb_line_count = fields.Integer(string='# of Lines', compute='_get_count')
+
+    @api.multi
+    def action_change(self):
+        for line in res.line_ids:
+            if line.is_changed:
+                line.write({'is_changed': False})
+            else:
+                line.write({'is_changed': True})
 
     @api.depends('line_ids')
     def _get_total_container(self):

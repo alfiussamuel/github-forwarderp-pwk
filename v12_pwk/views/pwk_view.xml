@@ -611,6 +611,8 @@
                             type="object" states="Purchase Request"/>
                         <button name="button_reload_all_bom" string="Reload All BoM" 
                             type="object"/>
+                        <button name="action_change" string="Update" 
+                            type="object"/>
                     </header>
 
                     <div class="oe_button_box" name="button_box">
