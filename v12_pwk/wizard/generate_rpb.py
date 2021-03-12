@@ -38,7 +38,7 @@ class PwkGenerateRpbWizard(models.TransientModel):
         rpb_id = self.env['pwk.rpb'].search([('id', '=', active_id)])
 
         previous_ids = self.env['pwk.rpb.line'].search([
-            ('reference', '=', res.reference.id),
+            ('reference', '=', rpb_id.id),
         ], order='id desc')
 
         if previous_ids:
