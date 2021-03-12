@@ -560,8 +560,6 @@
                     <field name="length" readonly="1" invisible="1"/>
                     <field name="glue_id" invisible="1"/>
                     <field name="grade_id" invisible="1"/>
-                    <!-- <field name="total_qty" readonly="1"/>
-                    <field name="total_vol"/>                    -->
                     <field name="container_qty" string="PCS" sum="Total"/>
                     <field name="container_vol" string="M3" sum="Total"/>
                     <field name="jumlah_container" sum="Total"/>
@@ -819,7 +817,7 @@
                                     </field>
                                 </group>
                             </page>
-                            <page string="List Order by Container" invisible="1">
+                            <page string="List Order by Container">
                                 <group>
                                     <field name="container_ids" nolabel="1">
                                         <tree editable="top" create="false">
