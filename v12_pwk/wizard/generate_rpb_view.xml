@@ -11,6 +11,7 @@
 						<div>
 	                        Silahkan memilih Order yang akan di Produksi di dalam Rencana Produksi Bulanan
 	                    </div>
+	                    <field name="nomor_container"/>
 	                </group>
 					<group>
 						<field name="line_ids" nolabel="1">
