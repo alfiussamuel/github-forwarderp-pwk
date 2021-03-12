@@ -95,7 +95,7 @@ class PwkGenerateRpbWizard(models.TransientModel):
                             print ("Nomor Container ", nomor_container)
                             print ("Previous Container ", previous_container)
 
-                            if jumlah_container > 1 and previous_container == 1:
+                            if jumlah_container > 1 and (previous_container == 1 or previous_container > 1):
                                 print ("Yessss")
                                 nomor_container += 1
 
