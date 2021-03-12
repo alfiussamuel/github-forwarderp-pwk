@@ -33,10 +33,10 @@
 											<field name="sale_date_order" invisible="1"/>
 											<field name="sale_partner_id"/>
 											<field name="product_id"/>
-											<field name="product_uom_qty"/>
-											<field name="volume"/>
-											<field name="qty_rpb"/>
-											<field name="volume_rpb"/>
+											<field name="product_uom_qty" sum="Total"/>
+											<field name="volume" sum="Total"/>
+											<field name="qty_rpb" sum="Total"/>
+											<field name="volume_rpb" sum="Total"/>
 											<field name="state" invisible="1"/>
 										</tree>
 									</field>
