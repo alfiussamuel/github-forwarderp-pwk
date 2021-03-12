@@ -86,7 +86,8 @@ class SaleOrderLineContainer(models.Model):
     number = fields.Char('Number')    
 
 class SaleOrderLine(models.Model):    
-    _inherit = "sale.order.line"    
+    _inherit = "sale.order.line"
+    _order = 'width desc,thick asc'
 
     @api.depends('is_changed','product_uom_qty', 'discount', 'price_unit', 'tax_id', 'volume', 'order_id.formula_type')
     def _compute_amount(self):
