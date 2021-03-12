@@ -31,7 +31,22 @@ class PwkGenerateRpbWizardLine(models.TransientModel):
 class PwkGenerateRpbWizard(models.TransientModel):
     _name = 'pwk.generate.rpb.wizard'
 
+    @api.model
+    def _default_nomor_container(self):
+        active_id = context.get('active_id', False)
+        rpb_id = self.env['pwk.rpb'].search([('id', '=', active_id)])
+
+        previous_ids = self.env['pwk.rpb.line'].search([
+            ('reference', '=', res.reference.id),
+        ], order='id desc')
+
+        if previous_ids:
+            return previous_ids[0].container_id.name
+        else:
+            return 0
+
     line_ids = fields.One2many('pwk.generate.rpb.wizard.line', 'reference', string='Container List')
+    nomor_container = fields.Integer('Nomor Container', default=_default_nomor_container)
 
     @api.multi
     def button_generate(self):    	

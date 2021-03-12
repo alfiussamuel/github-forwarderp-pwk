@@ -181,6 +181,7 @@ class PwkRpbLine(models.Model):
 
     reference = fields.Many2one('pwk.rpb', string='Reference')
     is_changed = fields.Boolean('Changed', default=True)
+    nomor_container = fields.Integer(compute="_get_nomor_container", string="No. Container")
     container_id = fields.Many2one('pwk.rpb.container', string='Container')
     jumlah_container = fields.Integer('Jml Container')
     sale_id = fields.Many2one('sale.order', 'No. Order')
@@ -233,6 +234,21 @@ class PwkRpbLine(models.Model):
     is_selected_detail5 = fields.Boolean('Bill of Material 5')
 
     bom_status = fields.Char(compute="_get_bom_status", string='BoM Status', store=True)
+
+    @api.multi
+    def _get_nomor_container(self)
+        for res in self:
+            previous_ids = self.env['pwk.rpb.line'].search([
+                ('reference', '=', res.reference.id),
+                ('id', '<', res.id)
+            ], order='id desc')
+
+            if previous_ids:
+                nomor_container = previous_ids[0].nomor_container
+            else:
+                nomor_container = 1
+
+            res.nomor_container = nomor_container
 
     @api.depends('is_selected_detail1','is_selected_detail2','is_selected_detail3','is_selected_detail4','is_selected_detail5')
     def _get_bom_status(self):
