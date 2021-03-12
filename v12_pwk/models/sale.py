@@ -123,9 +123,9 @@ class SaleOrderLine(models.Model):
     marking_id = fields.Many2one('pwk.marking', 'Marking Image')
     actual_size = fields.Float('Actual Size')
     product_uom_qty = fields.Float(string='PCS', digits=dp.get_precision('ZeroDecimal'))
-    thick = fields.Float(related="product_id.tebal", string='Thick', digits=dp.get_precision('OneDecimal'))
-    width = fields.Float(related="product_id.lebar", string='Width', digits=dp.get_precision('ZeroDecimal'))
-    length = fields.Float(related="product_id.panjang", string='Length', digits=dp.get_precision('ZeroDecimal'))
+    thick = fields.Float(related="product_id.tebal", string='Thick', digits=dp.get_precision('OneDecimal'), store=True)
+    width = fields.Float(related="product_id.lebar", string='Width', digits=dp.get_precision('ZeroDecimal'), store=True)
+    length = fields.Float(related="product_id.panjang", string='Length', digits=dp.get_precision('ZeroDecimal'), store=True)
     volume_qty = fields.Float('Qty (Volume)', digits=dp.get_precision('FourDecimal'))
     container_ids = fields.One2many('sale.order.line.container', 'reference', 'Container')
     stempel_id = fields.Many2one('pwk.stempel', 'Stempel')
@@ -150,7 +150,8 @@ class SaleOrderLine(models.Model):
     auto_volume = fields.Float(compute="_get_volume_qty", string='Volume', digits=dp.get_precision('FourDecimal'))
     volume = fields.Float(compute="_get_volume_qty", string='Volume', digits=dp.get_precision('FourDecimal'))
 
-    @api.depends('thick','width','length','product_uom_qty','product_id','is_qty_volume', 'qty_rpb', 'is_changed')
+    # @api.depends('thick','width','length','product_uom_qty','product_id','is_qty_volume', 'qty_rpb', 'is_changed')
+    @api.multi
     def _get_volume_qty(self):
         for res in self:                        
             res.volume = ((res.product_uom_qty * res.width * res.length * res.thick)) / 1000000000
