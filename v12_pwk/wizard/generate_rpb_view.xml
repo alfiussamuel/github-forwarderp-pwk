@@ -30,7 +30,7 @@
 										domain="[('order_id.state','=','sale')]">
 										<tree editable="top">
 											<field name="sale_po_number"/>
-											<field name="sale_date_order"/>
+											<field name="sale_date_order" invisible="1"/>
 											<field name="sale_partner_id"/>
 											<field name="product_id"/>
 											<field name="product_uom_qty"/>
