@@ -88,6 +88,9 @@ class PwkGenerateRpbWizard(models.TransientModel):
 
                         # container_no = int(nomor_container)
                         while jumlah_container > 0:
+                            print ("Product ", line.product_id.name)
+                            print ("Jumlah Container ", jumlah_container)
+                            print ("Nomor Container ", nomor_container)
                             if jumlah_container > 1 and nomor_container != self.nomor_container + 1:
                                 nomor_container += 1
 
