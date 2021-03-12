@@ -658,7 +658,7 @@
                             <page string="List Order">
                                 <group>
                                     <field name="line_ids" nolabel="1">
-                                        <tree create="false" limit="80">
+                                        <tree create="false" limit="200">
                                             <field name="container_id" 
                                                 readonly="1" string="No."/>
                                             <field name="partner_id"/>
