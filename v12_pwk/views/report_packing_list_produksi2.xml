@@ -1213,6 +1213,7 @@
 								border-top:0px;
 								border-left:0px;
 								border-bottom:0px;">
+    							<strong><span t-field="o.tanggal_pengiriman" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
 						</tr>
 						<tr>
@@ -1261,6 +1262,7 @@
 								border-top:0px;
 								border-left:0px;
 								border-bottom:1px solid black;">
+    							<strong><span t-field="o.tanggal_p2" t-options='{"format": "dd-MMMM-yyyy"}'/></strong>
 	                        </td>
 						</tr>
 					</table>
