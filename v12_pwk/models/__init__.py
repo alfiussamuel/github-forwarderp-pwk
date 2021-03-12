@@ -33,3 +33,4 @@ from . import rpb_excel
 from . import rpm_excel
 from . import rpm_monitoring_excel
 from . import rpm_bahan_baku
+from . import rpb_bahan_baku
