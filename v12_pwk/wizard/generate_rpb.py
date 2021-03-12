@@ -9,17 +9,17 @@ from odoo import models, fields, api, _
 class PwkGenerateRpbWizardLine(models.TransientModel):
     _name = 'pwk.generate.rpb.wizard.line'
 
-    @api.model
-    def _default_nomor_container(self):
-        context = dict(self._context or {})
-        active_id = context.get('active_id', False)
-        rpb_id = self.env['pwk.rpb'].search([('id', '=', active_id)])
+    # @api.model
+    # def _default_nomor_container(self):
+    #     context = dict(self._context or {})
+    #     active_id = context.get('active_id', False)
+    #     rpb_id = self.env['pwk.rpb'].search([('id', '=', active_id)])
 
-        print("RPB ", rpb_id.name)
-        return int(self.reference.nomor_container) + 1
+    #     print("RPB ", rpb_id.name)
+    #     return int(self.reference.nomor_container) + 1
         
     reference = fields.Many2one('pwk.generate.rpb.wizard', 'Reference')
-    no_container = fields.Char('No. Container', default=_default_nomor_container)
+    no_container = fields.Char('No. Container')
     jumlah_container = fields.Integer('Jumlah Container')
     sale_line_ids = fields.Many2many('sale.order.line', 'rpb_wizard_line_sale_line_default_rel',
         'rpb_wizard_line_id', 'sale_line_id', string='Sales Order Lines')
@@ -65,14 +65,16 @@ class PwkGenerateRpbWizard(models.TransientModel):
     	rpb_id = self.env['pwk.rpb'].search([('id', '=', active_id)])
 
     	if self.line_ids:
+            nomor_container = self.nomor_container
+
             for container in self.line_ids:
                 existing_container = self.env['pwk.rpb.container'].search([
-                    ('name', '=', container.no_container),
+                    ('name', '=', nomor_container),
                     ('reference', '=', self.id)
                 ])
 
                 if existing_container:
-                    raise UserError(_('Nomor Container sudah'))
+                    raise UserError(_('Nomor Container sudah terpakai'))
 
                 if container.sale_line_ids:
                     for line in container.sale_line_ids:
@@ -80,7 +82,7 @@ class PwkGenerateRpbWizard(models.TransientModel):
                         if container == 0:
                             container = 1
 
-                        container_no = int(container.no_container)
+                        container_no = int(nomor_container)
                         while jumlah_container > 0:
                             container_id = self.env['pwk.rpb.container'].create({
                                 'reference': rpb_id.id,
@@ -111,3 +113,5 @@ class PwkGenerateRpbWizard(models.TransientModel):
                             rpb_line.button_reload_bom()
                             jumlah_container -= 1
                             container_no += 1
+
+                nomor_container += 1
