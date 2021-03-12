@@ -11,6 +11,11 @@ class PwkGenerateRpbWizardLine(models.TransientModel):
 
     @api.model
     def _default_nomor_container(self):
+        context = dict(self._context or {})
+        active_id = context.get('active_id', False)
+        rpb_id = self.env['pwk.rpb'].search([('id', '=', active_id)])
+
+        print("RPB ", rpb_id.name)
         return int(self.reference.nomor_container) + 1
         
     reference = fields.Many2one('pwk.generate.rpb.wizard', 'Reference')
