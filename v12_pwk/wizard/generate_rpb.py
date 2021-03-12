@@ -24,17 +24,21 @@ class PwkGenerateRpbWizardLine(models.TransientModel):
     sale_line_ids = fields.Many2many('sale.order.line', 'rpb_wizard_line_sale_line_default_rel',
         'rpb_wizard_line_id', 'sale_line_id', string='Sales Order Lines')
     total_product = fields.Float(compute="_get_total", string='Total Product')
+    total_container = fields.Float(compute="_get_total", string='Total Container')
 
     @api.depends('sale_line_ids.product_id')
     def _get_total(self):
         for res in self:
             total_product = 0
+            total_container = 0
 
             if res.sale_line_ids:
                 for line in res.sale_line_ids:
                     total_product += 1
+                    total_container += line.container
 
             res.total_product = total_product
+            res.total_container = total_container
 
 
 class PwkGenerateRpbWizard(models.TransientModel):

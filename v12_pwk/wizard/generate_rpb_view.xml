@@ -11,19 +11,21 @@
 						<div>
 	                        Silahkan memilih Order yang akan di Produksi di dalam Rencana Produksi Bulanan
 	                    </div>
-	                    <field name="nomor_container"/>
+	                    <field name="nomor_container" invisible="1"/>
 	                </group>
 					<group>
 						<field name="line_ids" nolabel="1">
 							<tree>							
 								<field name="no_container" invisible="1"/>
 								<field name="jumlah_container" invisible="1"/>
+								<field name="total_container"/>
 								<field name="total_product"/>
 							</tree>
 							<form>
 								<group>
 									<field name="no_container" invisible="1"/>
 									<field name="jumlah_container" invisible="1"/>
+									<field name="total_container"/>
 									<field name="total_product"/>
 								</group>
 								<group>
