@@ -704,23 +704,18 @@
                                             <group>
                                                 <group>
                                                     <field name="partner_id"/>
-                                                    <field name="sale_id"/>
+                                                    <field name="po_number"/>
                                                 </group>                                        
                                             </group>                                            
                                             <group>
                                                 <group>
-                                                    <!-- <field name="total_qty" readonly="1"/>
-                                                    <field name="total_vol"/>   -->
-                                                    <field name="container_qty" required="1" 
-                                                        string="PCS"/>
+                                                    <field name="container_qty" required="1" string="PCS"/>
                                                     <field name="container_vol" string="M3"/>
                                                     <field name="jumlah_container"/>
                                                 </group>
                                                 <group>
                                                     <field name="subtotal_qty"/>
                                                     <field name="subtotal_vol"/>
-                                                    <!-- <field name="outstanding_rpb_pcs"/>
-                                                    <field name="outstanding_rpb_vol"/> -->
                                                 </group>
                                             </group>
                                             <group>
