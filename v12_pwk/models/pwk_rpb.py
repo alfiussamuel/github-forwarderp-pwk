@@ -512,11 +512,11 @@ class PwkRpb(models.Model):
             if res.line_ids:
                 for line in res.line_ids:
                     if line.product_id.goods_type == "Blockboard":
-                        total_blockboard += line.total_volume
+                        total_blockboard += line.subtotal_vol
                     elif line.product_id.goods_type == "Plywood":
-                        total_plywood += line.total_volume
+                        total_plywood += line.subtotal_vol
                     elif line.product_id.goods_type == "LVL":
-                        total_lvl += line.total_volume
+                        total_lvl += line.subtotal_vol
 
             res.total_blockboard = total_blockboard
             res.total_plywood = total_plywood
