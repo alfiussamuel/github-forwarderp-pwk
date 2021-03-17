@@ -669,6 +669,20 @@
                         </group>
                     </group>
                     <group>
+                        <label for="total_blockboard"/>
+                        <div>
+                            <field name="total_blockboard" class="oe_inline"/> | <field name="total_blockboard_percent" class="oe_inline"/> %
+                        </div>
+                        <label for="total_plywood"/>
+                        <div>
+                            <field name="total_plywood" class="oe_inline"/> | <field name="total_plywood_percent" class="oe_inline"/> %
+                        </div>
+                        <label for="total_lvl"/>
+                        <div>
+                            <field name="total_lvl" class="oe_inline"/> | <field name="total_lvl_percent" class="oe_inline"/> %
+                        </div>
+                    </group>
+                    <group>
                         <notebook>
                             <page string="List Order">
                                 <group>
