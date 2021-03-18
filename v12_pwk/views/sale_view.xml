@@ -30,7 +30,7 @@
                         <field name="crate_qty_each" string="Pcs per Crate"/>
                         <field name="product_uom_qty" string="PCS"/>
                         <field name="volume" string="M3"/>
-                        <field name="qty_delivered" invisible="1"/>\
+                        <field name="qty_delivered" invisible="1"/>
                         <field name="is_changed"/>
                     </tree>
                 </tree>
