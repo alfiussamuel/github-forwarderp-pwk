@@ -153,7 +153,7 @@ class SaleOrderLine(models.Model):
     @api.depends('thick','width','length','product_uom_qty','product_id','is_qty_volume', 'qty_rpb', 'is_changed')
     def _get_volume_qty(self):
         for res in self:                        
-            print "asaddddddddd"
+            print ("asaddddddddd")
             res.volume = ((res.product_uom_qty * res.product_id.tebal * res.product_id.lebar * res.product_id.panjang)) / 1000000000
             res.auto_volume = res.volume
             res.volume_rpb = (res.qty_rpb * res.width * res.length * res.thick) / 1000000000
