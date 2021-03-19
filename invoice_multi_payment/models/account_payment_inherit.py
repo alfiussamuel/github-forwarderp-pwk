@@ -360,10 +360,12 @@ class AccountPayment(models.Model):
                 print ("Liquidity Aml Dict 1 ", liquidity_aml_dict)
 
                 liquidity_aml_dict_bank = counterpart_aml_dict_bank
-                print ("Liquidity Aml Dict 2 ", liquidity_aml_dict)
+                print ("Liquidity Aml Dict 2 ", liquidity_aml_dict_bank)
                 
                 aml_obj.create(liquidity_aml_dict)
                 aml_obj.create(liquidity_aml_dict_bank)
+
+                print ("Journal Entries ", move)
             move.post()
             return move
 
