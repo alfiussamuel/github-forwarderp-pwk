@@ -117,11 +117,12 @@
                         <page string="Other Information">
                             <group>
                                 <group>
-                                    <field name="from_text"
+                                    <!-- <field name="from_text"
                                         attrs="{'invisible': [('payment_type', '!=', 'inbound')]}"/>
                                     <field name="to_text"
-                                        attrs="{'invisible': [('payment_type', '!=', 'inbound')]}"/>
+                                        attrs="{'invisible': [('payment_type', '!=', 'inbound')]}"/> -->
                                     <field name="check_no"/>
+                                    <field name="amount_bank_terbilang"/>
                                     <field name="bank_account_id"
                                         options="{'no_create': True}"
                                         attrs="{'invisible': [('payment_type', '!=', 'outbound')]}"/>
@@ -130,9 +131,6 @@
                                     <field name="office_selection"/>
                                     <field name="new_description"/>
                                 </group>
-                            </group>
-                            <group>
-                                <field name="amount_bank_terbilang"/>
                             </group>
                         </page>
 					</notebook> 
