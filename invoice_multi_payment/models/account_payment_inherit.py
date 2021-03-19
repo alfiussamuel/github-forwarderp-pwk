@@ -365,7 +365,7 @@ class AccountPayment(models.Model):
                 aml_obj.create(liquidity_aml_dict)
                 aml_obj.create(liquidity_aml_dict_bank)
 
-                print ("Journal Entries ", move)
+                print ("Journal Entries ", move.line_ids)
             move.post()
             return move
 
