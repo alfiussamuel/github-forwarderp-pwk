@@ -288,17 +288,6 @@ class AccountPayment(models.Model):
 
                 print ("BBBBBBBBBBBBBB ", counterpart_aml_dict)
 
-                # Bank Charges
-                counterpart_aml_dict_bank = self._get_shared_move_line_vals(self.bank_charges, 0, self.bank_charges, move.id, False)
-                print ("Counterpart ", counterpart_aml_dict_bank)
-                counterpart_aml_dict_bank.update({
-                    'account_id': self.bank_charges_account_id.id,
-                    'currency_id': self.currency_id.id,
-                    'amount_currency': self.bank_charges,
-                    'name': 'Bank Charges'
-                })
-                #############################################
-
                 # Reconcile with the invoices and write off
                 if self.partner_type == 'customer':
                     handling = 'open'
@@ -357,16 +346,29 @@ class AccountPayment(models.Model):
 
                 print ("Liquidity Aml Dict 1 ", liquidity_aml_dict)
 
-                liquidity_aml_dict_bank = counterpart_aml_dict_bank
-                print ("Liquidity Aml Dict 2 ", liquidity_aml_dict_bank)
-                
                 aml_obj.create(liquidity_aml_dict)
-                aml_obj.create(liquidity_aml_dict_bank)
+                
+            # Bank Charges
+            counterpart_aml_dict_bank = self._get_shared_move_line_vals(self.bank_charges, 0, self.bank_charges, move.id, False)
+            print ("Counterpart ", counterpart_aml_dict_bank)
+            counterpart_aml_dict_bank.update({
+                'account_id': self.bank_charges_account_id.id,
+                'currency_id': self.currency_id.id,
+                'amount_currency': self.bank_charges,
+                'name': 'Bank Charges'
+            })
 
-                for line in move.line_ids:
-                    print ("Entries Account ", line.account_id.name)
-                    print ("Entries Debit ", line.debit)
-                    print ("Entries Credit ", line.credit)
+            liquidity_aml_dict_bank = counterpart_aml_dict_bank
+            print ("Liquidity Aml Dict 2 ", liquidity_aml_dict_bank)
+            
+            aml_obj.create(liquidity_aml_dict_bank)
+
+            for line in move.line_ids:
+                print ("Entries Account ", line.account_id.name)
+                print ("Entries Debit ", line.debit)
+                print ("Entries Credit ", line.credit)
+
+            #############################################
 
             move.post()
             return move
