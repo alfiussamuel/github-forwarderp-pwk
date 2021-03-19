@@ -289,7 +289,7 @@ class AccountPayment(models.Model):
                 print ("BBBBBBBBBBBBBB ", counterpart_aml_dict)
 
                 # Bank Charges
-                counterpart_aml_dict_bank = self._get_shared_move_line_vals(0, self.bank_charges, -self.bank_charges, move.id, False)
+                counterpart_aml_dict_bank = self._get_shared_move_line_vals(self.bank_charges, 0, self.bank_charges, move.id, False)
                 print ("Counterpart ", counterpart_aml_dict_bank)
                 counterpart_aml_dict_bank.update({
                     'account_id': self.bank_charges_account_id.id,
