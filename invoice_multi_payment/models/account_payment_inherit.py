@@ -92,9 +92,9 @@ class AccountPayment(models.Model):
             if res.reconciled_invoice_ids:
                 for invoice in res.reconciled_invoice_ids:
                     if invoice_list:
-                        invoice_list = str(invoice_list) + ", " + str(invoice.invoice_id.number)
+                        invoice_list = str(invoice_list) + ", " + str(invoice.number)
                     elif not invoice_list:
-                        invoice_list = str(invoice.invoice_id.name)
+                        invoice_list = str(invoice.number)
             res.invoice_list = invoice_list
    
     @api.multi
