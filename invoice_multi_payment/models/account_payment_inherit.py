@@ -1,5 +1,6 @@
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
+from num2words import num2words
 
 
 class AccountPayment(models.Model):
