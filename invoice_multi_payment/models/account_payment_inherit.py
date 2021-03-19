@@ -25,22 +25,22 @@ class AccountPayment(models.Model):
     def terbilang_english(self, satuan):        
         huruf = ["","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fivteen","Sixteen","Seventeen","Eighteen","Nineteen","Twenty"]
         hasil = ""; 
-        if satuan < 21: 
-            hasil = hasil + huruf[int(satuan)];         
-        elif satuan < 100:
-            hasil = hasil + self.terbilang_english(satuan / 10) + "ty " + self.terbilang_english(satuan % 10);      
-        elif satuan < 1000: 
-            hasil = hasil + self.terbilang_english(satuan / 100) +" Hundred " + self.terbilang_english(satuan % 100); 
-        elif satuan < 2000: 
-            hasil = hasil + self.terbilang_english(satuan / 1000) + "Thousand " + self.terbilang_english(satuan - 1000); 
-        elif satuan < 1000000: 
-            hasil = hasil + self.terbilang_english(satuan % 100000) + self.terbilang_english(satuan / 1000) + " Thousand " + self.terbilang_english(satuan % 1000); 
-        elif satuan < 1000000000:
-            hasil = hasil + self.terbilang_english(satuan % 100000000) + self.terbilang_english(satuan / 1000000) + " Million " + self.terbilang_english(satuan % 1000000);
-        elif satuan < 1000000000000:
-            hasil = hasil + self.terbilang_english(satuan / 1000000000) + " Billion " + self.terbilang_english(satuan % 1000000000)
-        elif satuan >= 1000000000000:
-            hasil = "Angka terlalu besar, harus kurang dari 1 Trilyun!"; 
+        # if satuan < 21: 
+        #     hasil = hasil + huruf[int(satuan)];         
+        # elif satuan < 100:
+        #     hasil = hasil + self.terbilang_english(satuan / 10) + "ty " + self.terbilang_english(satuan % 10);      
+        # elif satuan < 1000: 
+        #     hasil = hasil + self.terbilang_english(satuan / 100) +" Hundred " + self.terbilang_english(satuan % 100); 
+        # elif satuan < 2000: 
+        #     hasil = hasil + self.terbilang_english(satuan / 1000) + "Thousand " + self.terbilang_english(satuan - 1000); 
+        # elif satuan < 1000000: 
+        #     hasil = hasil + self.terbilang_english(satuan % 100000) + self.terbilang_english(satuan / 1000) + " Thousand " + self.terbilang_english(satuan % 1000); 
+        # elif satuan < 1000000000:
+        #     hasil = hasil + self.terbilang_english(satuan % 100000000) + self.terbilang_english(satuan / 1000000) + " Million " + self.terbilang_english(satuan % 1000000);
+        # elif satuan < 1000000000000:
+        #     hasil = hasil + self.terbilang_english(satuan / 1000000000) + " Billion " + self.terbilang_english(satuan % 1000000000)
+        # elif satuan >= 1000000000000:
+        #     hasil = "Angka terlalu besar, harus kurang dari 1 Trilyun!"; 
         return hasil;
 
     def terbilang(self, satuan):
