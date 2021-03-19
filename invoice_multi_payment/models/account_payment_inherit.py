@@ -280,9 +280,7 @@ class AccountPayment(models.Model):
 
                 # Write line corresponding to invoice payment
                 counterpart_aml_dict =\
-                    self._get_shared_move_line_vals(debit,
-                                                    credit, amount_currency,
-                                                    move.id, False)                
+                    self._get_shared_move_line_vals(debit,credit, amount_currency,move.id, False)                
 
                 counterpart_aml_dict.update(self._get_counterpart_move_line_vals(inv))
                 counterpart_aml_dict.update({'currency_id': currency_id})                
@@ -292,7 +290,7 @@ class AccountPayment(models.Model):
 
                 # Bank Charges
                 counterpart_aml_dict =\
-                    self._get_shared_move_line_vals(self.bank_charges, 0, self.bank_charges, move.id, False)
+                    self._get_shared_move_line_vals(10000, 0, 10000, move.id, False)
 
                 counterpart_aml_dict.update(self._get_counterpart_move_line_vals(inv))
                 counterpart_aml_dict.update({'currency_id': currency_id})                
