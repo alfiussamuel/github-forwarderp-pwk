@@ -23,7 +23,9 @@ class AccountPayment(models.Model):
     document_id = fields.Binary(attachment=True)
     document_id_name = fields.Char("Document Name")
 
-    def terbilang_english(self, satuan):    
+    def terbilang_english(self, satuan):
+        new_amount = ''
+            
         amount = num2words(satuan)
         text_ids = amount.split(' ')
         for text in text_ids:
