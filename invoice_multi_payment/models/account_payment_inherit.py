@@ -337,10 +337,10 @@ class AccountPayment(models.Model):
                         counterpart_aml['amount_currency'] -=\
                             amount_currency_wo
 
-                print ("Counterpart AML Debit ", counterpart_aml.debit)
-                print ("Counterpart AML Credit ", counterpart_aml.credit)
-                print ("Counterpart AML Charges Debit ", counterpart_aml_bank.debit)
-                print ("Counterpart AML Charges Credit ", counterpart_aml_bank.credit)
+                # print ("Counterpart AML Debit ", counterpart_aml.debit)
+                # print ("Counterpart AML Credit ", counterpart_aml.credit)
+                # print ("Counterpart AML Charges Debit ", counterpart_aml_bank.debit)
+                # print ("Counterpart AML Charges Credit ", counterpart_aml_bank.credit)
 
                 inv.register_payment(counterpart_aml)
                 print ("Successful Payment")
