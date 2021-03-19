@@ -25,7 +25,7 @@ class AccountPayment(models.Model):
 
     def terbilang_english(self, satuan):
         new_amount = ''
-            
+
         amount = num2words(satuan)
         text_ids = amount.split(' ')
         for text in text_ids:
@@ -91,7 +91,7 @@ class AccountPayment(models.Model):
                 amount = res.terbilang(res.amount) + " Rupiah"
             elif res.currency_option == "USD":
                 print ("Amount USD")
-                amount = res.terbilang_english(int(res.amount)) + " Dollar"
+                amount = str(res.terbilang_english(int(res.amount)))
 
             res.amount_bank_terbilang = amount
 
