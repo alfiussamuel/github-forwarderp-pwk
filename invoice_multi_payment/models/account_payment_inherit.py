@@ -26,9 +26,7 @@ class AccountPayment(models.Model):
     def terbilang_english(self, satuan):
         new_amount = ''
 
-        print ("Satuan ", satuan)
         amount = num2words(satuan)
-        print ("Amount ", amount)
         text_ids = amount.split(' ')
         for text in text_ids:
             if new_amount:
@@ -37,7 +35,8 @@ class AccountPayment(models.Model):
                 new_amount += (text.capitalize())
 
         hasil = new_amount + " Dollars"
-
+        return hasil
+        
         # huruf = ["","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fivteen","Sixteen","Seventeen","Eighteen","Nineteen","Twenty"]
         # hasil = ""; 
         # print ("Satuan ", satuan)
