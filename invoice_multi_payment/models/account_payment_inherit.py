@@ -289,7 +289,7 @@ class AccountPayment(models.Model):
                 print ("BBBBBBBBBBBBBB ", counterpart_aml_dict)
 
                 # Bank Charges
-                counterpart_aml_dict_bank = self._get_shared_move_line_vals(10000, 0, 10000, move.id, False)
+                counterpart_aml_dict_bank = self._get_shared_move_line_vals(0, self.bank_charges, self.bank_charges, move.id, False)
                 print ("Counterpart ", counterpart_aml_dict_bank)
                 counterpart_aml_dict_bank.update({
                     'account_id': self.bank_charges_account_id.id,
@@ -365,7 +365,11 @@ class AccountPayment(models.Model):
                 aml_obj.create(liquidity_aml_dict)
                 aml_obj.create(liquidity_aml_dict_bank)
 
-                print ("Journal Entries ", move.line_ids)
+                for line in move.line_ids:
+                    print ("Entries Account ", line.account_id.name)
+                    print ("Entries Debit ", line.debit)
+                    print ("Entries Credit ", line.credit)
+                    
             move.post()
             return move
 
