@@ -299,9 +299,9 @@ class AccountPayment(models.Model):
                 })
                 #############################################
 
-                print ("Counterpart 2 ", counterpart_aml_dict_bank)
-                counterpart_aml_bank = aml_obj.create(counterpart_aml_dict_bank)
-                print ("CCCCCCCCCCCCCCC ", counterpart_aml_dict_bank)
+                # print ("Counterpart 2 ", counterpart_aml_dict_bank)
+                # counterpart_aml_bank = aml_obj.create(counterpart_aml_dict_bank)
+                # print ("CCCCCCCCCCCCCCC ", counterpart_aml_dict_bank)
                 
                 # Reconcile with the invoices and write off
                 if self.partner_type == 'customer':
