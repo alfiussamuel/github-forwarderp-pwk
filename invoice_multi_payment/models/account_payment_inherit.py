@@ -350,6 +350,8 @@ class AccountPayment(models.Model):
                     self._get_shared_move_line_vals(credit, debit,
                                                     -amount_currency, move.id,
                                                     False)
+                print ("Liquidity Aml Dict 0 ", liquidity_aml_dict)
+
                 liquidity_aml_dict.update(
                     self._get_liquidity_move_line_vals(-(amount - self.bank_charges)))
 
