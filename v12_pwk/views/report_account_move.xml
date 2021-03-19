@@ -81,19 +81,19 @@
                     <tr height="120px">                  
                         <td width="25%"
                             style="text-align:center;padding:5px;font-size:12px;border:1px solid black;">
-                            PREPARE BY
+                            PREPARED BY
                         </td>
                         <td width="25%"
                             style="text-align:center;padding:5px;font-size:12px;border:1px solid black;">
-                            APPROVE BY
+                            APPROVED BY
                         </td>
                         <td width="25%"
                             style="text-align:center;padding:5px;font-size:12px;border:1px solid black;">
-                            CONTROL BY
+                            CONTROLLED BY
                         </td>
                         <td width="25%"
                             style="text-align:center;padding:5px;font-size:12px;border:1px solid black;">
-                            RECEIVE BY
+                            RECEIVED BY
                         </td>
                     </tr>                              
                 </table>                
