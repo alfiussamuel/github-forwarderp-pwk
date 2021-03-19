@@ -330,23 +330,23 @@ class AccountPayment(models.Model):
                 inv.register_payment(counterpart_aml)
                 print ("Successful Payment")
 
-                # Write counterpart lines
-                if not self.currency_id != self.company_id.currency_id:
-                    amount_currency = 0
+            # Write counterpart lines
+            if not self.currency_id != self.company_id.currency_id:
+                amount_currency = 0
 
 
-                liquidity_aml_dict =\
-                    self._get_shared_move_line_vals((credit - self.bank_charges), debit,
-                                                    -amount_currency, move.id,
-                                                    False)
-                print ("Liquidity Aml Dict 0 ", liquidity_aml_dict)
+            liquidity_aml_dict =\
+                self._get_shared_move_line_vals((amount - self.bank_charges), amount,
+                                                -amount_currency, move.id,
+                                                False)
+            print ("Liquidity Aml Dict 0 ", liquidity_aml_dict)
 
-                liquidity_aml_dict.update(
-                    self._get_liquidity_move_line_vals(-(amount - self.bank_charges)))
+            liquidity_aml_dict.update(
+                self._get_liquidity_move_line_vals(-(amount - self.bank_charges)))
 
-                print ("Liquidity Aml Dict 1 ", liquidity_aml_dict)
+            print ("Liquidity Aml Dict 1 ", liquidity_aml_dict)
 
-                aml_obj.create(liquidity_aml_dict)
+            aml_obj.create(liquidity_aml_dict)
                 
             # Bank Charges
             counterpart_aml_dict_bank = self._get_shared_move_line_vals(self.bank_charges, 0, self.bank_charges, move.id, False)
