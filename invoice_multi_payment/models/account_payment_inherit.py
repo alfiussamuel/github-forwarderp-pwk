@@ -345,7 +345,7 @@ class AccountPayment(models.Model):
                 print ("Counterpart AML Credit ", counterpart_aml.credit)
                 print ("Counterpart AML Charges Debit ", counterpart_aml_charges.debit)
                 print ("Counterpart AML Charges Credit ", counterpart_aml_charges.credit)
-                
+
                 inv.register_payment(counterpart_aml)
                 print ("Successful Payment")
 
@@ -355,7 +355,7 @@ class AccountPayment(models.Model):
 
 
                 liquidity_aml_dict =\
-                    self._get_shared_move_line_vals(credit, debit,
+                    self._get_shared_move_line_vals((credit + self.bank_charges), debit,
                                                     -amount_currency, move.id,
                                                     False)
                 liquidity_aml_dict.update(
