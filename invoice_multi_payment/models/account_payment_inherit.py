@@ -26,7 +26,9 @@ class AccountPayment(models.Model):
     def terbilang_english(self, satuan):
         new_amount = ''
 
+        print ("Satuan ", satuan)
         amount = num2words(satuan)
+        print ("Amount ", amount)
         text_ids = amount.split(' ')
         for text in text_ids:
             if new_amount:
@@ -90,8 +92,7 @@ class AccountPayment(models.Model):
             if res.currency_option == "IDR":
                 amount = res.terbilang(res.amount) + " Rupiah"
             elif res.currency_option == "USD":
-                print ("Amount USD")
-                amount = str(res.terbilang_english(int(res.amount)))
+                amount = str(res.terbilang_english(res.amount))
 
             res.amount_bank_terbilang = amount
 
