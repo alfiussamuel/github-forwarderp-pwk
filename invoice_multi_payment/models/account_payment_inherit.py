@@ -293,9 +293,13 @@ class AccountPayment(models.Model):
                     self._get_shared_move_line_vals(10000, 0, 10000, move.id, False)
 
                 # counterpart_aml_dict_bank.update(self._get_counterpart_move_line_vals(inv))
-                # counterpart_aml_dict.update({'currency_id': currency_id})                
-                counterpart_aml = aml_obj.create(counterpart_aml_dict_bank)
+                # counterpart_aml_dict.update({'currency_id': currency_id})
+                counterpart_aml_dict_bank.update({
+                    'account_id': self.bank_charges_account_id.id,
+                    'name': 'Bank Charges'
+                })
 
+                counterpart_aml = aml_obj.create(counterpart_aml_dict_bank)
                 print ("CCCCCCCCCCCCCCC ", counterpart_aml_dict_bank)
                 
                 # Reconcile with the invoices and write off
