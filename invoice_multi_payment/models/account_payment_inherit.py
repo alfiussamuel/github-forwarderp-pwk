@@ -76,6 +76,7 @@ class AccountPayment(models.Model):
             if res.currency_option == "IDR":
                 amount = res.terbilang(res.amount) + " Rupiah"
             elif res.currency_option == "USD":
+                print ("Amount USD")
                 amount = res.terbilang_english(res.amount) + " Dollar"
 
             res.amount_bank_terbilang = amount
@@ -190,19 +191,6 @@ class AccountPayment(models.Model):
     def post(self):
         """"Override to process multiple invoice using single payment."""
         for rec in self:
-            # code start
-#             total = 0.0
-#             for line in rec.invoice_lines:
-#                 if line.allocation < 0:
-#                     raise ValidationError(_("Negative allocation amount not allowed!"))
-#                 if line.allocation > line.open_amount:
-#                     raise UserError("Allocation amount %s is greater then open amount %s of Invoice." % (line.allocation, line.open_amount))
-#                 total += line.allocation
-#                 if line.open_amount != line.invoice_id.residual:
-#                     raise UserError("Due amount changed.\n Please click 'Update Invoice' button to update amount")
-#                  
-#             if total > rec.amount:
-#                 raise UserError("Total allocation %s is more then payment amount %s" % (total, rec.amount))
             amt = 0            
 
             if not rec.name:
@@ -286,8 +274,6 @@ class AccountPayment(models.Model):
                 counterpart_aml_dict.update({'currency_id': currency_id})                
                 counterpart_aml = aml_obj.create(counterpart_aml_dict)
 
-                print ("BBBBBBBBBBBBBB ", counterpart_aml_dict)
-
                 # Reconcile with the invoices and write off
                 if self.partner_type == 'customer':
                     handling = 'open'
@@ -322,54 +308,37 @@ class AccountPayment(models.Model):
                         counterpart_aml['amount_currency'] -=\
                             amount_currency_wo
 
-                # print ("Counterpart AML Debit ", counterpart_aml.debit)
-                # print ("Counterpart AML Credit ", counterpart_aml.credit)
-                # print ("Counterpart AML Charges Debit ", counterpart_aml_bank.debit)
-                # print ("Counterpart AML Charges Credit ", counterpart_aml_bank.credit)
-
                 inv.register_payment(counterpart_aml)
-                print ("Successful Payment")
 
             # Write counterpart lines
             if not self.currency_id != self.company_id.currency_id:
                 amount_currency = 0
 
+            # Get Final amount after bank charges deduction
+            paid_amount_with_charges = self.amount - self.bank_charges
 
-            liquidity_aml_dict =\
-                self._get_shared_move_line_vals((self.amount - self.bank_charges), 0,
-                                                -amount_currency, move.id,
-                                                False)
-            print ("Liquidity Aml Dict 0 ", liquidity_aml_dict)
+            # Get Liquid Line
+            liquidity_aml_dict = self._get_shared_move_line_vals((paid_amount_with_charges), 0, -amount_currency, move.id, False)
 
-            liquidity_aml_dict.update(
-                self._get_liquidity_move_line_vals(-(self.amount - self.bank_charges)))
+            # Update Liquid Lines with additional Information
+            liquidity_aml_dict.update(self._get_liquidity_move_line_vals(-(paid_amount_with_charges)))
 
-            print ("Liquidity Aml Dict 1 ", liquidity_aml_dict)
-
+            # Create Account Move Line for Liquid
             aml_obj.create(liquidity_aml_dict)
                 
-            # Bank Charges
+            # Get Dictionary for Bank Charges Line
             counterpart_aml_dict_bank = self._get_shared_move_line_vals(self.bank_charges, 0, self.bank_charges, move.id, False)
-            print ("Counterpart ", counterpart_aml_dict_bank)
             counterpart_aml_dict_bank.update({
                 'account_id': self.bank_charges_account_id.id,
                 'currency_id': self.currency_id.id,
                 'amount_currency': self.bank_charges,
                 'name': 'Bank Charges'
             })
-
-            liquidity_aml_dict_bank = counterpart_aml_dict_bank
-            print ("Liquidity Aml Dict 2 ", liquidity_aml_dict_bank)
             
-            aml_obj.create(liquidity_aml_dict_bank)
+            # Create Account Move Line for Bank Charges
+            aml_obj.create(counterpart_aml_dict_bank)
 
-            for line in move.line_ids:
-                print ("Entries Account ", line.account_id.name)
-                print ("Entries Debit ", line.debit)
-                print ("Entries Credit ", line.credit)
-
-            #############################################
-
+            # Post Journal Entries
             move.post()
             return move
 

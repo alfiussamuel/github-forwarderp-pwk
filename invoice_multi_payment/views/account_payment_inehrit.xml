@@ -131,6 +131,9 @@
                                     <field name="new_description"/>
                                 </group>
                             </group>
+                            <group>
+                                <field name="amount_bank_terbilang"/>
+                            </group>
                         </page>
 					</notebook> 
 				</xpath> 
