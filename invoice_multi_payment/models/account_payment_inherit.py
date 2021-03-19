@@ -289,22 +289,18 @@ class AccountPayment(models.Model):
                 print ("BBBBBBBBBBBBBB ", counterpart_aml_dict)
 
                 # Bank Charges
-                counterpart_aml_dict_bank =\
-                    self._get_shared_move_line_vals(10000, 0, 10000, move.id, False)
-
+                counterpart_aml_dict_bank = self._get_shared_move_line_vals(10000, 0, 10000, move.id, False)
                 print ("Counterpart ", counterpart_aml_dict_bank)
-
-                # counterpart_aml_dict_bank.update(self._get_counterpart_move_line_vals(inv))
-                # counterpart_aml_dict.update({'currency_id': currency_id})
                 counterpart_aml_dict_bank.update({
                     'account_id': self.bank_charges_account_id.id,
                     'currency_id': self.currency_id.id,
                     'amount_currency': self.bank_charges,
                     'name': 'Bank Charges'
                 })
+                #############################################
 
                 print ("Counterpart 2 ", counterpart_aml_dict_bank)
-                counterpart_aml_charges = aml_obj.create(counterpart_aml_dict_bank)
+                counterpart_aml_bank = aml_obj.create(counterpart_aml_dict_bank)
                 print ("CCCCCCCCCCCCCCC ", counterpart_aml_dict_bank)
                 
                 # Reconcile with the invoices and write off
@@ -343,8 +339,8 @@ class AccountPayment(models.Model):
 
                 print ("Counterpart AML Debit ", counterpart_aml.debit)
                 print ("Counterpart AML Credit ", counterpart_aml.credit)
-                print ("Counterpart AML Charges Debit ", counterpart_aml_charges.debit)
-                print ("Counterpart AML Charges Credit ", counterpart_aml_charges.credit)
+                print ("Counterpart AML Charges Debit ", counterpart_aml_bank.debit)
+                print ("Counterpart AML Charges Credit ", counterpart_aml_bank.credit)
 
                 inv.register_payment(counterpart_aml)
                 print ("Successful Payment")
@@ -355,13 +351,16 @@ class AccountPayment(models.Model):
 
 
                 liquidity_aml_dict =\
-                    self._get_shared_move_line_vals((credit + self.bank_charges), debit,
+                    self._get_shared_move_line_vals((credit), debit,
                                                     -amount_currency, move.id,
                                                     False)
                 liquidity_aml_dict.update(
                     self._get_liquidity_move_line_vals(-amount))
+
+                print ("Liquidity Aml Dict 1 ", liquidity_aml_dict)
+                liquidity_aml_dict.update(counterpart_aml_bank)
+                print ("Liquidity Aml Dict 2 ", liquidity_aml_dict)
                 
-                print ("Liquidity Aml Dict ", liquidity_aml_dict)
                 aml_obj.create(liquidity_aml_dict)
             move.post()
             return move
