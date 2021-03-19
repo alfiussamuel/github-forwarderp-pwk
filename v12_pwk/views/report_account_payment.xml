@@ -209,7 +209,12 @@
                         <tr>                            
                             <td width="14%"
                                 style="text-align:left;border:0px;padding:5px;font-size:14px;">
-                                <strong>TO</strong>                                
+                                <t t-if="o.payment_type == 'inbound'">
+                                    <strong>FROM</strong>
+                                </t>                                
+                                <t t-if="o.payment_type == 'outbound'">
+                                    <strong>TO</strong>
+                                </t>                                
                             </td>
                             <td width="2%"
                                 style="text-align:left;border:0px;padding:5px;font-size:14px;">
@@ -218,7 +223,7 @@
                             <td width="74%" colspan="2"
                                 style="text-align:left;border:0px;padding:5px;font-size:14px;">
                                 <t t-if="o.payment_type == 'inbound'">
-                                    <span t-field="o.to_text"/>
+                                    <span t-field="o.partner_id.name"/>
                                 </t>                                
                                 <t t-if="o.payment_type == 'outbound'">
                                     <span t-field="o.bank_account_id.bank_id.name"/> <span t-field="o.bank_account_id.acc_number"/> a/n <span t-field="o.partner_id.name"/>
@@ -242,7 +247,12 @@
                         <tr>                            
                             <td width="14%"
                                 style="text-align:left;border:0px;padding:5px;font-size:14px;">
-                                <strong>FROM</strong>                                
+                                <t t-if="o.payment_type == 'inbound'">
+                                    <strong>TO</strong>
+                                </t>                                
+                                <t t-if="o.payment_type == 'outbound'">
+                                    <strong>FROM</strong>
+                                </t>                                
                             </td>
                             <td width="2%"
                                 style="text-align:left;border:0px;padding:5px;font-size:14px;">
@@ -251,7 +261,7 @@
                             <td width="74%" colspan="2"
                                 style="text-align:left;border:0px;padding:5px;font-size:14px;">
                                 <t t-if="o.payment_type == 'inbound'">
-                                    <span t-field="o.from_text"/>
+                                    Bank <span t-field="o.journal_id.bank_account_id.bank_id.name"/> CAB <span t-field="o.journal_id.bank_account_id.bank_id.street"/> (<span t-field="o.journal_id.bank_account_id.currency_id.name"/>) <span t-field="o.journal_id.bank_account_id.acc_number"/>
                                 </t>                                
                                 <t t-if="o.payment_type == 'outbound'">
                                     PT. Prima Wana Kreasi Wood Industry
