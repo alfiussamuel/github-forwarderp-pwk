@@ -299,10 +299,6 @@ class AccountPayment(models.Model):
                 })
                 #############################################
 
-                # print ("Counterpart 2 ", counterpart_aml_dict_bank)
-                # counterpart_aml_bank = aml_obj.create(counterpart_aml_dict_bank)
-                # print ("CCCCCCCCCCCCCCC ", counterpart_aml_dict_bank)
-                
                 # Reconcile with the invoices and write off
                 if self.partner_type == 'customer':
                     handling = 'open'
@@ -351,7 +347,7 @@ class AccountPayment(models.Model):
 
 
                 liquidity_aml_dict =\
-                    self._get_shared_move_line_vals((credit), debit,
+                    self._get_shared_move_line_vals(credit, (debit - self.bank_charges),
                                                     -amount_currency, move.id,
                                                     False)
                 liquidity_aml_dict.update(
