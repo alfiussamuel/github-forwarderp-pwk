@@ -358,10 +358,12 @@ class AccountPayment(models.Model):
                     self._get_liquidity_move_line_vals(-amount))
 
                 print ("Liquidity Aml Dict 1 ", liquidity_aml_dict)
-                liquidity_aml_dict.update(counterpart_aml_dict_bank)
+                
+                liquidity_aml_dict_bank.update(counterpart_aml_dict_bank)
                 print ("Liquidity Aml Dict 2 ", liquidity_aml_dict)
                 
                 aml_obj.create(liquidity_aml_dict)
+                aml_obj.create(liquidity_aml_dict_bank)
             move.post()
             return move
 
