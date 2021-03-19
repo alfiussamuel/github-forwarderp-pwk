@@ -346,12 +346,16 @@ class AccountPayment(models.Model):
                 # Write counterpart lines
                 if not self.currency_id != self.company_id.currency_id:
                     amount_currency = 0
+
+
                 liquidity_aml_dict =\
                     self._get_shared_move_line_vals(credit, debit,
                                                     -amount_currency, move.id,
                                                     False)
                 liquidity_aml_dict.update(
                     self._get_liquidity_move_line_vals(-amount))
+                
+                print ("Liquidity Aml Dict ", liquidity_aml_dict)
                 aml_obj.create(liquidity_aml_dict)
             move.post()
             return move
