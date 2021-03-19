@@ -37,27 +37,6 @@ class AccountPayment(models.Model):
         hasil = new_amount + " Dollars"
         return hasil
         
-        # huruf = ["","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fivteen","Sixteen","Seventeen","Eighteen","Nineteen","Twenty"]
-        # hasil = ""; 
-        # print ("Satuan ", satuan)
-        # if satuan < 21: 
-        #     hasil = hasil + huruf[int(satuan)];         
-        # elif satuan < 100:
-        #     hasil = hasil + self.terbilang_english(satuan / 10) + "ty " + self.terbilang_english(satuan % 10);      
-        # elif satuan < 1000: 
-        #     hasil = hasil + self.terbilang_english(satuan / 100) +" Hundred " + self.terbilang_english(satuan % 100); 
-        # elif satuan < 2000: 
-        #     hasil = hasil + self.terbilang_english(satuan / 1000) + "Thousand " + self.terbilang_english(satuan - 1000); 
-        # elif satuan < 1000000: 
-        #     hasil = hasil + self.terbilang_english(satuan % 100000) + self.terbilang_english(satuan / 1000) + " Thousand " + self.terbilang_english(satuan % 1000); 
-        # elif satuan < 1000000000:
-        #     hasil = hasil + self.terbilang_english(satuan % 100000000) + self.terbilang_english(satuan / 1000000) + " Million " + self.terbilang_english(satuan % 1000000);
-        # elif satuan < 1000000000000:
-        #     hasil = hasil + self.terbilang_english(satuan / 1000000000) + " Billion " + self.terbilang_english(satuan % 1000000000)
-        # elif satuan >= 1000000000000:
-        #     hasil = "Angka terlalu besar, harus kurang dari 1 Trilyun!"; 
-        # return hasil;
-
     def terbilang(self, satuan):
         huruf = ["","Satu","Dua","Tiga","Empat","Lima","Enam","Tujuh","Delapan","Sembilan","Sepuluh","Sebelas"]
         # huruf = ["","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve"]
@@ -110,8 +89,8 @@ class AccountPayment(models.Model):
     def _get_invoice_list(self):
         for res in self:
             invoice_list = ''
-            if res.invoice_lines:
-                for invoice in res.invoice_lines:
+            if res.reconciled_invoice_ids:
+                for invoice in res.reconciled_invoice_ids:
                     if invoice_list:
                         invoice_list = str(invoice_list) + ", " + str(invoice.invoice_id.number)
                     elif not invoice_list:

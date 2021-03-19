@@ -258,6 +258,25 @@
                                 </t>                                
                             </td>                                            
                         </tr>
+                        <tr>                            
+                            <td width="14%"
+                                style="text-align:left;border:0px;padding:5px;font-size:14px;">
+                                <strong>INVOICE NO.</strong>                                
+                            </td>
+                            <td width="2%"
+                                style="text-align:left;border:0px;padding:5px;font-size:14px;">
+                                <strong>:</strong>
+                            </td>            
+                            <td width="74%" colspan="2"
+                                style="text-align:left;border:0px;padding:5px;font-size:14px;">
+                                <t t-if="o.payment_type == 'inbound'">
+                                    <span t-field="o.from_text"/>
+                                </t>                                
+                                <t t-if="o.payment_type == 'outbound'">
+                                    PT. Prima Wana Kreasi Wood Industry
+                                </t>                                
+                            </td>                                            
+                        </tr>
                     </table>                                                 
                 </div>
             </t>
