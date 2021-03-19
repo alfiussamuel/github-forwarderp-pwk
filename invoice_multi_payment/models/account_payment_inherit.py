@@ -22,6 +22,7 @@ class AccountPayment(models.Model):
     amount_bank_terbilang = fields.Char(compute="_get_amount_bank_terbilang", string="Amount Bank Terbilang")
     document_id = fields.Binary(attachment=True)
     document_id_name = fields.Char("Document Name")
+    kode_pajak = fields.Char('Kode Pajak')
 
     def terbilang_english(self, satuan):
         new_amount = ''
