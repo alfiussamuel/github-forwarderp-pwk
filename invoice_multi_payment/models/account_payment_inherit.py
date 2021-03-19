@@ -25,6 +25,7 @@ class AccountPayment(models.Model):
     def terbilang_english(self, satuan):        
         huruf = ["","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fivteen","Sixteen","Seventeen","Eighteen","Nineteen","Twenty"]
         hasil = ""; 
+        print ("Satuan ", satuan)
         if satuan < 21: 
             hasil = hasil + huruf[int(satuan)];         
         elif satuan < 100:
