@@ -304,7 +304,7 @@ class AccountPayment(models.Model):
                 })
 
                 print ("Counterpart 2 ", counterpart_aml_dict_bank)
-                counterpart_aml = aml_obj.create(counterpart_aml_dict_bank)
+                counterpart_aml_charges = aml_obj.create(counterpart_aml_dict_bank)
                 print ("CCCCCCCCCCCCCCC ", counterpart_aml_dict_bank)
                 
                 # Reconcile with the invoices and write off
@@ -343,6 +343,9 @@ class AccountPayment(models.Model):
 
                 print ("Counterpart AML Debit ", counterpart_aml.debit)
                 print ("Counterpart AML Credit ", counterpart_aml.credit)
+                print ("Counterpart AML Charges Debit ", counterpart_aml_charges.debit)
+                print ("Counterpart AML Charges Credit ", counterpart_aml_charges.credit)
+                
                 inv.register_payment(counterpart_aml)
                 print ("Successful Payment")
 
