@@ -284,21 +284,21 @@ class AccountPayment(models.Model):
                                                     credit, amount_currency,
                                                     move.id, False)                
 
-                counterpart_aml_dict.update(
-                    self._get_counterpart_move_line_vals(inv))
+                counterpart_aml_dict.update(self._get_counterpart_move_line_vals(inv))
                 counterpart_aml_dict.update({'currency_id': currency_id})                
                 counterpart_aml = aml_obj.create(counterpart_aml_dict)
 
                 print ("BBBBBBBBBBBBBB ", counterpart_aml_dict)
 
                 # Bank Charges
-                # counterpart_aml_dict.
-                #     self._get_shared_move_line_vals(self.bank_charges, 0, self.bank_charges, move.id, False)
-                # counterpart_aml_dict.update(self._get_counterpart_move_line_vals(inv))
-                # counterpart_aml_dict.update({'currency_id': currency_id})                
-                # counterpart_aml = aml_obj.create(counterpart_aml_dict)
+                counterpart_aml_dict =\
+                    self._get_shared_move_line_vals(self.bank_charges, 0, self.bank_charges, move.id, False)
 
-                # print ("BBBBBBBBBBBBBB ", counterpart_aml_dict)
+                counterpart_aml_dict.update(self._get_counterpart_move_line_vals(inv))
+                counterpart_aml_dict.update({'currency_id': currency_id})                
+                counterpart_aml = aml_obj.create(counterpart_aml_dict)
+
+                print ("CCCCCCCCCCCCCCC ", counterpart_aml_dict)
                 
                 # Reconcile with the invoices and write off
                 if self.partner_type == 'customer':
