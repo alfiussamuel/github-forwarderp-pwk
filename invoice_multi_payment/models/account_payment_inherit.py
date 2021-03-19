@@ -336,7 +336,7 @@ class AccountPayment(models.Model):
 
 
             liquidity_aml_dict =\
-                self._get_shared_move_line_vals((amount - self.bank_charges), amount,
+                self._get_shared_move_line_vals((self.amount - self.bank_charges), self.amount,
                                                 -amount_currency, move.id,
                                                 False)
             print ("Liquidity Aml Dict 0 ", liquidity_aml_dict)
