@@ -341,8 +341,11 @@ class AccountPayment(models.Model):
                         counterpart_aml['amount_currency'] -=\
                             amount_currency_wo
 
-                print ("Counterpart AML ", counterpart_aml)
+                print ("Counterpart AML Debit ", counterpart_aml.debit)
+                print ("Counterpart AML Credit ", counterpart_aml.credit)
                 inv.register_payment(counterpart_aml)
+                print ("Successful Payment")
+
                 # Write counterpart lines
                 if not self.currency_id != self.company_id.currency_id:
                     amount_currency = 0
