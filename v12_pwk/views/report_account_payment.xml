@@ -261,7 +261,7 @@
                             <td width="74%" colspan="2"
                                 style="text-align:left;border:0px;padding:5px;font-size:14px;">
                                 <t t-if="o.payment_type == 'inbound'">
-                                    Bank <span t-field="o.journal_id.bank_account_id.bank_id.name"/> CAB <span t-field="o.journal_id.bank_account_id.bank_id.street"/> (<span t-field="o.journal_id.bank_account_id.currency_id.name"/>) <span t-field="o.journal_id.bank_account_id.acc_number"/>
+                                    BANK <span t-field="o.journal_id.bank_account_id.bank_id.name"/> (<span t-field="o.journal_id.bank_account_id.currency_id.name"/>) <span t-field="o.journal_id.bank_account_id.acc_number"/>
                                 </t>                                
                                 <t t-if="o.payment_type == 'outbound'">
                                     PT. Prima Wana Kreasi Wood Industry
