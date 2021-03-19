@@ -229,7 +229,26 @@
                                     <span t-field="o.bank_account_id.bank_id.name"/> <span t-field="o.bank_account_id.acc_number"/> a/n <span t-field="o.partner_id.name"/>
                                 </t>  
                             </td>
-                        </tr>                               
+                        </tr>
+                        <tr>                            
+                            <td width="14%"
+                                style="text-align:left;border:0px;padding:5px;font-size:14px;">
+                                <strong>INVOICE NO.</strong>                                
+                            </td>
+                            <td width="2%"
+                                style="text-align:left;border:0px;padding:5px;font-size:14px;">
+                                <strong>:</strong>
+                            </td>            
+                            <td width="74%" colspan="2"
+                                style="text-align:left;border:0px;padding:5px;font-size:14px;">
+                                <t t-if="o.communication">
+                                    <span t-field="o.communication"/>
+                                </t>
+                                <t t-if="not o.communication">
+                                    <span t-field="o.invoice_list"/>
+                                </t>                                
+                            </td>                                            
+                        </tr>
                         <tr>                            
                             <td width="14%"
                                 style="text-align:left;border:0px;padding:5px;font-size:14px;">
@@ -266,20 +285,6 @@
                                 <t t-if="o.payment_type == 'outbound'">
                                     PT. Prima Wana Kreasi Wood Industry
                                 </t>                                
-                            </td>                                            
-                        </tr>
-                        <tr>                            
-                            <td width="14%"
-                                style="text-align:left;border:0px;padding:5px;font-size:14px;">
-                                <strong>INVOICE NO.</strong>                                
-                            </td>
-                            <td width="2%"
-                                style="text-align:left;border:0px;padding:5px;font-size:14px;">
-                                <strong>:</strong>
-                            </td>            
-                            <td width="74%" colspan="2"
-                                style="text-align:left;border:0px;padding:5px;font-size:14px;">
-                                <span t-field="o.invoice_list"/>                                
                             </td>                                            
                         </tr>
                     </table>                                                 
