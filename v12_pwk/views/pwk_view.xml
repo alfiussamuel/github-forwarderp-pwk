@@ -625,7 +625,7 @@
                             type="object" states="Purchase Request"/>
                         <button name="button_reload_all_bom" string="Reload BoM" 
                             type="object"/>
-                        <button name="action_change" string="Update" type="object" invisible="1"/>
+                        <button name="action_change" string="Update Data" type="object"/>
                         <button name="action_create_bahan_baku" string="Keb. Bahan Baku" 
                             class="oe_highlight" states="Draft" type="object"/>
                     </header>
