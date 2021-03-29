@@ -35,8 +35,8 @@ class MrpBom(models.Model):
 
             res.total_composition = total_composition
             res.total_tebal = total_tebal
-            res.tebal_invoice = res.product_id.tebal
-            res.recovery = (res.product_id.tebal / total_tebal) * 100
+            res.tebal_invoice = res.product_tmpl_id.product_variant_id.tebal
+            res.recovery = (res.tebal_invoice / total_tebal) * 100
 
 
 class MrpBomLine(models.Model):    
