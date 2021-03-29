@@ -25,7 +25,10 @@
                         <field name="total_composition"/>
                         <field name="total_tebal"/>
                         <field name="tebal_invoice"/>
-                        <field name="recovery"/>
+                        <label for="recovery"/>
+                        <div>
+                            <field name="recovery"/> %
+                        </div>
                     </group>
                 </field>
             </field>
