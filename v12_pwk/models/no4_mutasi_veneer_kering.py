@@ -420,7 +420,7 @@ class PwkMutasiVeneerKering(models.Model):
                     new_product_name = 'Veneer Kering ' + ' ' + str(source.product_id.tebal) + ' x ' + str(int(source.product_id.lebar)) + ' x ' + str(int(source.product_id.panjang)) + ' ' + source.product_id.jenis_kayu.name + ' ' + source.product_id.grade.name
 
                     new_product_ids = self.env['product.product'].search([
-                        ('name', '=', 'Veneer Kering 3.0 x 1220 x 1220 ALBASIA OPC A')
+                        ('name', '=', new_product_name)
                     ])
 
                     print(new_product_ids)
