@@ -11,7 +11,6 @@
                     <field name="bom_id"/>
                     <field name="product_uom_id"/>
                     <field name="product_qty"/>
-                    <field name="total_composition"/>
                 </tree>
             </field>
         </record>
@@ -25,7 +24,18 @@
                     <field name="total_composition"/>
                 </field>
             </field>
-        </record>   
+        </record>  
+
+        <record id="mrp_bom_tree_view_pwk" model="ir.ui.view">
+            <field name="name">Bill of Materials</field>
+            <field name="model">mrp.bom</field>            
+            <field name="inherit_id" ref="mrp.mrp_bom_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="product_qty" position="after">
+                    <field name="total_composition"/>
+                </field>
+            </field>
+        </record>  
 
         <!-- Purchase Request-->        
         <record id="pwk_purchase_request_filter" model="ir.ui.view">
