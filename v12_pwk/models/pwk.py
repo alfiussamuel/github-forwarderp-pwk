@@ -17,18 +17,24 @@ from num2words import num2words
 class MrpBom(models.Model):    
     _inherit = "mrp.bom"
 
-    total_composition = fields.Float(compute="_get_total_composition", string="Total Komposisi", digits=dp.get_precision('ZeroDecimal'))
+    total_composition = fields.Float(compute="_get_total_composition", string="Total Ply", digits=dp.get_precision('ZeroDecimal'))
+    total_tebal = fields.Float(compute="_get_total_composition", string="Total Komposisi", digits=dp.get_precision('OneDecimal'))
+    recovery = fields.Float(compute="_get_total_composition", string="Recovery", digits=dp.get_precision('ZeroDecimal'))
 
     @api.depends('bom_line_ids.product_qty')
     def _get_total_composition(self):
         for res in self:
             total_composition = 0
+            total_tebal = 0
 
             if res.bom_line_ids:
                 for line in res.bom_line_ids:
                     total_composition += line.product_qty
+                    total_tebal += line.product_id.tebal
 
             res.total_composition = total_composition
+            res.total_tebal = total_tebal
+            res.recovery = (res.product_id.tebal / total_tebal) * 100
 
 
 class MrpBomLine(models.Model):    

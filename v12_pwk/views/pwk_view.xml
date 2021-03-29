@@ -20,8 +20,12 @@
             <field name="model">mrp.bom</field>            
             <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
             <field name="arch" type="xml">
-                <field name="code" position="before">
-                    <field name="total_composition"/>
+                <field name="bom_line_ids" position="after">
+                    <group>
+                        <field name="total_composition"/>
+                        <field name="total_tebal"/>
+                        <field name="recovery"/>
+                    </group>
                 </field>
             </field>
         </record>  
@@ -33,6 +37,8 @@
             <field name="arch" type="xml">
                 <field name="product_uom_id" position="after">
                     <field name="total_composition"/>
+                    <field name="total_tebal"/>
+                    <field name="recovery"/>
                 </field>
             </field>
         </record>  
