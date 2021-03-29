@@ -31,7 +31,7 @@ class MrpBom(models.Model):
             if res.bom_line_ids:
                 for line in res.bom_line_ids:
                     total_composition += line.product_qty
-                    total_tebal += line.product_id.tebal
+                    total_tebal += (line.product_id.tebal * line.product_qty)
 
             res.total_composition = total_composition
             res.total_tebal = total_tebal
