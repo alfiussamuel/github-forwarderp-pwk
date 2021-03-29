@@ -14,10 +14,34 @@ import re
 from num2words import num2words
 
 
+class MrpBom(models.Model):    
+    _inherit = "mrp.bom"
+
+    total_composition = fields.Float(compute="_get_total_composition", string="Total Komposisi")
+
+    @api.depends('bom_line_ids.product_qty')
+    def _get_total_composition(self):
+        for res in self:
+            total_composition = 0
+
+            if res.bom_line_ids:
+                for line in res.bom_line_ids:
+                    total_composition += line.product_qty
+
+            res.total_composition = total_composition
+
+
+class MrpBomLine(models.Model):    
+    _inherit = "mrp.bom.line"
+
+    product_qty = fields.Float('Quantity', default=1.0, digits=dp.get_precision('OneDecimal'), required=True)
+
+
 class ResCompany(models.Model):    
     _inherit = "res.company"
 
     nomor_tdp = fields.Char('Nomor TDP')
+
 
 class PwkNotaPerusahaanLine(models.Model):    
     _name = "pwk.nota.perusahaan.line"
@@ -32,6 +56,7 @@ class PwkNotaPerusahaanLine(models.Model):
     keterangan = fields.Text('Keterangan')
     picking_id = fields.Many2one('stock.picking', 'Surat Jalan')
     move_id = fields.Many2one('stock.move', 'Stock Move')
+
 
 class PwkNotaPerusahaan(models.Model):    
     _name = "pwk.nota.perusahaan"
