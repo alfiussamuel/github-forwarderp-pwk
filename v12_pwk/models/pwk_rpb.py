@@ -664,10 +664,13 @@ class PwkRpb(models.Model):
                             if bom.quantity > bom.available_qty:
                                 if bom.product_id.id not in product_list:
                                     product_list.append(bom.product_id.id)
-                                
+                                    
+                                    if not bom.product_id.alternate_product_id:
+                                        raise UserError(_('Alternate Product is not defined'))
+
                                     self.env['pwk.purchase.request.volume'].create({
                                         'reference': request_veneer.id,
-                                        'product_id': bom.product_id.id,
+                                        'product_id': bom.product_id.alternate_product_id.id,
                                         'product_uom_id': bom.product_id.uom_po_id.id,
                                         'volume': 1.1 * ((bom.quantity - bom.available_qty) * line.thick * line.width * line.length / 1000000000)
                                     })
