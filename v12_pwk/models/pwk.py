@@ -42,7 +42,7 @@ class MrpBom(models.Model):
 class MrpBomLine(models.Model):    
     _inherit = "mrp.bom.line"
 
-    product_qty = fields.Float('Quantity', default=1.0, digits=dp.get_precision('OneDecimal'), required=True)
+    product_qty = fields.Float('Ply', default=1.0, digits=dp.get_precision('OneDecimal'), required=True)
 
 
 class ResCompany(models.Model):    
