@@ -17,7 +17,7 @@ from num2words import num2words
 class MrpBom(models.Model):    
     _inherit = "mrp.bom"
 
-    total_composition = fields.Float(compute="_get_total_composition", string="Total Komposisi")
+    total_composition = fields.Float(compute="_get_total_composition", string="Total Komposisi", digits=dp.get_precision('ZeroDecimal'))
 
     @api.depends('bom_line_ids.product_qty')
     def _get_total_composition(self):
