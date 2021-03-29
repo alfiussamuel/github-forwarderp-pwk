@@ -19,6 +19,7 @@ class MrpBom(models.Model):
 
     total_composition = fields.Float(compute="_get_total_composition", string="Total Ply", digits=dp.get_precision('ZeroDecimal'))
     total_tebal = fields.Float(compute="_get_total_composition", string="Total Komposisi", digits=dp.get_precision('OneDecimal'))
+    tebal_invoice = fields.Float(compute="_get_total_composition", string="Tebal Invoice", digits=dp.get_precision('OneDecimal'))
     recovery = fields.Float(compute="_get_total_composition", string="Recovery", digits=dp.get_precision('ZeroDecimal'))
 
     @api.depends('bom_line_ids.product_qty')
@@ -34,6 +35,7 @@ class MrpBom(models.Model):
 
             res.total_composition = total_composition
             res.total_tebal = total_tebal
+            res.tebal_invoice = res.product_id.tebal
             res.recovery = (res.product_id.tebal / total_tebal) * 100
 
 

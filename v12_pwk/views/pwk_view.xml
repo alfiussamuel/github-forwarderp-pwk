@@ -24,6 +24,7 @@
                     <group>
                         <field name="total_composition"/>
                         <field name="total_tebal"/>
+                        <field name="tebal_invoice"/>
                         <field name="recovery"/>
                     </group>
                 </field>
@@ -38,6 +39,7 @@
                 <field name="product_uom_id" position="after">
                     <field name="total_composition"/>
                     <field name="total_tebal"/>
+                    <field name="tebal_invoice"/>
                     <field name="recovery"/>
                 </field>
             </field>
