@@ -933,7 +933,7 @@ class PwkRpb(models.Model):
                                     'container': line.container_id.name
                                 })
 
-            # return self.env.ref('v12_pwk.report_rpb').report_action(self)
+            return self.env.ref('v12_pwk.report_rpb').report_action(self)
 
     @api.model
     def create(self, vals):
