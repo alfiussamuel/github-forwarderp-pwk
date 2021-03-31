@@ -554,13 +554,13 @@ class PwkMutasiVeneerOkRepair(models.Model):
             # Barecore Kalibrasi
             kalibrasi_source_ids = self.env['pwk.mutasi.barecore.line.kalibrasi'].search([
                 ('reference.date','=',res.date),
-                ('kalibrasi_stock_keluar_pcs', '>', 0)
+                ('repair_stock_keluar_pcs', '>', 0)
                 ])
 
             if not kalibrasi_source_ids:
                 kalibrasi_source_ids = self.env['pwk.mutasi.barecore.line.kalibrasi'].search([
                     ('reference.date','=',res.date - timedelta(1)),
-                    ('kalibrasi_stock_keluar_pcs', '>', 0)
+                    ('repair_stock_keluar_pcs', '>', 0)
                     ])
 
             if kalibrasi_source_ids:
