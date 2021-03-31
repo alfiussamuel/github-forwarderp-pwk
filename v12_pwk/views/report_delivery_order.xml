@@ -203,7 +203,9 @@
 										border-left:1px solid black;
 										border-right:1px solid black;">
 			                        </td>
-			                    </tr><!-- 
+			                    </tr>
+			                </t>
+			                    <!-- 
 		                        <t t-foreach="o.line_ids" t-as="l">
 		                        	<t t-if="l.product_id.goods_type == group.product_id.goods_type">
 		                        		<t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name"> -->
