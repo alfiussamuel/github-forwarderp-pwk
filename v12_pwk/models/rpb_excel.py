@@ -119,7 +119,7 @@ class RpbReportXls(models.AbstractModel):
         row = 5
 
         sheet.merge_range(row-3, 0, row-3, 15, 'RENCANA PRODUKSI (' + lines.name + ')', formatHeaderCenter)
-        sheet.merge_range(row-2, 0, row-2, 15, 'TARGET : ' + str(lines.target), formatHeaderCenterNumber)
+        sheet.merge_range(row-2, 0, row-2, 15, 'TARGET : ' + str(lines.target) + ' M3', formatHeaderCenterNumber)
 
         # merge 1 - 4 
         sheet.merge_range(row, 0, row+1, 0, 'No', formatHeaderTable)
@@ -152,7 +152,6 @@ class RpbReportXls(models.AbstractModel):
 
         for container in get_data_container:
             total = 0
-            print ("Container Awal ", container['container'])
 
             for i in get_data:
                 if i['container'] == container['container']:
@@ -174,18 +173,11 @@ class RpbReportXls(models.AbstractModel):
                     sheet.write(row, 15, i['container_qty'], formatHeaderDetailCenter)
                     sheet.write(row, 16, i['container_vol'], formatHeaderDetailRightFour)
 
-                    print ("container ", i['container'])
                     total += 1
                     row += 1
                     number += 1
 
             if total == 1:
-                print ("Print Container ", container['container'])
-                print ("Row ", row)
-                print ("Total ", total)
                 sheet.write(row - 1, 12, 1, formatHeaderDetailCenterNumber)
             elif total > 1:
-                print ("Print Container > 1 ", container['container'])
-                print ("Row > 1 ", row)
-                print ("Total > 1 ", total)
                 sheet.merge_range(row - total, 12, row - 1, 12, 1, formatHeaderDetailCenterNumber)

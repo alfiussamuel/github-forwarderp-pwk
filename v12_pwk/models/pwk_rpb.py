@@ -455,11 +455,18 @@ class PwkRpbBahanBaku(models.Model):
                 res.quantity_needed = res.quantity_available - res.quantity
                 res.quantity_spare = res.quantity_needed + (res.quantity_needed * 0.1)
 
+class PwkRpbGroupContainer(models.Model):
+    _name = "pwk.rpb.group.container"
+
+    reference = fields.Many2one('pwk.rpb.group', 'Reference')
+    container = fields.Char('Container')
+
 class PwkRpbGroup(models.Model):
     _name = "pwk.rpb.group"
 
     reference = fields.Many2one('pwk.rpb', 'Reference')
-    container = fields.Char('Container')
+    goods_type = fields.Char('Goods Type')
+    line_ids = fields.One2many('pwk.rpb.group.container', 'reference', 'Containers')
 
 class PwkRpb(models.Model):    
     _name = "pwk.rpb"
@@ -878,16 +885,53 @@ class PwkRpb(models.Model):
         for res in self:
             if res.line_ids:
                 for line in res.line_ids:
-                    existing_group_id = self.env['pwk.rpb.group'].search([
-                        ('reference', '=', res.id),
-                        ('container', '=', line.container_id.name),
-                    ])
+                    if line.product_id.goods_type == "Blockboard":
+                        group_id = self.env['pwk.rpb.group'].search([
+                            ('reference', '=', res.id),
+                            ('goods_type', '=', 'Blockboard'),
+                        ])
 
-                    if not existing_group_id:
-                        self.env['pwk.rpb.group'].create({
-                            'reference': res.id,
-                            'container': line.container_id.name
-                        })
+                        if not group_id:
+                            group_id = self.env['pwk.rpb.group'].create({
+                                'reference': res.id,
+                                'goods_type': 'Blockboard'
+                            })
+
+                        if group_id:
+                            container_id = self.env['pwk.rpb.group.container'].search([
+                                ('reference', '=', group_id.id),
+                                ('container', '=', line.container_id.name),
+                            ])
+
+                            if not container_id:
+                                container_id = self.env['pwk.rpb.group.container'].create({
+                                    'reference': group_id.id,
+                                    'container': line.container_id.name
+                                })
+
+                    elif line.product_id.goods_type == "Plywood":
+                        group_id = self.env['pwk.rpb.group'].search([
+                            ('reference', '=', res.id),
+                            ('goods_type', '=', 'Plywood'),
+                        ])
+
+                        if not group_id:
+                            group_id = self.env['pwk.rpb.group'].create({
+                                'reference': res.id,
+                                'goods_type': 'Plywood'
+                            })
+
+                        if group_id:
+                            container_id = self.env['pwk.rpb.group.container'].search([
+                                ('reference', '=', group_id.id),
+                                ('container', '=', line.container_id.name),
+                            ])
+
+                            if not container_id:
+                                container_id = self.env['pwk.rpb.group.container'].create({
+                                    'reference': group_id.id,
+                                    'container': line.container_id.name
+                                })
 
             return self.env.ref('v12_pwk.report_rpb').report_action(self)
 

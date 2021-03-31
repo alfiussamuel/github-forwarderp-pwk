@@ -720,9 +720,18 @@
                         <notebook>
                             <page string="Group" invisible="1">
                                 <field name="group_ids" nolabel="1">
-                                    <tree editable="top">
-                                        <field name="container"/>
+                                    <tree>
+                                        <field name="goods_type"/>
                                     </tree>
+                                    <form>
+                                        <group>
+                                            <field name="line_ids" nolabel="1">
+                                                <tree editable="top">
+                                                    <field name="container"/>
+                                                </tree>
+                                            </field>
+                                        </group>
+                                    </form>
                                 </field>
                             </page>
                             <page string="List Order">
