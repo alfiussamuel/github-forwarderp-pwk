@@ -189,7 +189,7 @@ class RpbReportXls(models.AbstractModel):
             sheet.write(row, 16, total_container_vol, formatHeaderRightFour)
             row += 1
 
-        sheet.merge_range(row, 0, row, 12, "GRAND TOTAL" + goods.goods_type , formatHeaderRight)
+        sheet.merge_range(row, 0, row, 12, "GRAND TOTAL" , formatHeaderRight)
         sheet.write(row, 13, grand_total_container_qty, formatHeaderRight)
         sheet.write(row, 14, grand_total_container_vol, formatHeaderRightFour)
         sheet.write(row, 15, grand_total_container_qty, formatHeaderRight)
