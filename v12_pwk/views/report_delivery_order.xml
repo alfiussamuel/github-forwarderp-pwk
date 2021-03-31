@@ -239,7 +239,7 @@
 													padding-bottom:0px;
 													padding-left:4px;
 													padding-right:4px;"> 
-        											<span t-field="o.product_id.uom_id.name"/>
+        											<span t-field="l.product_id.uom_id.name"/>
 						                        </td>
 						                        <td width="5%"
 						                        	style="text-align:center;font-size:11px;
@@ -251,7 +251,7 @@
 													padding-bottom:0px;
 													padding-left:4px;
 													padding-right:4px;"> 
-        											<span t-field="o.product_id.tebal"/>
+        											<span t-field="l.product_id.tebal"/>
 						                        </td>
 						                        <td width="5%"
 						                        	style="text-align:center;font-size:11px;
@@ -275,7 +275,7 @@
 													padding-bottom:0px;
 													padding-left:4px;
 													padding-right:4px;"> 
-        											<span t-field="o.product_id.lebar"/>
+        											<span t-field="l.product_id.lebar"/>
 						                        </td>
 						                        <td width="5%"
 						                        	style="text-align:center;font-size:11px;
@@ -299,7 +299,7 @@
 													padding-bottom:0px;
 													padding-left:4px;
 													padding-right:4px;"> 
-        											<span t-field="o.product_id.panjang"/>
+        											<span t-field="l.product_id.panjang"/>
 						                        </td>
 						                        <td width="5%"
 						                        	style="text-align:center;font-size:11px;
@@ -323,7 +323,7 @@
 													padding-bottom:0px;
 													padding-left:4px;
 													padding-right:4px;"> 
-        											<span t-field="o.product_id.grade.name"/>
+        											<span t-field="l.product_id.grade.name"/>
 						                        </td>
 						                        <td width="15%"
 						                        	style="text-align:right;font-size:11px;
@@ -335,7 +335,7 @@
 													padding-bottom:0px;
 													padding-left:4px;
 													padding-right:4px;"> 
-        											<span t-field="o.product_uom_qty"/>
+        											<span t-field="l.product_uom_qty"/>
 						                        </td>
 						                    </tr>
 						                </t>
