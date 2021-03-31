@@ -194,3 +194,21 @@ class RpbReportXls(models.AbstractModel):
         sheet.write(row, 14, grand_total_container_vol, formatHeaderRightFour)
         sheet.write(row, 15, grand_total_container_qty, formatHeaderRight)
         sheet.write(row, 16, grand_total_container_vol, formatHeaderRightFour)
+        row += 2
+
+        # Footer
+        sheet.write(row, 1, "Notes :" , formatHeaderLeft)
+        sheet.write(row + 1, 1, "Blockboard", formatHeaderLeft)
+        sheet.write(row + 2, 1, "Plywood", formatHeaderLeft)
+        sheet.write(row + 3, 1, "LVL", formatHeaderLeft)
+        sheet.write(row + 4, 1, "Total", formatHeaderLeft)
+
+        sheet.write(row + 1, 2, lines.total_blockboard, formatHeaderDetailRightFour)
+        sheet.write(row + 2, 2, lines.total_plywood, formatHeaderDetailRightFour)
+        sheet.write(row + 3, 2, lines.total_lvl, formatHeaderDetailRightFour)
+        sheet.write(row + 4, 2, lines.actual, formatHeaderDetailRightFour)
+
+        sheet.write(row + 1, 3, lines.total_blockboard_percent, formatHeaderDetailRight)
+        sheet.write(row + 2, 3, lines.total_plywood_percent, formatHeaderDetailRight)
+        sheet.write(row + 3, 3, lines.total_lvl_percent, formatHeaderDetailRight)
+        sheet.write(row + 4, 3, "100%", formatHeaderDetailRight)
