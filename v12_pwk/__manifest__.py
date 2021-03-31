@@ -65,6 +65,7 @@
              'views/report_sale_order.xml',
              'views/report_lampiran_sale_order.xml',
              'views/report_sale_contract.xml',
+             'views/report_delivery_order.xml',
              'views/report_purchase_order_jasa.xml',
              'views/report_purchase_order_bahan_baku.xml',
              'views/report_purchase_order_bahan_penolong.xml',
