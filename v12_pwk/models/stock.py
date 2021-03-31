@@ -20,7 +20,7 @@ class StockMove(models.Model):
     length = fields.Float(compute="_get_sale_fields", string='Length')
     grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')  
     notes = fields.Text('Notes')
-    volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))
+    volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'), store=True)
 
     @api.depends('product_uom_qty')
     def _get_volume(self):
