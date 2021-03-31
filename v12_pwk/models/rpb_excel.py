@@ -135,7 +135,7 @@ class RpbReportXls(models.AbstractModel):
         row = 7
         number = 1
         merge_range = 0
-        previous_container 0
+        previous_container = 0
 
         for i in get_data:
             sheet.write(row, 0, number, formatHeaderDetailCenter)
