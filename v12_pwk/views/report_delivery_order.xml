@@ -349,6 +349,63 @@
         											<span t-field="l.notes"/>
 						                        </td>
 						                    </tr>
+						                    <tr>
+						                    	<td style="text-align:right;font-size:11px;
+													border-top:0px;
+													border-bottom:1px solid black;
+													border-left:0px;
+													border-right:1px solid black;
+													padding-top:4px;
+													padding-bottom:0px;
+													padding-left:4px;
+													padding-right:4px;">
+						                        </td>
+						                    	<td style="text-align:right;font-size:11px;
+													border-top:0px;
+													border-bottom:1px solid black;
+													border-left:0px;
+													border-right:1px solid black;
+													padding-top:4px;
+													padding-bottom:0px;
+													padding-left:4px;
+													padding-right:4px;"> 
+        											<strong> <span t-field="o.total_qty"/> </strong>
+						                        </td>
+						                        <td style="text-align:right;font-size:11px;
+													border-top:0px;
+													border-bottom:1px solid black;
+													border-left:0px;
+													border-right:1px solid black;
+													padding-top:4px;
+													padding-bottom:0px;
+													padding-left:4px;
+													padding-right:4px;">
+													<strong>PCS</strong>
+						                        </td>
+						                        <td colspan="8"
+						                        	style="text-align:right;font-size:11px;
+													border-top:0px;
+													border-bottom:1px solid black;
+													border-left:0px;
+													border-right:1px solid black;
+													padding-top:4px;
+													padding-bottom:0px;
+													padding-left:4px;
+													padding-right:4px;"> 
+        											<strong> <span t-field="o.total_volume"/> </strong>
+						                        </td>
+						                        <td colspan="8"
+						                        	style="text-align:right;font-size:11px;
+													border-top:0px;
+													border-bottom:1px solid black;
+													border-left:0px;
+													border-right:1px solid black;
+													padding-top:4px;
+													padding-bottom:0px;
+													padding-left:4px;
+													padding-right:4px;">
+						                        </td>
+						                    </tr>
 						                </t>
 						            </t>
 						        </t>

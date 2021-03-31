@@ -27,8 +27,6 @@
                 </xpath>
                 <xpath expr="//field[@name='product_uom']" position="after">
                     <field name="notes"/>
-                </xpath>
-                <xpath expr="//field[@name='product_uom']" position="before">
                     <field name="volume"/>
                 </xpath>
                 <!-- <field name="move_ids_without_package" position="replace">
