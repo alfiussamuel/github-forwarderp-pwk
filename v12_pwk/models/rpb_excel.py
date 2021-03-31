@@ -152,6 +152,7 @@ class RpbReportXls(models.AbstractModel):
 
         for container in get_data_container:
             total = 0
+            print ("Container Awal ", container['container'])
 
             for i in get_data:
                 if i['container'] == container['container']:
