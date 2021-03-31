@@ -876,7 +876,7 @@
                                     </field>
                                 </group>
                             </page>
-                            <page string="List Order by Container" invisible="1">
+                            <page string="List Order by Container">
                                 <group>
                                     <field name="container_ids" nolabel="1">
                                         <tree create="false">
