@@ -45,8 +45,10 @@ class RpbReportXls(models.AbstractModel):
         formatHeaderCenter = workbook.add_format({'font_size': 14, 'valign':'vcenter', 'align': 'center', 'bold': True, 'text_wrap': True})
         formatHeaderCenterNumber = workbook.add_format({'font_size': 14, 'valign':'vcenter', 'align': 'center', 'bold': True, 'text_wrap': True, 'num_format': '#,##0'})
         formatHeaderLeft = workbook.add_format({'font_size': 14, 'valign':'vcenter', 'align': 'left', 'bold': True, 'text_wrap': True})
+        formatHeaderLeft10 = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'left', 'bold': True, 'text_wrap': True})
         formatHeaderRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0', 'bold': True, 'bg_color':'#4ead2f', 'color':'white'})
         formatHeaderRightFour = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0', 'bold': True, 'bg_color':'#4ead2f', 'color':'white', 'num_format': '#,##4'})
+        formatHeaderRightFourPlain = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'bold': True, 'num_format': '#,##4'})
         formatHeaderTable = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'bold': True, 'bg_color':'#4ead2f', 'color':'white', 'text_wrap': True})
         formatHeaderTablePlain = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'bold': True, 'text_wrap': True})
         formatHeaderTableRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'bold': True, 'bg_color':'#3eaec2', 'text_wrap': True, 'num_format': '#,##0'})
@@ -79,6 +81,8 @@ class RpbReportXls(models.AbstractModel):
         formatHeaderDetailRight.set_border(1)
         formatHeaderDetailRightFour.set_border(1)
         formatHeaderDetailLeft.set_border(1)
+        formatHeaderLeft10.set_border(1)
+        formatHeaderRightFourPlain.set_border(1)
 
         formatHeaderTable.set_text_wrap()
         formatHeaderTableRight.set_text_wrap()
@@ -197,16 +201,16 @@ class RpbReportXls(models.AbstractModel):
         row += 2
 
         # Footer
-        sheet.write(row, 1, "Notes :" , formatHeaderLeft)
-        sheet.write(row + 1, 1, "Blockboard", formatHeaderLeft)
-        sheet.write(row + 2, 1, "Plywood", formatHeaderLeft)
-        sheet.write(row + 3, 1, "LVL", formatHeaderLeft)
-        sheet.write(row + 4, 1, "Total", formatHeaderLeft)
+        sheet.write(row, 1, "Notes :" , formatHeaderLeft10)
+        sheet.write(row + 1, 1, "Blockboard", formatHeaderLeft10)
+        sheet.write(row + 2, 1, "Plywood", formatHeaderLeft10)
+        sheet.write(row + 3, 1, "LVL", formatHeaderLeft10)
+        sheet.write(row + 4, 1, "Total", formatHeaderLeft10)
 
-        sheet.write(row + 1, 2, lines.total_blockboard, formatHeaderRightFour)
-        sheet.write(row + 2, 2, lines.total_plywood, formatHeaderRightFour)
-        sheet.write(row + 3, 2, lines.total_lvl, formatHeaderRightFour)
-        sheet.write(row + 4, 2, lines.actual, formatHeaderRightFour)
+        sheet.write(row + 1, 2, lines.total_blockboard, formatHeaderRightFourPlain)
+        sheet.write(row + 2, 2, lines.total_plywood, formatHeaderRightFourPlain)
+        sheet.write(row + 3, 2, lines.total_lvl, formatHeaderRightFourPlain)
+        sheet.write(row + 4, 2, lines.actual, formatHeaderRightFourPlain)
 
         sheet.write(row + 1, 3, lines.total_blockboard_percent, formatHeaderRight)
         sheet.write(row + 2, 3, lines.total_plywood_percent, formatHeaderRight)
