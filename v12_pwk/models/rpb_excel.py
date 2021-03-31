@@ -219,3 +219,8 @@ class RpbReportXls(models.AbstractModel):
         sheet.write(row + 2, 3, str(lines.total_plywood_percent) + '%', formatHeaderRightPlain)
         sheet.write(row + 3, 3, str(lines.total_lvl_percent) + '%', formatHeaderRightPlain)
         sheet.write(row + 4, 3, "100%", formatHeaderRightPlain)
+
+        sheet.write(row + 6, 14, "Temanggung, 30 Maret 2021", formatHeaderCenter)
+        sheet.merge_range(row + 7, 1, row + 7, 5, "Menyetujui,", formatHeaderCenter)
+        sheet.merge_range(row + 7, 8, row + 7, 11, "Diperiksa Oleh,", formatHeaderCenter)
+        sheet.merge_range(row + 7, 13, row + 7, 16, "Dibuat Oleh,", formatHeaderCenter)
