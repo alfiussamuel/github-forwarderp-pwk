@@ -95,7 +95,7 @@ class RpbReportXls(models.AbstractModel):
         # Set Column Width
         sheet.set_column(0, 0, 3)
         sheet.set_column(1, 1, 22)
-        sheet.set_column(2, 2, 10)
+        sheet.set_column(2, 2, 13)
         sheet.set_column(3, 3, 8)
         sheet.set_column(4, 4, 10)
         sheet.set_column(5, 5, 4)
@@ -210,9 +210,9 @@ class RpbReportXls(models.AbstractModel):
         sheet.write(row + 4, 1, "Total", formatHeaderLeft10)
 
         sheet.write(row + 1, 2, str(lines.total_blockboard) + ' M3', formatHeaderRightFourPlain)
-        sheet.write(row + 2, 2, lines.total_plywood, formatHeaderRightFourPlain)
-        sheet.write(row + 3, 2, lines.total_lvl, formatHeaderRightFourPlain)
-        sheet.write(row + 4, 2, lines.actual, formatHeaderRightFourPlain)
+        sheet.write(row + 2, 2, str(lines.total_plywood) + ' M3', formatHeaderRightFourPlain)
+        sheet.write(row + 3, 2, str(lines.total_lvl) + ' M3', formatHeaderRightFourPlain)
+        sheet.write(row + 4, 2, str(lines.actual) + ' M3', formatHeaderRightFourPlain)
 
         sheet.write(row + 1, 3, str(lines.total_blockboard_percent) + '%', formatHeaderRightPlain)
         sheet.write(row + 2, 3, str(lines.total_plywood_percent) + '%', formatHeaderRightPlain)
