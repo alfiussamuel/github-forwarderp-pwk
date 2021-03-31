@@ -138,13 +138,20 @@ class PwkMutasiVeneerGsLine(models.Model):
                 ('reference.date','=',res.reference.date),
                 ('product_id','=',res.product_id.id)
                 ])
+
+            bc_source_ids = self.env['pwk.mutasi.veneer.ok.repair.line.bc'].search([
+                ('reference.date','=',res.reference.date),
+                ('product_id','=',res.product_id.id)
+                ])
                         
             if sc_source_ids:
                 stock_masuk_pcs = sc_source_ids[0].stock_keluar_pcs
-            elif lc_source_ids:
+            if lc_source_ids:
                 stock_masuk_pcs = lc_source_ids[0].stock_keluar_pcs
             if fb_source_ids:
                 stock_masuk_pcs = fb_source_ids[0].stock_keluar_pcs
+            if bc_source_ids:
+                stock_masuk_pcs = bc_source_ids[0].stock_keluar_pcs
 
             res.stock_masuk_repair_pcs = stock_masuk_pcs
             
@@ -241,6 +248,23 @@ class PwkMutasiVeneerGs(models.Model):
 
             if not fb_source_ids:
                 fb_source_ids = self.env['pwk.mutasi.veneer.ok.repair.line.fb'].search([
+                    ('reference.date','=',res.date - timedelta(1)),
+                ])
+
+            if fb_source_ids:
+                for source in fb_source_ids:
+                    self.env['pwk.mutasi.veneer.gs.line'].create({
+                        'reference': res.id,
+                        'product_id': source.product_id.id,
+                        })
+
+            # Barecore
+            fb_source_ids = self.env['pwk.mutasi.veneer.ok.repair.line.bc'].search([
+                ('reference.date','=',res.date),
+            ])
+
+            if not fb_source_ids:
+                fb_source_ids = self.env['pwk.mutasi.veneer.ok.repair.line.bc'].search([
                     ('reference.date','=',res.date - timedelta(1)),
                 ])
 
