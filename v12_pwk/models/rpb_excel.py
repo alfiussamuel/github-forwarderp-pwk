@@ -47,8 +47,8 @@ class RpbReportXls(models.AbstractModel):
         formatHeaderLeft = workbook.add_format({'font_size': 14, 'valign':'vcenter', 'align': 'left', 'bold': True, 'text_wrap': True})
         formatHeaderLeft10 = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'left', 'bold': True, 'text_wrap': True})
         formatHeaderRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0', 'bold': True, 'bg_color':'#4ead2f', 'color':'white'})
-        formatHeaderRightFour = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0', 'bold': True, 'bg_color':'#4ead2f', 'color':'white', 'num_format': '#,##4'})
-        formatHeaderRightFourPlain = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'bold': True, 'num_format': '#,##4'})
+        formatHeaderRightFour = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'bold': True, 'bg_color':'#4ead2f', 'color':'white', 'num_format': '#,##0.0000'})
+        formatHeaderRightFourPlain = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'bold': True, 'num_format': '#,##0.0000'})
         formatHeaderTable = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'bold': True, 'bg_color':'#4ead2f', 'color':'white', 'text_wrap': True})
         formatHeaderTablePlain = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'bold': True, 'text_wrap': True})
         formatHeaderTableRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'bold': True, 'bg_color':'#3eaec2', 'text_wrap': True, 'num_format': '#,##0'})
@@ -104,10 +104,10 @@ class RpbReportXls(models.AbstractModel):
         sheet.set_column(10, 10, 10)
         sheet.set_column(11, 11, 7)
         sheet.set_column(12, 12, 7)
-        sheet.set_column(13, 13, 8)
-        sheet.set_column(14, 14, 8)
-        sheet.set_column(15, 15, 8)
-        sheet.set_column(16, 16, 8)
+        sheet.set_column(13, 13, 12)
+        sheet.set_column(14, 14, 12)
+        sheet.set_column(15, 15, 12)
+        sheet.set_column(16, 16, 12)
 
         # Data 1
         row = 5
