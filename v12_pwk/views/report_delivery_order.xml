@@ -253,7 +253,7 @@
 													padding-right:4px;">
         											<span t-esc="'{0:,.1f}'.format(l.product_id.tebal)"/>
 						                        </td>
-						                        <td width="5%"
+						                        <td width="3%"
 						                        	style="text-align:center;font-size:11px;
 													border-top:0px;
 													border-bottom:0px;
@@ -277,7 +277,7 @@
 													padding-right:4px;"> 
         											<span t-esc="'{0:,.0f}'.format(l.product_id.lebar)"/>
 						                        </td>
-						                        <td width="5%"
+						                        <td width="3%"
 						                        	style="text-align:center;font-size:11px;
 													border-top:0px;
 													border-bottom:0px;
@@ -313,7 +313,7 @@
 													padding-right:4px;"> 
         											MM
 						                        </td>
-						                        <td width="8%"
+						                        <td width="12%"
 						                        	style="text-align:center;font-size:11px;
 													border-top:0px;
 													border-bottom:0px;
@@ -325,7 +325,7 @@
 													padding-right:4px;"> 
         											<span t-field="l.product_id.grade.name"/>
 						                        </td>
-						                        <td width="12%"
+						                        <td width="10%"
 						                        	style="text-align:right;font-size:11px;
 													border-top:0px;
 													border-bottom:0px;
