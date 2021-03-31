@@ -150,7 +150,7 @@
 		                <thead>
 		                    <tr>
 		                        <th width="4%"
-		                        	style="text-align:center;font-size:10px;border:1px solid black;background-color:#4ead2f;color:white;padding:2px;vertical-align:middle;">		                        	
+		                        	style="text-align:center;font-size:10px;border:1px solid black;background-color:#4ead2f;color:white;padding:2px;vertical-align:middle;">             	
 									<strong>NO.</strong>
 		                        </th>
 		                        <th width="30%" 
@@ -168,77 +168,45 @@
 		                    </tr>
 		                </thead>
 		                <tbody class="invoice_tbody">
-		                	<t t-set="i" t-value="1" />
-		                    <tr t-foreach="o.order_line" t-as="l">		                        
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-	    							<span t-esc="i"/> 
-        							<t t-set="i" t-value="i+1"/> 
-		                        </td>
-		                        <td style="text-align:left;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-field="l.product_uom_qty"/>
-		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-field="l.marking"/>
-		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-esc="'{0:,.1f}'.format(l.thick)"/>
-		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-esc="'{0:,.0f}'.format(l.width)"/>
-		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-esc="'{0:,.0f}'.format(l.length)"/>
-		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-esc="'{0:,.0f}'.format(l.product_uom_qty)"/>
-		                        </td>
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                            <t t-if="l.is_qty_volume">
-		                            	<span t-field="l.volume_qty"/>
-		                            </t>
-		                            <t t-if="not l.is_qty_volume">
-		                            	<span t-field="l.volume"/>
-		                            </t>
-		                        </td>
-		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-esc="'{0:,.0f}'.format(l.price_unit)"/>
-		                        </td>
-		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
-		                            <span t-esc="'{0:,.2f}'.format(l.price_total)"/>
-		                        </td>
-		                    </tr>
-		                    <tr>
-		                    	<td colspan="6" style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                    		<strong>TOTAL AMOUNT</strong>
-		                        </td>		                        		
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                        	<span t-esc="'{0:,.0f}'.format(o.total_qty)"/>
-		                        </td>		                        
-		                        <td style="text-align:center;border:1px solid black;font-size:10px;padding:2px;">
-		                        	<t t-if="o.contract_type == 'Waste Rotary'">
-		                            	<span t-esc="'{0:,.4f}'.format(o.total_volume_qty)"/>
-		                            </t>
-		                            <t t-if="o.contract_type == 'Waste Pabrik PPN'">
-		                            	<span t-esc="'{0:,.4f}'.format(o.total_volume_qty)"/>
-		                            </t>
-		                            <t t-if="o.contract_type == 'Waste Pabrik Non-PPN'">
-		                            	<span t-esc="'{0:,.4f}'.format(o.total_volume_qty)"/>
-		                            </t>
-		                            <t t-if="o.contract_type == 'Lokal'">
-		                            	<span t-esc="'{0:,.4f}'.format(o.total_volume)"/>
-		                            </t>
-		                            <t t-if="o.contract_type == 'Export'">
-		                            	<span t-esc="'{0:,.4f}'.format(o.total_volume)"/>
-		                            </t>
-		                        </td>
-		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
-		                        	
-		                        </td>
-		                        <td style="text-align:right;border:1px solid black;font-size:10px;padding:2px;">
-		                        	<span t-esc="'{0:,.2f}'.format(o.amount_total)"/>
-		                        </td>
-		                    </tr>		                    
-		                </tbody>
+							<t t-foreach="o.group_ids" t-as="group">
+								<tr>
+									<td style="text-align:center;font-size:11px;padding:4px;
+										border-bottom:0px;
+										border-top:1px solid black;
+										border-left:1px solid black;
+										border-right:1px solid black;">
+			                        </td>
+									<td colspan="9" style="text-align:left;font-size:13px;padding:4px;
+										border-top:1px solid black;
+										border-bottom:0px;
+										border-left:1px solid black;
+										border-right:1px solid black;">
+		    							<strong>
+			    							<span t-field="group.goods_type"/> <span t-field="group.jenis_kayu_id.name"/>
+			    						</strong>
+			                        </td>
+			                        <td style="text-align:center;font-size:11px;padding:4px;
+			                        	border-top:1px solid black;
+										border-bottom:0px;
+										border-left:1px solid black;
+										border-right:1px solid black;">
+			                        </td>
+			                        <td style="text-align:center;font-size:11px;padding:4px;
+			                        	border-top:1px solid black;
+										border-bottom:0px;
+										border-left:1px solid black;
+										border-right:1px solid black;">
+			                        </td>
+			                        <td style="text-align:center;font-size:11px;padding:4px;
+			                        	border-top:1px solid black;
+										border-bottom:0px;
+										border-left:1px solid black;
+										border-right:1px solid black;">
+			                        </td>
+			                    </tr><!-- 
+		                        <t t-foreach="o.line_ids" t-as="l">
+		                        	<t t-if="l.product_id.goods_type == group.product_id.goods_type">
+		                        		<t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name" -->>
 		            </table>       
 		        </div>
             </t>

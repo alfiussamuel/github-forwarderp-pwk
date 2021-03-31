@@ -19,6 +19,7 @@
                     <page string="Group">
                         <field name="group_ids" nolabel="1">
                             <tree editable="top">
+                                <field name="goods_type"/>
                                 <field name="jenis_kayu_id"/>
                             </tree>
                         </field>

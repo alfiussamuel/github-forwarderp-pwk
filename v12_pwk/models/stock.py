@@ -35,6 +35,14 @@ class StockPickingGroup(models.Model):
 
     reference = fields.Many2one('stock.picking', 'Delivery Order')
     jenis_kayu_id = fields.Many2one('pwk.jenis.kayu', 'Jenis Kayu')
+    goods_type = fields.Selection([
+        ('Plywood','Plywood'),
+        ('Blockboard','Blockboard'),
+        ('Barecore','Barecore'),
+        ('Faceback','Faceback'),
+        ('MDF','MDF'),
+        ('Veneer','Veneer')]
+        , string="Goods Type")
 
 
 class StockPicking(models.Model):
@@ -53,12 +61,14 @@ class StockPicking(models.Model):
                 for line in res.move_ids_without_package:
                     existing_group_id = self.env['stock.picking.group'].search([
                         ('reference', '=', res.id),
+                        ('goods_type', '=', line.product_id.goods_type),
                         ('jenis_kayu_id', '=', line.product_id.jenis_kayu.id)
                     ])
 
                     if not existing_group_id:
                         self.env['stock.picking.group'].create({
                             'reference': res.id,
+                            'goods_type': line.product_id.goods_type,
                             'jenis_kayu_id': line.product_id.jenis_kayu.id
                         })
 
