@@ -34,6 +34,7 @@ class StockPicking(models.Model):
     
     certificate_id = fields.Many2one('pwk.certificate', 'Certificate')
     is_logo = fields.Boolean('Show Legal Logo', default=True)
+    no_kendaraan = fields.Char('No. Kendaraan')
 
     @api.multi
     def print_delivery_order(self):                

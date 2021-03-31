@@ -1,19 +1,22 @@
 <odoo>
     <data>              
 
-        <!-- <record id="view_picking_form_pwk" model="ir.ui.view">
+        <record id="view_picking_form_pwk" model="ir.ui.view">
             <field name="name">Stock Picking</field>
             <field name="model">stock.picking</field>            
             <field name="inherit_id" ref="stock.view_picking_form"/>
             <field name="arch" type="xml">
+                <field name="origin" position="after">
+                    <field name="no_kendaraan"/>
+                </field>
                 <field name="move_line_ids_without_package" position="replace">
                     <field name="move_line_ids_without_package" attrs="{'readonly': ['|', '|', ('show_operations', '=', False), ('state', '=', 'cancel'), '&amp;', ('state', '=', 'done'), ('is_locked', '=', True)]}" context="{'default_picking_id': id, 'default_location_id': location_id, 'default_location_dest_id': location_dest_id}">
                         <tree editable="bottom" decoration-muted="(state == 'done' and is_locked == True)" decoration-danger="qty_done&gt;product_uom_qty and state!='done'" decoration-success="qty_done==product_uom_qty and state!='done' and not result_package_id">
                             <field name="product_id" required="1" attrs="{'readonly': ['|', ('state', '=', 'done'), ('move_id', '!=', False)]}"/>
-                            <!-- <field name="thick"/>
+                            <field name="thick"/>
                             <field name="width"/>
                             <field name="length"/>
-                            <field name="grade_id"/> -->
+                            <field name="grade_id"/>
                             <field name="move_id" invisible="1"/>
                             <field name="product_uom_id" force_save="1" attrs="{'readonly': [('state', '!=', 'draft')]}" groups="uom.group_uom"/>
                             <field name="location_id" attrs="{'column_invisible': [('parent.picking_type_code', '=', 'incoming')]}" groups="stock.group_stock_multi_locations" domain="[('id', 'child_of', parent.location_id)]"/>
