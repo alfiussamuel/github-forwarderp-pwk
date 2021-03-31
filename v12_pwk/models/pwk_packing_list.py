@@ -409,7 +409,6 @@ class PwkPackingList(models.Model):
         elif month == 12:
             romawi = 'XII'
 
-
         year_month = '/PPIC-PWK/' + str(romawi) + '/' + str(year)
         vals['name'] = self.get_sequence('Packing List', 'pwk.packing.list', '%s' % year_month)
         return super(PwkPackingList, self).create(vals)

@@ -129,6 +129,7 @@
                                 <field name="is_logo"/>
                                 <field name="certificate_id"
                                     options="{'no_create': True}"/>
+                                <field name="picking_id" readonly="1"/>
                             </group>
                         </group>
                         <group string="Other Information">
