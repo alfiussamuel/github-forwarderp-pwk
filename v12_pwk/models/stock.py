@@ -31,7 +31,7 @@ class StockMove(models.Model):
 
 
 class StockPickingGroup(models.Model):    
-    _inherit = "stock.picking.group"
+    _name = "stock.picking.group"
 
     reference = fields.Many2one('stock.picking', 'Delivery Order')
     jenis_kayu_id = fields.Many2one('pwk.jenis.kayu', 'Jenis Kayu')
