@@ -718,6 +718,13 @@
                     </group>
                     <group>
                         <notebook>
+                            <page string="Group">
+                                <field name="group_ids" nolabel="1">
+                                    <tree editable="top">
+                                        <field name="container"/>
+                                    </tree>
+                                </field>
+                            </page>
                             <page string="List Order">
                                 <group>
                                     <field name="line_ids" nolabel="1">

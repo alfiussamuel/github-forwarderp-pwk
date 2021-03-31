@@ -455,6 +455,12 @@ class PwkRpbBahanBaku(models.Model):
                 res.quantity_needed = res.quantity_available - res.quantity
                 res.quantity_spare = res.quantity_needed + (res.quantity_needed * 0.1)
 
+class PwkRpbGroup(models.Model):
+    _name = "pwk.rpb.group"
+
+    reference = fields.Many2one('pwk.rpb', 'Reference')
+    container = fields.Char('Container')
+
 class PwkRpb(models.Model):    
     _name = "pwk.rpb"
 
@@ -866,7 +872,20 @@ class PwkRpb(models.Model):
         return sequence_id.next_by_id()
 
     @api.multi
-    def print_rpb(self):                
+    def print_rpb(self):
+        if res.line_ids:
+            for line in res.line_ids:
+                existing_group_id = self.env['pwk.rpb.group'].search([
+                    ('reference', '=', res.id),
+                    ('container', '=', line.container_id.name),
+                ])
+
+                if not existing_group_id:
+                    self.env['pwk.rpb.group'].create({
+                        'reference': res.id,
+                        'container': line.container_id.name
+                    })
+
         return self.env.ref('v12_pwk.report_rpb').report_action(self)
 
     @api.model
