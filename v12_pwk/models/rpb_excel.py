@@ -173,6 +173,7 @@ class RpbReportXls(models.AbstractModel):
                     sheet.write(row, 15, i['container_qty'], formatHeaderDetailCenter)
                     sheet.write(row, 16, i['container_vol'], formatHeaderDetailRightFour)
 
+                    print ("container ", i['container'])
                     total += 1
                     row += 1
                     number += 1
