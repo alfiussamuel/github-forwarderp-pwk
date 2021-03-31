@@ -67,6 +67,8 @@ class RpbReportXls(models.AbstractModel):
         red_mark = workbook.add_format({'font_size': 8, 'bg_color': 'red'})
         justify = workbook.add_format({'font_size': 12})
         
+        formatHeaderRight.set_border(1)
+        formatHeaderRightFour.set_border(1)
         formatHeaderTable.set_border(1)
         formatHeaderTableRight.set_border(1)
         formatHeaderTableCenterWhite.set_border(1)
