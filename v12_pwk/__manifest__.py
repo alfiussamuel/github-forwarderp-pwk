@@ -18,6 +18,7 @@
              'wizard/generate_packing_list_view.xml',
              'wizard/trigger_onchange_sale_view.xml',          
              'views/pwk_view.xml',
+             'views/stock_view.xml',
              'views/packing_list_view.xml',
              'views/menu.xml',
              'views/no1_mutasi_veneer_basah_view.xml',
