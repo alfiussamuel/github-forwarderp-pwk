@@ -31,11 +31,14 @@
 								<group>
 									<field name="sale_line_ids" nolabel="1"
 										domain="[('order_id.state','=','sale')]">
-										<tree editable="top">
+										<tree editable="top" default_order="width asc,length asc,thick asc">
 											<field name="sale_po_number"/>
 											<field name="sale_date_order" invisible="1"/>
 											<field name="sale_partner_id"/>
 											<field name="product_id"/>
+											<field name="width" invisible="1"/>
+											<field name="length" invisible="1"/>
+											<field name="thick" invisible="1"/>
 											<field name="product_uom_qty" sum="Total"/>
 											<field name="volume" sum="Total"/>
 											<field name="qty_rpb" sum="Total"/>

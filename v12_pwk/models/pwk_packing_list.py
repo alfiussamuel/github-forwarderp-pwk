@@ -460,6 +460,7 @@ class PwkPackingList(models.Model):
             if picking_id:
                 picking_id.action_confirm()
                 picking_id.action_assign()
+                picking_id.force_assign()
 
             res.write({
                 'is_picking': True,
