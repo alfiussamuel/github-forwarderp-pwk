@@ -206,7 +206,7 @@
 			                    </tr><!-- 
 		                        <t t-foreach="o.line_ids" t-as="l">
 		                        	<t t-if="l.product_id.goods_type == group.product_id.goods_type">
-		                        		<t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name" -->>
+		                        		<t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name"> -->
 		            </table>       
 		        </div>
             </t>
