@@ -33,21 +33,8 @@ class RpbReportXls(models.AbstractModel):
 
         return lines   
 
-    def get_data_container(self, data):        
-        lines = []
-        if data.group_ids:
-            for line in data.group_ids:
-                vals = {
-                    'container': line.container,                    
-                }
-
-                lines.append(vals)
-
-        return lines   
-
     def generate_xlsx_report(self, workbook, data, lines):        
         get_data = self.get_data(lines)
-        get_data_container = self.get_data_container(lines)
         alamat = ' Jl. Raya Krangan - Pringsurat, Karanglo, Kupen, Kec. Pringsurat, Kabupaten Temanggung, Jawa Tengah 56272'
 
         sheet = workbook.add_worksheet('Sheet 1')
@@ -154,7 +141,7 @@ class RpbReportXls(models.AbstractModel):
             total_container_qty = 0
             total_container_vol = 0
 
-            for container in get_data_container:
+            for container in goods.line_ids:
                 total = 0
 
                 for i in get_data:
