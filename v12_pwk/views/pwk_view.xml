@@ -661,6 +661,7 @@
                         <button name="action_change" string="Update Data" type="object"/>
                         <button name="action_create_bahan_baku" string="Keb. Bahan Baku" 
                             class="oe_highlight" states="Draft" type="object"/>
+                        <button name="print_rpb" type="object" string="Print RPB"/>
                     </header>
 
                     <div class="oe_button_box" name="button_box">

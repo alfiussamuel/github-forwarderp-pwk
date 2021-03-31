@@ -865,6 +865,10 @@ class PwkRpb(models.Model):
             })
         return sequence_id.next_by_id()
 
+    @api.multi
+    def print_rpb(self):                
+        return self.env.ref('v12_pwk.report_rpb').report_action(self)
+
     @api.model
     def create(self, vals):
         month_name = ''
