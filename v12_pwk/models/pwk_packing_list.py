@@ -453,6 +453,10 @@ class PwkPackingList(models.Model):
                     'product_uom': line.product_id.uom_id.id
                 })
 
+            if picking_id:
+                picking_id.action_confirm()
+                picking_id.action_assign()
+
             res.write({
                 'is_picking': True,
                 'picking_id': picking_id.id
