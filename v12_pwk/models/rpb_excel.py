@@ -183,7 +183,7 @@ class RpbReportXls(models.AbstractModel):
                 print ("Print Container ", container['container'])
                 print ("Row ", row)
                 print ("Total ", total)
-                sheet.write(row - 1, 12, i['container'], formatHeaderDetailRightFour)
+                sheet.write(row - 1, 12, container['container'], formatHeaderDetailRightFour)
             # elif total > 1:
             #     print ("Print Container > 1 ", container['container'])
             #     print ("Row > 1 ", row)
