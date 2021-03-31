@@ -150,34 +150,46 @@ class RpbReportXls(models.AbstractModel):
         merge_range = 1
         previous_container = 1
 
-        for container in get_data_container:
-            total = 0
+        for goods in lines.group_ids:
+            total_container_qty = 0
+            total_container_vol = 0
 
-            for i in get_data:
-                if i['container'] == container['container']:
-                    sheet.write(row, 0, number, formatHeaderDetailCenter)
-                    sheet.write(row, 1, i['partner'], formatHeaderDetailCenter)
-                    sheet.write(row, 2, i['goods_type'], formatHeaderDetailCenter)
-                    sheet.write(row, 3, i['jenis_kayu'], formatHeaderDetailCenter)            
-                    sheet.write(row, 4, i['order'], formatHeaderDetailCenter)            
-                    sheet.write(row, 5, i['tebal'], formatHeaderDetailCenter)
-                    sheet.write(row, 6, '', formatHeaderDetailCenter)
-                    sheet.write(row, 7, i['lebar'], formatHeaderDetailCenter)
-                    sheet.write(row, 8, '', formatHeaderDetailCenter)
-                    sheet.write(row, 9, i['panjang'], formatHeaderDetailCenter)
-                    sheet.write(row, 10, i['glue'], formatHeaderDetailCenter)
-                    sheet.write(row, 11, i['grade'], formatHeaderDetailCenter)
-                    
-                    sheet.write(row, 13, i['container_qty'], formatHeaderDetailCenter)
-                    sheet.write(row, 14, i['container_vol'], formatHeaderDetailRightFour)
-                    sheet.write(row, 15, i['container_qty'], formatHeaderDetailCenter)
-                    sheet.write(row, 16, i['container_vol'], formatHeaderDetailRightFour)
+            for container in get_data_container:
+                total = 0
 
-                    total += 1
-                    row += 1
-                    number += 1
+                for i in get_data:
+                    if i['container'] == container['container']:
+                        sheet.write(row, 0, number, formatHeaderDetailCenter)
+                        sheet.write(row, 1, i['partner'], formatHeaderDetailCenter)
+                        sheet.write(row, 2, i['goods_type'], formatHeaderDetailCenter)
+                        sheet.write(row, 3, i['jenis_kayu'], formatHeaderDetailCenter)            
+                        sheet.write(row, 4, i['order'], formatHeaderDetailCenter)            
+                        sheet.write(row, 5, i['tebal'], formatHeaderDetailCenter)
+                        sheet.write(row, 6, '', formatHeaderDetailCenter)
+                        sheet.write(row, 7, i['lebar'], formatHeaderDetailCenter)
+                        sheet.write(row, 8, '', formatHeaderDetailCenter)
+                        sheet.write(row, 9, i['panjang'], formatHeaderDetailCenter)
+                        sheet.write(row, 10, i['glue'], formatHeaderDetailCenter)
+                        sheet.write(row, 11, i['grade'], formatHeaderDetailCenter)
+                        
+                        sheet.write(row, 13, i['container_qty'], formatHeaderDetailRight)
+                        sheet.write(row, 14, i['container_vol'], formatHeaderDetailRightFour)
+                        sheet.write(row, 15, i['container_qty'], formatHeaderDetailRight)
+                        sheet.write(row, 16, i['container_vol'], formatHeaderDetailRightFour)
 
-            if total == 1:
-                sheet.write(row - 1, 12, 1, formatHeaderDetailCenterNumber)
-            elif total > 1:
-                sheet.merge_range(row - total, 12, row - 1, 12, 1, formatHeaderDetailCenterNumber)
+                        total += 1
+                        row += 1
+                        number += 1
+                        total_container_qty += i['container_qty']
+                        total_container_vol += i['container_vol']
+
+                if total == 1:
+                    sheet.write(row - 1, 12, 1, formatHeaderDetailCenterNumber)
+                elif total > 1:
+                    sheet.merge_range(row - total, 12, row - 1, 12, 1, formatHeaderDetailCenterNumber)
+
+            sheet.write(row, 13, total_container_qty, formatHeaderDetailRight)
+            sheet.write(row, 14, total_container_vol, formatHeaderDetailRightFour)
+            sheet.write(row, 15, total_container_qty, formatHeaderDetailRight)
+            sheet.write(row, 16, total_container_vol, formatHeaderDetailRightFour)
+            row += 1
