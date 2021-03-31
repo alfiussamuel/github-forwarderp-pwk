@@ -1494,6 +1494,7 @@ class ProductProduct(models.Model):
     goods_type = fields.Selection([
         ('Plywood','Plywood'),
         ('Blockboard','Blockboard'),
+        ('LVL','LVL'),
         ('Barecore','Barecore'),
         ('Faceback','Faceback'),
         ('MDF','MDF'),

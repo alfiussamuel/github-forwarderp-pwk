@@ -139,6 +139,8 @@ class RpbReportXls(models.AbstractModel):
         number = 1
         merge_range = 1
         previous_container = 1
+        grand_total_container_qty = 0
+        grand_total_container_vol = 0
 
         for goods in lines.group_ids:
             total_container_qty = 0
@@ -172,6 +174,8 @@ class RpbReportXls(models.AbstractModel):
                         number += 1
                         total_container_qty += i['container_qty']
                         total_container_vol += i['container_vol']
+                        grand_total_container_qty += i['container_qty']
+                        grand_total_container_vol += i['container_vol']
 
                 if total == 1:
                     sheet.write(row - 1, 12, 1, formatHeaderDetailCenterNumber)
@@ -184,3 +188,8 @@ class RpbReportXls(models.AbstractModel):
             sheet.write(row, 15, total_container_qty, formatHeaderRight)
             sheet.write(row, 16, total_container_vol, formatHeaderRightFour)
             row += 1
+
+        sheet.write(row, 13, grand_total_container_qty, formatHeaderRight)
+        sheet.write(row, 14, grand_total_container_vol, formatHeaderRightFour)
+        sheet.write(row, 15, grand_total_container_qty, formatHeaderRight)
+        sheet.write(row, 16, grand_total_container_vol, formatHeaderRightFour)
