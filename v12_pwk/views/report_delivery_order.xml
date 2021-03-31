@@ -83,57 +83,62 @@
 	                	<table class="table table-condensed" style="margin-top:0px;page-break-before:always">
 			            	<tr>
 	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:13px;border:0px;">
+	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
 	                            </td>          
 	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:13px;border:0px;">
+	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
 	                            </td>
 	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:13px;border:0px;">
+	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
 	                            </td>                            
 	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:13px;border:0px;">
+	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
 	                                Temanggung, <span t-field="o.scheduled_date" t-options='{"format": "dd-MMMM-yyyy"}'/>
 	                            </td>                                
 	                        </tr>
 	                        <tr height="120px">
 	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:13px;border:0px;">
+	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
 	                                Diterima Oleh,
 	                            </td>          
 	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:13px;border:0px;">
+	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
 	                                Disetujui Oleh,
 	                            </td>
 	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:13px;border:0px;">
+	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
 	                                Diperiksa,
 	                            </td>                            
 	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:13px;border:0px;">
+	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
 	                                Diserahkan,
 	                            </td>                                
 	                        </tr>
 	                        <tr>                  
 	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:13px;border:0px;">
+	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
 	                                ( ____________ )
 	                            </td>
 	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:13px;border:0px;">
+	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
 	                                ( Andrew Tanujaya )
 	                            </td>              
 	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:13px;border:0px;">
+	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
 	                                ( RINDOKO )
 	                            </td>                               
 	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:13px;border:0px;">
+	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
 	                                ( Trisna Maryana Sari )
 	                            </td>                                
 	                        </tr>
+	                        <tr>                  
+	                            <td colspan="4"
+	                                style="text-align:center;padding:5px;font-size:10px;border:0px;">
+	                                Page: <span class="page"/> / <span class="topage"/>
+	                            </td>                                 
+	                        </tr>
 	                    </table>
-	                    Page: <span class="page"/> / <span class="topage"/>
 	                </div>
 	            </div>
 	        </div>
@@ -203,19 +208,19 @@
 		                <thead>
 		                    <tr>
 		                        <th width="4%"
-		                        	style="text-align:center;font-size:10px;border:1px solid black;background-color:#4ead2f;color:white;padding:2px;vertical-align:middle;">             	
+		                        	style="text-align:center;font-size:12px;border:1px solid black;background-color:#4ead2f;color:white;padding:2px;vertical-align:middle;">             	
 									<strong>NO.</strong>
 		                        </th>
 		                        <th width="15%" colspan="2"
-		                        	style="text-align:center;font-size:10px;border:1px solid black;background-color:#4ead2f;color:white;padding:2px;vertical-align:middle;">
+		                        	style="text-align:center;font-size:12px;border:1px solid black;background-color:#4ead2f;color:white;padding:2px;vertical-align:middle;">
 									<strong>BANYAKNYA</strong>
 		                        </th>
 		                        <th width="50%" colspan="8"
-		                        	style="text-align:center;font-size:10px;border:1px solid black;background-color:#4ead2f;color:white;padding:2px;vertical-align:middle;">
+		                        	style="text-align:center;font-size:12px;border:1px solid black;background-color:#4ead2f;color:white;padding:2px;vertical-align:middle;">
 									<strong>NAMA BARANG</strong>
 		                        </th>
 		                        <th width="30%"
-		                        	style="text-align:center;font-size:10px;border:1px solid black;background-color:#4ead2f;color:white;padding:2px;vertical-align:middle;">
+		                        	style="text-align:center;font-size:12px;border:1px solid black;background-color:#4ead2f;color:white;padding:2px;vertical-align:middle;">
 									<strong>KETERANGAN</strong>
 		                        </th>
 		                    </tr>
@@ -224,21 +229,21 @@
 		                	<t t-set="i" t-value="1" />
 							<t t-foreach="o.group_ids" t-as="group">
 								<tr>
-									<td style="text-align:center;font-size:11px;padding:4px;
+									<td style="text-align:center;font-size:12px;padding:5px;
 										border-bottom:0px;
 										border-top:1px solid black;
 										border-left:1px solid black;
 										border-right:1px solid black;">
 			                        </td>
 									<td colspan="2"
-										style="text-align:left;font-size:13px;padding:4px;
+										style="text-align:left;font-size:12px;padding:5px;
 										border-top:1px solid black;
 										border-bottom:0px;
 										border-left:1px solid black;
 										border-right:1px solid black;">
 			                        </td>
 			                        <td colspan="8"
-			                        	style="text-align:left;font-size:11px;padding:4px;
+			                        	style="text-align:left;font-size:12px;padding:5px;
 			                        	border-top:1px solid black;
 										border-bottom:0px;
 										border-left:1px solid black;
@@ -247,7 +252,7 @@
 			    							<span t-field="group.goods_type"/> <span t-field="group.jenis_kayu_id.name"/>
 			    						</strong>
 			                        </td>
-			                        <td style="text-align:center;font-size:11px;padding:4px;
+			                        <td style="text-align:center;font-size:12px;padding:5px;
 			                        	border-top:1px solid black;
 										border-bottom:0px;
 										border-left:1px solid black;
@@ -258,7 +263,7 @@
 		                        	<t t-if="l.product_id.goods_type == group.goods_type">
 		                        		<t t-if="l.product_id.jenis_kayu.name == group.jenis_kayu_id.name">
 		                        			<tr>
-												<td style="text-align:center;font-size:11px;
+												<td style="text-align:center;font-size:12px;
 													border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -271,7 +276,7 @@
         											<t t-set="i" t-value="i+1"/>
 						                        </td>
 						                        <td width="12%"
-						                        	style="text-align:right;font-size:11px;
+						                        	style="text-align:right;font-size:12px;
 													border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -283,7 +288,7 @@
         											<span t-esc="'{0:,.0f}'.format(l.product_uom_qty)"/>
 						                        </td>
 						                        <td width="3%"
-						                        	style="text-align:center;font-size:11px;
+						                        	style="text-align:center;font-size:12px;
 													border-top:0px;
 													border-bottom:0px;
 													border-left:0px;
@@ -295,7 +300,7 @@
         											<span t-field="l.product_id.uom_id.name"/>
 						                        </td>
 						                        <td width="5%"
-						                        	style="text-align:center;font-size:11px;
+						                        	style="text-align:center;font-size:12px;
 													border-top:0px;
 													border-bottom:0px;
 													border-left:1px solid black;
@@ -307,7 +312,7 @@
         											<span t-esc="'{0:,.1f}'.format(l.product_id.tebal)"/>
 						                        </td>
 						                        <td width="3%"
-						                        	style="text-align:center;font-size:11px;
+						                        	style="text-align:center;font-size:12px;
 													border-top:0px;
 													border-bottom:0px;
 													border-left:0px;
@@ -319,7 +324,7 @@
 													X
 						                        </td>
 						                        <td width="5%"
-						                        	style="text-align:center;font-size:11px;
+						                        	style="text-align:center;font-size:12px;
 													border-top:0px;
 													border-bottom:0px;
 													border-left:0px;
@@ -331,7 +336,7 @@
         											<span t-esc="'{0:,.0f}'.format(l.product_id.lebar)"/>
 						                        </td>
 						                        <td width="3%"
-						                        	style="text-align:center;font-size:11px;
+						                        	style="text-align:center;font-size:12px;
 													border-top:0px;
 													border-bottom:0px;
 													border-left:0px;
@@ -343,7 +348,7 @@
 													X
 						                        </td>
 						                        <td width="5%"
-						                        	style="text-align:center;font-size:11px;
+						                        	style="text-align:center;font-size:12px;
 													border-top:0px;
 													border-bottom:0px;
 													border-left:0px;
@@ -355,7 +360,7 @@
         											<span t-esc="'{0:,.0f}'.format(l.product_id.panjang)"/>
 						                        </td>
 						                        <td width="5%"
-						                        	style="text-align:center;font-size:11px;
+						                        	style="text-align:center;font-size:12px;
 													border-top:0px;
 													border-bottom:0px;
 													border-left:0px;
@@ -367,7 +372,7 @@
         											MM
 						                        </td>
 						                        <td width="12%"
-						                        	style="text-align:center;font-size:11px;
+						                        	style="text-align:center;font-size:12px;
 													border-top:0px;
 													border-bottom:0px;
 													border-left:0px;
@@ -379,7 +384,7 @@
         											<span t-field="l.product_id.grade.name"/>
 						                        </td>
 						                        <td width="10%"
-						                        	style="text-align:right;font-size:11px;
+						                        	style="text-align:right;font-size:12px;
 													border-top:0px;
 													border-bottom:0px;
 													border-left:0px;
@@ -390,7 +395,7 @@
 													padding-right:4px;"> 
         											<span t-field="l.volume"/>
 						                        </td>
-						                        <td style="text-align:right;font-size:11px;
+						                        <td style="text-align:right;font-size:12px;
 													border-top:0px;
 													border-bottom:0px;
 													border-left:0px;
@@ -403,7 +408,7 @@
 						                        </td>
 						                    </tr>
 						                    <tr style="margin-top:50px">
-						                    	<td style="text-align:right;font-size:11px;
+						                    	<td style="text-align:right;font-size:12px;
 													border-top:0px;
 													border-bottom:1px solid black;
 													border-left:1px solid black;
@@ -413,7 +418,7 @@
 													padding-left:4px;
 													padding-right:4px;">
 						                        </td>
-						                    	<td style="text-align:right;font-size:11px;
+						                    	<td style="text-align:right;font-size:12px;
 													border-top:0px;
 													border-bottom:1px solid black;
 													border-left:0px;
@@ -424,7 +429,7 @@
 													padding-right:4px;"> 
         											<strong> <span t-field="o.total_qty"/> </strong>
 						                        </td>
-						                        <td style="text-align:right;font-size:11px;
+						                        <td style="text-align:right;font-size:12px;
 													border-top:0px;
 													border-bottom:1px solid black;
 													border-left:0px;
@@ -436,7 +441,7 @@
 													<strong>PCS</strong>
 						                        </td>
 						                        <td colspan="8"
-						                        	style="text-align:right;font-size:11px;
+						                        	style="text-align:right;font-size:12px;
 													border-top:0px;
 													border-bottom:1px solid black;
 													border-left:0px;
@@ -448,7 +453,7 @@
         											<strong> <span t-field="o.total_volume"/> </strong>
 						                        </td>
 						                        <td colspan="8"
-						                        	style="text-align:right;font-size:11px;
+						                        	style="text-align:right;font-size:12px;
 													border-top:0px;
 													border-bottom:1px solid black;
 													border-left:0px;
