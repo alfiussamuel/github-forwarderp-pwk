@@ -15,6 +15,15 @@
                 <button name="button_scrap" position="attributes">
                     <attribute name="invisible">True</attribute>
                 </button>
+                <xpath expr="//page[1]" position="after">
+                    <page string="Group">
+                        <field name="group_ids" nolabel="1">
+                            <tree editable="top">
+                                <field name="jenis_kayu_id"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
                 <!-- <field name="move_ids_without_package" position="replace">
                     <field name="move_ids_without_package" 
                         attrs="{'readonly': ['|', '&amp;', ('show_operations', '=', True), '|', ('is_locked', '=', True), ('state', '=', 'done'), '&amp;', ('state', '=', 'done'), ('is_locked', '=', True)]}" 

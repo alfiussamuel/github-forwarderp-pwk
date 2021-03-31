@@ -29,13 +29,37 @@ class StockMove(models.Model):
                 res.length = res.product_id.panjang
                 res.grade_id = res.product_id.grade.id
 
-class StockPicking(models.Model):    
+
+class StockPickingGroup(models.Model):    
+    _inherit = "stock.picking.group"
+
+    reference = fields.Many2one('stock.picking', 'Delivery Order')
+    jenis_kayu_id = fields.Many2one('pwk.jenis.kayu', 'Jenis Kayu')
+
+
+class StockPicking(models.Model):
     _inherit = "stock.picking"
     
     certificate_id = fields.Many2one('pwk.certificate', 'Certificate')
     is_logo = fields.Boolean('Show Legal Logo', default=True)
     no_kendaraan = fields.Char('No. Kendaraan')
+    group_ids = fields.One2many('stock.picking.group', 'reference', 'Groups')
 
     @api.multi
-    def print_delivery_order(self):                
-        return self.env.ref('v12_pwk.delivery_order').report_action(self)
+    def print_delivery_order(self):
+        # Create Groups for Printing
+        for res in self:
+            if res.move_ids_without_package:
+                for line in res.move_ids_without_package:
+                    existing_group_id = self.env['stock.picking.group'].search([
+                        ('reference', '=', res.id),
+                        ('jenis_kayu_id', '=', line.product_id.jenis_kayu.id)
+                    ])
+
+                    if not existing_group_id:
+                        self.env['pwk.packing.list.group'].create({
+                            'reference': res.id,
+                            'jenis_kayu_id': line.product_id.jenis_kayu.id
+                        })
+
+            return self.env.ref('v12_pwk.delivery_order').report_action(self)
