@@ -18,7 +18,7 @@
             <field name="inherit_id" ref="sale.view_order_line_tree"/>
             <field name="arch" type="xml">
                 <tree position="replace">
-                    <tree string="Sales Order Lines" create="false" editable="top" default_order="thick asc">
+                    <tree string="Sales Order Lines" create="false" editable="top" default_order="width asc,length asc,thick asc">
                         <field name="order_id" invisible="1"/>
                         <field name="sale_po_number"/>
                         <field name="order_partner_id"/>
