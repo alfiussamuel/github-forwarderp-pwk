@@ -449,6 +449,7 @@ class PwkPackingList(models.Model):
                 self.env['stock.move'].create({
                     'picking_id': picking_id.id,
                     'product_id': line.product_id.id,
+                    'name': line.product_id.name,
                     'product_uom_qty': line.quantity,
                     'product_uom': line.product_id.uom_id.id
                 })
