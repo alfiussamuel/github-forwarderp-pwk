@@ -62,8 +62,8 @@ class StockPicking(models.Model):
     total_qty = fields.Float(compute="_get_total", string="Total Qty")
     total_volume = fields.Float(compute="_get_volume", string="Total Volume")
 
-    @api.depends
-    def _get_volume(self):
+    @api.depends('move_ids_without_package.product_uom_qty', 'move_ids_without_package.volume')
+    def _get_total(self):
         for res in self:
             total_qty = 0
             total_volume = 0
