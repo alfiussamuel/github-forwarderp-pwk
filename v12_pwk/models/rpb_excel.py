@@ -222,10 +222,10 @@ class RpbReportXls(models.AbstractModel):
 
         sheet.merge_range(row + 6, 14, row + 6, 16, "Temanggung, 30 Maret 2021", formatHeaderCenter)
         sheet.merge_range(row + 7, 1, row + 7, 5, "Menyetujui,", formatHeaderCenter)
-        sheet.merge_range(row + 7, 6, row + 7, 11, "Diperiksa Oleh,", formatHeaderCenter)
+        sheet.merge_range(row + 7, 6, row + 7, 12, "Diperiksa Oleh,", formatHeaderCenter)
         sheet.merge_range(row + 7, 13, row + 7, 16, "Dibuat Oleh,", formatHeaderCenter)
 
-        sheet.write(row + 12, 1, "Andrew T", formatHeaderCenter)
-        sheet.merge_range(row + 12, 3, row + 12, 5, "Andreas H", formatHeaderCenter)
-        sheet.merge_range(row + 12, 6, row + 12, 11, "Parwoto", formatHeaderCenter)
-        sheet.merge_range(row + 12, 13, row + 12, 16, "Parwoto", formatHeaderCenter)
+        sheet.write(row + 13, 1, "Andrew T", formatHeaderCenter)
+        sheet.merge_range(row + 13, 3, row + 13, 5, "Andreas H", formatHeaderCenter)
+        sheet.merge_range(row + 13, 6, row + 13, 12, "Parwoto", formatHeaderCenter)
+        sheet.merge_range(row + 13, 13, row + 13, 16, "Parwoto", formatHeaderCenter)
