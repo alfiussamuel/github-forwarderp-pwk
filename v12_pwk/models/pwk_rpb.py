@@ -875,20 +875,21 @@ class PwkRpb(models.Model):
 
     @api.multi
     def print_rpb(self):
-        if res.line_ids:
-            for line in res.line_ids:
-                existing_group_id = self.env['pwk.rpb.group'].search([
-                    ('reference', '=', res.id),
-                    ('container', '=', line.container_id.name),
-                ])
+        for res in self:
+            if res.line_ids:
+                for line in res.line_ids:
+                    existing_group_id = self.env['pwk.rpb.group'].search([
+                        ('reference', '=', res.id),
+                        ('container', '=', line.container_id.name),
+                    ])
 
-                if not existing_group_id:
-                    self.env['pwk.rpb.group'].create({
-                        'reference': res.id,
-                        'container': line.container_id.name
-                    })
+                    if not existing_group_id:
+                        self.env['pwk.rpb.group'].create({
+                            'reference': res.id,
+                            'container': line.container_id.name
+                        })
 
-        return self.env.ref('v12_pwk.report_rpb').report_action(self)
+            return self.env.ref('v12_pwk.report_rpb').report_action(self)
 
     @api.model
     def create(self, vals):
