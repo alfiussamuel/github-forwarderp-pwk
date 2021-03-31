@@ -725,11 +725,12 @@
                                     </tree>
                                     <form>
                                         <group>
+                                            <field name="goods_type"/><!-- 
                                             <field name="line_ids" nolabel="1">
                                                 <tree editable="top">
                                                     <field name="container"/>
                                                 </tree>
-                                            </field>
+                                            </field> -->
                                         </group>
                                     </form>
                                 </field>
