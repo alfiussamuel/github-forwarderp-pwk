@@ -9,6 +9,9 @@
                 <field name="origin" position="after">
                     <field name="no_kendaraan"/>
                 </field>
+                <button name="action_assign" position="after">
+                    <button name="print_delivery_order" string="Print" type="object"/>
+                </button>
                 <!-- <field name="move_ids_without_package" position="replace">
                     <field name="move_ids_without_package" 
                         attrs="{'readonly': ['|', '&amp;', ('show_operations', '=', True), '|', ('is_locked', '=', True), ('state', '=', 'done'), '&amp;', ('state', '=', 'done'), ('is_locked', '=', True)]}" 
