@@ -156,16 +156,23 @@ class RpbReportXls(models.AbstractModel):
             sheet.write(row, 15, i['container_qty'], formatHeaderDetailCenter)
             sheet.write(row, 16, i['container_vol'], formatHeaderDetailRightFour)            
             
+            print ("Container ", i['container'])
+
             # Check prev Container
             if int(i['container']) == previous_container and previous_container > 0:
                 merge_range += 1
 
+            print ("Merge Range ", merge_range)
             if merge_range >= 1 and (int(i['container']) != previous_container):
                 if merge_range == 1:
-                    sheet.write(row - merge_range, 12, int(i['container']), formatHeaderDetailCenter)
+                    print ("Merge Range 1")
+                    sheet.write(row - merge_range, 12, previous_container, formatHeaderDetailCenter)
                 elif merge_range > 1:
-                    sheet.merge_range(row - merge_range, 12, row, 12, int(i['container']), formatHeaderDetailCenter)
+                    print ("Merge Range More than 1")
+                    sheet.merge_range(row - merge_range, 12, row, 12, previous_container, formatHeaderDetailCenter)
 
             previous_container = int(i['container'])
+            print ("Previous Container")
+            
             row += 1
             number += 1
