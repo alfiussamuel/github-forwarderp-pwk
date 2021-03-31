@@ -200,8 +200,8 @@
 			                        </td>
 			                    </tr>
 			                    <t t-foreach="o.move_ids_without_package" t-as="l">
-		                        	<t t-if="l.product_id.goods_type == group.product_id.goods_type">
-		                        		<t t-if="l.product_id.jenis_kayu.name == group.product_id.jenis_kayu.name">
+		                        	<t t-if="l.product_id.goods_type == group.goods_type">
+		                        		<t t-if="l.product_id.jenis_kayu.name == group.jenis_kayu_id.name">
 		                        			<tr>
 												<td style="text-align:center;font-size:11px;
 													border-top:0px;
