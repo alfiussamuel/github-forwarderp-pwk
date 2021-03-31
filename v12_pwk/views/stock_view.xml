@@ -28,9 +28,9 @@
                 <xpath expr="//field[@name='product_uom']" position="after">
                     <field name="notes"/>
                 </xpath>
-                <xpath expr="//field[@name='product_uom_qty']" position="after">
+                <!-- <xpath expr="//field[@name='product_uom_qty']" position="after">
                     <field name="volume"/>
-                </xpath>
+                </xpath> -->
                 <!-- <field name="move_ids_without_package" position="replace">
                     <field name="move_ids_without_package" 
                         attrs="{'readonly': ['|', '&amp;', ('show_operations', '=', True), '|', ('is_locked', '=', True), ('state', '=', 'done'), '&amp;', ('state', '=', 'done'), ('is_locked', '=', True)]}" 
