@@ -446,7 +446,7 @@ class PwkPackingList(models.Model):
             })
 
             for line in res.line_ids:
-                self.env['stock.pack.operation'].create({
+                self.env['stock.move'].create({
                     'picking_id': picking_id.id,
                     'product_id': line.product_id.id,
                     'product_uom_qty': line.quantity,
