@@ -59,6 +59,22 @@ class StockPicking(models.Model):
     is_logo = fields.Boolean('Show Legal Logo', default=True)
     no_kendaraan = fields.Char('No. Kendaraan')
     group_ids = fields.One2many('stock.picking.group', 'reference', 'Groups')
+    total_qty = fields.Float(compute="_get_total", string="Total Qty")
+    total_volume = fields.Float(compute="_get_volume", string="Total Volume")
+
+    @api.depends
+    def _get_volume(self):
+        for res in self:
+            total_qty = 0
+            total_volume = 0
+
+            if res.move_ids_without_package:
+                for line in res.move_ids_without_package:
+                    total_qty += line.product_uom_qty
+                    total_volume += line.volume
+
+            res.total_qty = total_qty
+            res.total_volume = total_volume
 
     @api.multi
     def print_delivery_order(self):
