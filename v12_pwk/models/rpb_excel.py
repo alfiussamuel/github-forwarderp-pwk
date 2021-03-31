@@ -46,6 +46,7 @@ class RpbReportXls(models.AbstractModel):
         formatHeaderCenterNumber = workbook.add_format({'font_size': 14, 'valign':'vcenter', 'align': 'center', 'bold': True, 'text_wrap': True, 'num_format': '#,##0'})
         formatHeaderLeft = workbook.add_format({'font_size': 14, 'valign':'vcenter', 'align': 'left', 'bold': True, 'text_wrap': True})
         formatHeaderRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0', 'bold': True, 'bg_color':'#4ead2f', 'color':'white'})
+        formatHeaderRightFour = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0', 'bold': True, 'bg_color':'#4ead2f', 'color':'white', 'num_format': '#,##4'})
         formatHeaderTable = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'bold': True, 'bg_color':'#4ead2f', 'color':'white', 'text_wrap': True})
         formatHeaderTablePlain = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'bold': True, 'text_wrap': True})
         formatHeaderTableRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'bold': True, 'bg_color':'#3eaec2', 'text_wrap': True, 'num_format': '#,##0'})
@@ -176,8 +177,8 @@ class RpbReportXls(models.AbstractModel):
                     sheet.merge_range(row - total, 12, row - 1, 12, 1, formatHeaderDetailCenterNumber)
 
             sheet.merge_range(row, 0, row, 12, "TOTAL", formatHeaderRight)
-            sheet.write(row, 13, total_container_qty, formatHeaderDetailRight)
-            sheet.write(row, 14, total_container_vol, formatHeaderDetailRightFour)
-            sheet.write(row, 15, total_container_qty, formatHeaderDetailRight)
-            sheet.write(row, 16, total_container_vol, formatHeaderDetailRightFour)
+            sheet.write(row, 13, total_container_qty, formatHeaderRight)
+            sheet.write(row, 14, total_container_vol, formatHeaderRightFour)
+            sheet.write(row, 15, total_container_qty, formatHeaderRight)
+            sheet.write(row, 16, total_container_vol, formatHeaderRightFour)
             row += 1
