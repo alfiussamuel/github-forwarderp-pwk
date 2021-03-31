@@ -507,6 +507,8 @@ class PwkRpb(models.Model):
     total_plywood_percent = fields.Float(compute="_get_total_produksi", string='Total Plywood (%)', digits=dp.get_precision('ZeroDecimal'))
     total_lvl_percent = fields.Float(compute="_get_total_produksi", string='Total LVL (%)', digits=dp.get_precision('ZeroDecimal'))
 
+    group_ids = fields.One2many('pwk.rpb.group', 'reference', 'Groups')
+
     @api.depends('working_days', 'line_ids.total_qty', 'line_ids.product_id')
     def _get_total_produksi(self):
         for res in self:
