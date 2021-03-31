@@ -57,7 +57,7 @@ class StockPicking(models.Model):
                     ])
 
                     if not existing_group_id:
-                        self.env['pwk.packing.list.group'].create({
+                        self.env['stock.picking.group'].create({
                             'reference': res.id,
                             'jenis_kayu_id': line.product_id.jenis_kayu.id
                         })
