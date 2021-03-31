@@ -118,7 +118,7 @@ class RpbReportXls(models.AbstractModel):
         # Data 1
         row = 5
 
-        sheet.merge_range(row-3, 0, row-3, 15, 'RENCANA PRODUKSI', formatHeaderCenter)
+        sheet.merge_range(row-3, 0, row-3, 15, 'RENCANA PRODUKSI (' + lines.name + ')', formatHeaderCenter)
         sheet.merge_range(row-2, 0, row-2, 15, 'TARGET ' + str(lines.target), formatHeaderCenterNumber)
 
         # merge 1 - 4 

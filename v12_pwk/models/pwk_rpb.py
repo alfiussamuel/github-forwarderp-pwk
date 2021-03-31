@@ -489,7 +489,7 @@ class PwkRpb(models.Model):
     container_ids = fields.One2many('pwk.rpb.container', 'reference', string='Container', ondelete="cascade")
     total_container = fields.Integer(compute="_get_total_container", string='Total Container')
     rpm_ids = fields.One2many('pwk.rpm', 'rpb_id', string='RPM', ondelete="cascade")
-    target = fields.Float('Target ( M3 )', digits=dp.get_precision('FourDecimal'))    
+    target = fields.Integer('Target ( M3 )')    
     actual = fields.Float(compute="_get_actual", string='Aktual ( M3 )', digits=dp.get_precision('FourDecimal'))
     is_pr = fields.Boolean('Purchase Request')
     pr_veneer_id = fields.Many2one('pwk.purchase.request', string='PR Veneer Core')
