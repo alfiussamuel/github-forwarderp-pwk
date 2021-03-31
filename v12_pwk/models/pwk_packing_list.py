@@ -445,10 +445,13 @@ class PwkPackingList(models.Model):
                 'origin': res.name
             })
 
-            # for line in res.line_ids:
-            #     self.env['stock.move'].create({
-            #         'product_id': line.product_id.id,
-            #     })
+            for line in res.line_ids:
+                self.env['stock.pack.operation'].create({
+                    'picking_id': picking_id.id,
+                    'product_id': line.product_id.id,
+                    'product_uom_qty': line.quantity,
+                    'product_uom': line.product_id.uom_id.id
+                })
 
             res.write({
                 'is_picking': True,
