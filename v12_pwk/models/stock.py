@@ -18,8 +18,15 @@ class StockMove(models.Model):
     thick = fields.Float(compute="_get_sale_fields", string='Thick')
     width = fields.Float(compute="_get_sale_fields", string='Width')
     length = fields.Float(compute="_get_sale_fields", string='Length')
-    grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')        
+    grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')  
+    notes = fields.Text('Notes')
+    volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))
 
+    @api.depends('product_uom_qty')
+    def _get_volume(self):
+        for res in self:                        
+            res.volume = ((res.product_uom_qty * res.product_id.tebal * res.product_id.lebar * res.product_id.panjang)) / 1000000000
+            
     @api.depends('product_id')
     def _get_sale_fields(self):
         for res in self:
