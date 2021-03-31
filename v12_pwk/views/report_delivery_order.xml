@@ -349,11 +349,11 @@
         											<span t-field="l.notes"/>
 						                        </td>
 						                    </tr>
-						                    <tr>
+						                    <tr style="margin-top:20px">
 						                    	<td style="text-align:right;font-size:11px;
 													border-top:0px;
 													border-bottom:1px solid black;
-													border-left:0px;
+													border-left:1px solid black;
 													border-right:1px solid black;
 													padding-top:4px;
 													padding-bottom:0px;
@@ -364,7 +364,7 @@
 													border-top:0px;
 													border-bottom:1px solid black;
 													border-left:0px;
-													border-right:1px solid black;
+													border-right:0px;
 													padding-top:4px;
 													padding-bottom:0px;
 													padding-left:4px;
