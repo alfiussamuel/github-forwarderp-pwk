@@ -124,13 +124,14 @@ class PwkMutasiVeneerOkRepairLineBc(models.Model):
             if grade_source_ids:
                 stock_masuk_pcs = grade_source_ids[0].repair_stock_keluar_pcs
 
-            kalibrasi_source_ids = self.env['pwk.mutasi.barecore.line.kalibrasi'].search([
-                ('reference.date','=',res.reference.date),
-                ('product_id','=',res.product_id.id)
-                ])
-                        
-            if kalibrasi_source_ids:
-                stock_masuk_pcs = kalibrasi_source_ids[0].repair_stock_keluar_pcs
+            else:
+                kalibrasi_source_ids = self.env['pwk.mutasi.barecore.line.kalibrasi'].search([
+                    ('reference.date','=',res.reference.date),
+                    ('product_id','=',res.product_id.id)
+                    ])
+                            
+                if kalibrasi_source_ids:
+                    stock_masuk_pcs = kalibrasi_source_ids[0].repair_stock_keluar_pcs
 
             res.stock_masuk_pcs = stock_masuk_pcs
 
@@ -534,11 +535,13 @@ class PwkMutasiVeneerOkRepair(models.Model):
             # Barecore Grade
             grade_source_ids = self.env['pwk.mutasi.barecore.line.grade'].search([
                 ('reference.date','=',res.date),
+                ('repair_stock_keluar_pcs', '>', 0)
                 ])
 
             if not grade_source_ids:
-                grade_source_ids = self.env['pwk.mutasi.barecore.line.kalibrasi'].search([
+                grade_source_ids = self.env['pwk.mutasi.barecore.line.grade'].search([
                     ('reference.date','=',res.date - timedelta(1)),
+                    ('repair_stock_keluar_pcs', '>', 0)
                     ])
 
             if grade_source_ids:
@@ -551,11 +554,13 @@ class PwkMutasiVeneerOkRepair(models.Model):
             # Barecore Kalibrasi
             kalibrasi_source_ids = self.env['pwk.mutasi.barecore.line.kalibrasi'].search([
                 ('reference.date','=',res.date),
+                ('kalibrasi_stock_keluar_pcs', '>', 0)
                 ])
 
             if not kalibrasi_source_ids:
                 kalibrasi_source_ids = self.env['pwk.mutasi.barecore.line.kalibrasi'].search([
                     ('reference.date','=',res.date - timedelta(1)),
+                    ('kalibrasi_stock_keluar_pcs', '>', 0)
                     ])
 
             if kalibrasi_source_ids:
