@@ -180,6 +180,8 @@ class RpbReportXls(models.AbstractModel):
                     number += 1
 
             if total == 1:
+                print ("Print Container ", container['container'])
                 sheet.write(row - total, 12, i['container'], formatHeaderDetailRightFour)
             elif total > 1:
+                print ("Print Container > 1 ", container['container'])
                 sheet.merge_range(row - total, 12, row, 12, i['container'], formatHeaderDetailRightFour)
