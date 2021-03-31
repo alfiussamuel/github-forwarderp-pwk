@@ -84,6 +84,7 @@ class RpbReportXls(models.AbstractModel):
         formatHeaderDetailLeft.set_border(1)
         formatHeaderLeft10.set_border(1)
         formatHeaderRightFourPlain.set_border(1)
+        formatHeaderRightPlain.set_border(1)
 
         formatHeaderTable.set_text_wrap()
         formatHeaderTableRight.set_text_wrap()
@@ -208,12 +209,12 @@ class RpbReportXls(models.AbstractModel):
         sheet.write(row + 3, 1, "LVL", formatHeaderLeft10)
         sheet.write(row + 4, 1, "Total", formatHeaderLeft10)
 
-        sheet.write(row + 1, 2, lines.total_blockboard, formatHeaderRightFourPlain)
+        sheet.write(row + 1, 2, str(lines.total_blockboard) + ' M3', formatHeaderRightFourPlain)
         sheet.write(row + 2, 2, lines.total_plywood, formatHeaderRightFourPlain)
         sheet.write(row + 3, 2, lines.total_lvl, formatHeaderRightFourPlain)
         sheet.write(row + 4, 2, lines.actual, formatHeaderRightFourPlain)
 
-        sheet.write(row + 1, 3, lines.total_blockboard_percent, formatHeaderRightPlain)
-        sheet.write(row + 2, 3, lines.total_plywood_percent, formatHeaderRightPlain)
-        sheet.write(row + 3, 3, lines.total_lvl_percent, formatHeaderRightPlain)
+        sheet.write(row + 1, 3, str(lines.total_blockboard_percent) + '%', formatHeaderRightPlain)
+        sheet.write(row + 2, 3, str(lines.total_plywood_percent) + '%', formatHeaderRightPlain)
+        sheet.write(row + 3, 3, str(lines.total_lvl_percent) + '%', formatHeaderRightPlain)
         sheet.write(row + 4, 3, "100%", formatHeaderRightPlain)
