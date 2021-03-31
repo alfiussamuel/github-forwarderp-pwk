@@ -134,7 +134,7 @@ class RpbReportXls(models.AbstractModel):
 
         row = 7
         number = 1
-        merge_range = 0
+        merge_range = 1
         previous_container = 0
 
         for i in get_data:
@@ -156,14 +156,16 @@ class RpbReportXls(models.AbstractModel):
             sheet.write(row, 15, i['container_qty'], formatHeaderDetailCenter)
             sheet.write(row, 16, i['container_vol'], formatHeaderDetailRightFour)            
             
-            # # Check prev Container
-            # if i['container'] == previous_container and previous_container > 0:
-            #     merge_range += 1
+            # Check prev Container
+            if i['container'] == previous_container and previous_container > 0:
+                merge_range += 1
 
-            # previous_container = i['container']
+            if merge_range >= 1 and (i['container'] != previous_container):
+                if merge_range == 1:
+                    sheet.write(row - merge_range, 12, i['container'], formatHeaderDetailCenter)
+                elif merge_range > 1:
+                    sheet.merge_range(row - merge_range, 12, row, 12, i['container'], formatHeaderDetailCenter)
 
-            # if merge_range > 0:
-            #     sheet.write(row, 12, i['container'], formatHeaderDetailCenter)
-
+            previous_container = i['container']
             row += 1
             number += 1
