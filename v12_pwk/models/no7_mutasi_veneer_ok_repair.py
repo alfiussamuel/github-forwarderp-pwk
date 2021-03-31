@@ -25,7 +25,7 @@ class PwkMutasiVeneerOkRepairLineBc(models.Model):
     stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
     stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
 
-    stock_masuk_pcs = fields.Float('Stok Masuk Repair')
+    stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk Repair')
     stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Unrepair', digits=dp.get_precision('FourDecimal'))
     acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Unrepair')
     acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Unrepair', digits=dp.get_precision('FourDecimal'))
