@@ -79,7 +79,7 @@
 
 	        <div class="footer o_standard_footer">
 	            <div class="text-center">
-	                <div t-if="report_type == 'pdf'" class="text-muted">
+	                <div t-if="report_type == 'pdf'">
 	                	<table class="table table-condensed" style="margin-top:0px;page-break-before:always">
 			            	<tr>
 	                            <td width="25%"
@@ -488,7 +488,7 @@
 	        <field name="page_width">0</field>
 	        <field name="orientation">Portrait</field>
 	        <field name="margin_top">40</field>
-	        <field name="margin_bottom">50</field>
+	        <field name="margin_bottom">60</field>
 	        <field name="margin_left">5</field>
 	        <field name="margin_right">5</field>
 	        <field name="header_line" eval="False"/>
