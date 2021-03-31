@@ -166,13 +166,13 @@ class RpbReportXls(models.AbstractModel):
             if merge_range >= 1 and (int(i['container']) != previous_container):
                 if merge_range == 1:
                     print ("Merge Range 1")
-                    sheet.write(row - merge_range, 12, previous_container, formatHeaderDetailCenter)
+                    sheet.write(row, 12, previous_container, formatHeaderDetailCenter)
                 elif merge_range > 1:
                     print ("Merge Range More than 1")
                     sheet.merge_range(row - merge_range, 12, row, 12, previous_container, formatHeaderDetailCenter)
 
             previous_container = int(i['container'])
             print ("Previous Container")
-            
+
             row += 1
             number += 1
