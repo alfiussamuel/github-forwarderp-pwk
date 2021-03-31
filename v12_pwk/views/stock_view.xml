@@ -12,6 +12,9 @@
                 <button name="action_assign" position="after">
                     <button name="print_delivery_order" string="Print" type="object"/>
                 </button>
+                <button name="button_scrap" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
                 <!-- <field name="move_ids_without_package" position="replace">
                     <field name="move_ids_without_package" 
                         attrs="{'readonly': ['|', '&amp;', ('show_operations', '=', True), '|', ('is_locked', '=', True), ('state', '=', 'done'), '&amp;', ('state', '=', 'done'), ('is_locked', '=', True)]}" 

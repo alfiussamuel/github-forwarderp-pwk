@@ -115,33 +115,37 @@
 		            <p t-if="o.partner_id.vat"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.partner_id.vat"/></p>
 		        </t>
 		        <div class="page">
-		            <div class="oe_structure"/>		            
-		            <div class="row mt32 mb32" id="informations">
-		                <div t-if="o.client_order_ref" class="col-auto mw-100 mb-2">
-		                    <strong>Your Reference:</strong>
-		                    <p class="m-0" t-field="o.client_order_ref"/>
-		                </div>
-		                <div t-if="o.confirmation_date and o.state not in ['draft','sent']" class="col-auto mw-100 mb-2">
-		                    <strong>Date Ordered:</strong>
-		                    <p class="m-0" t-field="o.confirmation_date"/>
-		                </div>
-		                <div t-if="o.date_order and o.state in ['draft','sent']" class="col-auto mw-100 mb-2">
-		                    <strong>Quotation Date:</strong>
-		                    <p class="m-0" t-field="o.date_order"/>
-		                </div>
-		                <div t-if="o.user_id.name" class="col-auto mw-100 mb-2">
-		                    <strong>Salesperson:</strong>
-		                    <p class="m-0" t-field="o.user_id"/>
-		                </div>
-		                <div name="payment_term" t-if="o.payment_term_id" class="col-auto mw-100 mb-2">
-		                    <strong>Payment Terms:</strong>
-		                    <p class="m-0" t-field="o.payment_term_id"/>
-		                </div>
-		                <div t-if="o.validity_date and o.state in ['draft', 'sent']" class="col-auto mw-100 mb-2">
-		                    <strong>Expiration Date:</strong>
-		                    <p class="m-0" t-field="o.validity_date"/>
-		                </div>
-		            </div>		        
+		            <div class="oe_structure"/>
+		            <table class="table table-condensed" style="margin-top:0px;">					
+						<tr>
+							<td width="17%" style="font-size:12px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+								<strong>Nomor Urut</strong>							
+							</td>
+							<td width="3%" style="font-size:12px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
+								<strong>:</strong>
+							</td>
+							<td width="30%" style="font-size:12px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								<span t-field="o.name"/>
+							</td>
+						</tr>
+						<tr>
+							<td width="17%" style="font-size:12px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+								<strong>No. Kendaraan</strong>							
+							</td>
+							<td width="3%" style="font-size:12px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
+								<strong>:</strong>
+							</td>
+							<td width="30%" style="font-size:12px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
+								<span t-field="o.no_kendaraan"/>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3" width="17%" 
+								style="font-size:12px; text-align:left;padding:1px;border:0px;vertical-align:middle;">		
+								<strong>Harap diterima dengan baik barang - barang dibawah ini:</strong>							
+							</td>
+						</tr>
+					</table>	        
 		        </div>
             </t>
         </template>        
