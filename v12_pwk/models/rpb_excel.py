@@ -33,8 +33,21 @@ class RpbReportXls(models.AbstractModel):
 
         return lines   
 
+    def get_data_container(self, data):        
+        lines = []
+        if data.group_ids:
+            for line in data.group_ids:
+                vals = {
+                    'container': line.container,                    
+                }
+
+                lines.append(vals)
+
+        return lines   
+
     def generate_xlsx_report(self, workbook, data, lines):        
         get_data = self.get_data(lines)
+        get_data_container = self.get_data_container(lines)
         alamat = ' Jl. Raya Krangan - Pringsurat, Karanglo, Kupen, Kec. Pringsurat, Kabupaten Temanggung, Jawa Tengah 56272'
 
         sheet = workbook.add_worksheet('Sheet 1')
@@ -137,42 +150,34 @@ class RpbReportXls(models.AbstractModel):
         merge_range = 1
         previous_container = 1
 
-        for i in get_data:
-            sheet.write(row, 0, number, formatHeaderDetailCenter)
-            sheet.write(row, 1, i['partner'], formatHeaderDetailCenter)
-            sheet.write(row, 2, i['goods_type'], formatHeaderDetailCenter)
-            sheet.write(row, 3, i['jenis_kayu'], formatHeaderDetailCenter)            
-            sheet.write(row, 4, i['order'], formatHeaderDetailCenter)            
-            sheet.write(row, 5, i['tebal'], formatHeaderDetailCenter)
-            sheet.write(row, 6, '', formatHeaderDetailCenter)
-            sheet.write(row, 7, i['lebar'], formatHeaderDetailCenter)
-            sheet.write(row, 8, '', formatHeaderDetailCenter)
-            sheet.write(row, 9, i['panjang'], formatHeaderDetailCenter)
-            sheet.write(row, 10, i['glue'], formatHeaderDetailCenter)
-            sheet.write(row, 11, i['grade'], formatHeaderDetailCenter)
-            
-            sheet.write(row, 13, i['container_qty'], formatHeaderDetailCenter)
-            sheet.write(row, 14, i['container_vol'], formatHeaderDetailRightFour)
-            sheet.write(row, 15, i['container_qty'], formatHeaderDetailCenter)
-            sheet.write(row, 16, i['container_vol'], formatHeaderDetailRightFour)            
-            
-            print ("Container ", i['container'])
+        for container in get_data_container:
+            total = 0
 
-            # Check prev Container
-            if int(i['container']) == previous_container and previous_container > 1:
-                merge_range += 1
+            for i in get_data:
+                if i['container'] == container['container']:
+                    sheet.write(row, 0, number, formatHeaderDetailCenter)
+                    sheet.write(row, 1, i['partner'], formatHeaderDetailCenter)
+                    sheet.write(row, 2, i['goods_type'], formatHeaderDetailCenter)
+                    sheet.write(row, 3, i['jenis_kayu'], formatHeaderDetailCenter)            
+                    sheet.write(row, 4, i['order'], formatHeaderDetailCenter)            
+                    sheet.write(row, 5, i['tebal'], formatHeaderDetailCenter)
+                    sheet.write(row, 6, '', formatHeaderDetailCenter)
+                    sheet.write(row, 7, i['lebar'], formatHeaderDetailCenter)
+                    sheet.write(row, 8, '', formatHeaderDetailCenter)
+                    sheet.write(row, 9, i['panjang'], formatHeaderDetailCenter)
+                    sheet.write(row, 10, i['glue'], formatHeaderDetailCenter)
+                    sheet.write(row, 11, i['grade'], formatHeaderDetailCenter)
+                    
+                    sheet.write(row, 13, i['container_qty'], formatHeaderDetailCenter)
+                    sheet.write(row, 14, i['container_vol'], formatHeaderDetailRightFour)
+                    sheet.write(row, 15, i['container_qty'], formatHeaderDetailCenter)
+                    sheet.write(row, 16, i['container_vol'], formatHeaderDetailRightFour)
 
-            print ("Merge Range ", merge_range)
-            if merge_range >= 1 and (int(i['container']) != previous_container):
-                if merge_range == 1:
-                    print ("Merge Range 1")
-                    sheet.write(row, 12, previous_container, formatHeaderDetailCenter)
-                elif merge_range > 1:
-                    print ("Merge Range More than 1")
-                    sheet.merge_range(row - merge_range, 12, row, 12, previous_container, formatHeaderDetailCenter)
+                    total += 1
+                    row += 1
+                    number += 1
 
-            previous_container = int(i['container'])
-            print ("Previous Container")
-
-            row += 1
-            number += 1
+            if total == 1:
+                sheet.write(row - total, 12, i['container'], formatHeaderDetailRightFour)
+            elif total > 1:
+                sheet.merge_range(row - total, 12, row, 12, i['container'], formatHeaderDetailRightFour)
