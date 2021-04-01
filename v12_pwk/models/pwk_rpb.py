@@ -923,14 +923,14 @@ class PwkRpb(models.Model):
         sequence_id = self.env['ir.sequence'].search([
             ('name', '=', name),
             ('code', '=', obj),
-            ('suffix', '=', '.' + year_month + '.RPB.PWK')
+            ('suffix', '=', year_month)
         ])
         if not sequence_id :
             sequence_id = self.env['ir.sequence'].sudo().create({
                 'name': name,
                 'code': obj,
                 'implementation': 'no_gap',
-                'suffix': '.' + year_month + '.RPB.PWK',
+                'suffix': year_month,
                 'padding': 3
             })
         return sequence_id.next_by_id()
@@ -938,38 +938,49 @@ class PwkRpb(models.Model):
     @api.model
     def create(self, vals):
         month_name = ''
+        month_number = ''
+
         month = datetime.strptime(vals.get('date_start'), '%Y-%m-%d').month
         year = datetime.strptime(vals.get('date_start'), '%Y-%m-%d').year
 
-        print ("Month ", month)
-        print ("Year ", year)
+        if month == 1:
+            month_name = 'Jan'
+            month_number = '001'
+        elif month == 2:
+            month_name = 'Feb'
+            month_number = '002'
+        elif month == 3:
+            month_name = 'Mar'
+            month_number = '003'
+        elif month == 4:
+            month_name = 'Apr'
+            month_number = '004'
+        elif month == 5:
+            month_name = 'Mei'
+            month_number = '005'
+        elif month == 6:
+            month_name = 'Jun'
+            month_number = '006'
+        elif month == 7:
+            month_name = 'Jul'
+            month_number = '007'
+        elif month == 8:
+            month_name = 'Agt'
+            month_number = '008'
+        elif month == 9:
+            month_name = 'Sep'
+            month_number = '009'
+        elif month == 10:
+            month_name = 'Okt'
+            month_number = '010'
+        elif month == 11:
+            month_name = 'Nov'
+            month_number = '011'
+        elif month == 12:
+            month_name = 'Des'
+            month_number = '012'
 
-        # if month == 1:
-        #     month_name = 'Jan'
-        # elif month == 2:
-        #     month_name = 'Feb'
-        # elif month == 3:
-        #     month_name = 'Mar'
-        # elif month == 4:
-        #     month_name = 'Apr'
-        # elif month == 5:
-        #     month_name = 'Mei'
-        # elif month == 6:
-        #     month_name = 'Jun'
-        # elif month == 7:
-        #     month_name = 'Jul'
-        # elif month == 8:
-        #     month_name = 'Agt'
-        # elif month == 9:
-        #     month_name = 'Sep'
-        # elif month == 10:
-        #     month_name = 'Okt'
-        # elif month == 11:
-        #     month_name = 'Nov'
-        # elif month == 12:
-        #     month_name = 'Des'
-
-        # year_month = str('Jan') + '-' + str('2021')
+        year_month = month + '.RPB/PPIC-PWKWI/' + month + '-' + year
         
-        # vals['name'] = self.get_sequence('Rencana Produksi Bulanan', 'pwk.rpb', '%s' % year_month)
-        # return super(PwkRpb, self).create(vals)
+        vals['name'] = self.get_sequence('Rencana Produksi Bulanan', 'pwk.rpb', '%s' % year_month)
+        return super(PwkRpb, self).create(vals)
