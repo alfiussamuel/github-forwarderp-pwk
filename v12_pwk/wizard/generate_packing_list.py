@@ -110,7 +110,7 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                             'thick': bom_line.product_id.tebal,
                             'width': bom_line.product_id.lebar,
                             'length': bom_line.product_id.panjang,
-                            'quantity': bom_line.product_qty * line.product_uom_qty,
+                            'quantity': bom_line.quantity * line.product_uom_qty,
                             'ply': bom_line.ply,
                             'notes': bom_line.notes
                         })
