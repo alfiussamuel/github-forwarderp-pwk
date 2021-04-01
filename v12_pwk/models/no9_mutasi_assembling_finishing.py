@@ -1642,6 +1642,8 @@ class PwkMutasiAssemblingFinishing(models.Model):
                                 'new_product_id': new_product_ids[0].id,
                                 'keterangan': 'LUP1'
                                 })
+                        else:
+                            raise UserError(_('Product %s tidak ditemukan' % new_product_ids))
 
                     if source.lup2_sander_stock_keluar_pcs > 0:
                         new_product_ids = self.env['product.product'].search([
@@ -1661,6 +1663,8 @@ class PwkMutasiAssemblingFinishing(models.Model):
                                 'new_product_id': new_product_ids[0].id,
                                 'keterangan': 'LUP2'
                                 })
+                        else:
+                            raise UserError(_('Product %s tidak ditemukan' % new_product_ids))
 
     @api.multi
     def button_reload_kalibrasi(self):
