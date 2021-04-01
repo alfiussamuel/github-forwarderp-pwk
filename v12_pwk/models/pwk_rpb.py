@@ -714,7 +714,7 @@ class PwkRpb(models.Model):
                         bom_ids = line.detail_ids_5
 
                     for bom in bom_ids:
-                        if not bom.product_id.goods_type and bom.product_id.jenis_kayu.name != "MDF":
+                        if bom.product_id.goods_type == "Veneer" and bom.product_id.jenis_kayu.name != "MDF":
                             if bom.quantity > bom.available_qty:
                                 if bom.product_id.id not in product_list:
                                     product_list.append(bom.product_id.id)
@@ -756,7 +756,7 @@ class PwkRpb(models.Model):
                                 bom_ids = line.detail_ids_5
 
                             for bom in bom_ids:
-                                if not bom.product_id.goods_type and bom.product_id.jenis_kayu.name != "MDF":
+                                if bom.product_id.goods_type == "Veneer" and bom.product_id.jenis_kayu.name != "MDF":
                                     if bom.quantity > bom.available_qty:
                                         if bom.product_id.id not in product_list:
                                             product_list.append(bom.product_id.id)
