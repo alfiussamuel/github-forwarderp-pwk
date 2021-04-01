@@ -114,8 +114,13 @@ class SaleOrderLine(models.Model):
         return self.product_id.name
     
     is_changed = fields.Boolean('Changed', default=True)
+    
     qty_rpb = fields.Float(string='RPB PCS', digits=dp.get_precision('ZeroDecimal'))
     volume_rpb = fields.Float(compute="_get_volume_qty", string='RPB M3', digits=dp.get_precision('FourDecimal'))
+
+    qty_packing_list = fields.Float(string='PL PCS', digits=dp.get_precision('ZeroDecimal'))
+    volume_packing_list = fields.Float(compute="_get_volume_qty", string='PL M3', digits=dp.get_precision('FourDecimal'))
+    
     container = fields.Integer('Jumlah Container')
     is_changed = fields.Boolean('Changed')
     is_qty_volume = fields.Boolean('Qty Volume')
@@ -150,12 +155,13 @@ class SaleOrderLine(models.Model):
     auto_volume = fields.Float(compute="_get_volume_qty", string='Volume', digits=dp.get_precision('FourDecimal'))
     volume = fields.Float(compute="_get_volume_qty", string='Volume', digits=dp.get_precision('FourDecimal'))
 
-    @api.depends('thick','width','length','product_uom_qty','product_id','is_qty_volume', 'qty_rpb', 'is_changed')
+    @api.depends('thick','width','length','product_uom_qty','product_id','is_qty_volume', 'qty_rpb', 'qty_packing_list', 'is_changed')
     def _get_volume_qty(self):
         for res in self:                        
             res.volume = ((res.product_uom_qty * res.product_id.tebal * res.product_id.lebar * res.product_id.panjang)) / 1000000000
             res.auto_volume = res.volume
             res.volume_rpb = (res.qty_rpb * res.width * res.length * res.thick) / 1000000000
+            res.volume_packing_list = (res.qty_packing_list * res.width * res.length * res.thick) / 1000000000
 
     @api.depends('container_ids.qty')
     def _get_total_crate_qty(self):

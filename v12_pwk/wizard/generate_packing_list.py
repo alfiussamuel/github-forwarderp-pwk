@@ -35,7 +35,7 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                     'product_id': line.product_id.id,
                     'sale_line_id': line.id,
                     'sale_id': line.order_id.id,
-                    'crate_number': line.crate_number,
+                    'crate_number': (line.qty_packing_list / line.crate_qty_each),
                     'crate_qty_each': line.crate_qty_each
                 })
 
@@ -110,9 +110,8 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                             'thick': bom_line.product_id.tebal,
                             'width': bom_line.product_id.lebar,
                             'length': bom_line.product_id.panjang,
-                            'quantity': bom_line.quantity * line.product_uom_qty,
+                            'quantity': bom_line.quantity * line.qty_packing_list,
                             'ply': bom_line.ply,
-                            # 'notes': bom_line.notes
                         })
 
                 else:
@@ -129,6 +128,6 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                             'thick': bom_line.product_id.tebal,
                             'width': bom_line.product_id.lebar,
                             'length': bom_line.product_id.panjang,
-                            'quantity': bom_line.product_qty * line.product_uom_qty,
+                            'quantity': bom_line.product_qty * line.qty_packing_list,
                             'ply': bom_line.product_qty
                         })

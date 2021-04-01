@@ -94,6 +94,7 @@ class PwkNotaPerusahaan(models.Model):
     total_volume_kubik = fields.Float(compute="_get_total", string="Total Volume M3")
     line_ids = fields.One2many('pwk.nota.perusahaan.line', 'reference', string="Lines", ondelete="cascade")
     dengan_huruf = fields.Char('Dengan Huruf')
+    picking_id = fields.Many2one('stock.picking', 'Surat Jalan')
 
     @api.depends('line_ids.quantity','line_ids.volume_stepel_meter', 'line_ids.volume_kubik')
     def _get_total(self):

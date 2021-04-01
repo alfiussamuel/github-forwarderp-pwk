@@ -448,10 +448,10 @@ class PwkPackingList(models.Model):
             for line in res.line_ids:
                 self.env['stock.move'].create({
                     'picking_id': picking_id.id,
-                    'product_id': line.product_id.id,
-                    'name': line.product_id.name,
+                    'product_id': line.revision_product_id.id,
+                    'name': line.revision_product_id.name,
                     'product_uom_qty': line.quantity,
-                    'product_uom': line.product_id.uom_id.id,
+                    'product_uom': line.revision_product_id.uom_id.id,
                     'location_id': source_location_ids[0].id,
                     'location_dest_id': destination_location_ids[0].id,
                     'date': datetime.now()
