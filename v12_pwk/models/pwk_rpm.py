@@ -182,6 +182,7 @@ class PwkRpmLineDate(models.Model):
 
 class PwkRpmLine(models.Model):    
     _name = "pwk.rpm.line"
+    _order = 'goods_type desc,jenis_kayu_id asc,grade_id asc,width desc,thick asc'
 
     reference = fields.Many2one('pwk.rpm', string='Reference')
     container_no = fields.Char('Container')
@@ -198,7 +199,9 @@ class PwkRpmLine(models.Model):
     width = fields.Float(compute="_get_sale_fields", string='Width', digits=dp.get_precision('ZeroDecimal'))
     length = fields.Float(compute="_get_sale_fields", string='Length', digits=dp.get_precision('ZeroDecimal'))
     glue_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.glue', string='Glue')
-    grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')        
+    grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')
+    jenis_kayu_id = fields.Many2one('pwk.jenis.kayu', related='product_id.jenis_kayu', string='Jenis Kayu', store=True)
+    goods_type = fields.Selection(related='product_id.goods_type', string='Goods Type', store=True)        
     spare_qty = fields.Float('Qty Spare (%)', digits=dp.get_precision('ZeroDecimal'))
     
     remaining_qty = fields.Float(string='Qty Remaining')
