@@ -740,6 +740,48 @@ class PwkRpb(models.Model):
                                             'quantity': current_line_ids[0].quantity + (1.1 * ((bom.quantity - bom.available_qty)))
                                         })
 
+                previous_rpb = self.env['pwk.rpb'].search([('id', '<', res.id)], order='id desc')
+                if previous_rpb:
+                    if previous_rpb.line_ids:
+                        for line in previous_rpb.line_ids:
+                            if line.is_detail1 and line.is_selected_detail1:
+                                bom_ids = line.detail_ids_1
+                            elif line.is_detail2 and line.is_selected_detail2:
+                                bom_ids = line.detail_ids_2
+                            elif line.is_detail3 and line.is_selected_detail3:
+                                bom_ids = line.detail_ids_3
+                            elif line.is_detail4 and line.is_selected_detail4:
+                                bom_ids = line.detail_ids_4
+                            elif line.is_detail5 and line.is_selected_detail5:
+                                bom_ids = line.detail_ids_5
+
+                            for bom in bom_ids:
+                                if not bom.product_id.goods_type and bom.product_id.jenis_kayu.name != "MDF":
+                                    if bom.quantity > bom.available_qty:
+                                        if bom.product_id.id not in product_list:
+                                            product_list.append(bom.product_id.id)
+                                            
+                                            if not bom.product_id.alternate_product_id:
+                                                raise UserError(_('Alternate Product is not defined'))
+
+                                            self.env['pwk.purchase.request.volume'].create({
+                                                'reference': request_veneer.id,
+                                                'product_id': bom.product_id.alternate_product_id.id,
+                                                'product_uom_id': bom.product_id.uom_po_id.id,
+                                                'volume': 1.1 * ((bom.quantity - bom.available_qty) * line.thick * line.width * line.length / 1000000000)
+                                            })
+
+                                        else:                                
+                                            current_line_ids = self.env['pwk.purchase.request.volume'].search([
+                                                ('reference', '=', request_veneer.id),
+                                                ('product_id', '=', bom.product_id.id),
+                                            ])
+
+                                            if current_line_ids:
+                                                current_line_ids[0].write({
+                                                    'quantity': current_line_ids[0].quantity + (1.1 * ((bom.quantity - bom.available_qty)))
+                                                })
+
                 # PR Barecore
                 product_list = []
                 request_barecore = self.env['pwk.purchase.request'].create({
@@ -782,6 +824,44 @@ class PwkRpb(models.Model):
                                         current_line_ids[0].write({
                                             'quantity': current_line_ids[0].quantity + (1.05 * ((bom.quantity - bom.available_qty)))
                                         })
+
+                previous_rpb = self.env['pwk.rpb'].search([('id', '<', res.id)], order='id desc')
+                if previous_rpb:
+                    if previous_rpb.line_ids:
+                        for line in previous_rpb.line_ids:
+                            if line.is_detail1 and line.is_selected_detail1:
+                                bom_ids = line.detail_ids_1
+                            elif line.is_detail2 and line.is_selected_detail2:
+                                bom_ids = line.detail_ids_2
+                            elif line.is_detail3 and line.is_selected_detail3:
+                                bom_ids = line.detail_ids_3
+                            elif line.is_detail4 and line.is_selected_detail4:
+                                bom_ids = line.detail_ids_4
+                            elif line.is_detail5 and line.is_selected_detail5:
+                                bom_ids = line.detail_ids_5
+
+                            for bom in bom_ids:
+                                if bom.product_id.goods_type == "Barecore":
+                                    if bom.quantity > bom.available_qty:
+                                        if bom.product_id.id not in product_list:
+                                            product_list.append(bom.product_id.id)
+
+                                            self.env['pwk.purchase.request.line'].create({
+                                                'reference': request_barecore.id,
+                                                'product_id': bom.product_id.id,
+                                                'product_uom_id': bom.product_id.uom_po_id.id,
+                                                'quantity': 1.05 * (bom.quantity - bom.available_qty)
+                                            })                            
+                                        else:
+                                            current_line_ids = self.env['pwk.purchase.request.line'].search([
+                                                ('reference', '=', request_barecore.id),
+                                                ('product_id', '=', bom.product_id.id),
+                                            ])
+
+                                            if current_line_ids:
+                                                current_line_ids[0].write({
+                                                    'quantity': current_line_ids[0].quantity + (1.05 * ((bom.quantity - bom.available_qty)))
+                                                })
 
 
                 # PR Faceback
@@ -828,6 +908,45 @@ class PwkRpb(models.Model):
                                             'quantity': current_line_ids[0].quantity + (1.05 * ((bom.quantity - bom.available_qty)))
                                         })
 
+                previous_rpb = self.env['pwk.rpb'].search([('id', '<', res.id)], order='id desc')
+                if previous_rpb:
+                    if previous_rpb.line_ids:
+                        for line in previous_rpb.line_ids:
+                            if line.is_detail1 and line.is_selected_detail1:
+                                bom_ids = line.detail_ids_1
+                            elif line.is_detail2 and line.is_selected_detail2:
+                                bom_ids = line.detail_ids_2
+                            elif line.is_detail3 and line.is_selected_detail3:
+                                bom_ids = line.detail_ids_3
+                            elif line.is_detail4 and line.is_selected_detail4:
+                                bom_ids = line.detail_ids_4
+                            elif line.is_detail5 and line.is_selected_detail5:
+                                bom_ids = line.detail_ids_5
+
+                            for bom in bom_ids:
+                                if bom.product_id.goods_type == "Faceback":
+                                    if bom.quantity > bom.available_qty:
+                                        if bom.product_id.id not in product_list:
+                                            product_list.append(bom.product_id.id)
+                                        
+                                            self.env['pwk.purchase.request.volume'].create({
+                                                'reference': request_faceback.id,
+                                                'product_id': bom.product_id.id,
+                                                'product_uom_id': bom.product_id.uom_po_id.id,
+                                                'volume': 1.05 * ((bom.quantity - bom.available_qty) * line.thick * line.width * line.length / 1000000000)
+                                            })
+
+                                        else:                                
+                                            current_line_ids = self.env['pwk.purchase.request.volume'].search([
+                                                ('reference', '=', request_faceback.id),
+                                                ('product_id', '=', bom.product_id.id),
+                                            ])
+
+                                            if current_line_ids:
+                                                current_line_ids[0].write({
+                                                    'quantity': current_line_ids[0].quantity + (1.05 * ((bom.quantity - bom.available_qty)))
+                                                })
+
                 # PR MDF
                 product_list = []
                 request_mdf = self.env['pwk.purchase.request'].create({
@@ -872,6 +991,44 @@ class PwkRpb(models.Model):
                                             'quantity': current_line_ids[0].quantity + (1.05 * ((bom.quantity - bom.available_qty)))
                                         })
 
+                previous_rpb = self.env['pwk.rpb'].search([('id', '<', res.id)], order='id desc')
+                if previous_rpb:
+                    if previous_rpb.line_ids:
+                        for line in previous_rpb.line_ids:
+                            if line.is_detail1 and line.is_selected_detail1:
+                                bom_ids = line.detail_ids_1
+                            elif line.is_detail2 and line.is_selected_detail2:
+                                bom_ids = line.detail_ids_2
+                            elif line.is_detail3 and line.is_selected_detail3:
+                                bom_ids = line.detail_ids_3
+                            elif line.is_detail4 and line.is_selected_detail4:
+                                bom_ids = line.detail_ids_4
+                            elif line.is_detail5 and line.is_selected_detail5:
+                                bom_ids = line.detail_ids_5
+
+                            for bom in bom_ids:
+                                if bom.product_id.jenis_kayu.name == "MDF":
+                                    print ("Masuk MDF")
+                                    if bom.quantity > bom.available_qty:
+                                        if bom.product_id.id not in product_list:
+                                            product_list.append(bom.product_id.id)
+
+                                            self.env['pwk.purchase.request.line'].create({
+                                                'reference': request_mdf.id,
+                                                'product_id': bom.product_id.id,
+                                                'product_uom_id': bom.product_id.uom_po_id.id,
+                                                'quantity': 1.05 * (bom.quantity - bom.available_qty)
+                                            })                            
+                                        else:
+                                            current_line_ids = self.env['pwk.purchase.request.line'].search([
+                                                ('reference', '=', request_mdf.id),
+                                                ('product_id', '=', bom.product_id.id),
+                                            ])
+
+                                            if current_line_ids:
+                                                current_line_ids[0].write({
+                                                    'quantity': current_line_ids[0].quantity + (1.05 * ((bom.quantity - bom.available_qty)))
+                                                })
 
                 res.write({
                     'pr_veneer_id': request_veneer.id,                    
