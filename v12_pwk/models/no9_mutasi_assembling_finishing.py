@@ -1635,15 +1635,25 @@ class PwkMutasiAssemblingFinishing(models.Model):
                             ('grade', '=', source.product_id.grade.id),
                         ])
 
-                        if new_product_ids:
-                            self.env['pwk.mutasi.assembling.finishing.proses2'].create({
-                                'reference': res.id,
-                                'product_id': source.product_id.id,
-                                'new_product_id': new_product_ids[0].id,
-                                'keterangan': 'LUP1'
-                                })
-                        else:
-                            raise UserError(_('Product %s tidak ditemukan' % new_product_ids))
+                        if not new_product_ids:
+                            new_product_ids = self.env['product.product'].create({
+                                'goods_type': source.product_id.goods_type,
+                                'jenis_core': source.product_id.jenis_core.id,
+                                'tebal': source.product_id.tebal - 1.5,
+                                'lebar': source.product_id.lebar,
+                                'panjang' : source.product_id.panjang,
+                                'glue': source.product_id.glue.id,
+                                'grade': source.product_id.grade.id,
+                                'name': source.product_id.name                                
+                            })
+
+                            if new_product_ids:
+                                self.env['pwk.mutasi.assembling.finishing.proses2'].create({
+                                    'reference': res.id,
+                                    'product_id': source.product_id.id,
+                                    'new_product_id': new_product_ids[0].id,
+                                    'keterangan': 'LUP1'
+                                    })
 
                     if source.lup2_sander_stock_keluar_pcs > 0:
                         new_product_ids = self.env['product.product'].search([
@@ -1656,15 +1666,25 @@ class PwkMutasiAssemblingFinishing(models.Model):
                             ('grade', '=', source.product_id.grade.id),
                         ])
 
-                        if new_product_ids:                            
-                            self.env['pwk.mutasi.assembling.finishing.proses2'].create({
-                                'reference': res.id,
-                                'product_id': source.product_id.id,
-                                'new_product_id': new_product_ids[0].id,
-                                'keterangan': 'LUP2'
-                                })
-                        else:
-                            raise UserError(_('Product %s tidak ditemukan' % new_product_ids))
+                        if not new_product_ids:
+                            new_product_ids = self.env['product.product'].create({
+                                'goods_type': source.product_id.goods_type,
+                                'jenis_core': source.product_id.jenis_core.id,
+                                'tebal': source.product_id.tebal - 1.2,
+                                'lebar': source.product_id.lebar,
+                                'panjang' : source.product_id.panjang,
+                                'glue': source.product_id.glue.id,
+                                'grade': source.product_id.grade.id,
+                                'name': source.product_id.name                                
+                            })
+
+                            if new_product_ids:
+                                self.env['pwk.mutasi.assembling.finishing.proses2'].create({
+                                    'reference': res.id,
+                                    'product_id': source.product_id.id,
+                                    'new_product_id': new_product_ids[0].id,
+                                    'keterangan': 'LUP2'
+                                    })
 
     @api.multi
     def button_reload_kalibrasi(self):
