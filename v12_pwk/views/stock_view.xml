@@ -20,7 +20,7 @@
                     <attribute name="invisible">True</attribute>
                 </button>
                 <xpath expr="//page[1]" position="after">
-                    <page string="Group">
+                    <page string="Group" invisible="1">
                         <field name="group_ids" nolabel="1" invisible="1">
                             <tree editable="top">
                                 <field name="goods_type"/>
