@@ -182,7 +182,7 @@ class PwkRpbLine(models.Model):
     reference = fields.Many2one('pwk.rpb', string='Reference')
 
     qty_rpm = fields.Float(string='RPM PCS', digits=dp.get_precision('ZeroDecimal'))
-    volume_rpm = fields.Float(compute="_get_volume", string='RPM M3', digits=dp.get_precision('FourDecimal'))
+    volume_rpm = fields.Float(compute="_get_volume", string='RPM M3', digits=dp.get_precision('FourDecimal'), store=True)
 
     is_changed = fields.Boolean('Changed', default=True)
     # nomor_container = fields.Integer(compute="_get_nomor_container", string="No. Container")
