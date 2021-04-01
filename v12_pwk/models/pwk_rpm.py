@@ -182,7 +182,7 @@ class PwkRpmLineDate(models.Model):
 
 class PwkRpmLine(models.Model):    
     _name = "pwk.rpm.line"
-    _order = 'goods_type asc, po_number asc, jenis_kayu_id asc, grade_id asc, width desc, thick asc'
+    _order = 'goods_type asc, po_number asc, jenis_kayu_id asc, thick asc, width desc, grade_id asc'
 
     reference = fields.Many2one('pwk.rpm', string='Reference')
     container_no = fields.Char('Container')
@@ -304,7 +304,7 @@ class PwkRpmLine(models.Model):
     @api.depends('total_qty', 'remaining_qty')
     def _get_volume(self):
         for res in self:
-            res.total_volume = res.total_qty * res.thick * res.width * res.length / 1000000000
+            res.total_volume = res.total_qty_spare * res.thick * res.width * res.length / 1000000000
             res.remaining_volume = res.remaining_qty * res.thick * res.width * res.length / 1000000000
 
     @api.depends('sale_line_id')
