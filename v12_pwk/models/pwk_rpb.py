@@ -931,7 +931,7 @@ class PwkRpb(models.Model):
                 'code': obj,
                 'implementation': 'no_gap',
                 'suffix': year_month,
-                'padding': 3
+                'padding': 0
             })
         return sequence_id.next_by_id()
 
