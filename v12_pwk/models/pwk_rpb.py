@@ -940,8 +940,8 @@ class PwkRpb(models.Model):
         month_name = ''
         month_number = ''
 
-        month = datetime.strptime(vals.get('date_start'), '%Y-%m-%d').month
-        year = datetime.strptime(vals.get('date_start'), '%Y-%m-%d').year
+        month = datetime.strptime(str(vals.get('date_start')), '%Y-%m-%d').month
+        year = datetime.strptime(str(vals.get('date_start')), '%Y-%m-%d').year
 
         if month == 1:
             month_name = 'Jan'
