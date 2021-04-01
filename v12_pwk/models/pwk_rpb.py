@@ -938,8 +938,8 @@ class PwkRpb(models.Model):
     @api.model
     def create(self, vals):
         month_name = ''
-        month = vals['date_start'].month
-        year = vals['date_start'].year
+        month = vals.get('date_start').month
+        year = vals.get('date_start').year
 
         print ("Month ", month)
         print ("Year ", year)
