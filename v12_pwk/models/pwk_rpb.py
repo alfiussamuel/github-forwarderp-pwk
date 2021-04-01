@@ -980,7 +980,8 @@ class PwkRpb(models.Model):
             month_name = 'Des'
             month_number = '012'
 
-        year_month = month_number + '.RPB/PPIC-PWKWI/' + month_name + '-' + str(year)
+        sequence = month_number + '.RPB/PPIC-PWKWI/' + month_name + '-' + str(year)
         
-        vals['name'] = self.get_sequence('Rencana Produksi Bulanan', 'pwk.rpb', '%s' % year_month)
+        vals['name'] = sequence
+        # vals['name'] = self.get_sequence('Rencana Produksi Bulanan', 'pwk.rpb', '%s' % year_month)
         return super(PwkRpb, self).create(vals)
