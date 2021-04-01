@@ -864,22 +864,6 @@ class PwkRpb(models.Model):
         for res in self:
             res.state = "Done"
 
-    def get_sequence(self, name=False, obj=False, year_month=False, context=None):
-        sequence_id = self.env['ir.sequence'].search([
-            ('name', '=', name),
-            ('code', '=', obj),
-            ('suffix', '=', '.' + year_month + '.RPB.PWK')
-        ])
-        if not sequence_id :
-            sequence_id = self.env['ir.sequence'].sudo().create({
-                'name': name,
-                'code': obj,
-                'implementation': 'no_gap',
-                'suffix': '.' + year_month + '.RPB.PWK',
-                'padding': 3
-            })
-        return sequence_id.next_by_id()
-
     @api.multi
     def print_rpb(self):
         for res in self:
@@ -935,11 +919,30 @@ class PwkRpb(models.Model):
 
             return self.env.ref('v12_pwk.report_rpb').report_action(self)
 
+    def get_sequence(self, name=False, obj=False, year_month=False, context=None):
+        sequence_id = self.env['ir.sequence'].search([
+            ('name', '=', name),
+            ('code', '=', obj),
+            ('suffix', '=', '.' + year_month + '.RPB.PWK')
+        ])
+        if not sequence_id :
+            sequence_id = self.env['ir.sequence'].sudo().create({
+                'name': name,
+                'code': obj,
+                'implementation': 'no_gap',
+                'suffix': '.' + year_month + '.RPB.PWK',
+                'padding': 3
+            })
+        return sequence_id.next_by_id()
+
     @api.model
     def create(self, vals):
         month_name = ''
-        # month = vals['date_start'].month
-        # year = vals['date_start'].year        
+        month = vals['date_start'].month
+        year = vals['date_start'].year
+
+        print ("Month ", month)
+        print ("Year ", year)
 
         # if month == 1:
         #     month_name = 'Jan'
@@ -966,7 +969,7 @@ class PwkRpb(models.Model):
         # elif month == 12:
         #     month_name = 'Des'
 
-        year_month = str('Jan') + '-' + str('2021')
+        # year_month = str('Jan') + '-' + str('2021')
         
-        vals['name'] = self.get_sequence('Rencana Produksi Bulanan', 'pwk.rpb', '%s' % year_month)
-        return super(PwkRpb, self).create(vals)
+        # vals['name'] = self.get_sequence('Rencana Produksi Bulanan', 'pwk.rpb', '%s' % year_month)
+        # return super(PwkRpb, self).create(vals)
