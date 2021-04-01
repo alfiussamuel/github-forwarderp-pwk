@@ -182,7 +182,7 @@ class PwkRpmLineDate(models.Model):
 
 class PwkRpmLine(models.Model):    
     _name = "pwk.rpm.line"
-    _order = 'po_number asc, goods_type asc,jenis_kayu_id asc,grade_id asc,width desc,thick asc'
+    _order = 'goods_type asc, po_number asc, jenis_kayu_id asc, grade_id asc, width desc, thick asc'
 
     reference = fields.Many2one('pwk.rpm', string='Reference')
     container_no = fields.Char('Container')
