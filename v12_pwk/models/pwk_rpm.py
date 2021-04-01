@@ -195,9 +195,9 @@ class PwkRpmLine(models.Model):
     po_number = fields.Char(compute="_get_sale_fields", string='PO No.', store=True)
     partner_id = fields.Many2one(compute="_get_sale_fields", comodel_name='res.partner', string='Buyer')
     product_id = fields.Many2one(compute="_get_sale_fields", comodel_name='product.product', string='Product')
-    thick = fields.Float(compute="_get_sale_fields", string='Thick', digits=dp.get_precision('OneDecimal'))
-    width = fields.Float(compute="_get_sale_fields", string='Width', digits=dp.get_precision('ZeroDecimal'))
-    length = fields.Float(compute="_get_sale_fields", string='Length', digits=dp.get_precision('ZeroDecimal'))
+    thick = fields.Float(compute="_get_sale_fields", string='Thick', digits=dp.get_precision('OneDecimal'), store=True)
+    width = fields.Float(compute="_get_sale_fields", string='Width', digits=dp.get_precision('ZeroDecimal'), store=True)
+    length = fields.Float(compute="_get_sale_fields", string='Length', digits=dp.get_precision('ZeroDecimal'), store=True)
     glue_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.glue', string='Glue')
     grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')
     jenis_kayu_id = fields.Many2one('pwk.jenis.kayu', related='product_id.jenis_kayu', string='Jenis Kayu', store=True)
@@ -301,7 +301,7 @@ class PwkRpmLine(models.Model):
         for res in self:
             res.total_qty_spare = res.total_qty + round((res.total_qty * res.spare_qty / 100))
 
-    @api.depends('total_qty', 'remaining_qty')
+    @api.depends('total_qty', 'total_qty_spare', 'remaining_qty')
     def _get_volume(self):
         for res in self:
             res.total_volume = res.total_qty_spare * res.thick * res.width * res.length / 1000000000
