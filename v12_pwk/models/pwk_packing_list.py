@@ -22,7 +22,7 @@ class PwkPackingListLineContainer(models.Model):
     pallet_id = fields.Many2one('pwk.pallet', 'Pallet')
     strapping_id = fields.Many2one('pwk.strapping', 'Strapping')    
     total_crates = fields.Float('Total Crates', default=1)
-    qty = fields.Float('Quantity / Crate')
+    qty = fields.Float('Quantity / Crate', digits=dp.get_precision('ZeroDecimal'))
     number = fields.Char('Number')
 
 
@@ -35,7 +35,7 @@ class PwkPackingListLineRevision(models.Model):
     reference = fields.Many2one('pwk.packing.list.line', string='Reference')
     product_id = fields.Many2one('product.product', string='Product')
     crate_number = fields.Integer('Total Crate')
-    quantity = fields.Float(string='Quantity', digits=dp.get_precision('TwoDecimal'))
+    quantity = fields.Float(string='Quantity', digits=dp.get_precision('ZeroDecimal'))
     volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))
 
     @api.onchange('reference')

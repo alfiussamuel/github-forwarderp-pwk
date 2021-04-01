@@ -29,10 +29,10 @@ class PwkRpbContainerLine(models.Model):
     grade_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.grade', string='Grade')        
     total_volume = fields.Float(compute="_get_sale_fields", string='Total Volume', digits=dp.get_precision('FourDecimal'))
     job_order_status = fields.Char(compute="_get_sale_fields", string='Job Order Status')
-    total_qty = fields.Float(string='Ordered Qty', digits=dp.get_precision('TwoDecimal'))
+    total_qty = fields.Float(string='Ordered Qty', digits=dp.get_precision('ZeroDecimal'))
     remaining_qty = fields.Float(string='Qty Remaining', digits=dp.get_precision('TwoDecimal'))
     remaining_volume = fields.Float(compute="_get_container_vol", string='Vol Remaining')
-    container_qty = fields.Float('Cont Pcs', digits=dp.get_precision('TwoDecimal'))
+    container_qty = fields.Float('Cont Pcs', digits=dp.get_precision('ZeroDecimal'))
     container_vol = fields.Float(compute="_get_container_vol", string='Cont Vol')
 
     @api.depends('container_qty', 'remaining_qty')
@@ -68,7 +68,7 @@ class PwkRpbContainer(models.Model):
     jumlah_container = fields.Integer('Jumlah Container')
     line_ids = fields.One2many('pwk.rpb.container.line', 'reference', string='Lines', ondelete="cascade")
     total_product = fields.Float(compute="_get_qty", string='Jumlah Product', digits=dp.get_precision('TwoDecimal'))
-    total_product_qty = fields.Float(compute="_get_qty", string='Jumlah Qty Product', digits=dp.get_precision('TwoDecimal'))
+    total_product_qty = fields.Float(compute="_get_qty", string='Jumlah Qty Product', digits=dp.get_precision('ZeroDecimal'))
 
     @api.depends('line_ids')
     def _get_qty(self):
@@ -94,7 +94,7 @@ class PwkRpbLineDetail1(models.Model):
     width = fields.Float(string='Width')
     length = fields.Float(string='Length')
     ply = fields.Float(string='Ply')
-    quantity = fields.Float(string='Quantity')
+    quantity = fields.Float(string='Quantity', digits=dp.get_precision('ZeroDecimal'))
     available_qty = fields.Float(compute="_get_available_qty", string="Qty Available")
     
     @api.depends('product_id')
@@ -112,7 +112,7 @@ class PwkRpbLineDetail2(models.Model):
     width = fields.Float(string='Width')
     length = fields.Float(string='Length')
     ply = fields.Float(string='Ply')
-    quantity = fields.Float(string='Quantity')
+    quantity = fields.Float(string='Quantity', digits=dp.get_precision('ZeroDecimal'))
     available_qty = fields.Float(compute="_get_available_qty", string="Qty Available")
     
     @api.depends('product_id')
@@ -130,7 +130,7 @@ class PwkRpbLineDetail3(models.Model):
     width = fields.Float(string='Width')
     length = fields.Float(string='Length')
     ply = fields.Float(string='Ply')
-    quantity = fields.Float(string='Quantity')
+    quantity = fields.Float(string='Quantity', digits=dp.get_precision('ZeroDecimal'))
     available_qty = fields.Float(compute="_get_available_qty", string="Qty Available")
     
     @api.depends('product_id')
@@ -148,7 +148,7 @@ class PwkRpbLineDetail4(models.Model):
     width = fields.Float(string='Width')
     length = fields.Float(string='Length')
     ply = fields.Float(string='Ply')
-    quantity = fields.Float(string='Quantity')
+    quantity = fields.Float(string='Quantity', digits=dp.get_precision('ZeroDecimal'))
     available_qty = fields.Float(compute="_get_available_qty", string="Qty Available")
     
     @api.depends('product_id')
@@ -166,7 +166,7 @@ class PwkRpbLineDetail5(models.Model):
     width = fields.Float(string='Width')
     length = fields.Float(string='Length')
     ply = fields.Float(string='Ply')
-    quantity = fields.Float(string='Quantity')
+    quantity = fields.Float(string='Quantity', digits=dp.get_precision('ZeroDecimal'))
     available_qty = fields.Float(compute="_get_available_qty", string="Qty Available")
     
     @api.depends('product_id')
@@ -198,21 +198,21 @@ class PwkRpbLine(models.Model):
     total_volume = fields.Float(compute="_get_sale_fields", string='Total Volume', digits=dp.get_precision('FourDecimal'))
     job_order_status = fields.Char(compute="_get_sale_fields", string='Job Order Status')
 
-    total_qty = fields.Float(string='Order PCS', digits=dp.get_precision('TwoDecimal'))
+    total_qty = fields.Float(string='Order PCS', digits=dp.get_precision('ZeroDecimal'))
     spare_qty = fields.Float('Qty Spare (%)', digits=dp.get_precision('ZeroDecimal'))  
     total_qty_spare = fields.Float(compute="_get_total_qty_spare", string='Qty Spare')
     total_vol = fields.Float(compute="_get_volume", string='Order M3', digits=dp.get_precision('FourDecimal'))
 
-    container_qty = fields.Float('Cont Pcs', digits=dp.get_precision('TwoDecimal'), store=True)
+    container_qty = fields.Float('Cont Pcs', digits=dp.get_precision('ZeroDecimal'), store=True)
     container_vol = fields.Float(compute="_get_volume", string='Cont M3', digits=dp.get_precision('FourDecimal'), store=True)
     
-    subtotal_qty = fields.Float(compute="_get_subtotal_qty", string='Total RPB PCS', digits=dp.get_precision('TwoDecimal'), store=True)
+    subtotal_qty = fields.Float(compute="_get_subtotal_qty", string='Total RPB PCS', digits=dp.get_precision('ZeroDecimal'), store=True)
     subtotal_vol = fields.Float(compute="_get_volume", string='Total RPB M3', digits=dp.get_precision('FourDecimal'), store=True)
     
-    outstanding_rpb_pcs = fields.Float(compute="_get_outstanding_rpb", string='Sisa RPB PCS', digits=dp.get_precision('TwoDecimal'), store=True)
+    outstanding_rpb_pcs = fields.Float(compute="_get_outstanding_rpb", string='Sisa RPB PCS', digits=dp.get_precision('ZeroDecimal'), store=True)
     outstanding_rpb_vol = fields.Float(compute="_get_volume", string='Sisa RPB M3', digits=dp.get_precision('FourDecimal'), store=True)
     
-    outstanding_order_pcs = fields.Float(string='Sisa Order PCS', digits=dp.get_precision('TwoDecimal'), store=True)
+    outstanding_order_pcs = fields.Float(string='Sisa Order PCS', digits=dp.get_precision('ZeroDecimal'), store=True)
     outstanding_order_vol = fields.Float(compute="_get_volume", string='Sisa Order M3', digits=dp.get_precision('FourDecimal'), store=True)
 
     detail_ids_1 = fields.One2many('pwk.rpb.line.detail1', 'reference', string='Lines', ondelete="cascade")
