@@ -180,6 +180,10 @@ class PwkRpbLine(models.Model):
     _order = 'container_id,width asc,length asc,thick asc'
 
     reference = fields.Many2one('pwk.rpb', string='Reference')
+
+    qty_rpm = fields.Float(string='RPM PCS', digits=dp.get_precision('ZeroDecimal'))
+    volume_rpm = fields.Float(compute="_get_volume", string='RPM M3', digits=dp.get_precision('FourDecimal'))
+
     is_changed = fields.Boolean('Changed', default=True)
     # nomor_container = fields.Integer(compute="_get_nomor_container", string="No. Container")
     container_id = fields.Many2one('pwk.rpb.container', string='Container')
@@ -287,7 +291,7 @@ class PwkRpbLine(models.Model):
 
             res.outstanding_rpb_pcs = outstanding_rpb_pcs
 
-    @api.depends('container_qty', 'subtotal_qty', 'outstanding_rpb_pcs', 'outstanding_order_pcs', 'total_qty', 'is_changed')
+    @api.depends('container_qty', 'subtotal_qty', 'outstanding_rpb_pcs', 'outstanding_order_pcs', 'total_qty', 'qty_rpm', 'is_changed')
     def _get_volume(self):
         for res in self:
             res.container_vol = res.container_qty * res.thick * res.width * res.length / 1000000000
@@ -295,6 +299,7 @@ class PwkRpbLine(models.Model):
             res.outstanding_rpb_vol = res.outstanding_rpb_pcs * res.thick * res.width * res.length / 1000000000
             res.outstanding_order_vol = res.outstanding_order_pcs * res.thick * res.width * res.length / 1000000000
             res.total_vol = res.total_qty * res.thick * res.width * res.length / 1000000000
+            res.volume_rpm = res.qty_rpm * res.thick * res.width * res.length / 1000000000
 
     @api.depends('sale_line_id', 'is_changed')
     def _get_sale_fields(self):

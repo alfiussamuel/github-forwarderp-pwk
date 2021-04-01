@@ -33,7 +33,7 @@ class PwkGenerateRpmWizard(models.TransientModel):
                     'rpb_id': line.reference.id,
                     'sale_line_id': line.sale_line_id.id,
                     'sale_id': line.sale_line_id.order_id.id,
-                    'total_qty': line.subtotal_qty
+                    'total_qty': line.qty_rpm
                 })
 
                 if rpm_line_id:
@@ -64,7 +64,7 @@ class PwkGenerateRpmWizard(models.TransientModel):
                         'reference': rpm_container_id.id,
                         'sale_id': line.sale_id.id,
                         'sale_line_id': line.sale_line_id.id,
-                        'container_qty': line.total_qty,
+                        'container_qty': line.qty_rpm,
                         'rpm_line_id': rpm_line_id.id
                         })
 
