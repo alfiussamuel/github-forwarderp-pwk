@@ -97,7 +97,7 @@ class PwkPackingListLine(models.Model):
     grade_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.grade', string='Grade')
     marking = fields.Char(related='sale_line_id.marking', string='Marking')
     
-    quantity = fields.Float(compute="_get_quantity", string='Quantity', digits=dp.get_precision('TwoDecimal'))
+    quantity = fields.Float(compute="_get_quantity", string='Quantity', digits=dp.get_precision('ZeroDecimal'))
     volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))
 
     bom_ids = fields.One2many('pwk.packing.list.line.detail', 'reference', string='Lines')
@@ -108,9 +108,9 @@ class PwkPackingListLine(models.Model):
 
     # Revision Fields
     revision_product_id = fields.Many2one(compute="_get_revision_fields", comodel_name='product.product', string='Rev Product')
-    revision_quantity = fields.Float(compute="_get_revision_fields", string="Rev Quantity", digits=dp.get_precision('TwoDecimal'))
-    revision_quantity_only = fields.Float(compute="_get_revision_fields", string="Quantity", digits=dp.get_precision('TwoDecimal'))
-    revision_quantity_original = fields.Float(compute="_get_revision_fields", string="Quantity", digits=dp.get_precision('TwoDecimal'))
+    revision_quantity = fields.Float(compute="_get_revision_fields", string="Rev Quantity", digits=dp.get_precision('ZeroDecimal'))
+    revision_quantity_only = fields.Float(compute="_get_revision_fields", string="Quantity", digits=dp.get_precision('ZeroDecimal'))
+    revision_quantity_original = fields.Float(compute="_get_revision_fields", string="Quantity", digits=dp.get_precision('ZeroDecimal'))
     revision_volume = fields.Float(compute="_get_revision_fields", string="Rev Volume", digits=dp.get_precision('FourDecimal'))
     revision_volume_only = fields.Float(compute="_get_volume", string="Volume", digits=dp.get_precision('FourDecimal'))
     revision_volume_original = fields.Float(compute="_get_volume", string="Volume", digits=dp.get_precision('FourDecimal'))
