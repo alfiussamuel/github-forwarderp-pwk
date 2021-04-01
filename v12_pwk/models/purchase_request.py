@@ -79,7 +79,7 @@ class PwkPurchaseRequestVolume(models.Model):
     @api.multi
     def _get_quantity(self):
         for res in self:            
-            res.quantity = res.volume / res.thick / res.width / res.length * 1000000000    
+            res.quantity = res.volume / (res.thick or 1)/ (res.width or 1) / (res.length or 1) * 1000000000    
             res.quantity_pr = res.volume_pr / res.thick / res.width / res.length * 1000000000    
             res.quantity_remaining = res.volume_remaining / res.thick / res.width / res.length * 1000000000    
 
