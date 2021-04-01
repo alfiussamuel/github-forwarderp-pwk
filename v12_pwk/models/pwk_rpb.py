@@ -724,7 +724,7 @@ class PwkRpb(models.Model):
 
                                     self.env['pwk.purchase.request.volume'].create({
                                         'reference': request_veneer.id,
-                                        'product_id': bom.product_id.alternate_product_id.id,
+                                        'product_id': bom.product_id.id,
                                         'product_uom_id': bom.product_id.uom_po_id.id,
                                         'volume': 1.1 * ((bom.quantity - bom.available_qty) * line.thick * line.width * line.length / 1000000000)
                                     })
@@ -766,7 +766,7 @@ class PwkRpb(models.Model):
 
                                             self.env['pwk.purchase.request.volume'].create({
                                                 'reference': request_veneer.id,
-                                                'product_id': bom.product_id.alternate_product_id.id,
+                                                'product_id': bom.product_id.id,
                                                 'product_uom_id': bom.product_id.uom_po_id.id,
                                                 'volume': 1.1 * ((bom.quantity - bom.available_qty) * line.thick * line.width * line.length / 1000000000)
                                             })
