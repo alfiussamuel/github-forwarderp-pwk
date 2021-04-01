@@ -1644,7 +1644,7 @@ class PwkMutasiAssemblingFinishing(models.Model):
                                 'panjang' : source.product_id.panjang,
                                 'glue': source.product_id.glue.id,
                                 'grade': source.product_id.grade.id,
-                                'name': source.product_id.goods_type + ' ' + source.product_id.jenis_core + ' ' + source.product_id.tebal + 'mm x ' + source.product_id.lebar + ' x ' + source.product_id.panjang + ' ' + source.product_id.glue.name + ' ' + source.product_id.grade.name
+                                'name': source.product_id.goods_type + ' ' + source.product_id.jenis_core.name + ' ' + source.product_id.tebal + 'mm x ' + source.product_id.lebar + ' x ' + source.product_id.panjang + ' ' + source.product_id.glue.name + ' ' + source.product_id.grade.name
                             })
 
                             if new_product_ids:
