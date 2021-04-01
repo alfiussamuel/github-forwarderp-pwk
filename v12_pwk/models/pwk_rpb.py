@@ -554,7 +554,7 @@ class PwkRpb(models.Model):
             if res.bahan_baku_ids:
                 for bahanbaku in res.bahan_baku_ids:
                     bahanbaku.unlink()
-
+            
             if res.line_ids:
                 for line in res.line_ids:
                     if line.is_selected_detail1 and line.detail_ids_1:
@@ -585,6 +585,40 @@ class PwkRpb(models.Model):
                             current_product_ids[0].write({
                                 'quantity': current_product_ids[0].quantity + bom.quantity
                             })
+
+            previous_rpb = self.env['pwk.rpb'].search([('id', '<', res.id)], order='id desc')
+            if previous_rpb:
+                if previous_rpb.line_ids:
+                    for line in previous_rpb.line_ids:
+                        if line.is_selected_detail1 and line.detail_ids_1:
+                            bom_list = line.detail_ids_1
+                        elif line.is_selected_detail2 and line.detail_ids_2:
+                            bom_list = line.detail_ids_2
+                        elif line.is_selected_detail3 and line.detail_ids_3:
+                            bom_list = line.detail_ids_3
+                        elif line.is_selected_detail4 and line.detail_ids_4:
+                            bom_list = line.detail_ids_4
+                        elif line.is_selected_detail5 and line.detail_ids_5:
+                            bom_list = line.detail_ids_5
+
+                        for bom in bom_list:
+                            current_product_ids = self.env['pwk.rpb.bahan.baku'].search([
+                                ('reference', '=', res.id),
+                                ('product_id', '=', bom.product_id.id)
+                            ])
+
+                            if not current_product_ids:
+                                self.env['pwk.rpb.bahan.baku'].create({
+                                    'reference': res.id,
+                                    'product_id': bom.product_id.id,
+                                    'quantity': bom.quantity,
+                                })
+
+                            elif current_product_ids:
+                                current_product_ids[0].write({
+                                    'quantity': current_product_ids[0].quantity + bom.quantity
+                                })
+
 
     @api.multi
     def action_change(self):
