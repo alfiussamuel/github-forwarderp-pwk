@@ -182,7 +182,7 @@ class PwkRpmLineDate(models.Model):
 
 class PwkRpmLine(models.Model):    
     _name = "pwk.rpm.line"
-    _order = 'goods_type asc,jenis_kayu_id asc,grade_id asc,width desc,thick asc'
+    _order = 'po_number, goods_type asc,jenis_kayu_id asc,grade_id asc,width desc,thick asc'
 
     reference = fields.Many2one('pwk.rpm', string='Reference')
     container_no = fields.Char('Container')
@@ -192,7 +192,7 @@ class PwkRpmLine(models.Model):
     rpb_id = fields.Many2one('pwk.rpb', 'RPB')
     destination_id = fields.Many2one(compute="_get_sale_fields", comodel_name='pwk.destination', string='Destination')
     marking = fields.Char(compute="_get_sale_fields", string='Marking')
-    po_number = fields.Char(compute="_get_sale_fields", string='PO No.')
+    po_number = fields.Char(compute="_get_sale_fields", string='PO No.', store=True)
     partner_id = fields.Many2one(compute="_get_sale_fields", comodel_name='res.partner', string='Buyer')
     product_id = fields.Many2one(compute="_get_sale_fields", comodel_name='product.product', string='Product')
     thick = fields.Float(compute="_get_sale_fields", string='Thick', digits=dp.get_precision('OneDecimal'))
