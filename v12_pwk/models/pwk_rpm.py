@@ -185,6 +185,7 @@ class PwkRpmLine(models.Model):
     _order = 'goods_type asc, po_number asc, thick asc'
 
     reference = fields.Many2one('pwk.rpm', string='Reference')
+    is_changed = fields.Boolean('Changed', default=True)
     container_no = fields.Char('Container')
     sale_id = fields.Many2one('sale.order', 'No. Order')
     sale_line_id = fields.Many2one('sale.order.line', 'No. Order Line')
@@ -301,7 +302,7 @@ class PwkRpmLine(models.Model):
         for res in self:
             res.total_qty_spare = res.total_qty + round((res.total_qty * res.spare_qty / 100))
 
-    @api.depends('total_qty', 'total_qty_spare', 'remaining_qty')
+    @api.depends('total_qty', 'total_qty_spare', 'remaining_qty', 'is_changed')
     def _get_volume(self):
         for res in self:
             res.total_volume = res.total_qty_spare * res.thick * res.width * res.length / 1000000000
@@ -496,6 +497,15 @@ class PwkRpm(models.Model):
     total_lvl_percent = fields.Float(compute="_get_total_produksi", string='Total LVL (%)', digits=dp.get_precision('ZeroDecimal'))
     target_per_hari = fields.Float(compute="_get_total_produksi", string='Target / Hari', digits=dp.get_precision('FourDecimal'))
 
+    @api.multi
+    def action_change(self):
+        for res in self:
+            for line in res.line_ids:
+                if line.is_changed:
+                    line.write({'is_changed': False})
+                else:
+                    line.write({'is_changed': True})
+                    
     @api.depends('working_days', 'line_ids.total_qty', 'line_ids.product_id')
     def _get_total_produksi(self):
         for res in self:

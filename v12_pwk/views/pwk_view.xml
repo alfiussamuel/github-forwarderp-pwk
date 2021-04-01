@@ -291,6 +291,7 @@
                             string="Select RPB" class="oe_highlight" states="Draft"/>
                         <button name="button_cancel" string="Cancel Purchase Request" 
                             states="Purchase Request" type="object"/>
+                        <button name="action_change" string="Update Data" type="object"/>
                         <field name="state" widget="statusbar" readonly="1"/>
                     </header>
                     <sheet>
