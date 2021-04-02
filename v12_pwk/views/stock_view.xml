@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <field name="picking_type_id" position="after">
                     <field name="container_no"/>
-                    <field nmae="seal_no"/>
+                    <field name="seal_no"/>
                 </field>
                 <field name="origin" position="after">
                     <field name="no_kendaraan"/>
