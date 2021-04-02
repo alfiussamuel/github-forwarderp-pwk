@@ -985,7 +985,7 @@ class PwkMutasiAssemblingFinishingKalibrasi2(models.Model):
 
     @api.depends('stock_awal_pcs',
         'sander_stock_masuk_pcs','re_stock_masuk_pcs',
-        'gs_stock_keluar_pcs','lain_stock_keluar_pcs','re_stock_keluar_pcs',
+        'sizer_stock_keluar_pcs','tipis_stock_keluar_pcs','re_stock_keluar_pcs',
         'sander_acc_stock_masuk_pcs','re_acc_stock_masuk_pcs',
         'sizer_acc_stock_keluar_pcs','tipis_acc_stock_keluar_pcs','re_acc_stock_keluar_pcs',
         'stock_akhir_pcs')
@@ -1007,7 +1007,7 @@ class PwkMutasiAssemblingFinishingKalibrasi2(models.Model):
             
             res.stock_akhir_vol = res.stock_akhir_pcs * res.tebal * res.lebar * res.panjang / 1000000000
 
-    @api.depends('stock_awal_pcs','sander_stock_masuk_pcs','re_stock_masuk_pcs','gs_stock_keluar_pcs','lain_stock_keluar_pcs','re_stock_keluar_pcs')
+    @api.depends('stock_awal_pcs','sander_stock_masuk_pcs','re_stock_masuk_pcs','sizer_stock_keluar_pcs','tipis_stock_keluar_pcs','re_stock_keluar_pcs')
     def _get_acc(self):
         for res in self:
             sander_acc_stock_masuk_pcs = 0
@@ -1981,13 +1981,13 @@ class PwkMutasiAssemblingFinishing(models.Model):
                     ('reference.date','<',res.date - timedelta(1)),
                     ])
 
-            if source_ids:
-                for source in source_ids:
-                    self.env['pwk.mutasi.assembling.finishing.sizer'].create({
-                        'reference': res.id,
-                        'product_id': source.product_id.id,
-                        })
-                    
+            # if source_ids:
+            #     for source in source_ids:
+            #         self.env['pwk.mutasi.assembling.finishing.sizer'].create({
+            #             'reference': res.id,
+            #             'product_id': source.product_id.id,
+            #             })
+
             kalibrasi2_source_ids = self.env['pwk.mutasi.assembling.finishing.kalibrasi2'].search([
                 ('reference.date','=',res.date),'|',
                 ('sander2_stock_keluar_pcs', '>', 0),
@@ -2002,7 +2002,6 @@ class PwkMutasiAssemblingFinishing(models.Model):
                 ])
 
             
-
             if kalibrasi2_source_ids:
                 for source in kalibrasi2_source_ids:
                     self.env['pwk.mutasi.assembling.finishing.sizer'].create({
