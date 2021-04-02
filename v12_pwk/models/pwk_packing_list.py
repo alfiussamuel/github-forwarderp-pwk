@@ -455,7 +455,7 @@ class PwkPackingList(models.Model):
                     'product_id': product.id,
                     'name': product.name,
                     'product_uom_qty': line.quantity,
-                    'product_uom': line.revision_product_id.uom_id.id,
+                    'product_uom': product.uom_id.id,
                     'location_id': source_location_ids[0].id,
                     'location_dest_id': destination_location_ids[0].id,
                     'date': datetime.now()
@@ -464,7 +464,7 @@ class PwkPackingList(models.Model):
             if picking_id:
                 picking_id.action_confirm()
                 picking_id.action_assign()
-                
+
             res.write({
                 'is_picking': True,
                 'picking_id': picking_id.id
