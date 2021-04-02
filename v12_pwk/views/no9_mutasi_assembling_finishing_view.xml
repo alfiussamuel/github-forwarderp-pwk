@@ -632,8 +632,8 @@
                                             <field name="hot_stock_masuk_vol" sum="Total"/>
                                             <field name="sander2_stock_masuk_pcs" sum="Total"/>
                                             <field name="sander2_stock_masuk_vol" sum="Total"/>
-                                            <field name="tipis_stock_masuk_pcs" sum="Total"/>
-                                            <field name="tipis_stock_masuk_vol" sum="Total"/>
+                                            <field name="manual_stock_masuk_pcs" sum="Total"/>
+                                            <field name="manual_stock_masuk_vol" sum="Total"/>
                                             <field name="re_stock_masuk_pcs" sum="Total"/>
                                             <field name="re_stock_masuk_vol" sum="Total"/>
                                             <field name="sander_stock_keluar_pcs" sum="Total"/>
