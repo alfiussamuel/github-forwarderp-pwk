@@ -11,8 +11,10 @@ class AccountInvoiceCreate(models.TransientModel):
     def invoice_create(self):
         context = dict(self._context or {})
         active_ids = context.get('active_ids', []) or []
+        packing_list_id = self.env['pwk.packing.list'].browse(active_ids)[0]
 
         print (active_ids)
+        print (packing_list_id)
         # invoice_id = self.env['account.invoice'].create({
         #     'partner_id': 
         # })
