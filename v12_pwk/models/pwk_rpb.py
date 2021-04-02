@@ -522,8 +522,10 @@ class PwkRpb(models.Model):
     group_ids = fields.One2many('pwk.rpb.group', 'reference', 'Groups')
 
     bahan_baku_type = fields.Selection([('RPB','RPB'),('RPM','RPM')], string="Dokumen Bahan Baku", default="RPB")
-    bahan_baku_rpb_ids = fields.Many2many('pwk.rpb', string='RPB')
-    bahan_baku_rpm_ids = fields.Many2many('pwk.rpm', string="RPM")
+    bahan_baku_rpb_ids = fields.Many2many('pwk.rpb', 'pwk_rpb_rpb_default_rel', 'rpb_id', 'pwk_rpb_id', string='RPB')
+    # sale_line_ids = fields.Many2many('sale.order.line', 'rpb_wizard_line_sale_line_default_rel',
+    #     'rpb_wizard_line_id', 'sale_line_id', string='Sales Order Lines')
+    bahan_baku_rpm_ids = fields.Many2many('pwk.rpm', 'pwk_rpm_rpm_default_rel', 'rpm_id', 'pwk_rpm_id', string='RPM')
 
     @api.depends('working_days', 'line_ids.total_qty', 'line_ids.product_id')
     def _get_total_produksi(self):
