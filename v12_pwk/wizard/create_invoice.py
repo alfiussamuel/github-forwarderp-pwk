@@ -18,6 +18,7 @@ class AccountInvoiceCreate(models.TransientModel):
             'partner_id': packing_list_id.partner_id.id,
             'journal_id': journal_id.id,
             'date_invoice': fields.Date.today(),
+            'formula_type': packing_list_id.line_ids[0].sale_id.formula_type,
             'payment_terms': packing_list_id.line_ids[0].sale_id.payment_term_id.id,
             'currency_id': packing_list_id.line_ids[0].sale_id.pricelist_id.currency_id.id,
             'account_id': packing_list_id.partner_id.property_account_receivable_id.id
