@@ -29,7 +29,7 @@ class AccountInvoiceCreate(models.TransientModel):
             'sale_order_no': packing_list_id.line_ids[0].sale_id.name,
             'packing_list_no': packing_list_id.name,
             'do_number': packing_list_id.picking_id.name,
-            'do_date': packing_list_id.picking_id.scheduled_date,
+            'do_date': packing_list_id.picking_id.scheduled_date.date,
             'po_number': packing_list_id.line_ids[0].sale_id.po_number,
             'contract_no': packing_list_id.line_ids[0].sale_id.number_contract
         })
