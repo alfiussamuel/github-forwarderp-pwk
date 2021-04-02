@@ -12,7 +12,7 @@ class AccountInvoiceCreate(models.TransientModel):
         context = dict(self._context or {})
         active_ids = context.get('active_ids', []) or []
         packing_list_id = self.env['pwk.packing.list'].browse(active_ids)[0]
-        journal_id = self.env['account.journal'].search([('tyoe', '=', 'sale')])
+        journal_id = self.env['account.journal'].search([('type', '=', 'sale')])
 
         invoice_id = self.env['account.invoice'].create({
             'partner_id': packing_list_id.partner_id.id,
