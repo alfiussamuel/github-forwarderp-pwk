@@ -1911,7 +1911,7 @@ class PwkMutasiAssemblingFinishing(models.Model):
                         'product_id': source.product_id.id,
                         })
 
-            source_gsp2_ids = self.env['pwk.mutasi.assembling.finishing.kalibrasi'].search([
+            source_gsp2_ids = self.env['pwk.mutasi.assembling.finishing.gs2'].search([
                 ('reference.date','=',res.date),
                 ('sk_stock_keluar_pcs', '>', 0)
                 ])
