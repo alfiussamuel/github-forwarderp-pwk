@@ -27,7 +27,7 @@ class AccountInvoiceCreate(models.TransientModel):
             'view_type': 'form',
             'view_mode': 'form',
             'res_model': 'account.invoice',
-            'res_id': invoice_id,
+            'res_id': invoice_id.id,
             'views': [(form_view_id, 'form')],
             'target': 'current',
         }
