@@ -32,6 +32,7 @@ class AccountInvoiceCreate(models.TransientModel):
             'do_date': packing_list_id.picking_id.scheduled_date.date(),
             'po_number': packing_list_id.line_ids[0].sale_id.po_number,
             'contract_no': packing_list_id.line_ids[0].sale_id.number_contract
+            'certificate_id': packing_list_id.line_ids[0].sale_id.certificate_id.id
         })
 
         # Create invoice lines
@@ -48,6 +49,7 @@ class AccountInvoiceCreate(models.TransientModel):
                     'sheet': line.quantity,
                     'quantity': line.volume,
                     'uom_id': line.product_id.uom_id.id,
+                    'marking': line.marking,
                     'price_unit': line.sale_line_id.price_unit
                 })
 
