@@ -13,11 +13,13 @@ class AccountInvoiceCreate(models.TransientModel):
         active_ids = context.get('active_ids', []) or []
         packing_list_id = self.env['pwk.packing.list'].browse(active_ids)[0]
 
-        print (active_ids)
-        print (packing_list_id)
-        # invoice_id = self.env['account.invoice'].create({
-        #     'partner_id': 
-        # })
+        invoice_id = self.env['account.invoice'].create({
+            'partner_id': packing_list_id.partner_id.id,
+            'journal_id': journal_id.id,
+            'account_id': packing_list_id.partner_id.property_account_receivable_id.id
+        })
+
+        print (invoice_id)
 
         # for record in self.env['pwk.packing.list'].browse(active_ids):
         #     # if record.state != 'draft':
