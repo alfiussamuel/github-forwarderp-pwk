@@ -26,6 +26,7 @@ class AccountInvoiceCreate(models.TransientModel):
                 self.env['account.invoice.line'].create({
                     'invoice_id': invoice_id.id,
                     'product_id': line.product_id.id,
+                    'name': line.product_id.name,
                     'sheet': line.quantity,
                     'uom_id': line.product_id.uom_id.id,
                     'price_unit': line.sale_line_id.price_unit
