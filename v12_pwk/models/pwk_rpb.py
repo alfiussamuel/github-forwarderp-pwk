@@ -592,38 +592,71 @@ class PwkRpb(models.Model):
                                 'quantity': current_product_ids[0].quantity + bom.quantity
                             })
 
-            previous_rpb = self.env['pwk.rpb'].search([('id', '<', res.id)], order='id desc')
-            if previous_rpb:
-                if previous_rpb.line_ids:
-                    for line in previous_rpb.line_ids:
-                        if line.is_selected_detail1 and line.detail_ids_1:
-                            bom_list = line.detail_ids_1
-                        elif line.is_selected_detail2 and line.detail_ids_2:
-                            bom_list = line.detail_ids_2
-                        elif line.is_selected_detail3 and line.detail_ids_3:
-                            bom_list = line.detail_ids_3
-                        elif line.is_selected_detail4 and line.detail_ids_4:
-                            bom_list = line.detail_ids_4
-                        elif line.is_selected_detail5 and line.detail_ids_5:
-                            bom_list = line.detail_ids_5
+            if res.rpb_ids:
+                for rpb in res.rpb_ids:
+                    if rpb.line_ids:
+                        for line in rpb.line_ids:
+                            if line.is_selected_detail1 and line.detail_ids_1:
+                                bom_list = line.detail_ids_1
+                            elif line.is_selected_detail2 and line.detail_ids_2:
+                                bom_list = line.detail_ids_2
+                            elif line.is_selected_detail3 and line.detail_ids_3:
+                                bom_list = line.detail_ids_3
+                            elif line.is_selected_detail4 and line.detail_ids_4:
+                                bom_list = line.detail_ids_4
+                            elif line.is_selected_detail5 and line.detail_ids_5:
+                                bom_list = line.detail_ids_5
 
-                        for bom in bom_list:
-                            current_product_ids = self.env['pwk.rpb.bahan.baku'].search([
-                                ('reference', '=', res.id),
-                                ('product_id', '=', bom.product_id.id)
-                            ])
+                            for bom in bom_list:
+                                current_product_ids = self.env['pwk.rpb.bahan.baku'].search([
+                                    ('reference', '=', res.id),
+                                    ('product_id', '=', bom.product_id.id)
+                                ])
 
-                            if not current_product_ids:
-                                self.env['pwk.rpb.bahan.baku'].create({
-                                    'reference': res.id,
-                                    'product_id': bom.product_id.id,
-                                    'quantity': bom.quantity,
-                                })
+                                if not current_product_ids:
+                                    self.env['pwk.rpb.bahan.baku'].create({
+                                        'reference': res.id,
+                                        'product_id': bom.product_id.id,
+                                        'quantity': bom.quantity,
+                                    })
 
-                            elif current_product_ids:
-                                current_product_ids[0].write({
-                                    'quantity': current_product_ids[0].quantity + bom.quantity
-                                })
+                                elif current_product_ids:
+                                    current_product_ids[0].write({
+                                        'quantity': current_product_ids[0].quantity + bom.quantity
+                                    })
+
+            elif res.rpm_ids:
+                for rpm in res.rpm_ids:
+                    if rpm.line_ids:
+                        for line in rpm.line_ids:
+                            if line.is_selected_detail1 and line.detail_ids_1:
+                                bom_list = line.detail_ids_1
+                            elif line.is_selected_detail2 and line.detail_ids_2:
+                                bom_list = line.detail_ids_2
+                            elif line.is_selected_detail3 and line.detail_ids_3:
+                                bom_list = line.detail_ids_3
+                            elif line.is_selected_detail4 and line.detail_ids_4:
+                                bom_list = line.detail_ids_4
+                            elif line.is_selected_detail5 and line.detail_ids_5:
+                                bom_list = line.detail_ids_5
+
+                            for bom in bom_list:
+                                current_product_ids = self.env['pwk.rpb.bahan.baku'].search([
+                                    ('reference', '=', res.id),
+                                    ('product_id', '=', bom.product_id.id)
+                                ])
+
+                                if not current_product_ids:
+                                    self.env['pwk.rpb.bahan.baku'].create({
+                                        'reference': res.id,
+                                        'product_id': bom.product_id.id,
+                                        'quantity': bom.quantity,
+                                    })
+
+                                elif current_product_ids:
+                                    current_product_ids[0].write({
+                                        'quantity': current_product_ids[0].quantity + bom.quantity
+                                    })
 
 
     @api.multi
