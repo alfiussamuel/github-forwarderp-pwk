@@ -1895,11 +1895,13 @@ class PwkMutasiAssemblingFinishing(models.Model):
                     
             source_ids = self.env['pwk.mutasi.assembling.finishing.kalibrasi'].search([
                 ('reference.date','=',res.date),
+                ('sander2_stock_keluar_pcs','>',0)
                 ])
 
             if not source_ids:
                 source_ids = self.env['pwk.mutasi.assembling.finishing.kalibrasi'].search([
                     ('reference.date','<',res.date - timedelta(1)),
+                    ('sander2_stock_keluar_pcs', '>', 0)
                     ])
 
             if source_ids:
@@ -1911,11 +1913,13 @@ class PwkMutasiAssemblingFinishing(models.Model):
 
             source_gsp2_ids = self.env['pwk.mutasi.assembling.finishing.kalibrasi'].search([
                 ('reference.date','=',res.date),
+                ('sk_stock_keluar_pcs', '>', 0)
                 ])
 
             if not source_gsp2_ids:
                 source_gsp2_ids = self.env['pwk.mutasi.assembling.finishing.gs2'].search([
                     ('reference.date','<',res.date - timedelta(1)),
+                    ('sk_stock_keluar_pcs', '>', 0)
                     ])
 
             if source_gsp2_ids:
