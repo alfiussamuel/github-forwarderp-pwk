@@ -20,6 +20,17 @@ class AccountInvoiceCreate(models.TransientModel):
             'account_id': packing_list_id.partner_id.property_account_receivable_id.id
         })
 
+        # Create invoice lines
+        for record in self.env['pwk.packing.list'].browse(active_ids):
+            for line in record.line_ids:
+                self.env['account.invoice.line'].create({
+                    'invoice_id': invoice_id.id,
+                    'product_id': line.product_id.id,
+                    'sheet': line.quantity,
+                    'uom_id': line.product_id.uom_id.id,
+                    'price_unit': line.sale_line_id.price_unit
+                })
+
         form_view_id = self.env.ref("account.invoice_form").id
         return {
             'type': 'ir.actions.act_window',
