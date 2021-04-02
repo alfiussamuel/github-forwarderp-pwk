@@ -20,10 +20,15 @@ class AccountInvoiceCreate(models.TransientModel):
             'account_id': packing_list_id.partner_id.property_account_receivable_id.id
         })
 
-        print (invoice_id)
+        form_view_id = self.env.ref("account.invoice_form").id
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Customer Invoices',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'my.model',
+            'views': [(form_view_id, 'form')],
+            'target': 'new',
+        }
 
-        # for record in self.env['pwk.packing.list'].browse(active_ids):
-        #     # if record.state != 'draft':
-        #     #     raise UserError(_("Selected invoice(s) cannot be confirmed as they are not in 'Draft' state."))
-        #     record.action_invoice_open()
-        return {'type': 'ir.actions.act_window_close'}
+        # return {'type': 'ir.actions.act_window_close'}
