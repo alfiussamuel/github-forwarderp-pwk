@@ -1235,6 +1235,8 @@ class PwkMutasiAssemblingFinishingSizer(models.Model):
     def _get_stock_masuk(self):
         for res in self:
             hot_stock_masuk_pcs = 0
+            sander2_stock_masuk_pcs = 0
+            manual_stock_masuk_pcs = 0
 
             if res.product_id:
                 if res.reference.gs1_selection == "Veneer GS":
