@@ -630,6 +630,10 @@
                                             <field name="stock_awal_pcs" sum="Total"/>
                                             <field name="hot_stock_masuk_pcs" sum="Total"/>
                                             <field name="hot_stock_masuk_vol" sum="Total"/>
+                                            <field name="sander2_stock_masuk_pcs" sum="Total"/>
+                                            <field name="sander2_stock_masuk_vol" sum="Total"/>
+                                            <field name="tipis_stock_masuk_pcs" sum="Total"/>
+                                            <field name="tipis_stock_masuk_vol" sum="Total"/>
                                             <field name="re_stock_masuk_pcs" sum="Total"/>
                                             <field name="re_stock_masuk_vol" sum="Total"/>
                                             <field name="sander_stock_keluar_pcs" sum="Total"/>
@@ -655,7 +659,11 @@
                                                     <field name="stock_awal_pcs" 
                                                         string="Stok Awal"/>
                                                     <field name="hot_stock_masuk_pcs"
-                                                        string="Stok Masuk Hot"/> 
+                                                        string="Stok Masuk Hot"/>
+                                                    <field name="sander2_stock_masuk_pcs"
+                                                        string="Stok Masuk Sander2"/>
+                                                    <field name="manual_stock_masuk_pcs"
+                                                        string="Stok Masuk Manual"/> 
                                                     <field name="re_stock_masuk_pcs"
                                                         string="Stok Masuk Re"/> 
                                                     <field name="sander_stock_keluar_pcs"
@@ -674,6 +682,10 @@
                                                         string="Stok Awal"/>
                                                     <field name="hot_stock_masuk_vol"
                                                         string="Stok Masuk Hot"/>
+                                                    <field name="sander2_stock_masuk_vol"
+                                                        string="Stok Masuk Sander2"/>
+                                                    <field name="manual_stock_masuk_vol"
+                                                        string="Stok Masuk Manual"/>
                                                     <field name="re_stock_masuk_vol"
                                                         string="Stok Masuk Re"/>
                                                     <field name="sander_stock_keluar_vol"
@@ -690,7 +702,9 @@
                                             </group>
                                             <group>
                                                 <group string="Akumulasi Stock (Pcs)">
-                                                    <field name="hot_acc_stock_masuk_pcs"/> 
+                                                    <field name="hot_acc_stock_masuk_pcs"/>
+                                                    <field name="sander2_acc_stock_masuk_pcs"/>
+                                                    <field name="manual_acc_stock_masuk_pcs"/> 
                                                     <field name="re_acc_stock_masuk_pcs"/> 
                                                     <field name="sander_acc_stock_keluar_pcs"/> 
                                                     <field name="grading_acc_stock_keluar_pcs"/> 
@@ -699,6 +713,8 @@
                                                 </group>
                                                 <group string="Akumulasi Stock (Vol)">
                                                     <field name="hot_acc_stock_masuk_vol"/>
+                                                    <field name="sander2_acc_stock_masuk_vol"/>
+                                                    <field name="manual_acc_stock_masuk_vol"/>
                                                     <field name="re_acc_stock_masuk_vol"/>
                                                     <field name="sander_acc_stock_keluar_vol"/>
                                                     <field name="grading_acc_stock_keluar_vol"/>
