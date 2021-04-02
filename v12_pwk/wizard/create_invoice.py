@@ -36,6 +36,7 @@ class AccountInvoiceCreate(models.TransientModel):
                     'name': line.product_id.name,
                     'account_id': line.product_id.categ_id.property_account_income_categ_id.id,
                     'sheet': line.quantity,
+                    'quantity': line.volume,
                     'uom_id': line.product_id.uom_id.id,
                     'price_unit': line.sale_line_id.price_unit
                 })
