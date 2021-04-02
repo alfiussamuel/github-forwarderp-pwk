@@ -1981,32 +1981,34 @@ class PwkMutasiAssemblingFinishing(models.Model):
                     ('reference.date','<',res.date - timedelta(1)),
                     ])
 
-            kalibrasi2_source_ids = self.env['pwk.mutasi.assembling.finishing.kalibrasi2'].search([
-                ('reference.date','=',res.date),'|',
-                ('sander2_stock_keluar_pcs', '>', 0),
-                ('tipis_stock_keluar_pcs', '>', 0)
-            ])
-
-            if not kalibrasi2_source_ids:
-                kalibrasi2_source_ids = self.env['pwk.mutasi.assembling.finishing.gs2'].search([
-                    ('reference.date','<',res.date - timedelta(1)),'|',
-                    ('sander2_stock_keluar_pcs', '>', 0),
-                    ('tipis_stock_keluar_pcs', '>', 0)
-                ])
-
             if source_ids:
                 for source in source_ids:
                     self.env['pwk.mutasi.assembling.finishing.sizer'].create({
                         'reference': res.id,
                         'product_id': source.product_id.id,
                         })
+                    
+            # kalibrasi2_source_ids = self.env['pwk.mutasi.assembling.finishing.kalibrasi2'].search([
+            #     ('reference.date','=',res.date),'|',
+            #     ('sander2_stock_keluar_pcs', '>', 0),
+            #     ('tipis_stock_keluar_pcs', '>', 0)
+            # ])
 
-            if kalibrasi2_source_ids:
-                for source in kalibrasi2_source_ids:
-                    self.env['pwk.mutasi.assembling.finishing.sizer'].create({
-                        'reference': res.id,
-                        'product_id': source.product_id.id,
-                        })
+            # if not kalibrasi2_source_ids:
+            #     kalibrasi2_source_ids = self.env['pwk.mutasi.assembling.finishing.gs2'].search([
+            #         ('reference.date','<',res.date - timedelta(1)),'|',
+            #         ('sander2_stock_keluar_pcs', '>', 0),
+            #         ('tipis_stock_keluar_pcs', '>', 0)
+            #     ])
+
+            
+
+            # if kalibrasi2_source_ids:
+            #     for source in kalibrasi2_source_ids:
+            #         self.env['pwk.mutasi.assembling.finishing.sizer'].create({
+            #             'reference': res.id,
+            #             'product_id': source.product_id.id,
+            #             })
 
     @api.multi
     def button_reload_finish(self):
