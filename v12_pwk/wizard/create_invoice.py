@@ -19,9 +19,19 @@ class AccountInvoiceCreate(models.TransientModel):
             'journal_id': journal_id.id,
             'date_invoice': fields.Date.today(),
             'formula_type': packing_list_id.line_ids[0].sale_id.formula_type,
-            'payment_terms': packing_list_id.line_ids[0].sale_id.payment_term_id.id,
+            'payment_term_id': packing_list_id.line_ids[0].sale_id.payment_term_id.id,
             'currency_id': packing_list_id.line_ids[0].sale_id.pricelist_id.currency_id.id,
-            'account_id': packing_list_id.partner_id.property_account_receivable_id.id
+            'account_id': packing_list_id.partner_id.property_account_receivable_id.id,
+            'port_loading': packing_list_id.line_ids[0].sale_id.port_loading.id,
+            'port_discharge': packing_list_id.line_ids[0].sale_id.port_discharge.id,
+            'destination_id': packing_list_id.line_ids[0].sale_id.destination_id.id,
+            'method_payment_id': packing_list_id.line_ids[0].sale_id.method_payment_id.id,
+            'sale_order_no': packing_list_id.line_ids[0].sale_id.name,
+            'packing_list_no': packing_list_id.name,
+            'do_number': packing_list_id.picking_id.name,
+            'do_date': packing_list_id.picking_id.scheduled_date,
+            'po_number': packing_list_id.line_ids[0].sale_id.po_number,
+            'contract_no': number_contract
         })
 
         # Create invoice lines
