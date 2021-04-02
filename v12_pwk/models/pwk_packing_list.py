@@ -445,13 +445,11 @@ class PwkPackingList(models.Model):
                 'origin': res.name
             })
 
-            product = ''
-            if line.revision_product_id:
-                product = line.revision_product_id
-            else:
-                product = line.product_id
-
             for line in res.line_ids:
+                product = line.product_id
+                if line.revision_product_id:
+                    product = line.revision_product_id
+
                 self.env['stock.move'].create({
                     'picking_id': picking_id.id,
                     'product_id': product.id,
@@ -466,8 +464,7 @@ class PwkPackingList(models.Model):
             if picking_id:
                 picking_id.action_confirm()
                 picking_id.action_assign()
-                # picking_id.force_assign()
-
+                
             res.write({
                 'is_picking': True,
                 'picking_id': picking_id.id
