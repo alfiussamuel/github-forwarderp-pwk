@@ -691,6 +691,7 @@
                             <field name="is_pr"
                                 attrs="{'invisible':[('is_pr', '=', False)]}"/>
                             <field name="working_days"/>
+                            <field name="bahan_baku_type"/>
                         </group>
                         <group>
                             <field name="pr_veneer_id" readonly="1"
@@ -972,12 +973,31 @@
                                     </tree>
                                 </field>
                             </page>
-                            <page string="RPM">
+                            <page string="Additional RPB"
+                                attrs="{'readonly':[('bahan_baku_type', '=', 'RPM')]}">
                                 <group>
-                                    <field name="rpm_ids" nolabel="1">
-                                        <tree>
+                                    <field name="bahan_baku_rpb_ids" nolabel="1">
+                                        <tree editable="top">
+                                            <field name="name"/>
                                             <field name="date_start"/>
                                             <field name="date_end"/>
+                                            <field name="target"/>
+                                            <field name="actual"/>
+                                            <field name="state"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Additional RPM"
+                                attrs="{'readonly':[('bahan_baku_type', '=', 'RPB')]}">
+                                <group>
+                                    <field name="bahan_baku_rpm_ids" nolabel="1">
+                                        <tree editable="top">
+                                            <field name="name"/>
+                                            <field name="rpb_id"/>
+                                            <field name="date_start"/>
+                                            <field name="date_end"/>                    
+                                            <field name="state"/>
                                         </tree>
                                     </field>
                                 </group>
