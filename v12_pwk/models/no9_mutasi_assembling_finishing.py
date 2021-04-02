@@ -956,15 +956,15 @@ class PwkMutasiAssemblingFinishingKalibrasi2(models.Model):
     re_acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Re')
     re_acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Re', digits=dp.get_precision('FourDecimal'))
     
-    gs_stock_keluar_pcs = fields.Float('Stok Keluar GS (Pcs)')
-    gs_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar GS (M3)', digits=dp.get_precision('FourDecimal'))
-    gs_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar GS')
-    gs_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar GS', digits=dp.get_precision('FourDecimal'))
+    sizer_stock_keluar_pcs = fields.Float('Stok Keluar Sizer (Pcs)')
+    sizer_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Sizer (M3)', digits=dp.get_precision('FourDecimal'))
+    sizer_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Sizer')
+    sizer_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Sizer', digits=dp.get_precision('FourDecimal'))
     
-    lain_stock_keluar_pcs = fields.Float('Stok Keluar Lain (Pcs)')
-    lain_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Lain (M3)', digits=dp.get_precision('FourDecimal'))
-    lain_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Lain')
-    lain_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Lain', digits=dp.get_precision('FourDecimal'))
+    tipis_stock_keluar_pcs = fields.Float('Stok Keluar Tipis (Pcs)')
+    tipis_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Tipis (M3)', digits=dp.get_precision('FourDecimal'))
+    tipis_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Tipis')
+    tipis_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Tipis', digits=dp.get_precision('FourDecimal'))
 
     re_stock_keluar_pcs = fields.Float('Stok Keluar Re (Pcs)')
     re_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Re (M3)', digits=dp.get_precision('FourDecimal'))
@@ -987,7 +987,7 @@ class PwkMutasiAssemblingFinishingKalibrasi2(models.Model):
         'sander_stock_masuk_pcs','re_stock_masuk_pcs',
         'gs_stock_keluar_pcs','lain_stock_keluar_pcs','re_stock_keluar_pcs',
         'sander_acc_stock_masuk_pcs','re_acc_stock_masuk_pcs',
-        'gs_acc_stock_keluar_pcs','lain_acc_stock_keluar_pcs','re_acc_stock_keluar_pcs',
+        'sizer_acc_stock_keluar_pcs','tipis_acc_stock_keluar_pcs','re_acc_stock_keluar_pcs',
         'stock_akhir_pcs')
     def _get_volume(self):
         for res in self:
@@ -998,11 +998,11 @@ class PwkMutasiAssemblingFinishingKalibrasi2(models.Model):
             res.sander_acc_stock_masuk_vol = res.sander_acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.re_acc_stock_masuk_vol = res.re_acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             
-            res.gs_stock_keluar_vol = res.gs_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000            
-            res.lain_stock_keluar_vol = res.lain_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.sizer_stock_keluar_vol = res.sizer_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000            
+            res.tipis_stock_keluar_vol = res.tipis_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.re_stock_keluar_vol = res.lain_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
-            res.gs_acc_stock_keluar_vol = res.gs_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000            
-            res.lain_acc_stock_keluar_vol = res.lain_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.sizer_acc_stock_keluar_vol = res.sizer_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000            
+            res.tipis_acc_stock_keluar_vol = res.tipis_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.re_acc_stock_keluar_vol = res.re_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             
             res.stock_akhir_vol = res.stock_akhir_pcs * res.tebal * res.lebar * res.panjang / 1000000000
@@ -1012,8 +1012,8 @@ class PwkMutasiAssemblingFinishingKalibrasi2(models.Model):
         for res in self:
             sander_acc_stock_masuk_pcs = 0
             re_acc_stock_masuk_pcs = 0
-            gs_acc_stock_keluar_pcs = 0
-            lain_acc_stock_keluar_pcs = 0
+            sizer_acc_stock_keluar_pcs = 0
+            tipis_acc_stock_keluar_pcs = 0
             re_acc_stock_keluar_pcs = 0
 
             if res.product_id:
@@ -1031,14 +1031,14 @@ class PwkMutasiAssemblingFinishingKalibrasi2(models.Model):
                 if source_ids:
                     sander_acc_stock_masuk_pcs = source_ids[0].sander_acc_stock_masuk_pcs
                     re_acc_stock_masuk_pcs = source_ids[0].re_acc_stock_masuk_pcs
-                    gs_acc_stock_keluar_pcs = source_ids[0].gs_acc_stock_keluar_pcs
-                    lain_acc_stock_keluar_pcs = source_ids[0].lain_acc_stock_keluar_pcs
+                    sizer_acc_stock_keluar_pcs = source_ids[0].sizer_acc_stock_keluar_pcs
+                    tipis_acc_stock_keluar_pcs = source_ids[0].tipis_acc_stock_keluar_pcs
                     rer_acc_stock_keluar_pcs = source_ids[0].re_acc_stock_keluar_pcs
 
             res.sander_acc_stock_masuk_pcs = sander_acc_stock_masuk_pcs + res.sander_stock_masuk_pcs
             res.re_acc_stock_masuk_pcs = re_acc_stock_masuk_pcs + res.re_stock_masuk_pcs
-            res.gs_acc_stock_keluar_pcs = gs_acc_stock_keluar_pcs + res.gs_stock_keluar_pcs
-            res.lain_acc_stock_keluar_pcs = lain_acc_stock_keluar_pcs + res.lain_stock_keluar_pcs
+            res.sizer_acc_stock_keluar_pcs = sizer_acc_stock_keluar_pcs + res.sizer_stock_keluar_pcs
+            res.tipis_acc_stock_keluar_pcs = tipis_acc_stock_keluar_pcs + res.tipis_stock_keluar_pcs
             res.re_acc_stock_keluar_pcs = re_acc_stock_keluar_pcs + res.re_stock_keluar_pcs
 
     @api.depends('product_id')
@@ -1088,10 +1088,10 @@ class PwkMutasiAssemblingFinishingKalibrasi2(models.Model):
 
             res.stock_awal_pcs = stock_awal_pcs
 
-    @api.depends('stock_awal_pcs','sander_stock_masuk_pcs','re_stock_masuk_pcs','gs_stock_keluar_pcs','lain_stock_keluar_pcs','re_stock_keluar_pcs')
+    @api.depends('stock_awal_pcs','sander_stock_masuk_pcs','re_stock_masuk_pcs','sizer_stock_keluar_pcs','tipis_stock_keluar_pcs','re_stock_keluar_pcs')
     def _get_stock_akhir(self):
         for res in self:
-            res.stock_akhir_pcs = res.stock_awal_pcs + res.sander_stock_masuk_pcs + res.re_stock_masuk_pcs - res.gs_stock_keluar_pcs - res.lain_stock_keluar_pcs - res.re_stock_keluar_pcs            
+            res.stock_akhir_pcs = res.stock_awal_pcs + res.sander_stock_masuk_pcs + res.re_stock_masuk_pcs - res.sizer_stock_keluar_pcs - res.tipis_stock_keluar_pcs - res.re_stock_keluar_pcs            
 
 class PwkMutasiAssemblingFinishingSizer(models.Model):
     _name = "pwk.mutasi.assembling.finishing.sizer"
@@ -1105,6 +1105,16 @@ class PwkMutasiAssemblingFinishingSizer(models.Model):
     stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
     stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
     
+    sander2_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk Sander2 (Pcs)')
+    sander2_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Sander2 (M3)', digits=dp.get_precision('FourDecimal'))
+    sander2_acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Sander2')
+    sander2_acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Sander2', digits=dp.get_precision('FourDecimal'))
+
+    manual_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk Manual (Pcs)')
+    manual_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Manual (M3)', digits=dp.get_precision('FourDecimal'))
+    manual_acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Manual')
+    manual_acc_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Manual', digits=dp.get_precision('FourDecimal'))
+
     hot_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Stok Masuk Hot (Pcs)')
     hot_stock_masuk_vol = fields.Float(compute="_get_volume", string='Stok Masuk Hot (M3)', digits=dp.get_precision('FourDecimal'))
     hot_acc_stock_masuk_pcs = fields.Float(compute="_get_acc", string='Stok Masuk Hot')
@@ -1148,7 +1158,7 @@ class PwkMutasiAssemblingFinishingSizer(models.Model):
                 res.grade = res.product_id.grade.id
 
     @api.depends('stock_awal_pcs',
-        'hot_stock_masuk_pcs','re_stock_masuk_pcs',
+        'sander2_stock_masuk_pcs','manual_stock_masuk_pcs','hot_stock_masuk_pcs','re_stock_masuk_pcs',
         'sander_stock_keluar_pcs','grading_stock_keluar_pcs','lain_stock_keluar_pcs','re_stock_keluar_pcs',
         'hot_acc_stock_masuk_pcs','re_acc_stock_masuk_pcs',
         'sander_acc_stock_keluar_pcs','grading_acc_stock_keluar_pcs','lain_acc_stock_keluar_pcs','re_acc_stock_keluar_pcs',
@@ -1158,8 +1168,12 @@ class PwkMutasiAssemblingFinishingSizer(models.Model):
             res.stock_awal_vol = res.stock_awal_pcs * res.tebal * res.lebar * res.panjang / 1000000000
 
             res.hot_stock_masuk_vol = res.hot_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.sander2_stock_masuk_vol = res.sander2_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.manual_stock_masuk_vol = res.manual_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.re_stock_masuk_vol = res.re_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.hot_acc_stock_masuk_vol = res.hot_acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.sander2_acc_stock_masuk_vol = res.sander2_acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.manual_acc_stock_masuk_vol = res.manual_acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.re_acc_stock_masuk_vol = res.re_acc_stock_masuk_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             
             res.sander_stock_keluar_vol = res.sander_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000            
@@ -1173,10 +1187,13 @@ class PwkMutasiAssemblingFinishingSizer(models.Model):
             
             res.stock_akhir_vol = res.stock_akhir_pcs * res.tebal * res.lebar * res.panjang / 1000000000
 
-    @api.depends('stock_awal_pcs','hot_stock_masuk_pcs','re_stock_masuk_pcs','sander_stock_keluar_pcs','grading_stock_keluar_pcs','lain_stock_keluar_pcs','re_stock_keluar_pcs')
+    @api.depends('stock_awal_pcs','hot_stock_masuk_pcs','sander2_stock_masuk_pcs','manual_stock_masuk_pcs','re_stock_masuk_pcs',
+        'sander_stock_keluar_pcs','grading_stock_keluar_pcs','lain_stock_keluar_pcs','re_stock_keluar_pcs')
     def _get_acc(self):
         for res in self:
             hot_acc_stock_masuk_pcs = 0
+            sander2_acc_stock_masuk_pcs = 0
+            manual_acc_stock_masuk_pcs = 0
             re_acc_stock_masuk_pcs = 0
             sander_acc_stock_keluar_pcs = 0
             grading_acc_stock_keluar_pcs = 0
@@ -1197,6 +1214,8 @@ class PwkMutasiAssemblingFinishingSizer(models.Model):
 
                 if source_ids:
                     hot_acc_stock_masuk_pcs = source_ids[0].hot_acc_stock_masuk_pcs
+                    sander2_acc_stock_masuk_pcs = source_ids[0].sander2_acc_stock_masuk_pcs
+                    manual_acc_stock_masuk_pcs = source_ids[0].manual_acc_stock_masuk_pcs
                     re_acc_stock_masuk_pcs = source_ids[0].re_acc_stock_masuk_pcs
                     sander_acc_stock_keluar_pcs = source_ids[0].sander_acc_stock_keluar_pcs
                     grading_acc_stock_keluar_pcs = source_ids[0].grading_acc_stock_keluar_pcs
@@ -1204,6 +1223,8 @@ class PwkMutasiAssemblingFinishingSizer(models.Model):
                     rer_acc_stock_keluar_pcs = source_ids[0].re_acc_stock_keluar_pcs
 
             res.hot_acc_stock_masuk_pcs = hot_acc_stock_masuk_pcs + res.hot_stock_masuk_pcs
+            res.sander2_acc_stock_masuk_pcs = sander2_acc_stock_masuk_pcs + res.sander2_stock_masuk_pcs
+            res.manual_acc_stock_masuk_pcs = manual_acc_stock_masuk_pcs + res.manual_stock_masuk_pcs
             res.re_acc_stock_masuk_pcs = re_acc_stock_masuk_pcs + res.re_stock_masuk_pcs
             res.sander_acc_stock_keluar_pcs = sander_acc_stock_keluar_pcs + res.sander_stock_keluar_pcs
             res.grading_acc_stock_keluar_pcs = grading_acc_stock_keluar_pcs + res.grading_stock_keluar_pcs
@@ -1224,9 +1245,20 @@ class PwkMutasiAssemblingFinishingSizer(models.Model):
 
                     if source_ids:
                         hot_stock_masuk_pcs = source_ids[0].hot_stock_keluar_pcs
+
+                sander2_source_ids = self.env['pwk.mutasi.assembling.finishing.kalibrasi2'].search([
+                        ('reference.date','=',res.reference.date),
+                        ('product_id','=',res.product_id.id)
+                        ])
+
+                if sander2_source_ids:
+                    sander2_stock_masuk_pcs = source_ids[0].sander2_stock_keluar_pcs
+                    manual_stock_masuk_pcs = source_ids[0].manual_stock_keluar_pcs
                 
             res.hot_stock_masuk_pcs = hot_stock_masuk_pcs
             res.re_stock_masuk_pcs = res.re_stock_keluar_pcs
+            res.sander2_stock_masuk_pcs = sander2_stock_masuk_pcs
+            res.manual_stock_masuk_pcs = manual_stock_masuk_pcs
 
     @api.depends('product_id')
     def _get_stock_awal(self):
@@ -1949,8 +1981,28 @@ class PwkMutasiAssemblingFinishing(models.Model):
                     ('reference.date','<',res.date - timedelta(1)),
                     ])
 
+            kalibrasi2_source_ids = self.env['pwk.mutasi.assembling.finishing.kalibrasi2'].search([
+                ('reference.date','=',res.date),'|',
+                ('sander2_stock_keluar_pcs', '>', 0),
+                ('tipis_stock_keluar_pcs', '>', 0)
+            ])
+
+            if not kalibrasi2_source_ids:
+                kalibrasi2_source_ids = self.env['pwk.mutasi.assembling.finishing.gs2'].search([
+                    ('reference.date','<',res.date - timedelta(1)),'|',
+                    ('sander2_stock_keluar_pcs', '>', 0),
+                    ('tipis_stock_keluar_pcs', '>', 0)
+                ])
+
             if source_ids:
                 for source in source_ids:
+                    self.env['pwk.mutasi.assembling.finishing.sizer'].create({
+                        'reference': res.id,
+                        'product_id': source.product_id.id,
+                        })
+
+            if kalibrasi2_source_ids:
+                for source in kalibrasi2_source_ids:
                     self.env['pwk.mutasi.assembling.finishing.sizer'].create({
                         'reference': res.id,
                         'product_id': source.product_id.id,

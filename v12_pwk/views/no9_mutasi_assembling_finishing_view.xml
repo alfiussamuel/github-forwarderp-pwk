@@ -550,10 +550,10 @@
                                             <field name="sander_stock_masuk_vol" sum="Total"/>
                                             <field name="re_stock_masuk_pcs" sum="Total"/>
                                             <field name="re_stock_masuk_vol" sum="Total"/>
-                                            <field name="gs_stock_keluar_pcs" sum="Total"/>
-                                            <field name="gs_stock_keluar_vol" sum="Total"/>
-                                            <field name="lain_stock_keluar_pcs" sum="Total"/>
-                                            <field name="lain_stock_keluar_vol" sum="Total"/>
+                                            <field name="sizer_stock_keluar_pcs" sum="Total"/>
+                                            <field name="sizer_stock_keluar_vol" sum="Total"/>
+                                            <field name="tipis_stock_keluar_pcs" sum="Total"/>
+                                            <field name="tipis_stock_keluar_vol" sum="Total"/>
                                             <field name="re_stock_keluar_pcs" sum="Total"/>
                                             <field name="re_stock_keluar_vol" sum="Total"/>
                                             <field name="stock_akhir_pcs" sum="Total"/>
@@ -574,9 +574,9 @@
                                                         string="Stok Masuk Sander"/> 
                                                     <field name="re_stock_masuk_pcs"
                                                         string="Stok Masuk Re"/> 
-                                                    <field name="gs_stock_keluar_pcs"
+                                                    <field name="sizer_stock_keluar_pcs"
                                                         string="Stok Keluar GS"/>
-                                                    <field name="lain_stock_keluar_pcs"
+                                                    <field name="tipis_stock_keluar_pcs"
                                                         string="Stok Keluar Lain"/>
                                                     <field name="re_stock_keluar_pcs"
                                                         string="Stok Keluar Re"/>
@@ -590,9 +590,9 @@
                                                         string="Stok Masuk Sander"/>
                                                     <field name="re_stock_masuk_vol"
                                                         string="Stok Masuk Re"/>
-                                                    <field name="gs_stock_keluar_vol"
+                                                    <field name="sizer_stock_keluar_vol"
                                                         string="Stok Keluar GS"/>
-                                                    <field name="lain_stock_keluar_vol"
+                                                    <field name="tipis_stock_keluar_vol"
                                                         string="Stok Keluar Lain"/>
                                                     <field name="re_stock_keluar_vol"
                                                         string="Stok Keluar Re"/>
@@ -604,15 +604,15 @@
                                                 <group string="Akumulasi Stock (Pcs)">
                                                     <field name="sander_acc_stock_masuk_pcs"/> 
                                                     <field name="re_acc_stock_masuk_pcs"/> 
-                                                    <field name="gs_acc_stock_keluar_pcs"/> 
-                                                    <field name="lain_acc_stock_keluar_pcs"/> 
+                                                    <field name="sizer_acc_stock_keluar_pcs"/> 
+                                                    <field name="tipis_acc_stock_keluar_pcs"/> 
                                                     <field name="re_acc_stock_keluar_pcs"/> 
                                                 </group>
                                                 <group string="Akumulasi Stock (Vol)">
                                                     <field name="sander_acc_stock_masuk_vol"/>
                                                     <field name="re_acc_stock_masuk_vol"/>
-                                                    <field name="gs_acc_stock_keluar_vol"/>
-                                                    <field name="lain_acc_stock_keluar_vol"/>
+                                                    <field name="sizer_acc_stock_keluar_vol"/>
+                                                    <field name="tipis_acc_stock_keluar_vol"/>
                                                     <field name="re_acc_stock_keluar_vol"/>
                                                 </group>
                                             </group>
