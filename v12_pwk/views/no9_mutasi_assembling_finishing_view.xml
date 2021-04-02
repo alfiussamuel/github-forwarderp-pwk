@@ -470,6 +470,8 @@
                                             <field name="gs_stock_keluar_vol" sum="Total"/>
                                             <field name="lain_stock_keluar_pcs" sum="Total"/>
                                             <field name="lain_stock_keluar_vol" sum="Total"/>
+                                            <field name="sander2_stock_keluar_pcs" sum="Total"/>
+                                            <field name="sander2_stock_keluar_vol" sum="Total"/>
                                             <field name="re_stock_keluar_pcs" sum="Total"/>
                                             <field name="re_stock_keluar_vol" sum="Total"/>
                                             <field name="stock_akhir_pcs" sum="Total"/>
