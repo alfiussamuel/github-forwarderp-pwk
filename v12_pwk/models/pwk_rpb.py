@@ -592,8 +592,8 @@ class PwkRpb(models.Model):
                                 'quantity': current_product_ids[0].quantity + bom.quantity
                             })
 
-            if res.rpb_ids:
-                for rpb in res.rpb_ids:
+            if res.bahan_baku_rpb_ids:
+                for rpb in res.bahan_baku_rpb_ids:
                     if rpb.line_ids:
                         for line in rpb.line_ids:
                             if line.is_selected_detail1 and line.detail_ids_1:
@@ -625,8 +625,8 @@ class PwkRpb(models.Model):
                                         'quantity': current_product_ids[0].quantity + bom.quantity
                                     })
 
-            elif res.rpm_ids:
-                for rpm in res.rpm_ids:
+            elif res.bahan_baku_rpm_ids:
+                for rpm in res.bahan_baku_rpm_ids:
                     if rpm.line_ids:
                         for line in rpm.line_ids:
                             if line.is_selected_detail1 and line.detail_ids_1:
