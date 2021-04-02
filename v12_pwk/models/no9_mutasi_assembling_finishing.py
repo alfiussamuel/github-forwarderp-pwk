@@ -1246,19 +1246,19 @@ class PwkMutasiAssemblingFinishingSizer(models.Model):
                     if source_ids:
                         hot_stock_masuk_pcs = source_ids[0].hot_stock_keluar_pcs
 
-                # sander2_source_ids = self.env['pwk.mutasi.assembling.finishing.kalibrasi2'].search([
-                #         ('reference.date','=',res.reference.date),
-                #         ('product_id','=',res.product_id.id)
-                #         ])
+                sander2_source_ids = self.env['pwk.mutasi.assembling.finishing.kalibrasi2'].search([
+                        ('reference.date','=',res.reference.date),
+                        ('product_id','=',res.product_id.id)
+                        ])
 
-                # if sander2_source_ids:
-                #     sander2_stock_masuk_pcs = source_ids[0].sander2_stock_keluar_pcs
-                #     manual_stock_masuk_pcs = source_ids[0].manual_stock_keluar_pcs
+                if sander2_source_ids:
+                    sander2_stock_masuk_pcs = source_ids[0].sander2_stock_keluar_pcs
+                    manual_stock_masuk_pcs = source_ids[0].manual_stock_keluar_pcs
                 
             res.hot_stock_masuk_pcs = hot_stock_masuk_pcs
             res.re_stock_masuk_pcs = res.re_stock_keluar_pcs
-            # res.sander2_stock_masuk_pcs = sander2_stock_masuk_pcs
-            # res.manual_stock_masuk_pcs = manual_stock_masuk_pcs
+            res.sander2_stock_masuk_pcs = sander2_stock_masuk_pcs
+            res.manual_stock_masuk_pcs = manual_stock_masuk_pcs
 
     @api.depends('product_id')
     def _get_stock_awal(self):
@@ -1988,27 +1988,27 @@ class PwkMutasiAssemblingFinishing(models.Model):
                         'product_id': source.product_id.id,
                         })
                     
-            # kalibrasi2_source_ids = self.env['pwk.mutasi.assembling.finishing.kalibrasi2'].search([
-            #     ('reference.date','=',res.date),'|',
-            #     ('sander2_stock_keluar_pcs', '>', 0),
-            #     ('tipis_stock_keluar_pcs', '>', 0)
-            # ])
+            kalibrasi2_source_ids = self.env['pwk.mutasi.assembling.finishing.kalibrasi2'].search([
+                ('reference.date','=',res.date),'|',
+                ('sander2_stock_keluar_pcs', '>', 0),
+                ('tipis_stock_keluar_pcs', '>', 0)
+            ])
 
-            # if not kalibrasi2_source_ids:
-            #     kalibrasi2_source_ids = self.env['pwk.mutasi.assembling.finishing.gs2'].search([
-            #         ('reference.date','<',res.date - timedelta(1)),'|',
-            #         ('sander2_stock_keluar_pcs', '>', 0),
-            #         ('tipis_stock_keluar_pcs', '>', 0)
-            #     ])
+            if not kalibrasi2_source_ids:
+                kalibrasi2_source_ids = self.env['pwk.mutasi.assembling.finishing.gs2'].search([
+                    ('reference.date','<',res.date - timedelta(1)),'|',
+                    ('sander2_stock_keluar_pcs', '>', 0),
+                    ('tipis_stock_keluar_pcs', '>', 0)
+                ])
 
             
 
-            # if kalibrasi2_source_ids:
-            #     for source in kalibrasi2_source_ids:
-            #         self.env['pwk.mutasi.assembling.finishing.sizer'].create({
-            #             'reference': res.id,
-            #             'product_id': source.product_id.id,
-            #             })
+            if kalibrasi2_source_ids:
+                for source in kalibrasi2_source_ids:
+                    self.env['pwk.mutasi.assembling.finishing.sizer'].create({
+                        'reference': res.id,
+                        'product_id': source.product_id.id,
+                        })
 
     @api.multi
     def button_reload_finish(self):
