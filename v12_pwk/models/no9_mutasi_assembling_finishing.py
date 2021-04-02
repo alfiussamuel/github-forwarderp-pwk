@@ -805,6 +805,11 @@ class PwkMutasiAssemblingFinishingKalibrasi(models.Model):
     lain_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Lain')
     lain_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Lain', digits=dp.get_precision('FourDecimal'))
 
+    sander2_stock_keluar_pcs = fields.Float('Stok Keluar Sander2 (Pcs)')
+    sander2_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Sander2 (M3)', digits=dp.get_precision('FourDecimal'))
+    sander2_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Sander2')
+    sander2_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Sander2', digits=dp.get_precision('FourDecimal'))
+
     re_stock_keluar_pcs = fields.Float('Stok Keluar Re (Pcs)')
     re_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Re (M3)', digits=dp.get_precision('FourDecimal'))
     re_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Re')
@@ -826,7 +831,7 @@ class PwkMutasiAssemblingFinishingKalibrasi(models.Model):
         'sander_stock_masuk_pcs','re_stock_masuk_pcs',
         'gs_stock_keluar_pcs','lain_stock_keluar_pcs','re_stock_keluar_pcs',
         'sander_acc_stock_masuk_pcs','re_acc_stock_masuk_pcs',
-        'gs_acc_stock_keluar_pcs','lain_acc_stock_keluar_pcs','re_acc_stock_keluar_pcs',
+        'gs_acc_stock_keluar_pcs','lain_acc_stock_keluar_pcs','sander2_acc_stock_keluar_pcs','re_acc_stock_keluar_pcs',
         'stock_akhir_pcs')
     def _get_volume(self):
         for res in self:
@@ -846,13 +851,15 @@ class PwkMutasiAssemblingFinishingKalibrasi(models.Model):
             
             res.stock_akhir_vol = res.stock_akhir_pcs * res.tebal * res.lebar * res.panjang / 1000000000
 
-    @api.depends('stock_awal_pcs','sander_stock_masuk_pcs','re_stock_masuk_pcs','gs_stock_keluar_pcs','lain_stock_keluar_pcs','re_stock_keluar_pcs')
+    @api.depends('stock_awal_pcs','sander_stock_masuk_pcs','re_stock_masuk_pcs',
+        'gs_stock_keluar_pcs','lain_stock_keluar_pcs','sander2_stock_keluar_pcs','re_stock_keluar_pcs')
     def _get_acc(self):
         for res in self:
             sander_acc_stock_masuk_pcs = 0
             re_acc_stock_masuk_pcs = 0
             gs_acc_stock_keluar_pcs = 0
             lain_acc_stock_keluar_pcs = 0
+            sander2_acc_stock_keluar_pcs = 0
             re_acc_stock_keluar_pcs = 0
 
             if res.product_id:
@@ -872,12 +879,14 @@ class PwkMutasiAssemblingFinishingKalibrasi(models.Model):
                     re_acc_stock_masuk_pcs = source_ids[0].re_acc_stock_masuk_pcs
                     gs_acc_stock_keluar_pcs = source_ids[0].gs_acc_stock_keluar_pcs
                     lain_acc_stock_keluar_pcs = source_ids[0].lain_acc_stock_keluar_pcs
+                    sander2_acc_stock_keluar_pcs = source_ids[0].sander2_acc_stock_keluar_pcs
                     rer_acc_stock_keluar_pcs = source_ids[0].re_acc_stock_keluar_pcs
 
             res.sander_acc_stock_masuk_pcs = sander_acc_stock_masuk_pcs + res.sander_stock_masuk_pcs
             res.re_acc_stock_masuk_pcs = re_acc_stock_masuk_pcs + res.re_stock_masuk_pcs
             res.gs_acc_stock_keluar_pcs = gs_acc_stock_keluar_pcs + res.gs_stock_keluar_pcs
             res.lain_acc_stock_keluar_pcs = lain_acc_stock_keluar_pcs + res.lain_stock_keluar_pcs
+            res.sander2_acc_stock_keluar_pcs = sander2_acc_stock_keluar_pcs + res.sander2_stock_keluar_pcs
             res.re_acc_stock_keluar_pcs = re_acc_stock_keluar_pcs + res.re_stock_keluar_pcs
 
     @api.depends('product_id')
@@ -1038,14 +1047,21 @@ class PwkMutasiAssemblingFinishingKalibrasi2(models.Model):
             sander_stock_masuk_pcs = 0
 
             if res.product_id:
-                if res.reference.gs1_selection == "Veneer GS":
-                    source_ids = self.env['pwk.mutasi.assembling.finishing.unsander'].search([
-                        ('reference.date','=',res.reference.date),
-                        ('product_id','=',res.product_id.id)
-                        ])
+                source_ids = self.env['pwk.mutasi.assembling.finishing.kalibrasi'].search([
+                    ('reference.date','=',res.reference.date),
+                    ('product_id','=',res.product_id.id)
+                    ])
 
-                    if source_ids:
-                        sander_stock_masuk_pcs = source_ids[0].sander_stock_keluar_pcs
+                if source_ids:
+                    sander_stock_masuk_pcs += source_ids[0].sander2_stock_keluar_pcs
+
+                gs2_source_ids = self.env['pwk.mutasi.assembling.finishing.gs2'].search([
+                    ('reference.date','=',res.reference.date),
+                    ('product_id','=',res.product_id.id)
+                    ])
+
+                if gs2_source_ids:
+                    sander_stock_masuk_pcs += gs2_source_ids[0].sk_stock_keluar_pcs
                 
             res.sander_stock_masuk_pcs = sander_stock_masuk_pcs
             res.re_stock_masuk_pcs = res.re_stock_keluar_pcs
@@ -1877,17 +1893,33 @@ class PwkMutasiAssemblingFinishing(models.Model):
                 for existing in existing_ids:
                     existing.unlink()
                     
-            source_ids = self.env['pwk.mutasi.assembling.finishing.gs1'].search([
+            source_ids = self.env['pwk.mutasi.assembling.finishing.kalibrasi'].search([
                 ('reference.date','=',res.date),
                 ])
 
             if not source_ids:
-                source_ids = self.env['pwk.mutasi.assembling.finishing.gs1'].search([
+                source_ids = self.env['pwk.mutasi.assembling.finishing.kalibrasi'].search([
                     ('reference.date','<',res.date - timedelta(1)),
                     ])
 
             if source_ids:
                 for source in source_ids:
+                    self.env['pwk.mutasi.assembling.finishing.kalibrasi2'].create({
+                        'reference': res.id,
+                        'product_id': source.product_id.id,
+                        })
+
+            source_gsp2_ids = self.env['pwk.mutasi.assembling.finishing.kalibrasi'].search([
+                ('reference.date','=',res.date),
+                ])
+
+            if not source_gsp2_ids:
+                source_gsp2_ids = self.env['pwk.mutasi.assembling.finishing.gs2'].search([
+                    ('reference.date','<',res.date - timedelta(1)),
+                    ])
+
+            if source_gsp2_ids:
+                for source in source_gsp2_ids:
                     self.env['pwk.mutasi.assembling.finishing.kalibrasi2'].create({
                         'reference': res.id,
                         'product_id': source.product_id.id,
