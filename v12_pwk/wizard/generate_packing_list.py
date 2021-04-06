@@ -35,7 +35,7 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                     'product_id': line.product_id.id,
                     'sale_line_id': line.id,
                     'sale_id': line.order_id.id,
-                    'crate_number': (line.qty_packing_list / line.crate_qty_each),
+                    'crate_number': (line.qty_packing_list / (line.crate_qty_each or 1)),
                     'crate_qty_each': line.crate_qty_each
                 })
 
