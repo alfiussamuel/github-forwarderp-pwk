@@ -149,7 +149,7 @@
                             <notebook>
                                 <page string="Detail Packing List">
                                     <field name="line_ids" nolabel="1">
-                                        <tree editable="top" create="false">
+                                        <tree>
                                             <field name="product_id"/>
                                             <field name="revision_product_id"/>
                                             <field name="marking"/>
