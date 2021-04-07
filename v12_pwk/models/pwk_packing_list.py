@@ -65,6 +65,7 @@ class PwkPackingListLineDetail(models.Model):
 
 class PwkPackingListLine(models.Model):    
     _name = "pwk.packing.list.line"
+    _order = 'width asc,length asc,thick asc'
 
     reference = fields.Many2one('pwk.packing.list', string='Reference')
     sale_id = fields.Many2one('sale.order', 'No. Order')
@@ -90,9 +91,9 @@ class PwkPackingListLine(models.Model):
 
     name = fields.Char('Name')
     product_id = fields.Many2one('product.product', string='Product')
-    thick = fields.Float(compute="_get_fields", string='Thick', digits=dp.get_precision('OneDecimal'))
-    width = fields.Float(compute="_get_fields", string='Width', digits=dp.get_precision('ZeroDecimal'))
-    length = fields.Float(compute="_get_fields", string='Length', digits=dp.get_precision('ZeroDecimal'))
+    thick = fields.Float(compute="_get_fields", string='Thick', digits=dp.get_precision('OneDecimal'), store=True)
+    width = fields.Float(compute="_get_fields", string='Width', digits=dp.get_precision('ZeroDecimal'), store=True)
+    length = fields.Float(compute="_get_fields", string='Length', digits=dp.get_precision('ZeroDecimal'), store=True)
     glue_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.glue', string='Glue')
     grade_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.grade', string='Grade')
     marking = fields.Char(related='sale_line_id.marking', string='Marking')
