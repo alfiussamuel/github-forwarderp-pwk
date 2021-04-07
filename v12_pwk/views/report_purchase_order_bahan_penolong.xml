@@ -205,50 +205,6 @@
 	        </div>
 
 	        <div class="footer o_standard_footer">
-	        	<table class="table table-condensed" style="margin-top:0px;">
-	        		<tr>
-	        			<td colspan="4" 
-	        				style="font-size:11px;border:0px;text-align:right;padding:1px;">
-	        				<span t-field="o.office_selection"/>, <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%B-%Y')"/>
-	        			</td>
-	        		</tr>
-                    <tr height="120px">                  
-                        <td width="25%"
-                            style="text-align:center;padding:5px;font-size:14px;border:0px;">
-                            Supplier,
-                        </td>
-                        <td width="25%"
-                            style="text-align:center;padding:5px;font-size:14px;border:0px;">
-                            Disetujui,
-                        </td>
-                        <td width="25%"
-                            style="text-align:center;padding:5px;font-size:14px;border:0px;">
-                            Diminta,
-                        </td>                        
-                        <td width="25%"
-                            style="text-align:center;padding:5px;font-size:14px;border:0px;">
-                            Dibuat,
-                        </td>                        
-                    </tr>                    
-                    <tr height="100px">
-                        <td width="25%"
-                            style="text-align:center;padding:5px;font-size:14px;border:0px;">
-                            ( ______________ )
-                        </td>
-                        <td width="25%"
-                            style="text-align:center;padding:5px;font-size:14px;border:0px;">
-                            ( ______________ )
-                        </td>                        
-                        <td width="25%"
-                            style="text-align:center;padding:5px;font-size:14px;border:0px;">
-                            ( ______________ )
-                        </td>
-                        <td width="25%"
-                            style="text-align:center;padding:5px;font-size:14px;border:0px;">
-                            ( ______________ )
-                        </td>
-                    </tr>                              
-                </table>
 	            <div class="text-center">		            
 	                <div t-if="report_type == 'pdf'" class="text-muted">
 	                    Page: <span class="page"/> / <span class="topage"/>
@@ -537,7 +493,51 @@
 		                        </td>
 		                    </tr>
 		                </tbody>
-		            </table>		            
+		            </table>
+		            <table class="table table-condensed" style="margin-top:40px;">
+		        		<tr>
+		        			<td colspan="4" 
+		        				style="font-size:11px;border:0px;text-align:right;padding:1px;">
+		        				<span t-field="o.office_selection"/>, <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%B-%Y')"/>
+		        			</td>
+		        		</tr>
+	                    <tr height="120px">                  
+	                        <td width="25%"
+	                            style="text-align:center;padding:5px;font-size:14px;border:0px;">
+	                            Supplier,
+	                        </td>
+	                        <td width="25%"
+	                            style="text-align:center;padding:5px;font-size:14px;border:0px;">
+	                            Disetujui,
+	                        </td>
+	                        <td width="25%"
+	                            style="text-align:center;padding:5px;font-size:14px;border:0px;">
+	                            Diminta,
+	                        </td>                        
+	                        <td width="25%"
+	                            style="text-align:center;padding:5px;font-size:14px;border:0px;">
+	                            Dibuat,
+	                        </td>                        
+	                    </tr>                    
+	                    <tr height="100px">
+	                        <td width="25%"
+	                            style="text-align:center;padding:5px;font-size:14px;border:0px;">
+	                            ( ______________ )
+	                        </td>
+	                        <td width="25%"
+	                            style="text-align:center;padding:5px;font-size:14px;border:0px;">
+	                            ( ______________ )
+	                        </td>                        
+	                        <td width="25%"
+	                            style="text-align:center;padding:5px;font-size:14px;border:0px;">
+	                            ( ______________ )
+	                        </td>
+	                        <td width="25%"
+	                            style="text-align:center;padding:5px;font-size:14px;border:0px;">
+	                            ( ______________ )
+	                        </td>
+	                    </tr>                              
+	                </table>
                 </div>
             </t>
         </template>        
@@ -560,7 +560,7 @@
 	        <field name="page_width">0</field>
 	        <field name="orientation">Portrait</field>
 	        <field name="margin_top">72</field>
-	        <field name="margin_bottom">50</field>
+	        <field name="margin_bottom">10</field>
 	        <field name="margin_left">5</field>
 	        <field name="margin_right">5</field>
 	        <field name="header_line" eval="False"/>
