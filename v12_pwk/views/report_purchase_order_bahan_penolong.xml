@@ -498,45 +498,34 @@
 		            </table>
 		            <table class="table table-condensed" style="margin-top:40px;">
 		        		<tr>
-		        			<td colspan="4" 
+		        			<td colspan="3" 
 		        				style="font-size:11px;border:0px;text-align:right;padding:1px;">
 		        				<span t-field="o.office_selection"/>, <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%B-%Y')"/>
 		        			</td>
 		        		</tr>
 	                    <tr height="120px">                  
-	                        <td width="25%"
+	                        <td width="33%"
 	                            style="text-align:center;padding:5px;font-size:12px;border:0px;">
 	                            Supplier,
 	                        </td>
-	                        <td width="25%"
+	                        <td width="33%"
 	                            style="text-align:center;padding:5px;font-size:12px;border:0px;">
 	                            Disetujui,
-	                        </td>
-	                        <td width="25%"
-	                            style="text-align:center;padding:5px;font-size:12px;border:0px;">
-	                            Diminta,
-	                        </td>                        
-	                        <td width="25%"
+	                        </td>                 
+	                        <td width="33%"
 	                            style="text-align:center;padding:5px;font-size:12px;border:0px;">
 	                            Dibuat,
 	                        </td>                        
 	                    </tr>                    
 	                    <tr height="100px">
-	                        <td width="25%"
-	                            style="text-align:center;padding:5px;font-size:12px;border:0px;">
+	                        <td style="text-align:center;padding:5px;font-size:12px;border:0px;">
 	                            ( ______________ )
 	                        </td>
-	                        <td width="25%"
-	                            style="text-align:center;padding:5px;font-size:12px;border:0px;">
-	                            ( ______________ )
-	                        </td>                        
-	                        <td width="25%"
-	                            style="text-align:center;padding:5px;font-size:12px;border:0px;">
-	                            ( ______________ )
+	                        <td style="text-align:center;padding:5px;font-size:12px;border:0px;">
+	                            ( Andrew Tanujaya )
 	                        </td>
-	                        <td width="25%"
-	                            style="text-align:center;padding:5px;font-size:12px;border:0px;">
-	                            ( ______________ )
+	                        <td style="text-align:center;padding:5px;font-size:12px;border:0px;">
+	                            ( Miftakhur Rokhman )
 	                        </td>
 	                    </tr>                              
 	                </table>
