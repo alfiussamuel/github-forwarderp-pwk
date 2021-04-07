@@ -74,7 +74,7 @@
 			
 				<table class="table table-condensed" style="margin-top:0px;">					
 					<tr>
-						<td width="15%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="15%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 							<t t-if="o.export_local == 'English'">
 								<strong>Purchase Order No.</strong>
 							</t>
@@ -82,15 +82,15 @@
 								<strong>No. Pesan</strong>
 							</t>
 						</td>
-						<td width="5%" style="font-size:14px; text-align:center;padding:2px;border:0px;vertical-align:middle;">
+						<td width="5%" style="font-size:16px; text-align:center;padding:2px;border:0px;vertical-align:middle;">
 							<strong>:</strong>
 						</td>
-						<td width="20%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="20%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 							<span t-field="o.name"/>
 						</td>
-						<td width="20%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="20%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 						</td>
-						<td width="40%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="40%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 							<t t-if="o.export_local == 'English'">
 								<strong>To :</strong>
 							</t>
@@ -100,7 +100,7 @@
 						</td>						
 					</tr>
 					<tr>
-						<td width="15%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="15%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 							<t t-if="o.export_local == 'English'">
 								<strong>Order Date</strong>
 							</t>
@@ -108,20 +108,20 @@
 								<strong>Tanggal Pesan</strong>
 							</t>
 						</td>
-						<td width="5%" style="font-size:14px; text-align:center;padding:2px;border:0px;vertical-align:middle;">
+						<td width="5%" style="font-size:16px; text-align:center;padding:2px;border:0px;vertical-align:middle;">
 							<strong>:</strong>
 						</td>
-						<td width="20%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="20%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 							<span t-field="o.date_order" t-options='{"format": "dd-MMMM-yyyy"}'/>
 						</td>
-						<td width="20%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="20%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 						</td>
-						<td width="40%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="40%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 							<span t-field="o.partner_id.name"/>
 						</td>						
 					</tr>
 					<tr>
-						<td width="15%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="15%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 							<t t-if="o.export_local == 'English'">
 								<strong>Reference</strong>
 							</t>
@@ -129,20 +129,20 @@
 								<strong>Referensi</strong>
 							</t>
 						</td>
-						<td width="5%" style="font-size:14px; text-align:center;padding:2px;border:0px;vertical-align:middle;">
+						<td width="5%" style="font-size:16px; text-align:center;padding:2px;border:0px;vertical-align:middle;">
 							<strong>:</strong>
 						</td>
-						<td width="20%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="20%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 							<span t-field="o.partner_ref"/>
 						</td>
-						<td width="20%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="20%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 						</td>
-						<td width="40%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="40%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 							<span t-field="o.partner_id.street"/>
 						</td>
 					</tr>
 					<tr>
-						<td width="15%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="15%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 							<t t-if="o.export_local == 'English'">
 								<strong>Revision</strong>
 							</t>
@@ -150,15 +150,15 @@
 								<strong>Revisi Ke</strong>
 							</t>
 						</td>
-						<td width="5%" style="font-size:14px; text-align:center;padding:2px;border:0px;vertical-align:middle;">
+						<td width="5%" style="font-size:16px; text-align:center;padding:2px;border:0px;vertical-align:middle;">
 							<strong>:</strong>
 						</td>
-						<td width="20%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="20%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 							
 						</td>
-						<td width="20%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="20%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 						</td>
-						<td width="40%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="40%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 							<span t-field="o.attn"/>
 							<!-- <t t-if="o.partner_id.city">
 								<span t-field="o.partner_id.city"/>
@@ -166,35 +166,35 @@
 						</td>
 					</tr>
 					<tr>
-						<td width="15%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="15%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 							
 						</td>
-						<td width="5%" style="font-size:14px; text-align:center;padding:2px;border:0px;vertical-align:middle;">
+						<td width="5%" style="font-size:16px; text-align:center;padding:2px;border:0px;vertical-align:middle;">
 							
 						</td>
-						<td width="20%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="20%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 							
 						</td>
-						<td width="20%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="20%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 						</td>
-						<td width="40%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="40%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 							<!-- <span t-field="o.partner_id.phone"/> -->
 							<!-- <span t-field="o.attn"/> -->
 						</td>
 					</tr>
 					<tr>
-						<td width="15%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="15%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 							
 						</td>
-						<td width="5%" style="font-size:14px; text-align:center;padding:2px;border:0px;vertical-align:middle;">
+						<td width="5%" style="font-size:16px; text-align:center;padding:2px;border:0px;vertical-align:middle;">
 							
 						</td>
-						<td width="20%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="20%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 							
 						</td>
-						<td width="20%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="20%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 						</td>
-						<td width="40%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
+						<td width="40%" style="font-size:16px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 							<!-- <span t-field="o.attn"/> -->
 						</td>
 					</tr>
