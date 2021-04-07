@@ -12,6 +12,17 @@
             </field>
         </record>
 
+        <record id="view_sales_order_filter_pwk" model="ir.ui.view">
+            <field name="name">sale.order.filter</field>
+            <field name="model">sale.order.line</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="po_number"/>
+                </field>
+            </field>
+        </record>
+
         <record id="view_order_line_tree_pwk" model="ir.ui.view">
             <field name="name">sale.order.line.tree</field>
             <field name="model">sale.order.line</field>
