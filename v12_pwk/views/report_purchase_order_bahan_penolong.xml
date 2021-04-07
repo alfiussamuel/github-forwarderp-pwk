@@ -159,9 +159,10 @@
 						<td width="20%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 						</td>
 						<td width="40%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
-							<t t-if="o.partner_id.city">
+							<span t-field="o.attn"/>
+							<!-- <t t-if="o.partner_id.city">
 								<span t-field="o.partner_id.city"/>
-							</t>
+							</t> -->
 						</td>
 					</tr>
 					<tr>
@@ -178,7 +179,7 @@
 						</td>
 						<td width="40%" style="font-size:14px; text-align:left;padding:2px;border:0px;vertical-align:middle;">
 							<!-- <span t-field="o.partner_id.phone"/> -->
-							<span t-field="o.attn"/>
+							<!-- <span t-field="o.attn"/> -->
 						</td>
 					</tr>
 					<tr>
