@@ -65,7 +65,7 @@ class PwkPackingListLineDetail(models.Model):
 
 class PwkPackingListLine(models.Model):    
     _name = "pwk.packing.list.line"
-    _order = 'width asc,length asc,thick asc'
+    _order = 'jenis_kayu asc, width asc,length asc,thick asc'
 
     reference = fields.Many2one('pwk.packing.list', string='Reference')
     sale_id = fields.Many2one('sale.order', 'No. Order')
@@ -96,7 +96,9 @@ class PwkPackingListLine(models.Model):
     length = fields.Float(compute="_get_fields", string='Length', digits=dp.get_precision('ZeroDecimal'), store=True)
     glue_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.glue', string='Glue')
     grade_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.grade', string='Grade')
+    jenis_kayu_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.jenis.kayu', string='Jenis Kayu', store=True)
     marking = fields.Char(related='sale_line_id.marking', string='Marking')
+
     
     quantity = fields.Float(compute="_get_quantity", string='Quantity', digits=dp.get_precision('ZeroDecimal'))
     volume = fields.Float(compute="_get_volume", string='Volume', digits=dp.get_precision('FourDecimal'))
@@ -275,6 +277,7 @@ class PwkPackingListLine(models.Model):
                 res.length = res.product_id.panjang
                 res.glue_id = res.product_id.glue.id
                 res.grade_id = res.product_id.grade.id
+                res.jenis_kayu_id = res.product_id.jenis_kayu.id
 
     @api.multi
     def action_create_revision(self):

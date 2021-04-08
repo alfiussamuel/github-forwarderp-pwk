@@ -69,7 +69,7 @@ class PwkGeneratePackingListWizard(models.TransientModel):
                 # Create Groups for Printing
                 existing_group_id = self.env['pwk.packing.list.group'].search([
                     ('reference', '=', packing_list_id.id),
-                    ('product_id', '=', line.product_id.id),
+                    # ('product_id', '=', line.product_id.id),
                     ('jenis_kayu_id', '=', line.product_id.jenis_kayu.id)
                 ])
 
