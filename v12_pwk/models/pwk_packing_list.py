@@ -295,6 +295,7 @@ class PwkPackingListLine(models.Model):
 
 class PwkPackingListGroup(models.Model):    
     _name = "pwk.packing.list.group"
+    _order = "jenis_kayu_id asc"
 
     reference = fields.Many2one('pwk.packing.list', string='Reference')
     product_id = fields.Many2one('product.product', string='Product')
