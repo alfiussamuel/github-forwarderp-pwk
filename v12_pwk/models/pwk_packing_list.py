@@ -225,24 +225,25 @@ class PwkPackingListLine(models.Model):
                 container_start_end = str(container_start) + ' - ' + str(container_end - res.revision_crate_number)
 
             # Revision
-            revision_start = str(container_end)
-            revision_end = str(container_end + res.revision_crate_number - 1)
+            if res.revision_ids:
+                revision_start = str(container_end)
+                revision_end = str(container_end + res.revision_crate_number - 1)
 
-            print ("Revision Start ", revision_start)
-            print ("Revision End ", revision_end)
+                print ("Revision Start ", revision_start)
+                print ("Revision End ", revision_end)
 
-            if revision_start == revision_end and int(revision_start) >= 10:
-                container_start_end_revision = revision_start
-            elif revision_start == revision_end and int(revision_start) < 10:
-                container_start_end_revision = '0' + revision_start
-            elif int(revision_start) < 10 and int(revision_end) < 10:
-                container_start_end_revision = '0' + revision_start + ' - ' + '0' + revision_end
-            elif int(revision_start) >= 10 and int(revision_end) < 10:
-                container_start_end_revision = revision_start + ' - ' + '0' + revision_end
-            elif int(revision_start) < 10 and int(revision_end) >= 10:
-                container_start_end_revision = '0' + revision_start + ' - ' + revision_end
-            elif int(revision_start) >= 10 and int(revision_end) >= 10:
-                container_start_end_revision = revision_start + ' - ' + revision_end
+                if revision_start == revision_end and int(revision_start) >= 10:
+                    container_start_end_revision = revision_start
+                elif revision_start == revision_end and int(revision_start) < 10:
+                    container_start_end_revision = '0' + revision_start
+                elif int(revision_start) < 10 and int(revision_end) < 10:
+                    container_start_end_revision = '0' + revision_start + ' - ' + '0' + revision_end
+                elif int(revision_start) >= 10 and int(revision_end) < 10:
+                    container_start_end_revision = revision_start + ' - ' + '0' + revision_end
+                elif int(revision_start) < 10 and int(revision_end) >= 10:
+                    container_start_end_revision = '0' + revision_start + ' - ' + revision_end
+                elif int(revision_start) >= 10 and int(revision_end) >= 10:
+                    container_start_end_revision = revision_start + ' - ' + revision_end
 
             print ("Container ", container_start_end)
             print ("Container Rev ", container_start_end_revision)
