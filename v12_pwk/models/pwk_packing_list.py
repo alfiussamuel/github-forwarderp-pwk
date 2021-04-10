@@ -68,6 +68,7 @@ class PwkPackingListLine(models.Model):
     _order = 'jenis_kayu_id asc, width asc,length asc,thick asc'
 
     reference = fields.Many2one('pwk.packing.list', string='Reference')
+    sequence = fields.Integer('Sequence')
     sale_id = fields.Many2one('sale.order', 'No. Order')
     sale_line_id = fields.Many2one('sale.order.line', 'No. Order Line')
 
