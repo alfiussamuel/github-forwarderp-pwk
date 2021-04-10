@@ -65,7 +65,7 @@ class PwkPackingListLineDetail(models.Model):
 
 class PwkPackingListLine(models.Model):    
     _name = "pwk.packing.list.line"
-    _order = 'jenis_kayu_id asc, width asc,length asc,thick asc'
+    _order = 'sequence asc,jenis_kayu_id asc,width asc,length asc,thick asc'
 
     reference = fields.Many2one('pwk.packing.list', string='Reference')
     sequence = fields.Integer('Sequence')
