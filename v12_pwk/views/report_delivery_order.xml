@@ -81,57 +81,6 @@
 	            <div class="text-center">
 	                <div t-if="report_type == 'pdf'">
 	                	<table class="table table-condensed" style="margin-top:0px;page-break-before:always">
-			            	<tr>
-	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
-	                            </td>          
-	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
-	                            </td>
-	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
-	                            </td>                            
-	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
-	                                Temanggung, <span t-field="o.scheduled_date" t-options='{"format": "dd-MMMM-yyyy"}'/>
-	                            </td>                                
-	                        </tr>
-	                        <tr height="120px">
-	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
-	                                Diterima Oleh,
-	                            </td>          
-	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
-	                                Disetujui Oleh,
-	                            </td>
-	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
-	                                Diperiksa,
-	                            </td>                            
-	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
-	                                Diserahkan,
-	                            </td>                                
-	                        </tr>
-	                        <tr>                  
-	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
-	                                ( ____________ )
-	                            </td>
-	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
-	                                ( Andrew Tanujaya )
-	                            </td>              
-	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
-	                                ( RINDOKO )
-	                            </td>                               
-	                            <td width="25%"
-	                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
-	                                ( Trisna Maryana Sari )
-	                            </td>                                
-	                        </tr>
 	                        <tr>                  
 	                            <td colspan="4"
 	                                style="text-align:center;padding:5px;font-size:10px;border:0px;">
@@ -401,7 +350,61 @@
 						        </t>
 			                </t>
 			            </tbody>
-		            </table>       
+		            </table>
+
+		            <table style="margin-top:50px">
+		            	<tr>
+                            <td width="25%"
+                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
+                            </td>          
+                            <td width="25%"
+                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
+                            </td>
+                            <td width="25%"
+                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
+                            </td>                            
+                            <td width="25%"
+                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
+                                Temanggung, <span t-field="o.scheduled_date" t-options='{"format": "dd-MMMM-yyyy"}'/>
+                            </td>                                
+                        </tr>
+                        <tr height="120px">
+                            <td width="25%"
+                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
+                                Diterima Oleh,
+                            </td>          
+                            <td width="25%"
+                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
+                                Disetujui Oleh,
+                            </td>
+                            <td width="25%"
+                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
+                                Diperiksa,
+                            </td>                            
+                            <td width="25%"
+                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
+                                Diserahkan,
+                            </td>                                
+                        </tr>
+                        <tr>                  
+                            <td width="25%"
+                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
+                                ( ____________ )
+                            </td>
+                            <td width="25%"
+                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
+                                ( Andrew Tanujaya )
+                            </td>              
+                            <td width="25%"
+                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
+                                ( RINDOKO )
+                            </td>                               
+                            <td width="25%"
+                                style="text-align:center;padding:5px;font-size:12px;border:0px;">
+                                ( Trisna Maryana Sari )
+                            </td>                                
+                        </tr>
+                    </table>
 
 		        </div>
             </t>
