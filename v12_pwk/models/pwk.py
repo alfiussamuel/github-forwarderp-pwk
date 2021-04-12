@@ -144,6 +144,21 @@ class PwkNotaPerusahaan(models.Model):
     def print_daftar_kayu_olahan(self):                
         return self.env.ref('v12_pwk.daftar_kayu_olahan').report_action(self)
 
+    @api.multi
+    def action_reload_picking(self):
+        for res in self:
+            if res.picking_id:
+                for line in res.picking_id.move_ids_without_package:
+                    self.env['pwk.nota.perusahaan.line'].create({
+                        'reference': res.id,
+                        'picking_id': res.picking_id.id,
+                        'product_id': line.product_id.id,
+                        'jenis_kayu_id': line.product_id.jenis_kayu.id,
+                        'quantity': line.product_uom_qty,
+                        'volume_stepel_meter': line.volume,
+                        'volume_kubik': line.volume,
+                    })
+
 class PwkPaymentNoteLine(models.Model):    
     _name = "pwk.payment.note.line"
 

@@ -1122,6 +1122,7 @@
                             type="object" class="oe_highlight"/>
                         <button name="print_daftar_kayu_olahan" string="Print Daftar Kayu Olahan" 
                             type="object" class="oe_highlight"/>
+                        <button name="action_reload_picking" string="Reload Data Surat Jalan" type="object"/>
                     </header>
                     <sheet>
                         <label for="name" class="oe_edit_only" />
