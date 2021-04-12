@@ -331,7 +331,7 @@
                                 <page string="Detail RPM">
                                     <group>
                                         <field name="line_ids" nolabel="1">
-                                            <tree editable="top">
+                                            <tree>
                                                 <field name="container_no" string="Cont" invisible="1"/>
                                                 <field name="partner_id"/>
                                                 <field name="po_number"/>
