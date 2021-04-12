@@ -63,6 +63,9 @@ class StockPicking(models.Model):
     total_volume = fields.Float(compute="_get_total", string="Total Volume", digits=dp.get_precision('FourDecimal'), store=True)
     container_no = fields.Char('Container No')    
     seal_no = fields.Char('Seal No')
+    nomor_fako = fields.Char('Nomor Fako')
+    nomor_surat_jalan = fields.Char('Nomor Surat Jalan')
+    nomor_plat = fields.Char('Nomor Plat')
 
     @api.depends('move_ids_without_package.product_uom_qty', 'move_ids_without_package.volume')
     def _get_total(self):

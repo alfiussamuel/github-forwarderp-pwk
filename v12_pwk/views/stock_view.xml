@@ -9,6 +9,9 @@
                 <field name="picking_type_id" position="after">
                     <field name="container_no"/>
                     <field name="seal_no"/>
+                    <field name="nomor_fako"/>
+                    <field name="nomor_surat_jalan"/>
+                    <field name="nomor_plat"/>
                 </field>
                 <field name="origin" position="after">
                     <field name="no_kendaraan"/>

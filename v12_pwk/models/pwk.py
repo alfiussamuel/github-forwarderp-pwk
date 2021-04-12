@@ -319,6 +319,9 @@ class ResPartner(models.Model):
     code = fields.Char('Code')
     komisi = fields.Float('Komisi')
     fax = fields.Char('Fax')
+    nomor_fako = fields.Char('Nomor Fako')
+    nomor_surat_jalan = fields.Char('Nomor Surat Jalan')
+    nomor_plat = fields.Char('Nomor Plat')
     bank_account_id = fields.Many2one('res.partner.bank','Bank Account')
 
 class PwkCratesConversion(models.Model):

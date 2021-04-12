@@ -1831,6 +1831,9 @@
                     <field name="komisi"/>
                     <field name="bank_account_id"
                         options="{'no_create': True}"/>
+                    <field name="nomor_fako"/>
+                    <field name="nomor_surat_jalan"/>
+                    <field name="nomor_plat"/>
                 </field>
                 <field name="phone" position="after">
                     <field name="fax"/>
