@@ -59,8 +59,8 @@ class PurchaseOrderLine(models.Model):
                 vals['partner'])
             line.update({
                 'price_tax': math.ceil(sum(t.get('amount', 0.0) for t in taxes.get('taxes', []))),
-                'price_total': taxes['total_included'],
-                'price_subtotal': taxes['total_excluded'],
+                'price_total': round(taxes['total_included']),
+                'price_subtotal': round(taxes['total_excluded']),
             })
 
     def _prepare_compute_all_values(self):
