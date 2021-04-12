@@ -625,7 +625,7 @@ class PwkRpb(models.Model):
                                         'quantity': current_product_ids[0].quantity + bom.quantity
                                     })
 
-            elif res.bahan_baku_rpm_ids:
+            if res.bahan_baku_rpm_ids:
                 for rpm in res.bahan_baku_rpm_ids:
                     if rpm.line_ids:
                         for line in rpm.line_ids:

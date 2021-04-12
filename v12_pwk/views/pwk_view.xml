@@ -973,8 +973,7 @@
                                     </tree>
                                 </field>
                             </page>
-                            <page string="Additional RPB"
-                                attrs="{'invisible':[('bahan_baku_type', '=', 'RPM')]}">
+                            <page string="Additional RPB">
                                 <group>
                                     <field name="bahan_baku_rpb_ids" nolabel="1">
                                         <tree editable="top">
@@ -988,8 +987,7 @@
                                     </field>
                                 </group>
                             </page>
-                            <page string="Additional RPM"
-                                attrs="{'invisible':[('bahan_baku_type', '=', 'RPB')]}">
+                            <page string="Additional RPM">
                                 <group>
                                     <field name="bahan_baku_rpm_ids" nolabel="1">
                                         <tree editable="top">
