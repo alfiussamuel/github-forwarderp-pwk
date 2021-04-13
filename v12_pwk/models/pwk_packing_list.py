@@ -292,7 +292,29 @@ class PwkPackingListLine(models.Model):
                 'volume': res.volume,
             })
 
+    @api.multi
+    def button_reload_bom(self):
+        for res in self:
+            if res.bom_ids:
+                for bom in res.bom_ids:
+                    bom.unlink()
+
+            bom_ids = self.env['mrp.bom'].search([
+                ('product_tmpl_id.name', '=', res.product_id.name)
+            ])
             
+            if bom_ids:
+                if len(bom_ids) >= 1:
+                    for bom_line in bom_ids[0].bom_line_ids:                        
+                        self.env['pwk.packing.list.line.detail'].create({
+                            'reference': res.id,
+                            'product_id': bom_line.product_id.id,
+                            'thick': bom_line.product_id.tebal,
+                            'width': bom_line.product_id.lebar,
+                            'length': bom_line.product_id.panjang,
+                            'quantity': bom_line.product_qty
+                        })
+
 
 class PwkPackingListGroup(models.Model):    
     _name = "pwk.packing.list.group"
@@ -339,7 +361,7 @@ class PwkPackingList(models.Model):
     qty_muatan = fields.Char('Qty Muatan')
 
     is_picking = fields.Boolean('Picking created')
-    picking_id = fields.Many2one('stock.picking', 'Delivery Order')
+    picking_id = fields.Many2one('stock.picking', 'Delivery Order')    
 
     @api.depends('line_ids.product_id')
     def _get_product_name_list(self):

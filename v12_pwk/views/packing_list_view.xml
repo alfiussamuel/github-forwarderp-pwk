@@ -187,15 +187,20 @@
                                             </group>
                                             <notebook>
                                                 <page string="Bill of Materials">
-                                                    <field name="bom_ids" nolabel="1">
-                                                        <tree editable="top">
-                                                            <field name="product_id"/>
-                                                            <field name="thick"/>
-                                                            <field name="width"/>
-                                                            <field name="length"/>
-                                                            <field name="quantity"/>
-                                                        </tree>
-                                                    </field>
+                                                    <group>
+                                                        <button name="button_reload_bom" type="object" class="oe_highlight" string="Reload BoM"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="bom_ids" nolabel="1">
+                                                            <tree editable="top">
+                                                                <field name="product_id"/>
+                                                                <field name="thick"/>
+                                                                <field name="width"/>
+                                                                <field name="length"/>
+                                                                <field name="quantity"/>
+                                                            </tree>
+                                                        </field>
+                                                    </group>
                                                 </page>
                                                 <page string="Container">                                        
                                                     <field name="container_ids" nolabel="1">
