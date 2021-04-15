@@ -229,6 +229,7 @@ class AccountPayment(models.Model):
             print ("Destination Move Id ", destination_move_line_id.move_id.name)
             if destination_move_line_id:
                 move_id = destination_move_line_id.move_id
+                move_id.button_cancel()
             
             for line in move_id.line_ids:
                 line.remove_move_reconcile()
