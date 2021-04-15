@@ -224,7 +224,7 @@ class AccountPayment(models.Model):
             debit_line_vals = []
             credit_line_vals = []
             data_final = []
-            
+
             destination_move_line_id = self.env['account.move.line'].search([
                 ('name', '=', self.name),
                 ('move_id.journal_id','=',self.journal_id.id)
@@ -243,7 +243,7 @@ class AccountPayment(models.Model):
                         'name': line.name,
                         'journal_id': line.journal_id.id,
                         'date': line.date,
-                        'credit': line.credit,
+                        'credit': 0,
                         'debit': line.debit * self.currency_rate,
                         'partner_id': line.partner_id.id,
                         'account_id': line.account_id.id
@@ -255,7 +255,7 @@ class AccountPayment(models.Model):
                         'name': line.name,
                         'journal_id': line.journal_id.id,
                         'date': line.date,
-                        'debit': line.debit,
+                        'debit': 0,
                         'credit': line.credit * self.currency_rate,
                         'partner_id': line.partner_id.id,
                         'account_id': line.account_id.id
