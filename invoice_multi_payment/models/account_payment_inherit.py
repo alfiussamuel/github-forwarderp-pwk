@@ -265,7 +265,8 @@ class AccountPayment(models.Model):
             print ("Move Lines ", move_id.line_ids)
             print ("Move Lines New ", data_final)
             move_id.button_cancel()
-            move_id.update({'line_ids': data_final})
+            move_id.unlink()
+            # move_id.update({'line_ids': data_final})
     
     def _create_transfer_entry(self, amount):
         move = super(AccountPayment,self)._create_transfer_entry(amount)
