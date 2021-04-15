@@ -80,7 +80,7 @@
                     <field name="invoice_list"/>
                 </field>
             	 <field name="journal_id" position="after">
-            	 	<field name="currency_rat"/>
+            	 	<field name="currency_rate"/>
                     <field name="is_charge"/>
                     <field name="bank_charges"
                         attrs="{'invisible': [('is_charge', '=', False)]}"/>
