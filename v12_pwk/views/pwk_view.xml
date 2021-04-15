@@ -1132,9 +1132,11 @@
                         <group string="Header">
                             <group>
                                 <field name="partner_id"
-                                    domain="[('customer','=',True)]"/>
+                                    domain="[('customer','=',True)]"
+                                    options="{'no_create': True}"/>
                                 <field name="picking_id"
-                                    domain="[('picking_type_id.code', '=', 'outgoing'),('partner_id','=',partner_id)]"/>
+                                    domain="[('picking_type_id.code', '=', 'outgoing'),('partner_id','=',partner_id)]"
+                                    options="{'no_create': True}"/>
                                 <field name="period_start"/>
                                 <field name="period_end"/>
                             </group>
