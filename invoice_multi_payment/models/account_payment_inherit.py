@@ -246,7 +246,8 @@ class AccountPayment(models.Model):
                         'credit': 0,
                         'debit': line.debit * self.currency_rate,
                         'partner_id': line.partner_id.id,
-                        'account_id': line.account_id.id
+                        'account_id': line.account_id.id,
+                        'payment_id': self.id
                         })
                     data_final.append(debit_line_vals)
 
@@ -258,7 +259,8 @@ class AccountPayment(models.Model):
                         'debit': 0,
                         'credit': line.credit * self.currency_rate,
                         'partner_id': line.partner_id.id,
-                        'account_id': line.account_id.id
+                        'account_id': line.account_id.id,
+                        'payment_id': self.id
                         })
                     data_final.append(credit_line_vals)
 
