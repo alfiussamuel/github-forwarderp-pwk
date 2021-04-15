@@ -231,6 +231,7 @@ class AccountPayment(models.Model):
                 move_id = destination_move_line_id.move_id
             
             for line in move_id.line_ids:
+                line.remove_move_reconcile()
                 if line.credit == 0:
                     line.write({
                         'debit': line.debit * self.currency_rate
