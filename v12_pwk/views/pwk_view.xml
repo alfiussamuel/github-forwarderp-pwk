@@ -1131,14 +1131,15 @@
                         </h1>
                         <group string="Header">
                             <group>
+                                <field name="partner_id"
+                                    domain="[('customer','=',True)]"/>
                                 <field name="picking_id"
-                                    domain="[('picking_type_id.code', '=', 'outgoing')]"/>
+                                    domain="[('picking_type_id.code', '=', 'outgoing'),('partner_id','=',partner_id)]"/>
                                 <field name="period_start"/>
                                 <field name="period_end"/>
-                                <field name="masa_berlaku"/>
                             </group>
                             <group>
-                                <field name="partner_id"/>
+                                <field name="masa_berlaku"/>
                                 <field name="is_logo"/>
                                 <field name="certificate_id"                                
                                     options="{'no_create': True}"/>
