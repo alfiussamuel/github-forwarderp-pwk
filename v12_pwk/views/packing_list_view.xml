@@ -158,6 +158,7 @@
                                             <field name="crate_qty_each" sum="Total"/>
                                             <field name="revision_quantity" sum="Total" string="Quantity"/>
                                             <field name="revision_volume" sum="Total" string="Volume"/>
+                                            <field name="container_manual"/>
                                         </tree>
                                         <form>
                                             <group>
