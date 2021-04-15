@@ -264,6 +264,8 @@ class AccountPayment(models.Model):
 
                 line.unlink()
 
+            print ("Move Lines ", move_id.line_ids)
+            print ("Move Lines New ", data_final)
             move_id.write({'line_ids': data_final})
     
     def _create_transfer_entry(self, amount):
