@@ -264,6 +264,7 @@ class AccountPayment(models.Model):
                             })
                         data_final.append(credit_line_vals)
 
+                rec.write({'state':'draft'})
                 new_move_id = self.env['account.move'].create({
                     'ref': move_id.name,
                     'journal_id': move_id.journal_id.id,
@@ -272,11 +273,12 @@ class AccountPayment(models.Model):
                     'line_ids': data_final
                     })
 
-                # new_move_id.post()
+                new_move_id.post()
 
-                # # Delete old Move
-                # move_id.button_cancel()
-                # move_id.unlink()
+                # Delete old Move
+                move_id.button_cancel()
+                move_id.unlink()
+                rec.write({'state':'posted'})
 
         return True
     
