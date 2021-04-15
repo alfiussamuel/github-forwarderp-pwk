@@ -220,7 +220,11 @@ class AccountPayment(models.Model):
                         break
 
         return super(AccountPayment,self).post()
-            
+    
+    def _create_transfer_entry(self, amount):
+        move = super(AccountPayment,self)._create_transfer_entry()
+        print ("Transfer Entry ", move.name)
+        return move
 
     @api.multi
     def _create_payment_entry(self, amount):
