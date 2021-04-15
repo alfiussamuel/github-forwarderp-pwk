@@ -219,7 +219,14 @@ class AccountPayment(models.Model):
                         line.allocation = line.allocation + (rec.amount - amt)
                         break
 
-        return super(AccountPayment,self).post()
+        result = super(AccountPayment,self).post()
+        if result:
+            destination_move_line_id = self.env['account.move.line'].search([
+                ('name', '=', self.name),
+                ('move_id.journal_id','=',self.journal_id.id)
+            ])
+
+            print ("Destination Move Id ", destination_move_line_id)
     
     def _create_transfer_entry(self, amount):
         move = super(AccountPayment,self)._create_transfer_entry(amount)
