@@ -260,13 +260,11 @@ class AccountPayment(models.Model):
                         'partner_id': line.partner_id.id,
                         'account_id': line.account_id.id
                         })
-                    data_final.append(credit_line_vals)                
-
-                line.unlink()
+                    data_final.append(credit_line_vals)
 
             print ("Move Lines ", move_id.line_ids)
             print ("Move Lines New ", data_final)
-            move_id.write({'line_ids': data_final})
+            # move_id.write({'line_ids': data_final})
     
     def _create_transfer_entry(self, amount):
         move = super(AccountPayment,self)._create_transfer_entry(amount)
