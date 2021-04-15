@@ -247,7 +247,6 @@ class AccountPayment(models.Model):
                         'debit': line.debit * self.currency_rate,
                         'partner_id': line.partner_id.id,
                         'account_id': line.account_id.id,
-                        'payment_id': self.id
                         })
                     data_final.append(debit_line_vals)
 
@@ -260,7 +259,6 @@ class AccountPayment(models.Model):
                         'credit': line.credit * self.currency_rate,
                         'partner_id': line.partner_id.id,
                         'account_id': line.account_id.id,
-                        'payment_id': self.id
                         })
                     data_final.append(credit_line_vals)
 
@@ -275,8 +273,8 @@ class AccountPayment(models.Model):
             new_move_id.post()
 
             # Delete old Move
-            # move_id.button_cancel()
-            # move_id.unlink()
+            move_id.button_cancel()
+            move_id.unlink()
 
         return True
     
