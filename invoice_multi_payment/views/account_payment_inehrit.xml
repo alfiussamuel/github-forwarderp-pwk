@@ -79,7 +79,7 @@
                         options="{'no_create': True}"/>
                     <field name="invoice_list"/>
                 </field>
-            	 <field name="journal_id" position="after">
+            	 <field name="destination_journal_id" position="after">
             	 	<field name="currency_rate"/>
                     <field name="is_charge"/>
                     <field name="bank_charges"
