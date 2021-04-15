@@ -221,6 +221,10 @@ class AccountPayment(models.Model):
 
         result = super(AccountPayment,self).post()
         if result:
+            debit_line_vals = []
+            credit_line_vals = []
+            data_final = []
+            
             destination_move_line_id = self.env['account.move.line'].search([
                 ('name', '=', self.name),
                 ('move_id.journal_id','=',self.journal_id.id)
@@ -231,17 +235,36 @@ class AccountPayment(models.Model):
                 move_id = destination_move_line_id.move_id
                 move_id.button_cancel()
             
-            # for line in move_id.line_ids:
-            #     line.remove_move_reconcile()
-            #     if line.credit == 0:
-            #         line.write({
-            #             'debit': line.debit * self.currency_rate
-            #         })
+            for line in move_id.line_ids:
+                line.remove_move_reconcile()
 
-            #     elif line.debit == 0:
-            #         line.write({
-            #             'credit': line.credit * self.currency_rate
-            #         })
+                if line.debit > 0:
+                    debit_line_vals = (0,0,{
+                        'name': line.name,
+                        'journal_id': line.journal_id.id,
+                        'date': line.date,
+                        'credit': line.credit,
+                        'debit': line.debit * self.currency_rate,
+                        'partner_id': line.partner_id.id,
+                        'account_id': line.account_id.id
+                        })
+                    data_final.append(debit_line_vals)
+
+                elif line.credit > 0:
+                    credit_line_vals = (0,0,{
+                        'name': line.name,
+                        'journal_id': line.journal_id.id,
+                        'date': line.date,
+                        'debit': line.debit,
+                        'credit': line.credit * self.currency_rate,
+                        'partner_id': line.partner_id.id,
+                        'account_id': line.account_id.id
+                        })
+                    data_final.append(credit_line_vals)                
+
+                line.unlink()
+
+            move_id.write({'line_ids': data_final})
     
     def _create_transfer_entry(self, amount):
         move = super(AccountPayment,self)._create_transfer_entry(amount)
