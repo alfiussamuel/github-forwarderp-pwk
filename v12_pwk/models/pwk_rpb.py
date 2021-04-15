@@ -686,7 +686,6 @@ class PwkRpb(models.Model):
                 for line in res.line_ids:
                     ids.append(line.id)
 
-        print("IDS ", ids)
         action['domain'] = [('id', 'in', ids)]
         return action
 
@@ -1008,7 +1007,6 @@ class PwkRpb(models.Model):
 
                     for bom in bom_ids:
                         if bom.product_id.jenis_kayu.name == "MDF":
-                            print ("Masuk MDF")
                             if bom.quantity > bom.available_qty:
                                 if bom.product_id.id not in product_list:
                                     product_list.append(bom.product_id.id)
@@ -1047,7 +1045,6 @@ class PwkRpb(models.Model):
 
                             for bom in bom_ids:
                                 if bom.product_id.jenis_kayu.name == "MDF":
-                                    print ("Masuk MDF")
                                     if bom.quantity > bom.available_qty:
                                         if bom.product_id.id not in product_list:
                                             product_list.append(bom.product_id.id)

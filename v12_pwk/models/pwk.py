@@ -148,6 +148,10 @@ class PwkNotaPerusahaan(models.Model):
     def action_reload_picking(self):
         for res in self:
             if res.picking_id:
+                if res.line_ids:
+                    for old_line in res.line_ids:
+                        old_line.unlink()
+
                 for line in res.picking_id.move_ids_without_package:
                     self.env['pwk.nota.perusahaan.line'].create({
                         'reference': res.id,

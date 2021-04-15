@@ -187,22 +187,9 @@ class PwkPackingListLine(models.Model):
                 ('reference', '=', res.reference.id)
             ], order='id desc')
 
-            print ("Smaller IDS desc ", smaller_ids)
-
-            # smaller_ids = self.env['pwk.packing.list.line'].search([
-            #     ('id', '<', res.id),
-            #     ('reference', '=', res.reference.id)
-            # ], order='id asc')
-
-            # print ("Smaller IDS asc ", smaller_ids)
-
             if smaller_ids:
                 container_no = smaller_ids[0].container_end + smaller_ids[0].revision_crate_number + 1
-                print ("ID ", smaller_ids[0].id)
-                print ("Product ", smaller_ids[0].product_id.name)
-                print ("Container End ", smaller_ids[0].container_end)
-                print ("Container No. ", container_no)
-            
+                
             container_start = container_no
             container_end = container_no + res.crate_number - 1
             container_no += res.crate_number
@@ -210,14 +197,9 @@ class PwkPackingListLine(models.Model):
             container_start_end = ''
             container_start_end_revision = ''
 
-            print ("Container Start ", container_start)
-            print ("Container End ", container_end)
-
             if container_start == (container_end - res.revision_crate_number) and container_start > 10:
-                print ("aaa")
                 container_start_end = str(container_start)
             elif container_start == (container_end - res.revision_crate_number) and container_start < 10:
-                print ("bbb")
                 container_start_end = '0' + str(container_start)
             elif container_start < 10 and (container_end - res.revision_crate_number) < 10:
                 container_start_end = '0' + str(container_start) + ' - ' + '0' + str(container_end - res.revision_crate_number)
@@ -234,9 +216,6 @@ class PwkPackingListLine(models.Model):
                 revision_start = str(container_end)
                 revision_end = str(container_end + res.revision_crate_number - 1)
 
-                print ("Revision Start ", revision_start)
-                print ("Revision End ", revision_end)
-
                 if revision_start == revision_end and int(revision_start) >= 10:
                     container_start_end_revision = revision_start
                 elif revision_start == revision_end and int(revision_start) < 10:
@@ -249,9 +228,6 @@ class PwkPackingListLine(models.Model):
                     container_start_end_revision = '0' + revision_start + ' - ' + revision_end
                 elif int(revision_start) >= 10 and int(revision_end) >= 10:
                     container_start_end_revision = revision_start + ' - ' + revision_end
-
-            print ("Container ", container_start_end)
-            print ("Container Rev ", container_start_end_revision)
 
             res.container_end = container_end - res.revision_crate_number
             res.container_start_end = container_start_end
@@ -418,8 +394,7 @@ class PwkPackingList(models.Model):
         month = date.month
         year = date.year
         romawi = ''
-        print ("Month ", month)
-
+        
         if month == 1:
             romawi = 'I'
         elif month == 2:
