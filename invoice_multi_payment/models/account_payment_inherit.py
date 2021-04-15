@@ -219,63 +219,64 @@ class AccountPayment(models.Model):
                         line.allocation = line.allocation + (rec.amount - amt)
                         break
 
-        result = super(AccountPayment,self).post()
-        if result:
-            debit_line_vals = []
-            credit_line_vals = []
-            data_final = []
+            result = super(AccountPayment,self).post()
+            if result:
+                debit_line_vals = []
+                credit_line_vals = []
+                data_final = []
 
-            destination_move_line_id = self.env['account.move.line'].search([
-                ('name', '=', self.name),
-                ('move_id.journal_id','=',self.destination_journal_id.id)
-            ])
+                destination_move_line_id = self.env['account.move.line'].search([
+                    ('name', '=', rec.name),
+                    ('move_id.journal_id','=',rec.destination_journal_id.id)
+                ])
 
-            print ("Destination Move Id ", destination_move_line_id.move_id.name)
-            if destination_move_line_id:
-                move_id = destination_move_line_id.move_id
+                print ("Destination Move Id ", destination_move_line_id.move_id.name)
+                if destination_move_line_id:
+                    move_id = destination_move_line_id.move_id
+                    # move_id.button_cancel()
+                
+                for line in move_id.line_ids:
+                    line.remove_move_reconcile()
+
+                    if line.debit > 0:
+                        debit_line_vals = (0,0,{
+                            'name': line.name,
+                            'journal_id': line.journal_id.id,
+                            'date': line.date,
+                            'credit': 0,
+                            'debit': line.debit * rec.currency_rate,
+                            'partner_id': line.partner_id.id,
+                            'account_id': line.account_id.id,
+                            'payment_id': rec.id
+                            })
+                        data_final.append(debit_line_vals)
+
+                    elif line.credit > 0:
+                        credit_line_vals = (0,0,{
+                            'name': line.name,
+                            'journal_id': line.journal_id.id,
+                            'date': line.date,
+                            'debit': 0,
+                            'credit': line.credit * rec.currency_rate,
+                            'partner_id': line.partner_id.id,
+                            'account_id': line.account_id.id,
+                            'payment_id': rec.id
+                            })
+                        data_final.append(credit_line_vals)
+
+                # new_move_id = self.env['account.move'].create({
+                #     'ref': move_id.name,
+                #     'journal_id': move_id.journal_id.id,
+                #     'date': move_id.date,
+                #     'narration': move_id.name,
+                #     'line_ids': data_final
+                #     })
+
+                # new_move_id.post()
+
+                # # Delete old Move
                 # move_id.button_cancel()
-            
-            for line in move_id.line_ids:
-                line.remove_move_reconcile()
-
-                if line.debit > 0:
-                    debit_line_vals = (0,0,{
-                        'name': line.name,
-                        'journal_id': line.journal_id.id,
-                        'date': line.date,
-                        'credit': 0,
-                        'debit': line.debit * self.currency_rate,
-                        'partner_id': line.partner_id.id,
-                        'account_id': line.account_id.id,
-                        'payment_id': self.id
-                        })
-                    data_final.append(debit_line_vals)
-
-                elif line.credit > 0:
-                    credit_line_vals = (0,0,{
-                        'name': line.name,
-                        'journal_id': line.journal_id.id,
-                        'date': line.date,
-                        'debit': 0,
-                        'credit': line.credit * self.currency_rate,
-                        'partner_id': line.partner_id.id,
-                        'account_id': line.account_id.id,
-                        })
-                    data_final.append(credit_line_vals)
-
-            new_move_id = self.env['account.move'].create({
-                'ref': move_id.name,
-                'journal_id': move_id.journal_id.id,
-                'date': move_id.date,
-                'narration': move_id.name,
-                'line_ids': data_final
-                })
-
-            new_move_id.post()
-
-            # Delete old Move
-            move_id.button_cancel()
-            move_id.unlink()
+                # move_id.unlink()
 
         return True
     
