@@ -23,6 +23,7 @@ class AccountPayment(models.Model):
     document_id = fields.Binary(attachment=True)
     document_id_name = fields.Char("Document Name")
     kode_pajak = fields.Char('Kode Pajak')
+    currency_rate = fields.Float('Currency Rate')
 
     def terbilang_english(self, satuan):
         new_amount = ''

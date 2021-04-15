@@ -71,16 +71,17 @@
                     <field name="method_type"/>
                 </field>
                 <field name="payment_date" position="after">
+                    <field name="document_id" widget="binary" 
+                        height="64" filename="document_id_name"/>
+                    <field name="document_id_name" invisible="1"/>
                     <field name="move_name"/>
-                    <field name="currency_option"
+                    <field name="currency_option" invisible="1"
                         options="{'no_create': True}"/>
                     <field name="invoice_list"/>
                 </field>
             	 <field name="journal_id" position="after">
-                    <field name="document_id" widget="binary" 
-                        height="64" filename="document_id_name"/>
-                    <field name="document_id_name" invisible="1"/>
-            	 	<field name="is_charge"/>
+            	 	<field name="currency_rat"/>
+                    <field name="is_charge"/>
                     <field name="bank_charges"
                         attrs="{'invisible': [('is_charge', '=', False)]}"/>
             	 	<field name="bank_charges_account_id"
