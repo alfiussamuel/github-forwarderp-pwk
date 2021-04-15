@@ -340,6 +340,7 @@ class AccountPayment(models.Model):
 
         created_moves = super(AccountPayment, self)._create_payment_entry(amount)
         print ("Created Moves ", created_moves)
+        return created_moves
     
     @api.model
     def create(self,vals):
