@@ -233,7 +233,7 @@ class AccountPayment(models.Model):
             print ("Destination Move Id ", destination_move_line_id.move_id.name)
             if destination_move_line_id:
                 move_id = destination_move_line_id.move_id
-                move_id.button_cancel()
+                # move_id.button_cancel()
             
             for line in move_id.line_ids:
                 line.remove_move_reconcile()
@@ -264,7 +264,8 @@ class AccountPayment(models.Model):
 
             print ("Move Lines ", move_id.line_ids)
             print ("Move Lines New ", data_final)
-            move_id.write({'line_ids': data_final})
+            move_id.button_cancel()
+            move_id.update({'line_ids': data_final})
     
     def _create_transfer_entry(self, amount):
         move = super(AccountPayment,self)._create_transfer_entry(amount)
