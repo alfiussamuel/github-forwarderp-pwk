@@ -317,6 +317,7 @@ class AccountPayment(models.Model):
 
             # Update Liquid Lines with additional Information
             liquidity_aml_dict.update(self._get_liquidity_move_line_vals(-(paid_amount_with_charges)))
+            print ("Liquidity aml ", liquidity_aml_dict)
 
             # Create Account Move Line for Liquid
             aml_obj.create(liquidity_aml_dict)
