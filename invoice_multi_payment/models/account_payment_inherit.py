@@ -222,7 +222,7 @@ class AccountPayment(models.Model):
         return super(AccountPayment,self).post()
     
     def _create_transfer_entry(self, amount):
-        move = super(AccountPayment,self)._create_transfer_entry()
+        move = super(AccountPayment,self)._create_transfer_entry(amount)
         print ("Transfer Entry ", move.name)
         return move
 
