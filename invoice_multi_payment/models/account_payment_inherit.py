@@ -227,7 +227,7 @@ class AccountPayment(models.Model):
 
             destination_move_line_id = self.env['account.move.line'].search([
                 ('name', '=', self.name),
-                ('move_id.journal_id','=',self.journal_id.id)
+                ('move_id.journal_id','=',self.destination_journal_id.id)
             ])
 
             print ("Destination Move Id ", destination_move_line_id.move_id.name)
@@ -262,11 +262,21 @@ class AccountPayment(models.Model):
                         })
                     data_final.append(credit_line_vals)
 
-            print ("Move Lines ", move_id.line_ids)
-            print ("Move Lines New ", data_final)
+            new_move_id = self.env['account.move'].create({
+                'ref': move_id.name,
+                'journal_id': move_id.journal_id.id,
+                'date': move_id.date,
+                'narration': move_id.name,
+                'line_ids': data_final
+                })
+
+            new_move_id.post()
+
+            # Delete old Move
             move_id.button_cancel()
             move_id.unlink()
-            # move_id.update({'line_ids': data_final})
+
+        return True
     
     def _create_transfer_entry(self, amount):
         move = super(AccountPayment,self)._create_transfer_entry(amount)
