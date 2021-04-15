@@ -275,8 +275,8 @@ class AccountPayment(models.Model):
             new_move_id.post()
 
             # Delete old Move
-            move_id.button_cancel()
-            move_id.unlink()
+            # move_id.button_cancel()
+            # move_id.unlink()
 
         return True
     
