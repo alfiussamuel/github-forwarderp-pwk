@@ -226,7 +226,20 @@ class AccountPayment(models.Model):
                 ('move_id.journal_id','=',self.journal_id.id)
             ])
 
-            print ("Destination Move Id ", destination_move_line_id)
+            print ("Destination Move Id ", destination_move_line_id.move_id.name)
+            if destination_move_line_id:
+                move_id = destination_move_line_id.move_id
+            
+            for line in move_id.line_ids:
+                if line.credit == 0:
+                    line.write({
+                        'debit': line.debit * self.currency_rate
+                    })
+
+                elif line.debit == 0:
+                    line.write({
+                        'credit': line.credit * self.currency_rate
+                    })
     
     def _create_transfer_entry(self, amount):
         move = super(AccountPayment,self)._create_transfer_entry(amount)
