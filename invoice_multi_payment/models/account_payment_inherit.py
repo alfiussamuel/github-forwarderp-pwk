@@ -264,13 +264,13 @@ class AccountPayment(models.Model):
                             })
                         data_final.append(credit_line_vals)
 
-                # new_move_id = self.env['account.move'].create({
-                #     'ref': move_id.name,
-                #     'journal_id': move_id.journal_id.id,
-                #     'date': move_id.date,
-                #     'narration': move_id.name,
-                #     'line_ids': data_final
-                #     })
+                new_move_id = self.env['account.move'].create({
+                    'ref': move_id.name,
+                    'journal_id': move_id.journal_id.id,
+                    'date': move_id.date,
+                    'narration': move_id.name,
+                    'line_ids': data_final
+                    })
 
                 # new_move_id.post()
 
