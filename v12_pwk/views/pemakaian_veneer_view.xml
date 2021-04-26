@@ -31,7 +31,8 @@
                     <group>
                         <label for="date_start"/>
                         <div>
-                            <field name="date_start" class="oe_inline" required="1"/> - <field name="date_end" required="1"/>
+                            <field name="date_start" class="oe_inline" required="1"/> - 
+                            <field name="date_end" class="oe_inline" required="1"/>
                         </div>
                         <field name="user_id" class="oe_inline" readonly="1"/>
                     </group>
