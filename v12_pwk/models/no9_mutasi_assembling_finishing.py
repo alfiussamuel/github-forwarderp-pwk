@@ -1338,7 +1338,7 @@ class PwkMutasiAssemblingFinishingSizer(models.Model):
             res.stock_awal_pcs = stock_awal_pcs
 
     @api.depends('stock_awal_pcs',
-        'hot_stock_masuk_pcs','re_stock_masuk_pcs','manual_stock_masuk_pcs','sander2_stock_masuk_pcs'
+        'hot_stock_masuk_pcs','re_stock_masuk_pcs','manual_stock_masuk_pcs','sander2_stock_masuk_pcs',
         'sander_stock_keluar_pcs','grading_stock_keluar_pcs','lain_stock_keluar_pcs','qc_stock_keluar_pcs','re_stock_keluar_pcs')
     def _get_stock_akhir(self):
         for res in self:
