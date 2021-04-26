@@ -113,7 +113,7 @@
                                                     <field name="re_acc_stock_masuk_pcs"/> 
                                                     <field name="pmg_acc_stock_keluar_pcs"/>
                                                     <field name="repair_acc_stock_keluar_pcs"/>
-                                                    <field name="qc_acc_stock_keluar_pcs"/>
+                                                    <!-- <field name="qc_acc_stock_keluar_pcs"/> -->
                                                     <field name="lain_acc_stock_keluar_pcs"/>
                                                     <field name="re_acc_stock_keluar_pcs"/> 
                                                 </group>
@@ -123,7 +123,7 @@
                                                     <field name="re_acc_stock_masuk_vol"/>
                                                     <field name="pmg_acc_stock_keluar_vol"/>
                                                     <field name="repair_acc_stock_keluar_vol"/>
-                                                    <field name="qc_acc_stock_keluar_vol"/>
+                                                    <!-- <field name="qc_acc_stock_keluar_vol"/> -->
                                                     <field name="lain_acc_stock_keluar_vol"/>
                                                     <field name="re_acc_stock_keluar_vol"/>
                                                 </group>
