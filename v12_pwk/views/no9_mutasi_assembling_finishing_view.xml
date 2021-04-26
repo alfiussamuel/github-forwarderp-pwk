@@ -199,19 +199,19 @@
                                             <field name="product_id"/>
                                             <field name="stock_awal_pcs" sum="Total"/>
                                             <field name="hot_stock_masuk_pcs" sum="Total"/>
-                                            <field name="hot_stock_masuk_vol" sum="Total" invisible="1"/>
+                                            <field name="hot_stock_masuk_vol" sum="Total"/>
                                             <field name="re_stock_masuk_pcs" sum="Total"/>
-                                            <field name="re_stock_masuk_vol" sum="Total" invisible="1"/>
+                                            <field name="re_stock_masuk_vol" sum="Total"/>
                                             <field name="sander_stock_keluar_pcs" sum="Total"/>
-                                            <field name="sander_stock_keluar_vol" sum="Total" invisible="1"/>
+                                            <field name="sander_stock_keluar_vol" sum="Total"/>
                                             <field name="reproses_stock_keluar_pcs" sum="Total"/>
-                                            <field name="reproses_stock_keluar_vol" sum="Total" invisible="1"/>
+                                            <field name="reproses_stock_keluar_vol" sum="Total"/>
                                             <field name="qc_stock_keluar_pcs" sum="Total"/>
-                                            <field name="qc_stock_keluar_vol" sum="Total" invisible="1"/>
-                                            <field name="lain_stock_keluar_pcs" sum="Total" invisible="1"/>
-                                            <field name="lain_stock_keluar_vol" sum="Total" invisible="1"/>
+                                            <field name="qc_stock_keluar_vol" sum="Total"/>
+                                            <field name="lain_stock_keluar_pcs" sum="Total"/>
+                                            <field name="lain_stock_keluar_vol" sum="Total"/>
                                             <field name="re_stock_keluar_pcs" sum="Total"/>
-                                            <field name="re_stock_keluar_vol" sum="Total" invisible="1"/>
+                                            <field name="re_stock_keluar_vol" sum="Total"/>
                                             <field name="stock_akhir_pcs" sum="Total"/>
                                         </tree>
                                         <form>
