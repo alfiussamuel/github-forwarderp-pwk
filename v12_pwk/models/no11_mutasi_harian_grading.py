@@ -81,7 +81,7 @@ class PwkMutasiHarianGradingLine(models.Model):
         'stock_masuk_pcs','acc_stock_masuk_pcs',
         'pmg_stock_masuk_pcs','pmg_acc_stock_masuk_pcs',
         're_stock_masuk_pcs','re_acc_stock_masuk_pcs',
-        'pmg_stock_keluar_pcs','pmg_acc_stock_keluar_pcs'
+        'pmg_stock_keluar_pcs','pmg_acc_stock_keluar_pcs',
         'repair_stock_keluar_pcs','repair_acc_stock_keluar_pcs',
         'lain_stock_keluar_pcs','lain_acc_stock_keluar_pcs',
         'qc_stock_keluar_pcs','qc_acc_stock_keluar_pcs',
