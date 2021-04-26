@@ -91,6 +91,8 @@ pwk_mutasi_harian_grading_line_employee,pwk_mutasi_harian_grading_line_employee,
 ,,,,,,,
 pwk_mutasi_harian_pmg_employee,pwk_mutasi_harian_pmg_employee,v12_pwk.model_pwk_mutasi_harian_pmg,base.group_user,1,1,1,1
 pwk_mutasi_harian_pmg_line_employee,pwk_mutasi_harian_pmg_line_employee,v12_pwk.model_pwk_mutasi_harian_pmg_line,base.group_user,1,1,1,1
+pwk_pemakaian_veneer_employee,pwk_pemakaian_veneer_employee,v12_pwk.model_pwk_pemakaian_veneer,base.group_user,1,1,1,1
+pwk_pemakaian_veneer_line_employee,pwk_pemakaian_veneer_line_employee,v12_pwk.model_pwk_pemakaian_veneer_line,base.group_user,1,1,1,1
 ,,,,,,,
 pwk_rpb_employee,pwk_rpb_employee,v12_pwk.model_pwk_rpb,base.group_user,1,1,1,1
 pwk_rpb_line_employee,pwk_rpb_line_employee,v12_pwk.model_pwk_rpb_line,base.group_user,1,1,1,1
