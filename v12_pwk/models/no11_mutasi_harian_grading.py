@@ -198,7 +198,7 @@ class PwkMutasiHarianGradingLine(models.Model):
     def _get_stock_akhir(self):
         for res in self:
             additional = res.stock_masuk_pcs + res.pmg_stock_masuk_pcs + res.re_stock_masuk_pcs
-            deduction = res.pmg_stock_keluar_pcs + res.repair_stock_keluar_pcs + res.lain_stock_keluar_pcs + res.re_stock_keluar_pcs
+            deduction = res.pmg_stock_keluar_pcs + res.repair_stock_keluar_pcs + res.lain_stock_keluar_pcs + res.qc_stock_keluar_pcs + res.re_stock_keluar_pcs
             res.stock_akhir_pcs = res.stock_awal_pcs + additional - deduction
 
 
