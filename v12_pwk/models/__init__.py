@@ -23,6 +23,7 @@ from . import no9_mutasi_assembling_finishing
 from . import no10_mutasi_sf_grading
 from . import no11_mutasi_harian_grading
 from . import no12_mutasi_harian_pmg
+from . import pemakaian_veneer
 from . import sale
 from . import stock
 from . import purchase

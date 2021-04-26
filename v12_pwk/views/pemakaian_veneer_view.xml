@@ -1,0 +1,76 @@
+<odoo>
+    <data>                      
+
+        <!-- Mutasi Harian PMG -->
+        <record id="pwk_pemakaian_veneer_tree" model="ir.ui.view">
+            <field name="name">Pemakaian Veneer</field>
+            <field name="model">pwk.pemakaian.veneer</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="state"/>                    
+                </tree>
+            </field>
+        </record>
+
+        <record id="pwk_pemakaian_veneer_form" model="ir.ui.view">
+            <field name="name">Pemakaian Veneer</field>
+            <field name="model">pwk.pemakaian.veneer</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar" readonly="1"/>
+                        <button name="button_approve" type="object" string="Approve" states="Draft"/>
+                    </header>
+                    <label for="name" class="oe_edit_only" />
+                    <h1>
+                        <field name="name" readonly="1"/>
+                    </h1>
+                    <group>
+                        <field name="date" class="oe_inline" required="1"/>
+                        <field name="user_id" class="oe_inline" readonly="1"/>
+                    </group>
+                    <group>
+                        <notebook>
+                            <page string="Detail Pemakaian Veneer">
+                                <group>
+                                    <field name="line_ids" nolabel="1">
+                                        <tree>
+                                            <field name="product_id"/>
+                                            <field name="quantity" sum="Total"/>
+                                            <field name="volume" sum="Total"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="product_id"/>
+                                            </group>
+                                            <group>
+                                                <group>
+                                                    <field name="tebal"/>
+                                                    <field name="lebar"/>
+                                                    <field name="panjang"/>
+                                                    <field name="grade"/>
+                                                </group>
+                                                <group>
+                                                    <field name="quantity"/>
+                                                    <field name="volume"/>
+                                                </group>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                            </page>                                
+                        </notebook>
+                    </group>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

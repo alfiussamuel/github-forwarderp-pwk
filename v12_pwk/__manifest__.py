@@ -34,6 +34,7 @@
              'views/no10_mutasi_sf_grading_view.xml',
              'views/no11_mutasi_harian_grading_view.xml',
              'views/no12_mutasi_harian_pmg_view.xml',
+             'views/pemakaian_veneer_view.xml',
              'views/sale_view.xml',
              'views/purchase_view.xml',
              'views/payment_report.xml',
