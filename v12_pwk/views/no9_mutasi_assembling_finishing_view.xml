@@ -560,6 +560,8 @@
                                             <field name="re_stock_masuk_vol" sum="Total"/>
                                             <field name="sizer_stock_keluar_pcs" sum="Total"/>
                                             <field name="sizer_stock_keluar_vol" sum="Total"/>
+                                            <field name="qc_stock_keluar_pcs" sum="Total"/>
+                                            <field name="qc_stock_keluar_vol" sum="Total"/>
                                             <field name="tipis_stock_keluar_pcs" sum="Total"/>
                                             <field name="tipis_stock_keluar_vol" sum="Total"/>
                                             <field name="re_stock_keluar_pcs" sum="Total"/>
@@ -584,6 +586,8 @@
                                                         string="Stok Masuk Re"/> 
                                                     <field name="sizer_stock_keluar_pcs"
                                                         string="Stok Keluar GS"/>
+                                                    <field name="qc_stock_keluar_pcs"
+                                                        string="Stok Keluar QC"/>
                                                     <field name="tipis_stock_keluar_pcs"
                                                         string="Stok Keluar Lain"/>
                                                     <field name="re_stock_keluar_pcs"
@@ -602,6 +606,8 @@
                                                         string="Stok Keluar GS"/>
                                                     <field name="tipis_stock_keluar_vol"
                                                         string="Stok Keluar Lain"/>
+                                                    <field name="qc_stock_keluar_vol"
+                                                        string="Stok Keluar QC"/>
                                                     <field name="re_stock_keluar_vol"
                                                         string="Stok Keluar Re"/>
                                                     <field name="stock_akhir_vol"
@@ -614,6 +620,7 @@
                                                     <field name="re_acc_stock_masuk_pcs"/> 
                                                     <field name="sizer_acc_stock_keluar_pcs"/> 
                                                     <field name="tipis_acc_stock_keluar_pcs"/> 
+                                                    <field name="qc_acc_stock_keluar_pcs"/>
                                                     <field name="re_acc_stock_keluar_pcs"/> 
                                                 </group>
                                                 <group string="Akumulasi Stock (Vol)">
@@ -621,6 +628,7 @@
                                                     <field name="re_acc_stock_masuk_vol"/>
                                                     <field name="sizer_acc_stock_keluar_vol"/>
                                                     <field name="tipis_acc_stock_keluar_vol"/>
+                                                    <field name="qc_acc_stock_keluar_vol"/>
                                                     <field name="re_acc_stock_keluar_vol"/>
                                                 </group>
                                             </group>
