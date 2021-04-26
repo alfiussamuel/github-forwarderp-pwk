@@ -176,6 +176,12 @@
 			<field name="view_mode">tree,form</field>			
 		</record>
 
+		<record id="action_pwk_pemakaian_veneer" model="ir.actions.act_window">
+			<field name="name">Pemakaian Veneer</field>
+			<field name="res_model">pwk.pemakaian.veneer</field>
+			<field name="view_mode">tree,form</field>			
+		</record>
+
 		<record id="action_pwk_packing" model="ir.actions.act_window">
 			<field name="name">Packing</field>
 			<field name="res_model">pwk.packing</field>
@@ -596,6 +602,12 @@
 			            parent="v12_pwk.menu_production_mutasi_produksi"
 			            groups="base.group_user"
 			            sequence="5"/>
+
+			        <menuitem id="menu_production_transaksi_pemakaian_veneer"
+			            action="v12_pwk.action_pwk_pemakaian_veneer"
+			            parent="v12_pwk.menu_production_mutasi_produksi"
+			            groups="base.group_user"
+			            sequence="6"/>
 
 			<menuitem id="menu_production_configuration"
 	        	sequence="3"
