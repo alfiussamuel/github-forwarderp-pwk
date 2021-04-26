@@ -45,7 +45,8 @@ class PwkPemakaianVeneer(models.Model):
     _inherit = ["mail.thread", "mail.activity.mixin"]
 
     name = fields.Char('No. Dokumen', track_visibility="always")
-    date = fields.Date('Tanggal', default=fields.Date.today(), track_visibility="always")
+    date_start = fields.Date('Periode', default=fields.Date.today(), track_visibility="always")
+    date_end = fields.Date('Periode', default=fields.Date.today(), track_visibility="always")
     user_id = fields.Many2one('res.users', string="Dibuat Oleh", default=lambda self: self.env.user, track_visibility="always")
     state = fields.Selection([('Draft','Draft'),('Approved','Approved')], string="Status", default="Draft", track_visibility="always")
     line_ids = fields.One2many('pwk.pemakaian.veneer.line', 'reference', string="Detail", track_visibility="always")
