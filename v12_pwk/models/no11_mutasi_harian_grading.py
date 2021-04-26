@@ -50,6 +50,7 @@ class PwkMutasiHarianGradingLine(models.Model):
     repair_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Repair')
     repair_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Repair', digits=dp.get_precision('FourDecimal'))
 
+    qqc_stock_keluar_pcs = fields.Float('Stok Keluar QC')
     qc_stock_keluar_pcs = fields.Float('Stok Keluar QC')
     qc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar QC', digits=dp.get_precision('FourDecimal'))
     qc_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar QC')
