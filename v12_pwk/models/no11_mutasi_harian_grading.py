@@ -123,7 +123,7 @@ class PwkMutasiHarianGradingLine(models.Model):
             re_acc_stock_masuk_pcs = 0
             pmg_acc_stock_keluar_pcs = 0
             repair_acc_stock_keluar_pcs = 0
-            qc_acc_stock_keluar_pcs 0
+            qc_acc_stock_keluar_pcs = 0
             lain_acc_stock_keluar_pcs = 0
             re_acc_stock_keluar_pcs = 0
 
