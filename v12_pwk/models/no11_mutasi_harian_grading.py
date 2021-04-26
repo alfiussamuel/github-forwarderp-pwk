@@ -50,6 +50,11 @@ class PwkMutasiHarianGradingLine(models.Model):
     repair_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Repair')
     repair_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Repair', digits=dp.get_precision('FourDecimal'))
 
+    qc_stock_keluar_pcs = fields.Float('Stok Keluar QC')
+    qc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar QC', digits=dp.get_precision('FourDecimal'))
+    qc_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar QC')
+    qc_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar QC', digits=dp.get_precision('FourDecimal'))
+
     lain_stock_keluar_pcs = fields.Float('Stok Keluar Lain')
     lain_stock_keluar_vol = fields.Float(compute="_get_volume", string='Stok Keluar Lain', digits=dp.get_precision('FourDecimal'))
     lain_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Stok Keluar Lain')
@@ -73,8 +78,14 @@ class PwkMutasiHarianGradingLine(models.Model):
                 res.grade = res.product_id.grade.id
 
     @api.depends('stock_awal_pcs',
-        'stock_masuk_pcs','pmg_stock_masuk_pcs','re_stock_masuk_pcs',
-        'pmg_stock_keluar_pcs','repair_stock_keluar_pcs','lain_stock_keluar_pcs','re_stock_keluar_pcs',
+        'stock_masuk_pcs','acc_stock_masuk_pcs',
+        'pmg_stock_masuk_pcs','pmg_acc_stock_masuk_pcs',
+        're_stock_masuk_pcs','re_acc_stock_masuk_pcs',
+        'pmg_stock_keluar_pcs','pmg_acc_stock_keluar_pcs'
+        'repair_stock_keluar_pcs','repair_acc_stock_keluar_pcs',
+        'lain_stock_keluar_pcs','lain_acc_stock_keluar_pcs',
+        'qc_stock_keluar_pcs','qc_acc_stock_keluar_pcs',
+        're_stock_keluar_pcs','re_acc_stock_keluar_pcs',
         'stock_akhir_pcs')
     def _get_volume(self):
         for res in self:
@@ -86,6 +97,7 @@ class PwkMutasiHarianGradingLine(models.Model):
             
             res.pmg_stock_keluar_vol = res.pmg_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.repair_stock_keluar_vol = res.repair_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.qc_stock_keluar_vol = res.qc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.lain_stock_keluar_vol = res.lain_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.re_stock_keluar_vol = res.re_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             
@@ -95,13 +107,15 @@ class PwkMutasiHarianGradingLine(models.Model):
             
             res.pmg_acc_stock_keluar_vol = res.pmg_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.repair_acc_stock_keluar_vol = res.repair_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
+            res.qc_acc_stock_keluar_vol = res.qc_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.lain_acc_stock_keluar_vol = res.lain_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             res.re_acc_stock_keluar_vol = res.re_acc_stock_keluar_pcs * res.tebal * res.lebar * res.panjang / 1000000000
             
             res.stock_akhir_vol = res.stock_akhir_pcs * res.tebal * res.lebar * res.panjang / 1000000000
 
-    @api.depends('stock_masuk_pcs','pmg_stock_masuk_pcs','re_stock_masuk_pcs',
-        'pmg_stock_keluar_pcs','repair_stock_keluar_pcs','lain_stock_keluar_pcs','re_stock_keluar_pcs')
+    @api.depends('stock_masuk_pcs',
+        'pmg_stock_masuk_pcs','re_stock_masuk_pcs',
+        'pmg_stock_keluar_pcs','repair_stock_keluar_pcs','qc_stock_keluar_pcs','lain_stock_keluar_pcs','re_stock_keluar_pcs')
     def _get_acc(self):
         for res in self:
             acc_stock_masuk_pcs = 0
@@ -109,6 +123,7 @@ class PwkMutasiHarianGradingLine(models.Model):
             re_acc_stock_masuk_pcs = 0
             pmg_acc_stock_keluar_pcs = 0
             repair_acc_stock_keluar_pcs = 0
+            qc_acc_stock_keluar_pcs 0
             lain_acc_stock_keluar_pcs = 0
             re_acc_stock_keluar_pcs = 0
 
@@ -129,6 +144,7 @@ class PwkMutasiHarianGradingLine(models.Model):
                 re_acc_stock_masuk_pcs = source_ids[0].re_acc_stock_masuk_pcs
                 pmg_acc_stock_keluar_pcs = source_ids[0].pmg_acc_stock_keluar_pcs
                 repair_acc_stock_keluar_pcs = source_ids[0].repair_acc_stock_keluar_pcs
+                qc_acc_stock_keluar_pcs = source_ids[0].qc_acc_stock_keluar_pcs
                 lain_acc_stock_keluar_pcs = source_ids[0].lain_acc_stock_keluar_pcs
                 re_acc_stock_keluar_pcs = source_ids[0].re_acc_stock_keluar_pcs
 
@@ -137,6 +153,7 @@ class PwkMutasiHarianGradingLine(models.Model):
             res.re_acc_stock_masuk_pcs = re_acc_stock_masuk_pcs + res.re_stock_masuk_pcs
             res.pmg_acc_stock_keluar_pcs = pmg_acc_stock_keluar_pcs + res.pmg_stock_keluar_pcs
             res.repair_acc_stock_keluar_pcs = repair_acc_stock_keluar_pcs + res.repair_stock_keluar_pcs
+            res.qc_acc_stock_keluar_pcs = qc_acc_stock_keluar_pcs + res.qc_stock_keluar_pcs
             res.lain_acc_stock_keluar_pcs = lain_acc_stock_keluar_pcs + res.lain_stock_keluar_pcs
             res.re_acc_stock_keluar_pcs = re_acc_stock_keluar_pcs + res.re_stock_keluar_pcs
 

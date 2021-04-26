@@ -46,6 +46,7 @@
                                             <field name="re_stock_masuk_pcs" sum="Total"/>
                                             <field name="pmg_stock_keluar_pcs" sum="Total"/>
                                             <field name="repair_stock_keluar_pcs" sum="Total"/>
+                                            <field name="qc_stock_keluar_pcs" sum="Total"/>
                                             <field name="lain_stock_keluar_pcs" sum="Total"/>
                                             <field name="re_stock_keluar_pcs" sum="Total"/>
                                             <field name="stock_akhir_pcs" sum="Total"/>
@@ -73,6 +74,8 @@
                                                         string="Stok Keluar PMG"/>
                                                     <field name="repair_stock_keluar_pcs"
                                                         string="Stok Keluar Repair"/>
+                                                    <field name="qc_stock_keluar_pcs"
+                                                        string="Stok Keluar QC"/>
                                                     <field name="lain_stock_keluar_pcs"
                                                         string="Stok Keluar Lain"/>
                                                     <field name="re_stock_keluar_pcs"
@@ -93,6 +96,8 @@
                                                         string="Stok Keluar PMG"/>
                                                     <field name="repair_stock_keluar_vol"
                                                         string="Stok Keluar Repair"/>
+                                                    <field name="qc_stock_keluar_vol"
+                                                        string="Stok Keluar QC"/>
                                                     <field name="lain_stock_keluar_vol"
                                                         string="Stok Keluar Lain"/>
                                                     <field name="re_stock_keluar_vol"
@@ -108,6 +113,7 @@
                                                     <field name="re_acc_stock_masuk_pcs"/> 
                                                     <field name="pmg_acc_stock_keluar_pcs"/>
                                                     <field name="repair_acc_stock_keluar_pcs"/>
+                                                    <field name="qc_acc_stock_keluar_pcs"/>
                                                     <field name="lain_acc_stock_keluar_pcs"/>
                                                     <field name="re_acc_stock_keluar_pcs"/> 
                                                 </group>
@@ -117,6 +123,7 @@
                                                     <field name="re_acc_stock_masuk_vol"/>
                                                     <field name="pmg_acc_stock_keluar_vol"/>
                                                     <field name="repair_acc_stock_keluar_vol"/>
+                                                    <field name="qc_acc_stock_keluar_vol"/>
                                                     <field name="lain_acc_stock_keluar_vol"/>
                                                     <field name="re_acc_stock_keluar_vol"/>
                                                 </group>
