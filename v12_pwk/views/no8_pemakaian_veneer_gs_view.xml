@@ -40,10 +40,12 @@
                                             <field name="bj_product_id"/>
                                             <field name="bj_jenis_kayu"/>
                                             <field name="bj_jenis_core"/>
-                                            <field name="bj_grade"/>
-                                            <field name="bj_tebal"/>
-                                            <field name="bj_lebar"/>
-                                            <field name="bj_panjang"/>
+                                            <field name="bj_grade" invisible="1"/>
+                                            <field name="bj_tebal" invisible="1"/>
+                                            <field name="bj_lebar" invisible="1"/>
+                                            <field name="bj_panjang" invisible="1"/>
+                                            <field name="bj_each"/>
+                                            <field name="bj_qty"/>
                                             <field name="bj_pcs" sum="Total"/>
                                             <field name="bj_vol" sum="Total"/>
                                             <field name="keterangan"/>
@@ -54,18 +56,20 @@
                                             </group>
                                             <group>
                                                 <group>
-                                                    <field name="bj_product_id"/>
-                                                    <field name="bj_jenis_core"/>
-                                                    <field name="bj_jenis_kayu"/>      
+                                                    <field name="bj_product_id"/>                                                   
+                                                    <field name="bj_each"/>
+                                                    <field name="bj_qty"/>      
                                                     <field name="bj_pcs"/>
                                                     <field name="bj_vol"/>
+                                                    <field name="keterangan"/>
                                                 </group>
                                                 <group>
+                                                    <field name="bj_jenis_core"/> 
+                                                    <field name="bj_jenis_kayu"/>
                                                     <field name="bj_grade"/>
                                                     <field name="bj_tebal"/>
                                                     <field name="bj_lebar"/>
                                                     <field name="bj_panjang"/>
-                                                    <field name="keterangan"/>
                                                 </group>                                        
                                             </group>       
                                             <group>
