@@ -717,7 +717,7 @@
 	        	action="action_pwk_port"
 	        	parent="menu_sale_config_other"/>
 
-	        <menuitem id="mmenu_sale_config_other_destination"
+	        <menuitem id="menu_sale_config_other_destination"
 	        	sequence="7"
 	        	name="Destination"
 	        	action="action_pwk_destination"
