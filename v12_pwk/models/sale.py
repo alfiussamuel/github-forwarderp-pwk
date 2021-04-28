@@ -311,7 +311,22 @@ class SaleOrderMarking(models.Model):
     _name = "sale.order.marking"
 
     reference = fields.Many2one('sale.order', 'Reference')
-    marking_id = fields.Many2one('pwk.marking', 'Marking')    
+    marking_id = fields.Many2one('pwk.marking', 'Marking')
+
+class PwkThickness(models.Model):    
+    _name = "pwk.thickness"
+
+    name = fields.Char('Thickness')    
+
+class PwkInsurance(models.Model):    
+    _name = "pwk.insurance"
+
+    name = fields.Char('Insurance')
+
+class PwkPacking(models.Model):    
+    _name = "pwk.packing"
+
+    name = fields.Char('Packing')
 
 class SaleOrder(models.Model):    
     _inherit = "sale.order"
@@ -323,11 +338,14 @@ class SaleOrder(models.Model):
     po_number = fields.Char('PO Buyer No.')
     quantity = fields.Char('Quantity')
     thickness = fields.Char('Thickness')
+    thickness_id = fields.Many2one('pwk.thickness', 'Thickness')
     nama_terang = fields.Selection([('Andreas Hermawan','Andreas Hermawan'),('Adi Widiawan','Adi Widiawan')], string='Nama Terang')
     beneficiary = fields.Text('Beneficiary')
     marking = fields.Char('Marking')
     packing = fields.Char('Packing')
+    packing_id = fields.Many2one('pwk.packing', 'Packing')
     insurance = fields.Char('Insurance')
+    insurance_id = fields.Many2one('pwk.insurance', 'Insurance')
     delivery_date = fields.Date('Est. Delivery Date')
     journal_id = fields.Many2one('account.journal', string='Bank Account', domain="[('type','=','bank')]")
     incoterm_id = fields.Many2one('account.incoterms', string='Delivery Method')

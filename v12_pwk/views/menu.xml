@@ -1,6 +1,31 @@
 <odoo>
 	<data>
 
+		<!-- Sales Attributes -->
+		<record id="pwk_thickness_action" model="ir.actions.act_window">
+            <field name="name">Thickness</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pwk.thickness</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+		<record id="pwk_insurance_action" model="ir.actions.act_window">
+            <field name="name">Insurance</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pwk.insurance</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+		<record id="pwk_packing_action" model="ir.actions.act_window">
+            <field name="name">Packing</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pwk.packing</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
 		<!-- Packing List -->
 		<record id="pwk_packing_list_action" model="ir.actions.act_window">
             <field name="name">Packing List Produksi</field>
@@ -664,53 +689,65 @@
         	name="Other Configurations"
         	parent="sale.menu_sale_config"/>
 
-        <menuitem id="menu_sale_config_other_consignee"
-        	sequence="1"
-        	name="Consignee"
-        	action="action_pwk_consignee"
-        	parent="menu_sale_config_other"/>
+        	<menuitem id="menu_sale_config_other_thickness"
+	        	sequence="1"
+	        	name="Thickness"
+	        	action="pwk_thickness_action"
+	        	parent="menu_sale_config_other"/>
 
-        <menuitem id="menu_sale_config_other_notify_party"
-        	sequence="2"
-        	name="Notify Party"
-        	action="action_pwk_notify_party"
-        	parent="menu_sale_config_other"/>
+	       	<menuitem id="menu_sale_config_other_insurance"
+	        	sequence="2"
+	        	name="Insurance"
+	        	action="pwk_insurance_action"
+	        	parent="menu_sale_config_other"/>
 
-       	<menuitem id="menu_sale_config_other_certificate"
-        	sequence="3"
-        	name="Certificate"
-        	action="action_pwk_certificate"
-        	parent="menu_sale_config_other"/>
+	        <menuitem id="menu_sale_config_other_packing"
+	        	sequence="3"
+	        	name="Packing"
+	        	action="pwk_packing_action"
+	        	parent="menu_sale_config_other"/>
 
-        <menuitem id="menu_sale_config_other_port"
-        	sequence="4"
-        	name="Port"
-        	action="action_pwk_port"
-        	parent="menu_sale_config_other"/>
+	        <menuitem id="menu_sale_config_other_notify_party"
+	        	sequence="4"
+	        	name="Notify Party"
+	        	action="action_pwk_notify_party"
+	        	parent="menu_sale_config_other"/>
 
-        <menuitem id="mmenu_sale_config_other_destination"
-        	sequence="6"
-        	name="Destination"
-        	action="action_pwk_destination"
-        	parent="menu_sale_config_other"/>
+	       	<menuitem id="menu_sale_config_other_certificate"
+	        	sequence="5"
+	        	name="Certificate"
+	        	action="action_pwk_certificate"
+	        	parent="menu_sale_config_other"/>
 
-        <menuitem id="menu_sale_config_other_ship_via"
-        	sequence="7"
-        	name="Shipping Transportation"
-        	action="action_pwk_ship_via"
-        	parent="menu_sale_config_other"/>
+	        <menuitem id="menu_sale_config_other_port"
+	        	sequence="6"
+	        	name="Port"
+	        	action="action_pwk_port"
+	        	parent="menu_sale_config_other"/>
 
-       	<menuitem id="menu_sale_config_other_method_payment"
-        	sequence="8"
-        	name="Method of Payment"
-        	action="action_pwk_method_payment"
-        	parent="menu_sale_config_other"/>
+	        <menuitem id="mmenu_sale_config_other_destination"
+	        	sequence="7"
+	        	name="Destination"
+	        	action="action_pwk_destination"
+	        	parent="menu_sale_config_other"/>
 
-       	<menuitem id="menu_sale_config_other_crates_conversion"
-        	sequence="9"
-        	name="Crates Conversion"
-        	action="action_pwk_crates_conversion"
-        	parent="menu_sale_config_other"/>
+	        <menuitem id="menu_sale_config_other_ship_via"
+	        	sequence="8"
+	        	name="Shipping Transportation"
+	        	action="action_pwk_ship_via"
+	        	parent="menu_sale_config_other"/>
+
+	       	<menuitem id="menu_sale_config_other_method_payment"
+	        	sequence="9"
+	        	name="Method of Payment"
+	        	action="action_pwk_method_payment"
+	        	parent="menu_sale_config_other"/>
+
+	       	<menuitem id="menu_sale_config_other_crates_conversion"
+	        	sequence="10"
+	        	name="Crates Conversion"
+	        	action="action_pwk_crates_conversion"
+	        	parent="menu_sale_config_other"/>
 
 
 

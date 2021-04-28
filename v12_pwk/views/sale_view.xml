@@ -354,9 +354,9 @@
                             <group>                                
                                 <field name="quantity"/>
                                 <field name="marking"/>
-                                <field name="packing"/>
-                                <field name="thickness"/>                                
-                                <field name="insurance"/>
+                                <field name="packing_id"/>
+                                <field name="thickness_id"/>                                
+                                <field name="insurance_id"/>
                                 <field name="port_loading"
                                     options="{'no_create': True}"/>
                                 <field name="port_discharge"
