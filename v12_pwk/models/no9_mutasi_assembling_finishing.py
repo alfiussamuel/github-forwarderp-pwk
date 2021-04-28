@@ -1513,7 +1513,7 @@ class PwkMutasiAssemblingFinishingFinish(models.Model):
             res.stock_awal_pcs = stock_awal_pcs
 
     @api.depends('stock_awal_pcs',
-        'sizer_stock_mask_pcs',
+        'sizer_stock_masuk_pcs',
         're_stock_masuk_pcs',
         'grading_stock_keluar_pcs',
         'lain_stock_keluar_pcs',
