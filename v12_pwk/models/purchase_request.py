@@ -137,6 +137,8 @@ class PwkPurchaseRequestLine(models.Model):
     product_uom_id = fields.Many2one("uom.uom", string='UoM')
     truck = fields.Char(string='Truck')    
 
+    is_purchased = fields.Boolean('Purchased')
+
     @api.multi
     def _get_quantity(self):
         for res in self:
@@ -171,7 +173,11 @@ class PwkPurchaseRequestLine(models.Model):
 class PwkPurchaseRequest(models.Model):    
     _name = "pwk.purchase.request"
 
-    pr_type = fields.Selection([('Bahan Baku','Bahan Baku'),('Bahan Penolong','Bahan Penolong')], string='Jenis PR')
+    pr_type = fields.Selection([
+        ('Bahan Baku','Bahan Baku'),
+        ('Bahan Penolong','Bahan Penolong'),
+        ('Jasa','Jasa')],
+        string='Jenis PR')
     formula_type = fields.Selection([('PCS','PCS'),('M3','M3')], string='Satuan')
     date_id = fields.Many2one('pwk.purchase.request.date', string="Weekly PR")
     name = fields.Char('Nomor PR')

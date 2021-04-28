@@ -157,6 +157,7 @@
                                             <field name="volume_pr" sum="Total"/>
                                             <field name="quantity_remaining" sum="Total"/>
                                             <field name="volume_remaining" sum="Total"/>
+                                            <field name="is_purchased" readonly="1"/>
                                         </tree>
                                         <form>                                                
                                             <group>
