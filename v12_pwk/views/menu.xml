@@ -660,7 +660,7 @@
 
         <!-- Duplicate Menu accounting -->
         <menuitem id="menu_sale_config_other"
-        	sequence="1"
+        	sequence="99"
         	name="Other Configurations"
         	parent="sale.menu_sale_config"/>
 
