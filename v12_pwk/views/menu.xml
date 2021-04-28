@@ -696,7 +696,7 @@
 	        <menuitem id="menu_sale_config_other_packing"
 	        	sequence="3"
 	        	name="Packing"
-	        	action="pwk_packing_action"
+	        	action="action_pwk_packing"
 	        	parent="menu_sale_config_other"/>
 
 	        <menuitem id="menu_sale_config_other_notify_party"
