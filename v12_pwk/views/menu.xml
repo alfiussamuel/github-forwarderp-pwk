@@ -664,49 +664,49 @@
         	name="Other Configurations"
         	parent="sale.menu_sale_config"/>
 
-        <menuitem id="menu_account_invoice_configuration_consignee"
+        <menuitem id="menu_sale_config_other_consignee"
         	sequence="1"
         	name="Consignee"
         	action="action_pwk_consignee"
         	parent="menu_sale_config_other"/>
 
-        <menuitem id="menu_account_invoice_configuration_notify_party"
+        <menuitem id="menu_sale_config_other_notify_party"
         	sequence="2"
         	name="Notify Party"
         	action="action_pwk_notify_party"
         	parent="menu_sale_config_other"/>
 
-       	<menuitem id="menu_account_invoice_configuration_certificate"
+       	<menuitem id="menu_sale_config_other_certificate"
         	sequence="3"
         	name="Certificate"
         	action="action_pwk_certificate"
         	parent="menu_sale_config_other"/>
 
-        <menuitem id="menu_account_invoice_configuration_port"
+        <menuitem id="menu_sale_config_other_port"
         	sequence="4"
         	name="Port"
         	action="action_pwk_port"
         	parent="menu_sale_config_other"/>
 
-        <menuitem id="menu_account_invoice_configuration_destination"
+        <menuitem id="mmenu_sale_config_other_destination"
         	sequence="6"
         	name="Destination"
         	action="action_pwk_destination"
         	parent="menu_sale_config_other"/>
 
-        <menuitem id="menu_account_invoice_configuration_ship_via"
+        <menuitem id="menu_sale_config_other_ship_via"
         	sequence="7"
         	name="Shipping Transportation"
         	action="action_pwk_ship_via"
         	parent="menu_sale_config_other"/>
 
-       	<menuitem id="menu_account_invoice_configuration_method_payment"
+       	<menuitem id="menu_sale_config_other_method_payment"
         	sequence="8"
         	name="Method of Payment"
         	action="action_pwk_method_payment"
         	parent="menu_sale_config_other"/>
 
-       	<menuitem id="menu_account_invoice_configuration_crates_conversion"
+       	<menuitem id="menu_sale_config_other_crates_conversion"
         	sequence="9"
         	name="Crates Conversion"
         	action="action_pwk_crates_conversion"
