@@ -16,3 +16,18 @@ class TriggerOnchangeSale(models.TransientModel):
             elif line.is_changed:
                 line.write({'is_changed': False})
         return {'type': 'ir.actions.act_window_close'}
+
+class TriggerOnchangePackingList(models.TransientModel):
+    _name = "trigger.onchange.packing.list"
+    _description = "Trigger Onchange"
+
+    @api.multi
+    def button_trigger(self):
+        context = dict(self._context or {})
+        lines = self.env['pwk.packing.list'].browse(context.get('active_ids'))        
+        for line in lines:
+            if not line.is_changed:
+                line.write({'is_changed': True})
+            elif line.is_changed:
+                line.write({'is_changed': False})
+        return {'type': 'ir.actions.act_window_close'}

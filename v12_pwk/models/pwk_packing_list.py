@@ -304,6 +304,7 @@ class PwkPackingListGroup(models.Model):
 class PwkPackingList(models.Model):    
     _name = "pwk.packing.list"
 
+    is_changed = fields.Boolean('Changed', default=False)
     name = fields.Char('Nomor Packing List')
     date = fields.Date('Date', default=fields.Date.today())
     certificate_id = fields.Many2one('pwk.certificate', 'Certificate')
@@ -362,7 +363,7 @@ class PwkPackingList(models.Model):
 
             res.total_volume = total_volume
 
-    @api.depends('line_ids.sale_line_id')
+    @api.depends('line_ids.sale_line_id','is_changed')
     def _get_fields(self):
         for res in self:
             if res.line_ids:
