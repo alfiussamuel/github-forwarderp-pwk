@@ -26,7 +26,7 @@ class MrpBom(models.Model):
     def _get_total_composition(self):
         for res in self:
             total_composition = 0
-            total_tebal = 0
+            total_tebal = 1
 
             if res.bom_line_ids:
                 for line in res.bom_line_ids:
