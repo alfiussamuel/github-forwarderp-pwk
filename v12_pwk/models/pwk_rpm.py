@@ -308,7 +308,7 @@ class PwkRpmLine(models.Model):
             res.total_volume = res.total_qty_spare * res.thick * res.width * res.length / 1000000000
             res.remaining_volume = res.remaining_qty * res.thick * res.width * res.length / 1000000000
 
-    @api.depends('sale_line_id')
+    @api.depends('sale_line_id','spare_qty')
     def _get_sale_fields(self):
         for res in self:
             if res.sale_line_id:
