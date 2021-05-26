@@ -8,8 +8,7 @@
                 <search string="Search Packing List">
                     <field name="date"/>
                     <field name="name"/>
-                    <field name="po_number"/>
-                    <!-- <field name="partner_id"/>
+                    <field name="partner_id"/>
                     <field name="destination_id"/>
                     <field name="marking"/>
                     <field name="tanggal_selesai"/>
@@ -20,7 +19,7 @@
                             domain="[]" context="{'group_by':'date'}"/>
                         <filter string="Buyer" name="partner_id" 
                             domain="[]" context="{'group_by':'partner_id'}"/>
-                    </group> -->
+                    </group>
                </search>
             </field>
         </record>

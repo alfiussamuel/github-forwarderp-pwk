@@ -311,11 +311,11 @@ class PwkPackingList(models.Model):
     
     product_name_list = fields.Char(compute="_get_product_name_list", string="Product Name List")
 
-    partner_id = fields.Many2one(compute="_get_fields", comodel_name='res.partner', string='Buyer')
-    destination_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.destination', string='Destination')
-    payment_term_id = fields.Many2one(compute="_get_fields", comodel_name='account.payment.term', string='Payment Terms')
-    marking = fields.Char(compute="_get_fields", string='Marking')
-    po_number = fields.Char(compute="_get_fields", string='Contract')
+    partner_id = fields.Many2one(compute="_get_fields", comodel_name='res.partner', string='Buyer', store=True)
+    destination_id = fields.Many2one(compute="_get_fields", comodel_name='pwk.destination', string='Destination', store=True)
+    payment_term_id = fields.Many2one(compute="_get_fields", comodel_name='account.payment.term', string='Payment Terms', store=True)
+    marking = fields.Char(compute="_get_fields", string='Marking', store=True)
+    po_number = fields.Char(compute="_get_fields", string='Contract', store=True)
 
     line_ids = fields.One2many('pwk.packing.list.line', 'reference', string='Lines')
     group_ids = fields.One2many('pwk.packing.list.group', 'reference', string='Groups')
