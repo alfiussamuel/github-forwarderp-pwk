@@ -556,7 +556,8 @@ class PwkRpb(models.Model):
             res.total_lvl = total_lvl
             res.total_blockboard_mdf = total_blockboard_mdf
 
-            total_produksi = total_blockboard + total_plywood + total_lvl
+            total_produksi = total_blockboard + total_plywood + total_lvl + total_blockboard_mdf
+            
             res.total_blockboard_percent = total_blockboard / (total_produksi or 1) * 100
             res.total_plywood_percent = total_plywood / (total_produksi or 1) * 100
             res.total_lvl_percent = total_lvl / (total_produksi or 1) * 100
