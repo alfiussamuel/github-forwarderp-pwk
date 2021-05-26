@@ -8,6 +8,7 @@
                 <search string="Search Packing List">
                     <field name="date"/>
                     <field name="name"/>
+                    <field name="po_number"/>
                     <field name="partner_id"/>
                     <field name="destination_id"/>
                     <field name="marking"/>
