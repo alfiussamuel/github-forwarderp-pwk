@@ -209,7 +209,7 @@ class PwkRpmLine(models.Model):
     remaining_volume = fields.Float(compute="_get_volume", string='Vol Remaining', digits=dp.get_precision('FourDecimal'))
 
     total_qty = fields.Float(string='Qty RPM', digits=dp.get_precision('ZeroDecimal'))
-    total_qty_spare = fields.Float(string='Qty RPM (Spare)', digits=dp.get_precision('ZeroDecimal'))
+    total_qty_spare = fields.Float(compute="_get_total_qty_spare", string='Qty RPM (Spare)', digits=dp.get_precision('ZeroDecimal'))
     total_volume = fields.Float(compute="_get_volume", string='Vol RPM', digits=dp.get_precision('FourDecimal'))
 
     detail_ids_1 = fields.One2many('pwk.rpm.line.detail1', 'reference', string='Lines', ondelete="cascade")
