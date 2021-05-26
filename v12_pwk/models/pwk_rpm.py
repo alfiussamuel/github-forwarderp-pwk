@@ -209,7 +209,7 @@ class PwkRpmLine(models.Model):
     remaining_volume = fields.Float(compute="_get_volume", string='Vol Remaining', digits=dp.get_precision('FourDecimal'))
 
     total_qty = fields.Float(string='Qty RPM', digits=dp.get_precision('ZeroDecimal'))
-    total_qty_spare = fields.Float(compute="_get_total_qty_spare", string='Qty RPM (Spare)', digits=dp.get_precision('ZeroDecimal'))
+    total_qty_spare = fields.Float(compute="_get_sale_fields", string='Qty RPM (Spare)', digits=dp.get_precision('ZeroDecimal'))
     total_volume = fields.Float(compute="_get_volume", string='Vol RPM', digits=dp.get_precision('FourDecimal'))
 
     detail_ids_1 = fields.One2many('pwk.rpm.line.detail1', 'reference', string='Lines', ondelete="cascade")
@@ -297,10 +297,10 @@ class PwkRpmLine(models.Model):
             res.percent_tebal = total_tebal / res.thick * 100
 
 
-    @api.depends('total_qty', 'spare_qty')
-    def _get_total_qty_spare(self):
-        for res in self:
-            res.total_qty_spare = res.total_qty + round((res.total_qty * res.spare_qty / 100))
+    # @api.depends('total_qty', 'spare_qty')
+    # def _get_total_qty_spare(self):
+    #     for res in self:
+    #         res.total_qty_spare = res.total_qty + round((res.total_qty * res.spare_qty / 100))
 
     @api.depends('total_qty', 'total_qty_spare', 'remaining_qty', 'is_changed')
     def _get_volume(self):
@@ -308,7 +308,7 @@ class PwkRpmLine(models.Model):
             res.total_volume = res.total_qty_spare * res.thick * res.width * res.length / 1000000000
             res.remaining_volume = res.remaining_qty * res.thick * res.width * res.length / 1000000000
 
-    @api.depends('sale_line_id')
+    @api.depends('sale_line_id','total_qty','spare_qty')
     def _get_sale_fields(self):
         for res in self:
             if res.sale_line_id:
@@ -322,6 +322,7 @@ class PwkRpmLine(models.Model):
                 res.po_number = res.sale_line_id.order_id.po_number
                 res.destination_id = res.sale_line_id.order_id.destination_id
                 res.marking = res.sale_line_id.marking
+                res.res.total_qty_spare = res.total_qty + round((res.total_qty * res.spare_qty / 100))
 
     @api.multi
     def button_reload_bom(self):
