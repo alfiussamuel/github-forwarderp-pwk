@@ -322,7 +322,7 @@ class PwkRpmLine(models.Model):
                 res.po_number = res.sale_line_id.order_id.po_number
                 res.destination_id = res.sale_line_id.order_id.destination_id
                 res.marking = res.sale_line_id.marking
-                res.res.total_qty_spare = res.total_qty + round((res.total_qty * res.spare_qty / 100))
+                res.total_qty_spare = res.total_qty + round((res.total_qty * res.spare_qty / 100))
 
     @api.multi
     def button_reload_bom(self):
