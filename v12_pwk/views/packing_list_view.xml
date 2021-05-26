@@ -1,6 +1,30 @@
 <odoo>
     <data>                                   
 
+        <record id="pwk_packing_list_search" model="ir.ui.view">
+            <field name="name">pwk.packing.list.search</field>
+            <field name="model">pwk.packing.list</field>
+            <field name="arch" type="xml">
+                <search string="Search Packing List">
+                    <field name="date"/>
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="destination_id"/>
+                    <field name="po_number"/>
+                    <field name="marking"/>
+                    <field name="tanggal_selesai"/>
+                    <field name="tanggal_emisi"/>
+                    <field name="tanggal_stuffing"/>                 
+                    <group expand="0" string="Group By">
+                        <filter string="Tanggal" name="date" 
+                            domain="[]" context="{'group_by':'date'}"/>
+                        <filter string="Buyer" name="partner_id" 
+                            domain="[]" context="{'group_by':'partner_id'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+
         <record id="pwk_packing_list_tree" model="ir.ui.view">
             <field name="name">Packing List Produksi</field>
             <field name="model">pwk.packing.list</field>
