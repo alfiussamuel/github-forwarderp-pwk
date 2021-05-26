@@ -515,9 +515,12 @@ class PwkRpb(models.Model):
     total_blockboard = fields.Float(compute="_get_total_produksi", string='Total Blockboard', digits=dp.get_precision('FourDecimal'))
     total_plywood = fields.Float(compute="_get_total_produksi", string='Total Plywood', digits=dp.get_precision('FourDecimal'))
     total_lvl = fields.Float(compute="_get_total_produksi", string='Total LVL', digits=dp.get_precision('FourDecimal'))
+    total_blockboard_mdf = fields.Float(compute="_get_total_produksi", string='Total Blockboard MDF', digits=dp.get_precision('FourDecimal'))
+    
     total_blockboard_percent = fields.Float(compute="_get_total_produksi", string='Total Blockboard (%)', digits=dp.get_precision('ZeroDecimal'))
     total_plywood_percent = fields.Float(compute="_get_total_produksi", string='Total Plywood (%)', digits=dp.get_precision('ZeroDecimal'))
     total_lvl_percent = fields.Float(compute="_get_total_produksi", string='Total LVL (%)', digits=dp.get_precision('ZeroDecimal'))
+    total_blockboard_mdf_percent = fields.Float(compute="_get_total_produksi", string='Total Blockboard MDF (%)', digits=dp.get_precision('ZeroDecimal'))
 
     group_ids = fields.One2many('pwk.rpb.group', 'reference', 'Groups')
 
@@ -533,12 +536,16 @@ class PwkRpb(models.Model):
             total_blockboard = 0
             total_plywood = 0
             total_lvl = 0
+            total_blockboard_mdf = 0
             total_produksi = 0
 
             if res.line_ids:
                 for line in res.line_ids:
                     if line.product_id.goods_type == "Blockboard":
-                        total_blockboard += line.subtotal_vol
+                        if line.product_id.jenis_kayu.name == "MDF":
+                            total_blockboard_mdf += line.subtotal_vol
+                        else:
+                            total_blockboard += line.subtotal_vol
                     elif line.product_id.goods_type == "Plywood":
                         total_plywood += line.subtotal_vol
                     elif line.product_id.goods_type == "LVL":
@@ -547,10 +554,13 @@ class PwkRpb(models.Model):
             res.total_blockboard = total_blockboard
             res.total_plywood = total_plywood
             res.total_lvl = total_lvl
+            res.total_blockboard_mdf = total_blockboard_mdf
+
             total_produksi = total_blockboard + total_plywood + total_lvl
             res.total_blockboard_percent = total_blockboard / (total_produksi or 1) * 100
             res.total_plywood_percent = total_plywood / (total_produksi or 1) * 100
             res.total_lvl_percent = total_lvl / (total_produksi or 1) * 100
+            res.total_blockboard_mdf_percent = total_blockboard_mdf / (total_produksi or 1) * 100
 
     @api.multi
     def action_create_bahan_baku(self):
