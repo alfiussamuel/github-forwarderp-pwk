@@ -209,7 +209,7 @@ class PwkRpmLine(models.Model):
     remaining_volume = fields.Float(compute="_get_volume", string='Vol Remaining', digits=dp.get_precision('FourDecimal'))
 
     total_qty = fields.Float(string='Qty RPM', digits=dp.get_precision('ZeroDecimal'))
-    total_qty_spare = fields.Float(compute="_get_sale_fields", string='Qty RPM (Spare)', digits=dp.get_precision('ZeroDecimal'))
+    total_qty_spare = fields.Float(string='Qty RPM (Spare)', digits=dp.get_precision('ZeroDecimal'))
     total_volume = fields.Float(compute="_get_volume", string='Vol RPM', digits=dp.get_precision('FourDecimal'))
 
     detail_ids_1 = fields.One2many('pwk.rpm.line.detail1', 'reference', string='Lines', ondelete="cascade")
@@ -242,6 +242,11 @@ class PwkRpmLine(models.Model):
     quantity_p1_remaining = fields.Integer(compute="_get_total", string="Sisa P1", digits=dp.get_precision('ZeroDecimal'))
     quantity_p2_total = fields.Integer(compute="_get_total", string='Total P2', digits=dp.get_precision('ZeroDecimal'))
     quantity_p2_remaining = fields.Integer(compute="_get_total", string='Sisa P2', digits=dp.get_precision('ZeroDecimal'))
+
+    @api.onchange('spare_qty','total_qty')
+    def _onchange_spare_qty(self):
+        spare_qty = round((self.total_qty * self.spare_qty / 100))
+        self.total_qty_spare = self.total_qty + spare_qty
 
     @api.depends('date_ids.quantity_p1', 'date_ids.quantity_p2', 'total_qty')
     def _get_total(self):
@@ -322,7 +327,6 @@ class PwkRpmLine(models.Model):
                 res.po_number = res.sale_line_id.order_id.po_number
                 res.destination_id = res.sale_line_id.order_id.destination_id
                 res.marking = res.sale_line_id.marking
-                res.total_qty_spare = res.total_qty + round((res.total_qty * res.spare_qty / 100))
 
     @api.multi
     def button_reload_bom(self):
