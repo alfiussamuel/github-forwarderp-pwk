@@ -723,6 +723,10 @@
                         <div>
                             <field name="total_lvl" class="oe_inline"/> | <field name="total_lvl_percent" class="oe_inline"/> %
                         </div>
+                        <label for="total_blockboard_mdf"/>
+                        <div>
+                            <field name="total_blockboard_mdf" class="oe_inline"/> | <field name="total_blockboard_mdf_percent" class="oe_inline"/> %
+                        </div>
                     </group>
                     <group>
                         <notebook>

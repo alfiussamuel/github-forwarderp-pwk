@@ -492,9 +492,13 @@ class PwkRpm(models.Model):
     total_blockboard = fields.Float(compute="_get_total_produksi", string='Total Blockboard', digits=dp.get_precision('FourDecimal'))
     total_plywood = fields.Float(compute="_get_total_produksi", string='Total Plywood', digits=dp.get_precision('FourDecimal'))
     total_lvl = fields.Float(compute="_get_total_produksi", string='Total LVL', digits=dp.get_precision('FourDecimal'))
+    total_blockboard_mdf = fields.Float(compute="_get_total_produksi", string='Total Blockboard MDF', digits=dp.get_precision('FourDecimal'))
+
     total_blockboard_percent = fields.Float(compute="_get_total_produksi", string='Total Blockboard (%)', digits=dp.get_precision('ZeroDecimal'))
     total_plywood_percent = fields.Float(compute="_get_total_produksi", string='Total Plywood (%)', digits=dp.get_precision('ZeroDecimal'))
     total_lvl_percent = fields.Float(compute="_get_total_produksi", string='Total LVL (%)', digits=dp.get_precision('ZeroDecimal'))
+    total_blockboard_mdf_percent = fields.Float(compute="_get_total_produksi", string='Total Blockboard MDF (%)', digits=dp.get_precision('ZeroDecimal'))
+
     target_per_hari = fields.Float(compute="_get_total_produksi", string='Target / Hari', digits=dp.get_precision('FourDecimal'))
 
     @api.multi
@@ -512,12 +516,16 @@ class PwkRpm(models.Model):
             total_blockboard = 0
             total_plywood = 0
             total_lvl = 0
+            total_blockboard_mdf = 0
             total_produksi = 0
 
             if res.line_ids:
                 for line in res.line_ids:
                     if line.product_id.goods_type == "Blockboard":
-                        total_blockboard += line.total_volume
+                        if line.product_id.jenis_kayu.name == "MDF":
+                            total_blockboard_mdf += line.total_volume
+                        else:
+                            total_blockboard += line.total_volume
                     elif line.product_id.goods_type == "Plywood":
                         total_plywood += line.total_volume
                     elif line.product_id.goods_type == "LVL":
@@ -526,10 +534,14 @@ class PwkRpm(models.Model):
             res.total_blockboard = total_blockboard
             res.total_plywood = total_plywood
             res.total_lvl = total_lvl
-            res.total_produksi = total_blockboard + total_plywood + total_lvl
+            res.total_blockboard_mdf = total_blockboard_mdf
+            
             res.total_blockboard_percent = total_blockboard / (res.total_produksi or 1) * 100
             res.total_plywood_percent = total_plywood / (res.total_produksi or 1) * 100
             res.total_lvl_percent = total_lvl / (res.total_produksi or 1) * 100
+            res.total_blockboard_mdf_percent = total_blockboard_mdf / (total_produksi or 1) * 100
+
+            res.total_produksi = total_blockboard + total_plywood + total_lvl
             res.target_per_hari = res.total_produksi / (res.working_days or 1)
 
     @api.multi
