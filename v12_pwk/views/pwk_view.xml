@@ -369,6 +369,7 @@
                                                         <field name="is_detail1" invisible="1"/>
                                                         <field name="is_detail2" invisible="1"/>
                                                         <field name="is_detail5" invisible="1"/>
+                                                        <field name="sale_line_id"/>
                                                     </group>
                                                 </group>
                                                 <group>
