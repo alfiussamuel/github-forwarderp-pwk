@@ -21,8 +21,8 @@ class PwkMutasiAssemblingFinishingGs1(models.Model):
     lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
     panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
     grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
-    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
-    stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
+    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Awal')
+    stock_awal_vol = fields.Float(compute="_get_volume", string='Awal', digits=dp.get_precision('FourDecimal'))
     
     gs_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Masuk GS (Pcs)')
     gs_stock_masuk_vol = fields.Float(compute="_get_volume", string='Masuk GS (M3)', digits=dp.get_precision('FourDecimal'))
@@ -44,8 +44,8 @@ class PwkMutasiAssemblingFinishingGs1(models.Model):
     gs_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Keluar GS')
     gs_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Keluar GS', digits=dp.get_precision('FourDecimal'))
 
-    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
-    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
+    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Akhir')
+    stock_akhir_vol = fields.Float(compute="_get_volume", string='Akhir', digits=dp.get_precision('FourDecimal'))
 
     @api.depends('product_id')
     def _get_product_attribute(self):
@@ -158,8 +158,8 @@ class PwkMutasiAssemblingFinishingGs2(models.Model):
     lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
     panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
     grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
-    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
-    stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
+    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Awal')
+    stock_awal_vol = fields.Float(compute="_get_volume", string='Awal', digits=dp.get_precision('FourDecimal'))
     
     gs_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Masuk GS (Pcs)')
     gs_stock_masuk_vol = fields.Float(compute="_get_volume", string='Masuk GS (M3)', digits=dp.get_precision('FourDecimal'))
@@ -186,8 +186,8 @@ class PwkMutasiAssemblingFinishingGs2(models.Model):
     gs_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Keluar GS')
     gs_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Keluar GS', digits=dp.get_precision('FourDecimal'))
 
-    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
-    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
+    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Akhir')
+    stock_akhir_vol = fields.Float(compute="_get_volume", string='Akhir', digits=dp.get_precision('FourDecimal'))
 
     @api.depends('product_id')
     def _get_product_attribute(self):
@@ -301,8 +301,8 @@ class PwkMutasiAssemblingFinishingUnsander(models.Model):
     lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
     panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
     grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
-    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
-    stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
+    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Awal')
+    stock_awal_vol = fields.Float(compute="_get_volume", string='Awal', digits=dp.get_precision('FourDecimal'))
     
     hot_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Masuk Hot (Pcs)')
     hot_stock_masuk_vol = fields.Float(compute="_get_volume", string='Masuk Hot (M3)', digits=dp.get_precision('FourDecimal'))
@@ -339,8 +339,8 @@ class PwkMutasiAssemblingFinishingUnsander(models.Model):
     re_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Keluar Re')
     re_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Keluar Re', digits=dp.get_precision('FourDecimal'))    
 
-    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
-    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
+    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Akhir')
+    stock_akhir_vol = fields.Float(compute="_get_volume", string='Akhir', digits=dp.get_precision('FourDecimal'))
 
     @api.depends('product_id')
     def _get_product_attribute(self):
@@ -481,8 +481,8 @@ class PwkMutasiAssemblingFinishingProses1(models.Model):
     lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
     panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
     grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
-    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
-    stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
+    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Awal')
+    stock_awal_vol = fields.Float(compute="_get_volume", string='Awal', digits=dp.get_precision('FourDecimal'))
     
     sander_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Masuk Sander (Pcs)')
     sander_stock_masuk_vol = fields.Float(compute="_get_volume", string='Masuk Sander (M3)', digits=dp.get_precision('FourDecimal'))
@@ -514,8 +514,8 @@ class PwkMutasiAssemblingFinishingProses1(models.Model):
     re_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Keluar Re')
     re_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Keluar Re', digits=dp.get_precision('FourDecimal'))    
 
-    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
-    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
+    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Akhir')
+    stock_akhir_vol = fields.Float(compute="_get_volume", string='Akhir', digits=dp.get_precision('FourDecimal'))
 
     @api.depends('product_id')
     def _get_product_attribute(self):
@@ -645,8 +645,8 @@ class PwkMutasiAssemblingFinishingProses2(models.Model):
     lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
     panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
     grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
-    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
-    stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
+    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Awal')
+    stock_awal_vol = fields.Float(compute="_get_volume", string='Awal', digits=dp.get_precision('FourDecimal'))
     
     sander_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Masuk Sander (Pcs)')
     sander_stock_masuk_vol = fields.Float(compute="_get_volume", string='Masuk Sander (M3)', digits=dp.get_precision('FourDecimal'))
@@ -673,8 +673,8 @@ class PwkMutasiAssemblingFinishingProses2(models.Model):
     re_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Keluar Re')
     re_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Keluar Re', digits=dp.get_precision('FourDecimal'))    
 
-    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
-    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
+    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Akhir')
+    stock_akhir_vol = fields.Float(compute="_get_volume", string='Akhir', digits=dp.get_precision('FourDecimal'))
 
     @api.depends('product_id')
     def _get_product_attribute(self):
@@ -802,8 +802,8 @@ class PwkMutasiAssemblingFinishingKalibrasi(models.Model):
     lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
     panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
     grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
-    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
-    stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
+    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Awal')
+    stock_awal_vol = fields.Float(compute="_get_volume", string='Awal', digits=dp.get_precision('FourDecimal'))
     
     sander_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Masuk Sander (Pcs)')
     sander_stock_masuk_vol = fields.Float(compute="_get_volume", string='Masuk Sander (M3)', digits=dp.get_precision('FourDecimal'))
@@ -835,8 +835,8 @@ class PwkMutasiAssemblingFinishingKalibrasi(models.Model):
     re_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Keluar Re')
     re_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Keluar Re', digits=dp.get_precision('FourDecimal'))    
 
-    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
-    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
+    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Akhir')
+    stock_akhir_vol = fields.Float(compute="_get_volume", string='Akhir', digits=dp.get_precision('FourDecimal'))
 
     @api.depends('product_id')
     def _get_product_attribute(self):
@@ -963,8 +963,8 @@ class PwkMutasiAssemblingFinishingKalibrasi2(models.Model):
     lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
     panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
     grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
-    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
-    stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
+    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Awal')
+    stock_awal_vol = fields.Float(compute="_get_volume", string='Awal', digits=dp.get_precision('FourDecimal'))
     
     sander_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Masuk Sander (Pcs)')
     sander_stock_masuk_vol = fields.Float(compute="_get_volume", string='Masuk Sander (M3)', digits=dp.get_precision('FourDecimal'))
@@ -996,8 +996,8 @@ class PwkMutasiAssemblingFinishingKalibrasi2(models.Model):
     re_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Keluar Re')
     re_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Keluar Re', digits=dp.get_precision('FourDecimal'))    
 
-    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
-    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
+    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Akhir')
+    stock_akhir_vol = fields.Float(compute="_get_volume", string='Akhir', digits=dp.get_precision('FourDecimal'))
 
     @api.depends('product_id')
     def _get_product_attribute(self):
@@ -1138,8 +1138,8 @@ class PwkMutasiAssemblingFinishingSizer(models.Model):
     lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
     panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
     grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
-    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
-    stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
+    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Awal')
+    stock_awal_vol = fields.Float(compute="_get_volume", string='Awal', digits=dp.get_precision('FourDecimal'))
     
     sander2_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Masuk Sander2 (Pcs)')
     sander2_stock_masuk_vol = fields.Float(compute="_get_volume", string='Masuk Sander2 (M3)', digits=dp.get_precision('FourDecimal'))
@@ -1186,8 +1186,8 @@ class PwkMutasiAssemblingFinishingSizer(models.Model):
     re_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Keluar Re')
     re_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Keluar Re', digits=dp.get_precision('FourDecimal'))    
 
-    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
-    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
+    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Akhir')
+    stock_akhir_vol = fields.Float(compute="_get_volume", string='Akhir', digits=dp.get_precision('FourDecimal'))
 
     @api.depends('product_id')
     def _get_product_attribute(self):
@@ -1355,8 +1355,8 @@ class PwkMutasiAssemblingFinishingFinish(models.Model):
     lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
     panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
     grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
-    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
-    stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
+    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Awal')
+    stock_awal_vol = fields.Float(compute="_get_volume", string='Awal', digits=dp.get_precision('FourDecimal'))
     
     sizer_stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Masuk Sizer (Pcs)')
     sizer_stock_masuk_vol = fields.Float(compute="_get_volume", string='Masuk Sizer (M3)', digits=dp.get_precision('FourDecimal'))
@@ -1388,8 +1388,8 @@ class PwkMutasiAssemblingFinishingFinish(models.Model):
     re_acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Keluar Re')
     re_acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Keluar Re', digits=dp.get_precision('FourDecimal'))    
 
-    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
-    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
+    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Akhir')
+    stock_akhir_vol = fields.Float(compute="_get_volume", string='Akhir', digits=dp.get_precision('FourDecimal'))
 
     @api.depends('product_id')
     def _get_product_attribute(self):
@@ -1532,8 +1532,8 @@ class PwkMutasiAssemblingFinishingReproses(models.Model):
     lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
     panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
     grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
-    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
-    stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
+    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Awal')
+    stock_awal_vol = fields.Float(compute="_get_volume", string='Awal', digits=dp.get_precision('FourDecimal'))
     
     stock_masuk_vol = fields.Float(compute="_get_volume", string='Masuk (M3)', digits=dp.get_precision('FourDecimal'))
     stock_masuk_pcs = fields.Float(compute="_get_stock_masuk", string='Masuk (Pcs)')
@@ -1545,8 +1545,8 @@ class PwkMutasiAssemblingFinishingReproses(models.Model):
     acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Keluar')
     acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Keluar', digits=dp.get_precision('FourDecimal'))
     
-    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
-    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
+    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Akhir')
+    stock_akhir_vol = fields.Float(compute="_get_volume", string='Akhir', digits=dp.get_precision('FourDecimal'))
 
     @api.depends('product_id')
     def _get_product_attribute(self):
@@ -1648,8 +1648,8 @@ class PwkMutasiAssemblingFinishingCover(models.Model):
     lebar = fields.Float(compute="_get_product_attribute", string='Lebar')
     panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
     grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
-    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Stok Awal')
-    stock_awal_vol = fields.Float(compute="_get_volume", string='Stok Awal', digits=dp.get_precision('FourDecimal'))
+    stock_awal_pcs = fields.Float(compute="_get_stock_awal", string='Awal')
+    stock_awal_vol = fields.Float(compute="_get_volume", string='Awal', digits=dp.get_precision('FourDecimal'))
     
     stock_masuk_pcs = fields.Float(string='Masuk (Pcs)')
     stock_masuk_vol = fields.Float(compute="_get_volume", string='Masuk (M3)', digits=dp.get_precision('FourDecimal'))    
@@ -1661,8 +1661,8 @@ class PwkMutasiAssemblingFinishingCover(models.Model):
     acc_stock_keluar_pcs = fields.Float(compute="_get_acc", string='Keluar')
     acc_stock_keluar_vol = fields.Float(compute="_get_volume", string='Keluar', digits=dp.get_precision('FourDecimal'))
     
-    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Stok Akhir')
-    stock_akhir_vol = fields.Float(compute="_get_volume", string='Stok Akhir', digits=dp.get_precision('FourDecimal'))
+    stock_akhir_pcs = fields.Float(compute="_get_stock_akhir", string='Akhir')
+    stock_akhir_vol = fields.Float(compute="_get_volume", string='Akhir', digits=dp.get_precision('FourDecimal'))
 
     @api.depends('product_id')
     def _get_product_attribute(self):
