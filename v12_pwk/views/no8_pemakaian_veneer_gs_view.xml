@@ -84,10 +84,8 @@
                                                                     <field name="bb_jenis_kayu"/>
                                                                     <field name="bj_each"/>
                                                                     <field name="bj_qty"/>
-                                                                    <field name="bb_pcs" 
-                                                                        sum="Total"/>
-                                                                    <field name="bb_vol" 
-                                                                        sum="Total"/>
+                                                                    <field name="bb_pcs" string="Hasil" sum="Total"/>
+                                                                    <field name="bb_vol" sum="Total"/>
                                                                 </tree>
                                                             </field>
                                                         </group>

@@ -22,16 +22,16 @@ class PwkPemakaianVeneerGsLineDetail(models.Model):
     bb_panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
     bb_jenis_kayu = fields.Many2one(compute="_get_product_attribute", comodel_name="pwk.jenis.kayu", string='Jenis Kayu')    
     bb_grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
-    bj_each = fields.Float('Pcs')
-    bj_qty = fields.Float('X')
-    bb_pcs = fields.Float('PCS')
+    bj_each = fields.Float('Pcs', digits=dp.get_precision('ZeroDecimal'))
+    bj_qty = fields.Float('X', digits=dp.get_precision('ZeroDecimal'))
+    bb_pcs = fields.Float('PCS', digits=dp.get_precision('ZeroDecimal'))
     bb_vol = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal'))
     
     @api.onchange('bj_each', 'bj_qty')
     def _onchange_bj(self):
         if self.bj_each and self.bj_qty:
             self.bj_pcs = self.bj_each * self.bj_qty
-    
+
     @api.depends('bb_product_id')
     def _get_product_attribute(self):
         for res in self:
@@ -59,9 +59,9 @@ class PwkPemakaianVeneerGsLine(models.Model):
     bj_jenis_kayu = fields.Many2one(compute="_get_product_attribute", comodel_name="pwk.jenis.kayu",  string='Jenis Kayu')
     bj_jenis_core = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.jenis.core', string='Jenis Core')
     bj_grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
-    bj_each = fields.Float('Pcs')
-    bj_qty = fields.Float('X')
-    bj_pcs = fields.Float('Hasil')
+    bj_each = fields.Float('Pcs', digits=dp.get_precision('ZeroDecimal'))
+    bj_qty = fields.Float('X', digits=dp.get_precision('ZeroDecimal'))
+    bj_pcs = fields.Float('Hasil', digits=dp.get_precision('ZeroDecimal'))
     bj_vol = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal'))
     keterangan = fields.Selection([('P1','P1'), ('P2','P2'), ('LU P1','LU P1'), ('LU P2','LU P2'), ('1x Proses','1x Proses')], default='P1', string='Keterangan')    
 
