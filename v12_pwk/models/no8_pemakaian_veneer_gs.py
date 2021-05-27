@@ -22,15 +22,15 @@ class PwkPemakaianVeneerGsLineDetail(models.Model):
     bb_panjang = fields.Float(compute="_get_product_attribute", string='Panjang')
     bb_jenis_kayu = fields.Many2one(compute="_get_product_attribute", comodel_name="pwk.jenis.kayu", string='Jenis Kayu')    
     bb_grade = fields.Many2one(compute="_get_product_attribute", comodel_name='pwk.grade', string='Grade')
-    bj_each = fields.Float('Pcs', digits=dp.get_precision('ZeroDecimal'))
-    bj_qty = fields.Float('X', digits=dp.get_precision('ZeroDecimal'))
+    bb_each = fields.Float('Pcs', digits=dp.get_precision('ZeroDecimal'))
+    bb_qty = fields.Float('X', digits=dp.get_precision('ZeroDecimal'))
     bb_pcs = fields.Float('PCS', digits=dp.get_precision('ZeroDecimal'))
     bb_vol = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal'))
     
     @api.onchange('bj_each', 'bj_qty')
     def _onchange_bj(self):
-        if self.bj_each and self.bj_qty:
-            self.bj_pcs = self.bj_each * self.bj_qty
+        if self.bb_each and self.bb_qty:
+            self.bj_pcs = self.bb_each * self.bb_qty
 
     @api.depends('bb_product_id')
     def _get_product_attribute(self):
