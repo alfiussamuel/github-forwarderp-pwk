@@ -46,6 +46,7 @@ class RpbReportXls(models.AbstractModel):
         formatHeaderCenterNumber = workbook.add_format({'font_size': 14, 'valign':'vcenter', 'align': 'center', 'bold': True, 'text_wrap': True, 'num_format': '#,##0'})
         formatHeaderLeft = workbook.add_format({'font_size': 14, 'valign':'vcenter', 'align': 'left', 'bold': True, 'text_wrap': True})
         formatHeaderLeft10 = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'left', 'bold': True, 'text_wrap': True})
+        formatHeaderCenter10 = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'center', 'bold': True, 'text_wrap': True})
         formatHeaderLeft10NoBorder = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'left', 'bold': True, 'text_wrap': True})
         formatHeaderRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0', 'bold': True, 'bg_color':'#4ead2f', 'color':'white'})
         formatHeaderRightPlain = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0', 'bold': True})
@@ -84,6 +85,7 @@ class RpbReportXls(models.AbstractModel):
         formatHeaderDetailRightFour.set_border(1)
         formatHeaderDetailLeft.set_border(1)
         formatHeaderLeft10.set_border(1)
+        formatHeaderCenter10.set_border(1)
         formatHeaderRightFourPlain.set_border(1)
         formatHeaderRightPlain.set_border(1)
 
@@ -210,13 +212,13 @@ class RpbReportXls(models.AbstractModel):
         sheet.write(row + 3, 1, "LVL", formatHeaderLeft10)
         sheet.write(row + 4, 1, "Total", formatHeaderLeft10)
 
-        sheet.write(row, 2, "Volume" , formatHeaderCenter)
+        sheet.write(row, 2, "Volume" , formatHeaderCenter10)
         sheet.write(row + 1, 2, lines.total_blockboard, formatHeaderRightFourPlain)
         sheet.write(row + 2, 2, lines.total_plywood, formatHeaderRightFourPlain)
         sheet.write(row + 3, 2, lines.total_lvl, formatHeaderRightFourPlain)
         sheet.write(row + 4, 2, lines.actual, formatHeaderRightFourPlain)
 
-        sheet.write(row, 3, "Percent" , formatHeaderCenter)
+        sheet.write(row, 3, "Percent" , formatHeaderCenter10)
         sheet.write(row + 1, 3, str(lines.total_blockboard_percent) + '%', formatHeaderRightPlain)
         sheet.write(row + 2, 3, str(lines.total_plywood_percent) + '%', formatHeaderRightPlain)
         sheet.write(row + 3, 3, str(lines.total_lvl_percent) + '%', formatHeaderRightPlain)
