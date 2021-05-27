@@ -210,7 +210,7 @@ class RpbReportXls(models.AbstractModel):
         sheet.write(row + 3, 1, "LVL", formatHeaderLeft10)
         sheet.write(row + 4, 1, "Total", formatHeaderLeft10)
 
-        sheet.write(row + 1, 2, str(lines.total_blockboard) + ' M3', formatHeaderRightFourPlain)
+        sheet.write(row + 1, 2, lines.total_blockboard, formatHeaderRightFourPlain)
         sheet.write(row + 2, 2, str(lines.total_plywood) + ' M3', formatHeaderRightFourPlain)
         sheet.write(row + 3, 2, str(lines.total_lvl) + ' M3', formatHeaderRightFourPlain)
         sheet.write(row + 4, 2, str(lines.actual) + ' M3', formatHeaderRightFourPlain)
