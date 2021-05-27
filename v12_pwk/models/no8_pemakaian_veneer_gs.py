@@ -27,10 +27,10 @@ class PwkPemakaianVeneerGsLineDetail(models.Model):
     bb_pcs = fields.Float('PCS', digits=dp.get_precision('ZeroDecimal'))
     bb_vol = fields.Float(compute="_get_volume", string='M3', digits=dp.get_precision('FourDecimal'))
     
-    @api.onchange('bj_each', 'bj_qty')
-    def _onchange_bj(self):
+    @api.onchange('bb_each', 'bb_qty')
+    def _onchange_bb(self):
         if self.bb_each and self.bb_qty:
-            self.bj_pcs = self.bb_each * self.bb_qty
+            self.bb_pcs = self.bb_each * self.bb_qty
 
     @api.depends('bb_product_id')
     def _get_product_attribute(self):
