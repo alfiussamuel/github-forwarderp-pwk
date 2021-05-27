@@ -65,13 +65,13 @@
                                                     <field name="stock_awal_pcs" 
                                                         string="Stok Awal"/>
                                                     <field name="gs_stock_masuk_pcs"
-                                                        string="Stok Masuk GS"/> 
+                                                        string="Masuk GS"/> 
                                                     <field name="re_stock_masuk_pcs"
-                                                        string="Stok Masuk Re-GS"/> 
+                                                        string="Masuk Re-GS"/> 
                                                     <field name="hot_stock_keluar_pcs"
-                                                        string="Stok Keluar Hot"/>
+                                                        string="Keluar Hot"/>
                                                     <field name="gs_stock_keluar_pcs"
-                                                        string="Stok Keluar GS"/>
+                                                        string="Keluar GS"/>
                                                     <field name="stock_akhir_pcs"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -79,13 +79,13 @@
                                                     <field name="stock_awal_vol"
                                                         string="Stok Awal"/>
                                                     <field name="gs_stock_masuk_vol"
-                                                        string="Stok Masuk GS"/>
+                                                        string="Masuk GS"/>
                                                     <field name="re_stock_masuk_vol"
-                                                        string="Stok Masuk Re-GS"/>
+                                                        string="Masuk Re-GS"/>
                                                     <field name="hot_stock_keluar_vol"
-                                                        string="Stok Keluar Hot"/>
+                                                        string="Keluar Hot"/>
                                                     <field name="gs_stock_keluar_vol"
-                                                        string="Stok Keluar GS"/>
+                                                        string="Keluar GS"/>
                                                     <field name="stock_akhir_vol"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -141,15 +141,15 @@
                                                     <field name="stock_awal_pcs" 
                                                         string="Stok Awal"/>
                                                     <field name="gs_stock_masuk_pcs"
-                                                        string="Stok Masuk GS"/> 
+                                                        string="Masuk GS"/> 
                                                     <field name="re_stock_masuk_pcs"
-                                                        string="Stok Masuk Re-GS"/> 
+                                                        string="Masuk Re-GS"/> 
                                                     <field name="hot_stock_keluar_pcs"
-                                                        string="Stok Keluar Hot"/>
+                                                        string="Keluar Hot"/>
                                                     <field name="gs_stock_keluar_pcs"
-                                                        string="Stok Keluar GS"/>
+                                                        string="Keluar GS"/>
                                                     <field name="sk_stock_keluar_pcs"
-                                                        string="Stok Keluar GS"/>
+                                                        string="Keluar GS"/>
                                                     <field name="stock_akhir_pcs"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -157,15 +157,15 @@
                                                     <field name="stock_awal_vol"
                                                         string="Stok Awal"/>
                                                     <field name="gs_stock_masuk_vol"
-                                                        string="Stok Masuk GS"/>
+                                                        string="Masuk GS"/>
                                                     <field name="re_stock_masuk_vol"
-                                                        string="Stok Masuk Re-GS"/>
+                                                        string="Masuk Re-GS"/>
                                                     <field name="hot_stock_keluar_vol"
-                                                        string="Stok Keluar Hot"/>
+                                                        string="Keluar Hot"/>
                                                     <field name="gs_stock_keluar_vol"
-                                                        string="Stok Keluar GS"/>
+                                                        string="Keluar GS"/>
                                                     <field name="sk_stock_keluar_vol"
-                                                        string="Stok Keluar GS"/>
+                                                        string="Keluar GS"/>
                                                     <field name="stock_akhir_vol"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -227,19 +227,19 @@
                                                     <field name="stock_awal_pcs" 
                                                         string="Stok Awal"/>
                                                     <field name="hot_stock_masuk_pcs"
-                                                        string="Stok Masuk Hot"/> 
+                                                        string="Masuk Hot"/> 
                                                     <field name="re_stock_masuk_pcs"
-                                                        string="Stok Masuk Re"/> 
+                                                        string="Masuk Re"/> 
                                                     <field name="sander_stock_keluar_pcs"
-                                                        string="Stok Keluar Sander"/>
+                                                        string="Keluar Sander"/>
                                                     <field name="reproses_stock_keluar_pcs"
-                                                        string="Stok Keluar Reproses"/>
+                                                        string="Keluar Reproses"/>
                                                     <field name="qc_stock_keluar_pcs"
-                                                        string="Stok Keluar QC"/>
+                                                        string="Keluar QC"/>
                                                     <field name="lain_stock_keluar_pcs"
-                                                        string="Stok Keluar Lain"/>
+                                                        string="Keluar Lain"/>
                                                     <field name="re_stock_keluar_pcs"
-                                                        string="Stok Keluar Re"/>
+                                                        string="Keluar Re"/>
                                                     <field name="stock_akhir_pcs"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -247,19 +247,19 @@
                                                     <field name="stock_awal_vol"
                                                         string="Stok Awal"/>
                                                     <field name="hot_stock_masuk_vol"
-                                                        string="Stok Masuk Hot"/>
+                                                        string="Masuk Hot"/>
                                                     <field name="re_stock_masuk_vol"
-                                                        string="Stok Masuk Re"/>
+                                                        string="Masuk Re"/>
                                                     <field name="sander_stock_keluar_vol"
-                                                        string="Stok Keluar Sander"/>
+                                                        string="Keluar Sander"/>
                                                     <field name="reproses_stock_keluar_vol"
-                                                        string="Stok Keluar Reproses"/>
+                                                        string="Keluar Reproses"/>
                                                     <field name="qc_stock_keluar_vol"
-                                                        string="Stok Keluar QC"/>
+                                                        string="Keluar QC"/>
                                                     <field name="lain_stock_keluar_vol"
-                                                        string="Stok Keluar Lain"/>
+                                                        string="Keluar Lain"/>
                                                     <field name="re_stock_keluar_vol"
-                                                        string="Stok Keluar Re"/>
+                                                        string="Keluar Re"/>
                                                     <field name="stock_akhir_vol"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -323,17 +323,17 @@
                                                     <field name="stock_awal_pcs" 
                                                         string="Stok Awal"/>
                                                     <field name="sander_stock_masuk_pcs"
-                                                        string="Stok Masuk Sander"/> 
+                                                        string="Masuk Sander"/> 
                                                     <field name="re_stock_masuk_pcs"
-                                                        string="Stok Masuk Re"/> 
+                                                        string="Masuk Re"/> 
                                                     <field name="lup1_sander_stock_keluar_pcs"
-                                                        string="Stok Keluar LUP1"/>
+                                                        string="Keluar LUP1"/>
                                                     <field name="lup2_sander_stock_keluar_pcs"
-                                                        string="Stok Keluar LUP2"/>
+                                                        string="Keluar LUP2"/>
                                                     <field name="lain_stock_keluar_pcs"
-                                                        string="Stok Keluar Lain"/>
+                                                        string="Keluar Lain"/>
                                                     <field name="re_stock_keluar_pcs"
-                                                        string="Stok Keluar Re"/>
+                                                        string="Keluar Re"/>
                                                     <field name="stock_akhir_pcs"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -341,17 +341,17 @@
                                                     <field name="stock_awal_vol"
                                                         string="Stok Awal"/>
                                                     <field name="sander_stock_masuk_vol"
-                                                        string="Stok Masuk Hot"/>
+                                                        string="Masuk Hot"/>
                                                     <field name="re_stock_masuk_vol"
-                                                        string="Stok Masuk Re"/>
+                                                        string="Masuk Re"/>
                                                     <field name="lup1_sander_stock_keluar_vol"
-                                                        string="Stok Keluar LUP1"/>
+                                                        string="Keluar LUP1"/>
                                                     <field name="lup2_sander_stock_keluar_vol"
-                                                        string="Stok Keluar LUP2"/>
+                                                        string="Keluar LUP2"/>
                                                     <field name="lain_stock_keluar_vol"
-                                                        string="Stok Keluar Lain"/>
+                                                        string="Keluar Lain"/>
                                                     <field name="re_stock_keluar_vol"
-                                                        string="Stok Keluar Re"/>
+                                                        string="Keluar Re"/>
                                                     <field name="stock_akhir_vol"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -413,15 +413,15 @@
                                                     <field name="stock_awal_pcs" 
                                                         string="Stok Awal"/>
                                                     <field name="sander_stock_masuk_pcs"
-                                                        string="Stok Masuk Sander"/> 
+                                                        string="Masuk Sander"/> 
                                                     <field name="re_stock_masuk_pcs"
-                                                        string="Stok Masuk Re"/> 
+                                                        string="Masuk Re"/> 
                                                     <field name="gs_stock_keluar_pcs"
-                                                        string="Stok Keluar Sander"/>
+                                                        string="Keluar Sander"/>
                                                     <field name="lain_stock_keluar_pcs"
-                                                        string="Stok Keluar Lain"/>
+                                                        string="Keluar Lain"/>
                                                     <field name="re_stock_keluar_pcs"
-                                                        string="Stok Keluar Re"/>
+                                                        string="Keluar Re"/>
                                                     <field name="stock_akhir_pcs"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -429,15 +429,15 @@
                                                     <field name="stock_awal_vol"
                                                         string="Stok Awal"/>
                                                     <field name="sander_stock_masuk_vol"
-                                                        string="Stok Masuk Hot"/>
+                                                        string="Masuk Hot"/>
                                                     <field name="re_stock_masuk_vol"
-                                                        string="Stok Masuk Re"/>
+                                                        string="Masuk Re"/>
                                                     <field name="gs_stock_keluar_vol"
-                                                        string="Stok Keluar Sander"/>
+                                                        string="Keluar Sander"/>
                                                     <field name="lain_stock_keluar_vol"
-                                                        string="Stok Keluar Lain"/>
+                                                        string="Keluar Lain"/>
                                                     <field name="re_stock_keluar_vol"
-                                                        string="Stok Keluar Re"/>
+                                                        string="Keluar Re"/>
                                                     <field name="stock_akhir_vol"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -497,15 +497,15 @@
                                                     <field name="stock_awal_pcs" 
                                                         string="Stok Awal"/>
                                                     <field name="sander_stock_masuk_pcs"
-                                                        string="Stok Masuk Sander"/> 
+                                                        string="Masuk Sander"/> 
                                                     <field name="re_stock_masuk_pcs"
-                                                        string="Stok Masuk Re"/> 
+                                                        string="Masuk Re"/> 
                                                     <field name="gs_stock_keluar_pcs"
-                                                        string="Stok Keluar GS"/>
+                                                        string="Keluar GS"/>
                                                     <field name="lain_stock_keluar_pcs"
-                                                        string="Stok Keluar Lain"/>
+                                                        string="Keluar Lain"/>
                                                     <field name="re_stock_keluar_pcs"
-                                                        string="Stok Keluar Re"/>
+                                                        string="Keluar Re"/>
                                                     <field name="stock_akhir_pcs"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -513,15 +513,15 @@
                                                     <field name="stock_awal_vol"
                                                         string="Stok Awal"/>
                                                     <field name="sander_stock_masuk_vol"
-                                                        string="Stok Masuk Sander"/>
+                                                        string="Masuk Sander"/>
                                                     <field name="re_stock_masuk_vol"
-                                                        string="Stok Masuk Re"/>
+                                                        string="Masuk Re"/>
                                                     <field name="gs_stock_keluar_vol"
-                                                        string="Stok Keluar GS"/>
+                                                        string="Keluar GS"/>
                                                     <field name="lain_stock_keluar_vol"
-                                                        string="Stok Keluar Lain"/>
+                                                        string="Keluar Lain"/>
                                                     <field name="re_stock_keluar_vol"
-                                                        string="Stok Keluar Re"/>
+                                                        string="Keluar Re"/>
                                                     <field name="stock_akhir_vol"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -581,17 +581,17 @@
                                                     <field name="stock_awal_pcs" 
                                                         string="Stok Awal"/>
                                                     <field name="sander_stock_masuk_pcs"
-                                                        string="Stok Masuk Sander"/> 
+                                                        string="Masuk Sander"/> 
                                                     <field name="re_stock_masuk_pcs"
-                                                        string="Stok Masuk Re"/> 
+                                                        string="Masuk Re"/> 
                                                     <field name="sizer_stock_keluar_pcs"
-                                                        string="Stok Keluar GS"/>
+                                                        string="Keluar GS"/>
                                                     <field name="qc_stock_keluar_pcs"
-                                                        string="Stok Keluar QC"/>
+                                                        string="Keluar QC"/>
                                                     <field name="tipis_stock_keluar_pcs"
-                                                        string="Stok Keluar Lain"/>
+                                                        string="Keluar Lain"/>
                                                     <field name="re_stock_keluar_pcs"
-                                                        string="Stok Keluar Re"/>
+                                                        string="Keluar Re"/>
                                                     <field name="stock_akhir_pcs"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -599,17 +599,17 @@
                                                     <field name="stock_awal_vol"
                                                         string="Stok Awal"/>
                                                     <field name="sander_stock_masuk_vol"
-                                                        string="Stok Masuk Sander"/>
+                                                        string="Masuk Sander"/>
                                                     <field name="re_stock_masuk_vol"
-                                                        string="Stok Masuk Re"/>
+                                                        string="Masuk Re"/>
                                                     <field name="sizer_stock_keluar_vol"
-                                                        string="Stok Keluar GS"/>
+                                                        string="Keluar GS"/>
                                                     <field name="tipis_stock_keluar_vol"
-                                                        string="Stok Keluar Lain"/>
+                                                        string="Keluar Lain"/>
                                                     <field name="qc_stock_keluar_vol"
-                                                        string="Stok Keluar QC"/>
+                                                        string="Keluar QC"/>
                                                     <field name="re_stock_keluar_vol"
-                                                        string="Stok Keluar Re"/>
+                                                        string="Keluar Re"/>
                                                     <field name="stock_akhir_vol"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -648,8 +648,8 @@
                                             <field name="hot_stock_masuk_vol" sum="Total"/>
                                             <field name="sander2_stock_masuk_pcs" sum="Total"/>
                                             <field name="sander2_stock_masuk_vol" sum="Total"/>
-                                            <field name="manual_stock_masuk_pcs" sum="Total"/>
-                                            <field name="manual_stock_masuk_vol" sum="Total"/>
+                                            <!-- <field name="manual_stock_masuk_pcs" sum="Total"/>
+                                            <field name="manual_stock_masuk_vol" sum="Total"/> -->
                                             <field name="re_stock_masuk_pcs" sum="Total"/>
                                             <field name="re_stock_masuk_vol" sum="Total"/>
                                             <field name="sander_stock_keluar_pcs" sum="Total"/>
@@ -677,23 +677,23 @@
                                                     <field name="stock_awal_pcs" 
                                                         string="Stok Awal"/>
                                                     <field name="hot_stock_masuk_pcs"
-                                                        string="Stok Masuk Hot"/>
+                                                        string="Masuk Hot"/>
                                                     <field name="sander2_stock_masuk_pcs"
-                                                        string="Stok Masuk Sander2"/>
-                                                    <field name="manual_stock_masuk_pcs"
-                                                        string="Stok Masuk Manual"/> 
+                                                        string="Masuk Sander2"/>
+                                                    <!-- <field name="manual_stock_masuk_pcs"
+                                                        string="Masuk Manual"/>  -->
                                                     <field name="re_stock_masuk_pcs"
-                                                        string="Stok Masuk Re"/> 
+                                                        string="Masuk Re"/> 
                                                     <field name="sander_stock_keluar_pcs"
-                                                        string="Stok Keluar Sander"/>
+                                                        string="Keluar Sander"/>
                                                     <field name="grading_stock_keluar_pcs"
-                                                        string="Stok Keluar Grading"/>
+                                                        string="Keluar Grading"/>
                                                     <field name="lain_stock_keluar_pcs"
-                                                        string="Stok Keluar Lain"/>
+                                                        string="Keluar Lain"/>
                                                     <field name="qc_stock_keluar_pcs"
-                                                        string="Stok Keluar QC"/>
+                                                        string="Keluar QC"/>
                                                     <field name="re_stock_keluar_pcs"
-                                                        string="Stok Keluar Re"/>
+                                                        string="Keluar Re"/>
                                                     <field name="stock_akhir_pcs"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -701,23 +701,23 @@
                                                     <field name="stock_awal_vol"
                                                         string="Stok Awal"/>
                                                     <field name="hot_stock_masuk_vol"
-                                                        string="Stok Masuk Hot"/>
+                                                        string="Masuk Hot"/>
                                                     <field name="sander2_stock_masuk_vol"
-                                                        string="Stok Masuk Sander2"/>
-                                                    <field name="manual_stock_masuk_vol"
-                                                        string="Stok Masuk Manual"/>
+                                                        string="Masuk Sander2"/>
+                                                    <!-- <field name="manual_stock_masuk_vol"
+                                                        string="Masuk Manual"/> -->
                                                     <field name="re_stock_masuk_vol"
-                                                        string="Stok Masuk Re"/>
+                                                        string="Masuk Re"/>
                                                     <field name="sander_stock_keluar_vol"
-                                                        string="Stok Keluar Sander"/>
+                                                        string="Keluar Sander"/>
                                                     <field name="grading_stock_keluar_vol"
-                                                        string="Stok Keluar Grading"/>
+                                                        string="Keluar Grading"/>
                                                     <field name="lain_stock_keluar_vol"
-                                                        string="Stok Keluar Lain"/>
+                                                        string="Keluar Lain"/>
                                                     <field name="qc_stock_keluar_vol"
-                                                        string="Stok Keluar QC"/>
+                                                        string="Keluar QC"/>
                                                     <field name="re_stock_keluar_vol"
-                                                        string="Stok Keluar Re"/>
+                                                        string="Keluar Re"/>
                                                     <field name="stock_akhir_vol"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -726,7 +726,7 @@
                                                 <group string="Akumulasi Stock (Pcs)">
                                                     <field name="hot_acc_stock_masuk_pcs"/>
                                                     <field name="sander2_acc_stock_masuk_pcs"/>
-                                                    <field name="manual_acc_stock_masuk_pcs"/> 
+                                                    <!-- <field name="manual_acc_stock_masuk_pcs"/>  -->
                                                     <field name="re_acc_stock_masuk_pcs"/> 
                                                     <field name="sander_acc_stock_keluar_pcs"/> 
                                                     <field name="grading_acc_stock_keluar_pcs"/>
@@ -737,7 +737,7 @@
                                                 <group string="Akumulasi Stock (Vol)">
                                                     <field name="hot_acc_stock_masuk_vol"/>
                                                     <field name="sander2_acc_stock_masuk_vol"/>
-                                                    <field name="manual_acc_stock_masuk_vol"/>
+                                                    <!-- <field name="manual_acc_stock_masuk_vol"/> -->
                                                     <field name="re_acc_stock_masuk_vol"/>
                                                     <field name="sander_acc_stock_keluar_vol"/>
                                                     <field name="grading_acc_stock_keluar_vol"/>
@@ -785,17 +785,17 @@
                                                     <field name="stock_awal_pcs" 
                                                         string="Stok Awal"/>
                                                     <field name="sizer_stock_masuk_pcs"
-                                                        string="Stok Masuk Sizer"/> 
+                                                        string="Masuk Sizer"/> 
                                                     <field name="re_stock_masuk_pcs"
-                                                        string="Stok Masuk Re"/>                            
+                                                        string="Masuk Re"/>                            
                                                     <field name="grading_stock_keluar_pcs"
-                                                        string="Stok Keluar Grading"/>
+                                                        string="Keluar Grading"/>
                                                     <field name="lain_stock_keluar_pcs"
-                                                        string="Stok Keluar Lain"/>
+                                                        string="Keluar Lain"/>
                                                     <field name="qc_stock_keluar_pcs"
-                                                        string="Stok Keluar QC"/>
+                                                        string="Keluar QC"/>
                                                     <field name="re_stock_keluar_pcs"
-                                                        string="Stok Keluar Re"/>
+                                                        string="Keluar Re"/>
                                                     <field name="stock_akhir_pcs"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -803,17 +803,17 @@
                                                     <field name="stock_awal_vol"
                                                         string="Stok Awal"/>
                                                     <field name="sizer_stock_masuk_vol"
-                                                        string="Stok Masuk Sizer"/>
+                                                        string="Masuk Sizer"/>
                                                     <field name="re_stock_masuk_vol"
-                                                        string="Stok Masuk Re"/>
+                                                        string="Masuk Re"/>
                                                     <field name="grading_stock_keluar_vol"
-                                                        string="Stok Keluar Grading"/>
+                                                        string="Keluar Grading"/>
                                                     <field name="lain_stock_keluar_vol"
-                                                        string="Stok Keluar Lain"/>
+                                                        string="Keluar Lain"/>
                                                     <field name="qc_stock_keluar_vol"
-                                                        string="Stok Keluar QC"/>
+                                                        string="Keluar QC"/>
                                                     <field name="re_stock_keluar_vol"
-                                                        string="Stok Keluar Re"/>
+                                                        string="Keluar Re"/>
                                                     <field name="stock_akhir_vol"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -867,9 +867,9 @@
                                                     <field name="stock_awal_pcs" 
                                                         string="Stok Awal"/>
                                                     <field name="stock_masuk_pcs"
-                                                        string="Stok Masuk"/> 
+                                                        string="Masuk"/> 
                                                     <field name="stock_keluar_pcs"
-                                                        string="Stok Keluar"/>
+                                                        string="Keluar"/>
                                                     <field name="stock_akhir_pcs"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -877,9 +877,9 @@
                                                     <field name="stock_awal_vol"
                                                         string="Stok Awal"/>
                                                     <field name="stock_masuk_vol"
-                                                        string="Stok Masuk"/>
+                                                        string="Masuk"/>
                                                     <field name="stock_keluar_vol"
-                                                        string="Stok Keluar"/>
+                                                        string="Keluar"/>
                                                     <field name="stock_akhir_vol"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -923,9 +923,9 @@
                                                     <field name="stock_awal_pcs" 
                                                         string="Stok Awal"/>
                                                     <field name="stock_masuk_pcs"
-                                                        string="Stok Masuk"/> 
+                                                        string="Masuk"/> 
                                                     <field name="stock_keluar_pcs"
-                                                        string="Stok Keluar"/>
+                                                        string="Keluar"/>
                                                     <field name="stock_akhir_pcs"
                                                         string="Stok Akhir"/>
                                                 </group>
@@ -933,9 +933,9 @@
                                                     <field name="stock_awal_vol"
                                                         string="Stok Awal"/>
                                                     <field name="stock_masuk_vol"
-                                                        string="Stok Masuk"/>
+                                                        string="Masuk"/>
                                                     <field name="stock_keluar_vol"
-                                                        string="Stok Keluar"/>
+                                                        string="Keluar"/>
                                                     <field name="stock_akhir_vol"
                                                         string="Stok Akhir"/>
                                                 </group>
