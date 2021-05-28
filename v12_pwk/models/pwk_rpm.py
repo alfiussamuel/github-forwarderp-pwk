@@ -243,7 +243,7 @@ class PwkRpmLine(models.Model):
     quantity_p2_total = fields.Integer(compute="_get_total", string='Total P2', digits=dp.get_precision('ZeroDecimal'))
     quantity_p2_remaining = fields.Integer(compute="_get_total", string='Sisa P2', digits=dp.get_precision('ZeroDecimal'))
 
-    @api.depends('date_ids.quantity_p1', 'date_ids.quantity_p2', 'total_qty')
+    @api.depends('date_ids.quantity_p1', 'date_ids.quantity_p2', 'total_qty_spare')
     def _get_total(self):
         for res in self:
             quantity_p1_total = 0
@@ -255,9 +255,9 @@ class PwkRpmLine(models.Model):
                     quantity_p2_total += date.quantity_p2
 
             res.quantity_p1_total = quantity_p1_total
-            res.quantity_p1_remaining = res.total_qty - quantity_p1_total
+            res.quantity_p1_remaining = res.total_qty_spare - quantity_p1_total
             res.quantity_p2_total = quantity_p2_total
-            res.quantity_p2_remaining = res.total_qty - quantity_p2_total
+            res.quantity_p2_remaining = res.total_qty_spare - quantity_p2_total
 
     @api.depends('detail_ids_1', 'detail_ids_2', 'detail_ids_3', 'detail_ids_4', 'detail_ids_5',
         'is_selected_detail1', 'is_selected_detail2', 'is_selected_detail3', 'is_selected_detail4', 'is_selected_detail5',
