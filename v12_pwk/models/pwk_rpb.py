@@ -1161,6 +1161,30 @@ class PwkRpb(models.Model):
                                     'container': line.container_id.name
                                 })
 
+                    elif line.product_id.goods_type == "LVL":
+                        group_id = self.env['pwk.rpb.group'].search([
+                            ('reference', '=', res.id),
+                            ('goods_type', '=', 'LVL'),
+                        ])
+
+                        if not group_id:
+                            group_id = self.env['pwk.rpb.group'].create({
+                                'reference': res.id,
+                                'goods_type': 'LVL'
+                            })
+
+                        if group_id:
+                            container_id = self.env['pwk.rpb.group.container'].search([
+                                ('reference', '=', group_id.id),
+                                ('container', '=', line.container_id.name),
+                            ])
+
+                            if not container_id:
+                                container_id = self.env['pwk.rpb.group.container'].create({
+                                    'reference': group_id.id,
+                                    'container': line.container_id.name
+                                })
+
             return self.env.ref('v12_pwk.report_rpb').report_action(self)
 
     def get_sequence(self, name=False, obj=False, year_month=False, context=None):
