@@ -730,7 +730,7 @@
                     </group>
                     <group>
                         <notebook>
-                            <page string="Group">
+                            <page string="Group" invisible="1">
                                 <field name="group_ids" nolabel="1">
                                     <tree>
                                         <field name="goods_type"/>
