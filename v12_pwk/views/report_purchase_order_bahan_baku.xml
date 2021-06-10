@@ -456,16 +456,15 @@
 		                        </td>
 		                    </tr>
 		                    <tr>
-		                    	<td colspan="10" style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
+		                    	<td colspan="12" style="text-align:center;border:1px solid black;font-size:11px;padding:4px;">
 		                    		<strong>TOTAL</strong>
 		                        </td>		                        		
-		                        <td style="text-align:left;border:1px solid black;font-size:11px;padding:4px;">
-		                        		
+		                        <!-- <td style="text-align:left;border:1px solid black;font-size:11px;padding:4px;">
 		                        </td>		                        
-		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">		                        	
-		                        </td>
 		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
-		                        	<span t-esc="'{0:,.0f}'.format(o.amount_total)"/>
+		                        </td> -->
+		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">
+		                        	<strong><span t-esc="'{0:,.0f}'.format(o.amount_total)"/></strong>
 		                        </td>
 		                        <td style="text-align:right;border:1px solid black;font-size:11px;padding:4px;">		                        	
 		                        </td>
