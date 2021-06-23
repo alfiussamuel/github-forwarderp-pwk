@@ -240,7 +240,7 @@ class AccountAssetAsset(models.Model):
             for x in range(len(posted_depreciation_line_ids), undone_dotation_number):
                 sequence = x + 1
                 amount = self._compute_board_amount(sequence, residual_amount, amount_to_depr, undone_dotation_number, posted_depreciation_line_ids, total_days, depreciation_date)
-                amount = self.currency_id.round(amount)
+                amount = amount
                 if float_is_zero(amount, precision_rounding=self.currency_id.rounding):
                     continue
                 residual_amount -= amount

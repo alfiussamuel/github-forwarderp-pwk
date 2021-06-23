@@ -183,7 +183,7 @@
                     <notebook colspan="4">
                         <page string="Depreciation Board">
                             <field name="depreciation_line_ids" mode="tree" options="{'reload_whole_on_button': true}">
-                                <tree string="Depreciation Lines" decoration-info="(move_check == False)" create="false">
+                                <tree string="Depreciation Lines" decoration-info="(move_check == False)" create="false" limit="240">
                                     <field name="depreciation_date"/>
                                     <field name="amount" widget="monetary" string="Depreciation"/>
                                     <field name="depreciated_value" readonly="1"/>
