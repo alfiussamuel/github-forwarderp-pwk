@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
-from cStringIO import StringIO
+# from cStringIO import StringIO
 import base64
 import xlsxwriter
 from odoo import models, fields, api, _
@@ -328,7 +328,7 @@ class ExcelLaporanMutasi(models.TransientModel):
         locations = self.get_location()
         filename = '%s.xlsx' % report_name
 
-        fp = StringIO()
+        # fp = StringIO()
         workbook = xlsxwriter.Workbook(fp)
         worksheet1 = workbook.add_worksheet('All Account')
 
