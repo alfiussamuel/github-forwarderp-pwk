@@ -96,8 +96,8 @@ class SaleOrderLineContainer(models.Model):
                         'position_id': res.position_id.id,
                         'pallet_id': res.pallet_id.id,
                         'strapping_id': res.strapping_id.id,
-                        'total_crates': 1,
-                        'qty': 1,
+                        'total_crates': res.total_crates,
+                        'qty': res.qty,
                         'number': res.number,
                     })
 
