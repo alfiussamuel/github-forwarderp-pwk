@@ -3,7 +3,7 @@
     <data>
 
         <!--Trigger Onchange-->
-        <record id="trigger_onchange_mrp_view" model="ir.ui.view">
+        <!-- <record id="trigger_onchange_mrp_view" model="ir.ui.view">
             <field name="name">Trigger Onchange</field>
             <field name="model">trigger.onchange.mrp</field>
             <field name="arch" type="xml">
@@ -36,7 +36,7 @@
             <field name="value" eval="'ir.actions.act_window,' + str(ref('action_trigger_onchange_mrp'))"/>
             <field name="key">action</field>
             <field name="model">stock.move</field>
-        </record>
+        </record> -->
 
     </data>
 </odoo>
