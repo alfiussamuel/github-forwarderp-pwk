@@ -84,7 +84,7 @@ class SaleOrderLineContainer(models.Model):
     total_crates = fields.Float('Total Crates', default=1)
     qty = fields.Float('Quantity / Crate')
     number = fields.Char('Number')    
-    duplicate_qty = field.Integer('Duplicate Qty')
+    duplicate_qty = fields.Integer('Duplicate Qty')
 
     @api.multi
     def duplicate_crate(self):
