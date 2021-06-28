@@ -702,8 +702,21 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
             <field name="search_view_id" ref="sale.sale_order_view_search_inherit_sale"/>
-            <field name="view_id" ref="v12_pwk.view_order_tree_waste,v12_pwk.view_order_form_waste"/>
             <field name="context">{}</field>
+        </record>
+
+        <record id="action_sale_order_tree_waste" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_order_tree_waste"/>
+            <field name="act_window_id" ref="action_orders_waste"/>
+        </record>
+
+        <record id="action_sale_order_form_waste" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_order_form_waste"/>
+            <field name="act_window_id" ref="action_orders_waste"/>
         </record>
 
         <menuitem id="menu_sale_order_waste"
