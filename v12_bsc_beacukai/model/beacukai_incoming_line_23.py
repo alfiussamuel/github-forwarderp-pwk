@@ -61,7 +61,7 @@ class BeacukaiIncomingLine23(models.Model):
     product_discount = fields.Float(compute="_get_product_cif", string='BT-Diskon')
     product_price_invoice = fields.Float(compute="_get_product_cif", string='Harga Detil')    
     product_qty = fields.Float('Jumlah Satuan', digits=dp.get_precision('Product Unit of Measure'))
-    product_uom_id = fields.Many2one('product.uom', 'Satuan')
+    product_uom_id = fields.Many2one('uom.uom', 'Satuan')
     product_price_qty = fields.Float(compute="_get_product_cif", string='Harga Satuan', digits=dp.get_precision('Product Unit of Measure'))    
     cif_cost = fields.Float(compute="_get_product_cif", string='Nilai CIF', required=True, digits=dp.get_precision('Product Unit of Measure'))
     cif_amount = fields.Float(compute="_get_product_cif", string='Nilai CIF Rupiah', required=True, default=0, digits=dp.get_precision('Product Unit of Measure'))

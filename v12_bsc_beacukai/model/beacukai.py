@@ -141,7 +141,7 @@ class BeacukaiIncomingLine(models.Model):
     product_hs_code = fields.Char('HS Code')
     product_qty = fields.Float('Qty')
     saldo = fields.Float('Saldo')
-    product_uom_id = fields.Many2one('product.uom', 'Satuan')
+    product_uom_id = fields.Many2one('uom.uom', 'Satuan')
     product_price = fields.Float('Harga')
     product_amount = fields.Float(
         compute="_get_product_amount", string='Jumlah')
@@ -359,7 +359,7 @@ class BeacukaiIncoming(models.Model):
     packing_number = fields.Char('No Packing dan Merek')
     packaging_number = fields.Float('Nomor dan Tipe Packaging')
     packaging_type = fields.Many2one(
-        'product.uom', 'Number and Type Packaging')
+        'uom.uom', 'Number and Type Packaging')
     picking_count = fields.Integer(
         compute='_compute_picking', string='Receptions', default=0)
     is_shipped = fields.Boolean(compute="_compute_is_shipped")
@@ -524,7 +524,7 @@ class BeacukaiOutgoingLine(models.Model):
     product_name = fields.Char('Kode Barang')
     product_hs_code = fields.Char('HS Code')
     product_qty = fields.Float('Qty')
-    product_uom_id = fields.Many2one('product.uom', 'Satuan')
+    product_uom_id = fields.Many2one('uom.uom', 'Satuan')
     product_price = fields.Float('Harga Barang')
     product_amount = fields.Float(
         compute="_get_product_amount", string='Jumlah')
@@ -736,7 +736,7 @@ class BeacukaiOutgoing(models.Model):
     packing_number = fields.Char('Nomor Packing dan Merk')
     packaging_number = fields.Float('Nomor dan Tipe Packaging')
     packaging_type = fields.Many2one(
-        'product.uom', 'Number and Type Packaging')
+        'uom.uom', 'Number and Type Packaging')
 
     """ Assurance Data """
     assurance_bm = fields.Float('BM')
@@ -868,7 +868,7 @@ class LaporanPosisiWIP(models.Model):
     product_hs_code = fields.Char('HS Code', related="product_id.hs_code")
     product_qty = fields.Float('Qty')
     saldo = fields.Float('Saldo')
-    product_uom_id = fields.Many2one('product.uom', 'Satuan')
+    product_uom_id = fields.Many2one('uom.uom', 'Satuan')
     product_price = fields.Float('Harga')
     product_amount = fields.Float(
         compute="_get_product_amount", string='Jumlah')
@@ -968,7 +968,7 @@ class LaporanPosisiWIPTransient(models.TransientModel):
     product_code = fields.Char('Kode Barang', related="product_id.default_code")
     product_name = fields.Char('Nama Barang', related="product_id.name")
     product_hs_code = fields.Char('HS Code', related="product_id.hs_code")
-    product_uom_id = fields.Many2one('product.uom', 'Satuan', related='move_id.uom_id')
+    product_uom_id = fields.Many2one('uom.uom', 'Satuan', related='move_id.uom_id')
     product_qty = fields.Float('Qty', related='move_id.product_uom_qty')
 
     document_type_id = fields.Char('Document Type ID', compute='_compute_reference')

@@ -239,7 +239,7 @@ class BeacukaiIncoming23(models.Model):
     packing_number = fields.Char('No Packing dan Merek')
     packaging_number = fields.Float('Nomor dan Tipe Packaging')
     packaging_type = fields.Many2one(
-        'product.uom', 'Number and Type Packaging')
+        'uom.uom', 'Number and Type Packaging')
     picking_count = fields.Integer(
         compute='_compute_picking_23', string='Receptions', default=0)
     is_shipped = fields.Boolean(compute="_compute_is_shipped")

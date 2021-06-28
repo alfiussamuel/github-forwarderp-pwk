@@ -460,7 +460,7 @@ class StockPicking(models.Model):
 class StockMove(models.Model):
     _inherit = 'stock.move'
 
-    uom_id = fields.Many2one('product.uom', 'UoM', related="product_id.uom_id")
+    uom_id = fields.Many2one('uom.uom', 'UoM', related="product_id.uom_id")
 
     bc_incoming_line_id = fields.Many2one('beacukai.incoming.line',
                                           'Bea Cukai Incoming Line', ondelete='set null', index=True, readonly=True)
@@ -559,7 +559,7 @@ class StockMove(models.Model):
         """ Process completely the moves given and if all moves are done, it will finish the picking. """
         self.filtered(lambda move: move.state == 'draft').action_confirm()
 
-        Uom = self.env['product.uom']
+        Uom = self.env['uom.uom']
         Quant = self.env['stock.quant']
 
         pickings = self.env['stock.picking']

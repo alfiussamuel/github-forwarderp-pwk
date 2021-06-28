@@ -48,7 +48,7 @@ class CreateBcIncomingWizard(models.Model):
     """ Packaging Data """
     packing_number = fields.Char('Merk and Packing No.')
     packaging_number = fields.Float('Number and Type Packaging')
-    packaging_type = fields.Many2one('product.uom', 'Number and Type Packaging')        
+    packaging_type = fields.Many2one('uom.uom', 'Number and Type Packaging')        
     
     @api.multi
     def button_create(self):
