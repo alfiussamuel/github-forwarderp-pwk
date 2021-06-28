@@ -5,7 +5,7 @@
     'category': 'Custom',
     'author':'BSC',
     'description' : """Odoo Beacukai""",
-    'depends': ['base','product','stock','report','purchase','account','sale','mrp'],
+    'depends': ['base','product','stock','purchase','account','sale','mrp'],
     'sequence': 20,
     'qweb':[
      # "static/src/xml/qweb.xml",
