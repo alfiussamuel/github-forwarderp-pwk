@@ -14,14 +14,14 @@ class DecimalPrecision(models.Model):
             rec.digits = 5
 
 
-class ProcurementRule(models.Model):
-    _inherit = 'procurement.rule'
+# class ProcurementRule(models.Model):
+#     _inherit = 'procurement.rule'
 
-    @api.model
-    def update_procurement_rule(self):
-        rec = self.search([('name', '=', 'WH: Stock -> Customers')], limit=1)
-        barang_jadi_location = self.env['stock.location'].search([('name', '=', 'Barang Jadi')], limit=1)
+#     @api.model
+#     def update_procurement_rule(self):
+#         rec = self.search([('name', '=', 'WH: Stock -> Customers')], limit=1)
+#         barang_jadi_location = self.env['stock.location'].search([('name', '=', 'Barang Jadi')], limit=1)
 
-        if rec and barang_jadi_location:
-            rec.location_src_id = barang_jadi_location.id
+#         if rec and barang_jadi_location:
+#             rec.location_src_id = barang_jadi_location.id
 
