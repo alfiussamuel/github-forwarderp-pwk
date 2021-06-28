@@ -564,7 +564,7 @@ class StockMove(models.Model):
 
         pickings = self.env['stock.picking']
         procurements = self.env['procurement.order']
-        operations = self.env['stock.pack.operation']
+        operations = self.env['stock.move']
 
         remaining_move_qty = {}
 

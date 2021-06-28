@@ -91,27 +91,27 @@ class StockMove(models.Model):
                 if document_id:
                     res.bc_23_id = document_id[0].id
 
-class StockPackOperation(models.Model):
-    _inherit = "stock.pack.operation"
+# class StockPackOperation(models.Model):
+#     _inherit = "stock.pack.operation"
 
-    bc_23_id = fields.Many2one(compute='_get_bc_23_id', comodel_name='beacukai.incoming.23', string='Document BC 23')
-    submission_no = fields.Char(compute='_get_submission_no', string='Nomor Pengajuan')
+#     bc_23_id = fields.Many2one(compute='_get_bc_23_id', comodel_name='beacukai.incoming.23', string='Document BC 23')
+#     submission_no = fields.Char(compute='_get_submission_no', string='Nomor Pengajuan')
 
-    @api.depends('picking_id.origin')
-    def _get_submission_no(self):
-        for res in self:
-            if res.picking_id.submission_no:
-                res.submission_no = res.picking_id.submission_no
-            elif res.picking_id.origin:
-                res.submission_no = res.picking_id.origin
+#     @api.depends('picking_id.origin')
+#     def _get_submission_no(self):
+#         for res in self:
+#             if res.picking_id.submission_no:
+#                 res.submission_no = res.picking_id.submission_no
+#             elif res.picking_id.origin:
+#                 res.submission_no = res.picking_id.origin
 
-    @api.depends('picking_id.origin')
-    def _get_bc_23_id(self):
-        for res in self:
-            if res.picking_id.origin:
-                document_id = self.env['beacukai.incoming.23'].search([('submission_no','=',res.picking_id.origin)])
-                if document_id:
-                    res.bc_23_id = document_id[0].id
+#     @api.depends('picking_id.origin')
+#     def _get_bc_23_id(self):
+#         for res in self:
+#             if res.picking_id.origin:
+#                 document_id = self.env['beacukai.incoming.23'].search([('submission_no','=',res.picking_id.origin)])
+#                 if document_id:
+#                     res.bc_23_id = document_id[0].id
 
 class BeacukaiIncoming23(models.Model):
     _name = "beacukai.incoming.23"
