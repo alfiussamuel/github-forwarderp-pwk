@@ -444,7 +444,7 @@
 								Notes
 							</td>
 							<td width="3%" style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
-								
+								<strong>:</strong>	
 							</td>
 							<td width="70%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 								<span t-field="o.note"/>
