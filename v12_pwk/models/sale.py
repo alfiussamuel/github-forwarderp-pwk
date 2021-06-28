@@ -90,7 +90,7 @@ class SaleOrderLineContainer(models.Model):
     def duplicate_crate(self):
         for res in self:
             if res.duplicate_qty > 0:
-                sequence = res.number + 1
+                sequence = int(res.number) + 1
                 for duplicate in range(res.duplicate_qty):
                     self.env['sale.order.line.container'].create({
                         'reference': res.reference.id,
@@ -99,7 +99,7 @@ class SaleOrderLineContainer(models.Model):
                         'strapping_id': res.strapping_id.id,
                         'total_crates': res.total_crates,
                         'qty': res.qty,
-                        'number': sequence,
+                        'number': str(sequence),
                     })
 
                     sequence += 1
