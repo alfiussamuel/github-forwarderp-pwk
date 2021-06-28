@@ -303,24 +303,6 @@
             parent="sale.sale_order_menu"
             sequence="3"/>        
 
-
-        <record id="action_orders_waste" model="ir.actions.act_window">
-            <field name="name">Sales Orders Waste</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">sale.order</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
-            <field name="search_view_id" ref="sale.sale_order_view_search_inherit_sale"/>
-            <field name="view_id" ref="v12_pwk.view_order_form_waste"/>
-            <field name="context">{}</field>
-        </record>
-
-        <menuitem id="menu_sale_order_waste"
-            name="Sales Orders Waste"
-            action="action_orders_waste"
-            parent="sale.sale_order_menu"
-            sequence="4"/>
-
         <!-- New View for Waste -->
         <record id="view_order_form_waste" model="ir.ui.view">
             <field name="name">sale.order.form</field>
@@ -692,6 +674,23 @@
                 </form>
             </field>
         </record>
+
+        <record id="action_orders_waste" model="ir.actions.act_window">
+            <field name="name">Sales Orders Waste</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+            <field name="search_view_id" ref="sale.sale_order_view_search_inherit_sale"/>
+            <field name="view_id" ref="v12_pwk.view_order_form_waste"/>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="menu_sale_order_waste"
+            name="Sales Orders Waste"
+            action="action_orders_waste"
+            parent="sale.sale_order_menu"
+            sequence="4"/>
 
         <!-- Customization -->
 
