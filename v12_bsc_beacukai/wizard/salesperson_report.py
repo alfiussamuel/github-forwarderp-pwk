@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from datetime import datetime, timedelta
-from cStringIO import StringIO
+# from cStringIO import StringIO
 import base64
 import xlsxwriter
 from odoo import models, fields, api, _
@@ -75,7 +75,7 @@ class SalespersonWizard(models.TransientModel):
 
         filename = 'Laporan Pemasukan-%s.xlsx' %(datetime.now().strftime("%Y-%m-%d %H:%M"))
 
-        fp = StringIO()
+        # fp = StringIO()
         workbook = xlsxwriter.Workbook(fp)
         #################################################################################
         center_title = workbook.add_format({'bold': 1, 'valign':'vcenter', 'align':'center'})
@@ -232,7 +232,7 @@ class SalespersonWizard(models.TransientModel):
     def print_excel(self):
         filename = 'Laporan Pemasukan-%s.xlsx' %(datetime.now().strftime("%Y-%m-%d %H:%M"))
 
-        fp = StringIO()
+        # fp = StringIO()
         workbook = xlsxwriter.Workbook(fp)
         #################################################################################
         center_title = workbook.add_format({'bold': 1, 'valign':'vcenter', 'align':'center'})
@@ -506,7 +506,7 @@ class BcOutgoingWizard(models.TransientModel):
     def print_excel(self):
         filename = 'Laporan Pengeluaran-%s.xlsx' %(datetime.now().strftime("%Y-%m-%d %H:%M"))
 
-        fp = StringIO()
+        # fp = StringIO()
         workbook = xlsxwriter.Workbook(fp)
         #################################################################################
         center_title = workbook.add_format({'bold': 1, 'valign':'vcenter', 'align':'center'})
@@ -806,7 +806,7 @@ class BcIncomingWizard(models.TransientModel):
     def print_excel(self):
         filename = 'Laporan Pemasukan-%s.xlsx' %(datetime.now().strftime("%Y-%m-%d %H:%M"))
 
-        fp = StringIO()
+        # fp = StringIO()
         workbook = xlsxwriter.Workbook(fp)
         #################################################################################
         center_title = workbook.add_format({'bold': 1, 'valign':'vcenter', 'align':'center'})
@@ -1089,7 +1089,7 @@ class BcWipWizard(models.TransientModel):
     def print_excel(self):
         filename = 'Laporan WIP-%s.xlsx' %(datetime.now().strftime("%Y-%m-%d %H:%M"))
 
-        fp = StringIO()
+        # fp = StringIO()
         # workbook  = xlsxwriter.Workbook('haha.xlsx')
         workbook = xlsxwriter.Workbook(fp)
         #################################################################################
@@ -1248,7 +1248,7 @@ class BcWipWizard(models.TransientModel):
     def print_excel_new(self):
         filename = 'Laporan WIP-%s.xlsx' %(datetime.now().strftime("%Y-%m-%d %H:%M"))
 
-        fp = StringIO()
+        # fp = StringIO()
         workbook = xlsxwriter.Workbook(fp)
         #################################################################################
         center_title = workbook.add_format({'bold': 1, 'valign':'vcenter', 'align':'center'})
