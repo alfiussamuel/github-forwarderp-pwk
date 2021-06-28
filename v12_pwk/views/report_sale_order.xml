@@ -441,20 +441,20 @@
 						</tr>
 						<tr>
 							<td width="25%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
-								Notes :
+								Notes
 							</td>
 							<td width="3%" style="font-size:11px; text-align:center;padding:1px;border:0px;vertical-align:middle;">
 								
 							</td>
 							<td width="70%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
-								
+								<span t-field="o.note"/>
 							</td>						
 						</tr>
-						<tr>
+						<!-- <tr>
 							<td colspan="3" width="25%" style="font-size:11px; text-align:left;padding:1px;border:0px;vertical-align:middle;">
 								<span t-field="o.note"/>
 							</td>							
-						</tr>
+						</tr> -->
 					</table>
 					<div class="footer text-center">
 						<table class="table table-condensed" style="margin-top:30px;">
