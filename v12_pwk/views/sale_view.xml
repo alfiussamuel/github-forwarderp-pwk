@@ -304,6 +304,26 @@
             sequence="3"/>        
 
         <!-- New View for Waste -->
+        <record id="view_order_tree_waste" model="ir.ui.view">
+            <field name="name">sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="arch" type="xml">
+                <tree string="Sales Orders" decoration-bf="message_needaction==True" decoration-muted="state=='cancel'">
+                    <field name="message_needaction" invisible="1"/>
+                    <field name="name" string="Order Number"/>
+                    <field name="confirmation_date" string="Confirmation Date"/>
+                    <field name="commitment_date" groups="sale.group_sale_order_dates"/>
+                    <field name="expected_date" groups="sale.group_sale_order_dates"/>
+                    <field name="partner_id"/>
+                    <field name="user_id"/>
+                    <field name="amount_total" sum="Total Tax Included" widget="monetary"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="invoice_status" invisible="1"/>
+                    <field name="state" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
         <record id="view_order_form_waste" model="ir.ui.view">
             <field name="name">sale.order.form</field>
             <field name="model">sale.order</field>
@@ -682,7 +702,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
             <field name="search_view_id" ref="sale.sale_order_view_search_inherit_sale"/>
-            <field name="view_id" ref="v12_pwk.view_order_form_waste"/>
+            <field name="view_id" ref="v12_pwk.view_order_tree_waste,v12_pwk.view_order_form_waste"/>
             <field name="context">{}</field>
         </record>
 
@@ -723,6 +743,7 @@
             <field name="arch" type="xml">
                 <field name="name" position="after">
                     <field name="po_number"/>
+                    <field name="contract_type"/>
                 </field>
             </field>
         </record>
