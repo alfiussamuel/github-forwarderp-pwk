@@ -341,7 +341,7 @@
 		    <field name="name">Laporan Pertanggungjawaban</field>
 		    <field name="model">laporan.pertanggungjawaban</field>
 		    <field name="arch" type="xml">
-		    	<tree create="false" edit="false" delete="false" show_tree='true'>
+		    	<tree create="false" edit="false" delete="false">
 		    		<field name="product_code" string="Kode Barang"/>
 		    		<field name="product_id" string="Nama Barang"/>
 		    		<field name="uom_id" string="Satuan"/>

@@ -5,7 +5,7 @@
             <field name="name">Wizard Laporan Mutasi</field>
             <field name="model">excel.laporan.mutasi</field>
             <field name="arch" type="xml">
-                <form create="false" edit="false">
+                <form>
                     <group>
                         <group>
                             <field name="date_from" required="1"/>
