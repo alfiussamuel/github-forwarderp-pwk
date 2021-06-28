@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import time
 from datetime import datetime, timedelta
-from cStringIO import StringIO
+# from cStringIO import StringIO
 import base64
 import xlsxwriter
 from odoo import models, fields, api, _
@@ -478,7 +478,7 @@ class ExcelLaporanPertanggungjawabanBahanBaku(models.TransientModel):
     def generate_report(self):
         filename = 'Laporan Pertanggungjawaban Mutasi Bahan Baku dan Bahan Penolong.xlsx'
 
-        fp = StringIO()
+        # fp = StringIO()
         workbook = xlsxwriter.Workbook(fp)
         #################################################################################
         center_title = workbook.add_format(
