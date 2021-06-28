@@ -1,76 +1,76 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-access_bc_user_bc_incoming,Bea Cukai User,model_beacukai_incoming,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_outgoing,Bea Cukai User,model_beacukai_outgoing,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_outgoing_line,Bea Cukai User,model_beacukai_outgoing_line,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_tpb,Bea Cukai User,model_beacukai_tpb,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_apiu,Bea Cukai User,model_beacukai_apiu,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_apiu_gov,Bea Cukai Gov,model_beacukai_apiu,v10_bsc_beacukai.bc_group_gov,1,0,0,0
-access_bc_user_bc_document_type,Bea Cukai User,model_beacukai_document_type,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_delivery_purpose,Bea Cukai User,model_beacukai_delivery_purpose,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_incoming_line,Bea Cukai User,model_beacukai_incoming_line,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_cctv_user,Bea Cukai User,model_beacukai_cctv,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_cctv_gov,Bea Cukai Gov,model_beacukai_cctv,v10_bsc_beacukai.bc_group_gov,1,0,0,0
-access_bc_user_bc_incoming_gov,Bea Cukai Gov,model_beacukai_incoming,v10_bsc_beacukai.bc_group_gov,1,0,0,0
-access_bc_user_bc_incoming_line_gov,Bea Cukai Gov,model_beacukai_incoming_line,v10_bsc_beacukai.bc_group_gov,1,0,0,0
-access_bc_user_bc_outgoing_gov,Bea Cukai Gov,model_beacukai_outgoing,v10_bsc_beacukai.bc_group_gov,1,0,0,0
-access_bc_user_bc_outgoing_line_gov,Bea Cukai Gov,model_beacukai_outgoing_line,v10_bsc_beacukai.bc_group_gov,1,0,0,0
-access_bc_user_bc_tpb_gov,Bea Cukai Gov,model_beacukai_tpb,v10_bsc_beacukai.bc_group_gov,1,0,0,0
-access_bc_user_bc_document_type_gov,Bea Cukai Gov,model_beacukai_document_type,v10_bsc_beacukai.bc_group_gov,1,0,0,0
-access_bc_user_config_location,Bea Cukai Config location user,model_beacukai_config_location,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_gov_config_location,Bea Cukai Config location gov,model_beacukai_config_location,v10_bsc_beacukai.bc_group_gov,1,0,1,1
-access_bc_user_bc_stock_move_gov,Bea Cukai stock move Gov,model_stock_move,v10_bsc_beacukai.bc_group_gov,1,0,1,1
-access_bc_user_bc_stock_inventory_line_gov,Bea Cukai stock inventory line Gov,stock.model_stock_inventory_line,v10_bsc_beacukai.bc_group_gov,1,0,1,1
-access_bc_user_bc_stock_inventory_gov,Bea Cukai stock inventory Gov,stock.model_stock_inventory,v10_bsc_beacukai.bc_group_gov,1,0,1,1
-access_bc_user_bc_invoice_gov,Bea Cukai invoice Gov,account.model_account_invoice,v10_bsc_beacukai.bc_group_gov,1,0,1,1
-access_bc_picking_gov,Bea Cukai picking Gov,stock.model_stock_picking,v10_bsc_beacukai.bc_group_gov,1,0,1,1
-access_bc_user_bc_incoming_23,access.bc.user.bc.incoming.23,model_beacukai_incoming_23,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_gov_bc_incoming_23,access.bc.gov.bc.incoming.23,model_beacukai_incoming_23,v10_bsc_beacukai.bc_group_gov,1,0,0,0
-access_bc_user_bc_incoming_line_23,access.bc.user.bc.incoming.line.23,model_beacukai_incoming_line_23,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_gov_bc_incoming_line_23,access.bc.gov.bc.incoming.line.23,model_beacukai_incoming_line_23,v10_bsc_beacukai.bc_group_gov,1,0,0,0
-access_bc_user_bc_tpb_container,access.bc.user.bc.tpb.container,model_tpb_container,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_gov_bc_tpb_container,access.bc.gov.bc.tpb.container,model_tpb_container,v10_bsc_beacukai.bc_group_gov,1,0,0,0
-access_bc_user_bc_tpb_package,access.bc.user.bc.tpb.package,model_tpb_package,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_gov_bc_tpb_package,access.bc.gov.bc.tpb.package,model_tpb_package,v10_bsc_beacukai.bc_group_gov,1,0,0,0
-access_bc_user_bc_tpb_document,access.bc.user.bc.tpb.document,model_tpb_document,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_gov_bc_tpb_document,access.bc.gov.bc.tpb.document,model_tpb_document,v10_bsc_beacukai.bc_group_gov,1,0,0,0
-access_bc_user_bc_tpb_goods_tariff,access.bc.user.bc.tpb.goods.tariff,model_tpb_goods_tariff,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_gov_bc_tpb_goods_tariff,access.bc.gov.bc.tpb.goods.tariff,model_tpb_goods_tariff,v10_bsc_beacukai.bc_group_gov,1,0,0,0
-access_bc_user_bc_tpb_goods_document,access.bc.user.bc.tpb.goods.document,model_tpb_goods_document,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_gov_bc_tpb_goods_document,access.bc.gov.bc.tpb.goods.document,model_tpb_goods_document,v10_bsc_beacukai.bc_group_gov,1,0,0,0
-access_bc_user_bc_ref_tariff_type,access.bc.user.bc.ref.tariff.type,model_ref_tariff_type,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_office_pabean,access.bc.user.bc.ref.office.pabean,model_ref_office_pabean,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_destination_tpb,access.bc.user.bc.ref.destination.tpb,model_ref_destination_tpb,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_supplier,access.bc.user.bc.ref.supplier,model_ref_supplier,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_ship,access.bc.user.bc.ref.ship,model_ref_ship,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_mode_transport,access.bc.user.bc.ref.mode.transport,model_ref_mode_transport,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_package_type,access.bc.user.bc.ref.package.type,model_ref_package_type,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_document,access.bc.user.bc.ref.document,model_ref_document,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_container_size,access.bc.user.bc.ref.container.size,model_ref_container_size,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_container_type,access.bc.user.bc.ref.container.type,model_ref_container_type,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_negara,access.bc.user.bc.ref.negara,model_ref_negara,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_port,access.bc.user.bc.ref.port,model_ref_port,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_tps,access.bc.user.bc.ref.tps,model_ref_tps,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_valuta,access.bc.user.bc.ref.valuta,model_ref_valuta,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_satuan,access.bc.user.bc.ref.satuan,model_ref_satuan,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_facility,access.bc.user.bc.ref.facility,model_ref_facility,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_scheme_tariff,access.bc.user.bc.ref.scheme.tariff,model_ref_scheme_tariff,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_comodity,access.bc.user.bc.ref.comodity,model_ref_comodity,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_api_type,access.bc.user.bc.ref.api.type,model_ref_api_type,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_tariff_facility,access.bc.user.bc.ref.tariff.facility,model_ref_tariff_facility,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_pos_tariff,access.bc.user.bc.ref.pos.tariff,model_ref_pos_tariff,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_code_id,access.bc.user.bc.ref.code.id,model_ref_code_id,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_laporan_posisi_wip,access.bc.user.bc.laporan.posisi.wip,model_laporan_posisi_wip,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_gov_bc_laporan_posisi_wip,access.bc.gov.bc.laporan.posisi.wip,model_laporan_posisi_wip,v10_bsc_beacukai.bc_group_gov,1,0,1,1
-access_bc_user_bc_laporan_mutasi,access.bc.user.bc.laporan.mutasi,model_laporan_mutasi,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_gov_bc_laporan_mutasi,access.bc.gov.bc.laporan.mutasi,model_laporan_mutasi,v10_bsc_beacukai.bc_group_gov,1,1,1,1
-access_bc_user_bc_laporan_mutasi_mesin,access.bc.user.bc.laporan.mutasi.mesin,model_laporan_mutasi_mesin,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_gov_bc_laporan_mutasi_mesin,access.bc.gov.bc.laporan.mutasi.mesin,model_laporan_mutasi_mesin,v10_bsc_beacukai.bc_group_gov,1,1,1,1
-access_bc_user_bc_laporan_mutasi_barang_jadi,access.bc.user.bc.laporan.mutasi.barang.jadi,model_laporan_mutasi_barang_jadi,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_gov_bc_laporan_mutasi_barang_jadi,access.bc.gov.bc.laporan.mutasi.barang.jadi,model_laporan_mutasi_barang_jadi,v10_bsc_beacukai.bc_group_gov,1,1,1,1
-access_bc_user_bc_laporan_mutasi_reject,access.bc.user.bc.laporan.mutasi.reject,model_laporan_mutasi_reject,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_gov_bc_laporan_mutasi_reject,access.bc.gov.bc.laporan.mutasi.reject,model_laporan_mutasi_reject,v10_bsc_beacukai.bc_group_gov,1,1,1,1
-access_bc_user_bc_create_bc_incoming_wizard,access.bc.user.bc.create.bc.incoming.wizard,model_create_bc_incoming_wizard,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_gov_bc_create_bc_incoming_wizard,access.bc.gov.bc.create.bc.incoming.wizard,model_create_bc_incoming_wizard,v10_bsc_beacukai.bc_group_gov,1,0,1,1
-access_bc_user_bc_ref_bendera,access.bc.user.bc.ref.bendera,model_ref_bendera,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_user_bc_ref_category_product,access.bc.user.bc.ref.category.product,model_ref_category_product,v10_bsc_beacukai.bc_group_user,1,1,1,1
-access_bc_gov_bc_stock_move,stock.move bc_group_gov,model_stock_move,v10_bsc_beacukai.bc_group_gov,1,1,0,0
+access_bc_user_bc_incoming,Bea Cukai User,model_beacukai_incoming,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_outgoing,Bea Cukai User,model_beacukai_outgoing,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_outgoing_line,Bea Cukai User,model_beacukai_outgoing_line,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_tpb,Bea Cukai User,model_beacukai_tpb,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_apiu,Bea Cukai User,model_beacukai_apiu,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_apiu_gov,Bea Cukai Gov,model_beacukai_apiu,v12_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_user_bc_document_type,Bea Cukai User,model_beacukai_document_type,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_delivery_purpose,Bea Cukai User,model_beacukai_delivery_purpose,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_incoming_line,Bea Cukai User,model_beacukai_incoming_line,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_cctv_user,Bea Cukai User,model_beacukai_cctv,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_cctv_gov,Bea Cukai Gov,model_beacukai_cctv,v12_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_user_bc_incoming_gov,Bea Cukai Gov,model_beacukai_incoming,v12_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_user_bc_incoming_line_gov,Bea Cukai Gov,model_beacukai_incoming_line,v12_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_user_bc_outgoing_gov,Bea Cukai Gov,model_beacukai_outgoing,v12_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_user_bc_outgoing_line_gov,Bea Cukai Gov,model_beacukai_outgoing_line,v12_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_user_bc_tpb_gov,Bea Cukai Gov,model_beacukai_tpb,v12_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_user_bc_document_type_gov,Bea Cukai Gov,model_beacukai_document_type,v12_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_user_config_location,Bea Cukai Config location user,model_beacukai_config_location,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_gov_config_location,Bea Cukai Config location gov,model_beacukai_config_location,v12_bsc_beacukai.bc_group_gov,1,0,1,1
+access_bc_user_bc_stock_move_gov,Bea Cukai stock move Gov,model_stock_move,v12_bsc_beacukai.bc_group_gov,1,0,1,1
+access_bc_user_bc_stock_inventory_line_gov,Bea Cukai stock inventory line Gov,stock.model_stock_inventory_line,v12_bsc_beacukai.bc_group_gov,1,0,1,1
+access_bc_user_bc_stock_inventory_gov,Bea Cukai stock inventory Gov,stock.model_stock_inventory,v12_bsc_beacukai.bc_group_gov,1,0,1,1
+access_bc_user_bc_invoice_gov,Bea Cukai invoice Gov,account.model_account_invoice,v12_bsc_beacukai.bc_group_gov,1,0,1,1
+access_bc_picking_gov,Bea Cukai picking Gov,stock.model_stock_picking,v12_bsc_beacukai.bc_group_gov,1,0,1,1
+access_bc_user_bc_incoming_23,access.bc.user.bc.incoming.23,model_beacukai_incoming_23,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_gov_bc_incoming_23,access.bc.gov.bc.incoming.23,model_beacukai_incoming_23,v12_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_user_bc_incoming_line_23,access.bc.user.bc.incoming.line.23,model_beacukai_incoming_line_23,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_gov_bc_incoming_line_23,access.bc.gov.bc.incoming.line.23,model_beacukai_incoming_line_23,v12_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_user_bc_tpb_container,access.bc.user.bc.tpb.container,model_tpb_container,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_gov_bc_tpb_container,access.bc.gov.bc.tpb.container,model_tpb_container,v12_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_user_bc_tpb_package,access.bc.user.bc.tpb.package,model_tpb_package,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_gov_bc_tpb_package,access.bc.gov.bc.tpb.package,model_tpb_package,v12_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_user_bc_tpb_document,access.bc.user.bc.tpb.document,model_tpb_document,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_gov_bc_tpb_document,access.bc.gov.bc.tpb.document,model_tpb_document,v12_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_user_bc_tpb_goods_tariff,access.bc.user.bc.tpb.goods.tariff,model_tpb_goods_tariff,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_gov_bc_tpb_goods_tariff,access.bc.gov.bc.tpb.goods.tariff,model_tpb_goods_tariff,v12_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_user_bc_tpb_goods_document,access.bc.user.bc.tpb.goods.document,model_tpb_goods_document,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_gov_bc_tpb_goods_document,access.bc.gov.bc.tpb.goods.document,model_tpb_goods_document,v12_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_user_bc_ref_tariff_type,access.bc.user.bc.ref.tariff.type,model_ref_tariff_type,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_office_pabean,access.bc.user.bc.ref.office.pabean,model_ref_office_pabean,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_destination_tpb,access.bc.user.bc.ref.destination.tpb,model_ref_destination_tpb,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_supplier,access.bc.user.bc.ref.supplier,model_ref_supplier,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_ship,access.bc.user.bc.ref.ship,model_ref_ship,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_mode_transport,access.bc.user.bc.ref.mode.transport,model_ref_mode_transport,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_package_type,access.bc.user.bc.ref.package.type,model_ref_package_type,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_document,access.bc.user.bc.ref.document,model_ref_document,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_container_size,access.bc.user.bc.ref.container.size,model_ref_container_size,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_container_type,access.bc.user.bc.ref.container.type,model_ref_container_type,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_negara,access.bc.user.bc.ref.negara,model_ref_negara,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_port,access.bc.user.bc.ref.port,model_ref_port,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_tps,access.bc.user.bc.ref.tps,model_ref_tps,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_valuta,access.bc.user.bc.ref.valuta,model_ref_valuta,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_satuan,access.bc.user.bc.ref.satuan,model_ref_satuan,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_facility,access.bc.user.bc.ref.facility,model_ref_facility,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_scheme_tariff,access.bc.user.bc.ref.scheme.tariff,model_ref_scheme_tariff,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_comodity,access.bc.user.bc.ref.comodity,model_ref_comodity,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_api_type,access.bc.user.bc.ref.api.type,model_ref_api_type,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_tariff_facility,access.bc.user.bc.ref.tariff.facility,model_ref_tariff_facility,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_pos_tariff,access.bc.user.bc.ref.pos.tariff,model_ref_pos_tariff,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_code_id,access.bc.user.bc.ref.code.id,model_ref_code_id,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_laporan_posisi_wip,access.bc.user.bc.laporan.posisi.wip,model_laporan_posisi_wip,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_gov_bc_laporan_posisi_wip,access.bc.gov.bc.laporan.posisi.wip,model_laporan_posisi_wip,v12_bsc_beacukai.bc_group_gov,1,0,1,1
+access_bc_user_bc_laporan_mutasi,access.bc.user.bc.laporan.mutasi,model_laporan_mutasi,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_gov_bc_laporan_mutasi,access.bc.gov.bc.laporan.mutasi,model_laporan_mutasi,v12_bsc_beacukai.bc_group_gov,1,1,1,1
+access_bc_user_bc_laporan_mutasi_mesin,access.bc.user.bc.laporan.mutasi.mesin,model_laporan_mutasi_mesin,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_gov_bc_laporan_mutasi_mesin,access.bc.gov.bc.laporan.mutasi.mesin,model_laporan_mutasi_mesin,v12_bsc_beacukai.bc_group_gov,1,1,1,1
+access_bc_user_bc_laporan_mutasi_barang_jadi,access.bc.user.bc.laporan.mutasi.barang.jadi,model_laporan_mutasi_barang_jadi,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_gov_bc_laporan_mutasi_barang_jadi,access.bc.gov.bc.laporan.mutasi.barang.jadi,model_laporan_mutasi_barang_jadi,v12_bsc_beacukai.bc_group_gov,1,1,1,1
+access_bc_user_bc_laporan_mutasi_reject,access.bc.user.bc.laporan.mutasi.reject,model_laporan_mutasi_reject,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_gov_bc_laporan_mutasi_reject,access.bc.gov.bc.laporan.mutasi.reject,model_laporan_mutasi_reject,v12_bsc_beacukai.bc_group_gov,1,1,1,1
+access_bc_user_bc_create_bc_incoming_wizard,access.bc.user.bc.create.bc.incoming.wizard,model_create_bc_incoming_wizard,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_gov_bc_create_bc_incoming_wizard,access.bc.gov.bc.create.bc.incoming.wizard,model_create_bc_incoming_wizard,v12_bsc_beacukai.bc_group_gov,1,0,1,1
+access_bc_user_bc_ref_bendera,access.bc.user.bc.ref.bendera,model_ref_bendera,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_ref_category_product,access.bc.user.bc.ref.category.product,model_ref_category_product,v12_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_gov_bc_stock_move,stock.move bc_group_gov,model_stock_move,v12_bsc_beacukai.bc_group_gov,1,1,0,0

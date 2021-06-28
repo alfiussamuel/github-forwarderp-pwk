@@ -25,19 +25,19 @@
         <field name="res_model">wizard.laporan.mutasi</field>
         <field name="view_type">form</field>
         <field name="view_mode">form</field>
-        <field name="view_id" ref="v10_bsc_beacukai.wizard_laporan_mutasi_view"/>
+        <field name="view_id" ref="v12_bsc_beacukai.wizard_laporan_mutasi_view"/>
         <field name="target">new</field>
     </record>
 
     <!-- <menuitem id="menu_action_wizard_laporan_mutasi"         
         name="Generate Laporan Mutasi"
-        parent="v10_bsc_beacukai.menu_beacukai_report" 
+        parent="v12_bsc_beacukai.menu_beacukai_report" 
         sequence="100"/>
 
         <menuitem id="menu_action_wizard_laporan_mutasi_bahan_baku" 
             action="action_wizard_laporan_mutasi" 
             name="Laporan Mutasi Bahan Baku"
-            parent="v10_bsc_beacukai.menu_action_wizard_laporan_mutasi" 
+            parent="v12_bsc_beacukai.menu_action_wizard_laporan_mutasi" 
             sequence="1"/> -->
 
 

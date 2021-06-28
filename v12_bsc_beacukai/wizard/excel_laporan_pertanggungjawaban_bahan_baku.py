@@ -13,7 +13,7 @@ _logger = logging.getLogger(__name__)
 
 
 class ReportBahanbaku(models.AbstractModel):
-    _name = 'report.v10_bsc_beacukai.report_bahanbaku'
+    _name = 'report.v12_bsc_beacukai.report_bahanbaku'
 
     @api.model
     def render_html(self, docids, data=None):
@@ -45,7 +45,7 @@ class ReportBahanbaku(models.AbstractModel):
             'product': move_line_ids,
             'header': self.env['beacukai.apiu'].search([], limit=1)
         }
-        return self.env['report'].render('v10_bsc_beacukai.report_bahanbaku', docargs)
+        return self.env['report'].render('v12_bsc_beacukai.report_bahanbaku', docargs)
 
 # class ReportLaporanBahanBakuPenolong(models.Model):
 #     _name = "bahan.baku.report"
@@ -163,8 +163,8 @@ class ExcelLaporanPertanggungjawabanBahanBaku(models.TransientModel):
             group_by="product_id")
 
         action = self.env['ir.model.data'].xmlid_to_object(
-            'v10_bsc_beacukai.action_laporan_mutasi')
-        #action = self.env['ir.model.data'].xmlid_to_object('v10_bsc_beacukai.action_laporan_mutasi_bahan_baku')
+            'v12_bsc_beacukai.action_laporan_mutasi')
+        #action = self.env['ir.model.data'].xmlid_to_object('v12_bsc_beacukai.action_laporan_mutasi_bahan_baku')
         if not action:
             action = {
                 'view_type': 'form',
@@ -443,9 +443,9 @@ class ExcelLaporanPertanggungjawabanBahanBaku(models.TransientModel):
             ctx = dict(
                 self._context)
 
-            #action = self.env['ir.model.data'].xmlid_to_object('v10_bsc_beacukai.action_laporan_mutasi')
+            #action = self.env['ir.model.data'].xmlid_to_object('v12_bsc_beacukai.action_laporan_mutasi')
             action = self.env['ir.model.data'].xmlid_to_object(
-                'v10_bsc_beacukai.action_laporan_mutasi_bahan_baku')
+                'v12_bsc_beacukai.action_laporan_mutasi_bahan_baku')
             if not action:
                 action = {
                     'view_type': 'form',
@@ -472,7 +472,7 @@ class ExcelLaporanPertanggungjawabanBahanBaku(models.TransientModel):
 
     def _print_report(self, data):
         data['form'].update(self.read(['date_from', 'date_to'])[0])
-        return self.env['report'].get_action(self, 'v10_bsc_beacukai.report_bahanbaku', data=data)
+        return self.env['report'].get_action(self, 'v12_bsc_beacukai.report_bahanbaku', data=data)
 
     @api.multi
     def generate_report(self):
@@ -754,7 +754,7 @@ class ExcelLaporanPertanggungjawabanBahanBaku(models.TransientModel):
         fp.close()
         ir_model_data = self.env['ir.model.data']
         form_res = ir_model_data.get_object_reference(
-            'v10_bsc_beacukai', 'excel_laporan_pertanggungjawaban_bahan_baku_form')
+            'v12_bsc_beacukai', 'excel_laporan_pertanggungjawaban_bahan_baku_form')
         form_id = form_res and form_res[1] or False
         return {
             'name': ('Download XLS'),

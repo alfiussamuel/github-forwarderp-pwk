@@ -110,7 +110,7 @@
 			<field name="name">Laporan Mutasi</field>
 			<field name="res_model">laporan.mutasi</field>
 			<field name="view_mode">tree,form</field>
-			<field name="view_id" ref="v10_bsc_beacukai.laporan_mutasi_tree"/>
+			<field name="view_id" ref="v12_bsc_beacukai.laporan_mutasi_tree"/>
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">
 				Click to add a Contact Center
@@ -193,7 +193,7 @@
 			<field name="name">Laporan Mutasi Barang Jadi</field>
 			<field name="res_model">laporan.mutasi.barang.jadi</field>
 			<field name="view_mode">tree,form</field>
-			<field name="view_id" ref="v10_bsc_beacukai.laporan_mutasi_barang_jadi_tree"/>
+			<field name="view_id" ref="v12_bsc_beacukai.laporan_mutasi_barang_jadi_tree"/>
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">
 				Click to add a Contact Center
@@ -249,7 +249,7 @@
 			<field name="name">Laporan Mutasi Mesin</field>
 			<field name="res_model">laporan.mutasi.mesin</field>
 			<field name="view_mode">tree,form</field>
-			<field name="view_id" ref="v10_bsc_beacukai.laporan_mutasi_mesin_tree"/>
+			<field name="view_id" ref="v12_bsc_beacukai.laporan_mutasi_mesin_tree"/>
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">
 				Click to add a Contact Center
@@ -328,7 +328,7 @@
 			<field name="name">Laporan Mutasi Reject</field>
 			<field name="res_model">laporan.mutasi.reject</field>
 			<field name="view_mode">tree,form</field>
-			<field name="view_id" ref="v10_bsc_beacukai.laporan_mutasi_reject_tree"/>
+			<field name="view_id" ref="v12_bsc_beacukai.laporan_mutasi_reject_tree"/>
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">
 				Click to add a Contact Center
@@ -396,7 +396,7 @@
 			<field name="name">Laporan Pertanggungjawaban</field>
 			<field name="res_model">laporan.pertanggungjawaban</field>
 			<field name="view_mode">tree,form</field>
-			<field name="view_id" ref="v10_bsc_beacukai.laporan_pertanggungjawaban_mutasi_tree"/>
+			<field name="view_id" ref="v12_bsc_beacukai.laporan_pertanggungjawaban_mutasi_tree"/>
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">
 				Click to add a Contact Center
@@ -409,7 +409,7 @@
 			<field name="name">Laporan Posisi WIP</field>
 			<field name="res_model">laporan.pertanggungjawaban</field>
 			<field name="view_mode">tree,form</field>
-			<field name="view_id" ref="v10_bsc_beacukai.laporan_posisi_wip_tree"/>
+			<field name="view_id" ref="v12_bsc_beacukai.laporan_posisi_wip_tree"/>
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">
 				Click to add a Contact Center

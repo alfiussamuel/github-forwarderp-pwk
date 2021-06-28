@@ -7,7 +7,7 @@ from odoo.exceptions import UserError
 
 
 class ReportSalesperson(models.AbstractModel):
-    _name = 'report.v10_bsc_beacukai.report_salesperson'
+    _name = 'report.v12_bsc_beacukai.report_salesperson'
 
     @api.model
     def render_html(self, docids, data=None):
@@ -36,11 +36,11 @@ class ReportSalesperson(models.AbstractModel):
             'orders': sales_records,
             'header': self.env['beacukai.apiu'].search([], limit=1)
         }
-        return self.env['report'].render('v10_bsc_beacukai.report_salesperson', docargs)
+        return self.env['report'].render('v12_bsc_beacukai.report_salesperson', docargs)
 
 
 class ReportBc23(models.AbstractModel):
-    _name = 'report.v10_bsc_beacukai.report_bc23'
+    _name = 'report.v12_bsc_beacukai.report_bc23'
 
     @api.model
     def render_html(self, docids, data=None):
@@ -86,11 +86,11 @@ class ReportBc23(models.AbstractModel):
             'orders': sales_records,
             'header': self.env['beacukai.apiu'].search([], limit=1)
         }
-        return self.env['report'].render('v10_bsc_beacukai.report_bc23', docargs)
+        return self.env['report'].render('v12_bsc_beacukai.report_bc23', docargs)
 
 
 class ReportBcOutgoing(models.AbstractModel):
-    _name = 'report.v10_bsc_beacukai.bc_report_outgoing'
+    _name = 'report.v12_bsc_beacukai.bc_report_outgoing'
 
     @api.model
     def render_html(self, docids, data=None):
@@ -111,10 +111,10 @@ class ReportBcOutgoing(models.AbstractModel):
             'orders': data['orders'],
             'header': self.env['beacukai.apiu'].search([], limit=1)
         }
-        return self.env['report'].render('v10_bsc_beacukai.bc_report_outgoing', docargs)
+        return self.env['report'].render('v12_bsc_beacukai.bc_report_outgoing', docargs)
 
 class ReportBcIncoming(models.AbstractModel):
-    _name = 'report.v10_bsc_beacukai.bc_report_incoming'
+    _name = 'report.v12_bsc_beacukai.bc_report_incoming'
 
     @api.model
     def render_html(self, docids, data=None):
@@ -136,11 +136,11 @@ class ReportBcIncoming(models.AbstractModel):
             'header': self.env['beacukai.apiu'].search([], limit=1)
         }
 
-        return self.env['report'].render('v10_bsc_beacukai.bc_report_incoming', docargs)
+        return self.env['report'].render('v12_bsc_beacukai.bc_report_incoming', docargs)
 
 
 class ReportBcWip(models.AbstractModel):
-    _name = 'report.v10_bsc_beacukai.bc_report_wip'
+    _name = 'report.v12_bsc_beacukai.bc_report_wip'
 
     @api.model
     def render_html(self, docids, data=None):
@@ -170,11 +170,11 @@ class ReportBcWip(models.AbstractModel):
             'moves': move_line_ids,
             'header': self.env['beacukai.apiu'].search([], limit=1)
         }
-        return self.env['report'].render('v10_bsc_beacukai.bc_report_wip', docargs)
+        return self.env['report'].render('v12_bsc_beacukai.bc_report_wip', docargs)
 
 
 class ReportBcPosisi(models.AbstractModel):
-    _name = 'report.v10_bsc_beacukai.bc_report_posisi'
+    _name = 'report.v12_bsc_beacukai.bc_report_posisi'
 
     @api.model
     def render_html(self, docids, data=None):
@@ -198,4 +198,4 @@ class ReportBcPosisi(models.AbstractModel):
             'orders': orders,
             'header': self.env['beacukai.apiu'].search([], limit=1)
         }
-        return self.env['report'].render('v10_bsc_beacukai.bc_report_posisi', docargs)
+        return self.env['report'].render('v12_bsc_beacukai.bc_report_posisi', docargs)

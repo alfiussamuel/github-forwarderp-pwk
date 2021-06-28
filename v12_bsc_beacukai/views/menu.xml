@@ -3,194 +3,194 @@
 
 		<menuitem id="laporan_konversi_pemakaian_bahan_menu" 
 	        name="Laporan Konversi Pemakaian Bahan" 
-	        action="v10_bsc_beacukai.action_excel_laporan_konversi_pemakaian_bahan" 
+	        action="v12_bsc_beacukai.action_excel_laporan_konversi_pemakaian_bahan" 
 	        parent="sales_team.menu_sales" 
 	        sequence="90"/>
 
 		<menuitem id="menu_beacukai"
             name="Bea Cukai"            
             sequence="10"
-            web_icon="v10_bsc_beacukai,static/description/icon_beacukai.png" />
+            web_icon="v12_bsc_beacukai,static/description/icon_beacukai.png" />
 
 	        <menuitem id="menu_beacukai_master" 
 	        	name="Master Data" 
-	        	groups="v10_bsc_beacukai.bc_group_user"
-				parent="v10_bsc_beacukai.menu_beacukai"
+	        	groups="v12_bsc_beacukai.bc_group_user"
+				parent="v12_bsc_beacukai.menu_beacukai"
 				sequence="2" />
 
 				<menuitem id="menu_beacukai_master_tpb"
 					name="Kantor Pabean"			 
-					groups="v10_bsc_beacukai.bc_group_user"
-					parent="v10_bsc_beacukai.menu_beacukai_master"		
+					groups="v12_bsc_beacukai.bc_group_user"
+					parent="v12_bsc_beacukai.menu_beacukai_master"		
 					action="action_beacukai_tpb" 						
 					sequence="1"/>
 
 				<menuitem id="menu_beacukai_master_apiu"
 					name="Pengusaha TPB"
-					groups="v10_bsc_beacukai.bc_group_user"			 
-					parent="v10_bsc_beacukai.menu_beacukai_master"		
+					groups="v12_bsc_beacukai.bc_group_user"			 
+					parent="v12_bsc_beacukai.menu_beacukai_master"		
 					action="action_beacukai_apiu" 						
 					sequence="2"/>
 
 				<menuitem id="menu_beacukai_master_document_type"
 					name="Tipe Dokumen"			 
-					groups="v10_bsc_beacukai.bc_group_user"
-					parent="v10_bsc_beacukai.menu_beacukai_master"		
+					groups="v12_bsc_beacukai.bc_group_user"
+					parent="v12_bsc_beacukai.menu_beacukai_master"		
 					action="action_beacukai_document_type" 						
 					sequence="3"/>                 
 
 				<menuitem id="menu_beacukai_master_delivery_purpose"
 					name="Tujuan Pengiriman"			 
-					groups="v10_bsc_beacukai.bc_group_user"
-					parent="v10_bsc_beacukai.menu_beacukai_master"		
+					groups="v12_bsc_beacukai.bc_group_user"
+					parent="v12_bsc_beacukai.menu_beacukai_master"		
 					action="action_beacukai_delivery_purpose" 						
 					sequence="4"/>         
 				
 				<menuitem id="menu_beacukai_vendor"
-					groups="v10_bsc_beacukai.bc_group_user"
+					groups="v12_bsc_beacukai.bc_group_user"
 					name="Vendor"			 
-					parent="v10_bsc_beacukai.menu_beacukai_master"		
+					parent="v12_bsc_beacukai.menu_beacukai_master"		
 					action="base.action_partner_supplier_form" 						
 					sequence="10"/>
 
 				<menuitem id="menu_beacukai_customer"
-					groups="v10_bsc_beacukai.bc_group_user"
+					groups="v12_bsc_beacukai.bc_group_user"
 					name="Pelanggan"			 
-					parent="v10_bsc_beacukai.menu_beacukai_master"		
+					parent="v12_bsc_beacukai.menu_beacukai_master"		
 					action="base.action_partner_customer_form" 						
 					sequence="11"/>
 
 				<menuitem id="menu_beacukai_product"
-					groups="v10_bsc_beacukai.bc_group_user"
+					groups="v12_bsc_beacukai.bc_group_user"
 					name="Produk"			 
-					parent="v10_bsc_beacukai.menu_beacukai_master"		
+					parent="v12_bsc_beacukai.menu_beacukai_master"		
 					action="purchase.product_normal_action_puchased" 						
 					sequence="12"/>                        
 
 	        <menuitem id="menu_beacukai_transaction" 
 	        	name="Dokumen Pabean"
-	        	groups="v10_bsc_beacukai.bc_group_user" 
-				parent="v10_bsc_beacukai.menu_beacukai"
+	        	groups="v12_bsc_beacukai.bc_group_user" 
+				parent="v12_bsc_beacukai.menu_beacukai"
 				sequence="1" />
 
 				<!-- <menuitem id="menu_beacukai_transaction_incoming"
 					name="Dokumen Pemasukan"			 
-					groups="v10_bsc_beacukai.bc_group_user"
-					parent="v10_bsc_beacukai.menu_beacukai_transaction"		
-					action="v10_bsc_beacukai.action_beacukai_incoming" 						
+					groups="v12_bsc_beacukai.bc_group_user"
+					parent="v12_bsc_beacukai.menu_beacukai_transaction"		
+					action="v12_bsc_beacukai.action_beacukai_incoming" 						
 					sequence="1"/> -->
 
 				<!-- <menuitem id="menu_beacukai_transaction_incoming"
 					name="Dokumen Pemasukan"			 
-					groups="v10_bsc_beacukai.bc_group_user"
-					parent="v10_bsc_beacukai.menu_beacukai_transaction"								
+					groups="v12_bsc_beacukai.bc_group_user"
+					parent="v12_bsc_beacukai.menu_beacukai_transaction"								
 					sequence="1"/> -->
 					<!-- <menuitem id="menu_beacukai_transaction_incoming_bc_2_3"
 						name="Dokumen BC 2.3"			 
-						groups="v10_bsc_beacukai.bc_group_user"
-						parent="v10_bsc_beacukai.menu_beacukai_transaction"		
-						action="v10_bsc_beacukai.action_beacukai_incoming_bc_2_3" 						
+						groups="v12_bsc_beacukai.bc_group_user"
+						parent="v12_bsc_beacukai.menu_beacukai_transaction"		
+						action="v12_bsc_beacukai.action_beacukai_incoming_bc_2_3" 						
 						sequence="1"/> -->
 
 				<!-- <menuitem id="menu_beacukai_transaction_outgoing"
 					name="Dokumen Pengeluaran"			 
 					groups="bc_group_user"
-					parent="v10_bsc_beacukai.menu_beacukai_transaction"		
-					action="v10_bsc_beacukai.action_beacukai_outgoing" 						
+					parent="v12_bsc_beacukai.menu_beacukai_transaction"		
+					action="v12_bsc_beacukai.action_beacukai_outgoing" 						
 					sequence="2"/> -->
 
 				<!-- <menuitem id="menu_beacukai_transaction_incoming_bc_2_3"
 					name="Dokumen BC 2.3"			 
-					groups="v10_bsc_beacukai.bc_group_user"
-					parent="v10_bsc_beacukai.menu_beacukai_transaction"		
-					action="v10_bsc_beacukai.action_beacukai_incoming_bc_2_3" 						
+					groups="v12_bsc_beacukai.bc_group_user"
+					parent="v12_bsc_beacukai.menu_beacukai_transaction"		
+					action="v12_bsc_beacukai.action_beacukai_incoming_bc_2_3" 						
 					sequence="3"/> -->
 
 					<!-- <menuitem id="menu_beacukai_transaction_outgoing_bc_2_5"
 						name="Dokumen BC 2.5"			 
-						groups="v10_bsc_beacukai.bc_group_user"
-						parent="v10_bsc_beacukai.menu_beacukai_transaction_outgoing"		
-						action="v10_bsc_beacukai.action_beacukai_outgoing_bc_2_5" 						
+						groups="v12_bsc_beacukai.bc_group_user"
+						parent="v12_bsc_beacukai.menu_beacukai_transaction_outgoing"		
+						action="v12_bsc_beacukai.action_beacukai_outgoing_bc_2_5" 						
 						sequence="1"/> -->
 					
 		<menuitem id="menu_beacukai_report" 
 	       	name="Laporan" 
-			parent="v10_bsc_beacukai.menu_beacukai"
-			groups="v10_bsc_beacukai.bc_group_user,v10_bsc_beacukai.bc_group_gov"
+			parent="v12_bsc_beacukai.menu_beacukai"
+			groups="v12_bsc_beacukai.bc_group_user,v12_bsc_beacukai.bc_group_gov"
 			sequence="4" />
 
 			<menuitem id="bc_incoming_report"
               	name="Laporan Pemasukan"
-              	action = "v10_bsc_beacukai.action_incoming_wizard"
-            	parent="v10_bsc_beacukai.menu_beacukai_report"
-            	groups="v10_bsc_beacukai.bc_group_gov"
+              	action = "v12_bsc_beacukai.action_incoming_wizard"
+            	parent="v12_bsc_beacukai.menu_beacukai_report"
+            	groups="v12_bsc_beacukai.bc_group_gov"
             	sequence="10"/>
 
             <!-- <menuitem id="bc23_report"
             	name="Laporan Pemasukan BC 2.3"
-            	action="v10_bsc_beacukai.action_bc23_wizard"
-            	parent="v10_bsc_beacukai.menu_beacukai_report"
-            	groups="v10_bsc_beacukai.bc_group_gov"
+            	action="v12_bsc_beacukai.action_bc23_wizard"
+            	parent="v12_bsc_beacukai.menu_beacukai_report"
+            	groups="v12_bsc_beacukai.bc_group_gov"
             	sequence="10"/> -->
 
 	        <menuitem id="bc_outgoing_report" 
 	            name="Laporan Pengeluaran" 
-	            action="v10_bsc_beacukai.action_outgoing_wizard" 
-	            parent="v10_bsc_beacukai.menu_beacukai_report"
-	            groups="v10_bsc_beacukai.bc_group_gov" 
+	            action="v12_bsc_beacukai.action_outgoing_wizard" 
+	            parent="v12_bsc_beacukai.menu_beacukai_report"
+	            groups="v12_bsc_beacukai.bc_group_gov" 
 	            sequence="20"/>
 
 			<menuitem id="laporan_posisi_wip_menu"
 	            name="Laporan Posisi WIP"
-	            action="v10_bsc_beacukai.action_excel_laporan_posisi_wip"
-	            parent="v10_bsc_beacukai.menu_beacukai_report"
-	            groups="v10_bsc_beacukai.bc_group_user,v10_bsc_beacukai.bc_group_gov"
+	            action="v12_bsc_beacukai.action_excel_laporan_posisi_wip"
+	            parent="v12_bsc_beacukai.menu_beacukai_report"
+	            groups="v12_bsc_beacukai.bc_group_user,v12_bsc_beacukai.bc_group_gov"
 	            sequence="30"/>
 
 	        <menuitem id="laporan_pertanggungjawaban_bahan_baku_menu" 
 	            name="Laporan Pertanggungjawaban Bahan Baku" 
-	            action="v10_bsc_beacukai.action_excel_laporan_mutasi_bahan_baku"
-	            parent="v10_bsc_beacukai.menu_beacukai_report"
-	            groups="v10_bsc_beacukai.bc_group_gov" 
+	            action="v12_bsc_beacukai.action_excel_laporan_mutasi_bahan_baku"
+	            parent="v12_bsc_beacukai.menu_beacukai_report"
+	            groups="v12_bsc_beacukai.bc_group_gov" 
 	            sequence="40"/>
 
 	        <menuitem id="laporan_pertanggungjawaban_barang_jadi_menu" 
 	            name="Laporan Pertanggungjawaban Mutasi Barang Jadi" 
-	            action="v10_bsc_beacukai.action_excel_laporan_mutasi_barang_jadi"
-	            parent="v10_bsc_beacukai.menu_beacukai_report"
-	            groups="v10_bsc_beacukai.bc_group_gov" 
+	            action="v12_bsc_beacukai.action_excel_laporan_mutasi_barang_jadi"
+	            parent="v12_bsc_beacukai.menu_beacukai_report"
+	            groups="v12_bsc_beacukai.bc_group_gov" 
 	            sequence="50"/>
 
 	        <menuitem id="laporan_pertanggungjawaban_mesin_menu" 
 	            name="Laporan Pertanggungjawaban Mutasi Mesin" 
-	            action="v10_bsc_beacukai.action_excel_laporan_mutasi_mesin"
-	            parent="v10_bsc_beacukai.menu_beacukai_report"
-	            groups="v10_bsc_beacukai.bc_group_gov" 
+	            action="v12_bsc_beacukai.action_excel_laporan_mutasi_mesin"
+	            parent="v12_bsc_beacukai.menu_beacukai_report"
+	            groups="v12_bsc_beacukai.bc_group_gov" 
 	            sequence="60"/>
 
 	        <menuitem id="laporan_pertanggungjawaban_reject_menu" 
 	            name="Laporan Pertanggungjawaban Barang Reject dan Scrap" 
-	            action="v10_bsc_beacukai.action_excel_laporan_mutasi_reject"
-	            parent="v10_bsc_beacukai.menu_beacukai_report"
-	            groups="v10_bsc_beacukai.bc_group_gov" 
+	            action="v12_bsc_beacukai.action_excel_laporan_mutasi_reject"
+	            parent="v12_bsc_beacukai.menu_beacukai_report"
+	            groups="v12_bsc_beacukai.bc_group_gov" 
 	            sequence="70"/>			    
 	                
             <!-- <menuitem id="menu_beacukai_cctv"
 				name="CCTV"			 
-				parent="v10_bsc_beacukai.menu_beacukai_report"
-				groups="v10_bsc_beacukai.bc_group_gov"		
-				action="v10_bsc_beacukai.action_beacukai_cctv" 						
+				parent="v12_bsc_beacukai.menu_beacukai_report"
+				groups="v12_bsc_beacukai.bc_group_gov"		
+				action="v12_bsc_beacukai.action_beacukai_cctv" 						
 				sequence="80"/> -->
 
 			<!-- <menuitem id="laporan_konversi_pemakaian_bahan_menu" 
 	            name="Laporan Konversi Pemakaian Bahan" 
-	            action="v10_bsc_beacukai.action_excel_laporan_konversi_pemakaian_bahan" 
+	            action="v12_bsc_beacukai.action_excel_laporan_konversi_pemakaian_bahan" 
 	            parent="parent="sales_team.menu_sale_config"" 
 	            sequence="90"/> -->
 
 			<menuitem id="menu_beacukai_config" 
                 name="Konfigurasi" 
-                parent="v10_bsc_beacukai.menu_beacukai" 
+                parent="v12_bsc_beacukai.menu_beacukai" 
                 groups="bc_group_user" 
                 sequence="5"/>
                 <!--<menuitem id="menu_bc_config_settings" name="Perusahaan" parent="menu_beacukai_config"-->
@@ -220,41 +220,41 @@
 	        </record> -->
 	        
 	        <!-- <menuitem action="action_bc_uc" name="Dashboard"
-                id="menu_bc_dasbboard" parent="menu_beacukai" groups="v10_bsc_beacukai.bc_group_user"
+                id="menu_bc_dasbboard" parent="menu_beacukai" groups="v12_bsc_beacukai.bc_group_user"
                 sequence="1"/> -->
             <!-- <menuitem action="action_bc_uc" name="Data Server"
-                id="menu_bc_data_server" parent="menu_beacukai_config" groups="v10_bsc_beacukai.bc_group_user"
+                id="menu_bc_data_server" parent="menu_beacukai_config" groups="v12_bsc_beacukai.bc_group_user"
                 sequence="80"/> -->        
 
 	            <!--<menuitem id="excel_laporan_pertanggungjawaban_bahan_baku_menu"  -->
 		            <!--name="Bahan Baku dan Bahan Penolong" -->
-		            <!--action="v10_bsc_beacukai.action_excel_laporan_pertanggungjawaban_bahan_baku"-->
-		            <!--parent="v10_bsc_beacukai.laporan_pertanggungjawaban_menu"-->
+		            <!--action="v12_bsc_beacukai.action_excel_laporan_pertanggungjawaban_bahan_baku"-->
+		            <!--parent="v12_bsc_beacukai.laporan_pertanggungjawaban_menu"-->
 		            <!--sequence="4"/> -->
 
         		<!--<menuitem id="excel_laporan_pertanggungjawaban_barang_jadi_menu"  -->
 	                <!--name="Barang Jadi" -->
-	                <!--action="v10_bsc_beacukai.action_excel_laporan_pertanggungjawaban_barang_jadi"-->
-	                <!--parent="v10_bsc_beacukai.laporan_pertanggungjawaban_menu"-->
+	                <!--action="v12_bsc_beacukai.action_excel_laporan_pertanggungjawaban_barang_jadi"-->
+	                <!--parent="v12_bsc_beacukai.laporan_pertanggungjawaban_menu"-->
 	                <!--sequence="5"/> -->
 
                	<!--<menuitem id="excel_laporan_pertanggungjawaban_mesin_menu"  -->
 	                <!--name="Mesin dan Peralatan" -->
-	                <!--action="v10_bsc_beacukai.action_excel_laporan_pertanggungjawaban_mesin"-->
-	                <!--parent="v10_bsc_beacukai.laporan_pertanggungjawaban_menu"-->
+	                <!--action="v12_bsc_beacukai.action_excel_laporan_pertanggungjawaban_mesin"-->
+	                <!--parent="v12_bsc_beacukai.laporan_pertanggungjawaban_menu"-->
 	                <!--sequence="6"/> -->
 
 	            <!--<menuitem id="excel_laporan_pertanggungjawaban_reject_menu"  -->
 	                <!--name="Reject dan Scrap" -->
-	                <!--action="v10_bsc_beacukai.action_excel_laporan_pertanggungjawaban_reject"-->
-	                <!--parent="v10_bsc_beacukai.laporan_pertanggungjawaban_menu"-->
+	                <!--action="v12_bsc_beacukai.action_excel_laporan_pertanggungjawaban_reject"-->
+	                <!--parent="v12_bsc_beacukai.laporan_pertanggungjawaban_menu"-->
 	                <!--sequence="7"/>-->
 
 	            <menuitem id="menu_beacukai_config_location"
-					groups="v10_bsc_beacukai.bc_group_user"
+					groups="v12_bsc_beacukai.bc_group_user"
 					name="Reports"			 
-					parent="v10_bsc_beacukai.menu_beacukai_config"		
-					action="v10_bsc_beacukai.action_beacukai_config" 						
+					parent="v12_bsc_beacukai.menu_beacukai_config"		
+					action="v12_bsc_beacukai.action_beacukai_config" 						
 					sequence="5"/>
 
 		<record model="ir.ui.menu" id="account.menu_action_account_moves_all">

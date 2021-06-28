@@ -135,11 +135,11 @@
     </template>               -->  
         <!-- <report 
             id="action_report_bahanbaku"
-            model="report.v10_bsc_beacukai.report_bahanbaku"
+            model="report.v12_bsc_beacukai.report_bahanbaku"
             string="Laporan Bahan Baku"
             report_type="qweb-html"
-            name="v10_bsc_beacukai.report_bahanbaku"
-            file="v10_bsc_beacukai.report_bahanbaku"
+            name="v12_bsc_beacukai.report_bahanbaku"
+            file="v12_bsc_beacukai.report_bahanbaku"
             /> -->
 	</data>
 </odoo>

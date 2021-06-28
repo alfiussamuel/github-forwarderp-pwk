@@ -23,8 +23,8 @@ class BcConfigSettings(models.TransientModel):
         ],"Jenis TPB")
     # group_bc_kawasan_berikat = fields.Boolean("Kawasan Berikat",implied_group='group_bc_kawasan_berikat')
     # group_bc_kawasan_berikat2 = fields.Boolean("Kawasan Berikat",implied_group='group_bc_kawasan_berikat')
-    module_v10_bsc_beacukai_kb = fields.Boolean("Kawasan Berikat")
-    module_v10_bsc_beacukai_gb = fields.Boolean("Gudang Berikat")
+    module_v12_bsc_beacukai_kb = fields.Boolean("Kawasan Berikat")
+    module_v12_bsc_beacukai_gb = fields.Boolean("Gudang Berikat")
     # module_bc_gudang_berikat = fields.Boolean("Gudang Berikat")
 
     
@@ -39,17 +39,17 @@ class BcConfigSettings(models.TransientModel):
         irModuleObj = self.env['ir.module.module']
         irModuleObj.update_list()
         if self.bc_type == 0:
-            moduleIds = irModuleObj.search([('state', '!=', 'installed'),('name', '=', 'v10_bsc_beacukai_kb')])
+            moduleIds = irModuleObj.search([('state', '!=', 'installed'),('name', '=', 'v12_bsc_beacukai_kb')])
             if moduleIds:
                moduleIds[0].button_immediate_install()
-            moduleUns = irModuleObj.search([('state', '=', 'installed'),('name', '=', 'v10_bsc_beacukai_gb')])
+            moduleUns = irModuleObj.search([('state', '=', 'installed'),('name', '=', 'v12_bsc_beacukai_gb')])
             if moduleUns:
                moduleUns[0].button_immediate_uninstall()
         else:
-            moduleIds = irModuleObj.search([('state', '!=', 'installed'),('name', '=', 'v10_bsc_beacukai_gb')])
+            moduleIds = irModuleObj.search([('state', '!=', 'installed'),('name', '=', 'v12_bsc_beacukai_gb')])
             if moduleIds:
                moduleIds[0].button_immediate_install()
-            moduleUns = irModuleObj.search([('state', '=', 'installed'),('name', '=', 'v10_bsc_beacukai_kb')])
+            moduleUns = irModuleObj.search([('state', '=', 'installed'),('name', '=', 'v12_bsc_beacukai_kb')])
             if moduleUns:
                moduleUns[0].button_immediate_uninstall()
 

@@ -1,4 +1,4 @@
-odoo.define('v10_bsc_beacukai.tree_view_button', function (require){
+odoo.define('v12_bsc_beacukai.tree_view_button', function (require){
 "use strict";
  
  

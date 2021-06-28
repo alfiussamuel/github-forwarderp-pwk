@@ -874,7 +874,7 @@
 
 		<template id="assets_backend" name="x_export_view assets" inherit_id="web.assets_backend">
 		 <xpath expr="." position="inside">
-		 <!-- <script type="text/javascript" src="/v10_bsc_beacukai/static/src/js/button.js"></script> -->
+		 <!-- <script type="text/javascript" src="/v12_bsc_beacukai/static/src/js/button.js"></script> -->
 		 </xpath>
 		 </template>
 

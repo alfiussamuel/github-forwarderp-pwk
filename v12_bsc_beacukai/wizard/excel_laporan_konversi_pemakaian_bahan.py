@@ -13,7 +13,7 @@ _logger = logging.getLogger(__name__)
 
 
 # class ReportBahanbaku(models.AbstractModel):
-#     _name = 'report.v10_bsc_beacukai.report_bahanbaku'
+#     _name = 'report.v12_bsc_beacukai.report_bahanbaku'
 
     # @api.model
     # def render_html(self, docids, data=None):
@@ -47,7 +47,7 @@ _logger = logging.getLogger(__name__)
     #         'product' : data_product,
     #         'header': self.env['beacukai.apiu'].search([],limit=1)
     #     }
-    #     return self.env['report'].render('v10_bsc_beacukai.report_bahanbaku', docargs)
+    #     return self.env['report'].render('v12_bsc_beacukai.report_bahanbaku', docargs)
 
 
 class ExcelLaporanKonversPemakaianBahan(models.TransientModel):
@@ -62,8 +62,8 @@ class ExcelLaporanKonversPemakaianBahan(models.TransientModel):
     #         date_from=self.date_from,
     #         group_by="product_id")
 
-    #     action = self.env['ir.model.data'].xmlid_to_object('v10_bsc_beacukai.action_laporan_mutasi')
-    #action = self.env['ir.model.data'].xmlid_to_object('v10_bsc_beacukai.action_laporan_mutasi_bahan_baku')
+    #     action = self.env['ir.model.data'].xmlid_to_object('v12_bsc_beacukai.action_laporan_mutasi')
+    #action = self.env['ir.model.data'].xmlid_to_object('v12_bsc_beacukai.action_laporan_mutasi_bahan_baku')
     # if not action:
     #     action = {
     #         'view_type': 'form',
@@ -439,7 +439,7 @@ class ExcelLaporanKonversPemakaianBahan(models.TransientModel):
         fp.close()
         ir_model_data = self.env['ir.model.data']
         form_res = ir_model_data.get_object_reference(
-            'v10_bsc_beacukai', 'excel_laporan_konversi_pemakaian_bahan_form')
+            'v12_bsc_beacukai', 'excel_laporan_konversi_pemakaian_bahan_form')
         form_id = form_res and form_res[1] or False
         return {
             'name': ('Download XLS'),

@@ -12,7 +12,7 @@ import logging
 _logger = logging.getLogger(__name__)
 
 class ReportMesin(models.AbstractModel):
-    _name = 'report.v10_bsc_beacukai.report_mesin'
+    _name = 'report.v12_bsc_beacukai.report_mesin'
 
     @api.model
     def render_html(self, docids, data=None):
@@ -48,7 +48,7 @@ class ReportMesin(models.AbstractModel):
             'header': self.env['beacukai.apiu'].search([],limit=1)
 
         }
-        return self.env['report'].render('v10_bsc_beacukai.report_mesin', docargs)
+        return self.env['report'].render('v12_bsc_beacukai.report_mesin', docargs)
 
 class ExcelLaporanPertanggungjawabanMesin(models.TransientModel):
     _name = 'excel.laporan.pertanggungjawaban.mesin'
@@ -246,8 +246,8 @@ class ExcelLaporanPertanggungjawabanMesin(models.TransientModel):
             ctx = dict(
                 self._context)
 
-            #action = self.env['ir.model.data'].xmlid_to_object('v10_bsc_beacukai.action_laporan_mutasi')
-            action = self.env['ir.model.data'].xmlid_to_object('v10_bsc_beacukai.action_laporan_mutasi_mesin')
+            #action = self.env['ir.model.data'].xmlid_to_object('v12_bsc_beacukai.action_laporan_mutasi')
+            action = self.env['ir.model.data'].xmlid_to_object('v12_bsc_beacukai.action_laporan_mutasi_mesin')
             if not action:
                 action = {
                     'view_type': 'form',
@@ -273,7 +273,7 @@ class ExcelLaporanPertanggungjawabanMesin(models.TransientModel):
 
     def _print_report(self, data):
         data['form'].update(self.read(['date_from', 'date_to'])[0])
-        return self.env['report'].get_action(self, 'v10_bsc_beacukai.report_mesin', data=data)
+        return self.env['report'].get_action(self, 'v12_bsc_beacukai.report_mesin', data=data)
 
     @api.multi
     def generate_report(self):
@@ -451,7 +451,7 @@ class ExcelLaporanPertanggungjawabanMesin(models.TransientModel):
         fp.close()
         ir_model_data = self.env['ir.model.data']
         form_res = ir_model_data.get_object_reference(
-            'v10_bsc_beacukai', 'excel_laporan_pertanggungjawaban_mesin_form')
+            'v12_bsc_beacukai', 'excel_laporan_pertanggungjawaban_mesin_form')
         form_id = form_res and form_res[1] or False
         return {
             'name': ('Download XLS'),

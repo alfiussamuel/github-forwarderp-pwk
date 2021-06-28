@@ -117,7 +117,7 @@ class WizardLaporanMutasi(models.TransientModel):
             ctx = dict(
                 self._context)
 
-            action = self.env['ir.model.data'].xmlid_to_object('v10_bsc_beacukai.action_laporan_mutasi')
+            action = self.env['ir.model.data'].xmlid_to_object('v12_bsc_beacukai.action_laporan_mutasi')
             if not action:
                 action = {
                     'view_type': 'form',

@@ -131,11 +131,11 @@
 
         <report 
             id="action_report_reject"
-            model="report.v10_bsc_beacukai.report_reject"
+            model="report.v12_bsc_beacukai.report_reject"
             string="Laporan Reject/Scrap"
             report_type="qweb-html"
-            name="v10_bsc_beacukai.report_reject"
-            file="v10_bsc_beacukai.report_reject"
+            name="v12_bsc_beacukai.report_reject"
+            file="v12_bsc_beacukai.report_reject"
             /> 
                 
         

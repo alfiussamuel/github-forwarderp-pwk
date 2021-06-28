@@ -21,8 +21,8 @@
                                 <field name="jenis_api"/>
                                 <field name="nomor_api"/>
                                 <field name="bc_type" widget="radio"/>
-                                <field name="module_v10_bsc_beacukai_kb" invisible="1" />
-                                <field name="module_v10_bsc_beacukai_gb" invisible="1"/>
+                                <field name="module_v12_bsc_beacukai_kb" invisible="1" />
+                                <field name="module_v12_bsc_beacukai_gb" invisible="1"/>
                             </group>
                         </div>
                         

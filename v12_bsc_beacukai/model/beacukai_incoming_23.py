@@ -137,7 +137,7 @@ class BeacukaiIncoming23(models.Model):
                 'view_type': 'form',
                 'view_mode': 'form',
                 'res_id': new.id,
-                'view_id': self.env.ref('v10_bsc_beacukai.view_beacukai_input_register_number_out').id,
+                'view_id': self.env.ref('v12_bsc_beacukai.view_beacukai_input_register_number_out').id,
                 'context': "{'is_incoming': True}",
                 'target': 'new',
             }

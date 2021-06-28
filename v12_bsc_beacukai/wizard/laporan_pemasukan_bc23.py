@@ -31,7 +31,7 @@ class Bc23Wizard(models.TransientModel):
 
     def _print_report(self, data):
         data['form'].update(self.read(['date_from', 'date_to'])[0])
-        return self.env['report'].get_action(self, 'v10_bsc_beacukai.report_bc23', data=data)
+        return self.env['report'].get_action(self, 'v12_bsc_beacukai.report_bc23', data=data)
 
     @api.multi
     def open_table(self):
@@ -41,8 +41,8 @@ class Bc23Wizard(models.TransientModel):
             date_to=self.date_to,
             date_from=self.date_from)
 
-        action = self.env['ir.model.data'].xmlid_to_object('v10_bsc_beacukai.action_beacukai_incoming_line_bc_2_3')
-        #action = self.env['ir.model.data'].xmlid_to_object('v10_bsc_beacukai.action_beacukai_incoming')
+        action = self.env['ir.model.data'].xmlid_to_object('v12_bsc_beacukai.action_beacukai_incoming_line_bc_2_3')
+        #action = self.env['ir.model.data'].xmlid_to_object('v12_bsc_beacukai.action_beacukai_incoming')
         if not action:
             action = {
                 'view_type': 'form',
@@ -222,7 +222,7 @@ class Bc23Wizard(models.TransientModel):
         }
         # ir_model_data = self.env['ir.model.data']
         # form_res = ir_model_data.get_object_reference(
-        #     'v10_bsc_beacukai', 'excel_laporan_pertanggungjawaban_bahan_baku_form')
+        #     'v12_bsc_beacukai', 'excel_laporan_pertanggungjawaban_bahan_baku_form')
         # form_id = form_res and form_res[1] or False
         # return {
         #     'name': ('Download XLS'),

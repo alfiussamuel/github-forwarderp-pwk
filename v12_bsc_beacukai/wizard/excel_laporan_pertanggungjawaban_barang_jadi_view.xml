@@ -132,11 +132,11 @@
 
          <report 
             id="action_report_barangjadi"
-            model="report.v10_bsc_beacukai.report_barangjadi"
+            model="report.v12_bsc_beacukai.report_barangjadi"
             string="Laporan Barang Jadi"
             report_type="qweb-html"
-            name="v10_bsc_beacukai.report_barangjadi"
-            file="v10_bsc_beacukai.report_barangjadi"
+            name="v12_bsc_beacukai.report_barangjadi"
+            file="v12_bsc_beacukai.report_barangjadi"
             />
                 
         

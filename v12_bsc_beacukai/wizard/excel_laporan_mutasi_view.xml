@@ -37,7 +37,7 @@
             <field name="view_mode">form</field>
             <field name="view_id" ref="excel_laporan_mutasi_form"/>
             <field name="context">{'location': 'location_bahanbakupenolong',
-				'action_xmlid': 'v10_bsc_beacukai.action_laporan_pertanggungjawaban_mutasi',
+				'action_xmlid': 'v12_bsc_beacukai.action_laporan_pertanggungjawaban_mutasi',
 				'title': 'Laporan Pertanggungjawaban Mutasi Bahan Baku dan Bahan Penolong',
                 'name':'Bahan Baku dan Bahan Penolong'}</field>
             <field name="target">new</field>
@@ -50,7 +50,7 @@
             <field name="view_mode">form</field>
             <field name="view_id" ref="excel_laporan_mutasi_form"/>
             <field name="context">{'location': 'location_barangjadi',
-				'action_xmlid': 'v10_bsc_beacukai.action_laporan_pertanggungjawaban_mutasi',
+				'action_xmlid': 'v12_bsc_beacukai.action_laporan_pertanggungjawaban_mutasi',
                 'title': 'Laporan Pertanggungjawaban Mutasi Barang Jadi',
                 'name':'Barang Jadi', 'is_brg_jadi':True}</field>
             <field name="target">new</field>
@@ -63,7 +63,7 @@
             <field name="view_mode">form</field>
             <field name="view_id" ref="excel_laporan_mutasi_form"/>
             <field name="context">{'location': 'location_mesindanperalatan',
-				'action_xmlid': 'v10_bsc_beacukai.action_laporan_pertanggungjawaban_mutasi',
+				'action_xmlid': 'v12_bsc_beacukai.action_laporan_pertanggungjawaban_mutasi',
                 'title': 'Laporan Pertanggungjawaban Mutasi Mesin dan Peralatan',
                 'name':'Mesin dan Peralatan'}</field>
             <field name="target">new</field>
@@ -76,7 +76,7 @@
             <field name="view_mode">form</field>
             <field name="view_id" ref="excel_laporan_mutasi_form"/>
             <field name="context">{'location': 'location_reject',
-				'action_xmlid': 'v10_bsc_beacukai.action_laporan_pertanggungjawaban_mutasi',
+				'action_xmlid': 'v12_bsc_beacukai.action_laporan_pertanggungjawaban_mutasi',
                 'title': 'Laporan Pertanggungjawaban Mutasi Barang Reject dan Scrap',
                 'name':'Barang Reject dan Scrap'}</field>
             <field name="target">new</field>
@@ -89,7 +89,7 @@
             <field name="view_mode">form</field>
             <field name="view_id" ref="excel_laporan_mutasi_form"/>
             <field name="context">{'location': 'location_wip',
-				'action_xmlid': 'v10_bsc_beacukai.action_laporan_posisi_wip',
+				'action_xmlid': 'v12_bsc_beacukai.action_laporan_posisi_wip',
                 'title': 'Laporan Posisi WIP',
                 'name':'Laporan Posisi WIP', 'is_wip':True}</field>
             <field name="target">new</field>
@@ -195,11 +195,11 @@
 
         <report
             id="action_report_pertanggungjawaban_mutasi"
-            model="report.v10_bsc_beacukai.report_pertanggungjawaban_mutasi"
+            model="report.v12_bsc_beacukai.report_pertanggungjawaban_mutasi"
             string="Laporan Pertanggungjawaban"
             report_type="qweb-html"
-            name="v10_bsc_beacukai.report_pertanggungjawaban_mutasi"
-            file="v10_bsc_beacukai.report_pertanggungjawaban_mutasi"
+            name="v12_bsc_beacukai.report_pertanggungjawaban_mutasi"
+            file="v12_bsc_beacukai.report_pertanggungjawaban_mutasi"
         />
         
 	</data>

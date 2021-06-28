@@ -9,7 +9,7 @@ import time
 
 
 class ReportMutasi(models.AbstractModel):
-    _name = 'report.v10_bsc_beacukai.report_pertanggungjawaban_mutasi'
+    _name = 'report.v12_bsc_beacukai.report_pertanggungjawaban_mutasi'
 
     @api.model
     def render_html(self, docids, data=None):
@@ -22,7 +22,7 @@ class ReportMutasi(models.AbstractModel):
         else:
             docs.bc_type = "Gudang Berikat"
 
-        template_name = data['ctx'].get('template_name', 'v10_bsc_beacukai.report_pertanggungjawaban_mutasi')
+        template_name = data['ctx'].get('template_name', 'v12_bsc_beacukai.report_pertanggungjawaban_mutasi')
 
         docargs = {
             'doc_ids': self.ids,
@@ -156,7 +156,7 @@ class ExcelLaporanMutasi(models.TransientModel):
 
         if mutasi_ids:
             display_name = ctx.get('title', '')
-            action_xmlid = ctx.get('action_xmlid', 'v10_bsc_beacukai.action_laporan_pertanggungjawaban_mutasi')
+            action_xmlid = ctx.get('action_xmlid', 'v12_bsc_beacukai.action_laporan_pertanggungjawaban_mutasi')
             action = self.env['ir.model.data'].xmlid_to_object(action_xmlid)
             action = action[0].read()[0]
             action['domain'] = [('id', 'in', mutasi_ids.ids)]
@@ -180,7 +180,7 @@ class ExcelLaporanMutasi(models.TransientModel):
         data['ctx'] = ctx
         data['locations'] = self.get_location()
         data['form'].update(self.read(['date_from', 'date_to'])[0])
-        action = self.env['report'].get_action(self, 'v10_bsc_beacukai.report_pertanggungjawaban_mutasi', data=data)
+        action = self.env['report'].get_action(self, 'v12_bsc_beacukai.report_pertanggungjawaban_mutasi', data=data)
         action['name'] = ctx.get('title', '')
         action['target'] = 'main'
         return action
@@ -340,7 +340,7 @@ class ExcelLaporanMutasi(models.TransientModel):
         fp.close()
         ir_model_data = self.env['ir.model.data']
         form_res = ir_model_data.get_object_reference(
-            'v10_bsc_beacukai', 'excel_laporan_mutasi_form')
+            'v12_bsc_beacukai', 'excel_laporan_mutasi_form')
         form_id = form_res and form_res[1] or False
         return {
             'name': ('Download XLS'),

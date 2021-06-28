@@ -220,7 +220,7 @@ class ExcelLaporanPertanggungjawaban(models.TransientModel):
         fp.close()
         ir_model_data = self.env['ir.model.data']
         form_res = ir_model_data.get_object_reference(
-            'v10_bsc_beacukai', 'bc_laporan_posisi_form')
+            'v12_bsc_beacukai', 'bc_laporan_posisi_form')
         form_id = form_res and form_res[1] or False
         return {
             'name': ('Download XLS'),

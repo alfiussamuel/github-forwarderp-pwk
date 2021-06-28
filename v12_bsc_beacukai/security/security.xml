@@ -10,14 +10,14 @@
 
     <record id="bc_group_gov" model="res.groups">
       <field name="name">Bea Cukai Pemerintah</field>
-      <field name="category_id" ref="v10_bsc_beacukai.beacukai_access_management"/>
+      <field name="category_id" ref="v12_bsc_beacukai.beacukai_access_management"/>
     </record>
 
     <record id="bc_group_user" model="res.groups">
     <field name="name">Bea Cukai User</field>
     <field name="implied_ids" eval="[(4, ref('bc_group_gov'))]"/>
 
-    <field name="category_id" ref="v10_bsc_beacukai.beacukai_access_management"/>
+    <field name="category_id" ref="v12_bsc_beacukai.beacukai_access_management"/>
     </record>
 
     <!-- <record id="bc_kawasan_berikat" model="res.groups">

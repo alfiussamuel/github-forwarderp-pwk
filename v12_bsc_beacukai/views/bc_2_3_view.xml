@@ -610,7 +610,7 @@
 <!--		<record id="view_beacukai_incoming_23_form_warehouse" model="ir.ui.view">
             <field name="name">Dokumen Penerimaan</field>
             <field name="model">beacukai.incoming.23</field>
-            <field name="inherit_id" ref="v10_bsc_beacukai.view_beacukai_incoming_23_form" />
+            <field name="inherit_id" ref="v12_bsc_beacukai.view_beacukai_incoming_23_form" />
             <field name="groups_id" eval="[(6, 0, [ref('stock.group_stock_user')])]" />
             <field name="arch" type="xml">
                 <field name="line_ids" position="attributes">

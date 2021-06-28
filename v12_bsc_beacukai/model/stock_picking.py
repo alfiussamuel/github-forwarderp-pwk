@@ -304,7 +304,7 @@ class StockPicking(models.Model):
             if not rec.is_authorized(rec.picking_type_id.id) and rec.state == 'draft':
                 group_stock_manager = self.env.ref('stock.group_stock_manager')
                 recipient_ids = [x.email for x in group_stock_manager.users]
-                template = self.env.ref('v10_bsc_beacukai.email_template_warehouse')
+                template = self.env.ref('v12_bsc_beacukai.email_template_warehouse')
                 template.send_mail(rec.id, force_send=True,
                                    email_values={'email_to': ','.join(recipient_ids)})
 
@@ -331,7 +331,7 @@ class StockPicking(models.Model):
 
         res = super(StockPicking, self).create(values)
         if not self.is_authorized(res.picking_type_id.id) and self.state == 'draft':
-            template = self.env.ref('v10_bsc_beacukai.email_template_warehouse')
+            template = self.env.ref('v12_bsc_beacukai.email_template_warehouse')
             template.send_mail(res.id, force_send=True)
 
         return res
@@ -354,7 +354,7 @@ class StockPicking(models.Model):
     def button_bc_incoming(self):
         ir_model_data = self.env['ir.model.data']
         compose_form_id = ir_model_data.get_object_reference(
-            'v10_bsc_beacukai', 'create_bc_incoming_wizard')[1]
+            'v12_bsc_beacukai', 'create_bc_incoming_wizard')[1]
         return {
             'type': 'ir.actions.act_window',
             'view_type': 'form',

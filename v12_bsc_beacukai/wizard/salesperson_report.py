@@ -32,7 +32,7 @@ class SalespersonWizard(models.TransientModel):
 
     def _print_report(self, data):
         data['form'].update(self.read(['salesperson_id', 'date_from', 'date_to'])[0])
-        return self.env['report'].get_action(self, 'v10_bsc_beacukai.report_salesperson', data=data)
+        return self.env['report'].get_action(self, 'v12_bsc_beacukai.report_salesperson', data=data)
 
     @api.multi
     def open_table(self):
@@ -42,7 +42,7 @@ class SalespersonWizard(models.TransientModel):
             date_to=self.date_to,
             date_from=self.date_from)
         
-        action = self.env['ir.model.data'].xmlid_to_object('v10_bsc_beacukai.action_beacukai_incoming_line')
+        action = self.env['ir.model.data'].xmlid_to_object('v12_bsc_beacukai.action_beacukai_incoming_line')
         if not action:            
             action = {
                 'view_type': 'form',
@@ -383,7 +383,7 @@ class SalespersonWizard(models.TransientModel):
         }
         # ir_model_data = self.env['ir.model.data']
         # form_res = ir_model_data.get_object_reference(
-        #     'v10_bsc_beacukai', 'excel_laporan_pertanggungjawaban_bahan_baku_form')
+        #     'v12_bsc_beacukai', 'excel_laporan_pertanggungjawaban_bahan_baku_form')
         # form_id = form_res and form_res[1] or False
         # return {
         #     'name': ('Download XLS'),
@@ -459,7 +459,7 @@ class BcOutgoingWizard(models.TransientModel):
 
     def _print_report(self, data):        
         data['form'].update(self.read(['date_from', 'date_to','product_id'])[0])
-        return self.env['report'].get_action(self, 'v10_bsc_beacukai.bc_report_outgoing', data=data)
+        return self.env['report'].get_action(self, 'v12_bsc_beacukai.bc_report_outgoing', data=data)
 
     @api.multi
     def open_table(self):
@@ -469,7 +469,7 @@ class BcOutgoingWizard(models.TransientModel):
             date_to=self.date_to,
             date_from=self.date_from)
 
-        action = self.env['ir.model.data'].xmlid_to_object('v10_bsc_beacukai.action_outgoing_preview')
+        action = self.env['ir.model.data'].xmlid_to_object('v12_bsc_beacukai.action_outgoing_preview')
         action = action[0].read()[0]
 
         bc_preview_obj = self.env['bcreport.preview']
@@ -695,7 +695,7 @@ class BcIncomingWizard(models.TransientModel):
 
     def _print_report(self, data):        
         data['form'].update(self.read(['date_from', 'date_to','product_id'])[0])
-        return self.env['report'].get_action(self, 'v10_bsc_beacukai.bc_report_incoming', data=data)
+        return self.env['report'].get_action(self, 'v12_bsc_beacukai.bc_report_incoming', data=data)
 
     def get_line_data(self):
         self.ensure_one()
@@ -746,7 +746,7 @@ class BcIncomingWizard(models.TransientModel):
             date_from=self.date_from)
 
 #<<<<<<< HEAD
-        action = self.env['ir.model.data'].xmlid_to_object('v10_bsc_beacukai.action_incoming_preview')
+        action = self.env['ir.model.data'].xmlid_to_object('v12_bsc_beacukai.action_incoming_preview')
         action = action[0].read()[0]
 
         bc_preview_obj = self.env['bcreport.preview']
@@ -778,7 +778,7 @@ class BcIncomingWizard(models.TransientModel):
         action['name'] = _('Laporan Pemasukkan')
         action['display_name'] = _('Laporan Pemasukkan')
 #=======
-#        action = self.env['ir.model.data'].xmlid_to_object('v10_bsc_beacukai.action_beacukai_incoming_line_27')
+#        action = self.env['ir.model.data'].xmlid_to_object('v12_bsc_beacukai.action_beacukai_incoming_line_27')
         # if not action:
         #     action = {
         #         'view_type': 'form',
@@ -959,7 +959,7 @@ class BcPosisiWizard(models.TransientModel):
 
     def _print_report(self, data):
         data['form'].update(self.read(['category', 'date_from', 'date_to'])[0])
-        return self.env['report'].get_action(self, 'v10_bsc_beacukai.bc_report_posisi', data=data)
+        return self.env['report'].get_action(self, 'v12_bsc_beacukai.bc_report_posisi', data=data)
 
 # WIP
 class BcWipWizard(models.TransientModel):
@@ -1041,7 +1041,7 @@ class BcWipWizard(models.TransientModel):
 
     def _print_report(self, data):
         data['form'].update(self.read(['date_from', 'date_to'])[0])
-        return self.env['report'].get_action(self, 'v10_bsc_beacukai.bc_report_wip', data=data)
+        return self.env['report'].get_action(self, 'v12_bsc_beacukai.bc_report_wip', data=data)
 
     def get_move_lines(self):
         loc = self.env['ir.config_parameter'].sudo().get_param('location_wip')
@@ -1056,7 +1056,7 @@ class BcWipWizard(models.TransientModel):
     @api.multi
     def open_table(self):
         self.ensure_one()
-        action = self.env['ir.model.data'].xmlid_to_object('v10_bsc_beacukai.action_laporan_posisi_wip_transient')
+        action = self.env['ir.model.data'].xmlid_to_object('v12_bsc_beacukai.action_laporan_posisi_wip_transient')
         if not action:
             action = {
                 'view_type': 'form',
