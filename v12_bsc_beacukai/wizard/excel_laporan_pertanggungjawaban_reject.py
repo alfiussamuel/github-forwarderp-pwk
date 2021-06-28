@@ -96,7 +96,7 @@ class ExcelLaporanPertanggungjawabanReject(models.TransientModel):
         return action
 
     def get_move_line(self,id_product):
-        print "RUUUNN REJEEEEEEEEECCCCCTTTTTTT"
+        # print "RUUUNN REJEEEEEEEEECCCCCTTTTTTT"
         product = self.env['product.product'].browse(id_product)
         loc = self.env['ir.config_parameter'].sudo().get_param('location_reject', default='')
         location_id = self.env['stock.location'].browse(loc)

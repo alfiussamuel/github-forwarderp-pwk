@@ -17,7 +17,7 @@ class StockQuant(models.Model):
     submission_no = fields.Char(string='Nomor Pengajuan')
 
     def _account_entry_move(self, move):
-        print "Account Entry Move"
+        # print "Account Entry Move"
         """ Accounting Valuation Entries """
         if move.product_id.type != 'product' or move.product_id.valuation != 'real_time':
             # no stock valuation for consumable products
@@ -65,7 +65,7 @@ class StockQuant(models.Model):
                                 force_location_from=False, force_location_to=False):
         '''Create a quant in the destination location and create a negative
         quant in the source location if it's an internal location. '''
-        print "Masuk quant create from move"
+        # print "Masuk quant create from move"
         price_unit = move.get_price_unit()
         location = force_location_to or move.location_dest_id
         rounding = move.product_id.uom_id.rounding
@@ -160,14 +160,14 @@ class StockQuant(models.Model):
     #     return quant
 
     def _quant_update_from_move(self, move, location_dest_id, dest_package_id, lot_id=False, entire_pack=False):
-        print "Masukkkkkkkkk quant update from move"
+        # print "Masukkkkkkkkk quant update from move"
         res = super(StockQuant, self)._quant_update_from_move(move, location_dest_id, dest_package_id, lot_id=lot_id, entire_pack=entire_pack)
         self._account_entry_move(move)
         return res
 
     @api.model
     def quants_move(self, quants, move, location_to, location_from=False, lot_id=False, owner_id=False, src_package_id=False, dest_package_id=False, entire_pack=False):
-        print "Masukk quants move"
+        # print "Masukk quants move"
         """Moves all given stock.quant in the given destination location.  Unreserve from current move.
         :param quants: list of tuple(browse record(stock.quant) or None, quantity to move)
         :param move: browse record (stock.move)
@@ -188,21 +188,21 @@ class StockQuant(models.Model):
         quants_move_sudo = self.env['stock.quant'].sudo()
         check_lot = False
         for quant, qty in quants:
-            print "AAAAAAAAAAAAAAAA"
+            # print "AAAAAAAAAAAAAAAA"
             if not quant:
-                print "BBBBBBBBBBBBBBBB"
+                # print "BBBBBBBBBBBBBBBB"
                 #If quant is None, we will create a quant to move (and potentially a negative counterpart too)
                 quant = self._quant_create_from_move(
                     qty, move, lot_id=lot_id, owner_id=owner_id, src_package_id=src_package_id, dest_package_id=dest_package_id, force_location_from=location_from, force_location_to=location_to)
                 check_lot = True
             else:
-                print "CCCCCCCCCCCCCCCCCCCC"
+                # print "CCCCCCCCCCCCCCCCCCCC"
                 quant._quant_split(qty)
                 quants_move_sudo |= quant
             quants_reconcile_sudo |= quant
 
         if quants_move_sudo:
-            print "DDDDDDDDDDDDDDDDDD"
+            # print "DDDDDDDDDDDDDDDDDD"
             moves_recompute = quants_move_sudo.filtered(lambda self: self.reservation_id != move).mapped('reservation_id')
             quants_move_sudo._quant_update_from_move(move, location_to, dest_package_id, lot_id=lot_id, entire_pack=entire_pack)
             moves_recompute.recalculate_move_state()
@@ -551,7 +551,7 @@ class StockMove(models.Model):
 
     @api.multi
     def action_done(self):
-        print "Masuk action done"
+        # print "Masuk action done"
         
         # Additional
         self.product_price_update_before_done()
@@ -614,7 +614,7 @@ class StockMove(models.Model):
                     raise UserError(_("The roundings of your unit of measure %s on the move vs. %s on the product don't allow to do these operations or you are not transferring the picking at once. ") % (move.product_uom.name, move.product_id.uom_id.name))
 
                 if not operation.pack_lot_ids:
-                    print "Masuk if not operation pack lot ids"
+                    # print "Masuk if not operation pack lot ids"
                     preferred_domain_list = [[('reservation_id', '=', move.id)], [('reservation_id', '=', False)], ['&', ('reservation_id', '!=', move.id), ('reservation_id', '!=', False)]]
                     quants = Quant.quants_get_preferred_domain(
                         prout_move_qty[move], move, ops=operation, domain=[('qty', '>', 0)],

@@ -122,7 +122,7 @@ class BeacukaiIncoming23(models.Model):
     @api.multi
     def _get_default_picking_type_id(self):        
         picking_type_id = self.env['stock.picking.type'].search([('name','=','Receipts')])
-        print "Picking Type ", picking_type_id[0].id
+        print ("Picking Type ", picking_type_id[0].id)
         return picking_type_id[0].id
 
     @api.multi

@@ -233,7 +233,7 @@ class ExcelLaporanPertanggungjawabanBahanBaku(models.TransientModel):
                 ('location_dest_id', '=', location_id.id),
                 ('picking_id.is_beacukai_incoming_23', '=', True)
                 ])
-            print "Incoming IDS ", incoming_ids
+            # print "Incoming IDS ", incoming_ids
             outgoing_ids = self.env['stock.move'].search([
                 ('state','=','done'),
                 ('date', '>=', self.date_from),

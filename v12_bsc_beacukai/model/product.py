@@ -19,7 +19,7 @@ class ProductTemplate(models.Model):
     @api.one
     def get_qty(self):
         for res in self:
-            print ">>>>>>>>>>><<<<<<<<<", res.qty_available
+            print (">>>>>>>>>>><<<<<<<<<", res.qty_available)
 
     @api.model
     def name_search(self, name='', args=None, operator='ilike', limit=100):
@@ -107,9 +107,9 @@ class ProductProduct(models.Model):
             res[product.id]['outgoing_qty'] = moves_out_res.get(product.id, 0.0)
             res[product.id]['virtual_available'] = qty_available + res[product.id]['incoming_qty'] - res[product.id]['outgoing_qty']
 
-            print qty_available
-            print "Incoming ", res[product.id]['incoming_qty']
-            print "Outgoing ", res[product.id]['outgoing_qty']
-            print "Virtual ", res[product.id]['virtual_available']
+            # print qty_available
+            # print "Incoming ", res[product.id]['incoming_qty']
+            # print "Outgoing ", res[product.id]['outgoing_qty']
+            # print "Virtual ", res[product.id]['virtual_available']
             
         return res

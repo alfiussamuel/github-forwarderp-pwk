@@ -134,7 +134,7 @@ class SalespersonWizard(models.TransientModel):
         worksheet1.set_row(3, 20)
         worksheet1.set_row(6, 30)
 
-        print self.env.user.company_id.name
+        # print self.env.user.company_id.name
 
         bc_type = self.env['ir.config_parameter'].get_param('bc_type')
         kbgb = ""
@@ -291,7 +291,7 @@ class SalespersonWizard(models.TransientModel):
         worksheet1.set_row(3, 20)
         worksheet1.set_row(6, 30)
 
-        print self.env.user.company_id.name
+        # print self.env.user.company_id.name
 
         bc_type = self.env['ir.config_parameter'].get_param('bc_type')
         kbgb = ""
@@ -565,7 +565,7 @@ class BcOutgoingWizard(models.TransientModel):
         worksheet1.set_row(3, 20)
         worksheet1.set_row(6, 30)
 
-        print self.env.user.company_id.name
+        # print self.env.user.company_id.name
 
         bc_type = self.env['ir.config_parameter'].get_param('bc_type')
         kbgb = ""
@@ -865,7 +865,7 @@ class BcIncomingWizard(models.TransientModel):
         worksheet1.set_row(3, 20)
         worksheet1.set_row(6, 30)
 
-        print self.env.user.company_id.name
+        # print self.env.user.company_id.name
 
         bc_type = self.env['ir.config_parameter'].get_param('bc_type')
         kbgb = ""
@@ -1149,7 +1149,7 @@ class BcWipWizard(models.TransientModel):
         worksheet1.set_row(3, 20)
         worksheet1.set_row(6, 30)
 
-        print self.env.user.company_id.name
+        # print self.env.user.company_id.name
 
         bc_type = self.env['ir.config_parameter'].get_param('bc_type')
         kbgb = ""
