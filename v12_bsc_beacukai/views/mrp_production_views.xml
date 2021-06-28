@@ -2,7 +2,7 @@
 <odoo>
     <data>
 
-        <record id="mrp_production_form_view_inherit_bsc" model="ir.ui.view">
+        <!-- <record id="mrp_production_form_view_inherit_bsc" model="ir.ui.view">
 	        <field name="name">mrp.production.form</field>
 	        <field name="model">mrp.production</field>
 	        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
@@ -11,6 +11,6 @@
                     <field name="submission_no_mrp"/>
                 </xpath>
 	        </field>
-	    </record>
+	    </record> -->
     </data>
 </odoo>
