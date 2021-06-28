@@ -84,6 +84,24 @@ class SaleOrderLineContainer(models.Model):
     total_crates = fields.Float('Total Crates', default=1)
     qty = fields.Float('Quantity / Crate')
     number = fields.Char('Number')    
+    duplicate_qty = field.Integer('Duplicate Qty')
+
+    @api.multi
+    def duplicate_crate(self):
+        for res in self:
+            if res.duplicate_qty > 0:
+                for duplicate in range(res.duplicate_qty):
+                    self.env['sale.order.line.container'].create({
+                        'reference': res.reference.id,
+                        'position_id': res.position_id.id,
+                        'pallet_id': res.pallet_id.id,
+                        'strapping_id': res.strapping_id.id,
+                        'total_crates': 1,
+                        'qty': 1,
+                        'number': res.number,
+                    })
+
+            res.duplicate_qty = 0
 
 class SaleOrderLine(models.Model):    
     _inherit = "sale.order.line"
