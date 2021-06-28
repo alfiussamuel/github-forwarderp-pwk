@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report 
+            id="action_report_salesperson"
+            model="report.v10_bsc_beacukai.report_salesperson"
+            string="Laporan Pemasukan"
+            report_type="qweb-html"
+            name="v10_bsc_beacukai.report_salesperson"
+            file="v10_bsc_beacukai.report_salesperson"
+            />
+
+        <report 
+            id="action_report_bc_outgoing"
+            model="report.v10_bsc_beacukai.bc_report_outgoing"
+            string="Laporan Pengeluaran"
+            report_type="qweb-html"
+            name="v10_bsc_beacukai.bc_report_outgoing"
+            file="v10_bsc_beacukai.bc_report_outgoing"
+            />
+
+        <report 
+            id="action_report_bc_incoming"
+            model="report.v10_bsc_beacukai.bc_report_incoming"
+            string="Laporan Pemasukan"
+            report_type="qweb-html"
+            name="v10_bsc_beacukai.bc_report_incoming"
+            file="v10_bsc_beacukai.bc_report_incoming"
+            />
+
+        <report 
+            id="action_report_bc_posisi"
+            model="report.v10_bsc_beacukai.bc_report_posisi"
+            string="Laporan Posisi Barang"
+            report_type="qweb-html"
+            name="v10_bsc_beacukai.bc_report_posisi"
+            file="v10_bsc_beacukai.bc_report_posisi"
+            />
+
+        <report 
+            id="action_report_bc_wip"
+            model="report.v10_bsc_beacukai.bc_report_wip"
+            string="Laporan WIP"
+            report_type="qweb-html"
+            name="v10_bsc_beacukai.bc_report_wip"
+            file="v10_bsc_beacukai.bc_report_wip"
+            />
+    </data>
+</odoo>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+    	<record id="ref_code_id_data1" model="ref.code.id">
+            <field name="name">1</field>
+            <field name="desc">NPWP 15 DIGIT</field>
+        </record>
+
+        <record id="ref_code_id_data2" model="ref.code.id">
+            <field name="name">2</field>
+            <field name="desc">NPWP 9 DIGIT</field>
+        </record>
+
+        <record id="ref_code_id_data3" model="ref.code.id">
+            <field name="name">3</field>
+            <field name="desc">KTP</field>
+        </record>
+
+        <record id="ref_code_id_data4" model="ref.code.id">
+            <field name="name">4</field>
+            <field name="desc">PASPOR</field>
+        </record>
+
+        <record id="ref_code_id_data5" model="ref.code.id">
+            <field name="name">5</field>
+            <field name="desc">LAINNYA</field>
+        </record>
+    </data>
+</odoo>

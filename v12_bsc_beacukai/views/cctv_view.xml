@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>			                   		               	           				
+
+		<!-- Beacukai Delivery Purpose -->
+		<record id="view_beacukai_cctv_form" model="ir.ui.view">
+			<field name="name">CCTV</field>
+			<field name="model">beacukai.cctv</field>
+			<field name="type">form</field>			
+			<field name="arch" type="xml">				
+				<form string="CCTV">
+					<group>
+						<field name="name" required="1"/>												
+						<field name="url" required="1" widget="url"/>												
+					</group>
+				</form>
+			</field>
+		</record>	
+
+		<record id="view_beacukai_cctv_tree" model="ir.ui.view">
+			<field name="name">CCTV</field>
+			<field name="model">beacukai.cctv</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">				
+				<tree string="CCTV">
+					<field name="name" />												
+					<field name="url" widget="url"/>												
+				</tree>
+			</field>
+		</record>		
+
+		<record id="action_beacukai_cctv" model="ir.actions.act_window">
+			<field name="name">CCTV</field>
+			<field name="res_model">beacukai.cctv</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>
+
+		
+	</data>
+</openerp>

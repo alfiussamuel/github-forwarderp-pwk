@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>			                   		               	           				
+
+		<menuitem id="menu_beacukai_transaction_outgoing" 
+        	name="Dokumen Pengeluaran"
+        	groups="v10_bsc_beacukai.bc_group_user" 
+			parent="v10_bsc_beacukai.menu_beacukai_transaction"
+			sequence="2" />			
+			<menuitem id="menu_beacukai_transaction_outgoing_25"
+				name="Dokumen BC 2.5"			 
+				groups="v10_bsc_beacukai.bc_group_user"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_transaction_outgoing"		
+				action="v10_bsc_beacukai_sam.action_beacukai_outgoing_25" 						
+				sequence="1"/>							
+			<menuitem id="menu_beacukai_transaction_outgoing_261"
+				name="Dokumen BC 2.6.1"			 
+				groups="v10_bsc_beacukai.bc_group_user"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_transaction_outgoing"		
+				action="v10_bsc_beacukai_sam.action_beacukai_outgoing_261" 						
+				sequence="2"/>			
+			<menuitem id="menu_beacukai_transaction_outgoing_27"
+				name="Dokumen BC 2.7"
+				groups="v10_bsc_beacukai.bc_group_user"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_transaction_outgoing"
+				action="v10_bsc_beacukai_sam.action_beacukai_outgoing_27"
+				sequence="3"/>			
+			<menuitem id="menu_beacukai_transaction_outgoing_30"
+				name="Dokumen BC 3.0"
+				groups="v10_bsc_beacukai.bc_group_user"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_transaction_outgoing"
+				action="v10_bsc_beacukai_sam.action_beacukai_outgoing_30"
+				sequence="4"/>			
+			<menuitem id="menu_beacukai_transaction_outgoing_41"
+				name="Dokumen BC 4.1"
+				groups="v10_bsc_beacukai.bc_group_user"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_transaction_outgoing"
+				action="v10_bsc_beacukai_sam.action_beacukai_outgoing_41"
+				sequence="5"/>
+
+		<menuitem id="menu_beacukai_transaction_incoming" 
+        	name="Dokumen Pemasukan"
+        	groups="v10_bsc_beacukai.bc_group_user" 
+			parent="v10_bsc_beacukai.menu_beacukai_transaction"
+			sequence="2" />
+			<menuitem id="menu_beacukai_transaction_incoming_23"
+				name="Dokumen BC 2.3"			 
+				groups="v10_bsc_beacukai.bc_group_user"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_transaction_incoming"		
+				action="v10_bsc_beacukai.action_beacukai_incoming_bc_2_3" 						
+				sequence="1"/>
+			<menuitem id="menu_beacukai_transaction_incoming_262"
+				name="Dokumen BC 2.6.2"			 
+				groups="v10_bsc_beacukai.bc_group_user"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_transaction_incoming"
+				action="v10_bsc_beacukai_sam.action_beacukai_incoming_262" 						
+				sequence="2"/>
+			<menuitem id="menu_beacukai_transaction_incoming_27"
+				name="Dokumen BC 2.7"			 
+				groups="v10_bsc_beacukai.bc_group_user"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_transaction_incoming"
+				action="v10_bsc_beacukai_sam.action_beacukai_incoming_27" 						
+				sequence="3"/>
+			<menuitem id="menu_beacukai_transaction_incoming_40"
+				name="Dokumen BC 4.0"
+				groups="v10_bsc_beacukai.bc_group_user"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_transaction_incoming"
+				action="v10_bsc_beacukai_sam.action_beacukai_incoming_40"
+				sequence="4"/>
+
+		<menuitem id="menu_beacukai_master_brand"
+			groups="v10_bsc_beacukai.bc_group_user"
+			name="Brand/Merk"			 
+			parent="v10_bsc_beacukai.menu_beacukai_master"		
+			action="v10_bsc_beacukai_sam.action_beacukai_brand" 						
+			sequence="20"/>                        
+		<menuitem id="menu_beacukai_master_jenis_kemasan"
+			groups="v10_bsc_beacukai.bc_group_user"
+			name="Jenis Kemasan"
+			parent="v10_bsc_beacukai.menu_beacukai_master"
+			action="v10_bsc_beacukai_sam.action_beacukai_jenis_kemasan"
+			sequence="21"/>                        
+		<menuitem id="menu_beacukai_npwp_type"
+			groups="v10_bsc_beacukai.bc_group_user"
+			name="NPWP Code"
+			parent="v10_bsc_beacukai.menu_beacukai_master"
+			action="v10_bsc_beacukai_sam.action_beacukai_npwp_type"
+			sequence="22"/>                        
+		<menuitem id="menu_beacukai_cara_angkut"
+			groups="v10_bsc_beacukai.bc_group_user"
+			name="Cara Angkut"
+			parent="v10_bsc_beacukai.menu_beacukai_master"
+			action="v10_bsc_beacukai_sam.action_beacukai_cara_angkut"
+			sequence="23"/>                        
+
+		<menuitem id="menu_beacukai_master_30"
+			groups="v10_bsc_beacukai.bc_group_user"
+			name="Master Dokumen 3.0"			 			
+			parent="v10_bsc_beacukai.menu_beacukai"
+			sequence="3"/>                        
+
+			<menuitem id="menu_beacukai_master_30_jenis_ekspor"
+				groups="v10_bsc_beacukai.bc_group_user"
+				name="Jenis Ekspor"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_master_30"
+				action="v10_bsc_beacukai_sam.action_beacukai_jenis_ekspor"
+				sequence="1"/>
+
+			<menuitem id="menu_beacukai_master_30_kategori_ekspor"
+				groups="v10_bsc_beacukai.bc_group_user"
+				name="Kategori Ekspor"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_master_30"
+				action="v10_bsc_beacukai_sam.action_beacukai_kategori_ekspor"
+				sequence="2"/>
+
+			<menuitem id="menu_beacukai_master_30_cara_perdagangan"
+				groups="v10_bsc_beacukai.bc_group_user"
+				name="Cara Perdagangan"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_master_30"
+				action="v10_bsc_beacukai_sam.action_beacukai_cara_perdagangan"
+				sequence="3"/>
+
+			<menuitem id="menu_beacukai_master_30_cara_pembayaran"
+				groups="v10_bsc_beacukai.bc_group_user"
+				name="Cara Pembayaran"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_master_30"
+				action="v10_bsc_beacukai_sam.action_beacukai_cara_pembayaran"
+				sequence="4"/>
+
+			<menuitem id="menu_beacukai_master_30_jenis_usaha"
+				groups="v10_bsc_beacukai.bc_group_user"
+				name="Jenis Usaha"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_master_30"
+				action="v10_bsc_beacukai_sam.action_beacukai_jenis_usaha"
+				sequence="5"/>
+
+			<menuitem id="menu_beacukai_master_30_zoning_kite"
+				groups="v10_bsc_beacukai.bc_group_user"
+				name="Zoning Kite"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_master_30"
+				action="v10_bsc_beacukai_sam.action_beacukai_zoning_kite"
+				sequence="6"/>
+
+			<menuitem id="menu_beacukai_master_30_jenis_barang"
+				groups="v10_bsc_beacukai.bc_group_user"
+				name="Jenis Barang"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_master_30"
+				action="v10_bsc_beacukai_sam.action_beacukai_jenis_barang"
+				sequence="7"/>
+
+			<menuitem id="menu_beacukai_master_30_tempat_simpan_barang"
+				groups="v10_bsc_beacukai.bc_group_user"
+				name="Tempat Simpan Barang"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_master_30"
+				action="v10_bsc_beacukai_sam.action_beacukai_tempat_simpan_barang"
+				sequence="8"/>
+
+			<menuitem id="menu_beacukai_master_30_stuffing_cara"
+				groups="v10_bsc_beacukai.bc_group_user"
+				name="Cara Stuffing"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_master_30"
+				action="v10_bsc_beacukai_sam.action_beacukai_stuffing_cara"
+				sequence="9"/>
+
+			<menuitem id="menu_beacukai_master_30_stuffing_part"
+				groups="v10_bsc_beacukai.bc_group_user"
+				name="Part of Stuffing"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_master_30"
+				action="v10_bsc_beacukai_sam.action_beacukai_stuffing_part"
+				sequence="10"/>
+
+			<menuitem id="menu_beacukai_master_pelabuhan"
+				groups="v10_bsc_beacukai.bc_group_user"
+				name="Pelabuhan"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_master_30"
+				action="v10_bsc_beacukai_sam.action_beacukai_pelabuhan"
+				sequence="11"/>
+
+			<menuitem id="menu_beacukai_master_cara_penyerahan"
+				groups="v10_bsc_beacukai.bc_group_user"
+				name="Cara Penyerahan"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_master_30"
+				action="v10_bsc_beacukai_sam.action_beacukai_cara_penyerahan"
+				sequence="12"/>
+
+			<menuitem id="menu_beacukai_master_kantor_periksa"
+				groups="v10_bsc_beacukai.bc_group_user"
+				name="Kantor Periksa"
+				parent="v10_bsc_beacukai_sam.menu_beacukai_master_30"
+				action="v10_bsc_beacukai_sam.action_beacukai_kantor_periksa"
+				sequence="13"/>
+					    		
+	</data>
+</openerp>

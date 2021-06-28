@@ -1,0 +1,93 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+,,,,,,,
+access_bc_user_bc_brand,Bea Cukai User,model_beacukai_brand,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_jenis_kemasan,Bea Cukai User,model_beacukai_jenis_kemasan,v10_bsc_beacukai.bc_group_user,1,1,1,1
+,,,,,,,
+access_bc_user_bc_outgoing_25,Bea Cukai User,model_beacukai_outgoing_25,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_outgoing_line_25,Bea Cukai User,model_beacukai_outgoing_line_25,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_surat_keputusan_25,Bea Cukai User,model_beacukai_surat_keputusan_25,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_container_25,Bea Cukai User,model_beacukai_container_25,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_kemasan_25,Bea Cukai User,model_beacukai_kemasan_25,v10_bsc_beacukai.bc_group_user,1,1,1,1
+,,,,,,,
+access_bc_gov_bc_outgoing_25,Bea Cukai Gov,model_beacukai_outgoing_25,v10_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_gov_bc_outgoing_line_25,Bea Cukai Gov,model_beacukai_outgoing_line_25,v10_bsc_beacukai.bc_group_gov,1,0,0,0
+,,,,,,,
+access_bc_user_bc_outgoing_27,Bea Cukai User,model_beacukai_outgoing_27,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_outgoing_line_27,Bea Cukai User,model_beacukai_outgoing_line_27,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_surat_keputusan_27,Bea Cukai User,model_beacukai_surat_keputusan_27,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_container_27,Bea Cukai User,model_beacukai_container_27,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_kemasan_27,Bea Cukai User,model_beacukai_kemasan_27,v10_bsc_beacukai.bc_group_user,1,1,1,1
+,,,,,,,
+access_bc_gov_bc_outgoing_27,Bea Cukai Gov,model_beacukai_outgoing_27,v10_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_gov_bc_outgoing_line_27,Bea Cukai Gov,model_beacukai_outgoing_line_27,v10_bsc_beacukai.bc_group_gov,1,0,0,0
+,,,,,,,
+access_bc_user_bc_outgoing_261,Bea Cukai User,model_beacukai_outgoing_261,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_outgoing_line_261,Bea Cukai User,model_beacukai_outgoing_line_261,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_surat_keputusan_261,Bea Cukai User,model_beacukai_surat_keputusan_261,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_container_261,Bea Cukai User,model_beacukai_container_261,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_kemasan_261,Bea Cukai User,model_beacukai_kemasan_261,v10_bsc_beacukai.bc_group_user,1,1,1,1
+,,,,,,,
+access_bc_gov_bc_outgoing_261,Bea Cukai Gov,model_beacukai_outgoing_261,v10_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_gov_bc_outgoing_line_261,Bea Cukai Gov,model_beacukai_outgoing_line_261,v10_bsc_beacukai.bc_group_gov,1,0,0,0
+,,,,,,,
+access_bc_user_bc_outgoing_30,Bea Cukai User,model_beacukai_outgoing_30,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_outgoing_line_30,Bea Cukai User,model_beacukai_outgoing_line_30,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_surat_keputusan_30,Bea Cukai User,model_beacukai_surat_keputusan_30,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_container_30,Bea Cukai User,model_beacukai_container_30,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_kemasan_30,Bea Cukai User,model_beacukai_kemasan_30,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_jenis_ekspor,Bea Cukai User,model_beacukai_jenis_ekspor,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_kategori_ekspor,Bea Cukai User,model_beacukai_kategori_ekspor,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_cara_perdagangan,Bea Cukai User,model_beacukai_cara_perdagangan,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_cara_pembayaran,Bea Cukai User,model_beacukai_cara_pembayaran,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_jenis_usaha,Bea Cukai User,model_beacukai_jenis_usaha,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_zoning_kite,Bea Cukai User,model_beacukai_zoning_kite,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_jenis_barang,Bea Cukai User,model_beacukai_jenis_barang,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_tempat_simpan_barang,Bea Cukai User,model_beacukai_tempat_simpan_barang,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_stuffing_cara,Bea Cukai User,model_beacukai_stuffing_cara,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_stuffing_part,Bea Cukai User,model_beacukai_stuffing_part,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_pelabuhan,Bea Cukai User,model_beacukai_pelabuhan,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_cara_penyerahan,Bea Cukai User,model_beacukai_cara_penyerahan,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_kantor_periksa,Bea Cukai User,model_beacukai_kantor_periksa,v10_bsc_beacukai.bc_group_user,1,1,1,1
+,,,,,,,
+,,,,,,,
+access_bc_gov_bc_outgoing_30,Bea Cukai Gov,model_beacukai_outgoing_30,v10_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_gov_bc_outgoing_line_30,Bea Cukai Gov,model_beacukai_outgoing_line_30,v10_bsc_beacukai.bc_group_gov,1,0,0,0
+,,,,,,,
+access_bc_user_bc_outgoing_41,Bea Cukai User,model_beacukai_outgoing_41,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_outgoing_line_41,Bea Cukai User,model_beacukai_outgoing_line_41,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_surat_keputusan_41,Bea Cukai User,model_beacukai_surat_keputusan_41,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_container_41,Bea Cukai User,model_beacukai_container_41,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_kemasan_41,Bea Cukai User,model_beacukai_kemasan_41,v10_bsc_beacukai.bc_group_user,1,1,1,1
+,,,,,,,
+access_bc_gov_bc_outgoing_41,Bea Cukai Gov,model_beacukai_outgoing_41,v10_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_gov_bc_outgoing_line_41,Bea Cukai Gov,model_beacukai_outgoing_line_41,v10_bsc_beacukai.bc_group_gov,1,0,0,0
+,,,,,,,
+access_bc_user_bc_incoming_40,Bea Cukai User,model_beacukai_incoming_40,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_incoming_line_40,Bea Cukai User,model_beacukai_incoming_line_40,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_surat_keputusan_40,Bea Cukai User,model_beacukai_surat_keputusan_40,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_container_40,Bea Cukai User,model_beacukai_container_40,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_kemasan_40,Bea Cukai User,model_beacukai_kemasan_40,v10_bsc_beacukai.bc_group_user,1,1,1,1
+,,,,,,,
+access_bc_gov_bc_incoming_40,Bea Cukai Gov,model_beacukai_incoming_40,v10_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_gov_bc_incoming_line_40,Bea Cukai Gov,model_beacukai_incoming_line_40,v10_bsc_beacukai.bc_group_gov,1,0,0,0
+,,,,,,,
+access_bc_user_bc_incoming_262,Bea Cukai User,model_beacukai_incoming_262,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_incoming_line_262,Bea Cukai User,model_beacukai_incoming_line_262,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_surat_keputusan_262,Bea Cukai User,model_beacukai_surat_keputusan_262,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_container_262,Bea Cukai User,model_beacukai_container_262,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_kemasan_262,Bea Cukai User,model_beacukai_kemasan_262,v10_bsc_beacukai.bc_group_user,1,1,1,1
+,,,,,,,
+access_bc_gov_bc_incoming_262,Bea Cukai Gov,model_beacukai_incoming_262,v10_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_gov_bc_incoming_line_262,Bea Cukai Gov,model_beacukai_incoming_line_262,v10_bsc_beacukai.bc_group_gov,1,0,0,0
+,,,,,,,
+access_bc_user_bc_incoming_27,Bea Cukai User,model_beacukai_incoming_27,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_incoming_line_27,Bea Cukai User,model_beacukai_incoming_line_27,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_surat_keputusan_incoming_27,Bea Cukai User,model_beacukai_surat_keputusan_incoming_27,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_container_incoming_27,Bea Cukai User,model_beacukai_container_incoming_27,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_kemasan_incoming_27,Bea Cukai User,model_beacukai_kemasan_incoming_27,v10_bsc_beacukai.bc_group_user,1,1,1,1
+,,,,,,,
+access_bc_gov_bc_incoming_27,Bea Cukai Gov,model_beacukai_incoming_27,v10_bsc_beacukai.bc_group_gov,1,0,0,0
+access_bc_gov_bc_incoming_line_27,Bea Cukai Gov,model_beacukai_incoming_line_27,v10_bsc_beacukai.bc_group_gov,1,0,0,0
+,,,,,,,
+access_bc_user_bc_cara_angkut,Bea Cukai User,model_beacukai_cara_angkut,v10_bsc_beacukai.bc_group_user,1,1,1,1
+access_bc_user_bc_npwp_type,Bea Cukai User,model_beacukai_npwp_type,v10_bsc_beacukai.bc_group_user,1,1,1,1

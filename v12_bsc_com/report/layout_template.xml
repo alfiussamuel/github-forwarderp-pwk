@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_common" name="v10_bsc_com assets" inherit_id="report.assets_common">
+        <xpath expr="." position="inside">
+            <link href="/v10_bsc_com/static/src/css/report.css" rel="stylesheet"/>
+        </xpath>
+    </template>
+
+    <template id="external_layout_header">
+        <div class="header" style="border: 2px solid black;">
+            <div class="row" style="padding: 10px;">
+                <div class="col-xs-10" name="company_address">
+                    <div><strong><span t-esc="company.name"/></strong></div>
+                    <div><span t-esc="company.street"/></div>
+                    <div t-if="company.street2"><span t-esc="company.street2"/></div>
+                    <div><span t-esc="company.city"/> - <span t-if="company.state_id" t-esc="company.state_id.name"/></div>
+                    <div>NPWP : <span t-esc="company.vat"/></div>
+                </div>
+                <div class="col-xs-2 center-block">
+                    <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="padding-left: 40px; max-height: 70px;"/>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="external_layout">
+        <!-- Multicompany -->
+        <t t-if="not o and doc">
+            <t t-set="o" t-value="doc"/>
+        </t>
+        <t t-if="o and 'company_id' in o">
+            <t t-set="company" t-value="o.company_id"></t>
+        </t>
+        <t t-if="not o or not 'company_id' in o">
+            <t t-set="company" t-value="res_company"></t>
+        </t>
+
+        <t t-call="v10_bsc_com.external_layout_header" />
+        <t t-raw="0" />
+        <t t-call="report.external_layout_footer" />
+    </template>
+
+</odoo>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+    	<record id="action_tpb_container" model="ir.actions.act_window">
+			<field name="name">Dokumen TPB Kontainer</field>
+			<field name="res_model">tpb.container</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record id="view_tpb_container_tree" model="ir.ui.view">
+			<field name="name">Dokumen TPB Container</field>
+			<field name="model">tpb.container</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">				
+				<tree string="Document TPB Container" create="false" edit="false">
+					<field name="reference_container" invisible="1"/>
+					<field name="submission_no_23"/>
+					<field name="container_number"/>    
+				    <field name="desc"/>
+				    <field name="container_size_id"/>
+				    <field name="container_type_id"/>	
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_tpb_container_form" model="ir.ui.view">
+			<field name="name">Dokumen TPB Kontainer</field>
+			<field name="model">tpb.container</field>
+			<field name="type">form</field>			
+			<field name="arch" type="xml">				
+				
+				<form create="false" edit="false" delete="false">
+					<header>
+					</header>
+					<sheet>
+						<group>
+							<field name="reference_container" invisible="1"/>
+							<field name="submission_no_23"/>
+							<field name="container_number"/>    
+						    <field name="desc"/>
+						    <field name="container_size_id"/>
+						    <field name="container_type_id"/>	
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="tpb_container_search_view" model="ir.ui.view">
+	        <field name="name">tpb.container.search.view</field>
+	        <field name="model">tpb.container</field>
+	        <field name="arch" type="xml">
+	            <search string="Dokumen TPB Kontainer">
+	                <field name="container_number" string="Nomor Kontainer"/>
+	                <field name="submission_no_23" string="No Aju"/>
+	            </search>
+	        </field>
+	    </record>
+
+    </data>
+</odoo>

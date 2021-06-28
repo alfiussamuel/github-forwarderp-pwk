@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>			                   		               	           				
+		<record id="view_beacukai_config_form_com" model="ir.ui.view">
+	        <field name="name">Reports</field>
+            <field name="model">beacukai.config.location</field>
+	        <field name="inherit_id" ref="v10_bsc_beacukai.view_beacukai_config_form"/>
+	        <field name="arch" type="xml">
+				<field name="location_wip" position="after">
+					<field name="location_wip2"/>
+				</field>
+	        </field>
+	    </record>
+	</data>
+</openerp>

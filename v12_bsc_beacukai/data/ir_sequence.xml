@@ -1,0 +1,32 @@
+<odoo>
+	<data>				
+		
+		<!-- Beacukai Incoming -->
+		<record id="sequence_beacukai_incoming" model="ir.sequence">  
+          <field name="name">Beacukai Incoming</field>  
+          <field name="code">beacukai.incoming</field>  
+          <field name="prefix">BC/IN/%(y)s/%(month)s/</field>  
+          <field name="padding">5</field>  
+          <field eval="1" name="number_increment"/>  
+        </record>
+        
+		<!-- Beacukai Outgoing -->
+		<record id="sequence_beacukai_outgoing" model="ir.sequence">  
+          <field name="name">Beacukai Outgoing</field>  
+          <field name="code">beacukai.outgoing</field>  
+          <field name="prefix">BC/OUT/%(y)s/%(month)s/</field>  
+          <field name="padding">5</field>  
+          <field eval="1" name="number_increment"/>  
+    </record>        
+
+    <!-- Laporan Mutasi -->
+    <record id="sequence_laporan_mutasi" model="ir.sequence">  
+          <field name="name">Laporan Mutasi</field>  
+          <field name="code">laporan.mutasi</field>            
+          <field name="prefix">MUTASI/%(y)s/%(month)s/</field>  
+          <field name="padding">5</field>  
+          <field eval="1" name="number_increment"/>  
+    </record>        
+        
+	</data>
+</odoo>

@@ -1,0 +1,21 @@
+<odoo>
+	<data>
+		<record id="view_beacukai_incoming_23_form_add_purchase" model="ir.ui.view">
+			<field name="name">Dokumen Penerimaan 2.3</field>
+			<field name="model">beacukai.incoming.23</field>
+			<field name="inherit_id" ref="v10_bsc_beacukai.view_beacukai_incoming_23_form"/>
+			<field name="arch" type="xml">
+				<field name="register_number" position="after">
+<!--					<label for="purchase_id"/>-->
+<!--					<div class="o_row">-->
+<!--						<field name="purchase_id" options="{'no_create_edit': True, 'no_create': True}" class="oe_inline"/> <button name="button_po" type="object" string="Reload" class="oe_highlight"/>-->
+<!--					</div>-->
+				</field>
+				<!-- <button name="push_to_ceisa" position="before">
+					<button name="button_po" type="object" class="oe_highlight" string="Add Purchase Order"/>
+				</button>				 -->
+			</field>
+        </record>
+	</data>
+</odoo>
+

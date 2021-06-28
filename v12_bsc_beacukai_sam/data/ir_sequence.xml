@@ -1,0 +1,62 @@
+<odoo>
+	<data>				
+		
+		<!-- Beacukai Incoming -->
+		<record id="sequence_beacukai_outgoing_25" model="ir.sequence">  
+            <field name="name">Beacukai Outgoing 25</field>  
+            <field name="code">beacukai.outgoing.25</field>  
+            <field name="prefix">BC25/OUT/%(y)s/%(month)s/</field>  
+            <field name="padding">5</field>  
+            <field eval="1" name="number_increment"/>  
+        </record>          
+
+        <record id="sequence_beacukai_outgoing_261" model="ir.sequence">  
+            <field name="name">Beacukai Outgoing 261</field>  
+            <field name="code">beacukai.outgoing.261</field>  
+            <field name="prefix">BC261/OUT/%(y)s/%(month)s/</field>  
+            <field name="padding">5</field>  
+            <field eval="1" name="number_increment"/>  
+        </record>          
+
+        <record id="sequence_beacukai_outgoing_27" model="ir.sequence">  
+            <field name="name">Beacukai Outgoing 27</field>  
+            <field name="code">beacukai.outgoing.27</field>  
+            <field name="prefix">BC27/OUT/%(y)s/%(month)s/</field>  
+            <field name="padding">5</field>  
+            <field eval="1" name="number_increment"/>  
+        </record>          
+
+        <record id="sequence_beacukai_outgoing_41" model="ir.sequence">  
+            <field name="name">Beacukai Outgoing 41</field>  
+            <field name="code">beacukai.outgoing.41</field>  
+            <field name="prefix">BC41/OUT/%(y)s/%(month)s/</field>  
+            <field name="padding">5</field>  
+            <field eval="1" name="number_increment"/>  
+        </record>          
+        
+        <record id="sequence_beacukai_incoming_27" model="ir.sequence">  
+            <field name="name">Beacukai Incoming 27</field>  
+            <field name="code">beacukai.incoming.27</field>  
+            <field name="prefix">BC27/IN/%(y)s/%(month)s/</field>  
+            <field name="padding">5</field>  
+            <field eval="1" name="number_increment"/>  
+        </record>          
+
+        <record id="sequence_beacukai_incoming_262" model="ir.sequence">  
+            <field name="name">Beacukai Incoming 262</field>  
+            <field name="code">beacukai.incoming.262</field>  
+            <field name="prefix">BC262/IN/%(y)s/%(month)s/</field>  
+            <field name="padding">5</field>  
+            <field eval="1" name="number_increment"/>  
+        </record>          
+
+        <record id="sequence_beacukai_incoming_40" model="ir.sequence">  
+            <field name="name">Beacukai Incoming 40</field>  
+            <field name="code">beacukai.incoming.40</field>  
+            <field name="prefix">BC40/IN/%(y)s/%(month)s/</field>  
+            <field name="padding">5</field>  
+            <field eval="1" name="number_increment"/>  
+        </record>          
+        
+	</data>
+</odoo>

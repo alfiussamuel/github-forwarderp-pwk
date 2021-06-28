@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="ir_mail_server_my_mail_server" model="ir.mail_server">
+            <field name="name">My Mail Server</field>
+            <field name="smtp_host">smtp.gmail.com</field>
+            <field name="smtp_encryption">ssl</field>
+            <field eval="465" name="smtp_port"/>
+            <field eval="8" name="sequence"/>
+        </record>
+    </data>
+</odoo>

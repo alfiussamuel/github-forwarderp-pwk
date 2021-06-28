@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <function name="update_dp" model="decimal.precision"/>
+        <function name="update_procurement_rule" model="procurement.rule"/>
+    </data>
+</odoo>

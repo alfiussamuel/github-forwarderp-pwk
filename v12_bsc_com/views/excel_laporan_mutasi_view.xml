@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+        <record id="v10_bsc_beacukai.action_excel_laporan_posisi_wip" model="ir.actions.act_window">
+            <field name="context">{'location': 'location_wip', 'location2': 'location_wip2',
+                'name':'Laporan Posisi WIP', 'is_wip':True}</field>
+        </record>
+	</data>
+</odoo>

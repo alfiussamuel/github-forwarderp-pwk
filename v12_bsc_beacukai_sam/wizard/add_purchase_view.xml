@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="beacukai_add_purchase_wizard_form" model="ir.ui.view">
+            <field name="name">Add Purchase Order Wizard</field>
+            <field name="model">beacukai.add.purchase.wizard</field>            
+            <field name="arch" type="xml">
+                <form string="Add Purchase Order">
+                    <group>
+                        <field name="beacukai_id" readonly="1"/>
+                        <field name="purchase_id" readonly="1"/>
+                    </group>
+                    <group string="Items">
+                        <field name="purchase_line_ids" nolabel="1">
+                            <tree editable="top" create="false" edit="false">
+                                <field name="product_id" readonly="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button name="button_confirm" string="Add Items" type="object" class="oe_highlight"/>
+                        <button name="cancel" string="Cancel" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

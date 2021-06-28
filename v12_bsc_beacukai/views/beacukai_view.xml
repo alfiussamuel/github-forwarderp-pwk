@@ -1,0 +1,918 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>			                   		               	           				
+
+		<!-- Beacukai Config -->
+		<!-- <record id="view_beacukai_config_tree" model="ir.ui.view">
+			<field name="name">Konfigurasi Lokasi</field>
+			<field name="model">beacukai.config</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">				
+				<tree string="Konfigurasi Lokasi" editable="top">
+					<field name="kode" required="1"/>		
+					<field name="location_id" required="1"
+						options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>										
+				</tree>
+			</field>
+		</record>	 -->
+		<record id="view_beacukai_config_form" model="ir.ui.view">
+			<field name="name">Reports</field>
+			<field name="model">beacukai.config.location</field>
+			<field name="arch" type="xml">				
+				<form string="Reports" class="oe_form_configuration">
+                    <header>
+                        <button string="Apply" type="object" name="execute" class="oe_highlight"/>
+                        <button string="Cancel" type="object" name="cancel" class="oe_link" special="cancel"/>
+                    </header>
+                    <group string="Report" name="traceability">
+                        <div>
+                            <group>
+								<field name="location_bahanbakupenolong"/>
+								<field name="location_barangjadi"/>
+								<field name="location_mesindanperalatan"/>
+								<field name="location_reject"/>
+								<field name="location_wip"/>
+							</group>
+                        </div>
+                        
+                    </group>
+                </form>
+			</field>
+		</record>
+
+		<record id="action_beacukai_config_form" model="ir.actions.act_window">
+            <field name="name">Reports</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">beacukai.config.location</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+
+		<record id="action_beacukai_config" model="ir.actions.act_window">
+			<field name="name">Konfigurasi Lokasi</field>
+			<field name="res_model">beacukai.config.location</field>
+			<field name="view_mode">form</field>
+            <field name="target">inline</field>
+		</record>
+
+		<!-- Beacukai Delivery Purpose -->
+		<record id="view_beacukai_delivery_purpose_tree" model="ir.ui.view">
+			<field name="name">Tujuan Pengiriman</field>
+			<field name="model">beacukai.delivery.purpose</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">				
+				<tree string="Delivery Purpose" editable="top">
+					<field name="name" required="0"/>												
+				</tree>
+			</field>
+		</record>						
+		<record id="action_beacukai_delivery_purpose" model="ir.actions.act_window">
+			<field name="name">Tujuan Pengiriman</field>
+			<field name="res_model">beacukai.delivery.purpose</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>
+		
+		<!-- Beacukai TPB -->
+		<record id="view_beacukai_tpb_tree" model="ir.ui.view">
+			<field name="name">TPB</field>
+			<field name="model">beacukai.tpb</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">				
+				<tree string="Kantor Pabean" editable="top">
+					<field name="name" required="0"/>
+					<field name="office" required="0"/>
+					<!-- <field name="jabatan"/> -->
+					<field name="type"/>													
+				</tree>
+			</field>
+		</record>						
+		<record id="action_beacukai_tpb" model="ir.actions.act_window">
+			<field name="name">Kantor Pabean</field>
+			<field name="res_model">beacukai.tpb</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>
+		
+		
+		<!-- Beacukai APIU -->
+		<record id="view_beacukai_apiu_tree" model="ir.ui.view">
+			<field name="name">API</field>
+			<field name="model">beacukai.apiu</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">				
+				<tree string="APIU" editable="top">
+					<field name="employee_id" required="0"/>
+					<field name="employee_no" required="0"/>
+					<field name="jabatan" required="0"/>
+					<field name="name" required="0"/>																	
+				</tree>
+			</field>
+		</record>						
+		<record id="action_beacukai_apiu" model="ir.actions.act_window">
+			<field name="name">API</field>
+			<field name="res_model">beacukai.apiu</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>		
+		
+		
+		<!-- Beacukai Document Type -->
+		<record id="view_beacukai_document_type_tree" model="ir.ui.view">
+			<field name="name">Tipe Dokumen</field>
+			<field name="model">beacukai.document.type</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">				
+				<tree string="Document Type" editable="top">
+					<field name="name" required="0"/>
+					<field name="document_type" required="0"/>												
+				</tree>
+			</field>
+		</record>						
+		<record id="action_beacukai_document_type" model="ir.actions.act_window">
+			<field name="name">Tipe Dokumen</field>
+			<field name="res_model">beacukai.document.type</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>		
+		
+			
+		<!-- Beacukai Incoming Document -->
+		<record id="view_beacukai_incoming_tree" model="ir.ui.view">
+			<field name="name">Dokumen Penerimaan</field>
+			<field name="model">beacukai.incoming</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">				
+				<tree string="Incoming Document">
+					<field name="submission_no"/>
+					<field name="document_type_id"/>
+					<field name="register_number"/>
+					<field name="date"/>
+					<field name="invoice_number"/>
+					<field name="company_npwp"/>
+					<field name="invoice_date"/>
+					<field name="supplier_id"/>
+					<field name="npdbm"/>
+					<field name="other"/>
+					<field name="finish_date"/>
+					<field name="state"/>													
+				</tree>
+			</field>
+		</record>
+
+		<!-- <record id="view_beacukai_incoming_line_tree" model="ir.ui.view">
+			<field name="name">Incoming Line</field>
+			<field name="model">beacukai.incoming.line</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">				
+				<tree string="Incoming Document">
+					<field name="submission_no"/>
+					<field name="product_name"/>
+					<field name="product_qty"/>
+					<field name="saldo"/>	
+				</tree>
+			</field>
+		</record> -->
+
+		<record model="ir.ui.view" id="view_beacukai_input_register_number">
+	        <field name="name">Input Nomor Pendaftaran</field>
+	        <field name="model">bc.incoming.register.number</field>
+	        <field name="type">form</field>
+	        <field name="arch" type="xml">
+	            <form>
+	                <group>
+	                    <span>Masukkan No Registrasi Anda</span>
+	                </group>
+				    <group>
+				      <field name="register_number" required="0"/>
+				      <field name="register_date" required="0"/>
+				    </group> 
+	                <footer> 
+	                    <button string="Cancel" special="cancel" class="oe_highlight"/>
+			        <button name="input_registrasi" string="Save" type="object" class="oe_highlight" />                 
+	                </footer>
+	            </form>
+	        </field>
+	    </record>
+
+		<record id="view_beacukai_incoming_form" model="ir.ui.view">
+			<field name="name">Dokumen Penerimaan</field>
+			<field name="model">beacukai.incoming</field>
+			<field name="type">form</field>			
+			<field name="arch" type="xml">
+				<header>
+					<button name="push_to_ceisa" type="object" class="oe_highlight" string="Push to Ceisa"/>
+					<button name="action_confirm" states="pengajuan" type="object" string="Masukkan No Registrasi"/>
+					<button name="action_receive" states="registrasi" type="object" string="Terima Barang"/>
+					<button name="action_done" states="terima" type="object" string="Selesai"/>
+					<!-- <button name="action_cancel" states="pengajuan,registrasi" type="object" string="Cancel"/> -->
+					<field name="state" widget="statusbar"/>
+				</header>				
+				<form string="Incoming Document">
+					<sheet>
+						<div class="oe_button_box" name="button_box">
+	                        <button type="object"
+	                            name="bc_action_view_picking"
+	                            class="oe_stat_button"
+	                            icon="fa-truck" attrs="{'invisible':[('state', 'not in', ('terima','done'))]}">
+	                            <field name="picking_count" widget="statinfo" string="Penerimaan" help="Incoming Shipments"/>
+	                            <field name="picking_ids" invisible="1"/>
+	                        </button> 
+	                    </div>					
+						<div class="oe_title">
+	                        <h1>
+	                            <field name="name" invisible="1"/>
+	                            Incoming Document
+	                        </h1>
+	                    </div>
+						<group>
+							<group>							
+								<field name="submission_no" required="0"/>	
+								<field name="document_type_id"
+									domain="[('document_type', '=', 'incoming')]" options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>
+								<field name="tpb_source_id"
+									options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>								
+								<field name="apiu_id"
+									options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>
+								<field name="category_product"/>								
+							</group>
+							<group>
+								<field name="register_number" state="registrasi"/>
+								<field name="tpb_dest_id"
+									options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>
+								<field name="date" required="0"/>
+								<field name="delivery_purpose_id"
+									options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>
+							</group>
+						</group>
+						<group>
+							<notebook>
+								<page string="Detail">
+									<field name="line_ids" nolabel="1">
+										<tree>
+											<field name="product_code"/>
+										    <field name="product_name"/>
+										    <field name="product_hs_code"/>
+										    <field name="product_qty"/>
+										    <field name="saldo"/>
+										    <field name="product_uom_id"/>
+										    <field name="product_price"/>
+										    <field name="product_amount"/>
+										    <field name="product_incost"/>
+										    <field name="biaya_tambahan"/>
+										    <field name="cif"/>
+										    <field name="product_freight"/>
+										    <field name="product_bruto"/>
+										    <field name="product_netto"/>
+										</tree>
+										<form>
+											<group>
+												<group>
+													<field name="product_id" required="0"
+														options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"
+														domain="[('category_product','=',parent.category_product)]"/>  
+												    <field name="product_name" required="0"/>
+												    <field name="product_hs_code"/>											    
+												</group>
+												<group>
+													<field name="product_qty" required="0"/>
+												    <field name="product_uom_id" required="0"/>
+												    <field name="product_price" required="0"/>
+												    <field name="product_amount"/>
+												</group>
+											</group>											
+											<group>
+												<field name="cif"/>
+												<field name="biaya_tambahan"/>
+												<field name="product_incost"/>
+											    <field name="product_freight"/>
+											    <field name="product_bruto"/>
+											    <field name="product_netto"/>
+											</group>										    
+										</form>
+									</field>
+								</page>
+								<page string="Data Perusahaan">
+									<group>
+										<group string="Informasi Perusahaan">							
+											<field name="company_npwp" string="NPWP"/>	
+											<field name="company_name" string="Nama"/>
+											<field name="company_permission_no" string="No Izin"/>
+											<field name="company_address" string="Alamat"/>																									
+										</group>
+										<group string="Informasi Vendor">
+											<field name="supplier_id"
+												options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}" 
+												domain="[('supplier','=',True)]"/>								
+										</group>
+									</group>
+								</page>
+								<page string="Dokumen pelengkap">
+									<group>
+										<group string="FBL/AWB Number">																			
+											<field name="fbl_awb_number"/>
+											<field name="fbl_awb_date"/>																																	
+										</group>
+										<group string="Delivery Note">
+											<field name="delivery_note_number"/>
+											<field name="delivery_note_date" readonly="1"/>																						
+										</group>																																
+									</group>
+									<group>
+										<group string="Invoice">
+											<field name="invoice_number"/>
+											<field name="invoice_date"/>																																				
+										</group>										
+										<group string="Decree">		
+											<field name="decree_number"/>
+											<field name="decree_date"/>																						
+										</group>
+									</group>
+									<group>
+										<group string="Contract">
+											<field name="contract_number"/>
+											<field name="contract_date"/>																						
+										</group>
+										<group string="Packing List">
+											<field name="packing_list_number"/>
+										</group>
+																	
+									</group>
+									<group>
+										<group string="Purchase Order">
+											<field name="po_id" readonly="1"/>
+										</group>
+										<group string="E-Faktur">
+											<field name="efaktur_number" string="No Faktur"/>
+										</group>
+									</group>
+									<group string="Shipment">
+										<field name="external_shipment_number"/>
+									</group>
+									<group string="Other">
+										<field name="finish_date"/>
+										<field name="other"/>
+									</group>
+								</page>
+								<page string="Data Perdagangan">
+									<group>
+										<group>							
+											<field name="currency_id"
+												options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>	
+											<field name="npdbm"/>																	
+										</group>
+										<group>
+											<field name="amount_usd"/>
+											<field name="amount_idr"/>								
+										</group>
+									</group>
+								</page>
+								<page string="Packaging Data">
+									<group>
+										<group>							
+											<field name="picking_type_id"/>			
+											<field name="packing_number"/>
+											<label for="packaging_number"/>	
+											<div>
+												<field name="packaging_number" class="oe_inline"/> <field name="packaging_type" class="oe_inline"/>									
+											</div>
+																																	
+										</group>							
+									</group>
+								</page>
+								<page string="Other Information">
+									<group string="Updated">
+										<field name="write_uid"/>
+										<field name="write_date"/>
+									</group>
+								</page>
+							</notebook>
+						</group>																								
+					</sheet>
+					<div class="oe_chatter">
+	                    <field name="message_follower_ids" widget="mail_followers"/>
+	                    <field name="message_ids" widget="mail_thread"/>
+	                </div>																																		
+				</form>
+			</field>
+		</record>				
+		<record id="action_beacukai_incoming" model="ir.actions.act_window">
+			<field name="name">Dokumen Penerimaan</field>
+			<field name="res_model">beacukai.incoming</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>
+		
+		
+		<!-- Beacukai Outgoing Document -->
+		<record id="view_beacukai_outgoing_tree" model="ir.ui.view">
+			<field name="name">Dokumen Pengeluaran</field>
+			<field name="model">beacukai.outgoing</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">				
+				<tree string="Outgoing Document">
+					<field name="submission_no"/>
+					<field name="document_type_id"/>
+					<field name="register_number"/>
+					<field name="date"/>
+					<field name="invoice_number"/>
+					<field name="invoice_date"/>
+					<field name="supplier_id"/>
+					<field name="npdbm"/>
+					<field name="finish_date"/>
+					<field name="state"/>													
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_beacukai_input_register_number_out">
+	        <field name="name">Input Nomor Pendaftaran</field>
+	        <field name="model">bc.outgoing.register.number</field>
+	        <field name="type">form</field>
+	        <field name="arch" type="xml">
+	            <form>
+	                <group>
+	                    <span>Masukkan No Registrasi Anda</span>
+	                </group>
+				    <group>
+				      <field name="register_number" required="0"/>
+				      <field name="register_date" required="0"/>
+				    </group> 
+	                <footer> 
+	                    <button string="Cancel" special="cancel" class="oe_highlight"/>
+			        <button name="input_registrasi" string="Save" type="object" class="oe_highlight" />                 
+	                </footer>
+	            </form>
+	        </field>
+	    </record>
+
+		<record id="view_beacukai_outgoing_form" model="ir.ui.view">
+			<field name="name">Dokumen Pengeluaran</field>
+			<field name="model">beacukai.outgoing</field>
+			<field name="type">form</field>			
+			<field name="arch" type="xml">
+				<header>
+					<button name="action_confirm" states="pengajuan" type="object" string="Masukkan No Registrasi"/>
+					<button name="action_receive" states="registrasi" type="object" string="Kirim Barang"/>
+					<button name="action_done" states="terima" type="object" string="Selesai"/>
+					<!-- <button name="action_cancel" states="pengajuan,registrasi" type="object" string="Cancel"/> -->
+					<field name="state" widget="statusbar"/>
+				</header>								
+				<form string="Outgoing Document">
+					<sheet>			
+						<div class="oe_button_box" name="button_box">
+	                        <button type="object"
+	                            name="bc_action_view_picking"
+	                            class="oe_stat_button"
+	                            icon="fa-truck" attrs="{'invisible':[('state', 'not in', ('terima','done'))]}">
+	                            <field name="picking_count" widget="statinfo" string="Pengiriman" help="Incoming Shipments"/>
+	                            <field name="picking_ids" invisible="1"/>
+	                        </button> 
+	                    </div>							
+						<div class="oe_title">
+	                        <h1>
+	                            <!-- <field name="name" readonly="1"/> -->
+	                        </h1>
+	                    </div>
+						<group>
+							<group>							
+								<field name="submission_no" required="0"/>	
+								<field name="document_type_id"
+									domain="[('document_type', '=', 'outgoing')]" options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>
+								<field name="tpb_source_id"
+									options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>								
+								<field name="apiu_id"
+									options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>	
+								<field name="finish_date"/>							
+							</group>
+							<group>
+								<field name="register_number" state="registrasi" attrs="{'invisible':[('state', '!=', 'registrasi')]}"/>
+								<field name="tpb_dest_id"
+									options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>
+								<field name="date"/>
+								<field name="delivery_purpose_id"
+									options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>
+							</group>
+						</group>
+						<group>
+							<notebook>
+								<page string="Detail Items">
+									<field name="line_ids" nolabel="1">
+										<tree>
+											<field name="incoming_line_id"/>
+											<field name="product_id"/>    
+										    <field name="product_name"/>
+										    <field name="product_hs_code"/>
+										    <field name="product_qty"/>
+										    <field name="product_uom_id"/>
+										    <field name="product_price"/>
+										    <field name="qty_available"/>
+										    <field name="product_amount"/>
+										    <field name="product_incost"/>
+										    <field name="product_freight"/>
+										    <field name="product_bruto"/>
+										    <field name="product_netto"/>
+										</tree>
+										<form>
+											<group>
+												<group>
+													<field name="product_id" required="0"
+														options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>    
+													<field name="incoming_line_id" options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>
+												    <field name="product_name" required="0"/>
+												    <field name="product_hs_code"/>											    
+												</group>
+												<group>
+													<field name="product_qty" required="0"/>
+												    <field name="product_uom_id" required="0"/>
+												    <field name="product_price" required="0"/>
+												    <field name="product_amount"/>
+												</group>
+											</group>											
+											<group>
+												<field name="product_incost"/>
+											    <field name="product_freight"/>
+											    <field name="product_bruto"/>
+											    <field name="product_netto"/>
+											</group>										    
+										</form>
+									</field>
+								</page>
+								<page string="Notification Data">
+									<group>
+										<group string="Company Information">							
+											<field name="company_npwp" string="NPWP"/>	
+											<field name="company_name" string="Name"/>
+											<field name="company_permission_no" string="Permission No."/>
+											<field name="company_address" string="Address"/>																									
+										</group>
+										<group string="Supplier Information">
+											<field name="supplier_id"
+												options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}" 
+												domain="[('supplier','=',True)]"/>								
+										</group>
+									</group>
+								</page>
+								<page string="Complement Documents">
+									<group>
+										<group string="FBL/AWB Number">																			
+											<field name="fbl_awb_number"/>
+											<field name="fbl_awb_date"/>																																	
+										</group>
+										<group string="Delivery Note">
+											<field name="delivery_note_number"/>
+											<field name="delivery_note_date" readonly="1"/>																						
+										</group>																																
+									</group>
+									<group>
+										<group string="Invoice">
+											<field name="invoice_number"/>
+											<field name="invoice_date"/>																																				
+										</group>										
+										<group string="Decree">									
+											<field name="decree_number"/>
+											<field name="decree_date"/>																						
+										</group>
+									</group>
+									<group>
+										<group string="Contract">
+											<field name="contract_number"/>
+											<field name="contract_date"/>																						
+										</group>
+										<group string="Packing List">
+											<field name="packing_list_number"/>
+											<field name="packing_list_date"/>																													
+										</group>							
+									</group>
+									<group>
+										<group string="Other">
+											<field name="out_date"/>
+											<field name="other"/>
+										</group>
+										<group string="E-Faktur">
+											<field name="efaktur_number"/>
+										</group>
+									</group>
+								</page>
+								<page string="Trade Data">
+									<group>
+										<group>							
+											<field name="currency_id"
+												options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>	
+											<field name="npdbm"/>																	
+										</group>
+										<group>
+											<field name="amount_usd"/>
+											<field name="amount_idr"/>								
+										</group>
+									</group>
+								</page>
+								<page string="Packaging Data">
+									<group>
+										<group>							
+											<field name="packing_number"/>
+											<field name="picking_type_id"/>
+											<label for="packaging_number"/>	
+											<div>
+												<field name="packaging_number" class="oe_inline"/> <field name="packaging_type" class="oe_inline"/>												
+											</div>
+																																	
+										</group>							
+									</group>
+								</page>
+								<page string="Assurance Data">
+									<group>
+										<group>							
+											<field name="assurance_bm"/>
+										    <field name="assurance_cukai"/>
+										    <field name="assurance_ppn"/>
+										    <field name="assurance_ppnbm"/>
+										    <field name="assurance_pph"/>
+										    <field name="assurance_pnbp"/>
+										    <field name="assurance_tax"/>										    																			
+										</group>							
+										<group>																		
+										    <field name="assurance_warranty_type"/>
+										    <field name="assurance_warranty_no"/>
+										    <field name="assurance_warranty_date"/>
+										    <field name="assurance_warranty_amount"/>
+										    <field name="assurance_warranty_due_date"/>
+										    <field name="assurance_warranty_warrantor"/>																				
+										</group>							
+									</group>
+								</page>
+							</notebook>
+						</group>																								
+					</sheet>
+					<div class="oe_chatter">
+	                    <field name="message_follower_ids" widget="mail_followers"/>
+	                    <field name="message_ids" widget="mail_thread"/>
+	                </div>																										
+				</form>
+			</field>
+		</record>				
+		<record id="action_beacukai_outgoing" model="ir.actions.act_window">
+			<field name="name">Dokumen Pengeluaran</field>
+			<field name="res_model">beacukai.outgoing</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>				
+
+		<!-- Beacukai Incoming line - for report purpose -->
+
+		<record id="view_beacukai_incoming_line_tree" model="ir.ui.view">
+			<field name="name">Dokumen Pemasukan</field>
+			<field name="model">beacukai.incoming.line</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">				
+				<tree string="Incoming Document" create="false" edit="false">
+					<field name="document_type_id" string="Tipe"/>
+					<field name="register_number" string="No Pendaftaran"/>
+					<field name="register_date" string="Tanggal Nomor Pendaftaran"/>
+					<field name="submission_no" string="No Aju"/>
+					<field name="date" string="Tgl Aju"/>
+					<field name="no_bukti_penerimaan_barang"/>
+					<field name="tgl_bukti_penerimaan_barang"/>
+					<field name="product_code" string="Kode Barang"/>
+					<field name="pengirim"/>
+					<field name="product_name" string="Nama Barang"/>
+					<field name="product_qty" string="Jumlah"/>
+					<field name="product_uom_id" string="Satuan"/>
+					<field name="invoice_id" string="Nomor Invoice"/>
+					<field name="currency_id" string="Mata Uang"/>
+					<field name="product_amount" string="Nilai Barang"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+		<record id="view_beacukai_incoming_line_form" model="ir.ui.view">
+			<field name="name">Dokumen Pemasukan</field>
+			<field name="model">beacukai.incoming.line</field>
+			<field name="type">form</field>			
+			<field name="arch" type="xml">				
+				
+				<form create="false" edit="false" delete="false">
+					<header>
+					</header>
+					<sheet>
+						<group>
+							<group>
+								<field name="reference"/>
+								<field name="product_id"/>
+								<field name="document_type_id"/>
+								<field name="submission_no"/>
+								<field name="date"/>
+							</group>
+							<group>
+								<field name="register_date"/>
+								<field name="register_number"/>
+								<field name="tpb_source_id"/>
+								<field name="tpb_dest_id"/>
+							</group>
+							<field name="move_ids" string="BC Incoming">
+								<tree>
+									<field name="date_expected"/>
+									<field name="date"/>
+									<field name="origin"/>
+									<field name="product_id"/>
+									<field name="product_uom_qty"/>
+									<field name="uom_id" string="Unit of Measure"/>
+									<field name="state"/>
+								</tree>
+							</field>
+							<field name="outgoing_ids" string="BC Outgoing"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+		<record id="beacukai_incoming_line_search_view" model="ir.ui.view">
+        <field name="name">beacukai.incoming.line.search</field>
+        <field name="model">beacukai.incoming.line</field>
+        <field name="arch" type="xml">
+            <search string="Product">
+                <field name="register_number" string="No Pendaftaran"/>
+                <field name="submission_no" string="No Aju"/>
+            </search>
+        </field>
+    </record>
+
+		<record id="action_beacukai_incoming_line" model="ir.actions.act_window">
+			<field name="name">Dokumen Pemasukan</field>
+			<field name="res_model">beacukai.incoming.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>				
+
+		<!-- Beacukai outgoing line -->
+
+		<record id="view_beacukai_outgoing_line_tree" model="ir.ui.view">
+			<field name="name">Dokumen Pengeluaran</field>
+			<field name="model">beacukai.outgoing.line</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">				
+				<tree string="Outgoing Document" create="false" edit="false" delete="false">
+					<field name="document_type_id" string="Tipe"/>
+					<field name="register_number"/>
+					<field name="register_date" string="Tanggal Nomor Pendaftaran"/>
+					<field name="submission_no" string="No.Aju"/>
+					<field name="date" string="Tanggal Aju"/>
+					<field name="tgl_bukti_penerimaan_barang"/>
+					<field name="no_bukti_penerimaan_barang"/>
+					<field name="product_code" string="Kode Barang"/>
+					<field name="penerima"/>
+					<field name="product_name" string="Nama Barang"/>
+					<field name="product_qty" string="Jumlah"/>
+					<field name="product_uom_id" string="Satuan"/>
+					<field name="invoice_id" string="Invoice"/>
+					<field name="currency_id" string="Mata Uang"/>
+					<field name="product_amount"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_beacukai_outgoing_line_form" model="ir.ui.view">
+			<field name="name">Dokumen Pengeluaran</field>
+			<field name="model">beacukai.outgoing.line</field>
+			<field name="type">form</field>			
+			<field name="arch" type="xml">				
+				
+				<form create="false" edit="false" delete="false">
+					<header>
+					</header>
+					<sheet>
+						<group>
+							<group>
+								<field name="manufacturing_order"/>
+								<field name="qty_available"/>
+								<field name="raw_source"/>
+								<field name="date_expected"/>
+							</group>
+							<group>
+								<field name="reference"/>
+								<field name="document_type_id"/>
+								<field name="register_number"/>
+								<field name="register_date"/>
+								<field name="submission_no"/>
+								<field name="date"/>
+							</group>
+							<field name="move_ids" string="Daftar Barang Pengeluaran">
+								<tree>
+									<field name="product_code"/>
+									<field name="product_id" string="Product Name"/>
+									<field name="hs_code"/>
+									<field name="product_uom_qty"/>
+									<field name="uom_id" string="Unit of Measure"/>
+									<field name="state" invisible="1"/>
+									<field name="product_amount"/>
+								</tree>
+							</field>
+							<field name="mo_line" string="MO Lines">
+								<tree>
+									<field name="product_code"/>
+									<field name="product_id" string="Product Name"/>
+									<field name="hs_code"/>
+									<field name="product_uom_qty"/>
+									<field name="uom_id" string="Unit of Measure"/>
+									<field name="state" invisible="1"/>
+									<field name="product_amount"/>
+								</tree>
+							</field>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+		<record id="beacukai_outgoing_line_search_view" model="ir.ui.view">
+        <field name="name">beacukai.outgoing.line.search</field>
+        <field name="model">beacukai.outgoing.line</field>
+        <field name="arch" type="xml">
+            <search string="Product">
+                <field name="register_number" string="No Pendaftaran"/>
+                <field name="submission_no" string="No Aju"/>
+            </search>
+        </field>
+    </record>
+
+		<record id="action_beacukai_outgoing_line" model="ir.actions.act_window">
+			<field name="name">Dokumen Pengeluaran</field>
+			<field name="res_model">beacukai.outgoing.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>				
+
+		<template id="assets_backend" name="x_export_view assets" inherit_id="web.assets_backend">
+		 <xpath expr="." position="inside">
+		 <!-- <script type="text/javascript" src="/v10_bsc_beacukai/static/src/js/button.js"></script> -->
+		 </xpath>
+		 </template>
+
+		<record id="view_laporan_posisi_wip_tree" model="ir.ui.view">
+			<field name="name">Laporan Posisi WIP</field>
+			<field name="model">laporan.posisi.wip</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">				
+				<tree string="Incoming Document" create="false" edit="false">
+					<field name="product_code"/>
+					<field name="product_name"/>
+					<field name="product_uom_id"/>
+					<field name="product_qty" string="Jumlah"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_laporan_posisi_wip_transient_tree" model="ir.ui.view">
+			<field name="name">Laporan Posisi WIP</field>
+			<field name="model">laporan.posisi.wip.transient</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Incoming Document" create="false" edit="false">
+					<field name="product_code"/>
+					<field name="product_name"/>
+					<field name="product_uom_id"/>
+					<field name="product_qty" string="Jumlah"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="action_laporan_posisi_wip_transient" model="ir.actions.act_window">
+			<field name="name">Laporan Posisi WIP</field>
+			<field name="res_model">laporan.posisi.wip.transient</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree</field>
+		</record>
+	    				
+	</data>
+	
+</openerp>

@@ -1,0 +1,67 @@
+<odoo>
+	<data>
+
+		<record id="laporan_pertanggungjawaban_mutasi_form_sam" model="ir.ui.view">
+        <field name="name">Laporan Pertanggungjawaban</field>
+        <field name="model">laporan.pertanggungjawaban</field>
+		<field name="inherit_id" ref ="v10_bsc_beacukai.laporan_pertanggungjawaban_mutasi_form"/>
+			<field name="arch" type="xml">
+				<field name="moveline_ids" position="replace">
+	        		<field name="mutasi_line_ids">
+						<tree>
+							<field name="product_name" />
+							<field name="product_code" />
+							<field name="date" />
+							<field name="location_id" />
+							<field name="location_dest_id" />
+							<field name="document_type" />
+							<field name="submission_no"/>
+							<field name="register_number"/>
+							<field name="register_date"/>
+							<field name="hs_code"/>
+							<field name="product_qty"/>
+							<field name="product_uom"/>
+						</tree>
+					</field>
+	        	</field>
+			</field>
+		</record>
+
+		<record id="laporan_pertanggungjawaban_mutasi_line_tree_sam" model="ir.ui.view">
+		    <field name="name">Detail view</field>
+		    <field name="model">laporan.pertanggungjawaban.line</field>
+		    <field name="arch" type="xml">
+		    	<tree create="false" edit="false" delete="false">
+		    		<field name="product_name" />
+					<field name="product_code" />
+					<field name="date" />
+					<field name="location_id" />
+					<field name="location_dest_id" />
+					<field name="document_type" />
+					<field name="submission_no"/>
+					<field name="register_number"/>
+					<field name="register_date"/>
+					<field name="hs_code"/>
+					<field name="product_qty"/>
+					<field name="product_uom"/>
+		    	</tree>
+		    </field>
+		</record>
+
+		<record id="action_laporan_pertanggungjawaban_mutasi_line_sam" model="ir.actions.act_window">
+			<field name="name">Detail view</field>
+			<field name="res_model">laporan.pertanggungjawaban.line</field>
+			<field name="view_mode">tree</field>
+			<field name="domain">[('mutasi_id', '=', mutasi_id)]</field>
+			<field name="view_id" ref="v10_bsc_beacukai_sam.laporan_pertanggungjawaban_mutasi_line_tree_sam"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+				Click to add a Contact Center
+				</p>
+				<p>klik tombol create untuk membuat data baru</p>
+			</field>
+		</record>
+
+	</data>
+</odoo>
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>			                   		               	           				
+
+		<record id="view_order_form_inherit" model="ir.ui.view">
+	        <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+	        <field name="inherit_id" ref="sale.view_order_form"/>
+	        <field name="arch" type="xml">
+				<field name="name" position="attributes">
+                	<attribute name="readonly">0</attribute>
+                </field>
+	        	<field name="partner_id" position="after">
+                	<field name="beacukai_outgoing_line_id" string="No Aju"/>
+                </field>
+                <xpath expr="//tree/field[@name='name']" position="after">
+                    <field name="beacukai_outgoing_line_id" invisible="1"/>
+                </xpath>
+	        </field>
+	    </record>
+	    				
+	</data>
+</openerp>

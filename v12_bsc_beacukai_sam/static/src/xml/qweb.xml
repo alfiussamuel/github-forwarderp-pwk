@@ -1,0 +1,9 @@
+<templates id="beacukai_incoming_button" xml:space="preserve">
+	 <t t-extend="ListView.buttons">
+	 <t t-jquery="button.o_list_button_add" t-operation="after">
+	 <t t-if="widget.model == 'beacukai.incoming.line'">
+	 <button class="btn btn-sm btn-default export_excel" type="button" name="export_excel">Export Excel</button>
+	 </t>
+	 </t>
+	 </t>
+	</templates>

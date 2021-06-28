@@ -1,0 +1,416 @@
+# -*- coding: utf-8 -*-
+from odoo import api, models, fields, _
+from odoo.exceptions import UserError, ValidationError
+from datetime import datetime
+import odoo.addons.decimal_precision as dp
+
+class BeacukaiOutgoingLineMixin(models.AbstractModel):
+    _name = "beacukai.outgoing.line.mixin"
+
+    @api.depends('product_incost', 'reference.cif_cost', 'biaya_tambahan', 'product_qty', 'reference.ndpbm')
+    def _get_product_cif(self):
+        for res in self:
+            product_discount = res.product_incost / (res.reference.cif_cost or 1) * res.biaya_tambahan
+            product_price_invoice = res.product_incost + product_discount
+            res.cif_cost = product_price_invoice
+            res.cif_amount = product_price_invoice * res.reference.ndpbm
+            
+
+    @api.onchange('product_id')
+    def _onchange_product_id(self):
+        for res in self:
+            res.product_uom_id = res.product_id.uom_id.id
+
+    reference = fields.Many2one('beacukai.mixin', 'Reference')
+    product_categ_id = fields.Many2one('product.category', 'Kategori Barang')
+    kondisi_barang = fields.Selection([('Damaged', 'Damaged'), ('Not Damaged', 'Not Damaged')])
+    over_four_years = fields.Boolean('> 4 Years')
+    product_id = fields.Many2one('product.product', 'Kode Barang')
+    product_name = fields.Char(related='product_id.name', string='Kode Barang')
+    product_code = fields.Char(related='product_id.default_code', string='Uraian Barang')
+    product_hs_code = fields.Char(related='product_id.hs_code', string='HS Code')
+    product_country_id = fields.Many2one('res.country', 'Negara Asal')
+    product_type = fields.Char('Tipe', related='product_id.product_type')
+    product_size = fields.Char('Ukuran', related='product_id.product_size')
+    product_spec = fields.Char('Spesifikasi Lain', related='product_id.product_spec')
+    product_brand = fields.Char('Merk', related='product_id.product_brand')
+    product_qty = fields.Float('Jumlah Satuan', digits=dp.get_precision('Product Unit of Measure'))
+    product_uom_id = fields.Many2one('product.uom', 'Jenis Satuan')
+    product_netto = fields.Float('Netto', digits=dp.get_precision('Product Unit of Measure'))
+    jumlah_kemasan = fields.Float('Jumlah Kemasan')
+    jenis_kemasan = fields.Integer('Jenis Kemasan')
+    volume = fields.Float('Volume (m3)')
+    biaya_tambahan = fields.Float(string='Biaya Tambahan')
+    product_incost = fields.Float('Total/Detil (FOB)', digits=dp.get_precision('Product Unit of Measure'))
+    cif_cost = fields.Float(compute="_get_product_cif", string='Nilai CIF')
+    cif_amount = fields.Float(compute="_get_product_cif", string='CIF Rupiah', digits=dp.get_precision('Product Unit of Measure'))
+    harga_penyerahan = fields.Float('Harga Penyerahan', digits=dp.get_precision('Product Unit of Measure'))
+    move_ids = fields.One2many('stock.move', 'bc_outgoing_line_id',
+                               string='Daftar Barang Pengeluaran', readonly=True, ondelete='set null', copy=False)
+
+
+class BeacukaiIncomingLineMixin(models.AbstractModel):
+    _name = "beacukai.incoming.line.mixin"
+
+    #@api.depends('product_incost', 'reference.cif_cost', 'biaya_tambahan', 'product_qty', 'reference.ndpbm')
+    @api.multi
+    def _get_product_cif(self):
+        for res in self:
+            product_discount = res.product_incost / (res.reference.cif_cost or 1) * res.biaya_tambahan
+            product_price_invoice = res.product_incost + product_discount
+            res.cif_cost = product_price_invoice
+            res.cif_amount = product_price_invoice * res.reference.ndpbm
+            
+            if res.prod and res.product_qty:
+                res.cif_cost = res.product_netto * res.product_qty
+
+    @api.onchange('product_id')
+    def _onchange_product_id(self):
+        for res in self:
+            res.product_uom_id = res.product_id.uom_id.id
+
+    reference = fields.Many2one('beacukai.incoming.mixin', 'Reference')
+    product_categ_id = fields.Many2one('product.category', 'Kategori Barang')
+    kondisi_barang = fields.Selection([('Damaged', 'Damaged'), ('Not Damaged', 'Not Damaged')])
+    over_four_years = fields.Boolean('> 4 Years')
+    product_id = fields.Many2one('product.product', 'Kode Barang')
+    product_name = fields.Char(related='product_id.name', string='Kode Barang')
+    product_code = fields.Char(related='product_id.default_code', string='Uraian Barang')
+    product_hs_code = fields.Char(related='product_id.hs_code', string='HS Code')
+    product_country_id = fields.Many2one('res.country', 'Negara Asal')
+    product_type = fields.Char('Tipe', related='product_id.product_type')
+    product_size = fields.Char('Ukuran', related='product_id.product_size')
+    product_spec = fields.Char('Spesifikasi Lain', related='product_id.product_spec')
+    product_brand = fields.Char('Merk', related='product_id.product_brand')
+    product_qty = fields.Float('Jumlah Satuan', digits=dp.get_precision('Product Unit of Measure'))
+    product_uom_id = fields.Many2one('product.uom', 'Jenis Satuan')
+    product_netto = fields.Float('Netto', digits=dp.get_precision('Product Unit of Measure'))
+    jumlah_kemasan = fields.Float('Jumlah Kemasan')
+    jenis_kemasan = fields.Integer('Jenis Kemasan')
+    volume = fields.Float('Volume (m3)')
+    biaya_tambahan = fields.Float(string='Biaya Tambahan')
+    product_incost = fields.Float('Total/Detil (FOB)', digits=dp.get_precision('Product Unit of Measure'))
+    cif_cost = fields.Float(compute="_get_product_cif", string='Nilai CIF')
+    cif_amount = fields.Float(compute="_get_product_cif", string='CIF Rupiah', digits=dp.get_precision('Product Unit of Measure'))
+    harga_penyerahan = fields.Float('Harga Penyerahan', digits=dp.get_precision('Product Unit of Measure'))
+    move_ids = fields.One2many('stock.move', 'bc_incoming_line_id',
+                               string='BC Incoming Line', readonly=True, ondelete='set null', copy=False)
+    order_id = fields.Many2one('purchase.order', string='Order Reference', ondelete='cascade')
+
+
+class BeacukaiIncomingMixin(models.AbstractModel):
+    """Mixin class for objects using the need action feature.
+    """
+    _name = 'beacukai.incoming.mixin'
+
+    @api.multi
+    def bc_action_view_picking(self):
+        """
+        This function returns an action that display existing picking orders of given purchase order ids.
+        When only one found, show the picking immediately.
+        """
+        action = self.env.ref('stock.action_picking_tree')
+        result = action.read()[0]
+
+        # override the context to get rid of the default filtering on picking type
+        result.pop('id', None)
+        result['context'] = {}
+        pick_ids = sum([order.picking_ids.ids for order in self], [])
+        # choose the view_mode accordingly
+        if len(pick_ids) > 1:
+            result['domain'] = "[('id','in',[" + \
+                               ','.join(map(str, pick_ids)) + "])]"
+        elif len(pick_ids) == 1:
+            res = self.env.ref('stock.view_picking_form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = pick_ids and pick_ids[0] or False
+        return result
+
+    @api.depends('line_ids.move_ids')
+    def _compute_picking(self):
+        for order in self:
+            pickings = self.env['stock.picking']
+            picking_recs = pickings.search([('bc_ref_type', '=', self._name),
+                                            '|', ('bc_ref_id', '=', order.id),
+                                            ('submission_no', '=', order.submission_no)])
+            order.picking_ids = picking_recs
+            order.picking_count = len(picking_recs)
+
+    @api.depends('picking_ids', 'picking_ids.state')
+    def _compute_is_shipped(self):
+        for order in self:
+            if order.picking_ids and all([x.state == 'done' for x in order.picking_ids]):
+                order.is_shipped = True
+                order.state = 'done'
+
+    @api.depends('cif_harga', 'cif_biaya_tambahan', 'cif_diskon', 'ndpbm')
+    def _get_product_cif(self):
+        for res in self:
+            total_cif = res.cif_harga + res.cif_biaya_tambahan - res.cif_diskon
+            res.product_cif = total_cif
+            res.cif_amount = total_cif * res.ndpbm
+
+    line_ids = fields.One2many('beacukai.incoming.line', 'reference', 'Lines')
+    picking_count = fields.Integer(compute='_compute_picking', string='Receptions', default=0)
+    picking_ids = fields.Many2many('stock.picking', compute='_compute_picking', string='Receptions', copy=False)
+    is_shipped = fields.Boolean(compute="_compute_is_shipped")
+    finish_date = fields.Datetime('Tanggal Selesai')
+    submission_no = fields.Integer('No Pengajuan', required=True)
+    cif_harga = fields.Float('Harga CIF')
+    cif_biaya_tambahan = fields.Float('Biaya Tambahan')
+    cif_diskon = fields.Float('Diskon')
+    cif_cost = fields.Float(compute="_get_product_cif", string='Nilai CIF', )
+    cif_amount = fields.Float(compute="_get_product_cif", string='Nilai CIF Rupiah')
+    is_from_po = fields.Boolean('Created from PO', default=False)
+    is_from_so = fields.Boolean('Created from SO', default=False)
+    picking_type_id = fields.Many2one(
+        'stock.picking.type', 'Alur Ke Gudang',
+        required=False,
+        help="Picking Type determines the way the picking should be shown in the view, reports, ...")
+
+    @api.multi
+    def action_done(self):
+        self._compute_is_shipped()
+        if self.is_shipped and self.finish_date != '':
+            order = self.env['purchase.order'].search([('bc_ref_type', '=', self._name),
+                                                       ('bc_ref_id', '=', self.id)], limit=1)
+            if order:
+                order.button_done()
+            return self.write({'state': 'done', 'finish_date': fields.Date.today()})
+        else:
+            raise UserError(_('Pastikan pengiriman barang telah selesai dan telah menginput finish date'))
+
+    @api.multi
+    def action_receive(self):
+        for bcmove in self:
+            if bcmove.is_from_po or bcmove.is_from_so:
+                return self.write({'state': 'terima'})
+
+            if not bcmove.picking_type_id:
+                raise ValidationError(_('Please select a Picking type.'))
+
+            if bcmove.picking_type_id.default_location_dest_id.id:
+                dst = bcmove.picking_type_id.default_location_dest_id.id
+            else:
+                dst = self.default_location_dest_id = self.env.ref(
+                    'stock.stock_location_stock').id
+            if bcmove.picking_type_id.default_location_src_id.id:
+                src = bcmove.picking_type_id.default_location_src_id.id
+            else:
+                src = self.env.ref('stock.stock_location_suppliers').id
+            stok = self.env['stock.picking'].create({
+                'move_type': 'direct',
+                'picking_type_id': bcmove.picking_type_id.id,
+                'is_beacukai_incoming': True,
+                # 'beacukai_incoming_id': bcmove.id, # Removed to prevent conflict
+                'bc_ref_type': self._name,
+                'bc_ref_id': bcmove.id,
+                'submission_no': bcmove.submission_no,
+                'location_id': src,
+                'location_dest_id': dst,
+                'min_date': datetime.now()
+            })
+            if bcmove.line_ids:
+                for line in bcmove.line_ids:
+                    pack_operation_product_ids = {
+                        'picking_id': stok.id,
+                        'product_id': line.product_id.id,
+                        'product_uom_qty': line.product_qty,
+                        'product_uom': line.product_uom_id.id,
+                        'name': line.product_id.display_name,
+                        'date_expected': bcmove.date,
+                        'location_id': src,
+                        'location_dest_id': dst
+                    }
+                    stok.move_lines.create(pack_operation_product_ids)
+            return self.write({'state': 'terima'})
+
+    @api.multi
+    def action_confirm(self):
+        for outgoing in self:
+            view_id = self.env['bc.outgoing.register.number']
+            new = view_id.create({'document_id': outgoing.id, 'ref_model': self._name})
+            return {
+                'type': 'ir.actions.act_window',
+                'name': 'Input Nomor Registasi',
+                'res_model': 'bc.outgoing.register.number',
+                'view_type': 'form',
+                'view_mode': 'form',
+                'res_id': new.id,
+                'view_id': self.env.ref('v10_bsc_beacukai.view_beacukai_input_register_number_out').id,
+                'context': "{'is_incoming': True}",
+                'target': 'new',
+            }
+
+    @api.constrains('submission_no')
+    def _check_submission_no(self):
+        if ' ' == self.submission_no[-1:]:
+            self.submission_no = self.submission_no.strip()
+            return
+
+        valid = '0123456789'
+        for c in self.submission_no:
+            if c not in valid:
+                raise UserError("Nomor Pengajuan hanya bisa berupa digit")
+
+
+class BeacukaiMixin(models.AbstractModel):
+    """Mixin class for objects using the need action feature.
+    """
+    _name = 'beacukai.mixin'
+
+    @api.multi
+    def bc_action_view_picking(self):
+        """
+        This function returns an action that display existing picking orders of given purchase order ids.
+        When only one found, show the picking immediately.
+        """
+        action = self.env.ref('stock.action_picking_tree')
+        result = action.read()[0]
+
+        # override the context to get rid of the default filtering on picking type
+        result.pop('id', None)
+        result['context'] = {}
+        pick_ids = sum([order.picking_ids.ids for order in self], [])
+        # choose the view_mode accordingly
+        if len(pick_ids) > 1:
+            result['domain'] = "[('id','in',[" + \
+                               ','.join(map(str, pick_ids)) + "])]"
+        elif len(pick_ids) == 1:
+            res = self.env.ref('stock.view_picking_form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = pick_ids and pick_ids[0] or False
+        return result
+
+    @api.depends('line_ids.move_ids')
+    def _compute_picking(self):
+        for order in self:
+            pickings = self.env['stock.picking']
+            picking_recs = pickings.search([('bc_ref_type', '=', self._name),
+                                            '|', ('bc_ref_id', '=', order.id),
+                                            ('submission_no', '=', order.submission_no)])
+            order.picking_ids = picking_recs
+            order.picking_count = len(picking_recs)
+
+    @api.depends('picking_ids', 'picking_ids.state')
+    def _compute_is_shipped(self):
+        for order in self:
+            if order.picking_ids and all([x.state == 'done' for x in order.picking_ids]):
+                order.is_shipped = True
+                order.state = 'done'
+
+    name = fields.Char('No Dokumen')
+    line_ids = fields.One2many('beacukai.outgoing.line.mixin', 'reference', string='Detail Barang', copy=True)
+    picking_count = fields.Integer(compute='_compute_picking', string='Receptions', default=0)
+    picking_ids = fields.Many2many('stock.picking', compute='_compute_picking', string='Receptions', copy=False)
+    submission_no = fields.Integer('No Pengajuan', required=True)
+    is_shipped = fields.Boolean(compute="_compute_is_shipped")
+    finish_date = fields.Datetime('Tanggal Selesai')
+    cif_harga = fields.Float('Harga CIF')
+    cif_biaya_tambahan = fields.Float('Biaya Tambahan')
+    cif_diskon = fields.Float('Diskon')
+    cif_cost = fields.Float(compute="_get_product_cif", string='Nilai CIF', )
+    cif_amount = fields.Float(compute="_get_product_cif", string='Nilai CIF Rupiah')
+    is_from_po = fields.Boolean('Created from PO', default=False)
+    is_from_so = fields.Boolean('Created from SO', default=False)
+    picking_type_id = fields.Many2one(
+        'stock.picking.type', 'Alur Ke Gudang',
+        required=False,
+        help="Picking Type determines the way the picking should be shown in the view, reports, ...")
+    state = fields.Selection([
+        ('pengajuan', 'Pengajuan'),
+        ('registrasi', 'Registrasi'),
+        ('terima', 'Pengiriman Barang'),
+        ('done', 'Selesai'),
+    ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', default='pengajuan')
+
+    @api.depends('cif_harga', 'cif_biaya_tambahan', 'cif_diskon', 'ndpbm')
+    def _get_product_cif(self):
+        for res in self:
+            total_cif = res.cif_harga + res.cif_biaya_tambahan - res.cif_diskon
+            res.product_cif = total_cif
+            res.cif_amount = total_cif * res.ndpbm
+
+    @api.multi
+    def action_done(self):
+        self._compute_is_shipped()
+        if self.is_shipped and self.finish_date != '':
+            return self.write({'state': 'done', 'finish_date': fields.Date.today()})
+        else:
+            raise UserError(_('Pastikan pengiriman barang telah selesai dan telah menginput finish date'))
+
+    @api.multi
+    def action_receive(self):
+        # picking_type = self.env['stock.picking.type'].search([('name','=','dokumen_pengeluaran')],limit=1)
+
+        for bcmove in self:
+            if bcmove.is_from_po or bcmove.is_from_so:
+                return self.write({'state': 'terima'})
+
+            if not bcmove.picking_type_id:
+                raise ValidationError(_('Please select a Picking type.'))
+
+            if bcmove.picking_type_id.default_location_dest_id.id:
+                dst = bcmove.picking_type_id.default_location_dest_id.id
+            else:
+                dst = self.default_location_src_id = self.env.ref(
+                    'stock.stock_location_customers').id
+            if bcmove.picking_type_id.default_location_src_id.id:
+                src = bcmove.picking_type_id.default_location_src_id.id
+            else:
+                src = self.default_location_dest_id = self.env.ref(
+                    'stock.stock_location_stock').id
+            stok = self.env['stock.picking'].create({
+                'move_type': 'direct',
+                'picking_type_id': bcmove.picking_type_id.id,
+                'is_beacukai_outgoing': True,
+                'bc_ref_type': self._name,
+                'bc_ref_id': bcmove.id,
+                'submission_no': bcmove.submission_no,
+                'location_id': src,
+                'location_dest_id': dst
+            })
+            if bcmove.line_ids:
+                for line in bcmove.line_ids:
+                    pack_operation_product_ids = {
+                        'picking_id': stok.id,
+                        'product_id': line.product_id.id,
+                        'product_uom_qty': line.product_qty,
+                        'product_uom': line.product_uom_id.id,
+                        'name': line.product_id.name,
+                        'date_expected': bcmove.date,
+                        'location_id': src,
+                        'location_dest_id': dst
+                    }
+                    stok.move_lines.create(pack_operation_product_ids)
+        return self.write({'state': 'terima'})
+
+    @api.constrains('submission_no')
+    def _check_submission_no(self):
+        if not self.submission_no:
+            return
+        if ' ' == self.submission_no[-1:]:
+            self.submission_no = self.submission_no.strip()
+            return
+
+        valid = '0123456789'
+        for c in self.submission_no:
+            if c not in valid:
+                raise UserError("Nomor Pengajuan hanya bisa berupa digit")
+
+    @api.multi
+    def action_confirm(self):
+        for outgoing in self:
+            view_id = self.env['bc.outgoing.register.number']
+            new = view_id.create({'document_id': outgoing.id, 'ref_model': self._name})
+            return {
+                'type': 'ir.actions.act_window',
+                'name': 'Input Nomor Registasi',
+                'res_model': 'bc.outgoing.register.number',
+                'view_type': 'form',
+                'view_mode': 'form',
+                'res_id': new.id,
+                'view_id': self.env.ref('v10_bsc_beacukai.view_beacukai_input_register_number_out').id,
+                'context': "{'is_outgoing': True}",
+                'target': 'new',
+            }

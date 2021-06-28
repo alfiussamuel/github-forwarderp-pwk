@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>	
+		<!-- Beacukai Incoming Document -->
+		<record id="action_beacukai_outgoing_bc_2_5" model="ir.actions.act_window">
+			<field name="name">Dokumen BC 2.5</field>
+			<field name="res_model">beacukai.outgoing</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Document BC 2.5
+              	</p>				
+			</field>
+		</record>
+
+		<record id="view_beacukai_outgoing_bc_2_5_tree" model="ir.ui.view">
+			<field name="name">Dokumen BC 2.5</field>
+			<field name="model">beacukai.outgoing</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">				
+				<tree string="Incoming Document">
+					<field name="submission_no"/>
+					<field name="document_type_id"/>
+					<field name="register_number"/>
+					<field name="date"/>
+					<field name="invoice_number"/>
+					<field name="company_npwp"/>
+					<field name="invoice_date"/>
+					<field name="supplier_id"/>
+					<field name="npdbm"/>
+					<field name="other"/>
+					<field name="finish_date"/>
+					<field name="state"/>													
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_beacukai_outgoing_line_bc_2_5_tree" model="ir.ui.view">
+			<field name="name">Outgoing Line BC 2.5</field>
+			<field name="model">beacukai.outgoing.line</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">				
+				<tree string="Outgoing Document">
+					<field name="submission_no"/>
+					<field name="product_name"/>
+					<field name="product_qty"/>
+					<field name="saldo"/>	
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_beacukai_outgoing_form" model="ir.ui.view">
+			<field name="name">Dokumen Penerimaan</field>
+			<field name="model">beacukai.incoming</field>
+			<field name="type">form</field>			
+			<field name="arch" type="xml">
+				<header>
+					<button name="push_to_ceisa" type="object" class="oe_highlight" string="Push to Ceisa"/>
+					<button name="action_confirm" states="pengajuan" type="object" string="Masukkan No Registrasi"/>
+					<button name="action_receive" states="registrasi" type="object" string="Terima Barang"/>
+					<button name="action_done" states="terima" type="object" string="Selesai"/>
+					<!-- <button name="action_cancel" states="pengajuan,registrasi" type="object" string="Cancel"/> -->
+					<field name="state" widget="statusbar"/>
+				</header>				
+				<form string="Incoming Document BC 2.3">
+					<sheet>
+						<div class="oe_button_box" name="button_box">
+	                        <!-- <button type="object"
+	                            name="bc_action_view_picking"
+	                            class="oe_stat_button"
+	                            icon="fa-truck" attrs="{'invisible':[('state', 'not in', ('terima','done'))]}">
+	                            <field name="picking_count" widget="statinfo" string="Penerimaan" help="Incoming Shipments"/>
+	                            <field name="picking_ids" invisible="1"/>
+	                        </button>  -->
+	                    </div>					
+						<div class="oe_title">
+	                        <h1>
+	                            <field name="name" invisible="1"/>
+	                            Document BC 2.3
+	                        </h1>
+	                    </div>
+						<group>
+							<group>							
+								<field name="submission_no" string="Nomor Pengajuan" required="1"/>	
+								<field name="document_type_id"
+									domain="[('document_type', '=', 'incoming')]" options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}" />
+								<field name="tpb_source_id" string="KPPBC Pengawas"
+									options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>								
+								<field name="apiu_id"
+									options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>								
+							</group>
+							<group>
+								<field name="register_number" state="registrasi"/>
+								<field name="tpb_dest_id" string="KPPBC Bongkar"
+									options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>
+								<field name="date_aju" required="1"/>
+								<field name="delivery_purpose_id" string="A. Tujuan"
+									options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>
+							</group>
+						</group>
+						<group>
+							<notebook>
+								<page string="Data Barang BC 2.3">
+									<field name="line_ids" nolabel="1">
+										<tree>
+											<field name="product_id"/>    
+										    <field name="product_name"/>
+										    <field name="product_hs_code"/>
+										    <field name="product_categ"/>
+
+										    <field name="product_incost" string="FOB" required="1"/>
+										    <field name="product_discount"/>
+										    <field name="product_qty"/>
+										    <field name="product_uom_id"/>
+										    <field name="product_price_qty"/>
+										    <field name="product_price_invoice"/>
+										    <field name="product_freight" required="1"/>
+										    <field name="product_insurance" required="1"/>
+										    <field name="product_cif"/>
+										    <field name="product_cifrp"/>
+
+										    <field name="product_package_qty"/>
+    										<field name="product_package_type"/>
+    										<field name="product_netto"/>
+
+    										<field name="product_country"/>
+
+    										<field name="facility_code"/>
+
+    										<field name="tariff_scheme_code"/>
+
+										    <field name="saldo"/>
+										    <field name="product_price"/>
+										    <field name="product_amount"/>
+										    <field name="biaya_tambahan"/>
+										    <field name="product_bruto"/>
+										</tree>
+										<form>
+											<group>
+												<group>
+													<field name="product_id" required="1"
+														options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>    
+												    <field name="product_name" required="1"/>
+												    <field name="product_hs_code"/>	
+												    <field name="product_categ"/>										    
+												</group>
+												<group>
+													<field name="product_package_qty"/>
+		    										<field name="product_package_type"/>
+		    										<field name="product_netto"/>
+		    										<field name="product_country"/>
+												</group>
+												<!-- <group>
+													<field name="product_qty" required="1"/>
+												    <field name="product_uom_id" required="1"/>
+												    <field name="product_price" required="1"/>
+												    <field name="product_amount"/>
+												</group> -->
+											</group>											
+											<group>
+												<field name="product_incost" string="FOB" required="1"/>
+											    <field name="product_discount"/>
+											    <field name="product_qty"/>
+											    <field name="product_uom_id"/>
+											    <field name="product_price_qty"/>
+											    <field name="product_price_invoice"/>
+											    <field name="product_freight" required="1"/>
+											    <field name="product_insurance" required="1"/>
+											    <field name="product_cif"/>
+											    <field name="product_cifrp"/>
+											</group>
+											<group>
+												<field name="saldo"/>
+											    <field name="product_price"/>
+											    <field name="product_amount"/>
+											    <field name="biaya_tambahan"/>
+											    <field name="product_bruto"/>
+											</group>										    
+										</form>
+									</field>
+								</page>
+								<page string="Tarif &amp; Cukai">
+									<field name="tariff_ids" nolabel="1">
+										<tree>
+											<field name="tariff_type"/>    
+										    <field name="tariff_code"/>
+										    <field name="tariff_value"/>
+										    <field name="facility_code"/>
+
+										    <field name="facility_tarif"/>
+										    <field name="comodity_code"/>
+										    <field name="qty_code"/>
+										    <field name="qty_unit"/>
+										</tree>
+										<form>
+											<group>
+												<group>  
+												    <field name="tariff_code"/>
+												    <field name="tariff_value"/>
+												    <field name="facility_code"/>
+										    		<field name="facility_tarif"/>
+												</group>
+												<group>
+													<field name="comodity_code"/>
+													<field name="tariff_type"/>
+												    <field name="qty_code"/>
+												    <field name="qty_unit"/>
+												</group>
+											</group>
+										</form>
+									</field>
+								</page>
+								<page string="Importir, Pemasok, &amp; Pemilik">
+										<group string="Informasi Perusahaan">							
+											<field name="company_npwp" string="NPWP"/>	
+											<field name="company_name" string="Nama"/>
+											<field name="company_permission_no" string="No. Izin"/>
+											<field name="company_address" string="Alamat"/>
+											<field name="company_api_type"/>
+											<field name="company_api_number"/>						
+										</group>
+										<group string="Pemilik">
+											<field name="owner_npwp" string="NPWP"/>	
+											<field name="owner_name" string="Nama"/>
+											<field name="owner_permission_no" string="No. Izin"/>
+											<field name="owner_address" string="Alamat"/>
+											<field name="owner_api_type"/>
+											<field name="owner_api_number"/>
+										</group>
+										<group string="Pemasok">
+											<field name="supplier_id"
+												options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}" 
+												domain="[('supplier','=',True)]"/>
+											<field name="supplier_country_id"/>								
+										</group>
+								</page>
+								<page string="Pengangkutan">
+									<group>
+										<group>
+											<field name="mod_trans"/>
+											<field name="voy_fli_number"/>
+											<field name="flag_code"/>
+										</group>
+										<group>
+											<field name="port_code_1"/>
+											<field name="port_code_2"/>
+											<field name="port_code_3"/>
+										</group>
+									</group>
+								</page>
+								<page string="Dokumen pelengkap">
+									<field name="document_ids" nolabel="1">
+										<tree>
+											<field name="document_ref"/>    
+										    <field name="document_num"/>
+										    <field name="document_date"/>
+										</tree>
+										<form>
+											<group>  
+											    <field name="document_ref"/>    
+											    <field name="document_num"/>
+											    <field name="document_date"/>
+											</group>
+										</form>
+									</field>
+									<group>
+										<group string="BL / AWB">																			
+											<field name="fbl_awb_number"/>
+											<field name="fbl_awb_date"/>																																	
+										</group>
+										<group string="Delivery Note">
+											<field name="delivery_note_number"/>
+											<field name="delivery_note_date" readonly="1"/>																						
+										</group>																																
+									</group>
+									<group>
+										<group string="Invoice">
+											<field name="invoice_number"/>
+											<field name="invoice_date"/>																																				
+										</group>										
+										<group string="Decree">		
+											<field name="decree_number"/>
+											<field name="decree_date"/>																						
+										</group>
+									</group>
+									<group>
+										<group string="Contract">
+											<field name="contract_number"/>
+											<field name="contract_date"/>																						
+										</group>
+										<group string="Packing List">
+											<field name="packing_list_number"/>
+										</group>
+																	
+									</group>
+									<group>
+										<group string="Purchase Order">
+											<field name="po_id"/>
+										</group>
+										<group string="E-Faktur">
+											<field name="efaktur_number" string="No Faktur"/>
+										</group>
+									</group>
+									<group string="Shipment">
+										<field name="external_shipment_number"/>
+									</group>
+									<group string="Other">
+										<field name="finish_date"/>
+										<field name="other"/>
+									</group>
+								</page>
+								<page string="BC 1.1 &amp; Penimbunan">
+									<group string="BC 1.1">
+										<field name="no_bc_1_1"/>	
+										<field name="tgl_bc_1_1"/>
+										<field name="pos_bc_1_1"/>
+										<field name="subpos_bc_1_1"/>
+										<field name="subsubpos_bc_1_1"/>
+										<field name="owner_api_number"/>
+									</group>
+									<group string="Penimbunan">
+										<field name="tmp_timbun"/>
+									</group>
+								</page>
+								<page string="Harga">
+									<group>							
+										<field name="currency_id" string="Valuta"
+											options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}"/>	
+										<field name="product_npdbm"/>
+										<field name="product_fob"/>
+										<field name="product_freight"/>
+										<field name="product_insurance"/>
+										<field name="product_cif"/>
+										<field name="product_cifrp"/>
+									</group>
+								</page>
+								<page string="Kontainer &amp; Kemasan">
+									<field name="container_ids" nolabel="1">
+										<tree>
+											<field name="container_number"/>    
+										    <field name="desc"/>
+										    <field name="container_size_id"/>
+										    <field name="container_type_id"/>
+										</tree>	
+									</field>
+									<field name="package_ids" nolabel="1">
+										<tree>
+											<field name="package_qty"/>    
+										    <field name="package_type_id"/>
+										    <field name="merc"/>
+										</tree>	
+									</field>
+								</page>
+								<page string="Barang">
+									<group>
+										<field name="bruto_header"/>    
+									    <field name="netto_header"/>
+									    <field name="qty_header"/>
+									</group>
+								</page>
+								<page string="Tanda Tangan">
+									<group>
+										<field name="city_signed"/>    
+									    <field name="date_signed"/>
+									    <field name="teller_signed"/>
+									    <field name="position_signed"/>
+									</group>
+								</page>
+								<!-- <page string="Packaging Data">
+									<group>
+										<group>							
+											<field name="picking_type_id"/>			
+											<field name="packing_number"/>
+											<label for="packaging_number"/>	
+											<div>
+												<field name="packaging_number" class="oe_inline"/> <field name="packaging_type" class="oe_inline"/>									
+											</div>
+																																	
+										</group>							
+									</group>
+								</page> -->
+								<page string="Other Information">
+									<group string="Updated">
+										<field name="write_uid"/>
+										<field name="write_date"/>
+									</group>
+								</page>
+							</notebook>
+						</group>																								
+					</sheet>
+					<div class="oe_chatter">
+	                    <field name="message_follower_ids" widget="mail_followers"/>
+	                    <field name="message_ids" widget="mail_thread"/>
+	                </div>																																		
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>

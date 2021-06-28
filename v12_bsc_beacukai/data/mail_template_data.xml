@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="email_template_warehouse" model="mail.template">
+          <field name="name">Warehouse Notification</field>
+          <field name="subject">Warehouse Notification</field>
+          <field name="model_id" ref="stock.model_stock_picking"/>
+          <field name="auto_delete" eval="True"/>
+          <field name="body_html">
+                <![CDATA[
+              <p>*** Please do not reply to this automated email, as this mailbox is not monitored.***<br/><br/>
+              This is to inform you that a new transfer have been created outside of user\'s default inventory type:<br/>
+              Created By : ${object.create_uid.name}<br/>
+              Document Name : ${object.name}<br/>
+              </p>
+            ]]>
+          </field>
+       </record>
+    </data>
+</odoo>

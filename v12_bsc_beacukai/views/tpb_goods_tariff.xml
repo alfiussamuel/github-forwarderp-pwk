@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+    	<record id="action_tpb_goods_tariff" model="ir.actions.act_window">
+			<field name="name">Dokumen Barang Tarif</field>
+			<field name="res_model">tpb.goods.tariff</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record id="view_tpb_goods_tariff_tree" model="ir.ui.view">
+			<field name="name">Dokumen Barang Tarif</field>
+			<field name="model">tpb.goods.tariff</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">				
+				<tree string="Document Barang Tarif" create="false" edit="false">
+					<field name="reference_goods_tariff" invisible="1"/>
+					<field name="submission_no_23"/>
+					<field name="tariff_type"/>    
+				    <field name="tariff_code"/>
+				    <field name="tariff_value"/>
+				    <field name="facility_code"/>
+				    <field name="facility_tarif"/>
+				    <!-- <field name="comodity_code"/>
+				    <field name="qty_code"/>
+				    <field name="qty_unit"/> -->	
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_tpb_goods_tariff_form" model="ir.ui.view">
+			<field name="name">Dokumen Barang Tarif</field>
+			<field name="model">tpb.goods.tariff</field>
+			<field name="type">form</field>			
+			<field name="arch" type="xml">				
+				
+				<form create="false" edit="false" delete="false">
+					<header>
+					</header>
+					<sheet>
+						<group>
+							<!-- <group>   -->
+								<field name="reference_goods_tariff" invisible="1"/>
+							    <field name="tariff_code"/>
+							    <field name="tariff_value"/>
+							    <field name="facility_code"/>
+					    		<field name="facility_tarif"/>
+								<field name="submission_no_23"/>
+								<!-- <field name="comodity_code"/> -->
+								<field name="tariff_type"/>
+							    <!-- <field name="qty_code"/>
+							    <field name="qty_unit"/> -->
+							<!-- </group> -->
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="tpb_goods_tariff_search_view" model="ir.ui.view">
+	        <field name="name">tpb.goods.tariff.search.view</field>
+	        <field name="model">tpb.goods.tariff</field>
+	        <field name="arch" type="xml">
+	            <search string="Barang Tarif">
+	                <!-- <field name="date_aju_line" string="Tanggal Aju"/> -->
+	                <field name="submission_no_23" string="No Aju"/>
+	            </search>
+	        </field>
+	    </record>
+
+    </data>
+</odoo>

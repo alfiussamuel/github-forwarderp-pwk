@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="wizard_laporan_mutasi_view" model="ir.ui.view">
+        <field name="name">Laporan Mutasi</field>
+        <field name="model">wizard.laporan.mutasi</field>
+        <field name="arch" type="xml">
+            <form string="Select data range">                
+                <sheet>
+                    <group>
+                        <field name="date_from" string="From Date" required="1"/>
+                        <field name="date_to" string="To Date" required="1"/>
+                        <field name="location_id"
+                            options="{'no_create_edit': True,'no_quick_create': True, 'no_create': True}" invisible="1"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="generate_report" string="Preview" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_wizard_laporan_mutasi" model="ir.actions.act_window">
+        <field name="name">Laporan Mutasi</field>
+        <field name="res_model">wizard.laporan.mutasi</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="v10_bsc_beacukai.wizard_laporan_mutasi_view"/>
+        <field name="target">new</field>
+    </record>
+
+    <!-- <menuitem id="menu_action_wizard_laporan_mutasi"         
+        name="Generate Laporan Mutasi"
+        parent="v10_bsc_beacukai.menu_beacukai_report" 
+        sequence="100"/>
+
+        <menuitem id="menu_action_wizard_laporan_mutasi_bahan_baku" 
+            action="action_wizard_laporan_mutasi" 
+            name="Laporan Mutasi Bahan Baku"
+            parent="v10_bsc_beacukai.menu_action_wizard_laporan_mutasi" 
+            sequence="1"/> -->
+
+
+</odoo>

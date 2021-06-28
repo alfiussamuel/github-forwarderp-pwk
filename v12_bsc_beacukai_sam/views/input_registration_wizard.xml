@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_beacukai_input_register_number_out_sam">
+	        <field name="name">Input Nomor Pendaftaran</field>
+	        <field name="model">bc.outgoing.register.number</field>
+            <field name="inherit_id" ref="v10_bsc_beacukai.view_beacukai_input_register_number_out"/>
+	        <field name="arch" type="xml">
+	            <field name="register_date" position="after">
+                    <field name="ref_model" invisible="1"/>
+                    <field name="po_id" invisible="not context.get('is_incoming', False)"/>
+                    <field name="so_id" invisible="not context.get('is_outgoing', False)"/>
+                </field>
+	        </field>
+	    </record>
+    </data>
+
+</openerp>

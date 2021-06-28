@@ -1,0 +1,13 @@
+.com-page-style {
+    border: 2px solid black;
+    padding-left:15px;
+    padding-right:15px
+}
+
+.com-row-style {
+    border-top: 2px solid black;
+}
+
+.com-cell {
+    border: 1px solid black;
+}

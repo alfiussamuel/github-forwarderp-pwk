@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+		<record id="bc_laporan_posisi_form" model="ir.ui.view">
+            <field name="name">Wizard Laporan Posisi</field>
+            <field name="model">bc.laporan.posisi</field>
+            <field name="arch" type="xml">
+                <form create="false" edit="false">
+                    <group>
+                        <group>
+                            <field name="date_from" required="1"/>
+                            <field name="date_to" required="1"/>
+                            <field name="state_position" invisible="1"/>                            
+                        </group>
+                        <newline/>
+                        <group>
+                            <separator colspan="3" string="Download Laporan Posisi" attrs="{'invisible':[('state_position','=','choose')]}"/>
+                            <field name="name" invisible="1" width="100" attrs="{'invisible':[('state_position','=','choose')]}"/>
+                            <field name="data" nolabel="1" readonly="0" width="100" filename="name" attrs="{'invisible':[('state_position','=','choose')]}"/>
+                        </group>
+                        <footer attrs="{'invisible':[('state_position','=','get')]}">
+                            <button name="generate_report" string="Preview PDF" type="object" class="btn-primary"/>
+                            <button string="Cancel" class="btn-default" special="cancel" />
+                        </footer>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_bc_laporan_posisi" model="ir.actions.act_window">
+            <field name="name">Laporan Posisi</field>
+            <field name="res_model">bc.laporan.posisi</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="bc_laporan_posisi_form"/>
+            <field name="target">new</field>
+        </record>
+
+        
+                
+        
+	</data>
+</odoo>

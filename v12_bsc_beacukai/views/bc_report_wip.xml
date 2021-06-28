@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="bc_report_wip">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="report.internal_layout">
+                <div class="page" style="font-size:10px">
+                   <!--  <div>
+                    	<span style="font-size: 18px;">Sales Person</span> : <span style="font-size: 16px;" t-esc="docs.salesperson_id.name"/>
+                    </div>
+ -->
+                    <div class="row mt32 mb32">
+                        <div>
+                              <b style="text-center">Laporan Posisi WIP</b><br />
+                            <b style="text-center"><span t-esc="docs.bc_type"></span>  <span t-esc="user.company_id.name"></span></b><br />
+                            <b style="text-center">Periode : <span t-field="docs.date_from" t-field-options='{"format": "dd-MM-y"}'/> s.d <span t-field="docs.date_to" t-field-options='{"format": "dd-MM-y"}'/></b><br />
+                        </div>
+                    </div>
+
+                     <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Kode Barang</th>
+                                <th>Nama Barang</th>
+                                <th>Sat</th>
+                                <th>Jumlah</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="i" t-value="1"/>
+                            <t t-foreach="moves" t-as="move">
+                                <tr>
+                                    <td style="border:1px solid"><span t-esc="i"/></td>
+                                    <t t-set="i" t-value="i+1"/>
+                                    <td style="border:1px solid">
+                                        <span t-esc="move.product_id.name" />
+                                    </td>
+                                    <td style="border:1px solid">
+                                        <span t-esc="move.product_id.default_code" />
+                                    </td>
+                                    <td style="border:1px solid">
+                                        <span t-esc="move.product_id.uom_id.name" />
+                                    </td>
+                                    <td style="border:1px solid">
+                                        <span t-esc="move.product_uom_qty" />
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <div style="position: absolute;right: 150px;width: 200px;height: 120px;">
+                        <p>KAMI BERTANGGUNG JAWAB </p>
+                        <p>ATAS KEBENARAN LAPORAN INI </p>
+                        <p><span t-esc="user.company_id.city and user.company_id.city.upper()"/>, <span t-esc="datetime.datetime.now().strftime('%d %m %Y')"/> </p>
+                        <p>PENGUSAHA DI <span t-esc="docs.bc_type.upper()"/></p>
+                        <br/><br/><br/><br/>
+                        <p><span t-esc="header.name.upper()"/></p>
+                        <p><span t-esc="header.jabatan.upper()"/></p>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </t>
+</template>
+</odoo>

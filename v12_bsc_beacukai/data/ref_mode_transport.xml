@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+    	<record id="ref_mode_transport_data_sea" model="ref.mode.transport">
+            <field name="name">1</field>
+            <field name="desc">LAUT</field>
+        </record>
+
+        <record id="ref_mode_transport_data_train" model="ref.mode.transport">
+            <field name="name">2</field>
+            <field name="desc">KERETA API</field>
+        </record>
+
+        <record id="ref_mode_transport_data_ground" model="ref.mode.transport">
+            <field name="name">3</field>
+            <field name="desc">DARAT</field>
+        </record>
+
+        <record id="ref_mode_transport_data_air" model="ref.mode.transport">
+            <field name="name">4</field>
+            <field name="desc">UDARA</field>
+        </record>
+
+        <record id="ref_mode_transport_data_post" model="ref.mode.transport">
+            <field name="name">5</field>
+            <field name="desc">POS</field>
+        </record>
+
+        <record id="ref_mode_transport_data_multi" model="ref.mode.transport">
+            <field name="name">6</field>
+            <field name="desc">MULTI MODA</field>
+        </record>
+
+        <record id="ref_mode_transport_data_instal" model="ref.mode.transport">
+            <field name="name">7</field>
+            <field name="desc">INSTALASI</field>
+        </record>
+
+        <record id="ref_mode_transport_data_water" model="ref.mode.transport">
+            <field name="name">8</field>
+            <field name="desc">PERAIRAN</field>
+        </record>
+
+        <record id="ref_mode_transport_data_misc" model="ref.mode.transport">
+            <field name="name">9</field>
+            <field name="desc">LAINNYA</field>
+        </record>
+    </data>
+</odoo>

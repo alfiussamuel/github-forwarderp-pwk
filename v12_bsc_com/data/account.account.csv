@@ -1,0 +1,555 @@
+id,code,name,user_type_id:id,reconcile
+com_coa_111000,111000,Kas,account.data_account_type_liquidity,FALSE
+com_coa_111100,111100,Kas IDR,account.data_account_type_liquidity,FALSE
+com_coa_111111,111111,Kas JM IDR,account.data_account_type_liquidity,FALSE
+com_coa_111121,111121,Kas COR IDR,account.data_account_type_liquidity,FALSE
+com_coa_111131,111131,Kas MPR IDR - Jakarta,account.data_account_type_liquidity,FALSE
+com_coa_111132,111132,Kas MPR IDR - JO (Kodal),account.data_account_type_liquidity,FALSE
+com_coa_111133,111133,Kas MPR IDR -  Non JO,account.data_account_type_liquidity,FALSE
+com_coa_111141,111141,Kas MBR IDR,account.data_account_type_liquidity,FALSE
+com_coa_111151,111151,Kas IMN IDR,account.data_account_type_liquidity,FALSE
+com_coa_111161,111161,Kas BKA IDR - Jakarta,account.data_account_type_liquidity,FALSE
+com_coa_111162,111162,Kas BKA IDR - Kas Besar (Sawa),account.data_account_type_liquidity,FALSE
+com_coa_111163,111163,Kas BKA IDR - Kas Kecil,account.data_account_type_liquidity,FALSE
+com_coa_111171,111171,Kas CORI IDR -  Site,account.data_account_type_liquidity,FALSE
+com_coa_111172,111172,Kas CORI IDR -  Jakarta,account.data_account_type_liquidity,FALSE
+com_coa_111200,111200,Kas USD,account.data_account_type_liquidity,FALSE
+com_coa_111211,111211,Kas JM USD,account.data_account_type_liquidity,FALSE
+com_coa_111221,111221,Kas COR USD,account.data_account_type_liquidity,FALSE
+com_coa_111231,111231,Kas MPR USD - Jakarta,account.data_account_type_liquidity,FALSE
+com_coa_111232,111232,Kas MPR USD - JO (Kodal),account.data_account_type_liquidity,FALSE
+com_coa_111233,111233,Kas MPR USD -  Non JO,account.data_account_type_liquidity,FALSE
+com_coa_111241,111241,Kas MBR USD,account.data_account_type_liquidity,FALSE
+com_coa_111251,111251,Kas IMN USD,account.data_account_type_liquidity,FALSE
+com_coa_111261,111261,Kas BKA USD - Jakarta,account.data_account_type_liquidity,FALSE
+com_coa_111262,111262,Kas BKA USD - Kas Besar (Sawa),account.data_account_type_liquidity,FALSE
+com_coa_111263,111263,Kas BKA USD - Kas Kecil,account.data_account_type_liquidity,FALSE
+com_coa_111264,111264,Kas CORI USD - Jakarta,account.data_account_type_liquidity,FALSE
+com_coa_111300,111300,Kas RMB,account.data_account_type_liquidity,FALSE
+com_coa_111311,111311,Kas JM RMB,account.data_account_type_liquidity,FALSE
+com_coa_111321,111321,Kas COR RMB,account.data_account_type_liquidity,FALSE
+com_coa_111331,111331,Kas MPR RMB,account.data_account_type_liquidity,FALSE
+com_coa_111341,111341,Kas MBR RMB,account.data_account_type_liquidity,FALSE
+com_coa_111351,111351,Kas IMN RMB,account.data_account_type_liquidity,FALSE
+com_coa_111361,111361,Kas BKA RMB,account.data_account_type_liquidity,FALSE
+com_coa_112000,112000,Bank,account.data_account_type_liquidity,FALSE
+com_coa_112100,112100,Bank IDR,account.data_account_type_liquidity,FALSE
+com_coa_112111,112111,JM - BWK (Acc. No. xxxx) - IDR,account.data_account_type_liquidity,FALSE
+com_coa_112121,112121,COR - BWK (Acc. No. 100.02.088.48) - IDR,account.data_account_type_liquidity,FALSE
+com_coa_112122,112122,COR - BWK (Acc. No. 100.02.610.13) - IDR,account.data_account_type_liquidity,FALSE
+com_coa_112123,112123,COR - BCA (Acc. No. xxx.xxx) - IDR,account.data_account_type_liquidity,FALSE
+com_coa_112124,112124,COR - OCBC (Acc. No. xxx.xx) - IDR,account.data_account_type_liquidity,FALSE
+com_coa_112141,112141,MPR - BWK (Acc. No. xxxx) - IDR,account.data_account_type_liquidity,FALSE
+com_coa_112151,112151,MBR - BWK (Acc. No. xxxx) - IDR,account.data_account_type_liquidity,FALSE
+com_coa_112161,112161,IMN - BWK (Acc. No. xxxx) - IDR,account.data_account_type_liquidity,FALSE
+com_coa_112171,112171,BKA - BWK (Acc. No. xxxx) - IDR,account.data_account_type_liquidity,FALSE
+com_coa_112181,112181,CORII - BWK (Acc. No. 100 128 2828) IDR,account.data_account_type_liquidity,FALSE
+com_coa_112182,112182,CORII - BRI Jkt (Acc No. 0206.01.005627.308) IDR,account.data_account_type_liquidity,FALSE
+com_coa_112183,112183,CORII - BRI Site (Acc No. 3634.01.000105.305) IDR,account.data_account_type_liquidity,FALSE
+com_coa_112184,112184,CORII - Panin (Acc No. 118.50.13123 ) IDR,account.data_account_type_liquidity,FALSE
+com_coa_112185,112185,CORII - Mandiri (Acc No. 102.000.6565.938 ) IDR,account.data_account_type_liquidity,FALSE
+com_coa_112186,112186,CORII I.A - BWK (Acc. 100 40 555 07) IDR,account.data_account_type_liquidity,FALSE
+com_coa_112187,112187,CORII E.A - Exim (Acc. No. 323 145 008) IDR,account.data_account_type_liquidity,FALSE
+com_coa_112188,112188,CORII - ICBC (IDR),account.data_account_type_liquidity,FALSE
+com_coa_112289,112289,CORII - BWK (Acc. No. 1014363838) IDR,account.data_account_type_liquidity,FALSE
+com_coa_112200,112200,Bank USD,account.data_account_type_liquidity,FALSE
+com_coa_112211,112211,JM - BWK (Acc. No. xxxx) - USD,account.data_account_type_liquidity,FALSE
+com_coa_112221,112221,COR - BWK (Acc. No. 100-06-005-08) - USD,account.data_account_type_liquidity,FALSE
+com_coa_112222,112222,COR - BCA (Acc. No. xxxx) - USD,account.data_account_type_liquidity,FALSE
+com_coa_112223,112223,COR - Mandiri (Acc. No. xxxx) - USD,account.data_account_type_liquidity,FALSE
+com_coa_112224,112224,COR - OCBC (Acc. No. xxxx) - USD,account.data_account_type_liquidity,FALSE
+com_coa_112241,112241,MPR - BWK (Acc. No. xxxx) - USD,account.data_account_type_liquidity,FALSE
+com_coa_112251,112251,MBR - BWK (Acc. No. xxxx) - USD,account.data_account_type_liquidity,FALSE
+com_coa_112261,112261,IMN - BWK (Acc. No. xxxx) - USD,account.data_account_type_liquidity,FALSE
+com_coa_112271,112271,BKA - BWK (Acc. No. xxxx) - USD,account.data_account_type_liquidity,FALSE
+com_coa_112281,112281,CORII - BWK (Acc. No. 100 158 3111) USD,account.data_account_type_liquidity,FALSE
+com_coa_112282,112282,CORII - Panin (Acc. No. 118.60.13113 ) USD,account.data_account_type_liquidity,FALSE
+com_coa_112283,112283,CORII I.A. - BWK (Acc. No. 100 405 5558) USD,account.data_account_type_liquidity,FALSE
+com_coa_112284,112284,CORII C.A - Mandiri (Acc No.xxx.xxx ) USD,account.data_account_type_liquidity,FALSE
+com_coa_112285,112285,CORII E.A - Exim (Acc. No. 323 145 010) USD,account.data_account_type_liquidity,FALSE
+com_coa_112286,112286,CORII I.A - Exim (Acc. No. 323 1450 21) USD,account.data_account_type_liquidity,FALSE
+com_coa_112287,112287,CORII - BWK (Acc. No. 1014363919) USD,account.data_account_type_liquidity,FALSE
+com_coa_112288,112288,CORII - BWK (Acc. No. 1014446628) CNY,account.data_account_type_liquidity,FALSE
+com_coa_112300,112300,Obligasi,account.data_account_type_liquidity,FALSE
+com_coa_112311,112311,COR - Obligasi Panin - IDR,account.data_account_type_liquidity,FALSE
+com_coa_112400,112400,Reksa Dana,account.data_account_type_liquidity,FALSE
+com_coa_112411,112411,COR - Reksa Dana - IDR,account.data_account_type_liquidity,FALSE
+com_coa_112600,112600,Deposito IDR,account.data_account_type_liquidity,FALSE
+com_coa_112611,112611,JM - Deposito BWK IDR,account.data_account_type_liquidity,FALSE
+com_coa_112621,112621,COR - Deposito BWK IDR,account.data_account_type_liquidity,FALSE
+com_coa_112622,112622,COR - Deposito Panin IDR,account.data_account_type_liquidity,FALSE
+com_coa_112623,112623,COR - Deposito Victoria IDR,account.data_account_type_liquidity,FALSE
+com_coa_112641,112641,MPR - Deposito BWK IDR,account.data_account_type_liquidity,FALSE
+com_coa_112651,112651,MBR - Deposito BWK IDR,account.data_account_type_liquidity,FALSE
+com_coa_112661,112661,IMN - Deposito BWK IDR,account.data_account_type_liquidity,FALSE
+com_coa_112671,112671,BKA - Deposito BWK IDR,account.data_account_type_liquidity,FALSE
+com_coa_112681,112681,CORI - Deposito BWK IDR,account.data_account_type_liquidity,FALSE
+com_coa_112700,112700,Deposito USD,account.data_account_type_liquidity,FALSE
+com_coa_112711,112711,JM - Deposito BWK USD,account.data_account_type_liquidity,FALSE
+com_coa_112721,112721,COR - Deposito OCBC USD,account.data_account_type_liquidity,FALSE
+com_coa_112741,112741,MPR - Deposito BWK USD,account.data_account_type_liquidity,FALSE
+com_coa_112751,112751,MBR - Deposito BWK USD,account.data_account_type_liquidity,FALSE
+com_coa_112761,112761,IMN - Deposito BWK USD,account.data_account_type_liquidity,FALSE
+com_coa_112771,112771,BKA - Deposito BWK USD,account.data_account_type_liquidity,FALSE
+com_coa_112781,112781,CORII - Deposito BWK USD,account.data_account_type_liquidity,FALSE
+com_coa_112782,112782,CORII - Deposito Panin USD,account.data_account_type_liquidity,FALSE
+com_coa_11290,11290,Contra Account - Bank,account.data_account_type_liquidity,FALSE
+com_coa_112900,112900,Contra Account - Bank,account.data_account_type_liquidity,FALSE
+com_coa_113000,113000,Piutang Usaha Pihak Ketiga,account.data_account_type_receivable,TRUE
+com_coa_113001,113001,Trade Account Receivables- Third Parties IDR,account.data_account_type_receivable,TRUE
+com_coa_113002,113002,Trade Account Receivables- Third Parties USD,account.data_account_type_receivable,TRUE
+com_coa_113003,113003,Unbilled Trade Account Receivables-Third Party USD,account.data_account_type_receivable,TRUE
+com_coa_114002,114002,Trade Account Receivables - Related Parties USD,account.data_account_type_receivable,TRUE
+com_coa_1140021,1140021,Trade Account Receivables - Related Parties USD,account.data_account_type_receivable,TRUE
+com_coa_114000,114000,Piutang Usaha Berelasi,account.data_account_type_receivable,TRUE
+com_coa_114001,114001,Trade Account Receivables - Related Parties IDR,account.data_account_type_receivable,TRUE
+com_coa_114100,114100,Piutang lain-lain - pihak berelasi,account.data_account_type_receivable,TRUE
+com_coa_115000,115000,Piutang Lain-lain,account.data_account_type_receivable,TRUE
+com_coa_115101,115101,Other Account Receivables - IDR,account.data_account_type_receivable,TRUE
+com_coa_115102,115102,Other Account Receivables - USD,account.data_account_type_receivable,TRUE
+com_coa_115103,115103,Dividend Receivables,account.data_account_type_receivable,TRUE
+com_coa_115300,115300,Piutang Karyawan,account.data_account_type_receivable,TRUE
+com_coa_115301,115301,Employee Receivables - IDR,account.data_account_type_receivable,TRUE
+com_coa_115302,115302,Employee Receivables - USD,account.data_account_type_receivable,TRUE
+com_coa_115303,115303,Employee Receivables - RMB,account.data_account_type_receivable,TRUE
+com_coa_116000,116000,Persediaan,account.data_account_type_current_assets,FALSE
+com_coa_116100,116100,Nikel,account.data_account_type_current_assets,FALSE
+com_coa_116101,116101,Nikel Pig Iron,account.data_account_type_current_assets,FALSE
+com_coa_116102,116102,Ferro Nikel,account.data_account_type_current_assets,FALSE
+com_coa_116103,116103,Work In Proces ( WIP ),account.data_account_type_current_assets,FALSE
+com_coa_116104,116104,Lime,account.data_account_type_current_assets,FALSE
+com_coa_116105,116105,Hair Iron,account.data_account_type_current_assets,FALSE
+com_coa_116900,116900,Persediaan Lain-Lain,account.data_account_type_current_assets,FALSE
+com_coa_116901,116901,Fuel,account.data_account_type_current_assets,FALSE
+com_coa_116902,116902,Persedian Premium,account.data_account_type_current_assets,FALSE
+com_coa_116910,116910,Coke,account.data_account_type_current_assets,FALSE
+com_coa_116911,116911,Anthracite,account.data_account_type_current_assets,FALSE
+com_coa_116912,116912,Coal,account.data_account_type_current_assets,FALSE
+com_coa_116914,116914,Calcium Fluoride,account.data_account_type_current_assets,FALSE
+com_coa_116915,116915,Lime Stone,account.data_account_type_current_assets,FALSE
+com_coa_116916,116916,Nickel Ore,account.data_account_type_current_assets,FALSE
+com_coa_116950,116950,Spare part Dan Barang Umum,account.data_account_type_current_assets,FALSE
+com_coa_116980,116980,Contra Account - Inventory,account.data_account_type_current_assets,FALSE
+com_coa_117000,117000,Uang Muka,account.data_account_type_current_assets,FALSE
+com_coa_117100,117100,Uang Muka JM,account.data_account_type_current_assets,FALSE
+com_coa_117190,117190,Uang Muka JM - Lainnya,account.data_account_type_current_assets,FALSE
+com_coa_117200,117200,Uang Muka COR,account.data_account_type_current_assets,FALSE
+com_coa_117201,117201,Uang Muka COR - Kendaraan,account.data_account_type_current_assets,FALSE
+com_coa_117290,117290,Uang Muka COR - Lainnya,account.data_account_type_current_assets,FALSE
+com_coa_117300,117300,Uang Muka MPR,account.data_account_type_current_assets,FALSE
+com_coa_117301,117301,Uang Muka MPR - DSS,account.data_account_type_current_assets,FALSE
+com_coa_117302,117302,Uang Muka MPR - MT,account.data_account_type_current_assets,FALSE
+com_coa_117303,117303,Uang Muka MPR - Kodal JO,account.data_account_type_current_assets,FALSE
+com_coa_117304,117304,Uang Muka MPR - Buli,account.data_account_type_current_assets,FALSE
+com_coa_117305,117305,Uang Muka MPR - Lainnya,account.data_account_type_current_assets,FALSE
+com_coa_117700,117700,Uang Muka - CORII,account.data_account_type_current_assets,FALSE
+com_coa_117790,117790,Uang Muka CORII - Lainnya,account.data_account_type_current_assets,FALSE
+com_coa_117791,117791,Uang Muka CORII - Purchase Land,account.data_account_type_current_assets,FALSE
+com_coa_117400,117400,Uang Muka MBR,account.data_account_type_current_assets,FALSE
+com_coa_117490,117490,Uang Muka MBR - Lainnya,account.data_account_type_current_assets,FALSE
+com_coa_117500,117500,Uang Muka BKA,account.data_account_type_current_assets,FALSE
+com_coa_117501,117501,Uang Muka BKA - DSS,account.data_account_type_current_assets,FALSE
+com_coa_117590,117590,Uang Muka BKA - Lainnya,account.data_account_type_current_assets,FALSE
+com_coa_117600,117600,Uang Muka - IMN,account.data_account_type_current_assets,FALSE
+com_coa_117601,117601,Uang Muka IMN - Mining Lease,account.data_account_type_current_assets,FALSE
+com_coa_117690,117690,Uang Muka IMN - Lainnya,account.data_account_type_current_assets,FALSE
+com_coa_118000,118000,Pajak Dibayar Dimuka,account.data_account_type_current_assets,FALSE
+com_coa_118001,118001,Prepaid Tax - PPh 15,account.data_account_type_current_assets,FALSE
+com_coa_118002,118002,Prepaid Tax - PPh 21,account.data_account_type_current_assets,FALSE
+com_coa_118003,118003,Prepaid Tax - PPh 22,account.data_account_type_current_assets,FALSE
+com_coa_118004,118004,Prepaid Tax - PPh 23,account.data_account_type_current_assets,FALSE
+com_coa_118005,118005,Prepaid Tax - PPh 24,account.data_account_type_current_assets,FALSE
+com_coa_118006,118006,Prepaid Tax - PPh 25,account.data_account_type_current_assets,FALSE
+com_coa_118007,118007,Prepaid Tax - PPh 26,account.data_account_type_current_assets,FALSE
+com_coa_118008,118008,Prepaid Tax - PPh 29,account.data_account_type_current_assets,FALSE
+com_coa_118009,118009,Prepaid Tax - PPh Final 4 (2),account.data_account_type_current_assets,FALSE
+com_coa_118600,118600,VAT IN,account.data_account_type_current_assets,FALSE
+com_coa_1186001,1186001,Deffered VAT IN,account.data_account_type_current_assets,FALSE
+com_coa_119000,119000,Biaya Dibayar Dimuka,account.data_account_type_current_assets,FALSE
+com_coa_119001,119001,Prepaid Insurances,account.data_account_type_current_assets,FALSE
+com_coa_119002,119002,Prepaid Rent - Building,account.data_account_type_current_assets,FALSE
+com_coa_119900,119900,Other Prepaid Expenses,account.data_account_type_current_assets,FALSE
+com_coa_119950,119950,Fixed Asset - Construction In Progress,account.data_account_type_current_assets,FALSE
+com_coa_121000,121000,Aset Tetap,account.data_account_type_fixed_assets,FALSE
+com_coa_121100,121100,Harga Perolehan,account.data_account_type_fixed_assets,FALSE
+com_coa_121101,121101,Harga Perolehan Tanah,account.data_account_type_fixed_assets,FALSE
+com_coa_121102,121102,Harga Perolehan Bangunan dan Prasarana,account.data_account_type_fixed_assets,FALSE
+com_coa_121103,121103,Harga Perolehan Renovasi Kantor,account.data_account_type_fixed_assets,FALSE
+com_coa_121104,121104,Harga Perolehan Inventaris Kantor,account.data_account_type_fixed_assets,FALSE
+com_coa_121105,121105,Harga Perolehan Kendaraan,account.data_account_type_fixed_assets,FALSE
+com_coa_121106,121106,Harga Perolehan Peralatan,account.data_account_type_fixed_assets,FALSE
+com_coa_121107,121107,Harga Perolehan Peralatan Berat Tambang,account.data_account_type_fixed_assets,FALSE
+com_coa_121108,121108,Construction in Progress (CIP),account.data_account_type_fixed_assets,FALSE
+com_coa_121109,121109,Harga Perolehan Machine Smelter,account.data_account_type_fixed_assets,FALSE
+com_coa_121115,121115,Harga Perolehan Leasing Kendaraan,account.data_account_type_fixed_assets,FALSE
+com_coa_121152,121152,Asset Tax Allowance - Harga Perolehan Bangunan Dan Prasarana,account.data_account_type_fixed_assets,FALSE
+com_coa_121158,121158,Asset Tax Allowance - Harga Perolehan Machine Smelter,account.data_account_type_fixed_assets,FALSE
+com_coa_121159,121159,Asset Tax Allowance - Harga Perolehan Lain Lain,account.data_account_type_fixed_assets,FALSE
+com_coa_121200,121200,Akumulasi Penyusutan,account.data_account_type_depreciation,FALSE
+com_coa_121201,121201,Accumulated Depreciation - Building and Infrasructure,account.data_account_type_depreciation,FALSE
+com_coa_121202,121202,Accumulated Depreciation Office,account.data_account_type_depreciation,FALSE
+com_coa_121203,121203,Accumulated Depreciation - Offices Inventaries,account.data_account_type_depreciation,FALSE
+com_coa_121204,121204,Accumulated Depreciation - Vehicles,account.data_account_type_depreciation,FALSE
+com_coa_121205,121205,Accumulated Depreciation - Equipment,account.data_account_type_depreciation,FALSE
+com_coa_121206,121206,Accumulated Depreciation - Heavy Equipment,account.data_account_type_depreciation,FALSE
+com_coa_121207,121207,Accumulated Depreciation - Fixed Asset of Leasing Equipment,account.data_account_type_depreciation,FALSE
+com_coa_121209,121209,Accumulated Depreciation - Machine Smelter,account.data_account_type_depreciation,FALSE
+com_coa_121214,121214,Accumulated Depreciation - Leasing Vehicles,account.data_account_type_depreciation,FALSE
+com_coa_121252,121252,Accumulated Depreciation - TA Building dan Infrastructure,account.data_account_type_depreciation,FALSE
+com_coa_121258,121258,Accumulated Depreciation - TA Machine Smelter,account.data_account_type_depreciation,FALSE
+com_coa_121259,121259,Accumulated Depreciation - TA Others,account.data_account_type_depreciation,FALSE
+com_coa_122000,122000,Aset Pajak Tangguhan,account.data_account_type_current_assets,FALSE
+com_coa_123000,123000,Biaya Eksplorasi dan Pengembangan Yang Ditangguhkan,account.data_account_type_non_current_liabilities,FALSE
+com_coa_123101,123101,Biaya Ditangguhkan MPR - Kodal Blok 1 (108 Ha),account.data_account_type_non_current_liabilities,FALSE
+com_coa_123102,123102,Biaya Ditangguhkan MPR - Kodal Blok 2 (700 Ha),account.data_account_type_non_current_liabilities,FALSE
+com_coa_123103,123103,Biaya Ditangguhkan MPR - Kodal Blok 3 (900 Ha),account.data_account_type_non_current_liabilities,FALSE
+com_coa_123111,123111,Biaya Ditangguhkan MPR - Buli (Halmahera),account.data_account_type_non_current_liabilities,FALSE
+com_coa_123121,123121,Biaya Ditangguhkan MPR - Kupang (NTT),account.data_account_type_non_current_liabilities,FALSE
+com_coa_123201,123201,Biaya Ditangguhkan IMN - Kodal,account.data_account_type_non_current_liabilities,FALSE
+com_coa_123301,123301,Biaya Ditangguhkan BKA - Sawa Blok 1,account.data_account_type_non_current_liabilities,FALSE
+com_coa_123302,123302,Biaya Ditangguhkan BKA - Sawa Blok 2,account.data_account_type_non_current_liabilities,FALSE
+com_coa_123401,123401,Biaya Ditangguhkan CORII,account.data_account_type_non_current_liabilities,FALSE
+com_coa_124000,124000,Investasi Jangka Panjang,account.data_account_type_non_current_liabilities,FALSE
+com_coa_124100,124100,Investasi Jangka Panjang PT BKA,account.data_account_type_non_current_liabilities,FALSE
+com_coa_124110,124110,Investasi Jangka Panjang - PT Bumi Konawe Abadi,account.data_account_type_non_current_liabilities,FALSE
+com_coa_124115,124115,Ak Laba Rugi PT Bumi Konawe Abadi,account.data_account_type_non_current_liabilities,FALSE
+com_coa_124200,124200,Investasi Jangka Panjang PT MPR,account.data_account_type_non_current_liabilities,FALSE
+com_coa_124210,124210,Investasi Jangka Panjang - PT Mulia Pasific Resources,account.data_account_type_non_current_liabilities,FALSE
+com_coa_124215,124215,Ak Laba Rugi PT Mulia Pasific Resources,account.data_account_type_non_current_liabilities,FALSE
+com_coa_124300,124300,Investasi Jangka Panjang PT MBR,account.data_account_type_non_current_liabilities,FALSE
+com_coa_124310,124310,Investasi Jangka Panjang - PT Mega Buana Resources,account.data_account_type_non_current_liabilities,FALSE
+com_coa_124315,124315,Investasi Jangka Panjang - PT Mega Buana Resources,account.data_account_type_non_current_liabilities,FALSE
+com_coa_124400,124400,Investasi Jangka Panjang PT IMN,account.data_account_type_non_current_liabilities,FALSE
+com_coa_124410,124410,Investasi Jangka Panjang - PT Itamatra Nusantara,account.data_account_type_non_current_liabilities,FALSE
+com_coa_124415,124415,Ak Laba Rugi PT Itamatra Nusantara,account.data_account_type_non_current_liabilities,FALSE
+com_coa_124500,124500,Investasi Jangka Panjang - PT Yieh United Omega,account.data_account_type_non_current_liabilities,FALSE
+com_coa_124510,124510,Investasi Jangka Panjang - PT Yieh United Omega,account.data_account_type_non_current_liabilities,FALSE
+com_coa_125000,125000,Aset Sewaan,account.data_account_type_non_current_liabilities,FALSE
+com_coa_125111,125111,Aset Sewaan - Peralatan,account.data_account_type_non_current_liabilities,FALSE
+com_coa_125121,125121,Aset Sewaan - Kendaraan,account.data_account_type_non_current_liabilities,FALSE
+com_coa_125511,125511,Aset Sewaan - Akumulasi Penyusutan Peralatan,account.data_account_type_non_current_liabilities,FALSE
+com_coa_125521,125521,Aset Sewaan - Akumulasi Penyusutan Kendaraan,account.data_account_type_non_current_liabilities,FALSE
+com_coa_129000,129000,Aktiva Lain-Lain,account.data_account_type_non_current_liabilities,FALSE
+com_coa_129100,129100,Aset tidak lancar Lainnya,account.data_account_type_non_current_liabilities,FALSE
+com_coa_129101,129101,Jaminan Kesungguhan Petasia,account.data_account_type_non_current_liabilities,FALSE
+com_coa_129102,129102,Jaminan Kesungguhan Kupang,account.data_account_type_non_current_liabilities,FALSE
+com_coa_129190,129190,Aset Lainnya,account.data_account_type_non_current_liabilities,FALSE
+com_coa_200000,200000,Liabilitas,account.data_account_type_payable,TRUE
+com_coa_210000,210000,Liabilitas Jangka Pendek,account.data_account_type_payable,TRUE
+com_coa_211000,211000,Utang Usaha Pihak Ketiga,account.data_account_type_payable,TRUE
+com_coa_211001,211001,Utang Usaha Pihak Ketiga - IDR,account.data_account_type_payable,TRUE
+com_coa_211002,211002,Utang Usaha Pihak Ketiga - USD,account.data_account_type_payable,TRUE
+com_coa_211003,211003,Unbilled / Pending Invoice Receive Item Third Parties,account.data_account_type_payable,TRUE
+com_coa_217003,217003,Loan From Finance institutions IDR,account.data_account_type_payable,TRUE
+com_coa_212000,212000,Utang Usaha Pihak Berelasi,account.data_account_type_payable,TRUE
+com_coa_212001,212001,Trade Payables - Related Parties IDR,account.data_account_type_payable,TRUE
+com_coa_212002,212002,Trade Payables - Related Parties USD,account.data_account_type_payable,TRUE
+com_coa_212003,212003,Unbilled / Pending Invoice Receive Item Related Parties,account.data_account_type_payable,TRUE
+com_coa_213000,213000,Utang Lain-lain,account.data_account_type_payable,TRUE
+com_coa_213001,213001,Other Payables - Third Parties IDR,account.data_account_type_payable,TRUE
+com_coa_213002,213002,Other Payables - Third Parties USD,account.data_account_type_payable,TRUE
+com_coa_213003,213003,other payable related party IDR,account.data_account_type_payable,TRUE
+com_coa_213004,213004,Other Payable Related parties - USD,account.data_account_type_payable,TRUE
+com_coa_214000,214000,Tax Payable,account.data_account_type_current_liabilities,FALSE
+com_coa_214001,214001,Tax Payable - PPh 15,account.data_account_type_current_liabilities,FALSE
+com_coa_214002,214002,Tax Payable - PPh 21,account.data_account_type_current_liabilities,FALSE
+com_coa_214003,214003,Tax Payable - PPh 22,account.data_account_type_current_liabilities,FALSE
+com_coa_214004,214004,Tax Payable - PPh 23,account.data_account_type_current_liabilities,FALSE
+com_coa_214005,214005,Tax Payable - PPh 24,account.data_account_type_current_liabilities,FALSE
+com_coa_214006,214006,Tax payable - PPh 25,account.data_account_type_current_liabilities,FALSE
+com_coa_214007,214007,Tax Payable - PPh 26,account.data_account_type_current_liabilities,FALSE
+com_coa_214008,214008,Tax Payable - PPh 29,account.data_account_type_current_liabilities,FALSE
+com_coa_214009,214009,Tax Payable - PPh Final 4 (2),account.data_account_type_current_liabilities,FALSE
+com_coa_214010,214010,VAT OUT,account.data_account_type_current_liabilities,FALSE
+com_coa_215000,215000,Accrued Expenses,account.data_account_type_current_liabilities,FALSE
+com_coa_215001,215001,Accrued Expenses - Rent Building,account.data_account_type_current_liabilities,FALSE
+com_coa_215002,215002,BYMHD Kontraktor Tambang,account.data_account_type_current_liabilities,FALSE
+com_coa_215003,215003,BYMHD Komisi Penjualan,account.data_account_type_current_liabilities,FALSE
+com_coa_215004,215004,BYMHD Iuran Tetap / Royalty,account.data_account_type_current_liabilities,FALSE
+com_coa_215005,215005,BYMHD Pajak Daerah / Galian C,account.data_account_type_current_liabilities,FALSE
+com_coa_215006,215006,BYMHD Surveyor,account.data_account_type_current_liabilities,FALSE
+com_coa_215007,215007,BYMHD Pengangkutan Laut,account.data_account_type_current_liabilities,FALSE
+com_coa_215008,215008,BYMHD Bongkar Muat,account.data_account_type_current_liabilities,FALSE
+com_coa_215009,215009,Accrued Expenses - Condev,account.data_account_type_current_liabilities,FALSE
+com_coa_215010,215010,Accrued Expenses - Audit,account.data_account_type_current_liabilities,FALSE
+com_coa_215011,215011,Accrued Expenses - Jamsostek,account.data_account_type_current_liabilities,FALSE
+com_coa_215013,215013,Accrued Expenses - Salarie,account.data_account_type_current_liabilities,FALSE
+com_coa_215090,215090,Accrued Expenses - Other,account.data_account_type_current_liabilities,FALSE
+com_coa_215091,215091,BYMHD Bunga,account.data_account_type_current_liabilities,FALSE
+com_coa_215500,215500,Penerimaan Barang Belum Tertagih,account.data_account_type_current_liabilities,FALSE
+com_coa_215600,215600,Other Provision/Cadangan Lainnya,account.data_account_type_current_liabilities,FALSE
+com_coa_216000,216000,Uang Muka Pelanggan,account.data_account_type_current_liabilities,FALSE
+com_coa_216100,216100,Uang Muka Pelanggan JM,account.data_account_type_current_liabilities,FALSE
+com_coa_216190,216190,Uang Muka Pelanggan JM - Lainnya,account.data_account_type_current_liabilities,FALSE
+com_coa_216200,216200,Uang Muka Pelanggan COR,account.data_account_type_current_liabilities,FALSE
+com_coa_216290,216290,Uang Muka Pelanggan COR - Lainnya,account.data_account_type_current_liabilities,FALSE
+com_coa_216300,216300,Uang Muka Pelanggan MPR,account.data_account_type_current_liabilities,FALSE
+com_coa_216301,216301,Uang Muka Pelanggan MPR - MRI,account.data_account_type_current_liabilities,FALSE
+com_coa_216390,216390,Uang Muka Pelanggan MPR - Lainnya,account.data_account_type_current_liabilities,FALSE
+com_coa_216400,216400,Uang Muka Pelanggan MBR,account.data_account_type_current_liabilities,FALSE
+com_coa_216490,216490,Uang Muka Pelanggan MBR - Lainnya,account.data_account_type_current_liabilities,FALSE
+com_coa_216500,216500,Uang Muka Pelanggan BKA,account.data_account_type_current_liabilities,FALSE
+com_coa_216501,216501,Uang Muka Pelanggan BKA - MRI,account.data_account_type_current_liabilities,FALSE
+com_coa_216590,216590,Uang Muka Pelanggan BKA - Lainnya,account.data_account_type_current_liabilities,FALSE
+com_coa_216600,216600,Uang Muka Pelanggan IMN,account.data_account_type_current_liabilities,FALSE
+com_coa_216690,216690,Uang Muka Pelanggan IMN - Lainnya,account.data_account_type_current_liabilities,FALSE
+com_coa_216700,216700,Advances Sales - CORII IDR,account.data_account_type_current_liabilities,FALSE
+com_coa_216701,216701,Advances Sales - CORII USD,account.data_account_type_current_liabilities,FALSE
+com_coa_217000,217000,Other Loan,account.data_account_type_current_liabilities,FALSE
+com_coa_217001,217001,Shareholders Loan,account.data_account_type_current_liabilities,FALSE
+com_coa_217002,217002,Pinjaman Dari Lembaga Keuangan - USD,account.data_account_type_current_liabilities,FALSE
+com_coa_217004,217004,Shareholders Loan - USD,account.data_account_type_current_liabilities,FALSE
+com_coa_218000,218000,Kewajiban Pemeliharaan Lingkungan Hidup,account.data_account_type_current_liabilities,FALSE
+com_coa_218001,218001,Provisi Biaya Reklamasi,account.data_account_type_current_liabilities,FALSE
+com_coa_219000,219000,Utang Dividen,account.data_account_type_current_liabilities,FALSE
+com_coa_219001,219001,Utang Dividen - JM,account.data_account_type_current_liabilities,FALSE
+com_coa_219002,219002,Utang Dividen - COR,account.data_account_type_current_liabilities,FALSE
+com_coa_219003,219003,Utang Dividen - MPR,account.data_account_type_current_liabilities,FALSE
+com_coa_219004,219004,Utang Dividen - MBR,account.data_account_type_current_liabilities,FALSE
+com_coa_219005,219005,Utang Dividen - BKA,account.data_account_type_current_liabilities,FALSE
+com_coa_219006,219006,Utang Dividen - IMN,account.data_account_type_current_liabilities,FALSE
+com_coa_219007,219007,Utang Dividen - Masyarakat,account.data_account_type_current_liabilities,FALSE
+com_coa_220000,220000,Utang Jangka Panjang Yang Jatuh Tempo Dalam Waktu 1 Tahun,account.data_account_type_current_liabilities,FALSE
+com_coa_220100,220100,Utang Jangka Panjang Yang Jatuh Tempo Dalam Waktu 1 Tahun-I,account.data_account_type_current_liabilities,FALSE
+com_coa_220101,220101,Utang Pembelian Kendaraan,account.data_account_type_current_liabilities,FALSE
+com_coa_220102,220102,Liabilitas Sewa Pembiayaan,account.data_account_type_current_liabilities,FALSE
+com_coa_220200,220200,Utang Jangka Panjang Yang Jatuh Tempo Dalam Waktu 1 Tahun-U,account.data_account_type_current_liabilities,FALSE
+com_coa_220201,220201,Utang Pembelian Kendaraan,account.data_account_type_current_liabilities,FALSE
+com_coa_220202,220202,Liabilitas Sewa Pembiayaan,account.data_account_type_current_liabilities,FALSE
+com_coa_220203,220203,Bank Loan EXIM ( KMKE ) - USD,account.data_account_type_current_liabilities,FALSE
+com_coa_220204,220204,Unamortized Cost,account.data_account_type_current_liabilities,FALSE
+com_coa_230000,230000,Liabilitas Jangka Panjang,account.data_account_type_current_liabilities,FALSE
+com_coa_231000,231000,Kewajiban Imbalan Pasca Kerja,account.data_account_type_current_liabilities,FALSE
+com_coa_231001,231001,Cadangan Kewajiban Imbalan Pasca Kerja,account.data_account_type_current_liabilities,FALSE
+com_coa_232000,232000,Kewajiban Pemeliharaan Lingkungan Hidup,account.data_account_type_current_liabilities,FALSE
+com_coa_232001,232001,Provisi Reklamasi,account.data_account_type_current_liabilities,FALSE
+com_coa_233000,233000,Utang Jangka Panjang Yang Jatuh Tempo Lebih Dari 1 Tahun,account.data_account_type_current_liabilities,FALSE
+com_coa_233100,233100,Utang Jangka Panjang Yang Jatuh Tempo Lebih Dari 1 Tahun-I,account.data_account_type_current_liabilities,FALSE
+com_coa_233101,233101,Utang Pembelian Kendaraan,account.data_account_type_current_liabilities,FALSE
+com_coa_233102,233102,Liabilitas Sewa Pembiayaan,account.data_account_type_current_liabilities,FALSE
+com_coa_233103,233103,Bank Loan EXIM  - IDR,account.data_account_type_current_liabilities,FALSE
+com_coa_233200,233200,Utang Jangka Panjang Yang Jatuh Tempo Lebih Dari 1 Tahun-U,account.data_account_type_current_liabilities,FALSE
+com_coa_233201,233201,Utang Pembelian Kendaraan,account.data_account_type_current_liabilities,FALSE
+com_coa_233202,233202,Liabilitas Sewa Pembiayaan,account.data_account_type_current_liabilities,FALSE
+com_coa_233203,233203,Bank Loan EXIM ( KIE ) - USD,account.data_account_type_current_liabilities,FALSE
+com_coa_233204,233204,Unamortized Cost,account.data_account_type_current_liabilities,FALSE
+com_coa_300000,300000,OPENING BALANCE EQUITY,account.data_account_type_equity,FALSE
+com_coa_310000,310000,Modal,account.data_account_type_equity,FALSE
+com_coa_311000,311000,Modal Saham,account.data_account_type_equity,FALSE
+com_coa_311001,311001,Common stock,account.data_account_type_equity,FALSE
+com_coa_311002,311002,Modal Saham Preference,account.data_account_type_equity,FALSE
+com_coa_311003,311003,Modal Saham Treasury,account.data_account_type_equity,FALSE
+com_coa_320000,320000,Agio Saham,account.data_account_type_equity,FALSE
+com_coa_320001,320001,Agio Saham Biasa,account.data_account_type_equity,FALSE
+com_coa_320002,320002,Agio Saham Preference,account.data_account_type_equity,FALSE
+com_coa_320003,320003,Agio Saham Treasury,account.data_account_type_equity,FALSE
+com_coa_330000,330000,Saldo Laba (Defisit),account.data_account_type_equity,FALSE
+com_coa_310001,310001,OPENING BALANCE EQUITY,account.data_account_type_equity,FALSE
+com_coa_330001,330001,RETAINED EARNING,account.data_account_type_equity,FALSE
+com_coa_340001,340001,Uang Muka Setoran Modal,account.data_account_type_equity,FALSE
+com_coa_400000,400000,Penjualan,account.data_account_type_direct_costs,FALSE
+com_coa_410000,410000,Penjualan Barang,account.data_account_type_direct_costs,FALSE
+com_coa_411000,411000,Penjualan Ferro Nickel,account.data_account_type_direct_costs,FALSE
+com_coa_412000,412000,Penjualan Tembaga,account.data_account_type_direct_costs,FALSE
+com_coa_413000,413000,Penjualan Emas,account.data_account_type_direct_costs,FALSE
+com_coa_420000,420000,Bonus,account.data_account_type_direct_costs,FALSE
+com_coa_421000,421000,Bonus Nikel,account.data_account_type_direct_costs,FALSE
+com_coa_422000,422000,Bonus Tembaga,account.data_account_type_direct_costs,FALSE
+com_coa_423000,423000,Bonus Emas,account.data_account_type_direct_costs,FALSE
+com_coa_430000,430000,Penalty,account.data_account_type_direct_costs,FALSE
+com_coa_431000,431000,Penalty Nikel,account.data_account_type_direct_costs,FALSE
+com_coa_432000,432000,Penalty Tembaga,account.data_account_type_direct_costs,FALSE
+com_coa_433000,433000,Penalty Emas,account.data_account_type_direct_costs,FALSE
+com_coa_480000,480000,Diskon Penjualan,account.data_account_type_direct_costs,FALSE
+com_coa_481000,481000,Diskon Penjualan Nikel,account.data_account_type_direct_costs,FALSE
+com_coa_482000,482000,Diskon Penjualan Tembaga,account.data_account_type_direct_costs,FALSE
+com_coa_483000,483000,Diskon Penjualan Emas,account.data_account_type_direct_costs,FALSE
+com_coa_490000,490000,Retur Penjualan,account.data_account_type_direct_costs,FALSE
+com_coa_491000,491000,Retur Penjualan Nikel,account.data_account_type_direct_costs,FALSE
+com_coa_492000,492000,Retur Penjualan Tembaga,account.data_account_type_direct_costs,FALSE
+com_coa_493000,493000,Retur Penjualan Emas,account.data_account_type_direct_costs,FALSE
+com_coa_500000,500000,Beban Pokok Penjualan,account.data_account_type_direct_costs,FALSE
+com_coa_510000,510000,Beban Pokok Penjualan Ferro Nickel,account.data_account_type_direct_costs,FALSE
+com_coa_510010,510010,Beban Pokok Penjualan Ferro Nickel,account.data_account_type_direct_costs,FALSE
+com_coa_511000,511000,Contra Account Cost Production of Ferro Nickel,account.data_account_type_direct_costs,FALSE
+com_coa_511101,511101,Beban Kontraktor,account.data_account_type_direct_costs,FALSE
+com_coa_511102,511102,Rent Equipment,account.data_account_type_direct_costs,FALSE
+com_coa_511103,511103,Fuel,account.data_account_type_direct_costs,FALSE
+com_coa_511104,511104,Barging Expenses-Raw Material,account.data_account_type_direct_costs,FALSE
+com_coa_511105,511105,Beban Surveyor,account.data_account_type_direct_costs,FALSE
+com_coa_511201,511201,Medical - Expenses,account.data_account_type_direct_costs,FALSE
+com_coa_511202,511202,Salarie,account.data_account_type_direct_costs,FALSE
+com_coa_511203,511203,Overtime,account.data_account_type_direct_costs,FALSE
+com_coa_511204,511204,Repair and Maintenance,account.data_account_type_direct_costs,FALSE
+com_coa_511205,511205,Mess,account.data_account_type_direct_costs,FALSE
+com_coa_511206,511206,Iuran Jamsostek,account.data_account_type_direct_costs,FALSE
+com_coa_511207,511207,PPh 21 - Expenses,account.data_account_type_direct_costs,FALSE
+com_coa_511208,511208,Meal And Canteen,account.data_account_type_direct_costs,FALSE
+com_coa_511209,511209,Other Employee Expenses,account.data_account_type_direct_costs,FALSE
+com_coa_511210,511210,Ticket - Expenses,account.data_account_type_direct_costs,FALSE
+com_coa_511211,511211,Other Transportation,account.data_account_type_direct_costs,FALSE
+com_coa_511212,511212,Akomodasi,account.data_account_type_direct_costs,FALSE
+com_coa_511213,511213,Holiday Allowance,account.data_account_type_direct_costs,FALSE
+com_coa_511214,511214,Safety Equipment,account.data_account_type_direct_costs,FALSE
+com_coa_511301,511301,Beban Kepedulian Terhadap Masyarakat,account.data_account_type_direct_costs,FALSE
+com_coa_511302,511302,Amortisasi Biaya tangguhan,account.data_account_type_direct_costs,FALSE
+com_coa_511303,511303,Beban Penyusutan HPP,account.data_account_type_direct_costs,FALSE
+com_coa_511304,511304,Depreciation Expenses Of Building And Infrastructure Smelter,account.data_account_type_direct_costs,FALSE
+com_coa_511305,511305,Depreciation Expenses Of  Machine Smelter,account.data_account_type_direct_costs,FALSE
+com_coa_511306,511306,Depreciation Expenses Of  Heavy Equipment,account.data_account_type_direct_costs,FALSE
+com_coa_511307,511307,"Pengiriman, Kurir dan Bongkar Muat",account.data_account_type_direct_costs,FALSE
+com_coa_511401,511401,Bea Masuk,account.data_account_type_direct_costs,FALSE
+com_coa_511901,511901,Beban Analisa Laboratorium,account.data_account_type_direct_costs,FALSE
+com_coa_512000,512000,Beban Pemasaran Nikel,account.data_account_type_direct_costs,FALSE
+com_coa_512101,512101,Beban Royalti,account.data_account_type_direct_costs,FALSE
+com_coa_512102,512102,Beban Bea Keluar,account.data_account_type_direct_costs,FALSE
+com_coa_512103,512103,Beban Pajak Daerah,account.data_account_type_direct_costs,FALSE
+com_coa_512201,512201,Beban Komisi Penjualan,account.data_account_type_direct_costs,FALSE
+com_coa_512301,512301,Beban Surveyor,account.data_account_type_direct_costs,FALSE
+com_coa_512401,512401,Freight Expenses,account.data_account_type_direct_costs,FALSE
+com_coa_512402,512402,Barging Expenses,account.data_account_type_direct_costs,FALSE
+com_coa_512403,512403,Packing FeNi Expenses,account.data_account_type_direct_costs,FALSE
+com_coa_512404,512404,Loading unloading Ferro Nickel,account.data_account_type_direct_costs,FALSE
+com_coa_512405,512405,Jetty Expenses,account.data_account_type_direct_costs,FALSE
+com_coa_512901,512901,Insurance Expenses,account.data_account_type_direct_costs,FALSE
+com_coa_520000,520000,Beban Pokok Penjualan Emas,account.data_account_type_direct_costs,FALSE
+com_coa_520010,520010,Beban Pokok Penjualan Emas,account.data_account_type_direct_costs,FALSE
+com_coa_521000,521000,Ayat Silang Beban Produksi Emas,account.data_account_type_direct_costs,FALSE
+com_coa_521100,521100,Beban Jasa Pertambangan,account.data_account_type_direct_costs,FALSE
+com_coa_530000,530000,Beban Pokok Penjualan Tembaga,account.data_account_type_direct_costs,FALSE
+com_coa_530010,530010,Beban Pokok Penjualan Tembaga,account.data_account_type_direct_costs,FALSE
+com_coa_531000,531000,Ayat Silang Beban Produksi Tembaga,account.data_account_type_direct_costs,FALSE
+com_coa_531100,531100,Beban Jasa Pertambangan,account.data_account_type_direct_costs,FALSE
+com_coa_590000,590000,Beban Pokok Penjualan Lainnya,account.data_account_type_direct_costs,FALSE
+com_coa_595000,595000,Selisih Barang,account.data_account_type_direct_costs,FALSE
+com_coa_610000,610000,Beban Pemasaran,account.data_account_type_expenses,FALSE
+com_coa_611000,611000,Iklan dan Promosi,account.data_account_type_expenses,FALSE
+com_coa_611101,611101,Iklan dan Promosi - Koran / Majalah,account.data_account_type_expenses,FALSE
+com_coa_611102,611102,Iklan dan Promosi - Billboard,account.data_account_type_expenses,FALSE
+com_coa_611103,611103,Beban Pemasaran,account.data_account_type_expenses,FALSE
+com_coa_620000,620000,Administration And General Expenses,account.data_account_type_expenses,FALSE
+com_coa_621000,621000,Beban Gaji dan Kesejahteraan Karyawan,account.data_account_type_expenses,FALSE
+com_coa_621101,621101,Salarie,account.data_account_type_expenses,FALSE
+com_coa_621102,621102,Allowance,account.data_account_type_expenses,FALSE
+com_coa_621103,621103,Overtime,account.data_account_type_expenses,FALSE
+com_coa_621104,621104,Holiday Allowance,account.data_account_type_expenses,FALSE
+com_coa_621105,621105,Bonus,account.data_account_type_expenses,FALSE
+com_coa_621106,621106,Beban PPh 21,account.data_account_type_expenses,FALSE
+com_coa_621201,621201,Iuran Jamsostek,account.data_account_type_expenses,FALSE
+com_coa_621301,621301,Employee Medical expenses,account.data_account_type_expenses,FALSE
+com_coa_621901,621901,Other Employee  Expenses,account.data_account_type_expenses,FALSE
+com_coa_622000,622000,Transportation Expenses,account.data_account_type_expenses,FALSE
+com_coa_622001,622001,Ticket,account.data_account_type_expenses,FALSE
+com_coa_622002,622002,Akomodasi,account.data_account_type_expenses,FALSE
+com_coa_622003,622003,"Taxi, BBM, Toll and Parking",account.data_account_type_expenses,FALSE
+com_coa_622004,622004,Fuel Expenses - Site,account.data_account_type_expenses,FALSE
+com_coa_622005,622005,Mobilisasi,account.data_account_type_expenses,FALSE
+com_coa_622006,622006,Beban Premium - Site,account.data_account_type_expenses,FALSE
+com_coa_622901,622901,Other transportation expenses,account.data_account_type_expenses,FALSE
+com_coa_623000,623000,Office Expenses,account.data_account_type_expenses,FALSE
+com_coa_623100,623100,Office Equipment,account.data_account_type_expenses,FALSE
+com_coa_623101,623101,Office Stationary and Printed,account.data_account_type_expenses,FALSE
+com_coa_623102,623102,Fotocopy,account.data_account_type_expenses,FALSE
+com_coa_623103,623103,Stamp Duty Expenses,account.data_account_type_expenses,FALSE
+com_coa_623104,623104,Magazine and Newspaper,account.data_account_type_expenses,FALSE
+com_coa_623105,623105,"Pengiriman, kurir, bongkar muat",account.data_account_type_expenses,FALSE
+com_coa_623106,623106,Meal And Canteen Expenses,account.data_account_type_expenses,FALSE
+com_coa_623107,623107,Meeting Expenses,account.data_account_type_expenses,FALSE
+com_coa_623108,623108,Office Expenses,account.data_account_type_expenses,FALSE
+com_coa_623109,623109,Safety Equipment Expenses,account.data_account_type_expenses,FALSE
+com_coa_623111,623111,Laptop & Desktop Accessories,account.data_account_type_expenses,FALSE
+com_coa_623112,623112,Employee Uniform,account.data_account_type_expenses,FALSE
+com_coa_623200,623200,"Listrik, Telephone, Internet dan Air",account.data_account_type_expenses,FALSE
+com_coa_623201,623201,Electricity,account.data_account_type_expenses,FALSE
+com_coa_623202,623202,Telephone,account.data_account_type_expenses,FALSE
+com_coa_623203,623203,Water,account.data_account_type_expenses,FALSE
+com_coa_623204,623204,Internet,account.data_account_type_expenses,FALSE
+com_coa_623300,623300,Rent Expenses,account.data_account_type_expenses,FALSE
+com_coa_623301,623301,Office Rent,account.data_account_type_expenses,FALSE
+com_coa_623303,623303,Sewa Alat Berat,account.data_account_type_expenses,FALSE
+com_coa_623400,623400,Insurance Expenses,account.data_account_type_expenses,FALSE
+com_coa_623401,623401,Vehicle Insurances,account.data_account_type_expenses,FALSE
+com_coa_623402,623402,Building Insurances,account.data_account_type_expenses,FALSE
+com_coa_623403,623403,Other Insurances,account.data_account_type_expenses,FALSE
+com_coa_623500,623500,Beban Listing,account.data_account_type_expenses,FALSE
+com_coa_623501,623501,Beban BAE,account.data_account_type_expenses,FALSE
+com_coa_623502,623502,Beban BEI,account.data_account_type_expenses,FALSE
+com_coa_623503,623503,Beban KSEI,account.data_account_type_expenses,FALSE
+com_coa_623504,623504,Beban RUPS,account.data_account_type_expenses,FALSE
+com_coa_623590,623590,Beban Listing Lainnya,account.data_account_type_expenses,FALSE
+com_coa_623600,623600,Beban Pemeliharaan dan Perawatan,account.data_account_type_expenses,FALSE
+com_coa_6236001,6236001,Repair and Mantenance  - Building,account.data_account_type_expenses,FALSE
+com_coa_623603,623603,Repair and Mantenance  - Office,account.data_account_type_expenses,FALSE
+com_coa_623601,623601,Repair and Mantenance - Of Vehicle,account.data_account_type_expenses,FALSE
+com_coa_623602,623602,Repair and Mantenance - Of Equipment,account.data_account_type_expenses,FALSE
+com_coa_623700,623700,Beban Perijinan,account.data_account_type_expenses,FALSE
+com_coa_623701,623701,Beban Perijinan - Operasi,account.data_account_type_expenses,FALSE
+com_coa_623702,623702,Beban Perijinan - Kantor,account.data_account_type_expenses,FALSE
+com_coa_623800,623800,Beban Training,account.data_account_type_expenses,FALSE
+com_coa_623801,623801,Training Expenses,account.data_account_type_expenses,FALSE
+com_coa_624000,624000,Beban Penyusutan,account.data_account_type_expenses,FALSE
+com_coa_624001,624001,Depreciation Expenses of Building,account.data_account_type_expenses,FALSE
+com_coa_624002,624002,Depreciation Expenses of Office Renovation,account.data_account_type_expenses,FALSE
+com_coa_624003,624003,Depreciation Expenses of Office Inventaries,account.data_account_type_expenses,FALSE
+com_coa_624004,624004,Depreciation Expenses of Vehicles,account.data_account_type_expenses,FALSE
+com_coa_624005,624005,Depreciation Expenses of equipment,account.data_account_type_expenses,FALSE
+com_coa_624006,624006,Penyusutan Peralatan Berat Tambang,account.data_account_type_expenses,FALSE
+com_coa_624007,624007,Depreciation expenses of Machine Smelter,account.data_account_type_expenses,FALSE
+com_coa_624015,624015,Depreciation Expenses of Leasing Vehicles,account.data_account_type_expenses,FALSE
+com_coa_624052,624052,Depreciation Expenses of TA Building and Infrastructure,account.data_account_type_expenses,FALSE
+com_coa_624058,624058,Depreciation Expenses of TA Machine Smelter,account.data_account_type_expenses,FALSE
+com_coa_624059,624059,Depreciation Expenses of TA Others,account.data_account_type_expenses,FALSE
+com_coa_625000,625000,Beban Honorarium Tenaga Ahli,account.data_account_type_expenses,FALSE
+com_coa_625001,625001,Audit dan Tax,account.data_account_type_expenses,FALSE
+com_coa_625002,625002,Profesional Fee Expenses - Operasi,account.data_account_type_expenses,FALSE
+com_coa_625003,625003,Profesional Fee Expenses- Office,account.data_account_type_expenses,FALSE
+com_coa_626000,626000,Post Employee Benefit,account.data_account_type_expenses,FALSE
+com_coa_626100,626100,Imbalan Pasca-Kerja - JM,account.data_account_type_expenses,FALSE
+com_coa_626200,626200,Imbalan Pasca-Kerja - COR,account.data_account_type_expenses,FALSE
+com_coa_626300,626300,Imbalan Pasca-Kerja - MPR,account.data_account_type_expenses,FALSE
+com_coa_626400,626400,Imbalan Pasca-Kerja - MBR,account.data_account_type_expenses,FALSE
+com_coa_626500,626500,Imbalan Pasca-Kerja - BKA,account.data_account_type_expenses,FALSE
+com_coa_626600,626600,Imbalan Pasca-Kerja - IMN,account.data_account_type_expenses,FALSE
+com_coa_626700,626700,Post Employee Benefit - CORII,account.data_account_type_expenses,FALSE
+com_coa_627000,627000,Beban Pajak,account.data_account_type_expenses,FALSE
+com_coa_627001,627001,Tax penalty,account.data_account_type_expenses,FALSE
+com_coa_627002,627002,Pajak Bumi dan Bangunan ( PBB ),account.data_account_type_expenses,FALSE
+com_coa_628000,628000,Beban Sumbangan dan Entertainment,account.data_account_type_expenses,FALSE
+com_coa_628001,628001,Donation,account.data_account_type_expenses,FALSE
+com_coa_628002,628002,Entertainment,account.data_account_type_expenses,FALSE
+com_coa_629000,629000,CSR Expenses,account.data_account_type_expenses,FALSE
+com_coa_629001,629001,Corporate Social Responsibility ( CSR )  Expenses,account.data_account_type_expenses,FALSE
+com_coa_630000,630000,Beban Explorasi,account.data_account_type_expenses,FALSE
+com_coa_631001,631001,Beban Explorasi - Perizinan,account.data_account_type_expenses,FALSE
+com_coa_631002,631002,Beban Explorasi - Explorasi,account.data_account_type_expenses,FALSE
+com_coa_631003,631003,Beban Explorasi - Mining Production,account.data_account_type_expenses,FALSE
+com_coa_631004,631004,Beban Explorasi - Lainnya,account.data_account_type_expenses,FALSE
+com_coa_690000,690000,Beban Lainnya,account.data_account_type_expenses,FALSE
+com_coa_690001,690001,Beban Lainnya,account.data_account_type_expenses,FALSE
+com_coa_690002,690002,Beban Riset dan Pengembangan,account.data_account_type_expenses,FALSE
+com_coa_710000,710000,Interest Income,account.data_account_type_other_income,FALSE
+com_coa_720000,720000,Laba Penjualan Aset Tetap,account.data_account_type_expenses,FALSE
+com_coa_730000,730000,Other Income,account.data_account_type_expenses,FALSE
+com_coa_790000,790000,Pendapatan Komprehensif Lain,account.data_account_type_expenses,FALSE
+com_coa_820000,820000,Laba/Rugi Selisih Kurs,account.data_account_type_expenses,FALSE
+com_coa_821000,821000,Laba/Rugi Selisih Kurs Unrealized USD,account.data_account_type_expenses,FALSE
+com_coa_822000,822000,Laba/Rugi Selisih Kurs Realized USD,account.data_account_type_expenses,FALSE
+com_coa_823000,823000,Laba/Rugi Selisih Kurs Unrealized RMB,account.data_account_type_expenses,FALSE
+com_coa_824000,824000,Laba/Rugi Selisih Kurs Realized RMB,account.data_account_type_expenses,FALSE
+com_coa_830000,830000,Bank Administration Expenses,account.data_account_type_expenses,FALSE
+com_coa_830001,830001,Loan Interest KIE,account.data_account_type_expenses,FALSE
+com_coa_830002,830002,Loan Interest KMKE,account.data_account_type_expenses,FALSE
+com_coa_830003,830003,Interest Expenses,account.data_account_type_expenses,FALSE
+com_coa_840000,840000,Rugi Penjualan Aset Tetap,account.data_account_type_expenses,FALSE
+com_coa_850000,850000,Penghasilan (Beban Pajak),account.data_account_type_expenses,FALSE
+com_coa_851000,851000,Pajak Kini,account.data_account_type_expenses,FALSE
+com_coa_852000,852000,Deffered Tax,account.data_account_type_expenses,FALSE
+com_coa_860000,860000,Laba/Rugi Kompre Yg Dpt Diatribusikn ke Non-Pngndli,account.data_account_type_expenses,FALSE
+com_coa_890000,890000,Beban Lainnya,account.data_account_type_expenses,FALSE
+com_coa_891000,891000,Other Expenses,account.data_account_type_expenses,FALSE
+com_coa_8910001,8910001,Other Expenses,account.data_account_type_expenses,FALSE
+com_coa_900000,900000,Penghasilan (Rugi) Komprehensif Lain,account.data_account_type_expenses,FALSE
+com_coa_910000,910000,Pajak Tangguhan - OCI,account.data_account_type_expenses,FALSE
+com_coa_910008,910008,Pengukuran kembali liabilitas imbalan pasti,account.data_account_type_expenses,FALSE
+com_coa_910009,910009,Deffered Tax Income ( Expense ),account.data_account_type_expenses,FALSE
+com_coa_920000,920000,Pengukuran Kembali Liabilitas Imbalan Pasti,account.data_account_type_expenses,FALSE

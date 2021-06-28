@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!-- Update user form !-->
+        <record id="view_users_form_bsc_inherit" model="ir.ui.view">
+            <field name="name">view.users.form.bsc.inherit</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <group name="messaging" position="after">
+                        <group string="Inventory" name="inventory" groups="stock.group_stock_manager">
+                            <field name="default_picking_type" options="{'no_create_edit': True}"/>
+                        </group>
+                    </group>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,15 @@
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="view_stock_picking_bsc">
+			<field name="name">stock.picking.wave.inherit.tree.bsc</field>
+			<field name="model">stock.picking</field>
+			<field name="inherit_id" ref="stock.vpicktree"/>
+			<field name="arch" type="xml">
+				<field name="origin" position="after">
+					<field name="submission_no"/>
+				</field>
+			</field>
+        </record>
+	</data>
+</odoo>
+

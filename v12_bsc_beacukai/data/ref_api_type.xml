@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+    	<record id="ref_api_type_data_apiu" model="ref.api.type">
+            <field name="name">1</field>
+            <field name="desc">APIU</field>
+        </record>
+
+        <record id="ref_api_type_data_apip" model="ref.api.type">
+            <field name="name">2</field>
+            <field name="desc">APIP</field>
+        </record>
+    </data>
+</odoo>

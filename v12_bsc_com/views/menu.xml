@@ -1,0 +1,13 @@
+<odoo>
+	<data>
+	                
+		<menuitem id="menu_beacukai_cctv"
+			name="CCTV"
+			parent="v10_bsc_beacukai.menu_beacukai_report"
+			groups="v10_bsc_beacukai.bc_group_gov"
+			action="v10_bsc_beacukai.action_beacukai_cctv"
+			sequence="80"/>
+
+	</data>
+</odoo>
+

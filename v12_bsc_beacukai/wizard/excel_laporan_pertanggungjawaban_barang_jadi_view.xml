@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+		<record id="excel_laporan_pertanggungjawaban_barang_jadi_form" model="ir.ui.view">
+            <field name="name">Wizard Laporan Pertanggungjawaban Mutasi Barang Jadi</field>
+            <field name="model">excel.laporan.pertanggungjawaban.barang.jadi</field>
+            <field name="arch" type="xml">
+                <form create="false" edit="false">
+                    <group>
+                        <group>
+                            <field name="date_from" required="1"/>
+                            <field name="date_to" required="1"/>
+                            <field name="state_position" invisible="1"/>                            
+                        </group>
+                        <newline/>
+                        <group>
+                            <separator colspan="3" string="Download by click link below." attrs="{'invisible':[('state_position','=','choose')]}"/>
+                            <field name="name" invisible="1" width="100" attrs="{'invisible':[('state_position','=','choose')]}"/>
+                            <field name="data" nolabel="1" readonly="0" width="100" filename="name" attrs="{'invisible':[('state_position','=','choose')]}"/>
+                        </group>
+                        <footer attrs="{'invisible':[('state_position','=','get')]}">
+                            <button name="generate_preview" string="Preview" type="object" default_focus="1" class="oe_highlight" />
+                            <button name="preview_pdf" string="Print Preview" type="object" class="btn-primary"/>
+                            <button name="generate_report" string="Generate Excel" type="object" class="btn-primary"/>
+                            <button string="Cancel" class="btn-default" special="cancel" />
+                        </footer>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_excel_laporan_pertanggungjawaban_barang_jadi" model="ir.actions.act_window">
+            <field name="name">Laporan Pertanggungjawaban Mutasi Barang Jadi</field>
+            <field name="res_model">excel.laporan.pertanggungjawaban.barang.jadi</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="excel_laporan_pertanggungjawaban_barang_jadi_form"/>
+            <field name="target">new</field>
+        </record>
+
+        <template id="report_barangjadi">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="o">
+                <div class="page" style="font-size:10px">
+                   <!--  <div>
+                        <span style="font-size: 18px;">Sales Person</span> : <span style="font-size: 16px;" t-esc="docs.salesperson_id.name"/>
+                    </div>
+ -->
+                    <div class="row mt32 mb32">
+                        <div>
+                            <b style="text-center">Laporan Pertanggungjawaban Mutasi Barang Jadi</b><br />
+                            <b style="text-center"><span t-esc="docs.bc_type"></span>  <span t-esc="user.company_id.name"></span></b><br />
+                            <b style="text-center">Periode : <span t-field="docs.date_from" t-field-options='{"format": "dd-MM-y"}'/> s.d <span t-field="docs.date_to" t-field-options='{"format": "dd-MM-y"}'/></b><br />
+                        </div>
+                    </div>
+
+                     <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th style="text-center;border:1px solid;">No</th>
+                                <th style="border:1px solid">Kode Barang</th>
+                                <th style="border:1px solid">Nama Barang</th>
+                                <th style="border:1px solid">Satuan</th>
+                                <th style="border:1px solid">Saldo Awal</th>
+                                <th style="border:1px solid">Pemasukan</th>
+                                <th style="border:1px solid">Pengeluaran</th>
+                                <th style="border:1px solid">Penyesuaian</th>
+                                <th style="border:1px solid">Saldo Akhir</th>
+                                <th style="border:1px solid">Stock Opname</th>
+                                <th style="border:1px solid">Selisih</th>
+                                <th style="border:1px solid">Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="product" t-as="a">
+                                <tr >
+                                    <td style="border:1px solid">
+                                        
+                                    </td>
+                                    <td style="border:1px solid">
+                                        <span t-esc="a.name" />
+                                    </td>
+                                    <td style="border:1px solid">
+                                        <span t-esc="a.default_code" />
+                                    </td>
+                                    <td style="border:1px solid">
+                                        <span t-esc="a.uom_id.name" />
+                                    </td>
+                                    <t t-set="move_line" t-value="docs.get_move_line(a.id)"/>
+                                    <td style="border:1px solid">
+                                        <span t-esc="move_line['saldo_awal']" />
+                                    </td>
+                                    <td style="border:1px solid">
+                                        <span t-esc="move_line['pemasukan']" />
+                                    </td>
+                                    <td style="border:1px solid">
+                                        <span t-esc="move_line['pengeluaran']" />
+                                    </td>
+                                    <td style="border:1px solid">
+                                        <span t-esc="move_line['penyesuaian']" />
+                                    </td>
+                                    <td style="border:1px solid">
+                                        <span t-esc="move_line['saldo_akhir']" />
+                                    </td>
+                                    <td style="border:1px solid">
+                                        <span t-esc="move_line['stock_opname']" />
+                                    </td>
+                                    <td style="border:1px solid">
+                                        <span t-esc="move_line['selisih']" />
+                                    </td>
+                                    <td style="border:1px solid">
+                                        <span t-esc="move_line['keterangan']" />
+                                    </td>
+
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <div style="position: absolute;right: 150px;width: 200px;height: 120px;">
+                        <p>KAMI BERTANGGUNG JAWAB </p>
+                        <p>ATAS KEBENARAN LAPORAN INI </p>
+                        <p><span t-esc="user.company_id.city and user.company_id.city.upper()"/>, <span t-esc="datetime.datetime.now().strftime('%d %m %Y')"/> </p>
+                        <p>PENGUSAHA DI <span t-esc="docs.bc_type.upper()"/></p>
+                        <br/><br/><br/><br/>
+                        <p><span t-esc="header.name.upper()"/></p>
+                        <p><span t-esc="header.jabatan.upper()"/></p>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>                
+
+         <report 
+            id="action_report_barangjadi"
+            model="report.v10_bsc_beacukai.report_barangjadi"
+            string="Laporan Barang Jadi"
+            report_type="qweb-html"
+            name="v10_bsc_beacukai.report_barangjadi"
+            file="v10_bsc_beacukai.report_barangjadi"
+            />
+                
+        
+	</data>
+</odoo>

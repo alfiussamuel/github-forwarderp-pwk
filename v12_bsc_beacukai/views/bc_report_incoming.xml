@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="bc_report_incoming">
+        <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="o">
+                    <div class="page" style="font-size:10px">
+                       <!--  <div>
+                            <span style="font-size: 18px;">Sales Person</span> : <span style="font-size: 16px;" t-esc="docs.salesperson_id.name"/>
+                        </div>
+     -->
+                        <div class="row mt32 mb32">
+                            <div>
+                                <b style="text-center">Laporan Pemasukan Barang Per Dokumen Pabean</b><br />
+                                <b style="text-center"><span t-esc="docs.bc_type"></span>  <span t-esc="user.company_id.name"></span></b><br />
+                                <b style="text-center">Periode : <span t-field="docs.date_from" t-field-options='{"format": "dd-MM-y"}'/> s.d <span t-field="docs.date_to" t-field-options='{"format": "dd-MM-y"}'/></b><br />
+                            </div>
+                        </div>
+
+                         <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th style="text-center;border:1px solid;">No</th>
+                                    <th style="border:1px solid">Jenis Dokumen</th>
+                                    <th style="border:1px solid">` Pendaftaran</th>
+                                    <th style="border:1px solid">Tanggal No Pendaftaran</th>
+                                    <th style="border:1px solid">Nomor Pengajuan</th>
+                                    <th style="border:1px solid">Tanggal Pengajuan</th>
+                                    <th style="border:1px solid">Nomor Bukti Penerimaan Barang</th>
+                                    <th style="border:1px solid">Tanggal Bukti Penerimaan Barang</th>
+                                    <th style="border:1px solid">Nomor PO</th>
+                                    <th style="border:1px solid">Kode Barang</th>
+                                    <th style="border:1px solid">Pengirim</th>
+                                    <th style="border:1px solid">Nama Barang</th>
+                                    <th style="border:1px solid">Jumlah</th>
+                                    <th style="border:1px solid">Satuan</th>
+                                    <th style="border:1px solid">Nomor Invoice</th>
+                                    <th style="border:1px solid">Mata Uang</th>
+                                    <th style="border:1px solid">Nilai Barang</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="i" t-value="1"/>
+                                <t t-foreach="orders" t-as="a">
+                                    <tr >
+                                        <td style="border:1px solid"><span t-esc="i"/></td>
+                                        <t t-set="i" t-value="i+1"/>
+                                        <td style="border:1px solid">
+                                            <span t-esc="a['document_type']" />
+                                        </td>
+                                        <td style="border:1px solid">
+                                            <span t-esc="a['register_number']" />
+                                        </td>
+                                        <td style="border:1px solid">
+                                            <span t-esc="a['register_date']" />
+                                        </td>
+                                        <td style="border:1px solid">
+                                            <span t-esc="a['submission_no']" />
+                                        </td>
+                                        <td style="border:1px solid">
+                                            <span t-esc="a['ref_date']" />
+                                        </td>
+                                        <td style="border:1px solid">
+                                            <span t-esc="a['delivery_note']" />
+                                        </td>
+
+                                        <td style="border:1px solid">
+                                            <span t-esc="a['delivery_note_date']" />
+                                        </td>
+                                        <td style="border:1px solid">
+                                            <span t-esc="a['purchase_order']" />
+                                        </td>
+                                        <td style="border:1px solid">
+                                            <span t-esc="a['product_code']" />
+                                        </td>
+                                        <td style="border:1px solid">
+                                            <span t-esc="a['supplier']" />
+                                        </td>
+                                        <td style="border:1px solid">
+                                            <span t-esc="a['product_name']" />
+                                        </td>
+                                        <!-- <td style="border:1px solid">
+                                            <span t-esc="'{0:,.2f}'.format(int(a.product_qty))" />
+                                        </td> -->
+                                        <td style="border:1px solid">
+                                            <span t-esc="'{0:,.2f}'.format(int(a['received_qty']))" />
+                                        </td>
+                                        <td style="border:1px solid">
+                                            <span t-esc="a['product_uom']" />
+                                        </td>
+                                        <td style="border:1px solid">
+                                            <span t-esc="a['invoice_number']" />
+                                        </td>
+                                        <td style="border:1px solid">
+                                            <span >IDR</span>
+                                        </td>
+                                        <td style="border:1px solid">
+                                            <span t-esc="'{0:,.2f}'.format(int(a['cif_amount']))" />
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <div style="position: absolute;right: 150px;width: 200px;height: 120px;">
+                            <p>KAMI BERTANGGUNG JAWAB </p>
+                            <p>ATAS KEBENARAN LAPORAN INI </p>
+                            <p><span t-esc="user.company_id.city and user.company_id.city.upper()"/>, <span t-esc="datetime.datetime.now().strftime('%d-%m-%Y')"/> </p>
+                            <p>PENGUSAHA DI <span t-esc="docs.bc_type.upper()"/></p>
+                            <br/><br/><br/><br/>
+                            <p><span t-esc="header.name.upper()"/></p>
+                            <p><span t-esc="header.jabatan.upper()"/></p>
+                        </div>
+                    </div>
+            </t>
+        </t>
+    </template>
+
+    <record id="view_bc_preview_tree" model="ir.ui.view">
+			<field name="name">Laporan Pemasukan</field>
+			<field name="model">bcreport.preview</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Laporan Pemasukan">
+					<field name="document_type" string="Jenis Dokumen" />
+					<field name="register_number" string="No. Pendaftaran" />
+					<field name="register_date" string="Tgl Pendaftaran" />
+					<field name="submission_no" string="No. Pengajuan" />
+					<field name="ref_date" string="Tgl Pengajuan" />
+					<field name="delivery_note_number" string="Nomor Bukti Penerimaan Barang" />
+					<field name="delivery_note_date" string="Tgl Bukti Penerimaan Barang" />
+					<field name="purchase_order" string="PO" />
+					<field name="supplier" string="Supplier" />
+					<field name="product_code" string="Kode Barang" />
+					<field name="product_name" string="Nama Barang" />
+					<field name="received_qty" string="Jumlah" />
+					<field name="product_uom" string="Satuan" />
+					<field name="cif_amount" string="CIF Amount" />
+					<field name="invoice_number" string="Nomor Invoice" />
+				</tree>
+			</field>
+		</record>
+
+    <record id="action_incoming_preview" model="ir.actions.act_window">
+        <field name="name">Laporan Pemasukan</field>
+        <field name="res_model">bcreport.preview</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_bc_preview_tree"/>
+        <field name="target">main</field>
+    </record>
+
+</odoo>

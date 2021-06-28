@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+    	<record id="ref_destination_tpb_data1" model="ref.destination.tpb">
+            <field name="name">1</field>
+            <field name="desc">KAWASAN BERIKAT</field>
+        </record>
+
+        <record id="ref_destination_tpb_data2" model="ref.destination.tpb">
+            <field name="name">2</field>
+            <field name="desc">GUDANG BERIKAT</field>
+        </record>
+
+        <record id="ref_destination_tpb_data3" model="ref.destination.tpb">
+            <field name="name">3</field>
+            <field name="desc">TEMPAT PENYELENGGARAAN PAMERAN BERIKAT (TPPB)</field>
+        </record>
+
+        <record id="ref_destination_tpb_data4" model="ref.destination.tpb">
+            <field name="name">4</field>
+            <field name="desc">TOKO BEBAS BEA (TBB)</field>
+        </record>
+
+        <record id="ref_destination_tpb_data5" model="ref.destination.tpb">
+            <field name="name">5</field>
+            <field name="desc">TEMPAT LELANG BERIKAT (TLB)</field>
+        </record>
+
+        <record id="ref_destination_tpb_data6" model="ref.destination.tpb">
+            <field name="name">6</field>
+            <field name="desc">KAWASAN DAUR ULANG BERIKAT (KDUB)</field>
+        </record>
+
+        <record id="ref_destination_tpb_data7" model="ref.destination.tpb">
+            <field name="name">7</field>
+            <field name="desc">LAINNYA</field>
+        </record>
+    </data>
+</odoo>

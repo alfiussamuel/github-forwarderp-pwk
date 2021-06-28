@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+    	<record id="action_tpb_package" model="ir.actions.act_window">
+			<field name="name">Dokumen TPB Kemasan</field>
+			<field name="res_model">tpb.package</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record id="view_tpb_package_tree" model="ir.ui.view">
+			<field name="name">Dokumen TPB Kemasan</field>
+			<field name="model">tpb.package</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">				
+				<tree string="Document TPB Package" create="false" edit="false">
+					<field name="reference_package" invisible="1"/>
+					<field name="submission_no_23"/>
+					<field name="package_type_id"/>
+					<field name="package_qty"/>    
+				    <field name="merc"/>	
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_tpb_package_form" model="ir.ui.view">
+			<field name="name">Dokumen TPB Kemasan</field>
+			<field name="model">tpb.package</field>
+			<field name="type">form</field>			
+			<field name="arch" type="xml">				
+				
+				<form create="false" edit="false" delete="false">
+					<header>
+					</header>
+					<sheet>
+						<group>
+							<field name="reference_package" invisible="1"/>
+							<field name="submission_no_23"/>
+							<field name="package_type_id"/>
+							<field name="package_qty"/>    
+						    <field name="merc"/>	
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="tpb_package_search_view" model="ir.ui.view">
+	        <field name="name">tpb.package.search.view</field>
+	        <field name="model">tpb.package</field>
+	        <field name="arch" type="xml">
+	            <search string="Dokumen TPB Kemasan">
+	                <!-- <field name="container_number" string="Nomor Kontainer"/> -->
+	                <field name="submission_no_23" string="No Aju"/>
+	            </search>
+	        </field>
+	    </record>
+
+    </data>
+</odoo>

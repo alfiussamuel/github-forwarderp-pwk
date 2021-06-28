@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>			                   		               	           				
+
+    	<!-- Dokumen BC 3.0 -->
+		<record id="view_beacukai_outgoing_30_form" model="ir.ui.view">
+			<field name="name">Dokumen BC 30</field>
+			<field name="model">beacukai.outgoing.30</field>
+			<field name="type">form</field>			
+			<field name="arch" type="xml">
+				<header>
+					<button name="action_confirm" states="pengajuan" type="object" string="Masukkan No Registrasi"/>
+					<button name="action_final_receive" states="registrasi" type="object" string="Kirim Barang"/>
+					<button name="action_done" states="terima" type="object" string="Selesai"/>
+					<field name="state" widget="statusbar"/>
+				</header>				
+				<form string="Outgoing Document 3.0">
+					<sheet>
+						<div class="oe_button_box" name="button_box">
+	                        <button type="object"
+	                            name="bc_action_view_picking"
+	                            class="oe_stat_button"
+	                            icon="fa-truck"
+	                            attrs="{'invisible': [('state', 'not in', ['terima','done'])]}">
+	                            <field name="picking_count" widget="statinfo" string="Penerimaan" help="Incoming Shipments"/>
+	                            <field name="picking_ids" invisible="1"/>
+	                        </button> 
+	                    </div>
+						<div class="oe_title">
+	                        <h1>
+	                            <field name="name" readonly="1"/>	                            
+	                        </h1>
+	                    </div>
+						<group>
+							<group>							
+								<field name="document_type_id"
+									options="{'no_create_edit': True, 'no_create': True}"/>
+								<field name="submission_no"/>								
+								<field name="kantor_pabean_muat"
+									options="{'no_create_edit': True, 'no_create': True}"/>
+								<field name="kantor_pabean_ekspor"
+									options="{'no_create_edit': True, 'no_create': True}"/>
+								<field name="jenis_ekspor"
+									options="{'no_create_edit': True, 'no_create': True}"/>
+								<field name="kategori_ekspor"
+									options="{'no_create_edit': True, 'no_create': True}"/>
+								<field name="so_id"
+									options="{'no_create_edit': True, 'no_create': True}"/>
+							</group>
+							<group>							
+								<field name="jenis_tpb" readonly="1"/>
+								<field name="date"/>
+								<field name="cara_perdagangan"
+									options="{'no_create_edit': True, 'no_create': True}"/>
+								<field name="cara_pembayaran"
+									options="{'no_create_edit': True, 'no_create': True}"/>
+								<field name="lokasi_tpb"/>
+								<field name="finish_date"/>
+							</group>
+						</group>						
+						<group>
+							<group>
+								<field name="komoditi"/>
+								<field name="curah"/>
+								<field name="jenis_barang"/>
+							</group>
+							<group>
+								<field name="bruto"/>
+								<field name="netto"/>
+							</group>
+						</group>
+						<group>
+							<notebook>
+								<page string="PKB">
+									<group>
+										<group>
+											<field name="pkb_nama"/>
+										    <field name="pkb_npwp"/>
+										    <field name="pkb_alamat"/>
+										    <field name="pkb_telepon"/>
+										</group>
+										<group>
+									    	<field name="pkb_fax"/>
+									    	<field name="pkb_niper"/>
+									    	<field name="pkb_jenis_usaha"
+									    		options="{'no_create_edit': True, 'no_create': True}"/>
+									    	<field name="pkb_zoning_kite"
+									    		options="{'no_create_edit': True, 'no_create': True}"/>
+									    </group>
+									</group>
+									<group>
+										<field name="pkb_jenis_barang"
+											options="{'no_create_edit': True, 'no_create': True}"/>
+									    <field name="pkb_tempat_simpan_barang"
+									    	options="{'no_create_edit': True, 'no_create': True}"/>
+									</group>
+									<group>
+										<group string="Pemeriksaan">
+										    <field name="pkb_pemeriksaan_tanggal"/>
+										    <field name="pkb_pemeriksaan_alamat"/>
+										    <field name="pkb_pemeriksaan_telepon"/>
+										    <field name="pkb_pemeriksaan_fax"/>
+									    	<field name="pkb_pemeriksaan_contact"/>
+										</group>
+										<group string="Stuffing">
+										    <field name="pkb_stuffing_tanggal"/>
+										    <field name="pkb_stuffing_tempat"/>
+										    <field name="pkb_stuffing_cara"
+										    	options="{'no_create_edit': True, 'no_create': True}"/>
+										    <field name="pkb_part_of"
+										    	options="{'no_create_edit': True, 'no_create': True}"/>
+										    <field name="pkb_peti_kemas_20"/>
+										    <field name="pkb_peti_kemas_40"/>
+										</group>
+									</group>
+								</page>
+								<page string="Data Detail Barang">
+									<group>
+										<field name="line_ids" attrs="{'readonly': [('state', '!=', 'pengajuan')]}" nolabel="1">
+											<tree>
+												<field name="product_name"/>
+												<field name="product_code"/>
+												<field name="product_hs_code"/>
+												<field name="product_categ_id"/>
+												<field name="product_qty"/>
+												<field name="product_uom_id"/>
+												<field name="product_country_id"/>
+												<field name="cif_cost"/>
+											</tree>
+											<form>												
+												<group>
+													<group>
+														<field name="product_categ_id"
+															options="{'no_create_edit': True, 'no_create': True}"/>
+														<field name="kondisi_barang"/>
+													</group>
+													<group>
+														<field name="over_four_years"/>
+													</group>
+												</group>
+												<group string="Data Barang BC 3.0">
+													<group>											
+														<field name="product_id"
+															options="{'no_create_edit': True, 'no_create': True}"/>
+														<field name="product_name" invisible="1"/>
+													    <field name="product_code"/>
+													    <field name="product_hs_code"/>
+													    <field name="product_country_id"
+													    	options="{'no_create_edit': True, 'no_create': True}"/>
+													</group>
+													<group>
+													    <field name="product_type"/>
+													    <field name="product_size"/>
+													    <field name="product_brand"
+													    	options="{'no_create_edit': True, 'no_create': True}"/>
+													    <field name="product_spec"/>							
+													</group>
+												</group>
+												<group string="Satuan dan Harga" col="3">
+													<group>											
+														<field name="product_incost"/>
+														<field name="product_qty"/>
+													    <field name="product_uom_id"
+													    	options="{'no_create_edit': True, 'no_create': True}"/>
+													    <field name="product_netto"/>
+													</group>
+													<group>
+													    <field name="jumlah_kemasan"/>
+													    <field name="jenis_kemasan"
+													    	options="{'no_create_edit': True, 'no_create': True}"/>
+													    <field name="volume"/>
+													</group>
+													<group>
+														<field name="biaya_tambahan"/>
+														<field name="cif_cost"/>
+													    <field name="cif_amount"/>
+													    <field name="harga_penyerahan"/>
+													</group>
+												</group>
+												<group>
+													<notebook>
+														<page string="Bahan Baku Import">
+															<group>
+																<field name="bahan_baku_import_ids" nolabel="1">
+																	<tree>
+																		<field name="product_id"/>
+																		<field name="product_code"/>
+																		<field name="product_hs_code"/>
+																		<field name="product_qty"/>
+																		<field name="product_uom_id"/>
+																		<field name="harga_cif_idr"/>
+																	</tree>
+																	<form>
+																		<group col="3">
+																			<group>											
+																				<field name="source_document"/>
+																				<field name="source_kppbc"/>
+																			</group>
+																			<group>
+																				<field name="source_no"/>
+																				<field name="source_date"/>
+																			</group>
+																			<group>
+																				<field name="source_pengajuan"/>
+																				<field name="source_urutan"/>
+																			</group>
+																		</group>
+																		<group string="Data Bahan Baku">
+																			<group>											
+																				<field name="product_id"
+																					options="{'no_create_edit': True, 'no_create': True}"/>
+																			    <field name="product_code"/>
+																			    <field name="product_type"/>
+																			</group>
+																			<group>
+																			    <field name="product_hs_code"/>
+																			    <field name="product_size"/>
+																			    <field name="product_brand"
+																			    	options="{'no_create_edit': True, 'no_create': True}"/>
+																			    <field name="product_spec"/>							
+																			</group>
+																		</group>
+																		<group string="Harga dan Satuan" col="3">
+																			<group>											
+																				<field name="harga_cif_usd"/>
+																				<field name="product_qty"/>
+																			</group>
+																			<group>
+																				<field name="ndpbm"/>
+																				<field name="product_uom_id"
+																			    	options="{'no_create_edit': True, 'no_create': True}"/>
+																			</group>
+																			<group>
+																				<field name="harga_cif_idr"/>
+																				<field name="product_netto"/>
+																			</group>
+																		</group>
+																	</form>
+																</field>
+															</group>
+														</page>
+														<page string="Bahan Baku Local">
+															<group>
+																<field name="bahan_baku_local_ids" nolabel="1">
+																	<tree>
+																		<field name="product_id"/>
+																		<field name="product_code"/>
+																		<field name="product_hs_code"/>
+																		<field name="product_qty"/>
+																		<field name="product_uom_id"/>
+																	</tree>
+																	<form>
+																		<group col="3">
+																			<group>											
+																				<field name="source_document"/>
+																				<field name="source_kppbc"/>
+																			</group>
+																			<group>
+																				<field name="source_no"/>
+																				<field name="source_date"/>
+																			</group>
+																			<group>
+																				<field name="source_pengajuan"/>
+																				<field name="source_urutan"/>
+																			</group>
+																		</group>
+																		<group string="Data Bahan Baku">
+																			<group>											
+																				<field name="product_id"
+																					options="{'no_create_edit': True, 'no_create': True}"/>
+																			    <field name="product_code"/>
+																			    <field name="product_type"/>
+																			</group>
+																			<group>
+																			    <field name="product_hs_code"/>
+																			    <field name="product_size"/>
+																			    <field name="product_brand"
+																			    	options="{'no_create_edit': True, 'no_create': True}"/>
+																			    <field name="product_spec"/>							
+																			</group>
+																		</group>
+																		<group string="Harga dan Satuan" col="3">
+																			<group>											
+																				<field name="harga_perolehan"/>
+																				<field name="product_qty"/>
+																			</group>
+																			<group>
+																				<field name="harga_penyerahan"/>
+																				<field name="product_uom_id"
+																			    	options="{'no_create_edit': True, 'no_create': True}"/>
+																			</group>
+																			<group>														
+																				<field name="product_netto"/>
+																			</group>
+																		</group>
+																	</form>
+																</field>
+															</group>
+														</page>
+														<page string="Manufacturing Orders">
+															<group>
+																<field name="mrp_ids" readonly="1">
+																	<tree editable="top">
+																		<field name="mrp_id"/>
+																	</tree>
+																</field>
+															</group>
+														</page>
+													</notebook>
+												</group>
+											</form>
+										</field>
+									</group>									
+								</page>								
+								<page string="Exportir, Penerima, dan Pembeli">
+									<group string="Exportir">
+										<group>											
+											<field name="company_name"/>
+											<field name="company_npwp_type" class="oe_inline"
+												options="{'no_create_edit': True, 'no_create': True}"/>
+											<field name="company_npwp" class="oe_inline"/>
+										</group>
+										<group>							
+											<field name="company_address"/>				
+											<field name="company_niper"/>
+											<field name="company_status"/>											
+										</group>
+									</group>
+									<group string="Penerima">
+										<group>											
+											<field name="penerima_name"/>
+											<field name="penerima_address"/>
+										</group>
+										<group>
+											<field name="penerima_country_id"
+												options="{'no_create_edit': True, 'no_create': True}"/>								
+										</group>
+									</group>
+									<group string="Pembeli">
+										<group>											
+											<field name="pembeli_name"/>
+											<field name="pembeli_address"/>
+										</group>
+										<group>
+											<field name="pembeli_country_id"
+												options="{'no_create_edit': True, 'no_create': True}"/>
+											<button name="button_copy" string="Copy Data" 
+												type="object" class="oe_highlight"/>
+										</group>
+									</group>
+								</page>
+								<page string="Data Pengangkutan">
+									<group>
+										<group>
+											<field name="cara_angkut_id"
+									    		options="{'no_create_edit': True, 'no_create': True}"/>
+									    	<field name="nama_pengangkut"/>
+									    </group>
+									    <group>
+											<field name="no_pengangkut"/>
+									    	<field name="tanggal_perkiraan_ekspor"/>
+									    </group>
+									</group>
+								</page>
+								<page string="Data Pelabuhan">
+									<group>
+										<group>
+											<field name="pelabuhan_muat_asal"
+									    		options="{'no_create_edit': True, 'no_create': True}"/>
+									    	<field name="pelabuhan_muat_ekspor"
+									    		options="{'no_create_edit': True, 'no_create': True}"/>
+									    </group>
+									    <group>
+											<field name="pelabuhan_bongkar"
+									    		options="{'no_create_edit': True, 'no_create': True}"/>
+									    	<field name="pelabuhan_tujuan"
+									    		options="{'no_create_edit': True, 'no_create': True}"/>
+									    	<field name="negara_ekspor"
+									    		options="{'no_create_edit': True, 'no_create': True}"/>
+									    </group>
+									</group>
+								</page>
+								<page string="Data Tempat Pemeriksaan">
+									<group>
+										<group>
+											<field name="lokasi_periksa"/>
+											<field name="tanggal_periksa"/>
+										</group>
+										<group>
+											<field name="kantor_periksa"
+												options="{'no_create_edit': True, 'no_create': True}"/>
+											<field name="gudang_plb"/>
+										</group>
+									</group>
+								</page>		
+								<page string="Data Penyerahan">
+									<group>
+										<group>
+											<field name="cara_penyerahan"
+												options="{'no_create_edit': True, 'no_create': True}"/>
+											<field name="freight"/>
+											<field name="is_maklon"/>
+										</group>
+										<group>
+											<field name="jenis_asuransi"/>
+											<field name="nilai_asuransi"/>
+											<field name="nilai_maklon"/>
+										</group>
+									</group>
+								</page>		
+								<page string="Data Transaksi Ekspor">
+									<group>
+										<group>
+											<field name="ekspor_bank_dhe"/>
+											<field name="ekspor_currency_id"/>										
+										</group>
+										<group>
+											<field name="ekspor_fob"/>
+										</group>
+									</group>
+								</page>																
+								<page string="Dokumen Pelengkap Pabean">
+									<group>
+										<group>
+											<field name="invoice_number"/>
+											<field name="packing_list_number"/>
+											<field name="lainnya_number"/>	
+									    </group>
+									    <group>
+									    	<field name="invoice_date"/>
+									    	<field name="packing_list_date"/>
+									    	<field name="lainnya_date"/>
+									    </group>
+									</group>
+									<group string="Surat Keputusan / Dokumen Lainnya">
+								    	<field name="surat_keputusan_ids" nolabel="1">
+								    		<tree editable="bottom">
+								    			<field name="jenis_dokumen"/>
+								    			<field name="name"/>
+								    			<field name="date"/>
+								    		</tree>
+								    	</field>
+									</group>								    
+								</page>		
+								<page string="Data Penerimaan Negara">
+									<group>
+										<group>
+											<field name="nilai_bk"/>
+										</group>
+										<group>
+											<field name="pph_22_ekspor"/>
+											<field name="dana_pungutan_sawit"/>
+										</group>
+									</group>
+								</page>
+								<page string="Data Perdagangan">
+									<group>
+										<group>
+											<field name="currency_id"/>
+									    	<field name="ndpbm"/>
+									    	<field name="harga_penyerahan"/>
+									    </group>
+									    <group>									    								
+											<field name="cif_harga"/>
+											<field name="cif_biaya_tambahan"/>
+											<field name="cif_diskon"/>
+									    	<field name="cif_cost"/>
+											<field name="cif_amount"/>
+									    </group>
+									</group>
+									<group string="Kontainer">
+										<field name="container_ids" nolabel="1">
+											<tree editable="bottom">
+												<field name="name"/>
+												<field name="container_size"/>		
+												<field name="container_type"/>
+												<field name="container_stuff"/>
+												<field name="container_part_of"/>
+											</tree>
+										</field>
+									</group>
+									<group string="Kemasan">
+										<field name="kemasan_ids" nolabel="1">
+											<tree editable="bottom">
+												<field name="jumlah"/>
+												<field name="kode"/>		
+												<field name="merk"/>		
+												<field name="uraian"/>
+											</tree>
+										</field>
+									</group>									
+								</page>			
+								<page string="Footer">
+									<group>
+										<field name="footer_kota"/>	
+										<field name="footer_tanggal"/>
+										<field name="footer_pemberitahu"/>
+										<field name="footer_jabatan"/>
+									</group>
+								</page>
+								<page string="Packaging Data">
+									<group>
+										<group>
+											<field name="picking_type_id"/>
+										</group>
+									</group>
+								</page>
+							</notebook>
+						</group>
+					</sheet>
+					<div class="oe_chatter">
+	                    <field name="message_follower_ids" widget="mail_followers"/>
+	                    <field name="message_ids" widget="mail_thread"/>
+	                </div>																						
+				</form>
+			</field>
+		</record>
+
+		<record id="view_beacukai_outgoing_30_form_warehouse" model="ir.ui.view">
+            <field name="name">Dokumen BC 30</field>
+            <field name="model">beacukai.outgoing.30</field>
+            <field name="inherit_id" ref="v10_bsc_beacukai_sam.view_beacukai_outgoing_30_form" />
+            <field name="groups_id" eval="[(6, 0, [ref('stock.group_stock_user')])]" />
+            <field name="arch" type="xml">
+                <field name="line_ids" position="attributes">
+                   <attribute name="attrs">{'readonly': [('state', 'in', ('terima', 'done'))]}</attribute>
+                </field>
+            </field>
+		</record>
+
+		<record id="view_beacukai_outgoing_30_tree" model="ir.ui.view">
+			<field name="name">Dokumen BC 30</field>
+			<field name="model">beacukai.outgoing.30</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">
+				<tree string="Dokumen BC 3.0">
+					<field name="submission_no"/>
+					<field name="kantor_pabean_muat"/>
+					<field name="kantor_pabean_ekspor"/>
+					<field name="submission_no"/>
+					<field name="jenis_tpb" readonly="1"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_beacukai_outgoing_30" model="ir.actions.act_window">
+			<field name="name">Dokumen BC 30</field>
+			<field name="res_model">beacukai.outgoing.30</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>		
+
+		<record id="view_beacukai_outgoing_line_30_tree" model="ir.ui.view">
+			<field name="name">Dokumen BC 30 Details</field>
+			<field name="model">beacukai.outgoing.line.30</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">
+				<tree string="Detail Dokumen BC 3.0">									   
+				    <field name="product_id"/>
+				    <field name="product_code"/>
+				    <field name="product_hs_code"/>				    				    
+				    <field name="product_qty"/>
+				    <field name="product_uom_id"/>
+				    <field name="product_netto"/>				    
+				    <field name="cif_cost"/>
+				    <field name="cif_amount"/>
+				    <field name="harga_penyerahan"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_beacukai_outgoing_line_30" model="ir.actions.act_window">
+			<field name="name">Detail Dokumen BC 30</field>
+			<field name="res_model">beacukai.outgoing.line.30</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>		
+
+		<!-- Jenis Ekspor -->
+		<record id="view_beacukai_jenis_ekspor" model="ir.ui.view">
+			<field name="name">Jenis Ekspor</field>
+			<field name="model">beacukai.jenis.ekspor</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">
+				<tree string="Jenis Ekspor">
+					<field name="kode"/>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_beacukai_jenis_ekspor" model="ir.actions.act_window">
+			<field name="name">Jenis Ekspor</field>
+			<field name="res_model">beacukai.jenis.ekspor</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>
+
+		<!-- Kategori Ekspor -->
+		<record id="view_beacukai_kategori_ekspor" model="ir.ui.view">
+			<field name="name">Kategori Ekspor</field>
+			<field name="model">beacukai.kategori.ekspor</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">
+				<tree string="Kategori Ekspor">
+					<field name="kode"/>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_beacukai_kategori_ekspor" model="ir.actions.act_window">
+			<field name="name">Kategori Ekspor</field>
+			<field name="res_model">beacukai.kategori.ekspor</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>
+
+		<!-- Cara Perdagangan -->
+		<record id="view_beacukai_cara_perdagangan" model="ir.ui.view">
+			<field name="name">Cara Perdagangan</field>
+			<field name="model">beacukai.cara.perdagangan</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">
+				<tree string="Cara Perdagangan">
+					<field name="kode"/>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_beacukai_cara_perdagangan" model="ir.actions.act_window">
+			<field name="name">Cara Perdagangan</field>
+			<field name="res_model">beacukai.cara.perdagangan</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>		
+
+		<!-- Cara Pembayaran -->
+		<record id="view_beacukai_cara_pembayaran" model="ir.ui.view">
+			<field name="name">Cara Pembayaran</field>
+			<field name="model">beacukai.cara.pembayaran</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">
+				<tree string="Cara Pembayaran">
+					<field name="kode"/>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_beacukai_cara_pembayaran" model="ir.actions.act_window">
+			<field name="name">Cara Pembayaran</field>
+			<field name="res_model">beacukai.cara.pembayaran</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>
+
+		<!-- Jenis Usaha -->
+		<record id="view_beacukai_jenis_usaha" model="ir.ui.view">
+			<field name="name">Jenis Usaha</field>
+			<field name="model">beacukai.jenis.usaha</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">
+				<tree string="Jenis Usaha">
+					<field name="kode"/>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_beacukai_jenis_usaha" model="ir.actions.act_window">
+			<field name="name">Jenis Usaha</field>
+			<field name="res_model">beacukai.jenis.usaha</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>
+
+		<!-- Zoning Kite -->
+		<record id="view_beacukai_zoning_kite" model="ir.ui.view">
+			<field name="name">Zoning Kite</field>
+			<field name="model">beacukai.zoning.kite</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">
+				<tree string="Zoning Kite">
+					<field name="kode"/>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_beacukai_zoning_kite" model="ir.actions.act_window">
+			<field name="name">Zoning Kite</field>
+			<field name="res_model">beacukai.zoning.kite</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>
+
+		<!-- Jenis Barang -->
+		<record id="view_beacukai_jenis_barang" model="ir.ui.view">
+			<field name="name">Jenis Barang</field>
+			<field name="model">beacukai.jenis.barang</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">
+				<tree string="Jenis Barang">
+					<field name="kode"/>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_beacukai_jenis_barang" model="ir.actions.act_window">
+			<field name="name">Jenis Barang</field>
+			<field name="res_model">beacukai.jenis.barang</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>
+
+		<!-- Tempat Simpan Barang -->
+		<record id="view_beacukai_tempat_simpan_barang" model="ir.ui.view">
+			<field name="name">Tempat Simpan Barang</field>
+			<field name="model">beacukai.tempat.simpan.barang</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">
+				<tree string="Tempat Simpan Barang">
+					<field name="kode"/>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_beacukai_tempat_simpan_barang" model="ir.actions.act_window">
+			<field name="name">Tempat Simpan Barang</field>
+			<field name="res_model">beacukai.tempat.simpan.barang</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>
+
+		<!-- Stuffing Cara -->
+		<record id="view_beacukai_stuffing_cara" model="ir.ui.view">
+			<field name="name">Cara Stuffing</field>
+			<field name="model">beacukai.stuffing.cara</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">
+				<tree string="Cara Stuffing">
+					<field name="kode"/>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_beacukai_stuffing_cara" model="ir.actions.act_window">
+			<field name="name">Cara Stuffing</field>
+			<field name="res_model">beacukai.stuffing.cara</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>
+
+		<!-- Stuffing Part -->
+		<record id="view_beacukai_stuffing_part" model="ir.ui.view">
+			<field name="name">Part of Stuffing</field>
+			<field name="model">beacukai.stuffing.part</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">
+				<tree string="Part of Stuffing">
+					<field name="kode"/>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_beacukai_stuffing_part" model="ir.actions.act_window">
+			<field name="name">Part of Stuffing</field>
+			<field name="res_model">beacukai.stuffing.part</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>
+
+		<!-- Pelabuhan -->
+		<record id="view_beacukai_pelabuhan" model="ir.ui.view">
+			<field name="name">Pelabuhan</field>
+			<field name="model">beacukai.pelabuhan</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">
+				<tree string="Pelabuhan">
+					<field name="kode"/>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_beacukai_pelabuhan" model="ir.actions.act_window">
+			<field name="name">Pelabuhan</field>
+			<field name="res_model">beacukai.pelabuhan</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>
+
+		<!-- Cara Penyerahan -->
+		<record id="view_beacukai_cara_penyerahan" model="ir.ui.view">
+			<field name="name">Cara Penyerahan</field>
+			<field name="model">beacukai.cara.penyerahan</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">
+				<tree string="Cara Penyerahan">
+					<field name="kode"/>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_beacukai_cara_penyerahan" model="ir.actions.act_window">
+			<field name="name">Cara Penyerahan</field>
+			<field name="res_model">beacukai.cara.penyerahan</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>
+
+		<!-- Kantor Periksa -->
+		<record id="view_beacukai_kantor_periksa" model="ir.ui.view">
+			<field name="name">Kantor Periksa</field>
+			<field name="model">beacukai.kantor.periksa</field>
+			<field name="type">tree</field>			
+			<field name="arch" type="xml">
+				<tree string="Kantor Periksa">
+					<field name="kode"/>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_beacukai_kantor_periksa" model="ir.actions.act_window">
+			<field name="name">Kantor Periksa</field>
+			<field name="res_model">beacukai.kantor.periksa</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              	<p class="oe_view_nocontent_create">
+	                Click to add a Data
+              	</p>				
+			</field>
+		</record>
+					    		
+	</data>
+</openerp>

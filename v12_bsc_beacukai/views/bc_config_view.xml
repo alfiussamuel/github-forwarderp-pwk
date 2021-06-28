@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_bc_config_settings" model="ir.ui.view">
+            <field name="name">Konfigurasi Perusahaan</field>
+            <field name="model">bc.config.settings</field>
+            <field name="arch" type="xml">
+                <form string="Bea Cukai" class="oe_form_configuration">
+                    <header>
+                        <button string="Apply" type="object" name="execute" class="oe_highlight"/>
+                        <button string="Cancel" type="object" name="cancel" class="oe_link" special="cancel"/>
+                    </header>
+                    <group string="Bea Cukai" name="traceability">
+                        <div>
+                            <!-- <field name="group_bc_kawasan_berikat"/> -->
+                            <!-- <field name="group_bc_kawasan_berikat2" class="oe-inline" widget="radio"/> -->
+                            <!-- <label for="group_bc_kawasan_berikat"/> -->
+                            <group>
+                                <field name="no_tpb"/>
+                                <field name="tgl_tpb"/>
+                                <field name="jenis_api"/>
+                                <field name="nomor_api"/>
+                                <field name="bc_type" widget="radio"/>
+                                <field name="module_v10_bsc_beacukai_kb" invisible="1" />
+                                <field name="module_v10_bsc_beacukai_gb" invisible="1"/>
+                            </group>
+                        </div>
+                        
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_bc_config_settings" model="ir.actions.act_window">
+            <field name="name">Setup Bea Cukai</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">bc.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+
+       
+    </data>
+</odoo>

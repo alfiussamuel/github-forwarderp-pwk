@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="bc_report_posisi">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="report.internal_layout">
+                <div class="page" style="font-size:10px">
+                   <!--  <div>
+                    	<span style="font-size: 18px;">Sales Person</span> : <span style="font-size: 16px;" t-esc="docs.salesperson_id.name"/>
+                    </div>
+ -->
+                    <div class="row mt32 mb32">
+                        <div class="col-md-2 col-md-offset-5">
+                            <b style="text-center">Laporan Pertanggungjawaban Posisi Barang <span t-esc="docs.category"></span></b><br/><br />
+                            <b style="text-center"><span t-esc="docs.bc_type"></span>  <span t-esc="user.company_id.name"></span></b><br />
+                            <b style="text-center">Periode : <span t-field="docs.date_from" t-field-options='{"format": "dd-MM-y"}'/> s.d <span t-field="docs.date_to" t-field-options='{"format": "dd-MM-y"}'/></b><br />
+                        </div>
+                    </div>
+
+                     <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Kode Barang</th>
+                                <th>Nama Barang</th>
+                                <th>Sat</th>
+                                <th>Jumlah</th>
+                                <th>Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="i" t-value="1"/>
+                            <t t-foreach="orders" t-as="a">
+                                <tr >
+                                    <td style="border:1px solid"><span t-esc="i"/></td>
+                                    <t t-set="i" t-value="i+1"/>
+                                    <td>
+                                        <span t-esc="a.product_id.name" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="a.product_name" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="a.product_uom_id.name" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="a.product_qty" />
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </t>
+</template>
+</odoo>

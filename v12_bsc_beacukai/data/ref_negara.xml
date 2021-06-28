@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    	<record id="ref_negara_data_at" model="ref.negara">
+            <field name="name">AT</field>
+            <field name="desc">AUSTRIA</field>
+        </record>
+
+        <record id="ref_negara_data_au" model="ref.negara">
+            <field name="name">AU</field>
+            <field name="desc">AUSTRALIA</field>
+        </record>
+
+        <record id="ref_negara_data_bd" model="ref.negara">
+            <field name="name">BD</field>
+            <field name="desc">BANGLADESH</field>
+        </record>
+    </data>
+</odoo>
