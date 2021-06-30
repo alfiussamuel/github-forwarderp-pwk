@@ -11,9 +11,6 @@ class PayableReportXls(models.AbstractModel):
     _inherit = 'report.report_xlsx.abstract'
 
     def get_invoice(self, data):        
-        start_date = data.start_date
-        end_date = data.end_date
-        
         invoice_ids = self.env['account.invoice'].search([                                                    
             ('state','=','open'),
             ('invoice_type_id','=','in_invoice')
