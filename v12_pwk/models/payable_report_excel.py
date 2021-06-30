@@ -134,7 +134,7 @@ class PayableReportXls(models.AbstractModel):
                 sheet.write(row, 8, i['deskripsi_barang'], formatHeaderDetailLeft)
                 sheet.write(row, 9, i['keterangan'], formatHeaderDetailLeft)
                 sheet.write(row, 10, '', formatHeaderDetailCenter)
-            elif i['umur_jatuh_tempo'] < 0:
+            elif i['umur_jatuh_tempo'] >= 0:
                 sheet.write(row, 0, number, formatHeaderDetailCenterRed)
                 sheet.write(row, 1, i['tanggal_penerimaan'], formatHeaderDetailCenterDateRed)            
                 sheet.write(row, 2, i['supplier'], formatHeaderDetailCenterRed)
