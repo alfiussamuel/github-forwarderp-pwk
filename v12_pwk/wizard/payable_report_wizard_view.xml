@@ -40,6 +40,6 @@
             parent="account.menu_finance_reports"
             id="menu_exim_report_payable"
             action="payable_wizard_action"
-            sequence="99"/>
+            sequence="3"/>
     </data>
 </odoo>
