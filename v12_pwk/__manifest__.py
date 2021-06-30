@@ -47,6 +47,7 @@
              'wizard/pph_report_view.xml',
              'wizard/rekap_purchase_order_bahan_baku_view.xml',
              'wizard/peb_report_wizard_view.xml',
+             'wizard/payable_report_wizard_view.xml',
              'wizard/stuffing_report_wizard_view.xml',
              'wizard/log_report_wizard_view.xml',
              'wizard/create_invoice_view.xml',
