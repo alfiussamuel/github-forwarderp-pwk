@@ -82,6 +82,10 @@ class PayableReportXls(models.AbstractModel):
         formatHeaderDetailRight.set_border(1)
         formatHeaderDetailLeft.set_border(1)
         formatHeaderDetailCenterDate.set_border(1)
+        formatHeaderDetailCenterRed.set_border(1)
+        formatHeaderDetailCenterNumberRed.set_border(1)
+        formatHeaderDetailCenterDateRed.set_border(1)
+        formatHeaderDetailLeftRed.set_border(1)
 
         formatHeaderTable.set_text_wrap()
         formatHeaderTableRight.set_text_wrap()
@@ -122,7 +126,7 @@ class PayableReportXls(models.AbstractModel):
         row = 3
         number = 1
         for i in get_invoice:
-            if i['umur_jatuh_tempo'] < 0:
+            if i['umur_jatuh_tempo'] >= 0:
                 sheet.write(row, 0, number, formatHeaderDetailCenter)
                 sheet.write(row, 1, i['tanggal_penerimaan'], formatHeaderDetailCenterDate)            
                 sheet.write(row, 2, i['supplier'], formatHeaderDetailCenter)
@@ -134,7 +138,7 @@ class PayableReportXls(models.AbstractModel):
                 sheet.write(row, 8, i['deskripsi_barang'], formatHeaderDetailLeft)
                 sheet.write(row, 9, i['keterangan'], formatHeaderDetailLeft)
                 sheet.write(row, 10, '', formatHeaderDetailCenter)
-            elif i['umur_jatuh_tempo'] >= 0:
+            elif i['umur_jatuh_tempo'] < 0:
                 sheet.write(row, 0, number, formatHeaderDetailCenterRed)
                 sheet.write(row, 1, i['tanggal_penerimaan'], formatHeaderDetailCenterDateRed)            
                 sheet.write(row, 2, i['supplier'], formatHeaderDetailCenterRed)
