@@ -31,7 +31,7 @@ class PayableReportXls(models.AbstractModel):
                 'umur_jatuh_tempo' : due_days,
                 'nilai_invoice' : invoice.amount_total,
                 'deskripsi_barang' : '',
-                'keterangan' : invoice.note,
+                'keterangan' : '',
             }
 
             lines.append(vals)
