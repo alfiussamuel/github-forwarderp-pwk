@@ -22,7 +22,7 @@ class PayableReportXls(models.AbstractModel):
         for invoice in invoice_ids:
             due_days = (fields.Date.today() - invoice.date_due).days                    
             vals = {
-                'tanggal_penerimaan' : invoice.date_invoice,
+                'tanggal_penerimaan' : invoice.vendor_invoice_date,
                 'supplier' : invoice.partner_id.name,
                 'nomor_invoice' : invoice.number,
                 'tanggal_invoice' : invoice.date_invoice,

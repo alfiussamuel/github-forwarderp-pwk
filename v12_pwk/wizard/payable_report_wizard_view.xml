@@ -36,7 +36,7 @@
             menu="False"
             attachment_use="False"/>
 
-        <menuitem name="Laporan Payable"
+        <menuitem name="Daftar Pembayaran"
             parent="v12_pwk.accounting_report_pwk_menu"
             id="menu_exim_report_payable"
             action="payable_wizard_action"
