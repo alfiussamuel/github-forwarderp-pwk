@@ -76,6 +76,7 @@ class PayableReportXls(models.AbstractModel):
         formatHeaderDetailCenterNumberFour.set_border(1)
         formatHeaderDetailRight.set_border(1)
         formatHeaderDetailLeft.set_border(1)
+        formatHeaderDetailCenterDate.set_border(1)
 
         formatHeaderTable.set_text_wrap()
         formatHeaderTableRight.set_text_wrap()
@@ -101,17 +102,17 @@ class PayableReportXls(models.AbstractModel):
         sheet.merge_range(1, 0, 1, 4, 'REKAP HUTANG PRODUKSI', formatHeaderLeft)
         
         # Table Header
-        sheet.merge_range(2, 0, 2, 0, 'NO', formatHeaderTable)
-        sheet.merge_range(2, 1, 2, 1, 'Tanggal Penerimaan Invoice', formatHeaderTable)
-        sheet.merge_range(2, 2, 2, 2, 'Nama Supplier', formatHeaderTable)
-        sheet.merge_range(2, 3, 2, 3, 'No. Invoice', formatHeaderTable)
-        sheet.merge_range(2, 4, 2, 4, 'Tanggal Invoice', formatHeaderTable)
-        sheet.merge_range(2, 5, 2, 5, 'Jatuh Tempo', formatHeaderTable)
-        sheet.merge_range(2, 6, 2, 6, 'Outstanding (+/-)', formatHeaderTable)
-        sheet.merge_range(2, 7, 2, 7, 'Nilai Invoice', formatHeaderTable)
-        sheet.merge_range(2, 8, 2, 8, 'Nama Deskripsi Barang', formatHeaderTable)
-        sheet.merge_range(2, 9, 2, 9, 'Keterangan Invoice', formatHeaderTable)
-        sheet.merge_range(2, 10, 2, 10, 'Notes', formatHeaderTable)               
+        sheet.write(2, 0, 2, 0, 'NO', formatHeaderTable)
+        sheet.write(2, 1, 2, 1, 'Tanggal Penerimaan Invoice', formatHeaderTable)
+        sheet.write(2, 2, 2, 2, 'Nama Supplier', formatHeaderTable)
+        sheet.write(2, 3, 2, 3, 'No. Invoice', formatHeaderTable)
+        sheet.write(2, 4, 2, 4, 'Tanggal Invoice', formatHeaderTable)
+        sheet.write(2, 5, 2, 5, 'Jatuh Tempo', formatHeaderTable)
+        sheet.write(2, 6, 2, 6, 'Outstanding (+/-)', formatHeaderTable)
+        sheet.write(2, 7, 2, 7, 'Nilai Invoice', formatHeaderTable)
+        sheet.write(2, 8, 2, 8, 'Nama Deskripsi Barang', formatHeaderTable)
+        sheet.write(2, 9, 2, 9, 'Keterangan Invoice', formatHeaderTable)
+        sheet.write(2, 10, 2, 10, 'Notes', formatHeaderTable)               
 
         row = 4
         number = 1
