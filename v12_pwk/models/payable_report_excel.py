@@ -13,7 +13,7 @@ class PayableReportXls(models.AbstractModel):
     def get_invoice(self, data):        
         invoice_ids = self.env['account.invoice'].search([                                                    
             ('state','=','open'),
-            ('invoice_type_id','=','in_invoice')
+            ('type','=','in_invoice')
         ], order="id asc")
 
         lines = []
