@@ -37,7 +37,7 @@
             attachment_use="False"/>
 
         <menuitem name="Laporan Payable"
-            parent="account.menu_finance_reports"
+            parent="v12_pwk.accounting_report_pwk_menu"
             id="menu_exim_report_payable"
             action="payable_wizard_action"
             sequence="3"/>
