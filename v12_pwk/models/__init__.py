@@ -28,6 +28,7 @@ from . import sale
 from . import stock
 from . import purchase
 from . import peb_report_excel
+from . import payable_report_excel
 from . import stuffing_report_excel
 from . import log_report_excel
 from . import rpb_excel
@@ -35,4 +36,3 @@ from . import rpm_excel
 from . import rpm_monitoring_excel
 from . import rpm_bahan_baku
 from . import rpb_bahan_baku
-from . import payable_excel_report
