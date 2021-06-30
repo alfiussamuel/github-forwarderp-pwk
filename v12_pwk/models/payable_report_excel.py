@@ -3,7 +3,7 @@
 import datetime
 from datetime import datetime
 import pytz
-from odoo import models
+from odoo import models, fields
 
 
 class PayableReportXls(models.AbstractModel):
