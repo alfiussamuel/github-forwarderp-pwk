@@ -14,14 +14,13 @@ class PayableReportXls(models.AbstractModel):
         invoice_ids = self.env['account.invoice'].search([                                                    
             ('state','=','open'),
             ('type','=','in_invoice')
-        ], order="id asc")
+        ], order="partner_id asc")
 
         lines = []
         vals = {}                
 
         for invoice in invoice_ids:
-            due_days = (invoice.date_due - invoice.date_invoice).days
-            print (due_days)                    
+            due_days = (fields.Date.today() - invoice.date_due).days                    
             vals = {
                 'tanggal_penerimaan' : invoice.date_invoice,
                 'supplier' : invoice.partner_id.name,
@@ -114,7 +113,7 @@ class PayableReportXls(models.AbstractModel):
         sheet.write(2, 9, 'Keterangan Invoice', formatHeaderTable)
         sheet.write(2, 10, 'Notes', formatHeaderTable)               
 
-        row = 4
+        row = 3
         number = 1
         for i in get_invoice:
             sheet.write(row, 0, number, formatHeaderDetailCenter)
@@ -127,7 +126,7 @@ class PayableReportXls(models.AbstractModel):
             sheet.write(row, 7, i['nilai_invoice'], formatHeaderDetailCenterNumberFour)
             sheet.write(row, 8, i['deskripsi_barang'], formatHeaderDetailCenterNumber)
             sheet.write(row, 9, i['keterangan'], formatHeaderDetailCenterNumber)
-
+            sheet.write(row, 9, '', formatHeaderDetailCenterNumber)
             row += 1
             number += 1
 
