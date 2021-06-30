@@ -19,7 +19,9 @@ class PayableReportXls(models.AbstractModel):
         lines = []
         vals = {}                
 
-        for invoice in invoice_ids:                    
+        for invoice in invoice_ids:
+            umur_jatuh_tempo = (invoice.date_due - invoice.date_invoice).days
+            print (umur_jatuh_tempo)                    
             vals = {
                 'tanggal_penerimaan' : invoice.date_invoice,
                 'supplier' : invoice.partner_id.name,
