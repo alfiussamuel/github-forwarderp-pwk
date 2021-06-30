@@ -55,6 +55,7 @@ class PayableReportXls(models.AbstractModel):
         formatHeaderTableRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'bold': True, 'bg_color':'#3eaec2', 'text_wrap': True, 'num_format': '#,##0'})
         formatHeaderDetailCenter = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True})
         formatHeaderDetailCenterNumber = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'num_format': '#,##0'})
+        formatHeaderDetailCenterDate = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'num_format': 'dd-mm-yyyy'})
         formatHeaderDetailCenterNumberFour = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'num_format': '#,##4'})
         formatHeaderDetailLeft = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'left'})
         formatHeaderDetailRight = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'right', 'num_format': '#,##0'})
@@ -112,15 +113,15 @@ class PayableReportXls(models.AbstractModel):
         sheet.merge_range(2, 9, 2, 9, 'Keterangan Invoice', formatHeaderTable)
         sheet.merge_range(2, 10, 2, 10, 'Notes', formatHeaderTable)               
 
-        row = 3
+        row = 4
         number = 1
         for i in get_invoice:
             sheet.write(row, 0, number, formatHeaderDetailCenter)
-            sheet.write(row, 1, i['tanggal_penerimaan'], formatHeaderDetailCenter)            
+            sheet.write(row, 1, i['tanggal_penerimaan'], formatHeaderDetailCenterDate)            
             sheet.write(row, 2, i['supplier'], formatHeaderDetailCenter)
             sheet.write(row, 3, i['nomor_invoice'], formatHeaderDetailCenter)
-            sheet.write(row, 4, i['tanggal_invoice'], formatHeaderDetailCenter)
-            sheet.write(row, 5, i['tanggal_jatuh_tempo'], formatHeaderDetailCenter)
+            sheet.write(row, 4, i['tanggal_invoice'], formatHeaderDetailCenterDate)
+            sheet.write(row, 5, i['tanggal_jatuh_tempo'], formatHeaderDetailCenterDate)
             sheet.write(row, 6, i['umur_jatuh_tempo'], formatHeaderDetailCenter)
             sheet.write(row, 7, i['nilai_invoice'], formatHeaderDetailCenterNumberFour)
             sheet.write(row, 8, i['deskripsi_barang'], formatHeaderDetailCenterNumber)
