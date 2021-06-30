@@ -115,16 +115,6 @@ class PayableReportXls(models.AbstractModel):
         row = 3
         number = 1
         for i in get_invoice:
-            'tanggal_penerimaan' : invoice.date_invoice,
-                'supplier' : invoice.partner_id.name,
-                'nomor_invoice' : invoice.number,
-                'tanggal_invoice' : invoice.date_invoice,
-                'tanggal_jatuh_tempo' : invoice.date_due,
-                'umur_jatuh_tempo' : due_days,
-                'nilai_invoice' : invoice.amount_total,
-                'deskripsi_barang' : '',
-                'keterangan' : '',
-
             sheet.write(row, 0, number, formatHeaderDetailCenter)
             sheet.write(row, 1, i['tanggal_penerimaan'], formatHeaderDetailCenter)            
             sheet.write(row, 2, i['supplier'], formatHeaderDetailCenter)
@@ -135,7 +125,7 @@ class PayableReportXls(models.AbstractModel):
             sheet.write(row, 7, i['nilai_invoice'], formatHeaderDetailCenterNumberFour)
             sheet.write(row, 8, i['deskripsi_barang'], formatHeaderDetailCenterNumber)
             sheet.write(row, 9, i['keterangan'], formatHeaderDetailCenterNumber)
-            
+
             row += 1
             number += 1
 
