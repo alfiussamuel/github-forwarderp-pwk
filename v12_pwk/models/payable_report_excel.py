@@ -68,6 +68,12 @@ class PayableReportXls(models.AbstractModel):
         red_mark = workbook.add_format({'font_size': 8, 'bg_color': 'red'})
         justify = workbook.add_format({'font_size': 12})
         
+        # Red for Due Invoices
+        formatHeaderDetailCenterRed = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'color':'red'})
+        formatHeaderDetailCenterNumberRed = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'num_format': '#,##0', 'color':'red'})
+        formatHeaderDetailCenterDateRed = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'centre', 'text_wrap': True, 'num_format': 'dd-mm-yyyy', 'color':'red'})
+        formatHeaderDetailLeftRed = workbook.add_format({'font_size': 10, 'valign':'vcenter', 'align': 'left', 'color': 'red'})
+
         formatHeaderTable.set_border(1)
         formatHeaderTableRight.set_border(1)
         formatHeaderDetailCenter.set_border(1)
@@ -116,17 +122,31 @@ class PayableReportXls(models.AbstractModel):
         row = 3
         number = 1
         for i in get_invoice:
-            sheet.write(row, 0, number, formatHeaderDetailCenter)
-            sheet.write(row, 1, i['tanggal_penerimaan'], formatHeaderDetailCenterDate)            
-            sheet.write(row, 2, i['supplier'], formatHeaderDetailCenter)
-            sheet.write(row, 3, i['nomor_invoice'], formatHeaderDetailCenter)
-            sheet.write(row, 4, i['tanggal_invoice'], formatHeaderDetailCenterDate)
-            sheet.write(row, 5, i['tanggal_jatuh_tempo'], formatHeaderDetailCenterDate)
-            sheet.write(row, 6, i['umur_jatuh_tempo'], formatHeaderDetailCenter)
-            sheet.write(row, 7, i['nilai_invoice'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 8, i['deskripsi_barang'], formatHeaderDetailLeft)
-            sheet.write(row, 9, i['keterangan'], formatHeaderDetailLeft)
-            sheet.write(row, 10, '', formatHeaderDetailCenter)
+            if i['umur_jatuh_tempo'] < 0:
+                sheet.write(row, 0, number, formatHeaderDetailCenter)
+                sheet.write(row, 1, i['tanggal_penerimaan'], formatHeaderDetailCenterDate)            
+                sheet.write(row, 2, i['supplier'], formatHeaderDetailCenter)
+                sheet.write(row, 3, i['nomor_invoice'], formatHeaderDetailCenter)
+                sheet.write(row, 4, i['tanggal_invoice'], formatHeaderDetailCenterDate)
+                sheet.write(row, 5, i['tanggal_jatuh_tempo'], formatHeaderDetailCenterDate)
+                sheet.write(row, 6, i['umur_jatuh_tempo'], formatHeaderDetailCenter)
+                sheet.write(row, 7, i['nilai_invoice'], formatHeaderDetailCenterNumber)
+                sheet.write(row, 8, i['deskripsi_barang'], formatHeaderDetailLeft)
+                sheet.write(row, 9, i['keterangan'], formatHeaderDetailLeft)
+                sheet.write(row, 10, '', formatHeaderDetailCenter)
+            elif i['umur_jatuh_tempo'] < 0:
+                sheet.write(row, 0, number, formatHeaderDetailCenterRed)
+                sheet.write(row, 1, i['tanggal_penerimaan'], formatHeaderDetailCenterDateRed)            
+                sheet.write(row, 2, i['supplier'], formatHeaderDetailCenterRed)
+                sheet.write(row, 3, i['nomor_invoice'], formatHeaderDetailCenterRed)
+                sheet.write(row, 4, i['tanggal_invoice'], formatHeaderDetailCenterDateRed)
+                sheet.write(row, 5, i['tanggal_jatuh_tempo'], formatHeaderDetailCenterDateRed)
+                sheet.write(row, 6, i['umur_jatuh_tempo'], formatHeaderDetailCenterRed)
+                sheet.write(row, 7, i['nilai_invoice'], formatHeaderDetailCenterNumberRed)
+                sheet.write(row, 8, i['deskripsi_barang'], formatHeaderDetailLeftRed)
+                sheet.write(row, 9, i['keterangan'], formatHeaderDetailLeftRed)
+                sheet.write(row, 10, '', formatHeaderDetailCenterRed)
+            
             row += 1
             number += 1
 
