@@ -123,10 +123,10 @@ class PayableReportXls(models.AbstractModel):
             sheet.write(row, 4, i['tanggal_invoice'], formatHeaderDetailCenterDate)
             sheet.write(row, 5, i['tanggal_jatuh_tempo'], formatHeaderDetailCenterDate)
             sheet.write(row, 6, i['umur_jatuh_tempo'], formatHeaderDetailCenter)
-            sheet.write(row, 7, i['nilai_invoice'], formatHeaderDetailCenterNumberFour)
-            sheet.write(row, 8, i['deskripsi_barang'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 9, i['keterangan'], formatHeaderDetailCenterNumber)
-            sheet.write(row, 9, '', formatHeaderDetailCenterNumber)
+            sheet.write(row, 7, i['nilai_invoice'], formatHeaderDetailCenterNumber)
+            sheet.write(row, 8, i['deskripsi_barang'], formatHeaderDetailLeft)
+            sheet.write(row, 9, i['keterangan'], formatHeaderDetailLeft)
+            sheet.write(row, 10, '', formatHeaderDetailCenter)
             row += 1
             number += 1
 
